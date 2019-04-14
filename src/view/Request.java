@@ -9,9 +9,8 @@ import model.*;
 import control.*;
 
 public class Request {
+    public static Scanner scanner = new Scanner(System.in);
     private static ArrayList<ArrayList<Command>> commands = new ArrayList<>();
-
-    private Scanner scanner = new Scanner(System.in);
     private ErrorType error = null;
     private String commandLine;
 
@@ -49,7 +48,36 @@ public class Request {
         }
         return null;
     }
-
+    public boolean repetitiousUser(String userName){
+        for (Account account:Account.getAllUser()) {
+            if(account.getUserName().equals(userName)){
+                this.setError(ErrorType.USER_ALREADY_CREATED);
+                return true;
+            }
+        }
+        return false;
+    }public boolean existThisUser(String userName){
+        for (Account account:Account.getAllUser()) {
+            if(account.getUserName().equals(userName)){
+                return true;
+            }
+        }
+        this.setError(ErrorType.NO_SUCH_USER_EXIST);
+        return false;
+    }
+    public  void authorize(String userName,String passWord){
+        for (Account account:Account.getAllUser()) {
+            if(account.getUserName().equals(userName)){
+                if(account.getPassWord().equals(passWord))
+                {
+                    Account.setLoginAccount(account);
+                    return;
+                }
+                this.setError(ErrorType.WRONG_PASSWORD);
+                return ;
+            }
+        }
+    }
     public void setError(ErrorType error) {
         this.error = error;
     }

@@ -14,7 +14,7 @@ public class BattleControl {
             request.getNewCommand();
             Command command = request.getMatchedCommand(1);
 
-            if (command != null) {
+            if (command != null&& !command.equals("help")) {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {

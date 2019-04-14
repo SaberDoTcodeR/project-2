@@ -15,4 +15,9 @@ public class View {
         if (error == null) return;
         System.out.println(error.getMessage());
     }
+    public void printLeaderBoard(){
+        for (int i = 0; i < Account.getAllUser().size(); i++) {
+            System.out.println((i+1)+"- UserName : "+Account.getAllUser().get(i).getUserName() + "- Wins : " + Account.getAllUser().get(i).getWins());
+        }
+    }
 }

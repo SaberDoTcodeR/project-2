@@ -16,20 +16,20 @@ public enum CommandRegex {
     HELP(
             "^help$"
     ),
-    STATS_OF_TEAM(
-            "^print stats of team\\s+(\\w+)$"
+    CREATE_ACCOUNT (
+            "^create account\\s+(\\w+)$"
     ),
-    STATS_OF_PLAYER(
-            "^print stats of player\\s+(\\w+)\\s+(\\w+)$"
+    LOGIN (
+            "^login\\s+(\\w+)$"
     ),
-    RENEW_CONTRACT(
-            "^renew contract of\\s+(\\w+)\\s+(\\w+)\\s+for\\s+(\\d+)\\s+years$"
+    SHOW_LEADERBOARD(
+            "^show leaderboard$"
     ),
-    TERMINATE_CONTRACT(
-            "^terminate contract of\\s+(\\w+)\\s+(\\w+)$"
+    SAVE(
+            "^save$"
     ),
-    SELL_PLAYER(
-            "^sell player\\s+(\\w+)\\s+(\\w+)\\s+from\\s+(\\w+)\\s+to\\s+(\\w+)\\s+for\\s+(\\d+)\\$\\s+with\\s+(\\d+)\\s+years contract$"
+    LOGOUT(
+            "^logout$"
     ),
     LOAN_PLAYER(
             "^loan player\\s+(\\w+)\\s+(\\w+)\\s+from\\s+(\\w+)\\s+to\\s+(\\w+)\\s+with\\s+(\\d+)\\s+years contract$"

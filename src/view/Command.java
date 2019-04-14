@@ -5,16 +5,19 @@ import java.util.regex.Pattern;
 
 import control.*;
 import model.*;
+
 public abstract class Command {
     static View view = View.getInstance();
     Pattern pattern;
     Matcher matcher;
-    public Command(CommandRegex command)
-    {
+
+    public Command(CommandRegex command) {
         pattern = Pattern.compile(command.getRegex());
     }
+
     public abstract void apply(Request request);
 }
+
 class EnterBattle extends Command {
 
     EnterBattle() {
@@ -23,10 +26,11 @@ class EnterBattle extends Command {
 
     @Override
     public void apply(Request request) {
-        BattleControl battleControl=new BattleControl();
+        BattleControl battleControl = new BattleControl();
         battleControl.main();
     }
 }
+
 class EnterCollection extends Command {
 
     EnterCollection() {
@@ -35,10 +39,11 @@ class EnterCollection extends Command {
 
     @Override
     public void apply(Request request) {
-        CollectionControl collectionControl=new CollectionControl();
+        CollectionControl collectionControl = new CollectionControl();
         collectionControl.main();
     }
 }
+
 class EnterShop extends Command {
 
     EnterShop() {
@@ -47,8 +52,19 @@ class EnterShop extends Command {
 
     @Override
     public void apply(Request request) {
-        ShopControl shopControl=new ShopControl();
+        ShopControl shopControl = new ShopControl();
         shopControl.main();
+    }
+}
+class Help extends Command {
+
+    Help() {
+        super(CommandRegex.HELP);
+    }
+
+    @Override
+    public void apply(Request request) {
+
     }
 }
 class Exit extends Command {
@@ -62,14 +78,71 @@ class Exit extends Command {
         System.exit(0);
     }
 }
-class Help extends Command {
 
-    Help() {
-        super(CommandRegex.HELP);
+class CreateAccount extends Command {
+
+    CreateAccount() {
+        super(CommandRegex.CREATE_ACCOUNT);
     }
 
     @Override
     public void apply(Request request) {
-        System.exit(0);
+        String userName = matcher.group(1).trim();
+        if (!request.repetitiousUser(userName)){
+            System.out.println("Set Your PassWord "+userName+" :");
+            String pass=Request.scanner.nextLine();
+            Account.setLoginAccount(new Account(userName,pass));
+        }
+    }
+}
+class Login extends Command {
+
+    Login() {
+        super(CommandRegex.LOGIN);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String userName = matcher.group(1).trim();
+        if (request.existThisUser(userName)){
+            System.out.println("Enter Your PassWord :");
+            String pass=Request.scanner.nextLine();
+            request.authorize(userName,pass);
+
+        }
+    }
+}class ShowLeaderBoard extends Command {
+
+    ShowLeaderBoard() {
+        super(CommandRegex.SHOW_LEADERBOARD);
+    }
+
+    @Override
+    public void apply(Request request) {
+        Account.showLeaderboard();
+    }
+}class Save extends Command {
+
+    Save() {
+        super(CommandRegex.SAVE);
+    }
+
+    @Override
+    public void apply(Request request) {
+        Account.setLoginAccount(null);
+        AccountControl accountControl = new AccountControl();
+        accountControl.main();
+    }
+}class LogOut extends Command {
+
+    LogOut() {
+        super(CommandRegex.LOGOUT);
+    }
+
+    @Override
+    public void apply(Request request) {
+        Account.setLoginAccount(null);
+        AccountControl accountControl = new AccountControl();
+        accountControl.main();
     }
 }
