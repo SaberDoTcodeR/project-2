@@ -17,7 +17,7 @@ public class ShopControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-                view.showShopMenu;
+               // view.showShopMenu;
             }
             else {
                 view.printError(ErrorType.COMMAND);

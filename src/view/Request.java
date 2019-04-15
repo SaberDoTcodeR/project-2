@@ -24,19 +24,34 @@ public class Request {
     }
 
     private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop
+        commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
+
         commands.get(0).add(new EnterBattle());
         commands.get(0).add(new EnterCollection());
         commands.get(0).add(new EnterShop());
-        commands.get(0).add(new Exit());
+        commands.get(0).add(new LogOut());
+        commands.get(0).add(new ExitFromMainMenu());
         commands.get(0).add(new Help());
-
 
         commands.get(1).add(new EnterBattle());
         commands.get(1).add(new EnterCollection());
         commands.get(1).add(new EnterShop());
-        commands.get(1).add(new Exit());
+        commands.get(1).add(new ExitFromSubMenu());
         commands.get(1).add(new Help());
 
+
+
+        commands.get(4).add(new LogOut());
+        commands.get(4).add(new Login());
+        commands.get(4).add(new Save());
+        commands.get(4).add(new CreateAccount());
+        commands.get(4).add(new ShowLeaderBoard());
+        commands.get(4).add(new Help());
+        commands.get(4).add(new Exit());
     }
 
     public Command getMatchedCommand(int i) {
@@ -71,7 +86,8 @@ public class Request {
                 if(account.getPassWord().equals(passWord))
                 {
                     Account.setLoginAccount(account);
-                    return;
+                    MainMenuControl mainMenuControl=new MainMenuControl();
+                    mainMenuControl.main();
                 }
                 this.setError(ErrorType.WRONG_PASSWORD);
                 return ;

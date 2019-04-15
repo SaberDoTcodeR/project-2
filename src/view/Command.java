@@ -67,6 +67,19 @@ class Help extends Command {
 
     }
 }
+class ExitFromSubMenu extends Command {
+
+    ExitFromSubMenu() {
+        super(CommandRegex.EXIT);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+        MainMenuControl mainMenuControl =new MainMenuControl();
+        mainMenuControl.main();
+    }
+}
 class Exit extends Command {
 
     Exit() {
@@ -76,6 +89,20 @@ class Exit extends Command {
     @Override
     public void apply(Request request) {
         System.exit(0);
+    }
+}
+class ExitFromMainMenu extends Command {
+
+    ExitFromMainMenu() {
+        super(CommandRegex.EXIT);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+        Account.setLoginAccount(null);
+        AccountControl accountControl=new AccountControl();
+        accountControl.main();
     }
 }
 
@@ -92,6 +119,11 @@ class CreateAccount extends Command {
             System.out.println("Set Your PassWord "+userName+" :");
             String pass=Request.scanner.nextLine();
             Account.setLoginAccount(new Account(userName,pass));
+            MainMenuControl mainMenuControl=new MainMenuControl();
+            mainMenuControl.main();
+        }
+        else {
+            request.setError(ErrorType.USER_ALREADY_CREATED);
         }
     }
 }
@@ -141,6 +173,11 @@ class Login extends Command {
 
     @Override
     public void apply(Request request) {
+        if(Account.getLoginAccount()==null)
+        {
+            request.setError(ErrorType.ALREADY_LOGOUT);
+            return;
+        }
         Account.setLoginAccount(null);
         AccountControl accountControl = new AccountControl();
         accountControl.main();

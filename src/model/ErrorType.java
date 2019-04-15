@@ -6,8 +6,8 @@ public enum ErrorType {
     USER_ALREADY_CREATED("user already created"),
     NO_SUCH_USER_EXIST("No Such User Exist"),
     WRONG_PASSWORD("Wrong Password"),
-    DONT_HAVE_PRODUCT("we don't have it");
-
+    DONT_HAVE_ENOUGH_MONEY("you don't have enough money"),
+    ALREADY_LOGOUT( "you are not in any account");
     private String message;
 
     public String getMessage() {

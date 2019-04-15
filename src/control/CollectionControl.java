@@ -9,6 +9,7 @@ public class CollectionControl {
     private static View view = View.getInstance();
 
     public void main() {
+        //view.showCollectionMenu;
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
@@ -18,7 +19,7 @@ public class CollectionControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-                view.showCollectionMenu;
+                //view.showCollectionMenu;
             } else {
                 view.printError(ErrorType.COMMAND);
             }
