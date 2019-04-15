@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/BattleControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/BattleControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/CollectionControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/CollectionControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/MainMenuControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/MainMenuControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/ShopControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/ShopControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ErrorType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Request.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -112,8 +105,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -273,7 +266,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555334022091" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555349374480" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/FifaOrPes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -324,7 +317,7 @@
       <workItem from="1555185946950" duration="8284000" />
       <workItem from="1555239273528" duration="1368000" />
       <workItem from="1555258390753" duration="11612000" />
-      <workItem from="1555324986460" duration="6038000" />
+      <workItem from="1555324986460" duration="6880000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -347,11 +340,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555278581890</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="RecordedMatch class added&#10;account class improved minor(alaki) bug">
+      <created>1555334089942</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1555334089943</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30602000" />
+    <option name="totallyTimeSpent" value="31444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -395,7 +395,8 @@
     <MESSAGE value="commit checker" />
     <MESSAGE value="branch checker" />
     <MESSAGE value="Account class added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Account class added" />
+    <MESSAGE value="RecordedMatch class added&#10;account class improved minor(alaki) bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="RecordedMatch class added&#10;account class improved minor(alaki) bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/control/Controller.java" />
@@ -532,8 +533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="63" column="20" lean-forward="true" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+        <state relative-caret-position="240">
+          <caret line="71" column="9" lean-forward="true" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
