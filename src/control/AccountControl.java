@@ -6,7 +6,6 @@ import view.*;
 public class AccountControl {
     public static boolean finished = false;
     private static View view = View.getInstance();
-
     public void main() {
         //view.showAccountMenu;
         while (!finished) {
