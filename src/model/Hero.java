@@ -45,8 +45,6 @@ public abstract class Hero extends Card {
         this.range = range;
     }
 
-    public vo
-
     public static ArrayList<Hero> getHeroes() {
         return heroes;
     }
