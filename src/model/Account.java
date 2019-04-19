@@ -8,12 +8,27 @@ public class Account {
     private static Account loginAccount;
     private static ArrayList<Account> allUser=new ArrayList<>();
     private String userName,passWord;
-    private int money,xPos,yPos,wins=0;
-    //private Deck mainDeck=new Deck();
+    private int money,wins=0;
+    private Deck mainDeck=new Deck();
     private ArrayList<RecordedMatch> matches=new ArrayList<RecordedMatch>();
+    private Collection myCollection=new Collection();
+    public int getMoney() {
+        return money;
+    }
 
+    public Deck getMainDeck() {
+        return mainDeck;
+    }
 
-    public Account (String userName,String passWord)
+    public void setMainDeck(Deck mainDeck) {
+        this.mainDeck = mainDeck;
+    }
+
+    public Collection getCollection() {
+        return myCollection;
+    }
+
+    public Account (String userName, String passWord)
     {
         this.userName=userName;
         this.passWord=passWord;

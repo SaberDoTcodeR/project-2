@@ -158,9 +158,6 @@ public class Collection {
         return null;
     }
 
-    public void save() {
-        //???????????????
-    }
 
     public void createDeck(String deckName) {
         for (Deck deck : getDecks()) {
@@ -309,11 +306,18 @@ public class Collection {
 
     public boolean checkDeckValidation(String deckName) {
         Deck deck = findDeck(deckName);
+        if (deck.isValid())
+            return true;
+        else
+            return false;
+    }
+    public boolean (String deckName) {
+        Deck deck = findDeck(deckName);
         if (deck != null) {
             if (deck.isValid()) {
                 return true;
             } else {
-                view.printError(ErrorType.INVALID_DECK);
+                //view.printError(ErrorType.INVALID_DECK);
                 return false;
             }
         } else {
@@ -321,12 +325,11 @@ public class Collection {
             return false;
         }
     }
-
     public void selectDeck(String deckName) {
         Deck deck = findDeck(deckName);
         boolean validate = checkDeckValidation(deckName);
         if (validate){
-            Account.getLoginAccount().mainDeck = deck;
+            Account.getLoginAccount().getMainDeck() = deck;
         }
         //todo 1:maindeck 2:check deck is copy or not
     }

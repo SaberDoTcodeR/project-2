@@ -7,6 +7,7 @@ public abstract class Card {
     private boolean isOnMap;
     private int costOfBuy;
     private Cell currentCell;
+    int id;
 
     public String getName() {
         return name;
@@ -34,20 +35,24 @@ public abstract class Card {
     }
 
     public void moveCard(String string) {//up down right left
-        if(string.equals("up")){
-            this.currentCell=currentCell.getUpCell();
-        }
-        else if(string.equals("down")){
-            this.currentCell=currentCell.getDownCell();
-        }else if(string.equals("left")){
-            this.currentCell=currentCell.getLeftCell();
-        }else {
-            this.currentCell=currentCell.getRightCell();
+        if (string.equals("up")) {
+            this.currentCell = currentCell.getUpCell();
+        } else if (string.equals("down")) {
+            this.currentCell = currentCell.getDownCell();
+        } else if (string.equals("left")) {
+            this.currentCell = currentCell.getLeftCell();
+        } else {
+            this.currentCell = currentCell.getRightCell();
         }
     }
-    public String getType()
-    {
+
+    public int getId() {
+        return id;
+    }
+
+    public String getType() {
         return this.getClass().getSimpleName();
     }
+
 }
 

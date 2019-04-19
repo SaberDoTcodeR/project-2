@@ -23,8 +23,8 @@ public class View {
         }
     }
 
-    public void printDeckValidation(){
-        System.out.println("The deck is valid");
+    public void printDeckValidation(String name){
+        System.out.println(name+" is a valid deck.");
     }
 
     public void printObjectId(int id){

@@ -105,9 +105,14 @@ public class Request {
         }
     }
     public void validateDeck(String deckName){
-        if(Account.getLoginAccount().getCollection().checkDeckValidation(deckName)){
+        if(!Account.getLoginAccount().getCollection().checkDeckValidation(deckName))
+            this.setError(ErrorType.INVALID_DECK);
+        else
+            View.getInstance().printDeckValidation(deckName);
 
-        }
+
+
+
     }
     public void selectDeck(String deckName){
         if(Account.getLoginAccount().getCollection()){
