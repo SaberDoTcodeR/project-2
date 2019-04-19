@@ -54,8 +54,7 @@ public class Deck {
     }
 
     public boolean isFilled(){
-        if (getSpells().size() + getMinions().size() == 20 )
-            //todo check working
+        if (getSpells().size() + getMinions().size() == 20)
             return true;
         return false;
     }

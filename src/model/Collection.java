@@ -87,15 +87,10 @@ public class Collection {
     }
 
     public void createDeck(String deckName) {
-        for (Deck deck : getDecks()) {
-            if (deck.getName().equals(deckName)) {
-                view.printError(ErrorType.DECK_EXISTENCE);
-                return;
-            }
-        }
         Deck newDeck = new Deck();
         newDeck.setName(deckName);
         getDecks().add(newDeck);
+
     }
 
     public void deleteDeck(String deckName) {
@@ -207,6 +202,26 @@ public class Collection {
         deck.getMinions().removeIf(minion -> minion.getId() == objectID);
     }
 
+    private boolean isInDeck(int objectID, Deck deck) {
+
+        if(deck.getHero().getId()==objectID)
+            return true;
+        for (Spell spell:deck.getSpells())
+        {
+            if(spell.getId()==objectID)
+                return true;
+        }
+        for (Minion minion:deck.getMinions())
+        {
+            if(minion.getId()==objectID)
+                return true;
+        }
+
+        if(deck.getItem().getId()==objectID)
+            return true;
+
+        return false;
+    }
 
     public boolean checkDeckValidation(String deckName) {
         Deck deck = findDeck(deckName);
@@ -222,7 +237,19 @@ public class Collection {
     }
 
     public void showAllDecks() {
-
+        //todo check working
+        if (Account.getLoginAccount().getMainDeck() != null){
+            showDeck(Account.getLoginAccount().getMainDeck().getName());
+            for (Deck deck : this.getDecks()) {
+                if (deck.getName().equals(Account.getLoginAccount().getMainDeck().getName()) )
+                    continue;
+                view.printDeckDetails(deck);
+            }
+        } else {
+            for (Deck deck : this.getDecks()) {
+                view.printDeckDetails(deck);
+            }
+        }
     }
 
     public void showDeck(String deckName) {
@@ -230,5 +257,5 @@ public class Collection {
         view.printDeckDetails(deck);
     }
 
-    //an unit error message for invalid deck
+
 }

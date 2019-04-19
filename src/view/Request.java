@@ -74,12 +74,15 @@ public class Request {
         return null;
     }
 
+
     public void validateDeck(String deckName){
         if(!Account.getLoginAccount().getCollection().checkDeckValidation(deckName))
             this.setError(ErrorType.INVALID_DECK);
         else
             View.getInstance().printDeckValidation(deckName);
     }
+
+
 
     public boolean repetitiousUser(String userName){
         for (Account account:Account.getAllUser()) {

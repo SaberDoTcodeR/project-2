@@ -7,7 +7,7 @@ public abstract class Card {
     private boolean isOnMap;
     private int costOfBuy;
     private Cell currentCell;
-    int id;
+    private int id;
 
     public String getName() {
         return name;
