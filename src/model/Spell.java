@@ -30,13 +30,4 @@ public  abstract class Spell extends Card{
         return costToUse;
     }
 
-    public int getHp() {
-        return hp;
-    }
-
-
-    public int getType(){
-        return 1;
-    }
-
 }

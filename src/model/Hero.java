@@ -44,4 +44,6 @@ public abstract class Hero extends Card{
         return specialPower;
     }
 
+    public abstract String showDetails();
+
 }

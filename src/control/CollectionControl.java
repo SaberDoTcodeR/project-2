@@ -19,7 +19,7 @@ public class CollectionControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-                //view.showCollectionMenu;
+                view.showCollectionMenu;
             } else {
                 view.printError(ErrorType.COMMAND);
             }

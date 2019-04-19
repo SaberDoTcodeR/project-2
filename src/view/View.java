@@ -72,4 +72,21 @@ public class View {
             index++;
         }
     }
+
+    public void showCollectionMenu(){
+        String helpstr = "1 : Exit\n" +
+                "2 : Show\n" +
+                "3 : Search\n" +
+                "4 : Save\n" +
+                "5 : Create Deck\n" +
+                "6 : Delete Deck\n" +
+                "7 : Add Card To Deck\n" +
+                "8 : Remove Card From Deck\n" +
+                "9 : Validate Deck\n" +
+                "10 : Select Deck\n" +
+                "11 : Show All Decks\n" +
+                "12 : Show Deck\n" +
+                "13 : Help";
+        System.out.println(helpstr);
+    }
 }
