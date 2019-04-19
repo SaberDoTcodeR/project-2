@@ -107,7 +107,7 @@ public class View {
     }
 
     public void showCollectionMenu() {
-        String helpstr = "1 : Exit\n" +
+        String helpStr = "1 : Exit\n" +
                 "2 : Show\n" +
                 "3 : Search\n" +
                 "4 : Save\n" +
@@ -120,11 +120,11 @@ public class View {
                 "11 : Show All Decks\n" +
                 "12 : Show Deck\n" +
                 "13 : Help";
-        System.out.println(helpstr);
+        System.out.println(helpStr);
     }
 
     public void showShopMenu(){
-        String helpstr = "1 : Exit\n" +
+        String helpStr = "1 : Exit\n" +
                 "2 : Show Collection\n" +
                 "3 : Search\n" +
                 "4 : Search Collection\n" +
@@ -132,18 +132,18 @@ public class View {
                 "6 : Sell\n" +
                 "7 : Show\n" +
                 "8 : Help";
-        System.out.println(helpstr);
+        System.out.println(helpStr);
     }
     public void showMainMenu(){
-        String helpstr = "1 : Collection\n" +
+        String helpStr = "1 : Collection\n" +
                 "2 : Shop\n" +
                 "3 : Battle\n" +
                 "4 : Exit\n" +
                 "5 : Help";
-        System.out.println(helpstr);
+        System.out.println(helpStr);
     }
     public void showAccountMenu(){
-        String helpstr = "1 : create account [your username]\n" +
+        String helpStr = "1 : create account [your username]\n" +
                 "2 : login [your username]\n" +
                 "3 : show leaderboard\n" +
                 "4 : Search Collection\n" +
@@ -151,6 +151,6 @@ public class View {
                 "6 : Sell\n" +
                 "7 : logout\n" +
                 "8 : help";
-        System.out.println(helpstr);
+        System.out.println(helpStr);
     }
 }
