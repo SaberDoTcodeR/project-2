@@ -91,7 +91,11 @@ public class View {
             index++;
         }
     }
-    public void printDeckDetails (Deck deck){
+
+    public void printDeckDetails(Deck deck,int counter,boolean allOrNot) {
+        if(allOrNot)
+            System.out.println(counter+" : "+deck.getName());
+
         if(deck.getHero()!=null)
             System.out.println("Heroes :\n\t1 : " + deck.getHero().showDetails());
         else
