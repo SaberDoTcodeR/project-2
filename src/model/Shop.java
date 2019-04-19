@@ -47,7 +47,8 @@ public class Shop {
             }
         }
         return false;
-    public int costOfCard(String name){
+    }
+    public int costOfCard (String name) {
         for (Hero hero:Hero.getHeroes()) {
             if (hero.getName().equals(name))
                 return hero.getCostOfBuy();
