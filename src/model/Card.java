@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public abstract class Card {
     private String name;
     private boolean isOnMap;
@@ -20,6 +18,10 @@ public abstract class Card {
 
     public boolean isOnMap() {
         return isOnMap;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getCostOfBuy() {
@@ -53,6 +55,6 @@ public abstract class Card {
     public String getType() {
         return this.getClass().getSimpleName();
     }
-
+    public abstract String showDetails();
 }
 

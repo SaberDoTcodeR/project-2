@@ -9,6 +9,7 @@ public class BattleControl {
     private static View view = View.getInstance();
 
     public void main() {
+        view.showBattleMenu()
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
@@ -18,7 +19,7 @@ public class BattleControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-               // view.showBattleMenu;
+               view.showBattleMenu();
             } else {
                 view.printError(ErrorType.COMMAND);
             }

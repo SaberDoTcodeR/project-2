@@ -393,7 +393,13 @@ class SearchOfShop extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String objectName = matcher.group(1).trim();
+        Shop shop = new Shop();
+        if (shop.hasThisCard(objectName)){
+            request.setError(ErrorType.IS_IN_SHOP);
+        } else {
+            request.setError(ErrorType.NOT_IN_SHOP);
+        }
     }
 }
 
@@ -404,8 +410,10 @@ class SearchCollection extends Command {
 
     @Override
     public void apply(Request request) {
-
+        Search search=new Search();
+        search.apply(request);
     }
+
 }
 
 class Buy extends Command {
@@ -415,7 +423,24 @@ class Buy extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String cardName = matcher.group(1).trim();
+        Shop shop=new Shop();
+        if(shop.hasThisCard(cardName)){
+            if(shop.costOfCard(cardName)>Account.getLoginAccount().getMoney()){
+                request.setError(ErrorType.DONT_HAVE_ENOUGH_MONEY);
+            }else {
+                if(Account.getLoginAccount().getCollection().getItems().size()<3)
+                {
+                    request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
+                    Account.getLoginAccount().decreament(shop.costOfCard(cardName));
+                    Account.getLoginAccount().getCollection().addToCollection(cardName);
+                }else {
+                    request.setError(ErrorType.THREE_ITEMS_ALREADY_OCCUPIED);
+                }
+            }
+        }else {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_SHOP);
+        }
     }
 }
 
@@ -426,7 +451,15 @@ class Sell extends Command {
 
     @Override
     public void apply(Request request) {
-
+        int objectId = Integer.parseInt(matcher.group(1).trim());
+        if (Account.getLoginAccount().getCollection().hasThisCard(objectId)){
+            Account.getLoginAccount().getCollection().removeCardFromCollection(objectId);
+            int cost = Account.getLoginAccount().getCollection().costOfCard(objectId);
+            Account.getLoginAccount().incrementMoney(cost);
+            request.setError(ErrorType.DONE_MESSAGE);
+        } else {
+            request.setError(ErrorType.CARD_EXISTENCE);
+        }
     }
 }
 
@@ -437,6 +470,6 @@ class ShowShop extends Command {
 
     @Override
     public void apply(Request request) {
-
+        view.showShop();
     }
 }
