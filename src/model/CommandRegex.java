@@ -1,6 +1,36 @@
 package model;
 
 public enum CommandRegex {
+    SHOW(
+            "^show$"
+    ),
+    SEARCH(
+            "^search\\s+(\\w+)$"
+    ),
+    CREATE_DECK (
+            "^create deck\\s+(\\w+)$"
+    ),
+    DELETE_DECK (
+            "^delete deck\\s+(\\w+)$"
+    ),
+    ADD (
+            "^add\\s+(\\w+)\\s+to deck\\s+(\\w+)$"
+    ),
+    REMOVE (
+            "^remove\\s+(\\w+)\\s+from deck\\s+(\\w+)$"
+    ),
+    VALIDATE_DECK (
+            "^validate deck\\s+(\\w+)$"
+    ),
+    SELECT_DECK (
+            "^select deck\\s+(\\w+)$"
+    ),
+    SHOW_ALL_DECKS (
+            "^show all decks$"
+    ),
+    SHOW_DECK (
+            "^show deck\\s+(\\w+)$"
+    ),
     ENTER_COLLECTION(
             "^enter collection$"
     ),

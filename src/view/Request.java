@@ -43,7 +43,17 @@ public class Request {
         commands.get(1).add(new ExitFromSubMenu());
         commands.get(1).add(new Help());
 
-
+        commands.get(2).add(new Show());
+        commands.get(2).add(new ShowDeck());
+        commands.get(2).add(new ShowAllDecks());
+        commands.get(2).add(new Search());
+        commands.get(2).add(new SelectDeck());
+        commands.get(2).add(new CreateDeck());
+        commands.get(2).add(new DeleteDeck());
+        commands.get(2).add(new Add());
+        commands.get(2).add(new Remove());
+        commands.get(2).add(new ValidateDeck());
+        commands.get(2).add(new ExitFromSubMenu());
 
         commands.get(4).add(new LogOut());
         commands.get(4).add(new Login());
@@ -63,6 +73,58 @@ public class Request {
         }
         return null;
     }
+
+    public void showCollection(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void search(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void createDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void deleteDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void addCardToDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void removeCardFromDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void validateDeck(String deckName){
+        if(Account.getLoginAccount().getCollection().checkDeckValidation(deckName)){
+
+        }
+    }
+    public void selectDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void showAllDecks(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+    public void showDeck(String deckName){
+        if(Account.getLoginAccount().getCollection()){
+
+        }
+    }
+
     public boolean repetitiousUser(String userName){
         for (Account account:Account.getAllUser()) {
             if(account.getUserName().equals(userName)){

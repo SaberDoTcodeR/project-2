@@ -18,6 +18,129 @@ public abstract class Command {
     public abstract void apply(Request request);
 }
 
+class Show extends Command {
+
+    Show() {
+        super(CommandRegex.SHOW);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class Search extends Command {
+
+    Search() {
+        super(CommandRegex.SEARCH);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class CreateDeck extends Command {
+
+    CreateDeck() {
+        super(CommandRegex.CREATE_DECK);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class DeleteDeck extends Command {
+
+    DeleteDeck() {
+        super(CommandRegex.DELETE_DECK);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class Add extends Command {
+
+    Add() {
+        super(CommandRegex.ADD);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class Remove extends Command {
+
+    Remove() {
+        super(CommandRegex.REMOVE);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ValidateDeck extends Command {
+
+    ValidateDeck() {
+        super(CommandRegex.VALIDATE_DECK);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String deckName = matcher.group(1).trim();
+        request.validateDeck(deckName);
+
+    }
+}
+
+class SelectDeck extends Command {
+
+    SelectDeck() {
+        super(CommandRegex.SELECT_DECK);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ShowDeck extends Command {
+
+    ShowDeck() {
+        super(CommandRegex.SHOW_DECK);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ShowAllDecks extends Command {
+
+    ShowAllDecks() {
+        super(CommandRegex.SHOW_ALL_DECKS);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+
 class EnterBattle extends Command {
 
     EnterBattle() {
