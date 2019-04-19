@@ -57,10 +57,40 @@ public class View {
             index++;
         }
     }
-
+    public void showShop(){
+        int index=1;
+        System.out.println("Heroes :");
+        for (Hero hero:Hero.getHeroes()){
+            String heroInfo=hero.getDetails();
+            System.out.print(index+" : ");
+            System.out.println(heroInfo);
+            index++;
+        }index=1;
+        System.out.println("Items :");
+        for (Item item:Item.getItems()){
+            String itemInfo=item.getDetails();
+            System.out.print(index+" : ");
+            System.out.println(itemInfo);
+            index++;
+        }
+        index=1;
+        System.out.println("Cards :");
+        for (Minion minion:Minion.getMinions()){
+            String minionInfo=minion.getDetails();
+            System.out.print(index+" : ");
+            System.out.println(minionInfo);
+            index++;
+        }
+        for (Spell spell:Spell.getSpells()){
+            String spellInfo=spell.getDetails();
+            System.out.print(index+" : ");
+            System.out.println(spellInfo);
+            index++;
+        }
+    }
     public void printDeckDetails (Deck deck){
-        System.out.println("Hereos :\n\t1 : " + deck.getHero().showDetails());
-        System.out.println("Items :\n\t1 : " + deck.getItem().showDetails());
+        System.out.println("Hero :\n\t1 : " + deck.getHero().showDetails());
+        System.out.println("Item :\n\t1 : " + deck.getItem().showDetails());
         System.out.println("Cards :\n");
         int index = 1;
         for (Spell spell : deck.getSpells()) {

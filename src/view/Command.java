@@ -404,8 +404,10 @@ class SearchCollection extends Command {
 
     @Override
     public void apply(Request request) {
-
+        Search search=new Search();
+        search.apply(request);
     }
+
 }
 
 class Buy extends Command {
@@ -415,7 +417,24 @@ class Buy extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String cardName = matcher.group(1).trim();
+        Shop shop=new Shop();
+        if(shop.hasThisCard(cardName)){
+            if(shop.costOfCard(cardName)>Account.getLoginAccount().getMoney()){
+                request.setError(ErrorType.DONT_HAVE_ENOUGH_MONEY);
+            }else {
+                if(Account.getLoginAccount().getCollection().getItems().size()<3)
+                {
+                    request.setError(ErrorType.CARD_SUCCESSFULLY_BUYED);
+                    Account.getLoginAccount().decreament(shop.costOfCard(cardName));
+                    Account.getLoginAccount().getCollection().addToCollection(cardName);
+                }else {
+                    request.setError(ErrorType.THREE_ITEMS_ALREADY_OCCUPIED);
+                }
+            }
+        }else {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_SHOP);
+        }
     }
 }
 
@@ -437,6 +456,6 @@ class ShowShop extends Command {
 
     @Override
     public void apply(Request request) {
-
+        view.showShop();
     }
 }

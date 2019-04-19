@@ -55,6 +55,18 @@ public class Request {
         commands.get(2).add(new ValidateDeck());
         commands.get(2).add(new ExitFromSubMenu());
 
+
+        commands.get(3).add(new Buy());
+        commands.get(3).add(new Sell());
+        commands.get(3).add(new ShowShop());
+        commands.get(3).add(new SearchCollection());
+        commands.get(3).add(new SearchOfShop());
+        commands.get(3).add(new ShowCollection());
+        commands.get(3).add(new Help());
+        commands.get(3).add(new ExitFromSubMenu());
+
+
+
         commands.get(4).add(new LogOut());
         commands.get(4).add(new Login());
         commands.get(4).add(new Save());

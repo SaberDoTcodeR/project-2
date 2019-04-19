@@ -22,6 +22,10 @@ public abstract class Card {
         return isOnMap;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getCostOfBuy() {
         return costOfBuy;
     }
