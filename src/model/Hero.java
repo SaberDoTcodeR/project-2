@@ -44,6 +44,4 @@ public abstract class Hero extends Card{
         return specialPower;
     }
 
-
-
 }

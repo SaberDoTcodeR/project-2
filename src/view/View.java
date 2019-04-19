@@ -3,7 +3,6 @@ package view;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class View {
     private static final View VIEW = new View();
@@ -60,37 +59,7 @@ public class View {
             index++;
         }
     }
-    public void showShop(){
-        int index=1;
-        System.out.println("Heroes :");
-        for (Hero hero:Hero.getHeroes()){
-            String heroInfo=hero.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(heroInfo);
-            index++;
-        }index=1;
-        System.out.println("Items :");
-        for (Item item:Item.getItems()){
-            String itemInfo=item.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(itemInfo);
-            index++;
-        }
-        index=1;
-        System.out.println("Cards :");
-        for (Minion minion:Minion.getMinions()){
-            String minionInfo=minion.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(minionInfo);
-            index++;
-        }
-        for (Spell spell:Spell.getSpells()){
-            String spellInfo=spell.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(spellInfo);
-            index++;
-        }
-    }
+
     public void printDeckDetails (Deck deck){
         System.out.println("Heroes :\n\t1 : " + deck.getHero().showDetails());
         System.out.println("Items :\n\t1 : " + deck.getItem().showDetails());
