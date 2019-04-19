@@ -9,7 +9,7 @@ public class BattleControl {
     private static View view = View.getInstance();
 
     public void main() {
-        view.showBattleMenu()
+        view.showBattleMenu();
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
