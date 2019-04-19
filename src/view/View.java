@@ -122,7 +122,25 @@ public class View {
                 "13 : Help";
         System.out.println(helpstr);
     }
-
+    public void showAccountMenu(){
+        String helpstr = "1 : create account [your username]\n" +
+                "2 : login [your username]\n" +
+                "3 : show leaderboard\n" +
+                "4 : Search Collection\n" +
+                "5 : save\n" +
+                "6 : Sell\n" +
+                "7 : logout\n" +
+                "8 : help";
+        System.out.println(helpstr);
+    }
+    public void showMainMenu(){
+        String helpstr = "1 : Collection\n" +
+                "2 : Shop\n" +
+                "3 : Battle\n" +
+                "4 : Exit\n" +
+                "5 : Help";
+        System.out.println(helpstr);
+    }
     public void showShopMenu(){
         String helpstr = "1 : Exit\n" +
                 "2 : Show Collection\n" +
