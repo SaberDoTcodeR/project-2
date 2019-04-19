@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/CommandRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/CommandRegex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Request.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -94,7 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Shop.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -123,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/Request.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+            <state relative-caret-position="436">
+              <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -296,7 +293,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555677816899" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555681512356" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../project-2" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -351,7 +348,7 @@
       <workItem from="1555401419966" duration="14019000" />
       <workItem from="1555498200041" duration="476000" />
       <workItem from="1555662960014" duration="1245000" />
-      <workItem from="1555679578643" duration="1355000" />
+      <workItem from="1555679578643" duration="1886000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -395,11 +392,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555665802947</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="adding class shop">
+      <created>1555680966807</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1555680966807</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61846000" />
+    <option name="totallyTimeSpent" value="62377000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -411,7 +415,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19261745" />
@@ -489,7 +493,8 @@
     <MESSAGE value="Account class added" />
     <MESSAGE value="RecordedMatch class added&#10;account class improved minor(alaki) bug" />
     <MESSAGE value="debuging collection" />
-    <option name="LAST_COMMIT_MESSAGE" value="debuging collection" />
+    <MESSAGE value="adding class shop" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding class shop" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1380,31 +1385,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#513#514#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Spell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/CollectionControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1480,10 +1460,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/Request.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+        <state relative-caret-position="436">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Shop.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#513#514#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
           </folding>
         </state>
       </provider>
