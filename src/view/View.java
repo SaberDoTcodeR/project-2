@@ -2,6 +2,9 @@ package view;
 
 import model.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class View {
     private static final View VIEW = new View();
 
@@ -27,8 +30,10 @@ public class View {
         System.out.println(name+" is a valid deck.");
     }
 
-    public void printObjectId(int id){
-        System.out.println(id);
+    public void printObjectId(ArrayList<Integer> id){
+        for (int i = 0; i < id.size(); i++) {
+            System.out.println(id.get(i));
+        }
     }
 
     public void showCollection(Collection collection){
@@ -54,7 +59,6 @@ public class View {
     }
 
     public void printDeckDetails (Deck deck){
-        //todo check method name
         System.out.println("Hereos :\n\t1 : " + deck.getHero().showDetails());
         System.out.println("Items :\n\t1 : " + deck.getItem().showDetails());
         System.out.println("Cards :\n");

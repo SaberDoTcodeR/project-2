@@ -26,7 +26,7 @@ class Show extends Command {
 
     @Override
     public void apply(Request request) {
-
+        Account.getLoginAccount().getCollection().showObjects();
     }
 }
 
@@ -38,7 +38,12 @@ class Search extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String objectName = matcher.group(1).trim();
+        if (Account.getLoginAccount().getCollection().hasThisCard(objectName)) {
+            view.printObjectId(Account.getLoginAccount().getCollection().search(objectName));
+        } else {
+            request.setError(ErrorType.INVALID_NAME);
+        }
     }
 }
 
@@ -62,7 +67,12 @@ class DeleteDeck extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String deckName = matcher.group(1).trim();
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) != null) {
+            Account.getLoginAccount().getCollection().deleteDeck(deckName);
+        } else {
+            request.setError(ErrorType.NO_DECK_FOUND);
+        }
     }
 }
 
@@ -74,6 +84,7 @@ class Add extends Command {
 
     @Override
     public void apply(Request request) {
+
 
     }
 }
@@ -99,8 +110,11 @@ class ValidateDeck extends Command {
     @Override
     public void apply(Request request) {
         String deckName = matcher.group(1).trim();
-        request.validateDeck(deckName);
-
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) != null) {
+            request.validateDeck(deckName);
+        } else {
+            request.setError(ErrorType.NO_DECK_FOUND);
+        }
     }
 }
 
@@ -112,7 +126,16 @@ class SelectDeck extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String deckName = matcher.group(1).trim();
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) != null) {
+            if (Account.getLoginAccount().getCollection().checkDeckValidation(deckName)) {
+                Account.getLoginAccount().getCollection().selectDeck(deckName);
+            } else {
+                request.setError(ErrorType.INVALID_DECK);
+            }
+        } else {
+            request.setError(ErrorType.NO_DECK_FOUND);
+        }
     }
 }
 
@@ -124,7 +147,12 @@ class ShowDeck extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String deckName = matcher.group(1).trim();
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) != null) {
+            Account.getLoginAccount().getCollection().showDeck(deckName);
+        } else {
+            request.setError(ErrorType.NO_DECK_FOUND);
+        }
     }
 }
 
@@ -179,6 +207,7 @@ class EnterShop extends Command {
         shopControl.main();
     }
 }
+
 class Help extends Command {
 
     Help() {
@@ -190,6 +219,7 @@ class Help extends Command {
 
     }
 }
+
 class ExitFromSubMenu extends Command {
 
     ExitFromSubMenu() {
@@ -199,10 +229,11 @@ class ExitFromSubMenu extends Command {
     @Override
     public void apply(Request request) {
 
-        MainMenuControl mainMenuControl =new MainMenuControl();
+        MainMenuControl mainMenuControl = new MainMenuControl();
         mainMenuControl.main();
     }
 }
+
 class Exit extends Command {
 
     Exit() {
@@ -214,6 +245,7 @@ class Exit extends Command {
         System.exit(0);
     }
 }
+
 class ExitFromMainMenu extends Command {
 
     ExitFromMainMenu() {
@@ -224,7 +256,7 @@ class ExitFromMainMenu extends Command {
     public void apply(Request request) {
 
         Account.setLoginAccount(null);
-        AccountControl accountControl=new AccountControl();
+        AccountControl accountControl = new AccountControl();
         accountControl.main();
     }
 }
@@ -238,18 +270,18 @@ class CreateAccount extends Command {
     @Override
     public void apply(Request request) {
         String userName = matcher.group(1).trim();
-        if (!request.repetitiousUser(userName)){
-            System.out.println("Set Your PassWord "+userName+" :");
-            String pass=Request.scanner.nextLine();
-            Account.setLoginAccount(new Account(userName,pass));
-            MainMenuControl mainMenuControl=new MainMenuControl();
+        if (!request.repetitiousUser(userName)) {
+            System.out.println("Set Your PassWord " + userName + " :");
+            String pass = Request.scanner.nextLine();
+            Account.setLoginAccount(new Account(userName, pass));
+            MainMenuControl mainMenuControl = new MainMenuControl();
             mainMenuControl.main();
-        }
-        else {
+        } else {
             request.setError(ErrorType.USER_ALREADY_CREATED);
         }
     }
 }
+
 class Login extends Command {
 
     Login() {
@@ -259,14 +291,16 @@ class Login extends Command {
     @Override
     public void apply(Request request) {
         String userName = matcher.group(1).trim();
-        if (request.existThisUser(userName)){
+        if (request.existThisUser(userName)) {
             System.out.println("Enter Your PassWord :");
-            String pass=Request.scanner.nextLine();
-            request.authorize(userName,pass);
+            String pass = Request.scanner.nextLine();
+            request.authorize(userName, pass);
 
         }
     }
-}class ShowLeaderBoard extends Command {
+}
+
+class ShowLeaderBoard extends Command {
 
     ShowLeaderBoard() {
         super(CommandRegex.SHOW_LEADERBOARD);
@@ -276,7 +310,9 @@ class Login extends Command {
     public void apply(Request request) {
         Account.showLeaderboard();
     }
-}class Save extends Command {
+}
+
+class Save extends Command {
 
     Save() {
         super(CommandRegex.SAVE);
@@ -288,7 +324,9 @@ class Login extends Command {
         AccountControl accountControl = new AccountControl();
         accountControl.main();
     }
-}class LogOut extends Command {
+}
+
+class LogOut extends Command {
 
     LogOut() {
         super(CommandRegex.LOGOUT);
@@ -296,8 +334,7 @@ class Login extends Command {
 
     @Override
     public void apply(Request request) {
-        if(Account.getLoginAccount()==null)
-        {
+        if (Account.getLoginAccount() == null) {
             request.setError(ErrorType.ALREADY_LOGOUT);
             return;
         }

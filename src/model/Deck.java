@@ -54,7 +54,7 @@ public class Deck {
     }
 
     public boolean isFilled(){
-        if (getSpells().size() + getMinions().size() == 20 && getHero() != null && getItem() != null)
+        if (getSpells().size() + getMinions().size() == 20 )
             //todo check working
             return true;
         return false;
@@ -63,6 +63,24 @@ public class Deck {
     public boolean isValid(){
         //todo check validation
         if (getHero() != null && getSpells().size() + getMinions().size() == 20)
+            return true;
+        return false;
+    }
+
+    public boolean hasThisCard (int objectID){
+       if (getHero().getId() == objectID)
+           return true;
+        for (Spell spell : getSpells()) {
+            if (spell.getId() == objectID){
+                return true;
+            }
+        }
+        for (Minion minion : getMinions()) {
+            if (minion.getId() == objectID){
+                return true;
+            }
+        }
+        if (getItem().getId() == objectID)
             return true;
         return false;
     }

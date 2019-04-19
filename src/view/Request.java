@@ -74,60 +74,11 @@ public class Request {
         return null;
     }
 
-    public void showCollection(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void search(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void createDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void deleteDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void addCardToDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void removeCardFromDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
     public void validateDeck(String deckName){
         if(!Account.getLoginAccount().getCollection().checkDeckValidation(deckName))
             this.setError(ErrorType.INVALID_DECK);
         else
             View.getInstance().printDeckValidation(deckName);
-
-
-
-
-    }
-    public void selectDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void showAllDecks(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
-    }
-    public void showDeck(String deckName){
-        if(Account.getLoginAccount().getCollection()){
-
-        }
     }
 
     public boolean repetitiousUser(String userName){
