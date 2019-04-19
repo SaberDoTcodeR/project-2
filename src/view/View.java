@@ -103,7 +103,6 @@ public class View {
                 "8 : Help";
         System.out.println(helpstr);
     }
-
     public void showMainMenu(){
         String helpstr = "1 : Collection\n" +
                 "2 : Shop\n" +
@@ -112,7 +111,6 @@ public class View {
                 "5 : Help";
         System.out.println(helpstr);
     }
-
     public void showAccountMenu(){
         String helpstr = "1 : create account [your username]\n" +
                 "2 : login [your username]\n" +

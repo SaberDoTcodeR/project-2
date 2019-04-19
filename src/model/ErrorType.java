@@ -11,6 +11,7 @@ public enum ErrorType {
     DECK_FILLED("Deck is filled and you can't add any card"),
     DECK_ALREADY_HAS_HERO("Deck is already has a hero"),
     WRONG_PASSWORD("Wrong Password"),
+    CARD_SUCCESSFULLY_BOUGHT("Card Bought successfully"),
     DONT_HAVE_ENOUGH_MONEY("you don't have enough money"),
     INVALID_NAME("There isn't any item or card with this name"),
     CARD_EXISTENCE("You don't own this Card"),
@@ -20,7 +21,9 @@ public enum ErrorType {
     IS_IN_SHOP("The card or item is in shop"),
     DECK_EXISTENCE("You have already a deck with this name"),
     NO_DECK_FOUND("You don't have a deck with this name"),
-    ALREADY_LOGOUT( "you are not in any account");
+    THREE_ITEMS_ALREADY_OCCUPIED( "You Already occupied 3 Items"),
+    ALREADY_LOGOUT( "you are not in any account"),
+    CARD_NOT_FOUND_IN_SHOP("This Car doesn't exist");
     private String message;
 
     public String getMessage() {

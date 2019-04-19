@@ -11,7 +11,7 @@ public class Collection {
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<Item> items = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
-
+    private int idMaker=0;
     public ArrayList<Hero> getHeroes() {
         return heroes;
     }
@@ -19,7 +19,9 @@ public class Collection {
     public void setHeroes(ArrayList<Hero> heroes) {
         this.heroes = heroes;
     }
-
+    public int getIdMaker(){
+        return idMaker;
+    }
     public ArrayList<Spell> getSpells() {
         return spells;
     }
@@ -60,7 +62,39 @@ public class Collection {
     public void showObjects() {
         view.showCollection(this);
     }
-
+    public void addToCollection(String cardName){
+        for (Hero hero:Hero.getHeroes()) {
+            if(hero.getName().equals(cardName)){
+                hero.setId(this.getIdMaker());
+                this.idMaker++;
+                this.heroes.add(hero);
+                return;
+            }
+        }
+        for (Spell spell:Spell.getSpells()) {
+            if(spell.getName().equals(cardName)){
+                spell.setId(this.getIdMaker());
+                this.idMaker++;
+                this.spells.add(spell);
+                return;
+            }
+        }for (Minion minion:Minion.getMinions()) {
+            if(minion.getName().equals(cardName)){
+                minion.setId(this.getIdMaker());
+                this.idMaker++;
+                this.minions.add(minion);
+                return;
+            }
+        }
+        for (Item item:Item.getItems()) {
+            if(item.getName().equals(cardName)){
+                item.setId(this.getIdMaker());
+                this.idMaker++;
+                this.items.add(item);
+                return;
+            }
+        }
+    }
     public ArrayList<Integer> search(String objectName) {
         ArrayList<Integer> ids = new ArrayList<>();
         for (Hero hero : getHeroes()) {
@@ -202,6 +236,7 @@ public class Collection {
         deck.getMinions().removeIf(minion -> minion.getId() == objectID);
     }
 
+
     public boolean checkDeckValidation(String deckName) {
         Deck deck = findDeck(deckName);
         if (deck.isValid())
@@ -216,6 +251,7 @@ public class Collection {
     }
 
     public void showAllDecks() {
+        //todo check working
         if (Account.getLoginAccount().getMainDeck() != null){
             showDeck(Account.getLoginAccount().getMainDeck().getName());
             for (Deck deck : this.getDecks()) {
@@ -243,5 +279,25 @@ public class Collection {
         for (Deck deck : this.getDecks()) {
             removeFromDeck(objectId,deck.getName());
         }
+    }
+
+    public int costOfCard(int id){
+        for (Hero hero : this.getHeroes()){
+            if (hero.getId() == id)
+                return hero.getCostOfBuy();
+        }
+        for (Minion minion:this.getMinions()){
+            if (minion.getId() == id)
+                return minion.getCostOfBuy();
+        }
+        for (Spell spell:this.getSpells()){
+            if (spell.getId() == id)
+                return spell.getCostOfBuy();
+        }
+        for (Item item:this.getItems()){
+            if (item.getId() == id)
+                return item.getCostOfBuy();
+        }
+        return 0;
     }
 }

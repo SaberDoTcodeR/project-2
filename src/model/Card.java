@@ -20,6 +20,10 @@ public abstract class Card {
         return isOnMap;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getCostOfBuy() {
         return costOfBuy;
     }
@@ -51,6 +55,6 @@ public abstract class Card {
     public String getType() {
         return this.getClass().getSimpleName();
     }
-
+    public abstract String showDetails();
 }
 
