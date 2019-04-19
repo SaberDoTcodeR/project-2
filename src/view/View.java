@@ -92,6 +92,7 @@ public class View {
         }
     }
     public void printDeckDetails (Deck deck){
+        if(deck.getHero()!=null)
             System.out.println("Heroes :\n\t1 : " + deck.getHero().showDetails());
         else
             System.out.println("Heroes :\n");
