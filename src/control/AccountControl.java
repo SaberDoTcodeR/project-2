@@ -7,7 +7,7 @@ public class AccountControl {
     public static boolean finished = false;
     private static View view = View.getInstance();
     public void main() {
-        //view.showAccountMenu;
+        view.showAccountMenu();
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
@@ -16,7 +16,7 @@ public class AccountControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null  && command.equals("help")) {
-                //view.showAccountMenu;
+                view.showAccountMenu();
             } else {
                 view.printError(ErrorType.COMMAND);
             }

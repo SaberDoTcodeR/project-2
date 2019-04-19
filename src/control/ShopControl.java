@@ -8,6 +8,7 @@ public class ShopControl {
     private static View view = View.getInstance();
 
     public void main() {
+        view.showShopMenu();
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
@@ -17,7 +18,7 @@ public class ShopControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-                view.showShopMenu;
+                view.showShopMenu();
             }
             else {
                 view.printError(ErrorType.COMMAND);

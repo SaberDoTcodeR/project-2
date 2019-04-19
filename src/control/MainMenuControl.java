@@ -8,7 +8,7 @@ public class MainMenuControl {
     private static View view = View.getInstance();
 
     public void main() {
-        //view.showMainMenu;
+        view.showMainMenu();
         while (!finished) {
             Request request = new Request();
             request.getNewCommand();
@@ -18,7 +18,7 @@ public class MainMenuControl {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && command.equals("help")) {
-                //view.showMainMenu;
+                view.showMainMenu();
             } else {
                 view.printError(ErrorType.COMMAND);
             }
