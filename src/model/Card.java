@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public abstract class Card {
     private String name;
     private boolean isOnMap;

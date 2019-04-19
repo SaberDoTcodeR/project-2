@@ -271,5 +271,13 @@ public class Collection {
         view.printDeckDetails(deck);
     }
 
-
+    public void removeCardFromCollection(int objectId){
+        this.getHeroes().removeIf(hero -> hero.getId() == objectId);
+        this.getSpells().removeIf(spell -> spell.getId() == objectId);
+        this.getMinions().removeIf(minion -> minion.getId() == objectId);
+        this.getItems().removeIf(item -> item.getId() == objectId);
+        for (Deck deck : this.getDecks()) {
+            removeFromDeck(objectId,deck.getName());
+        }
+    }
 }
