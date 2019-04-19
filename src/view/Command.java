@@ -382,7 +382,7 @@ class ShowCollection extends Command {
 
     @Override
     public void apply(Request request) {
-
+        view.showCollection(Account.getLoginAccount().getCollection());
     }
 }
 
