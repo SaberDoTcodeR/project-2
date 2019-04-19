@@ -252,23 +252,26 @@ public class Collection {
 
     public void showAllDecks() {
         //todo check working
+        int index=1;
         if (Account.getLoginAccount().getMainDeck() != null){
-            showDeck(Account.getLoginAccount().getMainDeck().getName());
+            view.printDeckDetails(Account.getLoginAccount().getMainDeck(),index++,true);
             for (Deck deck : this.getDecks()) {
                 if (deck.getName().equals(Account.getLoginAccount().getMainDeck().getName()) )
                     continue;
-                view.printDeckDetails(deck);
+                view.printDeckDetails(deck,index,true);
+                index++;
             }
         } else {
+
             for (Deck deck : this.getDecks()) {
-                view.printDeckDetails(deck);
+                view.printDeckDetails(deck,index,true);
             }
         }
     }
 
     public void showDeck(String deckName) {
         Deck deck = findDeck(deckName);
-        view.printDeckDetails(deck);
+        view.printDeckDetails(deck,1,false);
     }
 
     public void removeCardFromCollection(int objectId){

@@ -40,6 +40,7 @@ class Search extends Command {
     public void apply(Request request) {
         String objectName = matcher.group(1).trim();
         if (Account.getLoginAccount().getCollection().hasThisCard(objectName)) {
+            System.out.println();
             view.printObjectId(Account.getLoginAccount().getCollection().search(objectName));
         } else {
             request.setError(ErrorType.INVALID_NAME);
@@ -204,7 +205,8 @@ class ShowAllDecks extends Command {
     }
 
     @Override
-    public void apply(Request request) {
+    public void apply(Request request)
+    {
         Account.getLoginAccount().getCollection().showAllDecks();
     }
 }
@@ -410,8 +412,13 @@ class SearchCollection extends Command {
 
     @Override
     public void apply(Request request) {
-        Search search=new Search();
-        search.apply(request);
+        String objectName = matcher.group(1).trim();
+        if (Account.getLoginAccount().getCollection().hasThisCard(objectName)) {
+            System.out.println();
+            view.printObjectId(Account.getLoginAccount().getCollection().search(objectName));
+        } else {
+            request.setError(ErrorType.INVALID_NAME);
+        }
     }
 
 }

@@ -12,10 +12,10 @@ public class AccountControl {
             Request request = new Request();
             request.getNewCommand();
             Command command = request.getMatchedCommand(4);
-             if (command != null && !command.equals("help")) {
+             if (command != null && !request.getCommand().equals("help")) {
                 command.apply(request);
                 view.printError(request.getError());
-            } else if (command != null  && command.equals("help")) {
+            } else if (command != null  && request.getCommand().equals("help")) {
                 view.showAccountMenu();
             } else {
                 view.printError(ErrorType.COMMAND);

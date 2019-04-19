@@ -23,7 +23,7 @@ public enum ErrorType {
     NO_DECK_FOUND("You don't have a deck with this name"),
     THREE_ITEMS_ALREADY_OCCUPIED( "You Already occupied 3 Items"),
     ALREADY_LOGOUT( "you are not in any account"),
-    CARD_NOT_FOUND_IN_SHOP("This Car doesn't exist");
+    CARD_NOT_FOUND_IN_SHOP("This Card doesn't exist");
     private String message;
 
     public String getMessage() {

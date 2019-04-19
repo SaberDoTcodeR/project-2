@@ -14,10 +14,10 @@ public class MainMenuControl {
             request.getNewCommand();
             Command command = request.getMatchedCommand(0);
 
-            if (command != null && !command.equals("help")) {
+            if (command != null && !request.getCommand().equals("help")) {
                 command.apply(request);
                 view.printError(request.getError());
-            } else if (command != null && command.equals("help")) {
+            } else if (command != null && request.getCommand().equals("help")) {
                 view.showMainMenu();
             } else {
                 view.printError(ErrorType.COMMAND);

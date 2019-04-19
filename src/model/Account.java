@@ -9,7 +9,7 @@ public class Account {
     private static ArrayList<Account> allUser=new ArrayList<>();
     private String userName,passWord;
     private int money,wins=0;
-    private Deck mainDeck=new Deck();
+    private Deck mainDeck;
     private ArrayList<RecordedMatch> matches=new ArrayList<RecordedMatch>();
     private Collection myCollection=new Collection();
     public int getMoney() {

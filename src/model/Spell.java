@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public  abstract class Spell extends Card{
     private static ArrayList<Spell> spells=new ArrayList<>();
     private int costToUse;
-    private Buff buff;
-    public Spell(String name,int costToUse,int costOfBuy,Buff buff){
+    //private Buff buff;
+    /*public Spell(String name,int costToUse,int costOfBuy,Buff buff){
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
         this.costToUse=costToUse;
@@ -20,7 +20,7 @@ public  abstract class Spell extends Card{
         this.setCostOfBuy(spell.getCostOfBuy());
         this.costToUse=spell.costToUse;
         this.buff=spell.buff;
-    }
+    }*/
     public abstract ArrayList<Cell> effectedCells();
     public static ArrayList<Spell> getSpells() {
         return spells;

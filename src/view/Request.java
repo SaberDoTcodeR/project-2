@@ -54,6 +54,7 @@ public class Request {
         commands.get(2).add(new Remove());
         commands.get(2).add(new ValidateDeck());
         commands.get(2).add(new ExitFromSubMenu());
+        commands.get(2).add(new Help());
 
 
         commands.get(3).add(new Buy());
