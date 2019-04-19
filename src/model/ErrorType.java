@@ -11,7 +11,7 @@ public enum ErrorType {
     DECK_FILLED("Deck is filled and you can't add any card"),
     DECK_ALREADY_HAS_HERO("Deck is already has a hero"),
     WRONG_PASSWORD("Wrong Password"),
-    CARD_SUCCESSFULLY_BOUGHT("Card Bought successfully");
+    CARD_SUCCESSFULLY_BOUGHT("Card Bought successfully"),
     DONT_HAVE_ENOUGH_MONEY("you don't have enough money"),
     INVALID_NAME("There isn't any item or card with this name"),
     CARD_EXISTENCE("You don't own this Card"),

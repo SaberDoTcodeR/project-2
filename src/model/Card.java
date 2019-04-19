@@ -55,6 +55,6 @@ public abstract class Card {
     public String getType() {
         return this.getClass().getSimpleName();
     }
-
+    public abstract String showDetails();
 }
 

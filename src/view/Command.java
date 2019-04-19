@@ -431,7 +431,7 @@ class Buy extends Command {
             }else {
                 if(Account.getLoginAccount().getCollection().getItems().size()<3)
                 {
-                    request.setError(ErrorType.CARD_SUCCESSFULLY_BUYED);
+                    request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
                     Account.getLoginAccount().decreament(shop.costOfCard(cardName));
                     Account.getLoginAccount().getCollection().addToCollection(cardName);
                 }else {

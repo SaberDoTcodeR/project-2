@@ -69,23 +69,5 @@ public class Shop {
         }
         return 0;
     }
-    public int costOfCard(int id){
-        for (Hero hero : Account.getLoginAccount().getCollection().getHeroes()){
-            if (hero.getId() == id)
-                return hero.getCostOfBuy();
-        }
-        for (Minion minion:Account.getLoginAccount().getCollection().getMinions()){
-            if (minion.getId() == id)
-                return minion.getCostOfBuy();
-        }
-        for (Spell spell:Account.getLoginAccount().getCollection().getSpells()){
-            if (spell.getId() == id)
-                return spell.getCostOfBuy();
-        }
-        for (Item item:Account.getLoginAccount().getCollection().getItems()){
-            if (item.getId() == id)
-                return item.getCostOfBuy();
-        }
-        return 0;
-    }
+
 }
