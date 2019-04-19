@@ -393,7 +393,13 @@ class SearchOfShop extends Command {
 
     @Override
     public void apply(Request request) {
-
+        String objectName = matcher.group(1).trim();
+        Shop shop = new Shop();
+        if (shop.hasThisCard(objectName)){
+            request.setError(ErrorType.IS_IN_SHOP);
+        } else {
+            request.setError(ErrorType.NOT_IN_SHOP);
+        }
     }
 }
 
@@ -426,7 +432,15 @@ class Sell extends Command {
 
     @Override
     public void apply(Request request) {
-
+        int objectId = Integer.parseInt(matcher.group(1).trim());
+        if (Account.getLoginAccount().getCollection().hasThisCard(objectId)){
+            Account.getLoginAccount().getCollection().removeCardFromCollection(objectId);
+            int cost = Account.getLoginAccount().getCollection().costOfCard(objectId);
+            Account.getLoginAccount().incrementMoney(cost);
+            request.setError(ErrorType.DONE_MESSAGE);
+        } else {
+            request.setError(ErrorType.CARD_EXISTENCE);
+        }
     }
 }
 

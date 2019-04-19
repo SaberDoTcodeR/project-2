@@ -2,6 +2,7 @@ package model;
 
 
 public enum ErrorType {
+    DONE_MESSAGE("The Card has been selled"),
     WRONG_REMOVE("this card or item not found in deck"),
     COMMAND("Not Valid Command"),
     USER_ALREADY_CREATED("user already created"),
@@ -15,6 +16,8 @@ public enum ErrorType {
     CARD_EXISTENCE("You don't own this Card"),
     CARD_EXISTENCE_INDECK("This CardID Already Existed in This Deck"),
     INVALID_DECK("The deck is nat valid"),
+    NOT_IN_SHOP("The card or item is not in shop"),
+    IS_IN_SHOP("The card or item is in shop"),
     DECK_EXISTENCE("You have already a deck with this name"),
     NO_DECK_FOUND("You don't have a deck with this name"),
     ALREADY_LOGOUT( "you are not in any account");

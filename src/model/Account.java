@@ -16,6 +16,10 @@ public class Account {
         return money;
     }
 
+    public void incrementMoney(int money){
+        this.money += money;
+    }
+
     public Deck getMainDeck() {
         return mainDeck;
     }
