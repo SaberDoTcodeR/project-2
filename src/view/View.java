@@ -31,7 +31,6 @@ public class View {
     }
 
     public void printObjectId(ArrayList<Integer> id) {
-
         for (int i = 0; i < id.size(); i++) {
             System.out.println(id.get(i));
         }
@@ -61,46 +60,38 @@ public class View {
             index++;
         }
     }
-
-    public void showShop() {
-        int index = 1;
+    public void showShop(){
+        int index=1;
         System.out.println("Heroes :");
-        for (Hero hero : Hero.getHeroes()) {
-            String heroInfo = hero.showDetails();
-            System.out.print(index + " : ");
+        for (Hero hero:Hero.getHeroes()){
+            String heroInfo=hero.showDetails();
+            System.out.print(index+" : ");
             System.out.println(heroInfo);
             index++;
-        }
-        index = 1;
+        }index=1;
         System.out.println("Items :");
-
-        for (Item item : Item.getItems()) {
-            String itemInfo = item.showDetails();
-            System.out.print(index + " : ");
+        for (Item item:Item.getItems()){
+            String itemInfo=item.showDetails();
+            System.out.print(index+" : ");
             System.out.println(itemInfo);
             index++;
         }
-        index = 1;
+        index=1;
         System.out.println("Cards :");
-        for (Minion minion : Minion.getMinions()) {
-            String minionInfo = minion.showDetails();
-            System.out.print(index + " : ");
+        for (Minion minion:Minion.getMinions()){
+            String minionInfo=minion.showDetails();
+            System.out.print(index+" : ");
             System.out.println(minionInfo);
             index++;
         }
-        for (Spell spell : Spell.getSpells()) {
-            String spellInfo = spell.showDetails();
-            System.out.print(index + " : ");
+        for (Spell spell:Spell.getSpells()){
+            String spellInfo=spell.showDetails();
+            System.out.print(index+" : ");
             System.out.println(spellInfo);
             index++;
         }
     }
-
-    public void printDeckDetails(Deck deck,int counter,boolean allOrNot) {
-        if(allOrNot)
-            System.out.println(counter+" : "+deck.getName());
-
-        if(deck.getHero()!=null)
+    public void printDeckDetails (Deck deck){
             System.out.println("Heroes :\n\t1 : " + deck.getHero().showDetails());
         else
             System.out.println("Heroes :\n");
@@ -138,26 +129,7 @@ public class View {
         System.out.println(helpstr);
     }
 
-    public void showAccountMenu() {
-        String helpstr = "1 : create account [your username]\n" +
-                "2 : login [your username]\n" +
-                "3 : show leaderboard\n" +
-                "4 : Search Collection\n" +
-                "5 : Exit\n" +
-                "6 : help";
-        System.out.println(helpstr);
-    }
-
-    public void showMainMenu() {
-        String helpstr = "1 : Collection\n" +
-                "2 : Shop\n" +
-                "3 : Battle\n" +
-                "4 : Log Out\n" +
-                "5 : Help";
-        System.out.println(helpstr);
-    }
-
-    public void showShopMenu() {
+    public void showShopMenu(){
         String helpstr = "1 : Exit\n" +
                 "2 : Show Collection\n" +
                 "3 : Search\n" +
@@ -168,8 +140,22 @@ public class View {
                 "8 : Help";
         System.out.println(helpstr);
     }
-
-
-
-
+    public void showMainMenu(){
+        String helpstr = "1 : Collection\n" +
+                "2 : Shop\n" +
+                "3 : Battle\n" +
+                "4 : Log Out\n" +
+                "5 : Help";
+        System.out.println(helpstr);
+    }
+    public void showAccountMenu(){
+        String helpstr = "1 : create account [your username]\n" +
+                "2 : login [your username]\n" +
+                "3 : show leaderboard\n" +
+                "4 : Search Collection\n" +
+                "5 : save\n" +
+                "6 : logout\n" +
+                "7 : help";
+        System.out.println(helpstr);
+    }
 }
