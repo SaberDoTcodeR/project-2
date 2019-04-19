@@ -75,6 +75,18 @@ public enum CommandRegex {
     ),
     END(
             "^end$"
+    ),
+    SHOW_COLLECTION(
+            "^show collection$"
+    ),
+    SEARCH_COLLECTION(
+            "^search collection\\s+(\\w+)$"
+    ),
+    BUY(
+            "^buy\\s+(\\w+)$"
+    ),
+    SELL(
+            "^sell\\s+(\\d+)$"
     );
 
     String regex;

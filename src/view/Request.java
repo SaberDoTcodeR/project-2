@@ -55,6 +55,7 @@ public class Request {
         commands.get(2).add(new ValidateDeck());
         commands.get(2).add(new ExitFromSubMenu());
 
+
         commands.get(4).add(new LogOut());
         commands.get(4).add(new Login());
         commands.get(4).add(new Save());

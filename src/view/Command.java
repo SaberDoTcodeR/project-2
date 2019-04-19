@@ -375,3 +375,68 @@ class Login extends Command {
         accountControl.main();
     }
 }
+class ShowCollection extends Command {
+    ShowCollection() {
+        super(CommandRegex.SHOW_COLLECTION);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class SearchOfShop extends Command {
+    SearchOfShop() {
+        super(CommandRegex.SEARCH);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class SearchCollection extends Command {
+    SearchCollection() {
+        super(CommandRegex.SEARCH_COLLECTION);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class Buy extends Command {
+    Buy() {
+        super(CommandRegex.BUY);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class Sell extends Command {
+    Sell() {
+        super(CommandRegex.SELL);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ShowShop extends Command {
+    ShowShop() {
+        super(CommandRegex.SHOW);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}

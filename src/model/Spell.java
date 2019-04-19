@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.Cell;
+
 import java.util.ArrayList;
 
 public  abstract class Spell extends Card{
@@ -20,8 +22,8 @@ public  abstract class Spell extends Card{
         this.buff=spell.buff;
     }
     public abstract ArrayList<Cell> effectedCells();
-    public static ArrayList<Hero> getHeroes() {
-        return heroes;
+    public static ArrayList<Spell> getSpells() {
+        return spells;
     }
 
     public int getCostToUse() {
