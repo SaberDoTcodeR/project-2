@@ -7,7 +7,7 @@ public abstract class Minion extends  Card{
     private int ap;
     private int hp;
     private int costToUse;
-    //private SpecialPower specialPower;
+    private SpecialPower specialPower;
     private int typeOfRange;//0 mellee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5on turn 6 on defend
@@ -20,7 +20,7 @@ public abstract class Minion extends  Card{
     }
 
 
-    /*public Minion(String name,int ap, int hp, SpecialPower specialPower, int costOfBuy, int costToUse, int typeOfRange, int range){
+    public Minion(String name,int ap, int hp, SpecialPower specialPower, int costOfBuy, int costToUse, int typeOfRange, int range){
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
         this.ap=ap;
@@ -30,7 +30,7 @@ public abstract class Minion extends  Card{
         this.typeOfRange=typeOfRange;
         this.range=range;
         minions.add(this);
-    }*/
+    }
     public Minion(Minion minion){
         this.setName(minion.getName());
         this.setCostOfBuy(minion.getCostOfBuy());
@@ -53,9 +53,9 @@ public abstract class Minion extends  Card{
         return hp;
     }
 
-    /*public SpecialPower getSpecialPower() {
+    public SpecialPower getSpecialPower() {
         return specialPower;
-    }*/
+    }
 
     public static ArrayList<Minion> getMinions() {
         return minions;

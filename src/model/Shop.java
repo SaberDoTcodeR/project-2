@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Shop {
 
     public int searchOfShop (String objectName){
@@ -20,8 +18,8 @@ public class Shop {
                 return 1;
             }
         }
-        for (Item item : Item.getItems()) {
-            if (item.getName().equals(objectName)){
+        for (UsableItem usableItem : UsableItem.getUsableItems()) {
+            if (usableItem.getName().equals(objectName)){
                 return 1;
             }
         }
@@ -43,8 +41,8 @@ public class Shop {
                 return true;
             }
         }
-        for (Item item : Item.getItems()) {
-            if (item.getName().equals(objectName)) {
+        for (UsableItem usableItem : UsableItem.getUsableItems()) {
+            if (usableItem.getName().equals(objectName)) {
                 return true;
             }
         }
@@ -63,9 +61,9 @@ public class Shop {
             if (spell.getName().equals(name))
                 return spell.getCostOfBuy();
         }
-        for (Item item:Item.getItems()){
-            if (item.getName().equals(name))
-                return item.getCostOfBuy();
+        for (UsableItem usableItem : UsableItem.getUsableItems()){
+            if (usableItem.getName().equals(name))
+                return usableItem.getCostOfBuy();
         }
         return 0;
     }

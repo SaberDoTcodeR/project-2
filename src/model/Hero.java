@@ -6,12 +6,12 @@ public abstract class Hero extends Card{
     private static ArrayList<Hero> heroes=new ArrayList<>();
     private int ap;
     private int hp;
-    //SpecialPower specialPower;
+    private SpecialPower specialPower;
     private int typeOfRange;//0 mellee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
 
-    /*public Hero(String name,int ap,int hp,int coolDownTime,SpecialPower specialPower,int costOfBuy, int typeOfRange, int range){
+    public Hero(String name,int ap,int hp,int coolDownTime,SpecialPower specialPower,int costOfBuy, int typeOfRange, int range){
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
         this.typeOfRange=typeOfRange;
@@ -31,7 +31,7 @@ public abstract class Hero extends Card{
         this.ap=hero.ap;
         this.hp=hero.hp;
         this.specialPower=hero.specialPower;
-    }*/
+    }
     public static ArrayList<Hero> getHeroes() {
         return heroes;
     }
@@ -40,10 +40,7 @@ public abstract class Hero extends Card{
         return hp;
     }
 
-   /* public SpecialPower getSpecialPower() {
+    public SpecialPower getSpecialPower() {
         return specialPower;
     }
-*/
-
-
 }
