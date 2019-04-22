@@ -1,15 +1,12 @@
 package model;
 
-import control.*;
-import view.*;
-
 import java.util.ArrayList;
 
 public class Deck {
 
     private String name;
     private Hero hero;
-    private Item item;
+    private UsableItem usableItem;
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();
 
@@ -37,12 +34,12 @@ public class Deck {
         this.spells = spells;
     }
 
-    public Item getItem() {
-        return item;
+    public UsableItem getUsableItem() {
+        return usableItem;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setUsableItem(UsableItem usableItem) {
+        this.usableItem = usableItem;
     }
 
     public ArrayList<Minion> getMinions() {
@@ -79,7 +76,7 @@ public class Deck {
                 return true;
             }
         }
-        if (getItem().getId() == objectID)
+        if (getUsableItem().getId() == objectID)
             return true;
         return false;
     }
