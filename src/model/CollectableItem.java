@@ -2,10 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
-public abstract class CollectableItem extends Item{
+public abstract class CollectableItem extends Item {
 
-    public CollectableItem(String name){
+    public CollectableItem(String name) {
         this.setName(name);
+    }
+
+    public CollectableItem(CollectableItem collectableItem) {
+        this.setName(collectableItem.getName());
     }
 
     private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
@@ -33,10 +37,19 @@ enum CollectableItemWork {
 
 }
 
-class Devastation extends CollectableItem{
+class Devastation extends CollectableItem {
 
     public Devastation(String name) {
         super(name);
+    }
+
+    public Devastation(Devastation devastation) {
+        super(devastation);
+    }
+
+    public CollectableItem duplicate() {
+        Devastation devastation = new Devastation(this);
+        return devastation;
     }
 
     @Override
@@ -48,10 +61,18 @@ class Devastation extends CollectableItem{
     }
 }
 
-class DoubleEntendreArrow extends CollectableItem{
+class DoubleEntendreArrow extends CollectableItem {
 
     public DoubleEntendreArrow(String name) {
         super(name);
+    }
+    public DoubleEntendreArrow(DoubleEntendreArrow doubleEntendreArrow) {
+        super(doubleEntendreArrow);
+    }
+
+    public CollectableItem duplicate() {
+        DoubleEntendreArrow doubleEntendreArrow = new DoubleEntendreArrow(this);
+        return doubleEntendreArrow;
     }
 
     @Override
@@ -59,13 +80,22 @@ class DoubleEntendreArrow extends CollectableItem{
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
                 " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW;
-        return details;    }
+        return details;
+    }
 }
 
-class Elexir extends CollectableItem{
+class Elexir extends CollectableItem {
 
     public Elexir(String name) {
         super(name);
+    }
+    public Elexir(Elexir elexir) {
+        super(elexir);
+    }
+
+    public CollectableItem duplicate() {
+        Elexir elexir = new Elexir(this);
+        return elexir;
     }
 
     @Override
@@ -77,10 +107,18 @@ class Elexir extends CollectableItem{
     }
 }
 
-class ManaElectuary extends CollectableItem{
+class ManaElectuary extends CollectableItem {
 
     public ManaElectuary(String name) {
         super(name);
+    }
+    public ManaElectuary(ManaElectuary manaElectuary) {
+        super(manaElectuary);
+    }
+
+    public CollectableItem duplicate() {
+        ManaElectuary manaElectuary = new ManaElectuary(this);
+        return manaElectuary;
     }
 
     @Override
@@ -92,10 +130,19 @@ class ManaElectuary extends CollectableItem{
     }
 }
 
-class PerpetuityElectuary extends CollectableItem{
+class PerpetuityElectuary extends CollectableItem {
 
     public PerpetuityElectuary(String name) {
         super(name);
+    }
+
+    public PerpetuityElectuary(PerpetuityElectuary perpetuityElectuary) {
+        super(perpetuityElectuary);
+    }
+
+    public CollectableItem duplicate() {
+        PerpetuityElectuary perpetuityElectuary = new PerpetuityElectuary(this);
+        return perpetuityElectuary;
     }
 
     @Override
@@ -107,10 +154,19 @@ class PerpetuityElectuary extends CollectableItem{
     }
 }
 
-class DeathCurse extends CollectableItem{
+class DeathCurse extends CollectableItem {
 
     public DeathCurse(String name) {
         super(name);
+    }
+
+    public DeathCurse(DeathCurse deathCurse) {
+        super(deathCurse);
+    }
+
+    public CollectableItem duplicate() {
+        DeathCurse deathCurse = new DeathCurse(this);
+        return deathCurse;
     }
 
     @Override
@@ -122,10 +178,19 @@ class DeathCurse extends CollectableItem{
     }
 }
 
-class RandomDamage extends CollectableItem{
+class RandomDamage extends CollectableItem {
 
     public RandomDamage(String name) {
         super(name);
+    }
+
+    public RandomDamage(RandomDamage randomDamage) {
+        super(randomDamage);
+    }
+
+    public CollectableItem duplicate() {
+        RandomDamage randomDamage = new RandomDamage(this);
+        return randomDamage;
     }
 
     @Override
@@ -137,10 +202,19 @@ class RandomDamage extends CollectableItem{
     }
 }
 
-class BladesOfAgility  extends CollectableItem{
+class BladesOfAgility extends CollectableItem {
 
     public BladesOfAgility(String name) {
         super(name);
+    }
+
+    public BladesOfAgility(BladesOfAgility bladesOfAgility) {
+        super(bladesOfAgility);
+    }
+
+    public CollectableItem duplicate() {
+        BladesOfAgility bladesOfAgility = new BladesOfAgility(this);
+        return bladesOfAgility;
     }
 
     @Override
@@ -152,10 +226,19 @@ class BladesOfAgility  extends CollectableItem{
     }
 }
 
-class ChineseSword extends CollectableItem{
+class ChineseSword extends CollectableItem {
 
     public ChineseSword(String name) {
         super(name);
+    }
+
+    public ChineseSword(ChineseSword chineseSword) {
+        super(chineseSword);
+    }
+
+    public CollectableItem duplicate() {
+        ChineseSword chineseSword = new ChineseSword(this);
+        return chineseSword;
     }
 
     @Override
