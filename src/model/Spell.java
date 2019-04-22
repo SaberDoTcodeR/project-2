@@ -76,6 +76,15 @@ class TotalDisarm extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public TotalDisarm(TotalDisarm totalDisarm){
+        super(totalDisarm);
+    }
+
+    public Spell duplicate(){
+        TotalDisarm totalDisarm = new TotalDisarm(this);
+        return totalDisarm;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -95,6 +104,15 @@ class AreaDispel extends Spell {
 
     public AreaDispel(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public AreaDispel(AreaDispel areaDispel){
+        super(areaDispel);
+    }
+
+    public Spell duplicate(){
+        AreaDispel areaDispel = new AreaDispel(this);
+        return areaDispel;
     }
 
     @Override
@@ -118,6 +136,15 @@ class Empower extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public Empower(Empower empower){
+        super(empower);
+    }
+
+    public Spell duplicate(){
+        Empower empower = new Empower(this);
+        return empower;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -137,6 +164,15 @@ class FireBall extends Spell {
 
     public FireBall(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public FireBall(FireBall fireBall){
+        super(fireBall);
+    }
+
+    public Spell duplicate(){
+        FireBall fireBall = new FireBall(this);
+        return fireBall;
     }
 
     @Override
@@ -160,6 +196,15 @@ class GodStrength extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public GodStrength(GodStrength godStrength){
+        super(godStrength);
+    }
+
+    public Spell duplicate(){
+        GodStrength godStrength = new GodStrength(this);
+        return godStrength;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -179,6 +224,15 @@ class HellFire extends Spell {
 
     public HellFire(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public HellFire(HellFire hellFire){
+        super(hellFire);
+    }
+
+    public Spell duplicate(){
+        HellFire hellFire = new HellFire(this);
+        return hellFire;
     }
 
     @Override
@@ -202,6 +256,15 @@ class LightingBolt extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public LightingBolt(LightingBolt lightingBolt){
+        super(lightingBolt);
+    }
+
+    public Spell duplicate(){
+        LightingBolt lightingBolt = new LightingBolt(this);
+        return lightingBolt;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -221,6 +284,15 @@ class PoisonLake extends Spell {
 
     public PoisonLake(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public PoisonLake(PoisonLake poisonLake){
+        super(poisonLake);
+    }
+
+    public Spell duplicate(){
+        PoisonLake poisonLake = new PoisonLake(this);
+        return poisonLake;
     }
 
     @Override
@@ -244,6 +316,15 @@ class Madness extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public Madness(Madness madness){
+        super(madness);
+    }
+
+    public Spell duplicate(){
+        Madness madness = new Madness(this);
+        return madness;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -263,6 +344,15 @@ class AllDisarm extends Spell {
 
     public AllDisarm(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public AllDisarm(AllDisarm allDisarm){
+        super(allDisarm);
+    }
+
+    public Spell duplicate(){
+        TotalDisarm totalDisarm = new TotalDisarm(this);
+        return totalDisarm;
     }
 
     @Override
@@ -286,6 +376,15 @@ class AllPoison extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public AllPoison(AllPoison allPoison){
+        super(allPoison);
+    }
+
+    public Spell duplicate(){
+        AllPoison allPoison = new AllPoison(this);
+        return allPoison;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -305,6 +404,15 @@ class Dispel extends Spell {
 
     public Dispel(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public Dispel(Dispel dispel){
+        super(dispel);
+    }
+
+    public Spell duplicate(){
+        Dispel dispel = new Dispel(this);
+        return dispel;
     }
 
     @Override
@@ -328,6 +436,15 @@ class HealthWithProfit extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public HealthWithProfit(HealthWithProfit healthWithProfit){
+        super(healthWithProfit);
+    }
+
+    public Spell duplicate(){
+        HealthWithProfit healthWithProfit = new HealthWithProfit(this);
+        return healthWithProfit;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -347,6 +464,15 @@ class PowerUp extends Spell {
 
     public PowerUp(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public PowerUp(PowerUp powerUp){
+        super(powerUp);
+    }
+
+    public Spell duplicate(){
+        PowerUp powerUp = new PowerUp(this);
+        return powerUp;
     }
 
     @Override
@@ -370,6 +496,15 @@ class AllPower extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public AllPower(AllPower allPower){
+        super(allPower);
+    }
+
+    public Spell duplicate(){
+        AllPower allPower = new AllPower(this);
+        return allPower;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -383,12 +518,22 @@ class AllPower extends Spell {
                 " - Desc: " + SpellWork.ALL_POWER;
         return details;
     }
+
 }
 
 class AllAttack extends Spell {
 
     public AllAttack(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public AllAttack(AllAttack allAttack){
+        super(allAttack);
+    }
+
+    public Spell duplicate(){
+        AllAttack allAttack = new AllAttack(this);
+        return allAttack;
     }
 
     @Override
@@ -412,6 +557,15 @@ class Weakening extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public Weakening(Weakening weakening){
+        super(weakening);
+    }
+
+    public Spell duplicate(){
+        Weakening weakening = new Weakening(this);
+        return weakening;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -431,6 +585,15 @@ class Sacrifice extends Spell {
 
     public Sacrifice(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public Sacrifice(Sacrifice sacrifice){
+        super(sacrifice);
+    }
+
+    public Spell duplicate(){
+        Sacrifice sacrifice = new Sacrifice(this);
+        return sacrifice;
     }
 
     @Override
@@ -454,6 +617,15 @@ class KingsGuard extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
+    public KingsGuard(KingsGuard kingsGuard){
+        super(kingsGuard);
+    }
+
+    public Spell duplicate(){
+        KingsGuard kingsGuard = new KingsGuard(this);
+        return kingsGuard;
+    }
+
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -473,6 +645,15 @@ class Shock extends Spell {
 
     public Shock(String name, int costToUse, int costOfBuy, Buff buff) {
         super(name, costToUse, costOfBuy, buff);
+    }
+
+    public Shock(Shock shock){
+        super(shock);
+    }
+
+    public Spell duplicate(){
+        Shock shock = new Shock(this);
+        return shock;
     }
 
     @Override
