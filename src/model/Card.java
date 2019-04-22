@@ -4,7 +4,6 @@ public abstract class Card {
     private String name;
     private boolean isOnMap;
     private int costOfBuy;
-
     private int id;
 
     public String getName() {
@@ -41,4 +40,3 @@ public abstract class Card {
     }
     public abstract String showDetails();
 }
-
