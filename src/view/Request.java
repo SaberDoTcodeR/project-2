@@ -37,11 +37,15 @@ public class Request {
         commands.get(0).add(new ExitFromMainMenu());
         commands.get(0).add(new Help());
 
-        commands.get(1).add(new EnterBattle());
-        commands.get(1).add(new EnterCollection());
-        commands.get(1).add(new EnterShop());
-        commands.get(1).add(new ExitFromSubMenu());
-        commands.get(1).add(new Help());
+        commands.get(1).add(new GameInfo());
+        commands.get(1).add(new ShowMyMinions());
+        commands.get(1).add(new ShowOppMinoins());
+        commands.get(1).add(new ShowCardInfo());
+        commands.get(1).add(new SelectSoldier());
+        commands.get(1).add(new MoveSelectedSoldier());
+        commands.get(1).add(new Attack());
+        commands.get(1).add(new AttackCombo);
+        commands.get(1).add(new SelectSoldier());
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());

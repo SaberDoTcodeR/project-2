@@ -6,28 +6,29 @@ import java.util.ArrayList;
 
 public  abstract class Spell extends Card{
     private static ArrayList<Spell> spells=new ArrayList<>();
-    private int costToUse;
-    //private Buff buff;
-    /*public Spell(String name,int costToUse,int costOfBuy,Buff buff){
+    private int mp;
+    private Buff buff;
+    public Spell(String name,int mp,int costOfBuy,Buff buff){
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
-        this.costToUse=costToUse;
+        this.mp=mp;
         this.buff=buff;
         spells.add(this);
     }
     public Spell(Spell spell){
         this.setName(spell.getName());
         this.setCostOfBuy(spell.getCostOfBuy());
-        this.costToUse=spell.costToUse;
+        this.mp=spell.mp;
         this.buff=spell.buff;
-    }*/
+    }
     public abstract ArrayList<Cell> effectedCells();
     public static ArrayList<Spell> getSpells() {
         return spells;
     }
 
-    public int getCostToUse() {
-        return costToUse;
+    public int getCostToUse()
+    {
+        return this.mp;
     }
 
 }
