@@ -23,7 +23,9 @@ public class Request {
         setMatchedCommand();
     }
 
-    private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop
+    private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop 4 Account 5 start Game 6 multiplayer
+        commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
         commands.add(new ArrayList<>());
         commands.add(new ArrayList<>());
         commands.add(new ArrayList<>());
@@ -71,7 +73,6 @@ public class Request {
         commands.get(3).add(new ExitFromSubMenu());
 
 
-
         commands.get(4).add(new LogOut());
         commands.get(4).add(new Login());
         commands.get(4).add(new Save());
@@ -79,6 +80,14 @@ public class Request {
         commands.get(4).add(new ShowLeaderBoard());
         commands.get(4).add(new Help());
         commands.get(4).add(new Exit());
+
+        commands.get(5).add(new StartGame());
+
+
+
+        commands.get(6).add(new SelectUser());
+
+        commands.get(7).add(new StartMultiPlayerGame());
     }
 
     public Command getMatchedCommand(int i) {
@@ -91,47 +100,57 @@ public class Request {
         return null;
     }
 
+    public boolean mainDeckValidation() {
+        if (!Account.getLoginAccount().getMainDeck().isValid()) {
+            this.setError(ErrorType.INVALID_DECK);
+            return false;
+        } else
+            return true;
 
-    public void validateDeck(String deckName){
-        if(!Account.getLoginAccount().getCollection().checkDeckValidation(deckName))
+    }
+
+    public void validateDeck(String deckName) {
+        if (!Account.getLoginAccount().getCollection().checkDeckValidation(deckName))
             this.setError(ErrorType.INVALID_DECK);
         else
             View.getInstance().printDeckValidation(deckName);
     }
 
 
-
-    public boolean repetitiousUser(String userName){
-        for (Account account:Account.getAllUser()) {
-            if(account.getUserName().equals(userName)){
+    public boolean repetitiousUser(String userName) {
+        for (Account account : Account.getAllUser()) {
+            if (account.getUserName().equals(userName)) {
                 this.setError(ErrorType.USER_ALREADY_CREATED);
                 return true;
             }
         }
         return false;
-    }public boolean existThisUser(String userName){
-        for (Account account:Account.getAllUser()) {
-            if(account.getUserName().equals(userName)){
+    }
+
+    public boolean existThisUser(String userName) {
+        for (Account account : Account.getAllUser()) {
+            if (account.getUserName().equals(userName)) {
                 return true;
             }
         }
         this.setError(ErrorType.NO_SUCH_USER_EXIST);
         return false;
     }
-    public  void authorize(String userName,String passWord){
-        for (Account account:Account.getAllUser()) {
-            if(account.getUserName().equals(userName)){
-                if(account.getPassWord().equals(passWord))
-                {
+
+    public void authorize(String userName, String passWord) {
+        for (Account account : Account.getAllUser()) {
+            if (account.getUserName().equals(userName)) {
+                if (account.getPassWord().equals(passWord)) {
                     Account.setLoginAccount(account);
-                    MainMenuControl mainMenuControl=new MainMenuControl();
+                    MainMenuControl mainMenuControl = new MainMenuControl();
                     mainMenuControl.main();
                 }
                 this.setError(ErrorType.WRONG_PASSWORD);
-                return ;
+                return;
             }
         }
     }
+
     public void setError(ErrorType error) {
         this.error = error;
     }
@@ -147,5 +166,24 @@ public class Request {
     public void setCommand(String command) {
         this.commandLine = command;
     }
+    public void validateSecondPlayer(String userName){
+        if(Account.getLoginAccount().getUserName().equals(userName))
+        {
+            this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
+            return;
+        }
+        for (Account account:Account.getAllUser()
+             ) {
+            if (account.getUserName().equals(userName)){
+                if(account.getMainDeck().isValid()){
+                    return;
+                }else {
+                    this.setError(ErrorType.SECOND_PLAYER_DECK_NOT_VALID);
+                    return;
+                }
+            }
+        }
+        this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
 
+    }
 }

@@ -61,14 +61,14 @@ public class Cell {
         this.flag = flag;
         this.collectableItem = collectableItem;
     }
-    public void moveCardPos(int x,int y){
-        if (this.hero!=null){
-            Account.getLoginAccount().getBattle().getMap().get(y-1).get(x-1).setHero(this.hero);
-            this.hero=null;
-        }
-        else {
-            Account.getLoginAccount().getBattle().getMap().get(y-1).get(x-1).setMinion(this.minion);
-            this.minion=null;
+
+    public void moveCardPos(int x, int y) {
+        if (this.hero != null) {
+            Account.getLoginAccount().getBattle().getMap().get(y - 1).get(x - 1).setHero(this.hero);
+            this.hero = null;
+        } else {
+            Account.getLoginAccount().getBattle().getMap().get(y - 1).get(x - 1).setMinion(this.minion);
+            this.minion = null;
         }
     }
 }

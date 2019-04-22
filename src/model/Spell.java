@@ -76,11 +76,11 @@ class TotalDisarm extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public TotalDisarm(TotalDisarm totalDisarm){
+    public TotalDisarm(TotalDisarm totalDisarm) {
         super(totalDisarm);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         TotalDisarm totalDisarm = new TotalDisarm(this);
         return totalDisarm;
     }
@@ -106,11 +106,11 @@ class AreaDispel extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public AreaDispel(AreaDispel areaDispel){
+    public AreaDispel(AreaDispel areaDispel) {
         super(areaDispel);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AreaDispel areaDispel = new AreaDispel(this);
         return areaDispel;
     }
@@ -136,11 +136,11 @@ class Empower extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Empower(Empower empower){
+    public Empower(Empower empower) {
         super(empower);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Empower empower = new Empower(this);
         return empower;
     }
@@ -166,11 +166,11 @@ class FireBall extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public FireBall(FireBall fireBall){
+    public FireBall(FireBall fireBall) {
         super(fireBall);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         FireBall fireBall = new FireBall(this);
         return fireBall;
     }
@@ -196,11 +196,11 @@ class GodStrength extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public GodStrength(GodStrength godStrength){
+    public GodStrength(GodStrength godStrength) {
         super(godStrength);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         GodStrength godStrength = new GodStrength(this);
         return godStrength;
     }
@@ -226,11 +226,11 @@ class HellFire extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public HellFire(HellFire hellFire){
+    public HellFire(HellFire hellFire) {
         super(hellFire);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
         return hellFire;
     }
@@ -256,11 +256,11 @@ class LightingBolt extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public LightingBolt(LightingBolt lightingBolt){
+    public LightingBolt(LightingBolt lightingBolt) {
         super(lightingBolt);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         LightingBolt lightingBolt = new LightingBolt(this);
         return lightingBolt;
     }
@@ -286,11 +286,11 @@ class PoisonLake extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public PoisonLake(PoisonLake poisonLake){
+    public PoisonLake(PoisonLake poisonLake) {
         super(poisonLake);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         PoisonLake poisonLake = new PoisonLake(this);
         return poisonLake;
     }
@@ -316,11 +316,11 @@ class Madness extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Madness(Madness madness){
+    public Madness(Madness madness) {
         super(madness);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Madness madness = new Madness(this);
         return madness;
     }
@@ -346,11 +346,11 @@ class AllDisarm extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public AllDisarm(AllDisarm allDisarm){
+    public AllDisarm(AllDisarm allDisarm) {
         super(allDisarm);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllDisarm allDisarm = new AllDisarm(this);
         return allDisarm;
     }
@@ -376,11 +376,11 @@ class AllPoison extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public AllPoison(AllPoison allPoison){
+    public AllPoison(AllPoison allPoison) {
         super(allPoison);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllPoison allPoison = new AllPoison(this);
         return allPoison;
     }
@@ -406,11 +406,11 @@ class Dispel extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Dispel(Dispel dispel){
+    public Dispel(Dispel dispel) {
         super(dispel);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Dispel dispel = new Dispel(this);
         return dispel;
     }
@@ -436,11 +436,11 @@ class HealthWithProfit extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public HealthWithProfit(HealthWithProfit healthWithProfit){
+    public HealthWithProfit(HealthWithProfit healthWithProfit) {
         super(healthWithProfit);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         HealthWithProfit healthWithProfit = new HealthWithProfit(this);
         return healthWithProfit;
     }
@@ -466,11 +466,11 @@ class PowerUp extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public PowerUp(PowerUp powerUp){
+    public PowerUp(PowerUp powerUp) {
         super(powerUp);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         PowerUp powerUp = new PowerUp(this);
         return powerUp;
     }
@@ -496,11 +496,11 @@ class AllPower extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public AllPower(AllPower allPower){
+    public AllPower(AllPower allPower) {
         super(allPower);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllPower allPower = new AllPower(this);
         return allPower;
     }
@@ -527,11 +527,11 @@ class AllAttack extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public AllAttack(AllAttack allAttack){
+    public AllAttack(AllAttack allAttack) {
         super(allAttack);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllAttack allAttack = new AllAttack(this);
         return allAttack;
     }
@@ -557,11 +557,11 @@ class Weakening extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Weakening(Weakening weakening){
+    public Weakening(Weakening weakening) {
         super(weakening);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Weakening weakening = new Weakening(this);
         return weakening;
     }
@@ -587,11 +587,11 @@ class Sacrifice extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Sacrifice(Sacrifice sacrifice){
+    public Sacrifice(Sacrifice sacrifice) {
         super(sacrifice);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Sacrifice sacrifice = new Sacrifice(this);
         return sacrifice;
     }
@@ -617,11 +617,11 @@ class KingsGuard extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public KingsGuard(KingsGuard kingsGuard){
+    public KingsGuard(KingsGuard kingsGuard) {
         super(kingsGuard);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         KingsGuard kingsGuard = new KingsGuard(this);
         return kingsGuard;
     }
@@ -647,11 +647,11 @@ class Shock extends Spell {
         super(name, costToUse, costOfBuy, buff);
     }
 
-    public Shock(Shock shock){
+    public Shock(Shock shock) {
         super(shock);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Shock shock = new Shock(this);
         return shock;
     }

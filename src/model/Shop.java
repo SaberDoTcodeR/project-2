@@ -2,29 +2,30 @@ package model;
 
 public class Shop {
 
-    public int searchOfShop (String objectName){
+    public int searchOfShop(String objectName) {
         for (Hero hero : Hero.getHeroes()) {
-            if (hero.getName().equals(objectName)){
+            if (hero.getName().equals(objectName)) {
                 return 1;
             }
         }
         for (Spell spell : Spell.getSpells()) {
-            if (spell.getName().equals(objectName)){
+            if (spell.getName().equals(objectName)) {
                 return 1;
             }
         }
         for (Minion minion : Minion.getMinions()) {
-            if (minion.getName().equals(objectName)){
+            if (minion.getName().equals(objectName)) {
                 return 1;
             }
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
-            if (usableItem.getName().equals(objectName)){
+            if (usableItem.getName().equals(objectName)) {
                 return 1;
             }
         }
         return 0;
     }
+
     public boolean hasThisCard(String objectName) {
         for (Hero hero : Hero.getHeroes()) {
             if (hero.getName().equals(objectName)) {
@@ -48,20 +49,21 @@ public class Shop {
         }
         return false;
     }
-    public int costOfCard (String name) {
-        for (Hero hero:Hero.getHeroes()) {
+
+    public int costOfCard(String name) {
+        for (Hero hero : Hero.getHeroes()) {
             if (hero.getName().equals(name))
                 return hero.getCostOfBuy();
         }
-        for (Minion minion:Minion.getMinions()){
+        for (Minion minion : Minion.getMinions()) {
             if (minion.getName().equals(name))
                 return minion.getCostOfBuy();
         }
-        for (Spell spell:Spell.getSpells()){
+        for (Spell spell : Spell.getSpells()) {
             if (spell.getName().equals(name))
                 return spell.getCostOfBuy();
         }
-        for (UsableItem usableItem : UsableItem.getUsableItems()){
+        for (UsableItem usableItem : UsableItem.getUsableItems()) {
             if (usableItem.getName().equals(name))
                 return usableItem.getCostOfBuy();
         }

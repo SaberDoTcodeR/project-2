@@ -15,6 +15,10 @@ public abstract class Command {
         pattern = Pattern.compile(command.getRegex());
     }
 
+    public Matcher getMatcher() {
+        return matcher;
+    }
+
     public abstract void apply(Request request);
 }
 
@@ -128,16 +132,13 @@ class Remove extends Command {
     public void apply(Request request) {
         int id = Integer.parseInt(matcher.group(1).trim());
         String deckName = matcher.group(3).trim();
-        if(Account.getLoginAccount().getCollection().findDeck(deckName)==null)
-        {
-            if(Account.getLoginAccount().getCollection().findDeck(deckName).hasThisCard(id))
-            {
-                Account.getLoginAccount().getCollection().removeFromDeck(id,deckName);
-            }
-            else {
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) == null) {
+            if (Account.getLoginAccount().getCollection().findDeck(deckName).hasThisCard(id)) {
+                Account.getLoginAccount().getCollection().removeFromDeck(id, deckName);
+            } else {
                 request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
             }
-        }else {
+        } else {
             request.setError(ErrorType.DECK_EXISTENCE);
         }
     }
@@ -205,8 +206,7 @@ class ShowAllDecks extends Command {
     }
 
     @Override
-    public void apply(Request request)
-    {
+    public void apply(Request request) {
         Account.getLoginAccount().getCollection().showAllDecks();
     }
 }
@@ -220,6 +220,8 @@ class EnterBattle extends Command {
 
     @Override
     public void apply(Request request) {
+        if (!request.mainDeckValidation())
+            return;
         BattleControl battleControl = new BattleControl();
         battleControl.main();
     }
@@ -250,6 +252,7 @@ class EnterShop extends Command {
         shopControl.main();
     }
 }
+
 class Help extends Command {
 
     Help() {
@@ -261,6 +264,7 @@ class Help extends Command {
 
     }
 }
+
 class ExitFromSubMenu extends Command {
 
     ExitFromSubMenu() {
@@ -270,10 +274,11 @@ class ExitFromSubMenu extends Command {
     @Override
     public void apply(Request request) {
 
-        MainMenuControl mainMenuControl =new MainMenuControl();
+        MainMenuControl mainMenuControl = new MainMenuControl();
         mainMenuControl.main();
     }
 }
+
 class Exit extends Command {
 
     Exit() {
@@ -285,6 +290,7 @@ class Exit extends Command {
         System.exit(0);
     }
 }
+
 class ExitFromMainMenu extends Command {
 
     ExitFromMainMenu() {
@@ -295,7 +301,7 @@ class ExitFromMainMenu extends Command {
     public void apply(Request request) {
 
         Account.setLoginAccount(null);
-        AccountControl accountControl=new AccountControl();
+        AccountControl accountControl = new AccountControl();
         accountControl.main();
     }
 }
@@ -309,18 +315,18 @@ class CreateAccount extends Command {
     @Override
     public void apply(Request request) {
         String userName = matcher.group(1).trim();
-        if (!request.repetitiousUser(userName)){
-            System.out.println("Set Your PassWord "+userName+" :");
-            String pass=Request.scanner.nextLine();
-            Account.setLoginAccount(new Account(userName,pass));
-            MainMenuControl mainMenuControl=new MainMenuControl();
+        if (!request.repetitiousUser(userName)) {
+            System.out.println("Set Your PassWord " + userName + " :");
+            String pass = Request.scanner.nextLine();
+            Account.setLoginAccount(new Account(userName, pass));
+            MainMenuControl mainMenuControl = new MainMenuControl();
             mainMenuControl.main();
-        }
-        else {
+        } else {
             request.setError(ErrorType.USER_ALREADY_CREATED);
         }
     }
 }
+
 class Login extends Command {
 
     Login() {
@@ -330,14 +336,16 @@ class Login extends Command {
     @Override
     public void apply(Request request) {
         String userName = matcher.group(1).trim();
-        if (request.existThisUser(userName)){
+        if (request.existThisUser(userName)) {
             System.out.println("Enter Your PassWord :");
-            String pass=Request.scanner.nextLine();
-            request.authorize(userName,pass);
+            String pass = Request.scanner.nextLine();
+            request.authorize(userName, pass);
 
         }
     }
-}class ShowLeaderBoard extends Command {
+}
+
+class ShowLeaderBoard extends Command {
 
     ShowLeaderBoard() {
         super(CommandRegex.SHOW_LEADERBOARD);
@@ -347,7 +355,9 @@ class Login extends Command {
     public void apply(Request request) {
         Account.showLeaderboard();
     }
-}class Save extends Command {
+}
+
+class Save extends Command {
 
     Save() {
         super(CommandRegex.SAVE);
@@ -359,7 +369,9 @@ class Login extends Command {
         AccountControl accountControl = new AccountControl();
         accountControl.main();
     }
-}class LogOut extends Command {
+}
+
+class LogOut extends Command {
 
     LogOut() {
         super(CommandRegex.LOGOUT);
@@ -367,8 +379,7 @@ class Login extends Command {
 
     @Override
     public void apply(Request request) {
-        if(Account.getLoginAccount()==null)
-        {
+        if (Account.getLoginAccount() == null) {
             request.setError(ErrorType.ALREADY_LOGOUT);
             return;
         }
@@ -377,6 +388,7 @@ class Login extends Command {
         accountControl.main();
     }
 }
+
 class ShowCollection extends Command {
     ShowCollection() {
         super(CommandRegex.SHOW_COLLECTION);
@@ -397,7 +409,7 @@ class SearchOfShop extends Command {
     public void apply(Request request) {
         String objectName = matcher.group(1).trim();
         Shop shop = new Shop();
-        if (shop.hasThisCard(objectName)){
+        if (shop.hasThisCard(objectName)) {
             request.setError(ErrorType.IS_IN_SHOP);
         } else {
             request.setError(ErrorType.NOT_IN_SHOP);
@@ -431,21 +443,20 @@ class Buy extends Command {
     @Override
     public void apply(Request request) {
         String cardName = matcher.group(1).trim();
-        Shop shop=new Shop();
-        if(shop.hasThisCard(cardName)){
-            if(shop.costOfCard(cardName)>Account.getLoginAccount().getMoney()){
+        Shop shop = new Shop();
+        if (shop.hasThisCard(cardName)) {
+            if (shop.costOfCard(cardName) > Account.getLoginAccount().getMoney()) {
                 request.setError(ErrorType.DONT_HAVE_ENOUGH_MONEY);
-            }else {
-                if(Account.getLoginAccount().getCollection().getUsableItems().size()<3)
-                {
+            } else {
+                if (Account.getLoginAccount().getCollection().getUsableItems().size() < 3) {
                     request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
                     Account.getLoginAccount().decreament(shop.costOfCard(cardName));
                     Account.getLoginAccount().getCollection().addToCollection(cardName);
-                }else {
+                } else {
                     request.setError(ErrorType.THREE_ITEMS_ALREADY_OCCUPIED);
                 }
             }
-        }else {
+        } else {
             request.setError(ErrorType.CARD_NOT_FOUND_IN_SHOP);
         }
     }
@@ -459,7 +470,7 @@ class Sell extends Command {
     @Override
     public void apply(Request request) {
         int objectId = Integer.parseInt(matcher.group(1).trim());
-        if (Account.getLoginAccount().getCollection().hasThisCard(objectId)){
+        if (Account.getLoginAccount().getCollection().hasThisCard(objectId)) {
             Account.getLoginAccount().getCollection().removeCardFromCollection(objectId);
             int cost = Account.getLoginAccount().getCollection().costOfCard(objectId);
             Account.getLoginAccount().incrementMoney(cost);
@@ -478,5 +489,62 @@ class ShowShop extends Command {
     @Override
     public void apply(Request request) {
         view.showShop();
+    }
+}
+
+class StartGame extends Command {
+    StartGame() {
+        super(CommandRegex.START_GAME);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String deckName = matcher.group(1).trim();
+        int mode = Integer.parseInt(matcher.group(2).trim());
+        if (Account.getLoginAccount().getCollection().checkDeckValidation(deckName)) {
+            if (mode == 3) {
+                int flags = Integer.parseInt(matcher.group(3).trim());
+                //create game with mode 3
+            } else if (mode == 2) {
+                //create game with mode 2
+            } else {
+                //create game with mode 1
+            }
+        } else
+            request.setError(ErrorType.INVALID_DECK);
+
+    }
+}
+
+class SelectUser extends Command {
+    SelectUser() {
+        super(CommandRegex.SELECT_USER);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+        String userName = matcher.group(1).trim();
+        request.validateSecondPlayer(userName);
+
+    }
+}
+
+class StartMultiPlayerGame extends Command {
+    StartMultiPlayerGame() {
+        super(CommandRegex.START_MULTIPLAYER_GAME);
+    }
+
+    @Override
+    public void apply(Request request) {
+        int mode = Integer.parseInt(matcher.group(1).trim());
+        if (mode == 3) {
+            int flags = Integer.parseInt(matcher.group(2).trim());
+            //create game with mode 3
+        } else if (mode == 2) {
+            //create game with mode 2
+        } else {
+            //create game with mode 1
+        }
     }
 }

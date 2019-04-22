@@ -50,29 +50,29 @@ public class Deck {
         this.minions = minions;
     }
 
-    public boolean isFilled(){
+    public boolean isFilled() {
         if (getSpells().size() + getMinions().size() == 20)
             return true;
         return false;
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         //todo check validation
         if (getHero() != null && getSpells().size() + getMinions().size() == 20)
             return true;
         return false;
     }
 
-    public boolean hasThisCard (int objectID){
-       if (getHero().getId() == objectID)
-           return true;
+    public boolean hasThisCard(int objectID) {
+        if (getHero().getId() == objectID)
+            return true;
         for (Spell spell : getSpells()) {
-            if (spell.getId() == objectID){
+            if (spell.getId() == objectID) {
                 return true;
             }
         }
         for (Minion minion : getMinions()) {
-            if (minion.getId() == objectID){
+            if (minion.getId() == objectID) {
                 return true;
             }
         }

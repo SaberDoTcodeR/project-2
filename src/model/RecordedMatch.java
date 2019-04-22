@@ -11,9 +11,9 @@ public class RecordedMatch {
         return date;
     }
 
-    public  RecordedMatch(boolean result,String name) {
-        this.result=result;
-        this.opponentName=name;
+    public RecordedMatch(boolean result, String name) {
+        this.result = result;
+        this.opponentName = name;
         this.date = new Date();
     }
 }

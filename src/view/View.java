@@ -60,16 +60,16 @@ public class View {
         }
     }
 
-    public void printDeckDetails(Deck deck,int counter,boolean allOrNot) {
-        if(allOrNot)
-            System.out.println(counter+" : "+deck.getName());
+    public void printDeckDetails(Deck deck, int counter, boolean allOrNot) {
+        if (allOrNot)
+            System.out.println(counter + " : " + deck.getName());
 
-        if(deck.getHero()!=null)
+        if (deck.getHero() != null)
             System.out.println("Heroes :\n\t1 : " + deck.getHero().showDetails());
         else
             System.out.println("Heroes :\n");
 
-        if(deck.getUsableItem()==null)
+        if (deck.getUsableItem() == null)
             System.out.println("Items :\n");
         else
             System.out.println("Items :\n\t1 : " + deck.getUsableItem().showDetails());
@@ -135,7 +135,7 @@ public class View {
         System.out.println(helpstr);
     }
 
-    public void showShopMenu(){
+    public void showShopMenu() {
         String helpstr = "1 : Exit\n" +
                 "2 : Show Collection\n" +
                 "3 : Search\n" +
@@ -146,7 +146,8 @@ public class View {
                 "8 : Help";
         System.out.println(helpstr);
     }
-    public void showMainMenu(){
+
+    public void showMainMenu() {
         String helpstr = "1 : Collection\n" +
                 "2 : Shop\n" +
                 "3 : Battle\n" +
@@ -154,7 +155,8 @@ public class View {
                 "5 : Help";
         System.out.println(helpstr);
     }
-    public void showAccountMenu(){
+
+    public void showAccountMenu() {
         String helpstr = "1 : create account [your username]\n" +
                 "2 : login [your username]\n" +
                 "3 : show leaderboard\n" +
@@ -164,7 +166,12 @@ public class View {
                 "7 : help";
         System.out.println(helpstr);
     }
-    public void showBattleMenu(){
+    public void showSingleOrMultiMenu(){
+        String helpstr = "1 : Single Player\n" +
+                "2 : Multi player\n";
+        System.out.println(helpstr);
+    }
+    public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +
                 "3 : Show opponent minion\n" +
@@ -195,5 +202,21 @@ public class View {
                 "18 : Exit\n" +
                 "19 : Show menu";
         System.out.println(helpstr);
+    }
+    public void showSingleMatchMenu(){
+        String helpstr = "1 : Story\n" +
+                "2 : custom game\n";
+        System.out.println(helpstr);
+    }
+    public void showModeList() {
+
+    }
+    public void showWholePlayers(){
+        for (Account account:Account.getAllUser()
+             ) {
+            if(account.getUserName().equals(Account.getLoginAccount().getUserName()))
+                continue;
+            System.out.println(account.getUserName());
+        }
     }
 }
