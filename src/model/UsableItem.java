@@ -258,8 +258,8 @@ class ShockHammer extends UsableItem {
     }
 
     public UsableItem duplicate(){
-        CrownOfWisdom crownOfWisdom = new CrownOfWisdom(this);
-        return crownOfWisdom;
+        ShockHammer shockHammer = new ShockHammer(this);
+        return shockHammer;
     }
 
 

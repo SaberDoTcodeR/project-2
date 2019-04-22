@@ -351,8 +351,8 @@ class AllDisarm extends Spell {
     }
 
     public Spell duplicate(){
-        TotalDisarm totalDisarm = new TotalDisarm(this);
-        return totalDisarm;
+        AllDisarm allDisarm = new AllDisarm(this);
+        return allDisarm;
     }
 
     @Override

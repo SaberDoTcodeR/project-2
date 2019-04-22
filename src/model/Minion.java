@@ -41,7 +41,7 @@ public abstract class Minion extends Card {
         this.setCostOfBuy(minion.getCostOfBuy());
         this.ap = minion.ap;
         this.hp = minion.hp;
-        this.specialPower = minion.specialPower;
+//        this.specialPower = minion.specialPower;
         this.costToUse = minion.costToUse;
         this.typeOfRange = minion.typeOfRange;
         this.range = minion.range;
@@ -298,7 +298,7 @@ class TuranianSpy extends Minion {
     }
 
     public TuranianSpy(TuranianSpy turanianSpy) {
-        super(turanianSpy;
+        super(turanianSpy);
     }
 
     public Minion duplicate() {
