@@ -7,6 +7,11 @@ public abstract class UsableItem extends Item {
         this.setCostOfBuy(costOfBuy);
         this.setName(name);
     }
+
+    public UsableItem(UsableItem usableItem){
+        this.setCostOfBuy(usableItem.getCostOfBuy());
+        this.setName(usableItem.getName());
+    }
     private int costOfBuy;
     private static ArrayList<UsableItem> usableItems = new ArrayList<>();
 
@@ -24,7 +29,7 @@ public abstract class UsableItem extends Item {
 }
 
 enum UsableItemWork {
-    CROWN_OF_WISOM("Increase mana in 3 first turns"),
+    CROWN_OF_WISDOM("Increase mana in 3 first turns"),
     SHAME_EMBLEM("Active 12 holyBuff in insider force"),
     DAMOL_ARCHERY("Insider forcecan disarm enemy force's hit in ranged and hybrid mood"),
     SIMORGH_PLUME("Reduce 2Ap of enemy force's hit in hybrid and ranged mood"),
@@ -43,17 +48,26 @@ enum UsableItemWork {
 
 }
 
-class CrownOfWisom extends UsableItem {
+class CrownOfWisdom extends UsableItem {
 
-    public CrownOfWisom(int costOfBuy, String name) {
+    public CrownOfWisdom(int costOfBuy, String name) {
         super(costOfBuy, name);
+    }
+
+    public CrownOfWisdom(CrownOfWisdom crownOfWisdom){
+        super(crownOfWisdom);
+    }
+
+    public UsableItem duplicate(){
+        CrownOfWisdom crownOfWisdom = new CrownOfWisdom(this);
+        return crownOfWisdom;
     }
 
     @Override
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.CROWN_OF_WISOM;
+                " - Desc: " + UsableItemWork.CROWN_OF_WISDOM;
         return details;
 
     }
@@ -63,6 +77,15 @@ class ShameEmblem extends UsableItem {
 
     public ShameEmblem(int costOfBuy, String name) {
         super(costOfBuy, name);
+    }
+
+    public ShameEmblem(ShameEmblem shameEmblem){
+        super(shameEmblem);
+    }
+
+    public UsableItem duplicate(){
+        ShameEmblem shameEmblem = new ShameEmblem(this);
+        return shameEmblem;
     }
 
     @Override
@@ -81,6 +104,15 @@ class DamolArchery extends UsableItem {
         super(costOfBuy, name);
     }
 
+    public DamolArchery(DamolArchery damolArchery){
+        super(damolArchery);
+    }
+
+    public UsableItem duplicate(){
+        DamolArchery damolArchery = new DamolArchery(this);
+        return damolArchery;
+    }
+
     @Override
     public String showDetails() {
         String details;
@@ -95,6 +127,16 @@ class SimorghPlume extends UsableItem {
     public SimorghPlume(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
+
+    public SimorghPlume(SimorghPlume simorghPlume){
+        super(simorghPlume);
+    }
+
+    public UsableItem duplicate(){
+        SimorghPlume simorghPlume = new SimorghPlume(this);
+        return simorghPlume;
+    }
+
 
     @Override
     public String showDetails() {
@@ -111,6 +153,16 @@ class TerrorHood extends UsableItem {
         super(costOfBuy, name);
     }
 
+    public TerrorHood(TerrorHood terrorHood){
+        super(terrorHood);
+    }
+
+    public UsableItem duplicate(){
+        TerrorHood terrorHood = new TerrorHood(this);
+        return terrorHood;
+    }
+
+
     @Override
     public String showDetails() {
         String details;
@@ -125,6 +177,16 @@ class KingWisdom extends UsableItem {
     public KingWisdom(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
+
+    public KingWisdom(KingWisdom kingWisdom){
+        super(kingWisdom);
+    }
+
+    public UsableItem duplicate(){
+        KingWisdom kingWisdom = new KingWisdom(this);
+        return kingWisdom;
+    }
+
 
     @Override
     public String showDetails() {
@@ -141,6 +203,16 @@ class AssassinationDagger extends UsableItem {
         super(costOfBuy, name);
     }
 
+    public AssassinationDagger(AssassinationDagger assassinationDagger){
+        super(assassinationDagger);
+    }
+
+    public UsableItem duplicate(){
+        AssassinationDagger assassinationDagger = new AssassinationDagger(this);
+        return assassinationDagger;
+    }
+
+
     @Override
     public String showDetails() {
         String details;
@@ -155,6 +227,16 @@ class PoisonousDagger extends UsableItem {
     public PoisonousDagger(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
+
+    public PoisonousDagger(PoisonousDagger poisonousDagger){
+        super(poisonousDagger);
+    }
+
+    public UsableItem duplicate(){
+        PoisonousDagger poisonousDagger = new PoisonousDagger(this);
+        return poisonousDagger;
+    }
+
 
     @Override
     public String showDetails() {
@@ -171,6 +253,16 @@ class ShockHammer extends UsableItem {
         super(costOfBuy, name);
     }
 
+    public ShockHammer(ShockHammer shockHammer){
+        super(shockHammer);
+    }
+
+    public UsableItem duplicate(){
+        CrownOfWisdom crownOfWisdom = new CrownOfWisdom(this);
+        return crownOfWisdom;
+    }
+
+
     @Override
     public String showDetails() {
         String details;
@@ -186,6 +278,16 @@ class SoulEater extends UsableItem {
         super(costOfBuy, name);
     }
 
+    public SoulEater(SoulEater soulEater){
+        super(soulEater);
+    }
+
+    public UsableItem duplicate(){
+        SoulEater soulEater = new SoulEater(this);
+        return soulEater;
+    }
+
+
     @Override
     public String showDetails() {
         String details;
@@ -200,6 +302,16 @@ class Baptism extends UsableItem {
     public Baptism(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
+
+    public Baptism(Baptism baptism){
+        super(baptism);
+    }
+
+    public UsableItem duplicate(){
+        Baptism baptism = new Baptism(this);
+        return baptism;
+    }
+
 
     @Override
     public String showDetails() {
