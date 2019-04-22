@@ -7,7 +7,7 @@ public class Cell {
     private boolean flag;
     private Hero hero;
     private Minion minion;
-    private ItemCollectable itemCollectable;
+    private CollectableItem collectableItem;
     private ArrayList<Buff> cellEffect = new ArrayList<Buff>();
 
     public int getX() {
@@ -22,8 +22,8 @@ public class Cell {
         return flag;
     }
 
-    public ItemCollectable getItemCollectable() {
-        return itemCollectable;
+    public CollectableItem getCollectableItem() {
+        return collectableItem;
     }
 
     public void addCellEffect(Buff buff) {
@@ -55,11 +55,11 @@ public class Cell {
     }
 
 
-    public Cell(int x, int y, boolean flag, ItemCollectable itemCollectable) {
+    public Cell(int x, int y, boolean flag, CollectableItem collectableItem) {
         this.x = x;
         this.y = y;
         this.flag = flag;
-        this.itemCollectable = itemCollectable;
+        this.collectableItem = collectableItem;
     }
     public void moveCardPos(int x,int y){
         if (this.hero!=null){

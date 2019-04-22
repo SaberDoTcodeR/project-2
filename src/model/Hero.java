@@ -201,7 +201,7 @@ class Zahhak extends Hero {
 
 class Kaveh extends Hero {
     public Kaveh() {
-        super("Kaveh", 4, 50, 8000, 0);
+        super("Kaveh", 4, 50, 8000, 0 );
         super.setCoolDownTime(3);
         super.setMp(1);
     }
