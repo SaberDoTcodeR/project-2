@@ -110,7 +110,7 @@ class Add extends Command {
                     request.setError(ErrorType.DECK_FILLED);
                 }
             } else {
-                request.setError(ErrorType.CARD_EXISTENCE_INDECK);
+                request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
             }
         } else {
             request.setError(ErrorType.CARD_EXISTENCE);
@@ -135,7 +135,7 @@ class Remove extends Command {
                 Account.getLoginAccount().getCollection().removeFromDeck(id,deckName);
             }
             else {
-                request.setError(ErrorType.CARD_EXISTENCE_INDECK);
+                request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
             }
         }else {
             request.setError(ErrorType.DECK_EXISTENCE);
@@ -436,7 +436,7 @@ class Buy extends Command {
             if(shop.costOfCard(cardName)>Account.getLoginAccount().getMoney()){
                 request.setError(ErrorType.DONT_HAVE_ENOUGH_MONEY);
             }else {
-                if(Account.getLoginAccount().getCollection().getItems().size()<3)
+                if(Account.getLoginAccount().getCollection().getUsableItems().size()<3)
                 {
                     request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
                     Account.getLoginAccount().decreament(shop.costOfCard(cardName));

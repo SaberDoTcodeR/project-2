@@ -15,7 +15,7 @@ public enum ErrorType {
     DONT_HAVE_ENOUGH_MONEY("you don't have enough money"),
     INVALID_NAME("There isn't any item or card with this name"),
     CARD_EXISTENCE("You don't own this Card"),
-    CARD_EXISTENCE_INDECK("This CardID Already Existed in This Deck"),
+    CARD_EXISTENCE_IN_DECK("This CardID Already Existed in This Deck"),
     INVALID_DECK("The deck is nat valid"),
     NOT_IN_SHOP("The card or item is not in shop"),
     IS_IN_SHOP("The card or item is in shop"),

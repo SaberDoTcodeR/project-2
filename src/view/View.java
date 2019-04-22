@@ -3,7 +3,6 @@ package view;
 import model.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class View {
     private static final View VIEW = new View();
@@ -45,8 +44,8 @@ public class View {
         }
         index = 1;
         System.out.println("Items :\n\t");
-        for (Item item : collection.getItems()) {
-            System.out.println(index + " : " + item.showDetails());
+        for (UsableItem usableItem : collection.getUsableItems()) {
+            System.out.println(index + " : " + usableItem.showDetails());
             index++;
         }
         index = 1;
@@ -60,37 +59,6 @@ public class View {
             index++;
         }
     }
-    public void showShop(){
-        int index=1;
-        System.out.println("Heroes :");
-        for (Hero hero:Hero.getHeroes()){
-            String heroInfo=hero.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(heroInfo);
-            index++;
-        }index=1;
-        System.out.println("Items :");
-        for (Item item:Item.getItems()){
-            String itemInfo=item.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(itemInfo);
-            index++;
-        }
-        index=1;
-        System.out.println("Cards :");
-        for (Minion minion:Minion.getMinions()){
-            String minionInfo=minion.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(minionInfo);
-            index++;
-        }
-        for (Spell spell:Spell.getSpells()){
-            String spellInfo=spell.showDetails();
-            System.out.print(index+" : ");
-            System.out.println(spellInfo);
-            index++;
-        }
-    }
 
     public void printDeckDetails(Deck deck,int counter,boolean allOrNot) {
         if(allOrNot)
@@ -101,10 +69,10 @@ public class View {
         else
             System.out.println("Heroes :\n");
 
-        if(deck.getItem()==null)
+        if(deck.getUsableItem()==null)
             System.out.println("Items :\n");
         else
-            System.out.println("Items :\n\t1 : " + deck.getItem().showDetails());
+            System.out.println("Items :\n\t1 : " + deck.getUsableItem().showDetails());
         System.out.println("Cards :\n");
         int index = 1;
         for (Spell spell : deck.getSpells()) {
@@ -113,6 +81,39 @@ public class View {
         }
         for (Minion minion : deck.getMinions()) {
             System.out.println("\t" + index + minion.showDetails());
+            index++;
+        }
+    }
+
+    public void showShop() {
+        int index = 1;
+        System.out.println("Heroes :");
+        for (Hero hero : Hero.getHeroes()) {
+            String heroInfo = hero.showDetails();
+            System.out.print(index + " : ");
+            System.out.println(heroInfo);
+            index++;
+        }
+        index = 1;
+        System.out.println("Items :");
+        for (UsableItem usableItem : UsableItem.getUsableItems()) {
+            String itemInfo = usableItem.showDetails();
+            System.out.print(index + " : ");
+            System.out.println(itemInfo);
+            index++;
+        }
+        index = 1;
+        System.out.println("Cards :");
+        for (Minion minion : Minion.getMinions()) {
+            String minionInfo = minion.showDetails();
+            System.out.print(index + " : ");
+            System.out.println(minionInfo);
+            index++;
+        }
+        for (Spell spell : Spell.getSpells()) {
+            String spellInfo = spell.showDetails();
+            System.out.print(index + " : ");
+            System.out.println(spellInfo);
             index++;
         }
     }
@@ -161,6 +162,38 @@ public class View {
                 "5 : save\n" +
                 "6 : logout\n" +
                 "7 : help";
+        System.out.println(helpstr);
+    }
+    public void showBattleMenu(){
+        String helpstr = "1 : Game Info\n" +
+                "2 : Show my minions\n" +
+                "3 : Show opponent minion\n" +
+                "4 : Show card Info\n" +
+                "5 : Select [cardId]\n" +
+                "if you select a card :\n" +
+                "\t1 : Move To\n" +
+                "\t2 : Attack\n" +
+                "6 : Attack combo\n" +
+                "7 : Use Special power\n" +
+                "8 : Show hand\n" +
+                "9 : Insert in\n" +
+                "10 : End turn\n" +
+                "11 : Show collectables\n" +
+                "12 : Select [collectableId] " +
+                "if you select an item :\n" +
+                "\t1 : Show Info\n" +
+                "\t2 : Use\n" +
+                "13 : Search\n" +
+                "14 : Show next Card\n" +
+                "15 : Enter graveyard\n" +
+                "if you enter graveyard :\n" +
+                "\t1 : Show Info[cardId]\n" +
+                "\t2 : Show Cards\n" +
+                "\t3: : Exit\n" +
+                "16 : Help\n" +//todo different work of help
+                "17 : End Game\n" +
+                "18 : Exit\n" +
+                "19 : Show menu";
         System.out.println(helpstr);
     }
 }
