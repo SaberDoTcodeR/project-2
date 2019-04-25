@@ -101,9 +101,9 @@ class Add extends Command {
     @Override
     public void apply(Request request) {
         int id = Integer.parseInt(matcher.group(1).trim());
-        String deckName = matcher.group(3).trim();
+        String deckName = matcher.group(2).trim();
         if (Account.getLoginAccount().getCollection().findDeck(deckName) == null) {
-            request.setError(ErrorType.DECK_EXISTENCE);
+            request.setError(ErrorType.NO_DECK_FOUND);
             return;
         }
         if (Account.getLoginAccount().getCollection().hasThisCard(id)) {
@@ -136,15 +136,15 @@ class Remove extends Command {
     @Override
     public void apply(Request request) {
         int id = Integer.parseInt(matcher.group(1).trim());
-        String deckName = matcher.group(3).trim();
-        if (Account.getLoginAccount().getCollection().findDeck(deckName) == null) {
+        String deckName = matcher.group(2).trim();
+        if (Account.getLoginAccount().getCollection().findDeck(deckName) != null) {
             if (Account.getLoginAccount().getCollection().findDeck(deckName).hasThisCard(id)) {
                 Account.getLoginAccount().getCollection().removeFromDeck(id, deckName);
             } else {
                 request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
             }
         } else {
-            request.setError(ErrorType.DECK_EXISTENCE);
+            request.setError(ErrorType.NO_DECK_FOUND);
         }
     }
 }

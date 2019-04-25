@@ -1,5 +1,6 @@
 package model.Menus;
 
+import control.MainMenuControl;
 import model.Cards.Hero;
 import model.Cards.Minion;
 import model.Cards.Spell;
@@ -17,7 +18,7 @@ public class Collection {
     private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
     private ArrayList<Deck> stroyModeDeck = new ArrayList<>();//should be added
-    private int idMaker = 0;
+    private long idMaker = 10000;
 
     public ArrayList<Deck> getStroyModeDeck() {
         return stroyModeDeck;
@@ -31,7 +32,7 @@ public class Collection {
         this.heroes = heroes;
     }
 
-    public int getIdMaker() {
+    public long getIdMaker() {
         return idMaker;
     }
 
@@ -79,40 +80,44 @@ public class Collection {
     public void addToCollection(String cardName) {
         for (Hero hero : Hero.getHeroes()) {
             if (hero.getName().equals(cardName)) {
-                hero.setId(this.getIdMaker());
+                Hero hero1 = hero.duplicate();
+                hero1.setId(this.getIdMaker());
                 this.idMaker++;
-                this.heroes.add(hero);
+                this.heroes.add(hero1);
                 return;
             }
         }
         for (Spell spell : Spell.getSpells()) {
             if (spell.getName().equals(cardName)) {
-                spell.setId(this.getIdMaker());
+                Spell spell1 = spell.duplicate();
+                spell1.setId(this.getIdMaker());
                 this.idMaker++;
-                this.spells.add(spell);
+                this.spells.add(spell1);
                 return;
             }
         }
         for (Minion minion : Minion.getMinions()) {
             if (minion.getName().equals(cardName)) {
-                minion.setId(this.getIdMaker());
+                Minion minion1=minion.duplicate();
+                minion1.setId(this.getIdMaker());
                 this.idMaker++;
-                this.minions.add(minion);
+                this.minions.add(minion1);
                 return;
             }
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
             if (usableItem.getName().equals(cardName)) {
-                usableItem.setId(this.getIdMaker());
+                UsableItem usableItem1=usableItem.duplicate();
+                usableItem1.setId(this.getIdMaker());
                 this.idMaker++;
-                this.usableItems.add(usableItem);
+                this.usableItems.add(usableItem1);
                 return;
             }
         }
     }
 
-    public ArrayList<Integer> search(String objectName) {
-        ArrayList<Integer> ids = new ArrayList<>();
+    public ArrayList<Long> search(String objectName) {
+        ArrayList<Long> ids = new ArrayList<>();
         for (Hero hero : getHeroes()) {
             if (hero.getName().equals(objectName)) {
                 ids.add(hero.getId());
@@ -157,22 +162,22 @@ public class Collection {
     }
 
     public boolean hasThisCard(int objectID) {
-        for (Hero hero : getHeroes()) {
+        for (Hero hero : this.getHeroes()) {
             if (hero.getId() == objectID) {
                 return true;
             }
         }
-        for (Spell spell : getSpells()) {
+        for (Spell spell : this.getSpells()) {
             if (spell.getId() == objectID) {
                 return true;
             }
         }
-        for (Minion minion : getMinions()) {
+        for (Minion minion : this.getMinions()) {
             if (minion.getId() == objectID) {
                 return true;
             }
         }
-        for (UsableItem usableItem : getUsableItems()) {
+        for (UsableItem usableItem : this.getUsableItems()) {
             if (usableItem.getId() == objectID) {
                 return true;
             }

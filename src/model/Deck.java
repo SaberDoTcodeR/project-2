@@ -56,7 +56,7 @@ public class Deck {
     }
 
     public boolean isFilled() {
-        if (getSpells().size() + getMinions().size() == 20)
+        if (getHero() != null&&getSpells().size() + getMinions().size() == 20)
             return true;
         return false;
     }
@@ -69,7 +69,7 @@ public class Deck {
     }
 
     public boolean hasThisCard(int objectID) {
-        if (getHero().getId() == objectID)
+        if (getHero()!=null&&getHero().getId() == objectID)
             return true;
         for (Spell spell : getSpells()) {
             if (spell.getId() == objectID) {
@@ -81,7 +81,7 @@ public class Deck {
                 return true;
             }
         }
-        if (getUsableItem().getId() == objectID)
+        if (getUsableItem()!=null&&getUsableItem().getId() == objectID)
             return true;
         return false;
     }

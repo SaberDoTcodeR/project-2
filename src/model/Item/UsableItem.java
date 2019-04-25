@@ -27,6 +27,9 @@ public abstract class UsableItem extends Item {
     public static ArrayList<UsableItem> getUsableItems() {
         return usableItems;
     }
+    public UsableItem duplicate(){
+        return null;
+    }
 }
 
 enum UsableItemWork {

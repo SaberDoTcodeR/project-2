@@ -35,7 +35,7 @@ public class View {
         System.out.println(name + " is a valid deck.");
     }
 
-    public void printObjectId(ArrayList<Integer> id) {
+    public void printObjectId(ArrayList<Long> id) {
         for (int i = 0; i < id.size(); i++) {
             System.out.println((i+1)+" - "+id.get(i));
         }
@@ -79,14 +79,14 @@ public class View {
             System.out.println("Items :");
         else
             System.out.println("Items :\n1 : " + deck.getUsableItem().showDetails());
-        System.out.print("Cards :\n\t");
+        System.out.print("Cards :\n");
         int index = 1;
         for (Spell spell : deck.getSpells()) {
-            System.out.println( "\t" + index  + spell.showDetails());
+            System.out.println( "\t" + index +" : " + spell.showDetails());
             index++;
         }
         for (Minion minion : deck.getMinions()) {
-            System.out.println("\t" + index + minion.showDetails());
+            System.out.println("\t" + index  +" : "+ minion.showDetails());
             index++;
         }
     }

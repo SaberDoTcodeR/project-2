@@ -2,7 +2,7 @@ package model.Item;
 
 public abstract class Item {
     private String name;
-    private int id;
+    private long id;
 
     public String getName() {
         return name.toLowerCase();
@@ -12,11 +12,11 @@ public abstract class Item {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

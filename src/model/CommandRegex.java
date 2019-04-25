@@ -22,10 +22,10 @@ public enum CommandRegex {
             "^delete deck\\s+(\\w+)$"
     ),
     ADD(
-            "^add\\s+(\\w+)\\s+to deck\\s+(\\w+)$"
+            "^add\\s+(\\d+)\\s+to deck\\s+(\\w+)$"
     ),
     REMOVE(
-            "^remove\\s+(\\w+)\\s+from deck\\s+(\\w+)$"
+            "^remove\\s+(\\d+)\\s+from deck\\s+(\\w+)$"
     ),
     VALIDATE_DECK(
             "^validate deck\\s+(\\w+)$"

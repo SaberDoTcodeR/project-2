@@ -4,7 +4,7 @@ public abstract class Card {
     private String name;
     private boolean isOnMap;
     private int costOfBuy;
-    private int id;
+    private long id;
 
     public String getName() {
         return name.toLowerCase();
@@ -19,7 +19,7 @@ public abstract class Card {
         return isOnMap;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -31,7 +31,7 @@ public abstract class Card {
         this.costOfBuy = costOfBuy;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

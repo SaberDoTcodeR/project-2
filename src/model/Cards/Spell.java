@@ -44,8 +44,13 @@ public abstract class Spell extends Card {
     public int getCostToUse() {
         return costToUse;
     }
+
     public String getType() {
         return "Spell";
+    }
+
+    public Spell duplicate() {
+        return null;
     }
 }
 
@@ -111,6 +116,7 @@ class TotalDisarm extends Spell {
                 " - Desc: " + SpellWork.TOTAL_DISARM;
         return details;
     }
+
 }
 
 class AreaDispel extends Spell {
