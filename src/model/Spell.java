@@ -80,8 +80,8 @@ class TotalDisarm extends Spell {
         return totalDisarm;
     }
 
-    public void buff(Hero hero){
-        Buff buff = new Buff();
+    public void buff(){
+
     }
 
     public void buff(Minion minion){

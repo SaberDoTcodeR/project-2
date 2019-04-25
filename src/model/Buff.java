@@ -6,64 +6,79 @@ public class Buff {
 
     private Random random = new Random(50);
     private int randomNumber = random.nextInt();
-
-    public void holyHero(Hero hero) {
-        hero.setHoly(true);
+    public int getRandomNumber(){
+        return randomNumber;
     }
 
-    public void holyMinion(Minion minion) {
-        minion.setHoly(true);
+}
+class HolyBuff extends Buff{
+    public void holyHero(Cell cell) {
+        cell.getHero().setHoly(true);
     }
-//..........................
-    public void powerHero(Hero hero) {
-        if (randomNumber % 2 == 0)
-            hero.incrementAp(1);
+
+    public void holyMinion(Cell cell) {
+        cell.getMinion().setHoly(true);
+    }
+}
+
+class PowerBuff extends Buff{
+    public void powerHero(Cell cell) {
+        if (getRandomNumber() % 2 == 0)
+            cell.getHero().incrementAp(1);
         else
-            hero.incrementHp(1);
+            cell.getMinion().incrementHp(1);
     }
 
-    public void powerMinion(Minion minion) {
-        if (randomNumber % 2 == 0)
-            minion.incrementAp(1);
+    public void powerMinion(Cell cell) {
+        if (getRandomNumber() % 2 == 0)
+            cell.getHero().incrementAp(1);
         else
-            minion.incrementHp(1);
+            cell.getMinion().incrementHp(1);
     }
-//..........................
-    public void poisionHero(Hero hero) {
-        hero.decrementHp(1);
+}
+
+class PoisionBuff extends Buff{
+    public void poisionHero(Cell cell) {
+        cell.getHero().decrementHp(1);
     }
 
-    public void poisionMinion(Minion minion) {
-        minion.decrementHp(1);
+    public void poisionMinion(Cell cell) {
+        cell.getMinion().decrementHp(1);
     }
-//..........................
-    public void weaknessHero(Hero hero){
-        if (randomNumber % 2 == 0)
-            hero.decrementHp(1);
+}
+
+class WeaknessBuff extends Buff{
+    public void weaknessHero(Cell cell){
+        if (getRandomNumber() % 2 == 0)
+            cell.getHero().decrementHp(1);
         else
-            hero.decrementAp(1);
+            cell.getHero().decrementAp(1);
     }
 
-    public void weaknessMinion(Minion minion){
-        if (randomNumber % 2 == 0)
-            minion.decrementAp(1);
+    public void weaknessMinion(Cell cell){
+        if (getRandomNumber() % 2 == 0)
+            cell.getMinion().decrementAp(1);
         else
-            minion.decrementHp(1);
+            cell.getMinion().decrementHp(1);
     }
-//..........................
-    public void stunHero(Hero hero) {
-        hero.setStunning(true);
+}
+
+class StunBuff extends Buff{
+    public void stunHero(Cell cell) {
+        cell.getHero().setStunning(true);
     }
 
-    public void stunMinion(Minion minion) {
-        minion.setStunning(true);
+    public void stunMinion(Cell cell) {
+        cell.getMinion().setStunning(true);
     }
-//..........................
-    public void disarmHero(Hero hero) {
-        hero.setTypeOfHit(3);
+}
+
+class DisarmBuff extends Buff{
+    public void disarmHero(Cell cell) {
+        cell.getHero().setTypeOfHit(3);
     }
 
-    public void disarmMinion(Minion minion) {
-        minion.setTypeOfHit(3);
+    public void disarmMinion(Cell cell) {
+        cell.getMinion().setTypeOfHit(3);
     }
 }
