@@ -1,4 +1,9 @@
-package model;
+package model.Menus;
+
+import model.Cards.Hero;
+import model.Cards.Minion;
+import model.Cards.Spell;
+import model.Item.UsableItem;
 
 public class Shop {
 
@@ -28,22 +33,24 @@ public class Shop {
 
     public boolean hasThisCard(String objectName) {
         for (Hero hero : Hero.getHeroes()) {
-            if (hero.getName().equals(objectName)) {
+            if (hero.getName().toLowerCase().equals(objectName)) {
                 return true;
             }
         }
         for (Spell spell : Spell.getSpells()) {
-            if (spell.getName().equals(objectName)) {
+            if (spell.getName().toLowerCase().equals(objectName)) {
                 return true;
             }
         }
         for (Minion minion : Minion.getMinions()) {
-            if (minion.getName().equals(objectName)) {
+            if (minion.getName().toLowerCase().equals(objectName)) {
+
                 return true;
+
             }
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
-            if (usableItem.getName().equals(objectName)) {
+            if (usableItem.getName().toLowerCase().equals(objectName)) {
                 return true;
             }
         }

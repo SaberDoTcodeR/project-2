@@ -8,6 +8,8 @@ import model.*;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
+import model.Menus.Account;
+import model.Menus.Shop;
 
 public abstract class Command {
     static View view = View.getInstance();
@@ -429,7 +431,7 @@ class SearchCollection extends Command {
     public void apply(Request request) {
         String objectName = matcher.group(1).trim();
         if (Account.getLoginAccount().getCollection().hasThisCard(objectName)) {
-            System.out.println();
+            System.out.println("List of ID :");
             view.printObjectId(Account.getLoginAccount().getCollection().search(objectName));
         } else {
             request.setError(ErrorType.INVALID_NAME);
@@ -474,9 +476,9 @@ class Sell extends Command {
     public void apply(Request request) {
         int objectId = Integer.parseInt(matcher.group(1).trim());
         if (Account.getLoginAccount().getCollection().hasThisCard(objectId)) {
-            Account.getLoginAccount().getCollection().removeCardFromCollection(objectId);
             int cost = Account.getLoginAccount().getCollection().costOfCard(objectId);
             Account.getLoginAccount().incrementMoney(cost);
+            Account.getLoginAccount().getCollection().removeCardFromCollection(objectId);
             request.setError(ErrorType.DONE_MESSAGE);
         } else {
             request.setError(ErrorType.CARD_EXISTENCE);
@@ -549,14 +551,6 @@ class StartMultiPlayerGame extends Command {
 
     @Override
     public void apply(Request request) {
-        int mode = Integer.parseInt(matcher.group(1).trim());
-        if (mode == 3) {
-            int flags = Integer.parseInt(matcher.group(2).trim());
-            //create game with mode 3
-        } else if (mode == 2) {
-            //create game with mode 2
-        } else {
-            //create game with mode 1
-        }
+        return;
     }
 }

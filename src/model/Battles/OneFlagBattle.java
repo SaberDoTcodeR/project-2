@@ -1,6 +1,6 @@
 package model.Battles;
 
-import model.Account;
+import model.Menus.Account;
 import model.Deck;
 
 public class OneFlagBattle extends Battle{

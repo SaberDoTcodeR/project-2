@@ -1,5 +1,10 @@
-package model;
+package model.Menus;
 
+import model.Cards.Hero;
+import model.Cards.Minion;
+import model.Cards.Spell;
+import model.Deck;
+import model.Item.UsableItem;
 import view.*;
 
 import java.util.ArrayList;

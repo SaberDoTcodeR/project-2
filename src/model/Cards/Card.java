@@ -1,4 +1,4 @@
-package model;
+package model.Cards;
 
 public abstract class Card {
     private String name;
@@ -7,7 +7,7 @@ public abstract class Card {
     private int id;
 
     public String getName() {
-        return name;
+        return name.toLowerCase();
     }
 
     public void setName(String nameOfCard) {
@@ -35,9 +35,7 @@ public abstract class Card {
         return id;
     }
 
-    public String getType() {
-        return this.getClass().getSimpleName();
-    }
+    abstract public String getType();
 
     public abstract String showDetails();
 }

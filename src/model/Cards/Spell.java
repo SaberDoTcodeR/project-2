@@ -1,6 +1,7 @@
-package model;
+package model.Cards;
 
 import javafx.scene.control.Cell;
+import model.Buff;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,16 @@ public abstract class Spell extends Card {
     private int costToUse;
     private Buff buff;
 
+    /* static{
+         spells.add(new AllAttack());
+         spells.add(new AllDisarm());
+         spells.add(new AllPoison());
+         spells.add(new AllPower());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+     }*/
     public Spell(String name, int costToUse, int costOfBuy, Buff buff) {
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
@@ -33,7 +44,9 @@ public abstract class Spell extends Card {
     public int getCostToUse() {
         return costToUse;
     }
-
+    public String getType() {
+        return "Spell";
+    }
 }
 
 enum SpellWork {

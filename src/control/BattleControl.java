@@ -5,6 +5,7 @@ import model.*;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
+import model.Menus.Account;
 import view.*;
 
 public class BattleControl {

@@ -7,7 +7,7 @@ public enum CommandRegex {
     ,SELECT_USER(
             "^select user\\s+(\\w+)$"
     ),START_MULTIPLAYER_GAME(
-            "^start multiplayer game\\s+([1-3])\\s+(\\d+)$"
+            "^start multiplayer game\\s+([1-3])\\s+(\\d+)?$"//todo checked
     ),
     SHOW(
             "^show$"

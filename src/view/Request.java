@@ -1,12 +1,11 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import model.*;
 import control.*;
+import model.Menus.Account;
 
 public class Request {
     public static Scanner scanner = new Scanner(System.in);
@@ -31,6 +30,7 @@ public class Request {
         commands.add(new ArrayList<>());
         commands.add(new ArrayList<>());
         commands.add(new ArrayList<>());
+        commands.add(new ArrayList<>());
 
         commands.get(0).add(new EnterBattle());
         commands.get(0).add(new EnterCollection());
@@ -39,7 +39,7 @@ public class Request {
         commands.get(0).add(new ExitFromMainMenu());
         commands.get(0).add(new Help());
 
-        commands.get(1).add(new GameInfo());
+        /*commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
         commands.get(1).add(new ShowCardInfo());
@@ -48,7 +48,7 @@ public class Request {
         commands.get(1).add(new Attack());
         commands.get(1).add(new AttackCombo());
         commands.get(1).add(new SelectSoldier());
-
+*/
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());
         commands.get(2).add(new ShowAllDecks());
@@ -84,7 +84,6 @@ public class Request {
         commands.get(5).add(new StartGame());
 
 
-
         commands.get(6).add(new SelectUser());
 
         commands.get(7).add(new StartMultiPlayerGame());
@@ -101,6 +100,10 @@ public class Request {
     }
 
     public boolean mainDeckValidation() {
+        if (Account.getLoginAccount().getMainDeck() == null) {
+            this.setError(ErrorType.INVALID_DECK);
+            return false;
+        }
         if (!Account.getLoginAccount().getMainDeck().isValid()) {
             this.setError(ErrorType.INVALID_DECK);
             return false;
@@ -166,18 +169,18 @@ public class Request {
     public void setCommand(String command) {
         this.commandLine = command;
     }
-    public void validateSecondPlayer(String userName){
-        if(Account.getLoginAccount().getUserName().equals(userName))
-        {
+
+    public void validateSecondPlayer(String userName) {
+        if (Account.getLoginAccount().getUserName().equals(userName)) {
             this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
             return;
         }
-        for (Account account:Account.getAllUser()
-             ) {
-            if (account.getUserName().equals(userName)){
-                if(account.getMainDeck().isValid()){
+        for (Account account : Account.getAllUser()
+        ) {
+            if (account.getUserName().equals(userName)) {
+                if (account.getMainDeck().isValid()) {
                     return;
-                }else {
+                } else {
                     this.setError(ErrorType.SECOND_PLAYER_DECK_NOT_VALID);
                     return;
                 }

@@ -1,9 +1,10 @@
-package model;
+package model.Menus;
 
 import java.util.ArrayList;
 
+import model.Deck;
+import model.RecordedMatch;
 import view.*;
-import control.*;
 
 public class Account {
     private static View view = View.getInstance();
@@ -94,6 +95,7 @@ public class Account {
             if(account.getUserName().equals(userName))
                 return account;
         }
+        return null;
     }
     public String getPassWord() {
         return passWord;
