@@ -6,12 +6,13 @@ public class Buff {
 
     private Random random = new Random(50);
     private int randomNumber = random.nextInt();
-    public int getRandomNumber(){
+
+    public int getRandomNumber() {
         return randomNumber;
     }
-
 }
-class HolyBuff extends Buff{
+
+class HolyBuff extends Buff {
     public void holyHero(Cell cell) {
         cell.getHero().setHoly(true);
     }
@@ -21,7 +22,7 @@ class HolyBuff extends Buff{
     }
 }
 
-class PowerBuff extends Buff{
+class PowerBuff extends Buff {
     public void powerHero(Cell cell) {
         if (getRandomNumber() % 2 == 0)
             cell.getHero().incrementAp(1);
@@ -37,25 +38,25 @@ class PowerBuff extends Buff{
     }
 }
 
-class PoisionBuff extends Buff{
-    public void poisionHero(Cell cell) {
+class PosionBuff extends Buff {
+    public void posionHero(Cell cell) {
         cell.getHero().decrementHp(1);
     }
 
-    public void poisionMinion(Cell cell) {
+    public void posionMinion(Cell cell) {
         cell.getMinion().decrementHp(1);
     }
 }
 
-class WeaknessBuff extends Buff{
-    public void weaknessHero(Cell cell){
+class WeaknessBuff extends Buff {
+    public void weaknessHero(Cell cell) {
         if (getRandomNumber() % 2 == 0)
             cell.getHero().decrementHp(1);
         else
             cell.getHero().decrementAp(1);
     }
 
-    public void weaknessMinion(Cell cell){
+    public void weaknessMinion(Cell cell) {
         if (getRandomNumber() % 2 == 0)
             cell.getMinion().decrementAp(1);
         else
@@ -63,7 +64,7 @@ class WeaknessBuff extends Buff{
     }
 }
 
-class StunBuff extends Buff{
+class StunBuff extends Buff {
     public void stunHero(Cell cell) {
         cell.getHero().setStunning(true);
     }
@@ -73,7 +74,7 @@ class StunBuff extends Buff{
     }
 }
 
-class DisarmBuff extends Buff{
+class DisarmBuff extends Buff {
     public void disarmHero(Cell cell) {
         cell.getHero().setTypeOfHit(3);
     }

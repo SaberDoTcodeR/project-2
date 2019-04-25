@@ -67,6 +67,10 @@ enum SpellWork {
 
 class TotalDisarm extends Spell {
 
+    public TotalDisarm(){
+        super("TotalDisarm",0,1000);
+    }
+
     public TotalDisarm(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -78,14 +82,6 @@ class TotalDisarm extends Spell {
     public Spell duplicate() {
         TotalDisarm totalDisarm = new TotalDisarm(this);
         return totalDisarm;
-    }
-
-    public void buff(){
-
-    }
-
-    public void buff(Minion minion){
-
     }
 
     @Override
@@ -104,6 +100,10 @@ class TotalDisarm extends Spell {
 }
 
 class AreaDispel extends Spell {
+
+    public AreaDispel(){
+        super("AreaDispel",2,1500);
+    }
 
     public AreaDispel(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -135,6 +135,10 @@ class AreaDispel extends Spell {
 
 class Empower extends Spell {
 
+    public Empower(){
+        super("Empower",1,250);
+    }
+
     public Empower(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -164,6 +168,10 @@ class Empower extends Spell {
 }
 
 class FireBall extends Spell {
+
+    public FireBall(){
+        super("FireBall",1,400);
+    }
 
     public FireBall(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -195,6 +203,10 @@ class FireBall extends Spell {
 
 class GodStrength extends Spell {
 
+    public GodStrength(){
+        super("GodStrength",2,450);
+    }
+
     public GodStrength(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -224,6 +236,10 @@ class GodStrength extends Spell {
 }
 
 class HellFire extends Spell {
+
+    public HellFire(){
+        super("HellFire",3,600);
+    }
 
     public HellFire(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -255,6 +271,10 @@ class HellFire extends Spell {
 
 class LightingBolt extends Spell {
 
+    public LightingBolt(){
+        super("LightingBolt",2,1250);
+    }
+
     public LightingBolt(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -284,6 +304,10 @@ class LightingBolt extends Spell {
 }
 
 class PoisonLake extends Spell {
+
+    public PoisonLake(){
+        super("PoisonLake",5,900);
+    }
 
     public PoisonLake(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -315,6 +339,10 @@ class PoisonLake extends Spell {
 
 class Madness extends Spell {
 
+    public Madness(){
+        super("Madness",0,650);
+    }
+
     public Madness(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -344,6 +372,10 @@ class Madness extends Spell {
 }
 
 class AllDisarm extends Spell {
+
+    public AllDisarm(){
+        super("AllDisarm",9,2000);
+    }
 
     public AllDisarm(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -375,6 +407,10 @@ class AllDisarm extends Spell {
 
 class AllPoison extends Spell {
 
+    public AllPoison(){
+        super("AllPoison",8,1500);
+    }
+
     public AllPoison(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -404,6 +440,10 @@ class AllPoison extends Spell {
 }
 
 class Dispel extends Spell {
+
+    public Dispel(){
+        super("Dispel",0,2100);
+    }
 
     public Dispel(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -435,6 +475,10 @@ class Dispel extends Spell {
 
 class HealthWithProfit extends Spell {
 
+    public HealthWithProfit(){
+        super("HealthWithProfit",0,2250);
+    }
+
     public HealthWithProfit(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -465,6 +509,10 @@ class HealthWithProfit extends Spell {
 
 class PowerUp extends Spell {
 
+    public PowerUp(){
+        super("PowerUp",2,2500);
+    }
+
     public PowerUp(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -494,6 +542,10 @@ class PowerUp extends Spell {
 }
 
 class AllPower extends Spell {
+
+    public AllPower(){
+        super("AllPower",4,2000);
+    }
 
     public AllPower(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -526,6 +578,10 @@ class AllPower extends Spell {
 
 class AllAttack extends Spell {
 
+    public AllAttack(){
+        super("AllAttack",4,1500);
+    }
+
     public AllAttack(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -555,6 +611,10 @@ class AllAttack extends Spell {
 }
 
 class Weakening extends Spell {
+
+    public Weakening(){
+        super("Weakening",1,1000);
+    }
 
     public Weakening(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
@@ -586,6 +646,10 @@ class Weakening extends Spell {
 
 class Sacrifice extends Spell {
 
+    public Sacrifice(){
+        super("Sacrifice",2,1600);
+    }
+
     public Sacrifice(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -616,6 +680,10 @@ class Sacrifice extends Spell {
 
 class KingsGuard extends Spell {
 
+    public KingsGuard(){
+        super("KingsGuard",9,1750);
+    }
+
     public KingsGuard(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
@@ -645,6 +713,10 @@ class KingsGuard extends Spell {
 }
 
 class Shock extends Spell {
+
+    public Shock(){
+        super("Shock",1,1200);
+    }
 
     public Shock(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);

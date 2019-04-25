@@ -50,6 +50,10 @@ enum UsableItemWork {
 
 class CrownOfWisdom extends UsableItem {
 
+    public CrownOfWisdom(){
+        super(300,"CrownOfWisdom");
+    }
+
     public CrownOfWisdom(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
@@ -74,6 +78,10 @@ class CrownOfWisdom extends UsableItem {
 }
 
 class ShameEmblem extends UsableItem {
+
+    public ShameEmblem(){
+        super(4000,"ShameEmblem");
+    }
 
     public ShameEmblem(int costOfBuy, String name) {
         super(costOfBuy, name);
@@ -100,6 +108,10 @@ class ShameEmblem extends UsableItem {
 
 class DamolArchery extends UsableItem {
 
+    public DamolArchery(){
+        super(30000,"DamolArchery");
+    }
+
     public DamolArchery(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
@@ -123,6 +135,10 @@ class DamolArchery extends UsableItem {
 }
 
 class SimorghPlume extends UsableItem {
+
+    public SimorghPlume(){
+        super(3500,"SimorghePlume");
+    }
 
     public SimorghPlume(int costOfBuy, String name) {
         super(costOfBuy, name);
@@ -149,6 +165,10 @@ class SimorghPlume extends UsableItem {
 
 class TerrorHood extends UsableItem {
 
+    public TerrorHood(){
+        super(5000,"TerrorHood");
+    }
+
     public TerrorHood(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
@@ -173,6 +193,10 @@ class TerrorHood extends UsableItem {
 }
 
 class KingWisdom extends UsableItem {
+
+    public KingWisdom(){
+        super(9000,"KingWisdom");
+    }
 
     public KingWisdom(int costOfBuy, String name) {
         super(costOfBuy, name);
@@ -199,6 +223,10 @@ class KingWisdom extends UsableItem {
 
 class AssassinationDagger extends UsableItem {
 
+    public AssassinationDagger(){
+        super(15000,"AssassinationDagger");
+    }
+
     public AssassinationDagger(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
@@ -224,6 +252,10 @@ class AssassinationDagger extends UsableItem {
 
 class PoisonousDagger extends UsableItem {
 
+    public PoisonousDagger(){
+        super(7000,"PoisonousDagger");
+    }
+
     public PoisonousDagger(int costOfBuy, String name) {
         super(costOfBuy, name);
     }
@@ -248,6 +280,10 @@ class PoisonousDagger extends UsableItem {
 }
 
 class ShockHammer extends UsableItem {
+
+    public ShockHammer(){
+        super(15000,"ShockHammer");
+    }
 
     public ShockHammer(int costOfBuy, String name) {
         super(costOfBuy, name);
@@ -287,6 +323,9 @@ class SoulEater extends UsableItem {
         return soulEater;
     }
 
+    public SoulEater(){
+        super(25000,"SoulEater");
+    }
 
     @Override
     public String showDetails() {
@@ -298,6 +337,10 @@ class SoulEater extends UsableItem {
 }
 
 class Baptism extends UsableItem {
+
+    public Baptism(){
+        super(20000,"Baptism");
+    }
 
     public Baptism(int costOfBuy, String name) {
         super(costOfBuy, name);
