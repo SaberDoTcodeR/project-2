@@ -89,7 +89,12 @@ public class Account {
     public static ArrayList<Account> getAllUser() {
         return allUser;
     }
-
+    public Account getAccount(String userName){
+        for (Account account:allUser){
+            if(account.getUserName().equals(userName))
+                return account;
+        }
+    }
     public String getPassWord() {
         return passWord;
     }

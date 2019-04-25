@@ -2,7 +2,7 @@ package model;
 
 public enum CommandRegex {
     START_GAME(
-            "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)$"
+            "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)?$"//todo checked
     )
     ,SELECT_USER(
             "^select user\\s+(\\w+)$"

@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 
 import control.*;
 import model.*;
+import model.Battles.FlagsBattle;
+import model.Battles.HeroBattle;
+import model.Battles.OneFlagBattle;
 
 public abstract class Command {
     static View view = View.getInstance();
@@ -504,11 +507,20 @@ class StartGame extends Command {
         if (Account.getLoginAccount().getCollection().checkDeckValidation(deckName)) {
             if (mode == 3) {
                 int flags = Integer.parseInt(matcher.group(3).trim());
-                //create game with mode 3
+                FlagsBattle battle = new FlagsBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
+                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount(), flags);
+                GameControl gameControl = new GameControl();
+                gameControl.main(battle);
             } else if (mode == 2) {
-                //create game with mode 2
+                OneFlagBattle battle = new OneFlagBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
+                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount());
+                GameControl gameControl = new GameControl();
+                gameControl.main(battle);
             } else {
-                //create game with mode 1
+                HeroBattle battle = new HeroBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
+                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount());
+                GameControl gameControl = new GameControl();
+                gameControl.main(battle);
             }
         } else
             request.setError(ErrorType.INVALID_DECK);

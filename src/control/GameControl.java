@@ -2,13 +2,14 @@ package control;
 
 import model.*;
 
+import model.Battles.Battle;
 import view.*;
 
 public class GameControl {
     public static boolean finished = false;
     private static View view = View.getInstance();
 
-    public void main() {
+    public void main(Battle battle) {
         view.showBattleMenu();
         while (!finished) {
             Request request = new Request();

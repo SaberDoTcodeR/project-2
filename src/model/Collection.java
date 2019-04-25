@@ -11,7 +11,12 @@ public class Collection {
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
+    private ArrayList<Deck> stroyModeDeck = new ArrayList<>();//should be added
     private int idMaker = 0;
+
+    public ArrayList<Deck> getStroyModeDeck() {
+        return stroyModeDeck;
+    }
 
     public ArrayList<Hero> getHeroes() {
         return heroes;
