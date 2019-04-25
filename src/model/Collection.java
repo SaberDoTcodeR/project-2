@@ -11,7 +11,8 @@ public class Collection {
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
-    private int idMaker=0;
+    private int idMaker = 0;
+
     public ArrayList<Hero> getHeroes() {
         return heroes;
     }
@@ -19,9 +20,11 @@ public class Collection {
     public void setHeroes(ArrayList<Hero> heroes) {
         this.heroes = heroes;
     }
-    public int getIdMaker(){
+
+    public int getIdMaker() {
         return idMaker;
     }
+
     public ArrayList<Spell> getSpells() {
         return spells;
     }
@@ -63,24 +66,25 @@ public class Collection {
         view.showCollection(this);
     }
 
-    public void addToCollection(String cardName){
-        for (Hero hero:Hero.getHeroes()) {
-            if(hero.getName().equals(cardName)){
+    public void addToCollection(String cardName) {
+        for (Hero hero : Hero.getHeroes()) {
+            if (hero.getName().equals(cardName)) {
                 hero.setId(this.getIdMaker());
                 this.idMaker++;
                 this.heroes.add(hero);
                 return;
             }
         }
-        for (Spell spell:Spell.getSpells()) {
-            if(spell.getName().equals(cardName)){
+        for (Spell spell : Spell.getSpells()) {
+            if (spell.getName().equals(cardName)) {
                 spell.setId(this.getIdMaker());
                 this.idMaker++;
                 this.spells.add(spell);
                 return;
             }
-        }for (Minion minion:Minion.getMinions()) {
-            if(minion.getName().equals(cardName)){
+        }
+        for (Minion minion : Minion.getMinions()) {
+            if (minion.getName().equals(cardName)) {
                 minion.setId(this.getIdMaker());
                 this.idMaker++;
                 this.minions.add(minion);
@@ -88,7 +92,7 @@ public class Collection {
             }
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
-            if(usableItem.getName().equals(cardName)){
+            if (usableItem.getName().equals(cardName)) {
                 usableItem.setId(this.getIdMaker());
                 this.idMaker++;
                 this.usableItems.add(usableItem);
@@ -96,25 +100,26 @@ public class Collection {
             }
         }
     }
+
     public ArrayList<Integer> search(String objectName) {
         ArrayList<Integer> ids = new ArrayList<>();
         for (Hero hero : getHeroes()) {
-            if (hero.getName().equals(objectName)){
-                 ids.add(hero.getId());
+            if (hero.getName().equals(objectName)) {
+                ids.add(hero.getId());
             }
         }
         for (Spell spell : getSpells()) {
-            if (spell.getName().equals(objectName)){
+            if (spell.getName().equals(objectName)) {
                 ids.add(spell.getId());
             }
         }
         for (Minion minion : getMinions()) {
-            if (minion.getName().equals(objectName)){
+            if (minion.getName().equals(objectName)) {
                 ids.add(minion.getId());
             }
         }
         for (UsableItem usableItem : getUsableItems()) {
-            if (usableItem.getName().equals(objectName)){
+            if (usableItem.getName().equals(objectName)) {
                 ids.add(usableItem.getId());
             }
         }
@@ -253,52 +258,52 @@ public class Collection {
 
     public void showAllDecks() {
         //todo check working
-        int index=1;
-        if (Account.getLoginAccount().getMainDeck() != null){
-            view.printDeckDetails(Account.getLoginAccount().getMainDeck(),index++,true);
+        int index = 1;
+        if (Account.getLoginAccount().getMainDeck() != null) {
+            view.printDeckDetails(Account.getLoginAccount().getMainDeck(), index++, true);
             for (Deck deck : this.getDecks()) {
-                if (deck.getName().equals(Account.getLoginAccount().getMainDeck().getName()) )
+                if (deck.getName().equals(Account.getLoginAccount().getMainDeck().getName()))
                     continue;
-                view.printDeckDetails(deck,index,true);
+                view.printDeckDetails(deck, index, true);
                 index++;
             }
         } else {
 
             for (Deck deck : this.getDecks()) {
-                view.printDeckDetails(deck,index,true);
+                view.printDeckDetails(deck, index, true);
             }
         }
     }
 
     public void showDeck(String deckName) {
         Deck deck = findDeck(deckName);
-        view.printDeckDetails(deck,1,false);
+        view.printDeckDetails(deck, 1, false);
     }
 
-    public void removeCardFromCollection(int objectId){
+    public void removeCardFromCollection(int objectId) {
         this.getHeroes().removeIf(hero -> hero.getId() == objectId);
         this.getSpells().removeIf(spell -> spell.getId() == objectId);
         this.getMinions().removeIf(minion -> minion.getId() == objectId);
         this.getUsableItems().removeIf(item -> item.getId() == objectId);
         for (Deck deck : this.getDecks()) {
-            removeFromDeck(objectId,deck.getName());
+            removeFromDeck(objectId, deck.getName());
         }
     }
 
-    public int costOfCard(int id){
-        for (Hero hero : this.getHeroes()){
+    public int costOfCard(int id) {
+        for (Hero hero : this.getHeroes()) {
             if (hero.getId() == id)
                 return hero.getCostOfBuy();
         }
-        for (Minion minion:this.getMinions()){
+        for (Minion minion : this.getMinions()) {
             if (minion.getId() == id)
                 return minion.getCostOfBuy();
         }
-        for (Spell spell:this.getSpells()){
+        for (Spell spell : this.getSpells()) {
             if (spell.getId() == id)
                 return spell.getCostOfBuy();
         }
-        for (UsableItem usableItem :this.getUsableItems()){
+        for (UsableItem usableItem : this.getUsableItems()) {
             if (usableItem.getId() == id)
                 return usableItem.getCostOfBuy();
         }

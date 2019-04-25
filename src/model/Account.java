@@ -1,25 +1,29 @@
 package model;
 
 import java.util.ArrayList;
+
 import view.*;
 import control.*;
+
 public class Account {
     private static View view = View.getInstance();
     private static Account loginAccount;
-    private static ArrayList<Account> allUser=new ArrayList<>();
-    private String userName,passWord;
-    private int money,wins=0;
+    private static ArrayList<Account> allUser = new ArrayList<>();
+    private String userName, passWord;
+    private int money, wins = 0;
     private Deck mainDeck;
-    private ArrayList<RecordedMatch> matches=new ArrayList<RecordedMatch>();
-    private Collection myCollection=new Collection();
+    private ArrayList<RecordedMatch> matches = new ArrayList<RecordedMatch>();
+    private Collection myCollection = new Collection();
+
     public int getMoney() {
         return money;
     }
-    public void decreament(int x){
-        this.money-=x;
+
+    public void decreament(int x) {
+        this.money -= x;
     }
 
-    public void incrementMoney(int money){
+    public void incrementMoney(int money) {
         this.money += money;
     }
 
@@ -35,16 +39,16 @@ public class Account {
         return myCollection;
     }
 
-    public Account (String userName, String passWord)
-    {
-        this.userName=userName;
-        this.passWord=passWord;
-        this.money=15000;
+    public Account(String userName, String passWord) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.money = 15000;
 
         allUser.add(this);
 
     }
-    public static void showLeaderboard(){
+
+    public static void showLeaderboard() {
         for (int i = 0; i < allUser.size() - 1; i++) {
             Account pl = allUser.get(i);
             int maxW = pl.wins;

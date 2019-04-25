@@ -66,6 +66,7 @@ class DoubleEntendreArrow extends CollectableItem {
     public DoubleEntendreArrow(String name) {
         super(name);
     }
+
     public DoubleEntendreArrow(DoubleEntendreArrow doubleEntendreArrow) {
         super(doubleEntendreArrow);
     }
@@ -89,6 +90,7 @@ class Elexir extends CollectableItem {
     public Elexir(String name) {
         super(name);
     }
+
     public Elexir(Elexir elexir) {
         super(elexir);
     }
@@ -112,6 +114,7 @@ class ManaElectuary extends CollectableItem {
     public ManaElectuary(String name) {
         super(name);
     }
+
     public ManaElectuary(ManaElectuary manaElectuary) {
         super(manaElectuary);
     }
