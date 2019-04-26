@@ -1,5 +1,6 @@
 package model;
 
+import model.Cards.Buff;
 import model.Cards.Hero;
 import model.Cards.Minion;
 import model.Item.CollectableItem;
@@ -7,12 +8,13 @@ import model.Item.CollectableItem;
 import java.util.ArrayList;
 
 public class Cell {
-    private int x, y;
+    private int x;
+    private int y;
     private boolean flag;
     private Hero hero;
     private Minion minion;
     private CollectableItem collectableItem;
-    private ArrayList<Buff> cellEffect = new ArrayList<Buff>();
+    private ArrayList<Buff> cellEffect = new ArrayList<>();
 
     public int getX() {
         return x;

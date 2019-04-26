@@ -105,6 +105,14 @@ public abstract class Hero extends Card {
         this.ap -= unit;
     }
 
+    public void changeAP(int unit){
+        this.ap += unit;
+    }
+
+    public void changeHP(int unit){
+        this.hp += unit;
+    }
+
     public void incrementHp(int unit){
         this.hp += unit;
     }
@@ -129,6 +137,40 @@ public abstract class Hero extends Card {
         return specialPower;
     }
 */
+}
+
+enum HeroesAP{
+    ARASH(2),
+    DRAGON(4),
+    ESFANDYAR(3),
+    KAVEH(4),
+    LEGEND(3),
+    RAKHSH(4),
+    ROSTAM(7),
+    SIMURGH(4),
+    WHITE_BOGEY(4),
+    ZAHHAK(4);
+    private int apUnit;
+    HeroesAP (int apUnit){
+        this.apUnit = apUnit;
+    }
+}
+
+enum HeroesHP{
+    ARASH(30),
+    DRAGON(50),
+    ESFANDYAR(35),
+    KAVEH(50),
+    LEGEND(40),
+    RAKHSH(50),
+    ROSTAM(55),
+    SIMURGH(50),
+    WHITE_BOGEY(50),
+    ZAHHAK(50);
+    private int hpUnit;
+    HeroesHP (int hpUnit){
+        this.hpUnit = hpUnit;
+    }
 }
 
 class WhiteBogey extends Hero {

@@ -1,7 +1,6 @@
 package model.Cards;
 
-import javafx.scene.control.Cell;
-import model.Buff;
+import model.Cell;
 
 import java.util.ArrayList;
 
@@ -9,17 +8,18 @@ public abstract class Spell extends Card {
     private static ArrayList<Spell> spells = new ArrayList<>();
     private int costToUse;
 
-    /* static{
-         spells.add(new AllAttack());
-         spells.add(new AllDisarm());
-         spells.add(new AllPoison());
-         spells.add(new AllPower());
-         spells.add(new AllAttack());
-         spells.add(new AllAttack());
-         spells.add(new AllAttack());
-         spells.add(new AllAttack());
-     }*/
-    public Spell(String name, int costToUse, int costOfBuy, Buff buff) {
+    static {
+        spells.add(new AllAttack());
+        spells.add(new AllDisarm());
+        spells.add(new AllPoison());
+        spells.add(new AllPower());
+        spells.add(new AllAttack());
+        spells.add(new AllAttack());
+        spells.add(new AllAttack());
+        spells.add(new AllAttack());
+    }
+
+    public Spell(String name, int costToUse, int costOfBuy) {
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
         this.costToUse = costToUse;
@@ -41,6 +41,10 @@ public abstract class Spell extends Card {
     public int getCostToUse() {
         return costToUse;
     }
+
+    public abstract void castBuff(Cell cell);
+
+    public abstract void castBuff(ArrayList<Cell> cells);
 
     public String getType() {
         return "Spell";
@@ -87,15 +91,15 @@ enum SpellWork {
 
 class TotalDisarm extends Spell {
 
-    public TotalDisarm(){
-        super("TotalDisarm",0,1000);
+    public TotalDisarm() {
+        super("TotalDisarm", 0, 1000);
     }
 
     public TotalDisarm(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public TotalDisarm(TotalDisarm totalDisarm){
+    public TotalDisarm(TotalDisarm totalDisarm) {
         super(totalDisarm);
     }
 
@@ -110,6 +114,17 @@ class TotalDisarm extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+        //todo
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+        DisarmBuff disarmBuff = new DisarmBuff();
+        disarmBuff.disarm(cells);
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -121,8 +136,8 @@ class TotalDisarm extends Spell {
 
 class AreaDispel extends Spell {
 
-    public AreaDispel(){
-        super("AreaDispel",2,1500);
+    public AreaDispel() {
+        super("AreaDispel", 2, 1500);
     }
 
     public AreaDispel(String name, int costToUse, int costOfBuy) {
@@ -144,6 +159,16 @@ class AreaDispel extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -155,19 +180,19 @@ class AreaDispel extends Spell {
 
 class Empower extends Spell {
 
-    public Empower(){
-        super("Empower",1,250);
+    public Empower() {
+        super("Empower", 1, 250);
     }
 
     public Empower(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public Empower(Empower empower){
+    public Empower(Empower empower) {
         super(empower);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Empower empower = new Empower(this);
         return empower;
     }
@@ -175,6 +200,17 @@ class Empower extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+        ChangeApBuff changeApBuff = new ChangeApBuff(2);
+        changeApBuff.changeAP(cells);
     }
 
     @Override
@@ -189,19 +225,19 @@ class Empower extends Spell {
 
 class FireBall extends Spell {
 
-    public FireBall(){
-        super("FireBall",1,400);
+    public FireBall() {
+        super("FireBall", 1, 400);
     }
 
     public FireBall(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public FireBall(FireBall fireBall){
+    public FireBall(FireBall fireBall) {
         super(fireBall);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         FireBall fireBall = new FireBall(this);
         return fireBall;
     }
@@ -209,6 +245,16 @@ class FireBall extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -223,19 +269,19 @@ class FireBall extends Spell {
 
 class GodStrength extends Spell {
 
-    public GodStrength(){
-        super("GodStrength",2,450);
+    public GodStrength() {
+        super("GodStrength", 2, 450);
     }
 
     public GodStrength(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public GodStrength(GodStrength godStrength){
+    public GodStrength(GodStrength godStrength) {
         super(godStrength);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         GodStrength godStrength = new GodStrength(this);
         return godStrength;
     }
@@ -243,6 +289,16 @@ class GodStrength extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -257,19 +313,19 @@ class GodStrength extends Spell {
 
 class HellFire extends Spell {
 
-    public HellFire(){
-        super("HellFire",3,600);
+    public HellFire() {
+        super("HellFire", 3, 600);
     }
 
     public HellFire(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public HellFire(HellFire hellFire){
+    public HellFire(HellFire hellFire) {
         super(hellFire);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
         return hellFire;
     }
@@ -277,6 +333,16 @@ class HellFire extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -291,19 +357,19 @@ class HellFire extends Spell {
 
 class LightingBolt extends Spell {
 
-    public LightingBolt(){
-        super("LightingBolt",2,1250);
+    public LightingBolt() {
+        super("LightingBolt", 2, 1250);
     }
 
     public LightingBolt(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public LightingBolt(LightingBolt lightingBolt){
+    public LightingBolt(LightingBolt lightingBolt) {
         super(lightingBolt);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         LightingBolt lightingBolt = new LightingBolt(this);
         return lightingBolt;
     }
@@ -311,6 +377,16 @@ class LightingBolt extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -325,19 +401,19 @@ class LightingBolt extends Spell {
 
 class PoisonLake extends Spell {
 
-    public PoisonLake(){
-        super("PoisonLake",5,900);
+    public PoisonLake() {
+        super("PoisonLake", 5, 900);
     }
 
     public PoisonLake(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public PoisonLake(PoisonLake poisonLake){
+    public PoisonLake(PoisonLake poisonLake) {
         super(poisonLake);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         PoisonLake poisonLake = new PoisonLake(this);
         return poisonLake;
     }
@@ -345,6 +421,16 @@ class PoisonLake extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -359,19 +445,19 @@ class PoisonLake extends Spell {
 
 class Madness extends Spell {
 
-    public Madness(){
-        super("Madness",0,650);
+    public Madness() {
+        super("Madness", 0, 650);
     }
 
     public Madness(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public Madness(Madness madness){
+    public Madness(Madness madness) {
         super(madness);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         Madness madness = new Madness(this);
         return madness;
     }
@@ -379,6 +465,16 @@ class Madness extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -393,19 +489,19 @@ class Madness extends Spell {
 
 class AllDisarm extends Spell {
 
-    public AllDisarm(){
-        super("AllDisarm",9,2000);
+    public AllDisarm() {
+        super("AllDisarm", 9, 2000);
     }
 
     public AllDisarm(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public AllDisarm(AllDisarm allDisarm){
+    public AllDisarm(AllDisarm allDisarm) {
         super(allDisarm);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllDisarm allDisarm = new AllDisarm(this);
         return allDisarm;
     }
@@ -413,6 +509,16 @@ class AllDisarm extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -427,19 +533,19 @@ class AllDisarm extends Spell {
 
 class AllPoison extends Spell {
 
-    public AllPoison(){
-        super("AllPoison",8,1500);
+    public AllPoison() {
+        super("AllPoison", 8, 1500);
     }
 
     public AllPoison(String name, int costToUse, int costOfBuy) {
         super(name, costToUse, costOfBuy);
     }
 
-    public AllPoison(AllPoison allPoison){
+    public AllPoison(AllPoison allPoison) {
         super(allPoison);
     }
 
-    public Spell duplicate(){
+    public Spell duplicate() {
         AllPoison allPoison = new AllPoison(this);
         return allPoison;
     }
@@ -447,6 +553,16 @@ class AllPoison extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
@@ -461,8 +577,8 @@ class AllPoison extends Spell {
 
 class Dispel extends Spell {
 
-    public Dispel(){
-        super("Dispel",0,2100);
+    public Dispel() {
+        super("Dispel", 0, 2100);
     }
 
     public Dispel(String name, int costToUse, int costOfBuy) {
@@ -484,6 +600,16 @@ class Dispel extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -495,8 +621,8 @@ class Dispel extends Spell {
 
 class HealthWithProfit extends Spell {
 
-    public HealthWithProfit(){
-        super("HealthWithProfit",0,2250);
+    public HealthWithProfit() {
+        super("HealthWithProfit", 0, 2250);
     }
 
     public HealthWithProfit(String name, int costToUse, int costOfBuy) {
@@ -518,6 +644,16 @@ class HealthWithProfit extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -529,8 +665,8 @@ class HealthWithProfit extends Spell {
 
 class PowerUp extends Spell {
 
-    public PowerUp(){
-        super("PowerUp",2,2500);
+    public PowerUp() {
+        super("PowerUp", 2, 2500);
     }
 
     public PowerUp(String name, int costToUse, int costOfBuy) {
@@ -552,6 +688,16 @@ class PowerUp extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -563,8 +709,8 @@ class PowerUp extends Spell {
 
 class AllPower extends Spell {
 
-    public AllPower(){
-        super("AllPower",4,2000);
+    public AllPower() {
+        super("AllPower", 4, 2000);
     }
 
     public AllPower(String name, int costToUse, int costOfBuy) {
@@ -586,6 +732,16 @@ class AllPower extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -598,8 +754,8 @@ class AllPower extends Spell {
 
 class AllAttack extends Spell {
 
-    public AllAttack(){
-        super("AllAttack",4,1500);
+    public AllAttack() {
+        super("AllAttack", 4, 1500);
     }
 
     public AllAttack(String name, int costToUse, int costOfBuy) {
@@ -621,6 +777,16 @@ class AllAttack extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -632,8 +798,8 @@ class AllAttack extends Spell {
 
 class Weakening extends Spell {
 
-    public Weakening(){
-        super("Weakening",1,1000);
+    public Weakening() {
+        super("Weakening", 1, 1000);
     }
 
     public Weakening(String name, int costToUse, int costOfBuy) {
@@ -655,6 +821,16 @@ class Weakening extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -666,8 +842,8 @@ class Weakening extends Spell {
 
 class Sacrifice extends Spell {
 
-    public Sacrifice(){
-        super("Sacrifice",2,1600);
+    public Sacrifice() {
+        super("Sacrifice", 2, 1600);
     }
 
     public Sacrifice(String name, int costToUse, int costOfBuy) {
@@ -689,6 +865,16 @@ class Sacrifice extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -700,8 +886,8 @@ class Sacrifice extends Spell {
 
 class KingsGuard extends Spell {
 
-    public KingsGuard(){
-        super("KingsGuard",9,1750);
+    public KingsGuard() {
+        super("KingsGuard", 9, 1750);
     }
 
     public KingsGuard(String name, int costToUse, int costOfBuy) {
@@ -723,6 +909,16 @@ class KingsGuard extends Spell {
     }
 
     @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -734,8 +930,8 @@ class KingsGuard extends Spell {
 
 class Shock extends Spell {
 
-    public Shock(){
-        super("Shock",1,1200);
+    public Shock() {
+        super("Shock", 1, 1200);
     }
 
     public Shock(String name, int costToUse, int costOfBuy) {
@@ -754,6 +950,16 @@ class Shock extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public void castBuff(Cell cell) {
+
+    }
+
+    @Override
+    public void castBuff(ArrayList<Cell> cells) {
+
     }
 
     @Override
