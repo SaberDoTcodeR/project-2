@@ -1,13 +1,13 @@
-package model;
+package model.Cards;
 
 public abstract class Card {
     private String name;
     private boolean isOnMap;
     private int costOfBuy;
-    private int id;
+    private long id;
 
     public String getName() {
-        return name;
+        return name.toLowerCase();
     }
 
     public void setName(String nameOfCard) {
@@ -19,7 +19,7 @@ public abstract class Card {
         return isOnMap;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -31,13 +31,11 @@ public abstract class Card {
         this.costOfBuy = costOfBuy;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public String getType() {
-        return this.getClass().getSimpleName();
-    }
+    abstract public String getType();
 
     public abstract String showDetails();
 }

@@ -1,4 +1,7 @@
-package model;
+package model.Cards;
+
+import javafx.scene.control.Cell;
+import model.Buff;
 
 import java.util.ArrayList;
 
@@ -6,7 +9,17 @@ public abstract class Spell extends Card {
     private static ArrayList<Spell> spells = new ArrayList<>();
     private int costToUse;
 
-    public Spell(String name, int costToUse, int costOfBuy) {
+    /* static{
+         spells.add(new AllAttack());
+         spells.add(new AllDisarm());
+         spells.add(new AllPoison());
+         spells.add(new AllPower());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+         spells.add(new AllAttack());
+     }*/
+    public Spell(String name, int costToUse, int costOfBuy, Buff buff) {
         this.setName(name);
         this.setCostOfBuy(costOfBuy);
         this.costToUse = costToUse;
@@ -29,11 +42,18 @@ public abstract class Spell extends Card {
         return costToUse;
     }
 
+    public String getType() {
+        return "Spell";
+    }
+
+    public Spell duplicate() {
+        return null;
+    }
 }
 
 enum SpellWork {
     TOTAL_DISARM("An enemy force become disarm until the end of the game"),
-    AREA_DISPEL("Disappear positive  s of enemy force and negative  s of " +
+    AREA_DISPEL("Disappear positive buffs of enemy force and negative buffs of " +
             "insider force on selected 2x2 square"),
     EMPOWER("Add 2AP to a enemy force"),
     FIREBALL("Hit an enemy force 4 uint"),
@@ -44,16 +64,16 @@ enum SpellWork {
     MADNESS("Increase an insider force's Ap 4 units for 3turns but it can be disarm"),
     ALL_DISARM("Be disarm for 1 turn"),
     ALL_POISON("Enemy forces become poison for 4 turns"),
-    DISPEL("Disappear positive  s of enemy force and negative  s of " +
+    DISPEL("Disappear positive buffs of enemy force and negative buffs of " +
             "insider force for a insider force or enemy force")/*todo --> what the faz?*/,
-    HEALTH_WITH_PROFIT("Give friend force a weakness   or reduce HP of force 6 units" +
-            "but have 2 holy   for 3 turns"),
-    POWER_UP("Apply a power   and add 6AP for an insider force"),
-    ALL_POWER("Apply a power   and add 6AP for all insider forces permanently"),
+    HEALTH_WITH_PROFIT("Give friend force a weakness buff or reduce HP of force 6 units" +
+            "but have 2 holy buff for 3 turns"),
+    POWER_UP("Apply a power buff and add 6AP for an insider force"),
+    ALL_POWER("Apply a power buff and add 6AP for all insider forces permanently"),
     ALL_ATTACK("Hit all enemy forces who in one column 6units"),
-    WEAKENING("Give a enemy minion a weakness   or reduce HP of minion 4 units"),
-    SACRIFICE("Give a insider minion a weakness   or reduce HP of minion 6 units" +
-            " and give a power   and add 8AP to insider minion"),
+    WEAKENING("Give a enemy minion a weakness buff or reduce HP of minion 4 units"),
+    SACRIFICE("Give a insider minion a weakness buff or reduce HP of minion 6 units" +
+            " and give a power buff and add 8AP to insider minion"),
     KINGS_GUARD("Kill enemy force on 8 around cells"),
     SHOCK("Become stun for 2 turn for enemy force");
 
@@ -75,7 +95,7 @@ class TotalDisarm extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public TotalDisarm(TotalDisarm totalDisarm) {
+    public TotalDisarm(TotalDisarm totalDisarm){
         super(totalDisarm);
     }
 
@@ -143,11 +163,11 @@ class Empower extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public Empower(Empower empower) {
+    public Empower(Empower empower){
         super(empower);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         Empower empower = new Empower(this);
         return empower;
     }
@@ -177,11 +197,11 @@ class FireBall extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public FireBall(FireBall fireBall) {
+    public FireBall(FireBall fireBall){
         super(fireBall);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         FireBall fireBall = new FireBall(this);
         return fireBall;
     }
@@ -211,11 +231,11 @@ class GodStrength extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public GodStrength(GodStrength godStrength) {
+    public GodStrength(GodStrength godStrength){
         super(godStrength);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         GodStrength godStrength = new GodStrength(this);
         return godStrength;
     }
@@ -245,11 +265,11 @@ class HellFire extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public HellFire(HellFire hellFire) {
+    public HellFire(HellFire hellFire){
         super(hellFire);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         HellFire hellFire = new HellFire(this);
         return hellFire;
     }
@@ -279,11 +299,11 @@ class LightingBolt extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public LightingBolt(LightingBolt lightingBolt) {
+    public LightingBolt(LightingBolt lightingBolt){
         super(lightingBolt);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         LightingBolt lightingBolt = new LightingBolt(this);
         return lightingBolt;
     }
@@ -313,11 +333,11 @@ class PoisonLake extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public PoisonLake(PoisonLake poisonLake) {
+    public PoisonLake(PoisonLake poisonLake){
         super(poisonLake);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         PoisonLake poisonLake = new PoisonLake(this);
         return poisonLake;
     }
@@ -347,11 +367,11 @@ class Madness extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public Madness(Madness madness) {
+    public Madness(Madness madness){
         super(madness);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         Madness madness = new Madness(this);
         return madness;
     }
@@ -381,11 +401,11 @@ class AllDisarm extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public AllDisarm(AllDisarm allDisarm) {
+    public AllDisarm(AllDisarm allDisarm){
         super(allDisarm);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         AllDisarm allDisarm = new AllDisarm(this);
         return allDisarm;
     }
@@ -415,11 +435,11 @@ class AllPoison extends Spell {
         super(name, costToUse, costOfBuy);
     }
 
-    public AllPoison(AllPoison allPoison) {
+    public AllPoison(AllPoison allPoison){
         super(allPoison);
     }
 
-    public Spell duplicate() {
+    public Spell duplicate(){
         AllPoison allPoison = new AllPoison(this);
         return allPoison;
     }

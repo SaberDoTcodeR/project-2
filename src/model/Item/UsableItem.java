@@ -1,17 +1,18 @@
-package model;
+package model.Item;
 
 import java.util.ArrayList;
 
 public abstract class UsableItem extends Item {
-    public UsableItem(int costOfBuy,String name){
+    public UsableItem(int costOfBuy, String name) {
         this.setCostOfBuy(costOfBuy);
         this.setName(name);
     }
 
-    public UsableItem(UsableItem usableItem){
+    public UsableItem(UsableItem usableItem) {
         this.setCostOfBuy(usableItem.getCostOfBuy());
         this.setName(usableItem.getName());
     }
+
     private int costOfBuy;
     private static ArrayList<UsableItem> usableItems = new ArrayList<>();
 
@@ -25,6 +26,9 @@ public abstract class UsableItem extends Item {
 
     public static ArrayList<UsableItem> getUsableItems() {
         return usableItems;
+    }
+    public UsableItem duplicate(){
+        return null;
     }
 }
 
@@ -58,11 +62,11 @@ class CrownOfWisdom extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public CrownOfWisdom(CrownOfWisdom crownOfWisdom){
+    public CrownOfWisdom(CrownOfWisdom crownOfWisdom) {
         super(crownOfWisdom);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         CrownOfWisdom crownOfWisdom = new CrownOfWisdom(this);
         return crownOfWisdom;
     }
@@ -87,11 +91,11 @@ class ShameEmblem extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public ShameEmblem(ShameEmblem shameEmblem){
+    public ShameEmblem(ShameEmblem shameEmblem) {
         super(shameEmblem);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         ShameEmblem shameEmblem = new ShameEmblem(this);
         return shameEmblem;
     }
@@ -116,11 +120,11 @@ class DamolArchery extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public DamolArchery(DamolArchery damolArchery){
+    public DamolArchery(DamolArchery damolArchery) {
         super(damolArchery);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         DamolArchery damolArchery = new DamolArchery(this);
         return damolArchery;
     }
@@ -144,11 +148,11 @@ class SimorghPlume extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public SimorghPlume(SimorghPlume simorghPlume){
+    public SimorghPlume(SimorghPlume simorghPlume) {
         super(simorghPlume);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         SimorghPlume simorghPlume = new SimorghPlume(this);
         return simorghPlume;
     }
@@ -173,11 +177,11 @@ class TerrorHood extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public TerrorHood(TerrorHood terrorHood){
+    public TerrorHood(TerrorHood terrorHood) {
         super(terrorHood);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         TerrorHood terrorHood = new TerrorHood(this);
         return terrorHood;
     }
@@ -202,11 +206,11 @@ class KingWisdom extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public KingWisdom(KingWisdom kingWisdom){
+    public KingWisdom(KingWisdom kingWisdom) {
         super(kingWisdom);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         KingWisdom kingWisdom = new KingWisdom(this);
         return kingWisdom;
     }
@@ -231,11 +235,11 @@ class AssassinationDagger extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public AssassinationDagger(AssassinationDagger assassinationDagger){
+    public AssassinationDagger(AssassinationDagger assassinationDagger) {
         super(assassinationDagger);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         AssassinationDagger assassinationDagger = new AssassinationDagger(this);
         return assassinationDagger;
     }
@@ -260,11 +264,11 @@ class PoisonousDagger extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public PoisonousDagger(PoisonousDagger poisonousDagger){
+    public PoisonousDagger(PoisonousDagger poisonousDagger) {
         super(poisonousDagger);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         PoisonousDagger poisonousDagger = new PoisonousDagger(this);
         return poisonousDagger;
     }
@@ -289,11 +293,11 @@ class ShockHammer extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public ShockHammer(ShockHammer shockHammer){
+    public ShockHammer(ShockHammer shockHammer) {
         super(shockHammer);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         ShockHammer shockHammer = new ShockHammer(this);
         return shockHammer;
     }
@@ -314,11 +318,11 @@ class SoulEater extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public SoulEater(SoulEater soulEater){
+    public SoulEater(SoulEater soulEater) {
         super(soulEater);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         SoulEater soulEater = new SoulEater(this);
         return soulEater;
     }
@@ -346,11 +350,11 @@ class Baptism extends UsableItem {
         super(costOfBuy, name);
     }
 
-    public Baptism(Baptism baptism){
+    public Baptism(Baptism baptism) {
         super(baptism);
     }
 
-    public UsableItem duplicate(){
+    public UsableItem duplicate() {
         Baptism baptism = new Baptism(this);
         return baptism;
     }

@@ -1,5 +1,9 @@
 package model;
 
+import model.Cards.Hero;
+import model.Cards.Minion;
+import model.Item.CollectableItem;
+
 import java.util.ArrayList;
 
 public class Cell {
@@ -62,7 +66,7 @@ public class Cell {
         this.collectableItem = collectableItem;
     }
 
-    public void moveCardPos(int x, int y) {
+    /*public void moveCardPos(int x, int y) {
         if (this.hero != null) {
             Account.getLoginAccount().getBattle().getMap().get(y - 1).get(x - 1).setHero(this.hero);
             this.hero = null;
@@ -70,5 +74,5 @@ public class Cell {
             Account.getLoginAccount().getBattle().getMap().get(y - 1).get(x - 1).setMinion(this.minion);
             this.minion = null;
         }
-    }
+    }*/
 }

@@ -1,34 +1,42 @@
 package model;
 
 public enum CommandRegex {
+    START_GAME(
+            "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)?$"//todo checked
+    )
+    ,SELECT_USER(
+            "^select user\\s+(\\w+)$"
+    ),START_MULTIPLAYER_GAME(
+            "^start multiplayer game\\s+([1-3])\\s+(\\d+)?$"//todo checked
+    ),
     SHOW(
             "^show$"
     ),
     SEARCH(
             "^search\\s+(\\w+)$"
     ),
-    CREATE_DECK(
+    CREATE_DECK (
             "^create deck\\s+(\\w+)$"
     ),
-    DELETE_DECK(
+    DELETE_DECK (
             "^delete deck\\s+(\\w+)$"
     ),
     ADD(
-            "^add\\s+(\\w+)\\s+to deck\\s+(\\w+)$"
+            "^add\\s+(\\d+)\\s+to deck\\s+(\\w+)$"
     ),
     REMOVE(
-            "^remove\\s+(\\w+)\\s+from deck\\s+(\\w+)$"
+            "^remove\\s+(\\d+)\\s+from deck\\s+(\\w+)$"
     ),
-    VALIDATE_DECK(
+    VALIDATE_DECK (
             "^validate deck\\s+(\\w+)$"
     ),
-    SELECT_DECK(
+    SELECT_DECK (
             "^select deck\\s+(\\w+)$"
     ),
-    SHOW_ALL_DECKS(
+    SHOW_ALL_DECKS (
             "^show all decks$"
     ),
-    SHOW_DECK(
+    SHOW_DECK (
             "^show deck\\s+(\\w+)$"
     ),
     ENTER_COLLECTION(
@@ -46,10 +54,10 @@ public enum CommandRegex {
     HELP(
             "^help$"
     ),
-    CREATE_ACCOUNT(
+    CREATE_ACCOUNT (
             "^create account\\s+(\\w+)$"
     ),
-    LOGIN(
+    LOGIN (
             "^login\\s+(\\w+)$"
     ),
     SHOW_LEADERBOARD(

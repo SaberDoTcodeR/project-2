@@ -1,16 +1,17 @@
-package model;
+package model.Menus;
 
 import java.util.ArrayList;
 
+import model.Deck;
+import model.RecordedMatch;
 import view.*;
 import control.*;
-
 public class Account {
     private static View view = View.getInstance();
     private static Account loginAccount;
-    private static ArrayList<Account> allUser = new ArrayList<>();
-    private String userName, passWord;
-    private int money, wins = 0;
+    private static ArrayList<Account> allUser=new ArrayList<>();
+    private String userName,passWord;
+    private int money,wins=0;
     private Deck mainDeck;
     private ArrayList<RecordedMatch> matches = new ArrayList<RecordedMatch>();
     private Collection myCollection = new Collection();
@@ -18,12 +19,11 @@ public class Account {
     public int getMoney() {
         return money;
     }
-
-    public void decreament(int x) {
-        this.money -= x;
+    public void decreament(int x){
+        this.money-=x;
     }
 
-    public void incrementMoney(int money) {
+    public void incrementMoney(int money){
         this.money += money;
     }
 
@@ -89,7 +89,13 @@ public class Account {
     public static ArrayList<Account> getAllUser() {
         return allUser;
     }
-
+    public Account getAccount(String userName){
+        for (Account account:allUser){
+            if(account.getUserName().equals(userName))
+                return account;
+        }
+        return null;
+    }
     public String getPassWord() {
         return passWord;
     }

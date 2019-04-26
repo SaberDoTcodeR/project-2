@@ -1,9 +1,21 @@
-package model;
+package model.Cards;
 
 import java.util.ArrayList;
 
 public abstract class Hero extends Card {
     private static ArrayList<Hero> heroes = new ArrayList<>();
+    static {
+        new Arash();
+        new Dragon();
+        new Esfandyar() ;
+        new Kaveh();
+        new Legend();
+        new Rakhsh();
+        new Rostam();
+        new Simurgh();
+        new WhiteBogey();
+        new Zahhak();
+    }
     private int ap;
     private int hp;
     private int mp;
@@ -57,6 +69,9 @@ public abstract class Hero extends Card {
 
     public int getAp() {
         return ap;
+    }
+    public String getType() {
+        return "Hero";
     }
 
     public void setTypeOfHit(int typeOfRange){
