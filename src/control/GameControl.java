@@ -16,35 +16,28 @@ public class GameControl {
     public void main(Battle battle) {
         Random rand = new Random();
         view.showBattleMenu();
-        int turn = 1;
 
-        ArrayList<Account> players=new ArrayList<>();
-        if (!battle.isPlayWithAI()) {
-            players.add(battle.getSecondPlayer());
-            players.add(battle.getFirstPlayer());
+        ArrayList<Account> players = new ArrayList<>();
+        players.add(battle.getSecondPlayer());
+        players.add(battle.getFirstPlayer());
 
-        }
         while (!finished) {
-            battle.getFirstPlayerHand().fillHand(battle,0);
-            battle.getSecondPlayerHand().fillHand(battle,1);
-            int whoseTurn = turn % 2;
-            if(whoseTurn==1&&battle.isPlayWithAI()) {
-                ////todo do what an AI got to do
-            }
-            else {
-                if(turn>=14)
-                    players.get(whoseTurn).setMana(9);
-                else{
-                    players.get(whoseTurn).setMana(turn/2+2);
-                }
-            }
-            boolean turnFinished=false;
-            while (!turnFinished){
+            battle.getFirstPlayerHand().fillHand(battle, 0);
+            battle.getSecondPlayerHand().fillHand(battle, 1);
+
+            int whoseTurn = battle.getTurn() % 2;
+            if (battle.getTurn() >= 14)
+                players.get(whoseTurn).setMana(9);
+            else
+                players.get(whoseTurn).setMana(battle.getTurn() / 2 + 2);
+
+
+            boolean turnFinished = false;
+            while (!turnFinished) {
                 Request request = new Request();
                 request.getNewCommand();
                 request.setBattle(battle);
                 Command command = request.getMatchedCommand(1);
-
                 if (command != null && !command.equals("help")) {
                     command.apply(request);
                     view.printError(request.getError());

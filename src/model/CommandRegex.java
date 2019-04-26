@@ -4,8 +4,10 @@ public enum CommandRegex {
     GAME_INFO(
             "^game info$"
             ),
+    SHOW_OPP_MINIONS(
+            "^game info$"),
     SHOW_MY_MINIONS(
-            "^show my minions$"
+            "^show opponent minions$"
     ),
     START_GAME(
             "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)?$"//todo checked
@@ -74,21 +76,6 @@ public enum CommandRegex {
     ),
     LOGOUT(
             "^logout$"
-    ),
-    LOAN_PLAYER(
-            "^loan player\\s+(\\w+)\\s+(\\w+)\\s+from\\s+(\\w+)\\s+to\\s+(\\w+)\\s+with\\s+(\\d+)\\s+years contract$"
-    ),
-    PUT_IN_SQUAD(
-            "^put player\\s+(\\w+)\\s+(\\w+)\\s+from\\s+(\\w+)\\s+in main squad$"
-    ),
-    FRIENDLY_MATCH(
-            "^friendly match between\\s+(\\w+)\\s+and\\s+(\\w+)$"
-    ),
-    NEXT_SEASON(
-            "^next season$"
-    ),
-    END(
-            "^end$"
     ),
     SHOW_COLLECTION(
             "^show collection$"

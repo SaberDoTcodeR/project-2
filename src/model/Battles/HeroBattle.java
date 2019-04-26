@@ -13,7 +13,7 @@ import java.util.Random;
 public class HeroBattle extends Battle {
     private boolean playWithAI;
     private Account secondPlayer;
-    private Hand secondPlayerHand;
+    private Hand secondPlayerHand=new Hand();
 
     {
         Random random = new Random();
@@ -24,7 +24,7 @@ public class HeroBattle extends Battle {
         getMap().add(new ArrayList<>());
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                if (random.nextInt(100) < 10)
+                if (random.nextInt(100) < 0)
                     getMap().get(i).add(new Cell(i, j, false, random.nextInt(CollectableItem.getCollectableItems().size())));
                 else
                     getMap().get(i).add(new Cell(i, j, false, -1));
@@ -40,6 +40,8 @@ public class HeroBattle extends Battle {
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
+        Account account=new Account(1);
+        this.secondPlayer=account;
     }
 
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2) {

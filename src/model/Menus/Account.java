@@ -56,6 +56,12 @@ public class Account {
         allUser.add(this);
 
     }
+    public Account(int x) {
+        this.userName = "AI_Player";
+        this.passWord = "123";
+        this.money = 15000;
+
+    }
 
     public static void showLeaderboard() {
         for (int i = 0; i < allUser.size() - 1; i++) {

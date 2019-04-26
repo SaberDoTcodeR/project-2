@@ -7,7 +7,7 @@ import model.Cards.*;
 import java.util.*;
 
 public class Hand {
-    private ArrayList<Card> cards;
+    private ArrayList<Card> cards=new ArrayList<>();
     private Card nextCardInHand;
 
     public ArrayList<Card> getCards() {
@@ -33,14 +33,23 @@ public class Hand {
                 this.cards.add(nextCardInHand);
                 nextCardInHand=null;
             }
-            else if(whichPlayer==1&&battle.getSecondPlayerDeck().getSpells().size()!=0) {
+            else if(whichPlayer==1&&battle.getSecondPlayerDeck().getSpells().size()!=0&&random.nextBoolean()) {
                 int x=random.nextInt(battle.getSecondPlayerDeck().getSpells().size());
                 this.cards.add(battle.getSecondPlayerDeck().getSpells().get(x));
                 battle.getSecondPlayerDeck().getSpells().remove(x);
-            }else if(whichPlayer==0&&battle.getFirstPlayerDeck().getSpells().size()!=0) {
+            }else if(whichPlayer==1&&battle.getSecondPlayerDeck().getMinions().size()!=0&&random.nextBoolean()){
+                int x=random.nextInt(battle.getSecondPlayerDeck().getMinions().size());
+                this.cards.add(battle.getSecondPlayerDeck().getMinions().get(x));
+                battle.getSecondPlayerDeck().getMinions().remove(x);
+            }
+            else if(whichPlayer==0&&battle.getFirstPlayerDeck().getSpells().size()!=0&&random.nextBoolean()) {
                 int x=random.nextInt(battle.getFirstPlayerDeck().getSpells().size());
                 this.cards.add(battle.getFirstPlayerDeck().getSpells().get(x));
                 battle.getFirstPlayerDeck().getSpells().remove(x);
+            }else if (whichPlayer==0&&battle.getFirstPlayerDeck().getMinions().size()!=0&&random.nextBoolean()){
+                int x=random.nextInt(battle.getFirstPlayerDeck().getMinions().size());
+                this.cards.add(battle.getFirstPlayerDeck().getMinions().get(x));
+                battle.getFirstPlayerDeck().getMinions().remove(x);
             }
         }
     }

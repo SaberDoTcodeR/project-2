@@ -51,12 +51,12 @@ public class Request {
         commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
-        commands.get(1).add(new ShowCardInfo());
+        /*commands.get(1).add(new ShowCardInfo());
         commands.get(1).add(new SelectSoldier());
         commands.get(1).add(new MoveSelectedSoldier());
         commands.get(1).add(new Attack());
         commands.get(1).add(new AttackCombo());
-        commands.get(1).add(new SelectSoldier());
+        commands.get(1).add(new SelectSoldier());*/
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());

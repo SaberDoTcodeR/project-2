@@ -176,8 +176,8 @@ public class View {
     }
 
     public void showDetailedInfoHeroMode(Battle battle) {
-        System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP " + battle.getFirstPlayerDeck().getHero().getHp());
-        System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP " + battle.getSecondPlayerDeck().getHero().getHp());
+        System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + battle.getFirstPlayerDeck().getHero().getHp());
+        System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP : " + battle.getSecondPlayerDeck().getHero().getHp());
     }
 
     public void showDetailedInfoOneFlagMode(Battle battle) {
@@ -199,16 +199,33 @@ public class View {
         System.out.println("Mana of player " + battle.getSecondPlayer().getUserName() + " : " + battle.getSecondPlayer().getMana());
     }
 
-    public void showMyMinions(Battle battle) {
+    public void showMinions(Battle battle,boolean reversed) {
+        int whichPlayer;
+        if ((battle.getTurn() % 2 == 0&&!reversed)||(battle.getTurn() % 2 == 1&&reversed))
+        {
+            whichPlayer = 2;
+        }
+        else
+            whichPlayer = 1;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                if (battle.getMap().get(i).get(j).getMinion() != null) {
-                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains())
+                if (whichPlayer==1&&battle.getMap().get(i).get(j).getMinion() != null) {
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())){
+                       printMinionInfo(battle,i,j);
+                    }
+                }else  if(whichPlayer==2&&battle.getMap().get(i).get(j).getMinion() != null){
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())){
+                        printMinionInfo(battle,i,j);
+                    }
                 }
             }
         }
     }
-
+    public void printMinionInfo(Battle battle,int i,int j){
+        System.out.print(battle.getMap().get(i).get(j).getMinion().getCardId()+" : "+battle.getMap().get(i).get(j).getMinion().getName()+", ");
+        System.out.print("health : "+battle.getMap().get(i).get(j).getMinion().getHp()+", location : [("+(i+1)+","+(j+1)+")], power : "+
+                battle.getMap().get(i).get(j).getMinion().getAp());
+    }
     public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +

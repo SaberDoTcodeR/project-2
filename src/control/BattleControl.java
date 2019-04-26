@@ -63,7 +63,7 @@ public class BattleControl {
                         view.printError(ErrorType.COMMAND);
                 }
                 break;
-            } else if (request.getCommand().equals("Custom game")) {
+            } else if (request.getCommand().equals("custom game")) {
                 Account.getLoginAccount().getCollection().showAllDecks();
                 while (true) {
                     request.getNewCommand();

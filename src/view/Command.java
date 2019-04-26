@@ -575,7 +575,18 @@ class ShowMyMinions extends Command {
 
     @Override
     public void apply(Request request) {
-        view.showMyMinions(request.getBattle());
+        view.showMinions(request.getBattle(),false);
+
+    }
+}
+class ShowOppMinoins extends Command {
+    ShowOppMinoins() {
+        super(CommandRegex.SHOW_OPP_MINIONS);
+    }
+
+    @Override
+    public void apply(Request request) {
+        view.showMinions(request.getBattle(),true);
 
     }
 }

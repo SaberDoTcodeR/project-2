@@ -9,13 +9,22 @@ public abstract class Battle {
     private Account firstPlayer;
     private Deck firstPlayerDeck;
     private Deck secondPlayerDeck;
-    private Hand firstPlayerHand;
+    private Hand firstPlayerHand=new Hand();
     private ArrayList<ArrayList<Cell>> map=new ArrayList<>();
+    private int turn=1;
 
     protected Battle(Account firstPlayer,Deck deck,Deck deck2){
         this.firstPlayer=firstPlayer;
         this.firstPlayerDeck=deck;
         this.secondPlayerDeck=deck2;
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public void increamentTurn() {
+        this.turn++;
     }
 
     public ArrayList<ArrayList<Cell>> getMap() {
