@@ -40,20 +40,20 @@ public class BattleControl {
                     if (request1.getCommand().matches("[1-3]")) {
                         if(request1.getCommand().equals("1"))
                         {
-                            HeroBattle battle=new HeroBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(0),
-                                    Account.getLoginAccount().getMainDeck(),Account.getLoginAccount());
+                            HeroBattle battle=new HeroBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(0).duplicate(),
+                                    Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount());
                             GameControl gameControl=new GameControl();
                             gameControl.main(battle);
                             //todo after game finished what the hell i suppose to do
                         }else if(request1.getCommand().equals("2")){
-                            OneFlagBattle battle=new OneFlagBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(1),
-                                    Account.getLoginAccount().getMainDeck(),Account.getLoginAccount());
+                            OneFlagBattle battle=new OneFlagBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(1).duplicate(),
+                                    Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount());
                             GameControl gameControl=new GameControl();
                             gameControl.main(battle);
                             //todo after game finished what the hell i suppose to do
                         }else {
-                            FlagsBattle battle=new FlagsBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(2),
-                                    Account.getLoginAccount().getMainDeck(),Account.getLoginAccount(),11);
+                            FlagsBattle battle=new FlagsBattle(Account.getLoginAccount().getCollection().getStroyModeDeck().get(2).duplicate(),
+                                    Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount(),11);
                             GameControl gameControl=new GameControl();
                             gameControl.main(battle);
                             //todo after game finished what the hell i suppose to do
@@ -97,20 +97,20 @@ public class BattleControl {
                             String userName = command.getMatcher().group(1);
                             if(mode==1)
                             {
-                                HeroBattle battle=new HeroBattle(Account.getLoginAccount().getAccount(userName).getMainDeck(),
-                                        Account.getLoginAccount().getMainDeck(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName));
+                                HeroBattle battle=new HeroBattle(Account.getLoginAccount().getAccount(userName).getMainDeck().duplicate(),
+                                        Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName));
                                 GameControl gameControl=new GameControl();
                                 gameControl.main(battle);
                                 //todo after game finished what the hell i suppose to do
                             }else if(request1.getCommand().equals("2")){
-                                OneFlagBattle battle=new OneFlagBattle(Account.getLoginAccount().getAccount(userName).getMainDeck(),
-                                        Account.getLoginAccount().getMainDeck(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName));
+                                OneFlagBattle battle=new OneFlagBattle(Account.getLoginAccount().getAccount(userName).getMainDeck().duplicate(),
+                                        Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName));
                                 GameControl gameControl=new GameControl();
                                 gameControl.main(battle);
                                 //todo after game finished what the hell i suppose to do
                             }else {
-                                FlagsBattle battle=new FlagsBattle(Account.getLoginAccount().getAccount(userName).getMainDeck(),
-                                        Account.getLoginAccount().getMainDeck(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName),flags);
+                                FlagsBattle battle=new FlagsBattle(Account.getLoginAccount().getAccount(userName).getMainDeck().duplicate(),
+                                        Account.getLoginAccount().getMainDeck().duplicate(),Account.getLoginAccount(),Account.getLoginAccount().getAccount(userName),flags);
                                 GameControl gameControl=new GameControl();
                                 gameControl.main(battle);
                                 //todo after game finished what the hell i suppose to do

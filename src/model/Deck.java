@@ -34,7 +34,15 @@ public class Deck {
     public ArrayList<Spell> getSpells() {
         return spells;
     }
-
+    public Deck duplicate(){
+        Deck deck=new Deck();
+        deck.setName(this.name);
+        deck.setHero(this.getHero());
+        deck.setUsableItem(this.usableItem);
+        deck.setMinions(this.minions);
+        deck.setSpells(this.spells);
+        return deck;
+    }
     public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
     }

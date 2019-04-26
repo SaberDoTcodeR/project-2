@@ -1,6 +1,12 @@
 package model;
 
 public enum CommandRegex {
+    GAME_INFO(
+            "^game info$"
+            ),
+    SHOW_MY_MINIONS(
+            "^show my minions$"
+    ),
     START_GAME(
             "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)?$"//todo checked
     )

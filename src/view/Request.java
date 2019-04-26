@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import model.*;
 import control.*;
+import model.Battles.Battle;
 import model.Menus.Account;
 
 public class Request {
@@ -12,7 +13,7 @@ public class Request {
     private static ArrayList<ArrayList<Command>> commands = new ArrayList<>();
     private ErrorType error = null;
     private String commandLine;
-
+    private Battle battle;
     public void getNewCommand() {
         this.commandLine = scanner.nextLine().toLowerCase().trim();
 
@@ -20,6 +21,14 @@ public class Request {
 
     static {
         setMatchedCommand();
+    }
+
+    public Battle getBattle() {
+        return battle;
+    }
+
+    public void setBattle(Battle battle) {
+        this.battle = battle;
     }
 
     private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop 4 Account 5 start Game 6 multiplayer
@@ -39,7 +48,7 @@ public class Request {
         commands.get(0).add(new ExitFromMainMenu());
         commands.get(0).add(new Help());
 
-        /*commands.get(1).add(new GameInfo());
+        commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
         commands.get(1).add(new ShowCardInfo());
@@ -48,7 +57,7 @@ public class Request {
         commands.get(1).add(new Attack());
         commands.get(1).add(new AttackCombo());
         commands.get(1).add(new SelectSoldier());
-*/
+
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());
         commands.get(2).add(new ShowAllDecks());

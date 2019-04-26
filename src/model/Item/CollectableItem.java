@@ -1,21 +1,29 @@
 package model.Item;
 
+
 import java.util.ArrayList;
 
 public abstract class CollectableItem extends Item {
 
+    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
+
     public CollectableItem(String name) {
         this.setName(name);
+        collectableItems.add(this);
     }
 
     public CollectableItem(CollectableItem collectableItem) {
+
         this.setName(collectableItem.getName());
     }
 
-    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
 
     public static ArrayList<CollectableItem> getCollectableItems() {
         return collectableItems;
+    }
+
+    public CollectableItem duplicate() {
+        return null;
     }
 }
 
@@ -59,6 +67,7 @@ class Devastation extends CollectableItem {
                 " - Desc: " + CollectableItemWork.DEVASTATION;
         return details;
     }
+
 }
 
 class DoubleEntendreArrow extends CollectableItem {

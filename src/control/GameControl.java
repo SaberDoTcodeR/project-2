@@ -3,26 +3,56 @@ package control;
 import model.*;
 
 import model.Battles.Battle;
+import model.Menus.Account;
 import view.*;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class GameControl {
     public static boolean finished = false;
     private static View view = View.getInstance();
 
     public void main(Battle battle) {
+        Random rand = new Random();
         view.showBattleMenu();
-        while (!finished) {
-            Request request = new Request();
-            request.getNewCommand();
-            Command command = request.getMatchedCommand(1);
+        int turn = 1;
 
-            if (command != null && !command.equals("help")) {
-                command.apply(request);
-                view.printError(request.getError());
-            } else if (command != null && command.equals("help")) {
-                view.showBattleMenu();
-            } else {
-                view.printError(ErrorType.COMMAND);
+        ArrayList<Account> players=new ArrayList<>();
+        if (!battle.isPlayWithAI()) {
+            players.add(battle.getSecondPlayer());
+            players.add(battle.getFirstPlayer());
+
+        }
+        while (!finished) {
+            battle.getFirstPlayerHand().fillHand(battle,0);
+            battle.getSecondPlayerHand().fillHand(battle,1);
+            int whoseTurn = turn % 2;
+            if(whoseTurn==1&&battle.isPlayWithAI()) {
+                ////todo do what an AI got to do
+            }
+            else {
+                if(turn>=14)
+                    players.get(whoseTurn).setMana(9);
+                else{
+                    players.get(whoseTurn).setMana(turn/2+2);
+                }
+            }
+            boolean turnFinished=false;
+            while (!turnFinished){
+                Request request = new Request();
+                request.getNewCommand();
+                request.setBattle(battle);
+                Command command = request.getMatchedCommand(1);
+
+                if (command != null && !command.equals("help")) {
+                    command.apply(request);
+                    view.printError(request.getError());
+                } else if (command != null && command.equals("help")) {
+                    ////todo list of possible action
+                } else {
+                    view.printError(ErrorType.COMMAND);
+                }
             }
         }
     }
