@@ -25,6 +25,11 @@ public abstract class Hero extends Card {
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
+    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+
+    public ArrayList<Buff> getOwnBuffs() {
+        return ownBuffs;
+    }
 
     public Hero(String name, int ap, int hp, int costOfBuy, int typeOfRange) {
         this.setName(name);

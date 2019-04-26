@@ -204,7 +204,7 @@ class Empower extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
@@ -249,12 +249,29 @@ class FireBall extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo --> is Enemy or not
+        ChangeHpBuff changeHpBuff;
+        if (cell.getHero() != null) {
+            if (cell.getHero().isHoly()) {
+                changeHpBuff = new ChangeHpBuff(-3);
+            } else {
+                changeHpBuff = new ChangeHpBuff(-4);
+            }
+            changeHpBuff.changeHP(cell);
+        }
+        if (cell.getMinion() != null) {
+            if (cell.getMinion().isHoly()) {
+                changeHpBuff = new ChangeHpBuff(-3);
+            } else {
+                changeHpBuff = new ChangeHpBuff(-4);
+            }
+            changeHpBuff.changeHP(cell);
+        }
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -293,12 +310,14 @@ class GodStrength extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo check insider hero or not{
+        ChangeApBuff changeApBuff = new ChangeApBuff(4);
+        changeApBuff.changeAP(cell);
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -337,12 +356,14 @@ class HellFire extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
+        firingEffectedCell.changeHP(cells);
+        firingEffectedCell.setTurnCounter(2);
     }
 
     @Override
@@ -381,12 +402,29 @@ class LightingBolt extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo --> is Enemy or not
+        ChangeHpBuff changeHpBuff;
+        if (cell.getHero() != null) {
+            if (cell.getHero().isHoly()) {
+                changeHpBuff = new ChangeHpBuff(-7);
+            } else {
+                changeHpBuff = new ChangeHpBuff(-8);
+            }
+            changeHpBuff.changeHP(cell);
+        }
+        if (cell.getMinion() != null) {
+            if (cell.getMinion().isHoly()) {
+                changeHpBuff = new ChangeHpBuff(-7);
+            } else {
+                changeHpBuff = new ChangeHpBuff(-8);
+            }
+            changeHpBuff.changeHP(cell);
+        }
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -425,12 +463,15 @@ class PoisonLake extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo checking
+        PosionBuff posionBuff = new PosionBuff();
+        posionBuff.posion(cells);
+        posionBuff.setTurnCounter(1);
     }
 
     @Override
@@ -469,12 +510,16 @@ class Madness extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        DisarmBuff disarmBuff = new DisarmBuff();
+        disarmBuff.disarm(cell);
+        disarmBuff.setTurnCounter(3);
+        ChangeApBuff changeApBuff = new ChangeApBuff(4);
+        changeApBuff.setTurnCounter(3);
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -513,12 +558,15 @@ class AllDisarm extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
-    public void castBuff(ArrayList<Cell> cells) {
-
+    public void castBuff(ArrayList<Cell> map) {
+        //todo check enemy forces
+        DisarmBuff disarmBuff = new DisarmBuff();
+        disarmBuff.disarm(map);
+        disarmBuff.setTurnCounter(1);
     }
 
     @Override
@@ -557,12 +605,15 @@ class AllPoison extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
-    public void castBuff(ArrayList<Cell> cells) {
-
+    public void castBuff(ArrayList<Cell> map) {
+        //todo check enemy forces
+        PosionBuff posionBuff = new PosionBuff();
+        posionBuff.setTurnCounter(4);
+        posionBuff.posion(map);
     }
 
     @Override
@@ -606,7 +657,7 @@ class Dispel extends Spell {
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -645,12 +696,23 @@ class HealthWithProfit extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo check insider force
+        WeaknessBuff weaknessBuff = new WeaknessBuff();
+        weaknessBuff.weakness(cell);
+        ChangeHpBuff changeHpBuff = new ChangeHpBuff(6);
+        changeHpBuff.changeHP(cell);
+        //should be check
+        HolyBuff holyBuff1 = new HolyBuff();
+        holyBuff1.setTurnCounter(3);
+        holyBuff1.holy(cell);
+        HolyBuff holyBuff2 = new HolyBuff();
+        holyBuff2.setTurnCounter(3);
+        holyBuff2.holy(cell);
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -689,12 +751,15 @@ class PowerUp extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        PowerBuff powerBuff= new PowerBuff();
+        powerBuff.power(cell);
+        ChangeApBuff changeApBuff = new ChangeApBuff(6);
+        changeApBuff.changeAP(cell);
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -733,12 +798,16 @@ class AllPower extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
-    public void castBuff(ArrayList<Cell> cells) {
-
+    public void castBuff(ArrayList<Cell> map) {
+        //todo check insider forces
+        PowerBuff powerBuff = new PowerBuff();
+        powerBuff.power(map);
+        ChangeApBuff changeApBuff= new ChangeApBuff(2);
+        changeApBuff.changeAP(map);
     }
 
     @Override
@@ -778,12 +847,31 @@ class AllAttack extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo one column
+        ChangeHpBuff changeHpBuff;
+        for (Cell cell : cells) {
+            if (cell.getHero() != null) {
+                if (cell.getHero().isHoly()) {
+                    changeHpBuff = new ChangeHpBuff(-5);
+                } else {
+                    changeHpBuff = new ChangeHpBuff(-6);
+                }
+                changeHpBuff.changeHP(cell);
+            }
+            if (cell.getMinion() != null) {
+                if (cell.getMinion().isHoly()) {
+                    changeHpBuff = new ChangeHpBuff(-5);
+                } else {
+                    changeHpBuff = new ChangeHpBuff(-6);
+                }
+                changeHpBuff.changeHP(cell);
+            }
+        }
     }
 
     @Override
@@ -822,12 +910,20 @@ class Weakening extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo check enemy minion
+        WeaknessBuff weaknessBuff;
+        ChangeApBuff changeApBuff;
+        if (cell.getMinion() != null) {
+            weaknessBuff = new WeaknessBuff();
+            weaknessBuff.weakness(cell);
+            changeApBuff = new ChangeApBuff(-4);
+            changeApBuff.changeAP(cell);
+        }
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -866,12 +962,26 @@ class Sacrifice extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo check insider force
+        WeaknessBuff weaknessBuff;
+        ChangeHpBuff changeHpBuff;
+        PowerBuff powerBuff;
+        ChangeApBuff changeApBuff;
+        if (cell.getMinion() != null){
+            weaknessBuff = new WeaknessBuff();
+            weaknessBuff.weakness(cell);
+            changeHpBuff = new ChangeHpBuff(-6);
+            changeHpBuff.changeHP(cell);
+            powerBuff = new PowerBuff();
+            powerBuff.power(cell);
+            changeApBuff = new ChangeApBuff(8);
+            changeApBuff.changeAP(cell);
+        }
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        //todo
     }
 
     @Override
@@ -910,12 +1020,18 @@ class KingsGuard extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo
     }
 
     @Override
     public void castBuff(ArrayList<Cell> cells) {
-
+        for (Cell cell: cells) {
+            //todo if enemy minion or not
+            if (cell.getMinion() != null){
+                cell.setMinion(null);
+            }
+            //todo --> important safe delete
+        }
     }
 
     @Override
@@ -954,7 +1070,10 @@ class Shock extends Spell {
 
     @Override
     public void castBuff(Cell cell) {
-
+        //todo check enemy force
+        StunBuff stunBuff = new StunBuff();
+        stunBuff.stun(cell);
+        stunBuff.setTurnCounter(2);
     }
 
     @Override

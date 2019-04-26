@@ -57,6 +57,11 @@ public abstract class Minion extends Card {
     private int typeOfRange;//0 mellee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
+    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+
+    public ArrayList<Buff> getOwnBuffs() {
+        return ownBuffs;
+    }
 
     public int getTypeOfRange() {
         return typeOfRange;
