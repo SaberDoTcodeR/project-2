@@ -1,5 +1,6 @@
 package model.Battles;
 
+import model.Hand;
 import model.Menus.Account;
 import model.Deck;
 
@@ -14,5 +15,24 @@ public class OneFlagBattle extends Battle{
         super(player,myDeck,opponentDeck);
         this.secondPlayer=player2;
         this.playWithAI=false;
+    }
+    @Override
+    public Account getSecondPlayer() {
+        return secondPlayer;
+    }
+
+    @Override
+    public boolean isPlayWithAI() {
+        return playWithAI;
+    }
+
+    @Override
+    public void showDetailedInfo() {
+        int x;
+    }
+
+    @Override
+    public Hand getSecondPlayerHand() {
+        return null;
     }
 }

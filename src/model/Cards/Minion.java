@@ -83,7 +83,7 @@ public abstract class Minion extends Card {
     }
 
     public String getType() {
-        return "Minioin";
+        return "Minion";
     }
 
     public void setTimeOfActivationOfSpecialPower(int timeOfActivationOfSpecialPower) {
@@ -95,7 +95,7 @@ public abstract class Minion extends Card {
         this.setCostOfBuy(minion.getCostOfBuy());
         this.ap = minion.ap;
         this.hp = minion.hp;
-//        this.specialPower = minion.specialPower;
+        //this.specialPower = minion.specialPower;
         this.costToUse = minion.costToUse;
         this.typeOfRange = minion.typeOfRange;
         this.range = minion.range;
@@ -180,6 +180,8 @@ public abstract class Minion extends Card {
     public Minion duplicate() {
         return null;
     }
+
+    public abstract void castSpecialPower();
 }
 
 enum MinionAP {
@@ -299,6 +301,11 @@ class PersianArcher extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " – Special power : - .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class PersianSwordsman extends Minion {
@@ -323,6 +330,11 @@ class PersianSwordsman extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : during attack make power stun for this turn.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class PersianSpear extends Minion {
@@ -346,6 +358,11 @@ class PersianSpear extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : - .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class PersianHorseman extends Minion {
@@ -368,6 +385,11 @@ class PersianHorseman extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : -.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -393,6 +415,11 @@ class PersianGladiator extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : ";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class PersianGeneralissimo extends Minion {
@@ -417,6 +444,11 @@ class PersianGeneralissimo extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power :   .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class TuranianArcher extends Minion {
@@ -439,6 +471,11 @@ class TuranianArcher extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : -";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -463,6 +500,11 @@ class TuranianStoneHook extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : - ";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class TuranianSpear extends Minion {
@@ -485,6 +527,11 @@ class TuranianSpear extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power :.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -510,6 +557,11 @@ class TuranianSpy extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : disarm enemy force for one turn and poison it for 4 turns.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class TuranianSwampy extends Minion {
@@ -532,6 +584,11 @@ class TuranianSwampy extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power :- .";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -557,6 +614,11 @@ class TuranianPrince extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class BlackBogey extends Minion {
@@ -580,6 +642,11 @@ class BlackBogey extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power :-.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class CatapultGiant extends Minion {
@@ -602,6 +669,11 @@ class CatapultGiant extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: .";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -627,6 +699,11 @@ class Eagle extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: has power buff with 10 units increasing health.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class HogRiderBogey extends Minion {
@@ -649,6 +726,11 @@ class HogRiderBogey extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power:    .";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -675,6 +757,11 @@ class OneEyeGiant extends Minion {
                 " with 2 units hit when its death comes.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class PoisonSnake extends Minion {
@@ -699,6 +786,11 @@ class PoisonSnake extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: poison enemy force until 3 turns.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class FieryDragon extends Minion {
@@ -721,6 +813,11 @@ class FieryDragon extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power:";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -745,6 +842,11 @@ class LupinLion extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: holy buff doesn't have any effect on its attack.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -771,6 +873,11 @@ class GiantSnake extends Minion {
                 " from it hit 1 more unit while its attack forever.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class WhiteWolf extends Minion {
@@ -795,6 +902,11 @@ class WhiteWolf extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: when it hits a minion in the next turn" +
                 " 6 units and the turn next of that 4 units will be diminished from that minion's health.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -821,6 +933,11 @@ class Panther extends Minion {
                 " units will be diminished from that minion's health.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Wolf extends Minion {
@@ -845,6 +962,11 @@ class Wolf extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: in the next turn 6 units will be diminished" +
                 " from the minion's health.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -871,6 +993,11 @@ class Magician extends Minion {
                 " they are in 8 cells around it a power with 2 units increase of hit power and a weakness with 1 unit decrease of health.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class GiantMagician extends Minion {
@@ -895,6 +1022,11 @@ class GiantMagician extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : gives to all relative minions which they're" +
                 " in 8 cells around it a power with 2 units increase of hit power and a holy buff.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -921,6 +1053,11 @@ class Elf extends Minion {
                 "with 1 unit increase of hit power in passive mode.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class WildHog extends Minion {
@@ -944,6 +1081,11 @@ class WildHog extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : don't disarm.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -969,6 +1111,11 @@ class Piran extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : don't be poisoned.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Giv extends Minion {
@@ -992,6 +1139,11 @@ class Giv extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : don't take negative effect from cards.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -1018,6 +1170,11 @@ class Bahman extends Minion {
                 "one of the enemy's minions.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Ashkbous extends Minion {
@@ -1043,6 +1200,11 @@ class Ashkbous extends Minion {
                 "have less health than it.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Iraj extends Minion {
@@ -1066,6 +1228,11 @@ class Iraj extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power :  .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class GiantColossus extends Minion {
@@ -1088,6 +1255,11 @@ class GiantColossus extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power: - .";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -1114,6 +1286,11 @@ class TwoHeadGiant extends Minion {
                 " every force that this minion attack to it.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class ColdGrandma extends Minion {
@@ -1138,6 +1315,11 @@ class ColdGrandma extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : enemy minions which are in 8 cells around it" +
                 " will be stun for a turn.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -1164,6 +1346,11 @@ class SteelArmor extends Minion {
                 "enemy minions.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Siavash extends Minion {
@@ -1189,6 +1376,11 @@ class Siavash extends Minion {
                 " hero with 6 units hit.";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class GiantKing extends Minion {
@@ -1213,6 +1405,11 @@ class GiantKing extends Minion {
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power:  .";
         return detail;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class ArzhangBogey extends Minion {
@@ -1236,5 +1433,10 @@ class ArzhangBogey extends Minion {
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power:.";
         return detail;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }

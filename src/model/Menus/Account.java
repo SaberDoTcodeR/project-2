@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import model.Deck;
 import model.RecordedMatch;
 import view.*;
-import control.*;
+
 public class Account {
     private static View view = View.getInstance();
     private static Account loginAccount;
-    private static ArrayList<Account> allUser=new ArrayList<>();
-    private String userName,passWord;
-    private int money,wins=0;
+    private static ArrayList<Account> allUser = new ArrayList<>();
+    private String userName, passWord;
+    private int money, wins = 0,mana;
     private Deck mainDeck;
     private ArrayList<RecordedMatch> matches = new ArrayList<RecordedMatch>();
     private Collection myCollection = new Collection();
@@ -25,6 +25,14 @@ public class Account {
 
     public void incrementMoney(int money){
         this.money += money;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public void setMana(int mana) {
+        this.mana = mana;
     }
 
     public Deck getMainDeck() {
@@ -45,6 +53,12 @@ public class Account {
         this.money = 15000;
 
         allUser.add(this);
+
+    }
+    public Account(int x) {
+        this.userName = "AI_Player";
+        this.passWord = "123";
+        this.money = 15000;
 
     }
 

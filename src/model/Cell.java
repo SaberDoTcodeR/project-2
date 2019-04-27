@@ -8,13 +8,21 @@ import model.Item.CollectableItem;
 import java.util.ArrayList;
 
 public class Cell {
-    private int x;
-    private int y;
+    private int x, y;
     private boolean flag;
     private Hero hero;
     private Minion minion;
     private CollectableItem collectableItem;
-    private ArrayList<Buff> cellEffect = new ArrayList<>();
+    private int whichPlayerIsInCell;
+    private ArrayList<Buff> cellEffect = new ArrayList<Buff>();
+
+    public int getWhichPlayerIsInCell() {
+        return whichPlayerIsInCell;
+    }
+
+    public void setWhichPlayerIsInCell(int whichPlayerIsInCell) {
+        this.whichPlayerIsInCell = whichPlayerIsInCell;
+    }
 
     public int getX() {
         return x;
@@ -44,8 +52,9 @@ public class Cell {
         return hero;
     }
 
-    public void setHero(Hero hero) {
+    public void setHero(Hero hero,int whichPlayerIsInCell) {
         this.hero = hero;
+        this.whichPlayerIsInCell=whichPlayerIsInCell;
     }
 
     public void setFlag(boolean flag) {
@@ -56,16 +65,20 @@ public class Cell {
         return minion;
     }
 
-    public void setMinion(Minion minion) {
+    public void setMinion(Minion minion,int whichPlayerIsInCell) {
         this.minion = minion;
+        this.whichPlayerIsInCell=whichPlayerIsInCell;
     }
 
 
-    public Cell(int x, int y, boolean flag, CollectableItem collectableItem) {
+    public Cell(int x, int y, boolean flag, int indexOfCollect) {
         this.x = x;
         this.y = y;
         this.flag = flag;
-        this.collectableItem = collectableItem;
+        if(indexOfCollect!=-1){
+            this.collectableItem = CollectableItem.getCollectableItems().get(indexOfCollect).duplicate();
+        }
+
     }
 
     /*public void moveCardPos(int x, int y) {

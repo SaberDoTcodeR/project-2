@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import control.*;
 import model.*;
+import model.Battles.Battle;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
@@ -509,18 +510,18 @@ class StartGame extends Command {
         if (Account.getLoginAccount().getCollection().checkDeckValidation(deckName)) {
             if (mode == 3) {
                 int flags = Integer.parseInt(matcher.group(3).trim());
-                FlagsBattle battle = new FlagsBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
-                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount(), flags);
+                FlagsBattle battle = new FlagsBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), flags);
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             } else if (mode == 2) {
-                OneFlagBattle battle = new OneFlagBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
-                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount());
+                OneFlagBattle battle = new OneFlagBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount());
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             } else {
-                HeroBattle battle = new HeroBattle(Account.getLoginAccount().getCollection().findDeck(deckName),
-                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount());
+                HeroBattle battle = new HeroBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount());
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             }
@@ -552,5 +553,40 @@ class StartMultiPlayerGame extends Command {
     @Override
     public void apply(Request request) {
         return;
+    }
+}
+
+class GameInfo extends Command {
+    GameInfo() {
+        super(CommandRegex.GAME_INFO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        view.showGameInfo(request.getBattle());
+        request.getBattle().showDetailedInfo();
+    }
+}
+
+class ShowMyMinions extends Command {
+    ShowMyMinions() {
+        super(CommandRegex.SHOW_MY_MINIONS);
+    }
+
+    @Override
+    public void apply(Request request) {
+        view.showMinions(request.getBattle(),false);
+
+    }
+}
+class ShowOppMinoins extends Command {
+    ShowOppMinoins() {
+        super(CommandRegex.SHOW_OPP_MINIONS);
+    }
+
+    @Override
+    public void apply(Request request) {
+        view.showMinions(request.getBattle(),true);
+
     }
 }

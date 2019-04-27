@@ -9,14 +9,26 @@ public abstract class Spell extends Card {
     private int costToUse;
 
     static {
-        spells.add(new AllAttack());
-        spells.add(new AllDisarm());
-        spells.add(new AllPoison());
-        spells.add(new AllPower());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
+        new AllAttack();
+        new AllDisarm();
+        new AllPoison();
+        new AllPower();
+        new AreaDispel();
+        new Dispel();
+        new Empower();
+        new FireBall();
+        new GodStrength();
+        new HealthWithProfit();
+        new HellFire();
+        new KingsGuard();
+        new LightingBolt();
+        new Madness();
+        new PoisonLake();
+        new PowerUp();
+        new Sacrifice();
+        new Shock();
+        new TotalDisarm();
+        new Weakening();
     }
 
     public Spell(String name, int costToUse, int costOfBuy) {
@@ -82,7 +94,9 @@ enum SpellWork {
     SHOCK("Become stun for 2 turn for enemy force");
 
     private String effect;
-
+    public String getMessage() {
+        return effect;
+    }
     SpellWork(String effect) {
         this.effect = effect;
     }
@@ -129,7 +143,7 @@ class TotalDisarm extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.TOTAL_DISARM;
+                " - Desc: " + SpellWork.TOTAL_DISARM.getMessage();
         return details;
     }
 }
@@ -138,10 +152,6 @@ class AreaDispel extends Spell {
 
     public AreaDispel() {
         super("AreaDispel", 2, 1500);
-    }
-
-    public AreaDispel(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AreaDispel(AreaDispel areaDispel) {
@@ -173,7 +183,7 @@ class AreaDispel extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.AREA_DISPEL;
+                " - Desc: " + SpellWork.AREA_DISPEL.getMessage();
         return details;
     }
 }
@@ -182,10 +192,6 @@ class Empower extends Spell {
 
     public Empower() {
         super("Empower", 1, 250);
-    }
-
-    public Empower(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Empower(Empower empower) {
@@ -218,7 +224,7 @@ class Empower extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.EMPOWER;
+                " - Desc: " + SpellWork.EMPOWER.getMessage();
         return details;
     }
 }
@@ -227,10 +233,6 @@ class FireBall extends Spell {
 
     public FireBall() {
         super("FireBall", 1, 400);
-    }
-
-    public FireBall(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public FireBall(FireBall fireBall) {
@@ -279,7 +281,7 @@ class FireBall extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.FIREBALL;
+                " - Desc: " + SpellWork.FIREBALL.getMessage();
         return details;
     }
 }
@@ -288,10 +290,6 @@ class GodStrength extends Spell {
 
     public GodStrength() {
         super("GodStrength", 2, 450);
-    }
-
-    public GodStrength(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public GodStrength(GodStrength godStrength) {
@@ -325,7 +323,7 @@ class GodStrength extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.GOD_STRENGTH;
+                " - Desc: " + SpellWork.GOD_STRENGTH.getMessage();
         return details;
     }
 }
@@ -334,10 +332,6 @@ class HellFire extends Spell {
 
     public HellFire() {
         super("HellFire", 3, 600);
-    }
-
-    public HellFire(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public HellFire(HellFire hellFire) {
@@ -371,7 +365,7 @@ class HellFire extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.HELL_FIRE;
+                " - Desc: " + SpellWork.HELL_FIRE.getMessage();
         return details;
     }
 }
@@ -380,10 +374,6 @@ class LightingBolt extends Spell {
 
     public LightingBolt() {
         super("LightingBolt", 2, 1250);
-    }
-
-    public LightingBolt(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public LightingBolt(LightingBolt lightingBolt) {
@@ -432,7 +422,7 @@ class LightingBolt extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.LIGHTING_BOLT;
+                " - Desc: " + SpellWork.LIGHTING_BOLT.getMessage();
         return details;
     }
 }
@@ -441,10 +431,6 @@ class PoisonLake extends Spell {
 
     public PoisonLake() {
         super("PoisonLake", 5, 900);
-    }
-
-    public PoisonLake(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public PoisonLake(PoisonLake poisonLake) {
@@ -479,7 +465,7 @@ class PoisonLake extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.POISON_LAKE;
+                " - Desc: " + SpellWork.POISON_LAKE.getMessage();
         return details;
     }
 }
@@ -488,10 +474,6 @@ class Madness extends Spell {
 
     public Madness() {
         super("Madness", 0, 650);
-    }
-
-    public Madness(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Madness(Madness madness) {
@@ -527,7 +509,7 @@ class Madness extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.MADNESS;
+                " - Desc: " + SpellWork.MADNESS.getMessage();
         return details;
     }
 }
@@ -536,10 +518,6 @@ class AllDisarm extends Spell {
 
     public AllDisarm() {
         super("AllDisarm", 9, 2000);
-    }
-
-    public AllDisarm(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AllDisarm(AllDisarm allDisarm) {
@@ -574,7 +552,7 @@ class AllDisarm extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_DISARM;
+                " - Desc: " + SpellWork.ALL_DISARM.getMessage();
         return details;
     }
 }
@@ -621,7 +599,7 @@ class AllPoison extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_POISON;
+                " - Desc: " + SpellWork.ALL_POISON.getMessage();
         return details;
     }
 }
@@ -630,10 +608,6 @@ class Dispel extends Spell {
 
     public Dispel() {
         super("Dispel", 0, 2100);
-    }
-
-    public Dispel(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Dispel(Dispel dispel) {
@@ -665,7 +639,7 @@ class Dispel extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.DISPEL;
+                " - Desc: " + SpellWork.DISPEL.getMessage();
         return details;
     }
 }
@@ -674,10 +648,6 @@ class HealthWithProfit extends Spell {
 
     public HealthWithProfit() {
         super("HealthWithProfit", 0, 2250);
-    }
-
-    public HealthWithProfit(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public HealthWithProfit(HealthWithProfit healthWithProfit) {
@@ -720,7 +690,7 @@ class HealthWithProfit extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.HEALTH_WITH_PROFIT;
+                " - Desc: " + SpellWork.HEALTH_WITH_PROFIT.getMessage();
         return details;
     }
 }
@@ -729,10 +699,6 @@ class PowerUp extends Spell {
 
     public PowerUp() {
         super("PowerUp", 2, 2500);
-    }
-
-    public PowerUp(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public PowerUp(PowerUp powerUp) {
@@ -767,7 +733,7 @@ class PowerUp extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.POWER_UP;
+                " - Desc: " + SpellWork.POWER_UP.getMessage();
         return details;
     }
 }
@@ -776,10 +742,6 @@ class AllPower extends Spell {
 
     public AllPower() {
         super("AllPower", 4, 2000);
-    }
-
-    public AllPower(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AllPower(AllPower allPower) {
@@ -815,7 +777,7 @@ class AllPower extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_POWER;
+                " - Desc: " + SpellWork.ALL_POWER.getMessage();
         return details;
     }
 
@@ -825,10 +787,6 @@ class AllAttack extends Spell {
 
     public AllAttack() {
         super("AllAttack", 4, 1500);
-    }
-
-    public AllAttack(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AllAttack(AllAttack allAttack) {
@@ -879,7 +837,7 @@ class AllAttack extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_ATTACK;
+                " - Desc: " + SpellWork.ALL_ATTACK.getMessage();
         return details;
     }
 }
@@ -888,10 +846,6 @@ class Weakening extends Spell {
 
     public Weakening() {
         super("Weakening", 1, 1000);
-    }
-
-    public Weakening(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Weakening(Weakening weakening) {
@@ -931,7 +885,7 @@ class Weakening extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.WEAKENING;
+                " - Desc: " + SpellWork.WEAKENING.getMessage();
         return details;
     }
 }
@@ -940,10 +894,6 @@ class Sacrifice extends Spell {
 
     public Sacrifice() {
         super("Sacrifice", 2, 1600);
-    }
-
-    public Sacrifice(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Sacrifice(Sacrifice sacrifice) {
@@ -989,7 +939,7 @@ class Sacrifice extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.SACRIFICE;
+                " - Desc: " + SpellWork.SACRIFICE.getMessage();
         return details;
     }
 }
@@ -998,10 +948,6 @@ class KingsGuard extends Spell {
 
     public KingsGuard() {
         super("KingsGuard", 9, 1750);
-    }
-
-    public KingsGuard(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public KingsGuard(KingsGuard kingsGuard) {
@@ -1039,7 +985,7 @@ class KingsGuard extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.KINGS_GUARD;
+                " - Desc: " + SpellWork.KINGS_GUARD.getMessage();
         return details;
     }
 }
@@ -1048,10 +994,6 @@ class Shock extends Spell {
 
     public Shock() {
         super("Shock", 1, 1200);
-    }
-
-    public Shock(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Shock(Shock shock) {
@@ -1086,7 +1028,7 @@ class Shock extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.SHOCK;
+                " - Desc: " + SpellWork.SHOCK.getMessage();
         return details;
     }
 }

@@ -5,7 +5,8 @@ public abstract class Card {
     private boolean isOnMap;
     private int costOfBuy;
     private long id;
-
+    private int countOfType=1;
+    private String CardId;
     public String getName() {
         return name.toLowerCase();
     }
@@ -14,6 +15,21 @@ public abstract class Card {
         this.name = nameOfCard;
     }
 
+    public int getCountOfType() {
+        return countOfType;
+    }
+
+    public void increamentCountOfType() {
+        this.countOfType++;
+    }
+
+    public String getCardId() {
+        return CardId;
+    }
+
+    public void setCardId(String cardId) {
+        CardId = cardId;
+    }
 
     public boolean isOnMap() {
         return isOnMap;
@@ -38,4 +54,8 @@ public abstract class Card {
     abstract public String getType();
 
     public abstract String showDetails();
+    public void cardIdGenerator(String playerName){
+        String str=playerName+"_"+this.getName()+"_"+this.getCountOfType();
+        setCardId(str);
+    }
 }

@@ -3,19 +3,35 @@ package model.Item;
 import java.util.ArrayList;
 
 public abstract class CollectableItem extends Item {
+    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
+
+    static {
+        new BladesOfAgility();
+        new ChineseSword();
+        new DeathCurse();
+        new Devastation();
+        new DoubleEntendreArrow();
+        new Elexir();
+        new ManaElectuary();
+        new PerpetuityElectuary();
+        new RandomDamage();
+    }
 
     public CollectableItem(String name) {
         this.setName(name);
+        collectableItems.add(this);
     }
 
     public CollectableItem(CollectableItem collectableItem) {
         this.setName(collectableItem.getName());
     }
 
-    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
-
     public static ArrayList<CollectableItem> getCollectableItems() {
         return collectableItems;
+    }
+
+    public CollectableItem duplicate() {
+        return null;
     }
 }
 
@@ -30,7 +46,9 @@ enum CollectableItemWork {
     BLADES_OF_AGILITY("add 6AP to a random force"),
     CHINESE_SWORD("add 5AP to the melee forces");
     private String effect;
-
+    public String getMessage() {
+        return effect;
+    }
     CollectableItemWork(String effect) {
         this.effect = effect;
     }
@@ -39,8 +57,8 @@ enum CollectableItemWork {
 
 class Devastation extends CollectableItem {
 
-    public Devastation(String name) {
-        super(name);
+    public Devastation() {
+        super("Devastation");
     }
 
     public Devastation(Devastation devastation) {
@@ -56,15 +74,15 @@ class Devastation extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEVASTATION;
+                " - Desc: " + CollectableItemWork.DEVASTATION.getMessage();
         return details;
     }
 }
 
 class DoubleEntendreArrow extends CollectableItem {
 
-    public DoubleEntendreArrow(String name) {
-        super(name);
+    public DoubleEntendreArrow() {
+        super("DoubleEntendreArrow");
     }
 
     public DoubleEntendreArrow(DoubleEntendreArrow doubleEntendreArrow) {
@@ -80,15 +98,15 @@ class DoubleEntendreArrow extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW;
+                " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW.getMessage();
         return details;
     }
 }
 
 class Elexir extends CollectableItem {
 
-    public Elexir(String name) {
-        super(name);
+    public Elexir() {
+        super("Elexir");
     }
 
     public Elexir(Elexir elexir) {
@@ -104,15 +122,15 @@ class Elexir extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.ELEXIR;
+                " - Desc: " + CollectableItemWork.ELEXIR.getMessage();
         return details;
     }
 }
 
 class ManaElectuary extends CollectableItem {
 
-    public ManaElectuary(String name) {
-        super(name);
+    public ManaElectuary() {
+        super("ManaElectuary");
     }
 
     public ManaElectuary(ManaElectuary manaElectuary) {
@@ -128,15 +146,15 @@ class ManaElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.MANA_ELECTUARY;
+                " - Desc: " + CollectableItemWork.MANA_ELECTUARY.getMessage();
         return details;
     }
 }
 
 class PerpetuityElectuary extends CollectableItem {
 
-    public PerpetuityElectuary(String name) {
-        super(name);
+    public PerpetuityElectuary() {
+        super("PerpetuityElectuary");
     }
 
     public PerpetuityElectuary(PerpetuityElectuary perpetuityElectuary) {
@@ -152,15 +170,15 @@ class PerpetuityElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.PERPETUITY_ELECTUARY;
+                " - Desc: " + CollectableItemWork.PERPETUITY_ELECTUARY.getMessage();
         return details;
     }
 }
 
 class DeathCurse extends CollectableItem {
 
-    public DeathCurse(String name) {
-        super(name);
+    public DeathCurse() {
+        super("DeathCurse");
     }
 
     public DeathCurse(DeathCurse deathCurse) {
@@ -176,15 +194,15 @@ class DeathCurse extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEATH_CURSE;
+                " - Desc: " + CollectableItemWork.DEATH_CURSE.getMessage();
         return details;
     }
 }
 
 class RandomDamage extends CollectableItem {
 
-    public RandomDamage(String name) {
-        super(name);
+    public RandomDamage() {
+        super("RandomDamage");
     }
 
     public RandomDamage(RandomDamage randomDamage) {
@@ -200,15 +218,15 @@ class RandomDamage extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.RANDOM_DAMAGE;
+                " - Desc: " + CollectableItemWork.RANDOM_DAMAGE.getMessage();
         return details;
     }
 }
 
 class BladesOfAgility extends CollectableItem {
 
-    public BladesOfAgility(String name) {
-        super(name);
+    public BladesOfAgility() {
+        super("BladesOfAgility");
     }
 
     public BladesOfAgility(BladesOfAgility bladesOfAgility) {
@@ -224,15 +242,15 @@ class BladesOfAgility extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.BLADES_OF_AGILITY;
+                " - Desc: " + CollectableItemWork.BLADES_OF_AGILITY.getMessage();
         return details;
     }
 }
 
 class ChineseSword extends CollectableItem {
 
-    public ChineseSword(String name) {
-        super(name);
+    public ChineseSword() {
+        super("chineseSword");
     }
 
     public ChineseSword(ChineseSword chineseSword) {
@@ -248,7 +266,7 @@ class ChineseSword extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.CHINESE_SWORD;
+                " - Desc: " + CollectableItemWork.CHINESE_SWORD.getMessage();
         return details;
     }
 }
