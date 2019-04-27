@@ -1,5 +1,6 @@
 package model;
 
+import model.Cards.Buff;
 import model.Cards.Hero;
 import model.Cards.Minion;
 import model.Item.CollectableItem;

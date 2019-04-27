@@ -17,8 +17,6 @@ public abstract class CollectableItem extends Item {
         new RandomDamage();
     }
 
-    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
-
     public CollectableItem(String name) {
         this.setName(name);
         collectableItems.add(this);
@@ -30,6 +28,10 @@ public abstract class CollectableItem extends Item {
 
     public static ArrayList<CollectableItem> getCollectableItems() {
         return collectableItems;
+    }
+
+    public CollectableItem duplicate() {
+        return null;
     }
 }
 
@@ -44,7 +46,9 @@ enum CollectableItemWork {
     BLADES_OF_AGILITY("add 6AP to a random force"),
     CHINESE_SWORD("add 5AP to the melee forces");
     private String effect;
-
+    public String getMessage() {
+        return effect;
+    }
     CollectableItemWork(String effect) {
         this.effect = effect;
     }
@@ -70,7 +74,7 @@ class Devastation extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEVASTATION;
+                " - Desc: " + CollectableItemWork.DEVASTATION.getMessage();
         return details;
     }
 }
@@ -94,7 +98,7 @@ class DoubleEntendreArrow extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW;
+                " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW.getMessage();
         return details;
     }
 }
@@ -118,7 +122,7 @@ class Elexir extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.ELEXIR;
+                " - Desc: " + CollectableItemWork.ELEXIR.getMessage();
         return details;
     }
 }
@@ -142,7 +146,7 @@ class ManaElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.MANA_ELECTUARY;
+                " - Desc: " + CollectableItemWork.MANA_ELECTUARY.getMessage();
         return details;
     }
 }
@@ -166,7 +170,7 @@ class PerpetuityElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.PERPETUITY_ELECTUARY;
+                " - Desc: " + CollectableItemWork.PERPETUITY_ELECTUARY.getMessage();
         return details;
     }
 }
@@ -190,7 +194,7 @@ class DeathCurse extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEATH_CURSE;
+                " - Desc: " + CollectableItemWork.DEATH_CURSE.getMessage();
         return details;
     }
 }
@@ -214,7 +218,7 @@ class RandomDamage extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.RANDOM_DAMAGE;
+                " - Desc: " + CollectableItemWork.RANDOM_DAMAGE.getMessage();
         return details;
     }
 }
@@ -238,7 +242,7 @@ class BladesOfAgility extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.BLADES_OF_AGILITY;
+                " - Desc: " + CollectableItemWork.BLADES_OF_AGILITY.getMessage();
         return details;
     }
 }
@@ -262,7 +266,7 @@ class ChineseSword extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.CHINESE_SWORD;
+                " - Desc: " + CollectableItemWork.CHINESE_SWORD.getMessage();
         return details;
     }
 }

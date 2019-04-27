@@ -47,23 +47,23 @@ public class View {
         int index = 1;
         System.out.print("Heroes :\n");
         for (Hero hero : collection.getHeroes()) {
-            System.out.println("\t" + index + " : " + hero.showDetails());
+            System.out.println("\t" + index + " : " + hero.showDetails() + " - Sell Cost : " + hero.getCostOfBuy());
             index++;
         }
         index = 1;
         System.out.print("Items :\n");
         for (UsableItem usableItem : collection.getUsableItems()) {
-            System.out.println("\t" + index + " : " + usableItem.showDetails());
+            System.out.println("\t" + index + " : " + usableItem.showDetails() + " - Sell Cost : " + usableItem.getCostOfBuy());
             index++;
         }
         index = 1;
         System.out.print("Cards :\n");
         for (Spell spell : collection.getSpells()) {
-            System.out.println("\t" + index + " : " + spell.showDetails());
+            System.out.println("\t" + index + " : " + spell.showDetails() + " - Sell Cost : " + spell.getCostOfBuy());
             index++;
         }
         for (Minion minion : collection.getMinions()) {
-            System.out.println("\t" + index + " : " + minion.showDetails());
+            System.out.println("\t" + index + " : " + minion.showDetails() + " - Sell Cost : " + minion.getCostOfBuy());
             index++;
         }
     }
@@ -89,7 +89,7 @@ public class View {
         }
         for (Minion minion : deck.getMinions()) {
             System.out.println("\t" + index + " : " + minion.showDetails());
-            index++;
+            index += 1;
         }
     }
 
@@ -97,7 +97,7 @@ public class View {
         int index = 1;
         System.out.println("Heroes :");
         for (Hero hero : Hero.getHeroes()) {
-            String heroInfo = hero.showDetails();
+            String heroInfo = hero.showDetails() + " - Buy Cost : " + hero.getCostOfBuy();
             System.out.print(index + " : ");
             System.out.println(heroInfo);
             index++;
@@ -105,24 +105,24 @@ public class View {
         index = 1;
         System.out.println("Items :");
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
-            String itemInfo = usableItem.showDetails();
+            String itemInfo = usableItem.showDetails() + " - Buy Cost : " + usableItem.getCostOfBuy();
             System.out.print(index + " : ");
             System.out.println(itemInfo);
-            index++;
+            index += 1;
         }
         index = 1;
         System.out.println("Cards :");
         for (Minion minion : Minion.getMinions()) {
             String minionInfo = minion.showDetails();
             System.out.print(index + " : ");
-            System.out.println(minionInfo);
+            System.out.println(minionInfo + " - Buy Cost : " + minion.getCostOfBuy());
             index++;
         }
         for (Spell spell : Spell.getSpells()) {
             String spellInfo = spell.showDetails();
             System.out.print(index + " : ");
-            System.out.println(spellInfo);
-            index++;
+            System.out.println(spellInfo + " - Buy Cost : " + spell.getCostOfBuy());
+            index += 1;
         }
     }
 
@@ -199,33 +199,33 @@ public class View {
         System.out.println("Mana of player " + battle.getSecondPlayer().getUserName() + " : " + battle.getSecondPlayer().getMana());
     }
 
-    public void showMinions(Battle battle,boolean reversed) {
+    public void showMinions(Battle battle, boolean reversed) {
         int whichPlayer;
-        if ((battle.getTurn() % 2 == 0&&!reversed)||(battle.getTurn() % 2 == 1&&reversed))
-        {
+        if ((battle.getTurn() % 2 == 0 && !reversed) || (battle.getTurn() % 2 == 1 && reversed)) {
             whichPlayer = 2;
-        }
-        else
+        } else
             whichPlayer = 1;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                if (whichPlayer==1&&battle.getMap().get(i).get(j).getMinion() != null) {
-                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())){
-                       printMinionInfo(battle,i,j);
+                if (whichPlayer == 1 && battle.getMap().get(i).get(j).getMinion() != null) {
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                        printMinionInfo(battle, i, j);
                     }
-                }else  if(whichPlayer==2&&battle.getMap().get(i).get(j).getMinion() != null){
-                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())){
-                        printMinionInfo(battle,i,j);
+                } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getMinion() != null) {
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                        printMinionInfo(battle, i, j);
                     }
                 }
             }
         }
     }
-    public void printMinionInfo(Battle battle,int i,int j){
-        System.out.print(battle.getMap().get(i).get(j).getMinion().getCardId()+" : "+battle.getMap().get(i).get(j).getMinion().getName()+", ");
-        System.out.print("health : "+battle.getMap().get(i).get(j).getMinion().getHp()+", location : [("+(i+1)+","+(j+1)+")], power : "+
+
+    public void printMinionInfo(Battle battle, int i, int j) {
+        System.out.print(battle.getMap().get(i).get(j).getMinion().getCardId() + " : " + battle.getMap().get(i).get(j).getMinion().getName() + ", ");
+        System.out.print("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
                 battle.getMap().get(i).get(j).getMinion().getAp());
     }
+
     public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +

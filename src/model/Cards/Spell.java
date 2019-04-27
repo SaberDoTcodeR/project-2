@@ -94,7 +94,9 @@ enum SpellWork {
     SHOCK("Become stun for 2 turn for enemy force");
 
     private String effect;
-
+    public String getMessage() {
+        return effect;
+    }
     SpellWork(String effect) {
         this.effect = effect;
     }
@@ -141,7 +143,7 @@ class TotalDisarm extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.TOTAL_DISARM;
+                " - Desc: " + SpellWork.TOTAL_DISARM.getMessage();
         return details;
     }
 }
@@ -181,7 +183,7 @@ class AreaDispel extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.AREA_DISPEL;
+                " - Desc: " + SpellWork.AREA_DISPEL.getMessage();
         return details;
     }
 }
@@ -222,7 +224,7 @@ class Empower extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.EMPOWER;
+                " - Desc: " + SpellWork.EMPOWER.getMessage();
         return details;
     }
 }
@@ -262,7 +264,7 @@ class FireBall extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.FIREBALL;
+                " - Desc: " + SpellWork.FIREBALL.getMessage();
         return details;
     }
 }
@@ -302,7 +304,7 @@ class GodStrength extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.GOD_STRENGTH;
+                " - Desc: " + SpellWork.GOD_STRENGTH.getMessage();
         return details;
     }
 }
@@ -342,7 +344,7 @@ class HellFire extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.HELL_FIRE;
+                " - Desc: " + SpellWork.HELL_FIRE.getMessage();
         return details;
     }
 }
@@ -382,7 +384,7 @@ class LightingBolt extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.LIGHTING_BOLT;
+                " - Desc: " + SpellWork.LIGHTING_BOLT.getMessage();
         return details;
     }
 }
@@ -422,7 +424,7 @@ class PoisonLake extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.POISON_LAKE;
+                " - Desc: " + SpellWork.POISON_LAKE.getMessage();
         return details;
     }
 }
@@ -462,7 +464,7 @@ class Madness extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.MADNESS;
+                " - Desc: " + SpellWork.MADNESS.getMessage();
         return details;
     }
 }
@@ -502,7 +504,7 @@ class AllDisarm extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_DISARM;
+                " - Desc: " + SpellWork.ALL_DISARM.getMessage();
         return details;
     }
 }
@@ -546,7 +548,7 @@ class AllPoison extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_POISON;
+                " - Desc: " + SpellWork.ALL_POISON.getMessage();
         return details;
     }
 }
@@ -586,7 +588,7 @@ class Dispel extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.DISPEL;
+                " - Desc: " + SpellWork.DISPEL.getMessage();
         return details;
     }
 }
@@ -626,7 +628,7 @@ class HealthWithProfit extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.HEALTH_WITH_PROFIT;
+                " - Desc: " + SpellWork.HEALTH_WITH_PROFIT.getMessage();
         return details;
     }
 }
@@ -666,7 +668,7 @@ class PowerUp extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.POWER_UP;
+                " - Desc: " + SpellWork.POWER_UP.getMessage();
         return details;
     }
 }
@@ -706,7 +708,7 @@ class AllPower extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_POWER;
+                " - Desc: " + SpellWork.ALL_POWER.getMessage();
         return details;
     }
 
@@ -747,7 +749,7 @@ class AllAttack extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.ALL_ATTACK;
+                " - Desc: " + SpellWork.ALL_ATTACK.getMessage();
         return details;
     }
 }
@@ -787,7 +789,7 @@ class Weakening extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.WEAKENING;
+                " - Desc: " + SpellWork.WEAKENING.getMessage();
         return details;
     }
 }
@@ -827,7 +829,7 @@ class Sacrifice extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.SACRIFICE;
+                " - Desc: " + SpellWork.SACRIFICE.getMessage();
         return details;
     }
 }
@@ -867,7 +869,7 @@ class KingsGuard extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.KINGS_GUARD;
+                " - Desc: " + SpellWork.KINGS_GUARD.getMessage();
         return details;
     }
 }
@@ -907,7 +909,7 @@ class Shock extends Spell {
         String details;
         details = " Type : " + getType() + " - Name : " +
                 this.getClass().getSimpleName() + " - MP : " + this.getCostToUse() +
-                " - Desc: " + SpellWork.SHOCK;
+                " - Desc: " + SpellWork.SHOCK.getMessage();
         return details;
     }
 }

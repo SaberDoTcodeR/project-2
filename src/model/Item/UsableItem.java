@@ -61,7 +61,9 @@ enum UsableItemWork {
     SOUL_EATER("when insider force die,apply a power buff and 1AP on an insider force"),
     BAPTISM("Any minion when spawning,get holyBuff for 2 turns");
     private String effect;
-
+    public String getMessage() {
+        return effect;
+    }
     UsableItemWork(String effect) {
         this.effect = effect;
     }
@@ -87,7 +89,7 @@ class CrownOfWisdom extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.CROWN_OF_WISDOM;
+                " - Desc: " + UsableItemWork.CROWN_OF_WISDOM.getMessage();
         return details;
 
     }
@@ -112,7 +114,7 @@ class ShameEmblem extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.SHAME_EMBLEM;
+                " - Desc: " + UsableItemWork.SHAME_EMBLEM.getMessage();
         return details;
 
     }
@@ -137,7 +139,7 @@ class DamolArchery extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.DAMOL_ARCHERY;
+                " - Desc: " + UsableItemWork.DAMOL_ARCHERY.getMessage();
         return details;
     }
 }
@@ -161,7 +163,7 @@ class SimorghPlume extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.SIMORGH_PLUME;
+                " - Desc: " + UsableItemWork.SIMORGH_PLUME.getMessage();
         return details;
     }
 }
@@ -185,7 +187,7 @@ class TerrorHood extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.TERROR_HOOD;
+                " - Desc: " + UsableItemWork.TERROR_HOOD.getMessage();
         return details;
     }
 }
@@ -210,7 +212,7 @@ class KingWisdom extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.KING_WISDOM;
+                " - Desc: " + UsableItemWork.KING_WISDOM.getMessage();
         return details;
     }
 }
@@ -234,7 +236,7 @@ class AssassinationDagger extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.ASSASSINATION_DAGGER;
+                " - Desc: " + UsableItemWork.ASSASSINATION_DAGGER.getMessage();
         return details;
     }
 }
@@ -258,7 +260,7 @@ class PoisonousDagger extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.POISONOUS_DAGGER;
+                " - Desc: " + UsableItemWork.POISONOUS_DAGGER.getMessage();
         return details;
     }
 }
@@ -282,7 +284,7 @@ class ShockHammer extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.SHOCK_HAMMER;
+                " - Desc: " + UsableItemWork.SHOCK_HAMMER.getMessage();
         return details;
     }
 }
@@ -305,7 +307,7 @@ class SoulEater extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.SOUL_EATER;
+                " - Desc: " + UsableItemWork.SOUL_EATER.getMessage();
         return details;
     }
 }
@@ -329,7 +331,7 @@ class Baptism extends UsableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + UsableItemWork.BAPTISM;
+                " - Desc: " + UsableItemWork.BAPTISM.getMessage();
         return details;
     }
 }
