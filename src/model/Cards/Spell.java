@@ -9,14 +9,26 @@ public abstract class Spell extends Card {
     private int costToUse;
 
     static {
-        spells.add(new AllAttack());
-        spells.add(new AllDisarm());
-        spells.add(new AllPoison());
-        spells.add(new AllPower());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
-        spells.add(new AllAttack());
+        new AllAttack();
+        new AllDisarm();
+        new AllPoison();
+        new AllPower();
+        new AreaDispel();
+        new Dispel();
+        new Empower();
+        new FireBall();
+        new GodStrength();
+        new HealthWithProfit();
+        new HellFire();
+        new KingsGuard();
+        new LightingBolt();
+        new Madness();
+        new PoisonLake();
+        new PowerUp();
+        new Sacrifice();
+        new Shock();
+        new TotalDisarm();
+        new Weakening();
     }
 
     public Spell(String name, int costToUse, int costOfBuy) {
@@ -140,10 +152,6 @@ class AreaDispel extends Spell {
         super("AreaDispel", 2, 1500);
     }
 
-    public AreaDispel(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public AreaDispel(AreaDispel areaDispel) {
         super(areaDispel);
     }
@@ -182,10 +190,6 @@ class Empower extends Spell {
 
     public Empower() {
         super("Empower", 1, 250);
-    }
-
-    public Empower(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Empower(Empower empower) {
@@ -229,10 +233,6 @@ class FireBall extends Spell {
         super("FireBall", 1, 400);
     }
 
-    public FireBall(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public FireBall(FireBall fireBall) {
         super(fireBall);
     }
@@ -271,10 +271,6 @@ class GodStrength extends Spell {
 
     public GodStrength() {
         super("GodStrength", 2, 450);
-    }
-
-    public GodStrength(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public GodStrength(GodStrength godStrength) {
@@ -317,10 +313,6 @@ class HellFire extends Spell {
         super("HellFire", 3, 600);
     }
 
-    public HellFire(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public HellFire(HellFire hellFire) {
         super(hellFire);
     }
@@ -359,10 +351,6 @@ class LightingBolt extends Spell {
 
     public LightingBolt() {
         super("LightingBolt", 2, 1250);
-    }
-
-    public LightingBolt(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public LightingBolt(LightingBolt lightingBolt) {
@@ -405,10 +393,6 @@ class PoisonLake extends Spell {
         super("PoisonLake", 5, 900);
     }
 
-    public PoisonLake(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public PoisonLake(PoisonLake poisonLake) {
         super(poisonLake);
     }
@@ -449,10 +433,6 @@ class Madness extends Spell {
         super("Madness", 0, 650);
     }
 
-    public Madness(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public Madness(Madness madness) {
         super(madness);
     }
@@ -491,10 +471,6 @@ class AllDisarm extends Spell {
 
     public AllDisarm() {
         super("AllDisarm", 9, 2000);
-    }
-
-    public AllDisarm(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AllDisarm(AllDisarm allDisarm) {
@@ -581,10 +557,6 @@ class Dispel extends Spell {
         super("Dispel", 0, 2100);
     }
 
-    public Dispel(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public Dispel(Dispel dispel) {
         super(dispel);
     }
@@ -623,10 +595,6 @@ class HealthWithProfit extends Spell {
 
     public HealthWithProfit() {
         super("HealthWithProfit", 0, 2250);
-    }
-
-    public HealthWithProfit(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public HealthWithProfit(HealthWithProfit healthWithProfit) {
@@ -669,10 +637,6 @@ class PowerUp extends Spell {
         super("PowerUp", 2, 2500);
     }
 
-    public PowerUp(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public PowerUp(PowerUp powerUp) {
         super(powerUp);
     }
@@ -711,10 +675,6 @@ class AllPower extends Spell {
 
     public AllPower() {
         super("AllPower", 4, 2000);
-    }
-
-    public AllPower(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public AllPower(AllPower allPower) {
@@ -758,10 +718,6 @@ class AllAttack extends Spell {
         super("AllAttack", 4, 1500);
     }
 
-    public AllAttack(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public AllAttack(AllAttack allAttack) {
         super(allAttack);
     }
@@ -800,10 +756,6 @@ class Weakening extends Spell {
 
     public Weakening() {
         super("Weakening", 1, 1000);
-    }
-
-    public Weakening(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Weakening(Weakening weakening) {
@@ -846,10 +798,6 @@ class Sacrifice extends Spell {
         super("Sacrifice", 2, 1600);
     }
 
-    public Sacrifice(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public Sacrifice(Sacrifice sacrifice) {
         super(sacrifice);
     }
@@ -890,10 +838,6 @@ class KingsGuard extends Spell {
         super("KingsGuard", 9, 1750);
     }
 
-    public KingsGuard(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     public KingsGuard(KingsGuard kingsGuard) {
         super(kingsGuard);
     }
@@ -932,10 +876,6 @@ class Shock extends Spell {
 
     public Shock() {
         super("Shock", 1, 1200);
-    }
-
-    public Shock(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
     }
 
     public Shock(Shock shock) {

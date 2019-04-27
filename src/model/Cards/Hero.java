@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public abstract class Hero extends Card {
     private static ArrayList<Hero> heroes = new ArrayList<>();
+
     static {
         new Arash();
         new Dragon();
-        new Esfandyar() ;
+        new Esfandyar();
         new Kaveh();
         new Legend();
         new Rakhsh();
@@ -16,6 +17,7 @@ public abstract class Hero extends Card {
         new WhiteBogey();
         new Zahhak();
     }
+
     private int ap;
     private int hp;
     private int mp;
@@ -70,11 +72,12 @@ public abstract class Hero extends Card {
     public int getAp() {
         return ap;
     }
+
     public String getType() {
         return "Hero";
     }
 
-    public void setTypeOfHit(int typeOfRange){
+    public void setTypeOfHit(int typeOfRange) {
         this.typeOfRange = typeOfRange;
     }
 
@@ -83,7 +86,7 @@ public abstract class Hero extends Card {
             return "Melee";
         else if (this.typeOfRange == 1)
             return "Ranged";
-        else  if(this.typeOfRange == 2)
+        else if (this.typeOfRange == 2)
             return "Hybrid";
         else
             return null;
@@ -97,29 +100,31 @@ public abstract class Hero extends Card {
         isStunning = stunning;
     }
 
-    public void incrementAp(int unit){
+    public void incrementAp(int unit) {
         this.ap += unit;
     }
 
-    public void decrementAp(int unit){
+    public void decrementAp(int unit) {
         this.ap -= unit;
     }
 
-    public void changeAP(int unit){
+    public void changeAP(int unit) {
         this.ap += unit;
     }
 
-    public void changeHP(int unit){
+    public void changeHP(int unit) {
         this.hp += unit;
     }
 
-    public void incrementHp(int unit){
+    public void incrementHp(int unit) {
         this.hp += unit;
     }
 
-    public void decrementHp(int unit){
+    public void decrementHp(int unit) {
         this.hp -= unit;
     }
+
+    public abstract void castSpecialPower();
 
     public Hero duplicate() {
         return null;//todo --> can be abstract
@@ -139,7 +144,7 @@ public abstract class Hero extends Card {
 */
 }
 
-enum HeroesAP{
+enum HeroesAP {
     ARASH(2),
     DRAGON(4),
     ESFANDYAR(3),
@@ -151,12 +156,13 @@ enum HeroesAP{
     WHITE_BOGEY(4),
     ZAHHAK(4);
     private int apUnit;
-    HeroesAP (int apUnit){
+
+    HeroesAP(int apUnit) {
         this.apUnit = apUnit;
     }
 }
 
-enum HeroesHP{
+enum HeroesHP {
     ARASH(30),
     DRAGON(50),
     ESFANDYAR(35),
@@ -168,7 +174,8 @@ enum HeroesHP{
     WHITE_BOGEY(50),
     ZAHHAK(50);
     private int hpUnit;
-    HeroesHP (int hpUnit){
+
+    HeroesHP(int hpUnit) {
         this.hpUnit = hpUnit;
     }
 }
@@ -196,6 +203,11 @@ class WhiteBogey extends Hero {
                 "4 units forever.";
         return details;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Simurgh extends Hero {
@@ -217,10 +229,13 @@ class Simurgh extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : 8 cells around it will be fiery for 2 turns and take 8 holy buff" +
-                " for 2 turns." +
-                "4 units forever.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : stun all enemy forces for one turn.";
         return details;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -246,6 +261,11 @@ class Dragon extends Hero {
                 + " - Class : " + this.getTypeOfHit() + " – Special power : disarm one person.";
         return details;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Rakhsh extends Hero {
@@ -270,6 +290,11 @@ class Rakhsh extends Hero {
                 + " - Class : " + this.getTypeOfHit() + " – Special power : stun one of the enemy forces for one turn.";
         return details;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Zahhak extends Hero {
@@ -292,15 +317,19 @@ class Zahhak extends Hero {
     public String showDetails() {
         String details;
         details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : appear two big snakes with health = 1 and hit power = 1" +
-                " in two random cells of 8 cells around itself if the cells were full it appears less than two.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : poison the enemy in time of hitting for 3 turns.";
         return details;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
 class Kaveh extends Hero {
     public Kaveh() {
-        super("Kaveh", 4, 50, 8000, 0 );
+        super("Kaveh", 4, 50, 8000, 0);
         super.setCoolDownTime(3);
         super.setMp(1);
     }
@@ -319,6 +348,11 @@ class Kaveh extends Hero {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - Class : " + this.getTypeOfHit() + " – Special power : make a cell holy for 3 turns.";
         return details;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -345,6 +379,11 @@ class Arash extends Hero {
                 + " - Class : " + this.getTypeOfHit() + " – Special power : hit all enemy forces in itself row with 4 units hit.";
         return details;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Legend extends Hero {
@@ -370,6 +409,11 @@ class Legend extends Hero {
                 + " - Class : " + this.getTypeOfHit() + " – Special power : dispel one of the enemy forces.";
         return details;
     }
+
+    @Override
+    public void castSpecialPower() {
+
+    }
 }
 
 class Esfandyar extends Hero {
@@ -392,8 +436,13 @@ class Esfandyar extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : has 3 holy buff in passive mode.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : has 3 holy buff in continuous mode.";
         return details;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
 
@@ -417,5 +466,10 @@ class Rostam extends Hero {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - Class : " + this.getTypeOfHit() + " – Special power : - .";
         return details;
+    }
+
+    @Override
+    public void castSpecialPower() {
+
     }
 }
