@@ -1,9 +1,21 @@
 package model.Item;
 
-
 import java.util.ArrayList;
 
 public abstract class CollectableItem extends Item {
+    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
+
+    static {
+        new BladesOfAgility();
+        new ChineseSword();
+        new DeathCurse();
+        new Devastation();
+        new DoubleEntendreArrow();
+        new Elexir();
+        new ManaElectuary();
+        new PerpetuityElectuary();
+        new RandomDamage();
+    }
 
     private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
 
@@ -13,17 +25,11 @@ public abstract class CollectableItem extends Item {
     }
 
     public CollectableItem(CollectableItem collectableItem) {
-
         this.setName(collectableItem.getName());
     }
 
-
     public static ArrayList<CollectableItem> getCollectableItems() {
         return collectableItems;
-    }
-
-    public CollectableItem duplicate() {
-        return null;
     }
 }
 
@@ -47,8 +53,8 @@ enum CollectableItemWork {
 
 class Devastation extends CollectableItem {
 
-    public Devastation(String name) {
-        super(name);
+    public Devastation() {
+        super("Devastation");
     }
 
     public Devastation(Devastation devastation) {
@@ -67,13 +73,12 @@ class Devastation extends CollectableItem {
                 " - Desc: " + CollectableItemWork.DEVASTATION;
         return details;
     }
-
 }
 
 class DoubleEntendreArrow extends CollectableItem {
 
-    public DoubleEntendreArrow(String name) {
-        super(name);
+    public DoubleEntendreArrow() {
+        super("DoubleEntendreArrow");
     }
 
     public DoubleEntendreArrow(DoubleEntendreArrow doubleEntendreArrow) {
@@ -96,8 +101,8 @@ class DoubleEntendreArrow extends CollectableItem {
 
 class Elexir extends CollectableItem {
 
-    public Elexir(String name) {
-        super(name);
+    public Elexir() {
+        super("Elexir");
     }
 
     public Elexir(Elexir elexir) {
@@ -120,8 +125,8 @@ class Elexir extends CollectableItem {
 
 class ManaElectuary extends CollectableItem {
 
-    public ManaElectuary(String name) {
-        super(name);
+    public ManaElectuary() {
+        super("ManaElectuary");
     }
 
     public ManaElectuary(ManaElectuary manaElectuary) {
@@ -144,8 +149,8 @@ class ManaElectuary extends CollectableItem {
 
 class PerpetuityElectuary extends CollectableItem {
 
-    public PerpetuityElectuary(String name) {
-        super(name);
+    public PerpetuityElectuary() {
+        super("PerpetuityElectuary");
     }
 
     public PerpetuityElectuary(PerpetuityElectuary perpetuityElectuary) {
@@ -168,8 +173,8 @@ class PerpetuityElectuary extends CollectableItem {
 
 class DeathCurse extends CollectableItem {
 
-    public DeathCurse(String name) {
-        super(name);
+    public DeathCurse() {
+        super("DeathCurse");
     }
 
     public DeathCurse(DeathCurse deathCurse) {
@@ -192,8 +197,8 @@ class DeathCurse extends CollectableItem {
 
 class RandomDamage extends CollectableItem {
 
-    public RandomDamage(String name) {
-        super(name);
+    public RandomDamage() {
+        super("RandomDamage");
     }
 
     public RandomDamage(RandomDamage randomDamage) {
@@ -216,8 +221,8 @@ class RandomDamage extends CollectableItem {
 
 class BladesOfAgility extends CollectableItem {
 
-    public BladesOfAgility(String name) {
-        super(name);
+    public BladesOfAgility() {
+        super("BladesOfAgility");
     }
 
     public BladesOfAgility(BladesOfAgility bladesOfAgility) {
@@ -240,8 +245,8 @@ class BladesOfAgility extends CollectableItem {
 
 class ChineseSword extends CollectableItem {
 
-    public ChineseSword(String name) {
-        super(name);
+    public ChineseSword() {
+        super("chineseSword");
     }
 
     public ChineseSword(ChineseSword chineseSword) {

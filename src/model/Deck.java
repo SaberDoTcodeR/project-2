@@ -70,7 +70,6 @@ public class Deck {
     }
 
     public boolean isValid() {
-        //todo check validation
         if (getHero() != null && getSpells().size() + getMinions().size() == 20)
             return true;
         return false;

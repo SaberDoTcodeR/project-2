@@ -23,10 +23,10 @@ public enum CommandRegex {
     SEARCH(
             "^search\\s+(\\w+)$"
     ),
-    CREATE_DECK(
+    CREATE_DECK (
             "^create deck\\s+(\\w+)$"
     ),
-    DELETE_DECK(
+    DELETE_DECK (
             "^delete deck\\s+(\\w+)$"
     ),
     ADD(
@@ -35,16 +35,16 @@ public enum CommandRegex {
     REMOVE(
             "^remove\\s+(\\d+)\\s+from deck\\s+(\\w+)$"
     ),
-    VALIDATE_DECK(
+    VALIDATE_DECK (
             "^validate deck\\s+(\\w+)$"
     ),
-    SELECT_DECK(
+    SELECT_DECK (
             "^select deck\\s+(\\w+)$"
     ),
-    SHOW_ALL_DECKS(
+    SHOW_ALL_DECKS (
             "^show all decks$"
     ),
-    SHOW_DECK(
+    SHOW_DECK (
             "^show deck\\s+(\\w+)$"
     ),
     ENTER_COLLECTION(
@@ -62,10 +62,10 @@ public enum CommandRegex {
     HELP(
             "^help$"
     ),
-    CREATE_ACCOUNT(
+    CREATE_ACCOUNT (
             "^create account\\s+(\\w+)$"
     ),
-    LOGIN(
+    LOGIN (
             "^login\\s+(\\w+)$"
     ),
     SHOW_LEADERBOARD(

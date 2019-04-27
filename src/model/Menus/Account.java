@@ -19,12 +19,11 @@ public class Account {
     public int getMoney() {
         return money;
     }
-
-    public void decreament(int x) {
-        this.money -= x;
+    public void decreament(int x){
+        this.money-=x;
     }
 
-    public void incrementMoney(int money) {
+    public void incrementMoney(int money){
         this.money += money;
     }
 
