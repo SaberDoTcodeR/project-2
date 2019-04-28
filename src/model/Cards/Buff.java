@@ -3,9 +3,9 @@ package model.Cards;
 import model.Cell;
 
 /*
-* bayad card ru cell emal beshe dar method haye khode spell jame hadaf taEN beshe va buff ha bayad ru jameye hadaf
-* emal shavand;
-* */
+ * bayad card ru cell emal beshe dar method haye khode spell jame hadaf taEN beshe va buff ha bayad ru jameye hadaf
+ * emal shavand;
+ * */
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -37,199 +37,193 @@ public abstract class Buff {
         this.turnCounter += number;
     }
 
-    public abstract void dispel(Cell cell);
+    public abstract void dispel(Hero hero);
 
-    public abstract void dispel(ArrayList<Cell> cells);
+    public abstract void dispel(Minion minion);
 }
 
 class HolyBuff extends Buff {
 
-    public void holy(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().setHoly(true);
-        if (cell.getMinion() != null)
-            cell.getMinion().setHoly(true);
-
+    public void holy(Hero hero) {
+        hero.incrementHolyCounter();
     }
 
-    public void holy(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().setHoly(true);
-            if (cell.getMinion() != null)
-                cell.getMinion().setHoly(true);
-        }
+    public void holy(Minion minion) {
+        minion.incrementHolyCounter();
     }
 
     @Override
-    public void dispel(Cell cell) {
-        if (cell.getHero() != null && cell.getHero().isHoly())
-            cell.getHero().setHoly(false);
-        if (cell.getMinion() != null && cell.getMinion().isHoly())
-            cell.getMinion().setHoly(false);
+    public void dispel(Hero hero) {
+        hero.setHolyCounter(0);
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
-        for (Cell cell: cells) {
-            dispel(cell);
-        }
+    public void dispel(Minion minion) {
+        minion.setHolyCounter(0);
     }
 }
 
 class PowerBuff extends Buff {
-    public void power(Cell cell) {
-        if (cell.getHero() != null) {
-            if (getRandomNumber() % 2 == 0)
-                cell.getHero().incrementAp(1);
-            else
-                cell.getMinion().incrementHp(1);
-        }
-        if (cell.getMinion() != null) {
-            if (getRandomNumber() % 2 == 0)
-                cell.getHero().incrementAp(1);
-            else
-                cell.getMinion().incrementHp(1);
+
+    private int number;
+
+    public void power(Hero hero) {
+        if (getRandomNumber() % 2 == 0) {
+            hero.incrementAp(1);
+        } else {
+            hero.incrementHp(1);
         }
     }
 
-    public void power(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-           power(cell);
+    public void power(Minion minion) {
+        if (getNumber() % 2 == 0) {
+            minion.incrementAp(1);
+        } else {
+            minion.incrementHp(1);
         }
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        if (getRandomNumber() % 2 == 0) {
+            hero.decrementAp(1);
+        } else {
+            hero.decrementHp(1);
+        }
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
+    public void dispel(Minion minion) {
+        if (getNumber() % 2 == 0) {
+            minion.decrementAp(1);
+        } else {
+            minion.decrementHp(1);
+        }
+    }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber() {
+        this.number = getRandomNumber();
     }
 }
 
 class PoisonBuff extends Buff {
-    public void poison(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().decrementHp(1);
-        if (cell.getMinion() != null)
-            cell.getMinion().decrementHp(1);
+
+    public void poison(Hero hero) {
+        hero.decrementHp(1);
     }
 
-    public void poison(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().decrementHp(1);
-            if (cell.getMinion() != null)
-                cell.getMinion().decrementHp(1);
-        }
+    public void poison(Minion minion) {
+        minion.decrementHp(1);
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        //nothing
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
-
+    public void dispel(Minion minion) {
+        //nothing
     }
 }
 
 class WeaknessBuff extends Buff {
-    public void weakness(Cell cell) {
-        if (cell.getHero() != null) {
-            if (getRandomNumber() % 2 == 0)
-                cell.getHero().decrementHp(1);
-            else
-                cell.getHero().decrementAp(1);
-        }
-        if (cell.getMinion() != null) {
-            if (getRandomNumber() % 2 == 0)
-                cell.getMinion().decrementAp(1);
-            else
-                cell.getMinion().decrementHp(1);
+
+    private int number;
+
+    public void weakness(Hero hero) {
+        if (getRandomNumber() % 2 == 0) {
+            hero.decrementAp(1);
+        } else {
+            hero.decrementHp(1);
         }
     }
 
-    public void weakness(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            weakness(cell);
+    public void weakness(Minion minion) {
+        if (getNumber() % 2 == 0) {
+            minion.decrementAp(1);
+        } else {
+            minion.decrementHp(1);
         }
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        if (getRandomNumber() % 2 == 0) {
+            hero.incrementAp(1);
+        } else {
+            hero.incrementHp(1);
+        }
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
+    public void dispel(Minion minion) {
+        if (getNumber() % 2 == 0) {
+            minion.incrementAp(1);
+        } else {
+            minion.incrementHp(1);
+        }
+    }
 
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber() {
+        this.number = getRandomNumber();
     }
 }
 
 class StunBuff extends Buff {
 
-    public void stun(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().setStunning(true);
-        if (cell.getMinion() != null)
-            cell.getMinion().setStunning(true);
+    public void stun(Hero hero) {
+        hero.setStunning(true);
     }
 
-    public void stun(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().setStunning(true);
-            if (cell.getMinion() != null)
-                cell.getMinion().setStunning(true);
-        }
+    public void stun(Minion minion) {
+        minion.setStunning(true);
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        hero.setStunning(false);
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
-
+    public void dispel(Minion minion) {
+        minion.setStunning(false);
     }
 }
 
 class DisarmBuff extends Buff {
 
-    public void disarm(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().setTypeOfHit(3);
-        if (cell.getMinion() != null)
-            cell.getMinion().setTypeOfHit(3);
+    public void disarm(Hero hero) {
+        hero.setCounterAttack(false);
     }
-    public void disarm(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().setTypeOfHit(3);
-            if (cell.getMinion() != null)
-                cell.getMinion().setTypeOfHit(3);
-        }
+
+    public void disarm(Minion minion) {
+        minion.setCounterAttack(false);
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        hero.setCounterAttack(true);
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
-
+    public void dispel(Minion minion) {
+        minion.setCounterAttack(true);
     }
 }
 
 class ChangeApBuff extends Buff {
     private int unit;
+    private boolean heroChange;
+    private boolean minionChange;
 
     public ChangeApBuff(int unit) {
         this.unit = unit;
@@ -237,33 +231,47 @@ class ChangeApBuff extends Buff {
 
     public void increment(Hero hero) {
         hero.incrementAp(unit);
+        this.heroChange = true;
     }
 
     public void decrement(Hero hero) {
         hero.decrementAp(unit);
+        this.heroChange = false;
     }
 
     public void increment(Minion minion) {
         minion.incrementAp(unit);
+        this.minionChange = true;
     }
 
     public void decrement(Minion minion) {
         minion.decrementAp(unit);
+        this.minionChange = false;
     }
 
     @Override
-    public void dispel(Cell cell) {
-
+    public void dispel(Hero hero) {
+        if (heroChange) {
+            hero.decrementAp(unit);
+        } else {
+            hero.incrementAp(unit);
+        }
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
-
+    public void dispel(Minion minion) {
+        if (minionChange) {
+            minion.decrementAp(unit);
+        } else {
+            minion.incrementAp(unit);
+        }
     }
 }
 
 class ChangeHpBuff extends Buff {
     private int unit;
+    private boolean heroChange;
+    private boolean minionChange;
 
     public ChangeHpBuff(int unit) {
         this.unit = unit;
@@ -271,55 +279,73 @@ class ChangeHpBuff extends Buff {
 
     public void increment(Hero hero) {
         hero.incrementHp(unit);
+        this.heroChange = true;
     }
 
     public void decrement(Hero hero) {
         hero.decrementHp(unit);
+        this.heroChange = false;
     }
 
     public void increment(Minion minion) {
         minion.incrementHp(unit);
+        this.minionChange = true;
     }
 
     public void decrement(Minion minion) {
         minion.decrementHp(unit);
+        this.minionChange = false;
     }
 
     @Override
-    public void dispel(Cell cell) {
-
-    }
-
-    @Override
-    public void dispel(ArrayList<Cell> cells) {
-
-    }
-}
-
-class FiringEffectedCell extends Buff {
-    public void decrementHp(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().decrementHp(2);
-        if (cell.getMinion() != null)
-            cell.getMinion().decrementHp(2);
-    }
-
-    public void changeHP(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().decrementHp(2);
-            if (cell.getMinion() != null)
-                cell.getMinion().decrementHp(2);
+    public void dispel(Hero hero) {
+        if (heroChange) {
+            hero.decrementHp(unit);
+        } else {
+            hero.incrementHp(unit);
         }
     }
 
     @Override
-    public void dispel(Cell cell) {
+    public void dispel(Minion minion) {
+        if (minionChange) {
+            minion.decrementHp(unit);
+        } else {
+            minion.incrementHp(unit);
+        }
+    }
+}
+
+class PoisonEffectedCell extends Buff {
+
+    public void poison(Hero hero) {
+        hero.decrementHp(1);
+    }
+
+    public void poison(Minion minion) {
+        minion.decrementHp(1);
+    }
+
+    @Override
+    public void dispel(Hero hero) {
+        //Nothing
+    }
+
+    @Override
+    public void dispel(Minion minion) {
+        //Nothing
+    }
+}
+
+class FiringEffectedCell extends Buff {
+
+    @Override
+    public void dispel(Hero hero) {
 
     }
 
     @Override
-    public void dispel(ArrayList<Cell> cells) {
+    public void dispel(Minion minion) {
 
     }
 }

@@ -14,7 +14,7 @@ public class Cell {
     private Minion minion;
     private CollectableItem collectableItem;
     private int whichPlayerIsInCell;
-    private ArrayList<Buff> cellEffect = new ArrayList<Buff>();
+    private ArrayList<Buff> cellEffect = new ArrayList<>();
 
     public int getWhichPlayerIsInCell() {
         return whichPlayerIsInCell;

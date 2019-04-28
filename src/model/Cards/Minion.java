@@ -53,6 +53,7 @@ public abstract class Minion extends Card {
     private int costToUse;
     private boolean isStunning = false;
     private int holyCounter = 0;
+    private boolean counterAttack;
     //private SpecialPower specialPower;
     private int typeOfRange;//0 mellee 1 ranged 2 hybrid
     private int range;
@@ -61,6 +62,24 @@ public abstract class Minion extends Card {
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
+    }
+
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
+    }
+
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
     }
 
     public int getTypeOfRange() {
@@ -118,7 +137,7 @@ public abstract class Minion extends Card {
         return holyCounter;
     }
 
-    public void incrementHolyCounter(int holyCounter) {
+    public void incrementHolyCounter() {
         this.holyCounter++;
     }
 

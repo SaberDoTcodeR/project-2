@@ -24,6 +24,7 @@ public abstract class Hero extends Card {
     private int holyCounter = 0;
     private boolean isStunning = false;
     //SpecialPower specialPower;
+    private boolean counterAttack;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
@@ -31,6 +32,14 @@ public abstract class Hero extends Card {
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
+    }
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
     }
 
     public Hero(String name, int ap, int hp, int costOfBuy, int typeOfRange) {
@@ -60,6 +69,14 @@ public abstract class Hero extends Card {
 
     public void setMp(int mp) {
         this.mp = mp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
     }
 
     public void setRange(int range) {
@@ -109,7 +126,7 @@ public abstract class Hero extends Card {
         return holyCounter;
     }
 
-    public void incrementHolyCounter(int holyCounter) {
+    public void incrementHolyCounter() {
         this.holyCounter++;
     }
 

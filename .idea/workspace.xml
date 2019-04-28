@@ -7,8 +7,7 @@
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ErrorType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,32 +35,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="241" column="18" selection-start-line="241" selection-start-column="18" selection-end-line="241" selection-end-column="18" />
+            <state relative-caret-position="240">
+              <caret line="322" column="5" lean-forward="true" selection-start-line="322" selection-start-column="5" selection-end-line="322" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#574#575#0" expanded="true" />
                 <element signature="e#620#621#0" expanded="true" />
-                <element signature="e#5357#5358#0" expanded="true" />
-                <element signature="e#5389#5390#0" expanded="true" />
-                <element signature="e#5429#5430#0" expanded="true" />
-                <element signature="e#5467#5468#0" expanded="true" />
-                <element signature="e#5508#5509#0" expanded="true" />
-                <element signature="e#5546#5547#0" expanded="true" />
-                <element signature="e#5590#5591#0" expanded="true" />
-                <element signature="e#5630#5631#0" expanded="true" />
-                <element signature="e#5675#5676#0" expanded="true" />
-                <element signature="e#5715#5716#0" expanded="true" />
-                <element signature="e#6119#6120#0" expanded="true" />
-                <element signature="e#6151#6152#0" expanded="true" />
-                <element signature="e#6011#6012#0" expanded="true" />
-                <element signature="e#6049#6050#0" expanded="true" />
-                <element signature="e#6090#6091#0" expanded="true" />
-                <element signature="e#6128#6129#0" expanded="true" />
-                <element signature="e#6172#6173#0" expanded="true" />
-                <element signature="e#6212#6213#0" expanded="true" />
-                <element signature="e#6257#6258#0" expanded="true" />
-                <element signature="e#6297#6298#0" expanded="true" />
+                <element signature="e#978#979#0" expanded="true" />
+                <element signature="e#997#998#0" expanded="true" />
+                <element signature="e#1100#1101#0" expanded="true" />
+                <element signature="e#1189#1190#0" expanded="true" />
+                <element signature="e#1284#1285#0" expanded="true" />
+                <element signature="e#1893#1894#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+                <element signature="e#1954#1955#0" expanded="true" />
+                <element signature="e#2007#2008#0" expanded="true" />
+                <element signature="e#2329#2330#0" expanded="true" />
+                <element signature="e#2407#2408#0" expanded="true" />
+                <element signature="e#3367#3368#0" expanded="true" />
+                <element signature="e#3396#3397#0" expanded="true" />
+                <element signature="e#3427#3428#0" expanded="true" />
+                <element signature="e#3474#3475#0" expanded="true" />
+                <element signature="e#3614#3615#0" expanded="true" />
+                <element signature="e#3693#3694#0" expanded="true" />
+                <element signature="e#3722#3723#0" expanded="true" />
+                <element signature="e#3741#3742#0" expanded="true" />
+                <element signature="e#3816#3817#0" expanded="true" />
+                <element signature="e#3837#3838#0" expanded="true" />
+                <element signature="e#3995#3996#0" expanded="true" />
+                <element signature="e#4082#4083#0" expanded="true" />
+                <element signature="e#3947#3948#0" expanded="true" />
+                <element signature="e#3966#3967#0" expanded="true" />
+                <element signature="e#4038#4039#0" expanded="true" />
+                <element signature="e#4059#4060#0" expanded="true" />
+                <element signature="e#4426#4427#0" expanded="true" />
+                <element signature="e#4458#4459#0" expanded="true" />
+                <element signature="e#5450#5451#0" expanded="true" />
+                <element signature="e#5482#5483#0" expanded="true" />
+                <element signature="e#6400#6401#0" expanded="true" />
+                <element signature="e#6435#6436#0" expanded="true" />
+                <element signature="e#6476#6477#0" expanded="true" />
+                <element signature="e#6513#6514#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,105 +84,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="1049" column="1" selection-start-line="1049" selection-start-column="1" selection-end-line="1049" selection-end-column="1" />
+            <state relative-caret-position="20">
+              <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1194#1195#0" expanded="true" />
-                <element signature="e#1223#1224#0" expanded="true" />
-                <element signature="e#1256#1257#0" expanded="true" />
-                <element signature="e#1288#1289#0" expanded="true" />
-                <element signature="e#1425#1426#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
-                <element signature="e#1487#1488#0" expanded="true" />
-                <element signature="e#1514#1515#0" expanded="true" />
-                <element signature="e#3208#3209#0" expanded="true" />
-                <element signature="e#3237#3238#0" expanded="true" />
-                <element signature="e#3268#3269#0" expanded="true" />
-                <element signature="e#3304#3305#0" expanded="true" />
-                <element signature="e#3370#3371#0" expanded="true" />
-                <element signature="e#3415#3416#0" expanded="true" />
-                <element signature="e#3484#3485#0" expanded="true" />
-                <element signature="e#3533#3534#0" expanded="true" />
+                <element signature="e#4864#4865#0" expanded="true" />
                 <element signature="e#4898#4899#0" expanded="true" />
-                <element signature="e#4433#4434#0" expanded="true" />
-                <element signature="e#4477#4478#0" expanded="true" />
-                <element signature="e#4525#4526#0" expanded="true" />
-                <element signature="e#4558#4559#0" expanded="true" />
-                <element signature="e#5265#5266#0" expanded="true" />
-                <element signature="e#5305#5306#0" expanded="true" />
-                <element signature="e#5344#5345#0" expanded="true" />
-                <element signature="e#5374#5375#0" expanded="true" />
-                <element signature="e#6175#6176#0" expanded="true" />
-                <element signature="e#6216#6217#0" expanded="true" />
-                <element signature="e#6258#6259#0" expanded="true" />
-                <element signature="e#6289#6290#0" expanded="true" />
-                <element signature="e#7626#7627#0" expanded="true" />
-                <element signature="e#7670#7671#0" expanded="true" />
-                <element signature="e#7721#7722#0" expanded="true" />
-                <element signature="e#7755#7756#0" expanded="true" />
-                <element signature="e#8618#8619#0" expanded="true" />
-                <element signature="e#8659#8660#0" expanded="true" />
-                <element signature="e#8701#8702#0" expanded="true" />
-                <element signature="e#8732#8733#0" expanded="true" />
-                <element signature="e#9616#9617#0" expanded="true" />
-                <element signature="e#9662#9663#0" expanded="true" />
-                <element signature="e#9716#9717#0" expanded="true" />
-                <element signature="e#9751#9752#0" expanded="true" />
-                <element signature="e#11107#11108#0" expanded="true" />
-                <element signature="e#11150#11151#0" expanded="true" />
-                <element signature="e#11198#11199#0" expanded="true" />
-                <element signature="e#11231#11232#0" expanded="true" />
-                <element signature="e#12097#12098#0" expanded="true" />
-                <element signature="e#12137#12138#0" expanded="true" />
-                <element signature="e#12176#12177#0" expanded="true" />
-                <element signature="e#12206#12207#0" expanded="true" />
-                <element signature="e#13132#13133#0" expanded="true" />
-                <element signature="e#13175#13176#0" expanded="true" />
-                <element signature="e#13220#13221#0" expanded="true" />
-                <element signature="e#13252#13253#0" expanded="true" />
-                <element signature="e#14123#14124#0" expanded="true" />
-                <element signature="e#14166#14167#0" expanded="true" />
-                <element signature="e#14233#14234#0" expanded="true" />
-                <element signature="e#14282#14283#0" expanded="true" />
-                <element signature="e#14327#14328#0" expanded="true" />
-                <element signature="e#14359#14360#0" expanded="true" />
-                <element signature="e#15224#15225#0" expanded="true" />
-                <element signature="e#15264#15265#0" expanded="true" />
-                <element signature="e#15300#15301#0" expanded="true" />
-                <element signature="e#15329#15330#0" expanded="true" />
-                <element signature="e#16047#16048#0" expanded="true" />
-                <element signature="e#16097#16098#0" expanded="true" />
-                <element signature="e#16163#16164#0" expanded="true" />
-                <element signature="e#16202#16203#0" expanded="true" />
-                <element signature="e#17425#17426#0" expanded="true" />
-                <element signature="e#17466#17467#0" expanded="true" />
-                <element signature="e#17505#17506#0" expanded="true" />
-                <element signature="e#17535#17536#0" expanded="true" />
-                <element signature="e#18413#18414#0" expanded="true" />
-                <element signature="e#18455#18456#0" expanded="true" />
-                <element signature="e#18497#18498#0" expanded="true" />
-                <element signature="e#18528#18529#0" expanded="true" />
-                <element signature="e#19446#19447#0" expanded="true" />
-                <element signature="e#19489#19490#0" expanded="true" />
-                <element signature="e#19534#19535#0" expanded="true" />
-                <element signature="e#19566#19567#0" expanded="true" />
-                <element signature="e#21004#21005#0" expanded="true" />
-                <element signature="e#21047#21048#0" expanded="true" />
-                <element signature="e#21092#21093#0" expanded="true" />
-                <element signature="e#21124#21125#0" expanded="true" />
-                <element signature="e#22174#22175#0" expanded="true" />
-                <element signature="e#22217#22218#0" expanded="true" />
-                <element signature="e#22262#22263#0" expanded="true" />
-                <element signature="e#22294#22295#0" expanded="true" />
-                <element signature="e#23575#23576#0" expanded="true" />
-                <element signature="e#23619#23620#0" expanded="true" />
-                <element signature="e#23667#23668#0" expanded="true" />
-                <element signature="e#23700#23701#0" expanded="true" />
-                <element signature="e#24641#24642#0" expanded="true" />
-                <element signature="e#24680#24681#0" expanded="true" />
-                <element signature="e#24713#24714#0" expanded="true" />
-                <element signature="e#24741#24742#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,19 +125,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="39" />
+            <state relative-caret-position="483">
+              <caret line="80" lean-forward="true" selection-start-line="72" selection-end-line="80" />
               <folding>
+                <element signature="e#884#885#0" expanded="true" />
+                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#903#904#0" expanded="true" />
+                <element signature="e#953#954#0" expanded="true" />
+                <element signature="e#1863#1864#0" expanded="true" />
+                <element signature="e#1891#1892#0" expanded="true" />
+                <element signature="e#1924#1925#0" expanded="true" />
+                <element signature="e#1952#1953#0" expanded="true" />
                 <element signature="e#2488#2489#0" expanded="true" />
                 <element signature="e#2522#2523#0" expanded="true" />
-                <element signature="e#2573#2574#0" expanded="true" />
-                <element signature="e#2619#2620#0" expanded="true" />
                 <element signature="e#2664#2665#0" expanded="true" />
                 <element signature="e#2710#2711#0" expanded="true" />
-                <element signature="e#2497#2498#0" expanded="true" />
-                <element signature="e#2528#2529#0" expanded="true" />
-                <element signature="e#2779#2780#0" expanded="true" />
-                <element signature="e#2810#2811#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -225,21 +148,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="39" />
+            <state relative-caret-position="623">
+              <caret line="74" selection-start-line="74" selection-end-line="74" />
               <folding>
-                <element signature="e#1728#1729#0" expanded="true" />
-                <element signature="e#1759#1760#0" expanded="true" />
+                <element signature="e#1829#1830#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#1890#1891#0" expanded="true" />
+                <element signature="e#1918#1919#0" expanded="true" />
+                <element signature="e#1796#1797#0" expanded="true" />
+                <element signature="e#1832#1833#0" expanded="true" />
+                <element signature="e#1891#1892#0" expanded="true" />
+                <element signature="e#1941#1942#0" expanded="true" />
                 <element signature="e#3125#3126#0" expanded="true" />
                 <element signature="e#3159#3160#0" expanded="true" />
-                <element signature="e#3210#3211#0" expanded="true" />
-                <element signature="e#3256#3257#0" expanded="true" />
                 <element signature="e#3301#3302#0" expanded="true" />
                 <element signature="e#3347#3348#0" expanded="true" />
-                <element signature="e#3134#3135#0" expanded="true" />
-                <element signature="e#3165#3166#0" expanded="true" />
-                <element signature="e#3414#3415#0" expanded="true" />
-                <element signature="e#3445#3446#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,11 +175,6 @@
               <caret column="10" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -282,6 +200,7 @@
       <find>showDetails</find>
       <find>God</find>
       <find>Total</find>
+      <find>All</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -354,15 +273,15 @@
         <option value="$PROJECT_DIR$/src/model/Menus/Account.java" />
         <option value="$PROJECT_DIR$/src/model/Battles/HeroBattle.java" />
         <option value="$PROJECT_DIR$/src/control/GameControl.java" />
-        <option value="$PROJECT_DIR$/src/model/Cell.java" />
         <option value="$PROJECT_DIR$/src/model/Item/CollectableItem.java" />
         <option value="$PROJECT_DIR$/src/model/Item/UsableItem.java" />
         <option value="$PROJECT_DIR$/src/view/View.java" />
         <option value="$PROJECT_DIR$/src/model/ErrorType.java" />
         <option value="$PROJECT_DIR$/src/model/Deck.java" />
-        <option value="$PROJECT_DIR$/src/model/Cards/Minion.java" />
-        <option value="$PROJECT_DIR$/src/model/Cards/Hero.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Buff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cell.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/Hero.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/Minion.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Spell.java" />
       </list>
     </option>
@@ -384,7 +303,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -414,7 +333,7 @@
               <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Cards" type="462c0819:PsiDirectoryNode" />
+              <item name="Battles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
@@ -433,14 +352,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556432732966" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556480715823" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -502,6 +422,7 @@
       <workItem from="1556197901817" duration="17937000" />
       <workItem from="1556268937605" duration="24638000" />
       <workItem from="1556359411959" duration="392000" />
+      <workItem from="1556432791724" duration="19587000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -636,11 +557,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556315302843</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="some castBuff method created and&#10;changes that need applied">
+      <created>1556432996893</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1556432996894</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159422000" />
+    <option name="totallyTimeSpent" value="179009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -653,14 +581,20 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24189189" />
+      <window_info id="Learn" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24594595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Duplicate detector" weight="0.32963988" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" />
+      <window_info anchor="bottom" id="Tail" />
+      <window_info anchor="bottom" id="Statistic" weight="0.32963988" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963988" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.51256984" />
@@ -676,6 +610,8 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32686982" />
       <window_info anchor="bottom" id="CheckStyle" order="13" />
       <window_info anchor="bottom" id="SonarLint" order="14" />
+      <window_info anchor="right" id="Json Parser" />
+      <window_info anchor="right" id="Activity Stack View" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24960753" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
@@ -741,7 +677,8 @@
     <MESSAGE value="several bug fixed more" />
     <MESSAGE value="battle has strated" />
     <MESSAGE value="battle structure coded and several bugs fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="battle structure coded and several bugs fixed" />
+    <MESSAGE value="some castBuff method created and&#10;changes that need applied" />
+    <option name="LAST_COMMIT_MESSAGE" value="some castBuff method created and&#10;changes that need applied" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1754,19 +1691,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1777,17 +1701,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/function/Predicate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="48" column="12" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="322" column="5" lean-forward="true" selection-start-line="322" selection-start-column="5" selection-end-line="322" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#978#979#0" expanded="true" />
+            <element signature="e#997#998#0" expanded="true" />
+            <element signature="e#1100#1101#0" expanded="true" />
+            <element signature="e#1189#1190#0" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+            <element signature="e#1954#1955#0" expanded="true" />
+            <element signature="e#2007#2008#0" expanded="true" />
+            <element signature="e#2329#2330#0" expanded="true" />
+            <element signature="e#2407#2408#0" expanded="true" />
+            <element signature="e#3367#3368#0" expanded="true" />
+            <element signature="e#3396#3397#0" expanded="true" />
+            <element signature="e#3427#3428#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3614#3615#0" expanded="true" />
+            <element signature="e#3693#3694#0" expanded="true" />
+            <element signature="e#3722#3723#0" expanded="true" />
+            <element signature="e#3741#3742#0" expanded="true" />
+            <element signature="e#3816#3817#0" expanded="true" />
+            <element signature="e#3837#3838#0" expanded="true" />
+            <element signature="e#3995#3996#0" expanded="true" />
+            <element signature="e#4082#4083#0" expanded="true" />
+            <element signature="e#3947#3948#0" expanded="true" />
+            <element signature="e#3966#3967#0" expanded="true" />
+            <element signature="e#4038#4039#0" expanded="true" />
+            <element signature="e#4059#4060#0" expanded="true" />
+            <element signature="e#4426#4427#0" expanded="true" />
+            <element signature="e#4458#4459#0" expanded="true" />
+            <element signature="e#5450#5451#0" expanded="true" />
+            <element signature="e#5482#5483#0" expanded="true" />
+            <element signature="e#6400#6401#0" expanded="true" />
+            <element signature="e#6435#6436#0" expanded="true" />
+            <element signature="e#6476#6477#0" expanded="true" />
+            <element signature="e#6513#6514#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1803,6 +1777,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="80" lean-forward="true" selection-start-line="72" selection-end-line="80" />
+          <folding>
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#953#954#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+            <element signature="e#1952#1953#0" expanded="true" />
+            <element signature="e#2488#2489#0" expanded="true" />
+            <element signature="e#2522#2523#0" expanded="true" />
+            <element signature="e#2664#2665#0" expanded="true" />
+            <element signature="e#2710#2711#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="e#1829#1830#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#1918#1919#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1832#1833#0" expanded="true" />
+            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#1941#1942#0" expanded="true" />
+            <element signature="e#3125#3126#0" expanded="true" />
+            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3301#3302#0" expanded="true" />
+            <element signature="e#3347#3348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -1814,179 +1844,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="125" column="8" selection-start-line="125" selection-start-column="8" selection-end-line="125" selection-end-column="39" />
-          <folding>
-            <element signature="e#1728#1729#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#3159#3160#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
-            <element signature="e#3256#3257#0" expanded="true" />
-            <element signature="e#3301#3302#0" expanded="true" />
-            <element signature="e#3347#3348#0" expanded="true" />
-            <element signature="e#3134#3135#0" expanded="true" />
-            <element signature="e#3165#3166#0" expanded="true" />
-            <element signature="e#3414#3415#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="39" />
-          <folding>
-            <element signature="e#2488#2489#0" expanded="true" />
-            <element signature="e#2522#2523#0" expanded="true" />
-            <element signature="e#2573#2574#0" expanded="true" />
-            <element signature="e#2619#2620#0" expanded="true" />
-            <element signature="e#2664#2665#0" expanded="true" />
-            <element signature="e#2710#2711#0" expanded="true" />
-            <element signature="e#2497#2498#0" expanded="true" />
-            <element signature="e#2528#2529#0" expanded="true" />
-            <element signature="e#2779#2780#0" expanded="true" />
-            <element signature="e#2810#2811#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="241" column="18" selection-start-line="241" selection-start-column="18" selection-end-line="241" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#5357#5358#0" expanded="true" />
-            <element signature="e#5389#5390#0" expanded="true" />
-            <element signature="e#5429#5430#0" expanded="true" />
-            <element signature="e#5467#5468#0" expanded="true" />
-            <element signature="e#5508#5509#0" expanded="true" />
-            <element signature="e#5546#5547#0" expanded="true" />
-            <element signature="e#5590#5591#0" expanded="true" />
-            <element signature="e#5630#5631#0" expanded="true" />
-            <element signature="e#5675#5676#0" expanded="true" />
-            <element signature="e#5715#5716#0" expanded="true" />
-            <element signature="e#6119#6120#0" expanded="true" />
-            <element signature="e#6151#6152#0" expanded="true" />
-            <element signature="e#6011#6012#0" expanded="true" />
-            <element signature="e#6049#6050#0" expanded="true" />
-            <element signature="e#6090#6091#0" expanded="true" />
-            <element signature="e#6128#6129#0" expanded="true" />
-            <element signature="e#6172#6173#0" expanded="true" />
-            <element signature="e#6212#6213#0" expanded="true" />
-            <element signature="e#6257#6258#0" expanded="true" />
-            <element signature="e#6297#6298#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="1049" column="1" selection-start-line="1049" selection-start-column="1" selection-end-line="1049" selection-end-column="1" />
+        <state relative-caret-position="20">
+          <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1223#1224#0" expanded="true" />
-            <element signature="e#1256#1257#0" expanded="true" />
-            <element signature="e#1288#1289#0" expanded="true" />
-            <element signature="e#1425#1426#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-            <element signature="e#1487#1488#0" expanded="true" />
-            <element signature="e#1514#1515#0" expanded="true" />
-            <element signature="e#3208#3209#0" expanded="true" />
-            <element signature="e#3237#3238#0" expanded="true" />
-            <element signature="e#3268#3269#0" expanded="true" />
-            <element signature="e#3304#3305#0" expanded="true" />
-            <element signature="e#3370#3371#0" expanded="true" />
-            <element signature="e#3415#3416#0" expanded="true" />
-            <element signature="e#3484#3485#0" expanded="true" />
-            <element signature="e#3533#3534#0" expanded="true" />
+            <element signature="e#4864#4865#0" expanded="true" />
             <element signature="e#4898#4899#0" expanded="true" />
-            <element signature="e#4433#4434#0" expanded="true" />
-            <element signature="e#4477#4478#0" expanded="true" />
-            <element signature="e#4525#4526#0" expanded="true" />
-            <element signature="e#4558#4559#0" expanded="true" />
-            <element signature="e#5265#5266#0" expanded="true" />
-            <element signature="e#5305#5306#0" expanded="true" />
-            <element signature="e#5344#5345#0" expanded="true" />
-            <element signature="e#5374#5375#0" expanded="true" />
-            <element signature="e#6175#6176#0" expanded="true" />
-            <element signature="e#6216#6217#0" expanded="true" />
-            <element signature="e#6258#6259#0" expanded="true" />
-            <element signature="e#6289#6290#0" expanded="true" />
-            <element signature="e#7626#7627#0" expanded="true" />
-            <element signature="e#7670#7671#0" expanded="true" />
-            <element signature="e#7721#7722#0" expanded="true" />
-            <element signature="e#7755#7756#0" expanded="true" />
-            <element signature="e#8618#8619#0" expanded="true" />
-            <element signature="e#8659#8660#0" expanded="true" />
-            <element signature="e#8701#8702#0" expanded="true" />
-            <element signature="e#8732#8733#0" expanded="true" />
-            <element signature="e#9616#9617#0" expanded="true" />
-            <element signature="e#9662#9663#0" expanded="true" />
-            <element signature="e#9716#9717#0" expanded="true" />
-            <element signature="e#9751#9752#0" expanded="true" />
-            <element signature="e#11107#11108#0" expanded="true" />
-            <element signature="e#11150#11151#0" expanded="true" />
-            <element signature="e#11198#11199#0" expanded="true" />
-            <element signature="e#11231#11232#0" expanded="true" />
-            <element signature="e#12097#12098#0" expanded="true" />
-            <element signature="e#12137#12138#0" expanded="true" />
-            <element signature="e#12176#12177#0" expanded="true" />
-            <element signature="e#12206#12207#0" expanded="true" />
-            <element signature="e#13132#13133#0" expanded="true" />
-            <element signature="e#13175#13176#0" expanded="true" />
-            <element signature="e#13220#13221#0" expanded="true" />
-            <element signature="e#13252#13253#0" expanded="true" />
-            <element signature="e#14123#14124#0" expanded="true" />
-            <element signature="e#14166#14167#0" expanded="true" />
-            <element signature="e#14233#14234#0" expanded="true" />
-            <element signature="e#14282#14283#0" expanded="true" />
-            <element signature="e#14327#14328#0" expanded="true" />
-            <element signature="e#14359#14360#0" expanded="true" />
-            <element signature="e#15224#15225#0" expanded="true" />
-            <element signature="e#15264#15265#0" expanded="true" />
-            <element signature="e#15300#15301#0" expanded="true" />
-            <element signature="e#15329#15330#0" expanded="true" />
-            <element signature="e#16047#16048#0" expanded="true" />
-            <element signature="e#16097#16098#0" expanded="true" />
-            <element signature="e#16163#16164#0" expanded="true" />
-            <element signature="e#16202#16203#0" expanded="true" />
-            <element signature="e#17425#17426#0" expanded="true" />
-            <element signature="e#17466#17467#0" expanded="true" />
-            <element signature="e#17505#17506#0" expanded="true" />
-            <element signature="e#17535#17536#0" expanded="true" />
-            <element signature="e#18413#18414#0" expanded="true" />
-            <element signature="e#18455#18456#0" expanded="true" />
-            <element signature="e#18497#18498#0" expanded="true" />
-            <element signature="e#18528#18529#0" expanded="true" />
-            <element signature="e#19446#19447#0" expanded="true" />
-            <element signature="e#19489#19490#0" expanded="true" />
-            <element signature="e#19534#19535#0" expanded="true" />
-            <element signature="e#19566#19567#0" expanded="true" />
-            <element signature="e#21004#21005#0" expanded="true" />
-            <element signature="e#21047#21048#0" expanded="true" />
-            <element signature="e#21092#21093#0" expanded="true" />
-            <element signature="e#21124#21125#0" expanded="true" />
-            <element signature="e#22174#22175#0" expanded="true" />
-            <element signature="e#22217#22218#0" expanded="true" />
-            <element signature="e#22262#22263#0" expanded="true" />
-            <element signature="e#22294#22295#0" expanded="true" />
-            <element signature="e#23575#23576#0" expanded="true" />
-            <element signature="e#23619#23620#0" expanded="true" />
-            <element signature="e#23667#23668#0" expanded="true" />
-            <element signature="e#23700#23701#0" expanded="true" />
-            <element signature="e#24641#24642#0" expanded="true" />
-            <element signature="e#24680#24681#0" expanded="true" />
-            <element signature="e#24713#24714#0" expanded="true" />
-            <element signature="e#24741#24742#0" expanded="true" />
           </folding>
         </state>
       </provider>

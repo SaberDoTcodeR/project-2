@@ -13,6 +13,18 @@ public abstract class Spell extends Card {
     private int costToUse;
     protected static View view = View.getInstance();
 
+    private ArrayList<String> positiveBuffs = new ArrayList<>();
+    private ArrayList<String> negativeBuffs = new ArrayList<>();
+
+    {
+        positiveBuffs.add("HolyBuff");
+        positiveBuffs.add("PowerBuff");
+        negativeBuffs.add("PoisonBuff");
+        negativeBuffs.add("WeaknessBuff");
+        negativeBuffs.add("StunBuff");
+        negativeBuffs.add("DisarmBuff");
+    }
+
     static {
         new AllAttack();
         new AllDisarm();
@@ -49,6 +61,24 @@ public abstract class Spell extends Card {
         this.costToUse = spell.costToUse;
     }
 
+    public boolean dispelEnemyValidation(String buffName) {
+        for (String str : negativeBuffs) {
+            if (str.equals(buffName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean dispelInsiderValidation(String buffName) {
+        for (String str : positiveBuffs) {
+            if (str.equals(buffName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public abstract void castBuff(Battle battle, Cell cell, Account player);
 
     public static ArrayList<Spell> getSpells() {
@@ -64,6 +94,50 @@ public abstract class Spell extends Card {
     }
 
     public Spell duplicate() {
+        return null;
+    }
+
+    public Cell rightCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(cell)) {
+                    return map.get(i).get(j + 1);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell leftCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(cell)) {
+                    return map.get(i).get(j - 1);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell upCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(cell)) {
+                    return map.get(i + 1).get(j);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell downCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(cell)) {
+                    return map.get(i - 1).get(j);
+                }
+            }
+        }
         return null;
     }
 }
@@ -175,8 +249,16 @@ class AreaDispel extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo --> create method like gorRight an goDown
-        //todo --> create method dispel in Buff
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(cell);
+        cells.add(rightCell(battle.getMap(),cell));
+        cells.add(upCell(battle.getMap(),cell));
+        cells.add(upCell(battle.getMap(),cells.get(1)));
+        //todo check working
+        for (Cell cell1: cells) {
+            Dispel dispel = new Dispel();
+            dispel.castBuff(battle,cell1,player);
+        }
     }
 
     public Spell duplicate() {
@@ -372,7 +454,17 @@ class HellFire extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo like AreaDispel need to right or left cell
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(cell);
+        cells.add(rightCell(battle.getMap(),cell));
+        cells.add(upCell(battle.getMap(),cells.get(1)));
+        cells.add(upCell(battle.getMap(),cell));
+        //todo check working
+        for (Cell cell1: cells) {
+           FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
+           firingEffectedCell.setTurnCounter(2);
+           cell1.getCellEffect().add(firingEffectedCell);
+        }
     }
 
     public Spell duplicate() {
@@ -455,7 +547,22 @@ class PoisonLake extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo need right or left cell method
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(cell);
+        cells.add(rightCell(battle.getMap(),cell));
+        cells.add(rightCell(battle.getMap(),cells.get(1)));
+        cells.add(upCell(battle.getMap(),cells.get(2)));
+        cells.add(upCell(battle.getMap(),cells.get(3)));
+        cells.add(leftCell(battle.getMap(),cells.get(4)));
+        cells.add(leftCell(battle.getMap(),cells.get(5)));
+        cells.add(downCell(battle.getMap(),cells.get(6)));
+        cells.add(rightCell(battle.getMap(),cells.get(7)));
+        //todo check working
+        for (Cell cell1: cells) {
+            PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
+            poisonEffectedCell.setTurnCounter(1);
+            cell1.getCellEffect().add(poisonEffectedCell);
+        }
     }
 
     public Spell duplicate() {
@@ -546,7 +653,22 @@ class AllDisarm extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.disarm(cell1.getHero());
+                    disarmBuff.setTurnCounter(1);
+                    cell1.getHero().getOwnBuffs().add(disarmBuff);
+                }
+                if (cell1.getMinion() != null && !player.getMainDeck().isContain(cell1.getMinion())) {
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.disarm(cell1.getMinion());
+                    disarmBuff.setTurnCounter(1);
+                    cell1.getMinion().getOwnBuffs().add(disarmBuff);
+                }
+            }
+        }
     }
 
     public Spell duplicate() {
@@ -576,7 +698,22 @@ class AllPoison extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
+                    PoisonBuff poisonBuff = new PoisonBuff();
+                    poisonBuff.poison(cell1.getHero());
+                    poisonBuff.setTurnCounter(4);
+                    cell1.getHero().getOwnBuffs().add(poisonBuff);
+                }
+                if (cell1.getMinion() != null && !player.getMainDeck().isContain(cell1.getMinion())) {
+                    PoisonBuff poisonBuff = new PoisonBuff();
+                    poisonBuff.poison(cell1.getMinion());
+                    poisonBuff.setTurnCounter(4);
+                    cell1.getMinion().getOwnBuffs().add(poisonBuff);
+                }
+            }
+        }
     }
 
     public AllPoison(AllPoison allPoison) {
@@ -610,7 +747,44 @@ class Dispel extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo
+        if (cell.getHero() == null && cell.getMinion() == null) {
+            view.printError(ErrorType.INVALID_TARGET);
+        } else {
+            if (cell.getHero() != null) {
+                if (!player.getMainDeck().isContain(cell.getHero())) {
+                    for (Buff buff : cell.getHero().getOwnBuffs()) {
+                        if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getHero());
+                            //todo --> check Working
+                        }
+                    }
+                } else {
+                    for (Buff buff : cell.getHero().getOwnBuffs()) {
+                        if (dispelInsiderValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getHero());
+                            //todo --> check Working
+                        }
+                    }
+                }
+            }
+            if (cell.getMinion() != null) {
+                if (!player.getMainDeck().isContain(cell.getMinion())) {
+                    for (Buff buff : cell.getMinion().getOwnBuffs()) {
+                        if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getMinion());
+                            //todo --> check Working
+                        }
+                    }
+                } else {
+                    for (Buff buff : cell.getMinion().getOwnBuffs()) {
+                        if (dispelInsiderValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getMinion());
+                            //todo --> check Working
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public Spell duplicate() {
@@ -798,7 +972,36 @@ class AllPower extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if (cell1.getHero() != null) {
+                    if (player.getMainDeck().isContain(cell1.getHero())) {
+                        PowerBuff powerBuff = new PowerBuff();
+                        powerBuff.setTurnCounter(-5);
+                        powerBuff.power(cell1.getHero());
+                        cell1.getHero().getOwnBuffs().add(powerBuff);
+
+                        ChangeApBuff changeApBuff = new ChangeApBuff(2);
+                        changeApBuff.setTurnCounter(-5);
+                        changeApBuff.increment(cell1.getHero());
+                        cell1.getHero().getOwnBuffs().add(changeApBuff);
+                    }
+                }
+                if (cell1.getMinion() != null) {
+                    if (player.getMainDeck().isContain(cell1.getMinion())) {
+                        PowerBuff powerBuff = new PowerBuff();
+                        powerBuff.setTurnCounter(-5);
+                        powerBuff.power(cell1.getMinion());
+                        cell1.getMinion().getOwnBuffs().add(powerBuff);
+
+                        ChangeApBuff changeApBuff = new ChangeApBuff(2);
+                        changeApBuff.setTurnCounter(-5);
+                        changeApBuff.increment(cell1.getMinion());
+                        cell1.getMinion().getOwnBuffs().add(changeApBuff);
+                    }
+                }
+            }
+        }
     }
 
     public Spell duplicate() {
@@ -828,8 +1031,45 @@ class AllAttack extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {\
-        //todo
+    public void castBuff(Battle battle, Cell cell, Account player) {
+        int index = -1;
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            if (cells.contains(cell)) {
+                index = cells.indexOf(cell);
+            }
+        }
+        for (int i = 0; i < battle.getMap().size(); i++) {
+            if (battle.getMap().get(i).get(index).getHero() != null) {
+                if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getHero())) {
+                    if (battle.getMap().get(i).get(index).getHero().getHolyCounter() != 0) {
+                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getHero().getHolyCounter());
+                        changeHp.decrement(cell.getHero());
+                        changeHp.setTurnCounter(1);
+                        cell.getHero().getOwnBuffs().add(changeHp);
+                    } else {
+                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
+                        changeHp.decrement(cell.getMinion());
+                        changeHp.setTurnCounter(1);
+                        cell.getHero().getOwnBuffs().add(changeHp);
+                    }
+                }
+            }
+            if (battle.getMap().get(i).get(index).getMinion() != null) {
+                if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getMinion())) {
+                    if (battle.getMap().get(i).get(index).getMinion().getHolyCounter() != 0) {
+                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getMinion().getHolyCounter());
+                        changeHp.decrement(cell.getMinion());
+                        changeHp.setTurnCounter(1);
+                        battle.getMap().get(i).get(index).getMinion().getOwnBuffs().add(changeHp);
+                    } else {
+                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
+                        changeHp.decrement(cell.getMinion());
+                        changeHp.setTurnCounter(1);
+                        battle.getMap().get(i).get(index).getHero().getOwnBuffs().add(changeHp);
+                    }
+                }
+            }
+        }
     }
 
     public Spell duplicate() {
@@ -978,7 +1218,21 @@ class KingsGuard extends Spell {
 
     @Override
     public void castBuff(Battle battle, Cell cell, Account player) {
-        //todo need right left down up method
+        ArrayList<Cell> cells = new ArrayList<>();
+        cells.add(rightCell(battle.getMap(),cell));
+        cells.add(upCell(battle.getMap(),cells.get(0)));
+        cells.add(leftCell(battle.getMap(),cells.get(1)));
+        cells.add(leftCell(battle.getMap(),cells.get(2)));
+        cells.add(downCell(battle.getMap(),cells.get(3)));
+        cells.add(downCell(battle.getMap(),cells.get(4)));
+        cells.add(rightCell(battle.getMap(),cells.get(5)));
+        cells.add(rightCell(battle.getMap(),cells.get(6)));
+        for (Cell cell1: cells) {
+            if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())){
+                cell1.getMinion().setHp(0);
+                //todo goto graveyard
+            }
+        }
     }
 
     public Spell duplicate() {
