@@ -21,8 +21,8 @@ public abstract class Hero extends Card {
     private int ap;
     private int hp;
     private int mp;
+    private int holyCounter = 0;
     private boolean isStunning = false;
-    private boolean isHoly = false;
     //SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
@@ -105,20 +105,25 @@ public abstract class Hero extends Card {
         isStunning = stunning;
     }
 
+    public int getHolyCounter() {
+        return holyCounter;
+    }
+
+    public void incrementHolyCounter(int holyCounter) {
+        this.holyCounter++;
+    }
+
+    public void setHolyCounter(int holyCounter) {
+        this.holyCounter = holyCounter;
+    }
+
     public void incrementAp(int unit) {
         this.ap += unit;
     }
 
     public void decrementAp(int unit) {
-        this.ap -= unit;
-    }
-
-    public void changeAP(int unit) {
-        this.ap += unit;
-    }
-
-    public void changeHP(int unit) {
-        this.hp += unit;
+        if (unit > 0)
+            this.ap -= unit;
     }
 
     public void incrementHp(int unit) {
@@ -126,21 +131,14 @@ public abstract class Hero extends Card {
     }
 
     public void decrementHp(int unit) {
-        this.hp -= unit;
+        if (unit > 0)
+            this.hp -= unit;
     }
 
     public abstract void castSpecialPower();
 
     public Hero duplicate() {
         return null;//todo --> can be abstract
-    }
-
-    public boolean isHoly() {
-        return isHoly;
-    }
-
-    public void setHoly(boolean holy) {
-        isHoly = holy;
     }
 
    /* public SpecialPower getSpecialPower() {

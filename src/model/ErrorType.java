@@ -2,6 +2,7 @@ package model;
 
 
 public enum ErrorType {
+    INVALID_TARGET("Invalid target"),
     SECOND_PLAYER_NOT_CHOSEN_RIGHT("second player not chosen right"),
     SECOND_PLAYER_DECK_NOT_VALID("selected deck for second player is invalid"),
     DONE_MESSAGE("The Card has been selled"),

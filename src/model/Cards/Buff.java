@@ -2,10 +2,15 @@ package model.Cards;
 
 import model.Cell;
 
+/*
+* bayad card ru cell emal beshe dar method haye khode spell jame hadaf taEN beshe va buff ha bayad ru jameye hadaf
+* emal shavand;
+* */
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Buff {
+public abstract class Buff {
 
     private Random random = new Random(50);
 
@@ -31,6 +36,10 @@ public class Buff {
     public void incrementTurnCounter(int number) {
         this.turnCounter += number;
     }
+
+    public abstract void dispel(Cell cell);
+
+    public abstract void dispel(ArrayList<Cell> cells);
 }
 
 class HolyBuff extends Buff {
@@ -49,6 +58,21 @@ class HolyBuff extends Buff {
                 cell.getHero().setHoly(true);
             if (cell.getMinion() != null)
                 cell.getMinion().setHoly(true);
+        }
+    }
+
+    @Override
+    public void dispel(Cell cell) {
+        if (cell.getHero() != null && cell.getHero().isHoly())
+            cell.getHero().setHoly(false);
+        if (cell.getMinion() != null && cell.getMinion().isHoly())
+            cell.getMinion().setHoly(false);
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+        for (Cell cell: cells) {
+            dispel(cell);
         }
     }
 }
@@ -74,23 +98,43 @@ class PowerBuff extends Buff {
            power(cell);
         }
     }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
+    }
 }
 
-class PosionBuff extends Buff {
-    public void posion(Cell cell) {
+class PoisonBuff extends Buff {
+    public void poison(Cell cell) {
         if (cell.getHero() != null)
             cell.getHero().decrementHp(1);
         if (cell.getMinion() != null)
             cell.getMinion().decrementHp(1);
     }
 
-    public void posion(ArrayList<Cell> cells) {
+    public void poison(ArrayList<Cell> cells) {
         for (Cell cell : cells) {
             if (cell.getHero() != null)
                 cell.getHero().decrementHp(1);
             if (cell.getMinion() != null)
                 cell.getMinion().decrementHp(1);
         }
+    }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
     }
 }
 
@@ -115,6 +159,16 @@ class WeaknessBuff extends Buff {
             weakness(cell);
         }
     }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
+    }
 }
 
 class StunBuff extends Buff {
@@ -135,6 +189,15 @@ class StunBuff extends Buff {
         }
     }
 
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
+    }
 }
 
 class DisarmBuff extends Buff {
@@ -153,6 +216,16 @@ class DisarmBuff extends Buff {
                 cell.getMinion().setTypeOfHit(3);
         }
     }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
+    }
 }
 
 class ChangeApBuff extends Buff {
@@ -162,20 +235,30 @@ class ChangeApBuff extends Buff {
         this.unit = unit;
     }
 
-    public void changeAP(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().changeAP(this.unit);
-        if (cell.getMinion() != null)
-            cell.getMinion().changeAP(this.unit);
+    public void increment(Hero hero) {
+        hero.incrementAp(unit);
     }
 
-    public void changeAP(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().changeAP(this.unit);
-            if (cell.getMinion() != null)
-                cell.getMinion().changeAP(this.unit);
-        }
+    public void decrement(Hero hero) {
+        hero.decrementAp(unit);
+    }
+
+    public void increment(Minion minion) {
+        minion.incrementAp(unit);
+    }
+
+    public void decrement(Minion minion) {
+        minion.decrementAp(unit);
+    }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
     }
 }
 
@@ -186,20 +269,30 @@ class ChangeHpBuff extends Buff {
         this.unit = unit;
     }
 
-    public void changeHP(Cell cell) {
-        if (cell.getHero() != null)
-            cell.getHero().changeHP(this.unit);
-        if (cell.getMinion() != null)
-            cell.getMinion().changeHP(this.unit);
+    public void increment(Hero hero) {
+        hero.incrementHp(unit);
     }
 
-    public void changeHP(ArrayList<Cell> cells) {
-        for (Cell cell : cells) {
-            if (cell.getHero() != null)
-                cell.getHero().changeHP(this.unit);
-            if (cell.getMinion() != null)
-                cell.getMinion().changeHP(this.unit);
-        }
+    public void decrement(Hero hero) {
+        hero.decrementHp(unit);
+    }
+
+    public void increment(Minion minion) {
+        minion.incrementHp(unit);
+    }
+
+    public void decrement(Minion minion) {
+        minion.decrementHp(unit);
+    }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
     }
 }
 
@@ -218,5 +311,15 @@ class FiringEffectedCell extends Buff {
             if (cell.getMinion() != null)
                 cell.getMinion().decrementHp(2);
         }
+    }
+
+    @Override
+    public void dispel(Cell cell) {
+
+    }
+
+    @Override
+    public void dispel(ArrayList<Cell> cells) {
+
     }
 }

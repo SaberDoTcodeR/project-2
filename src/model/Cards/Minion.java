@@ -52,7 +52,7 @@ public abstract class Minion extends Card {
     private int hp;
     private int costToUse;
     private boolean isStunning = false;
-    private boolean isHoly = false;
+    private int holyCounter = 0;
     //private SpecialPower specialPower;
     private int typeOfRange;//0 mellee 1 ranged 2 hybrid
     private int range;
@@ -114,20 +114,25 @@ public abstract class Minion extends Card {
         return hp;
     }
 
+    public int getHolyCounter() {
+        return holyCounter;
+    }
+
+    public void incrementHolyCounter(int holyCounter) {
+        this.holyCounter++;
+    }
+
+    public void setHolyCounter(int holyCounter) {
+        this.holyCounter = holyCounter;
+    }
+
     public void incrementAp(int unit) {
         this.ap += unit;
     }
 
     public void decrementAp(int unit) {
-        this.ap -= unit;
-    }
-
-    public void changeAP(int unit){
-        this.ap += unit;
-    }
-
-    public void changeHP(int unit){
-        this.hp += unit;
+        if (unit > 0)
+            this.ap -= unit;
     }
 
     public void incrementHp(int unit) {
@@ -135,7 +140,8 @@ public abstract class Minion extends Card {
     }
 
     public void decrementHp(int unit) {
-        this.hp -= unit;
+        if (unit > 0)
+            this.hp -= unit;
     }
 
     /*public SpecialPower getSpecialPower() {
@@ -169,19 +175,12 @@ public abstract class Minion extends Card {
         isStunning = stunning;
     }
 
-    public boolean isHoly() {
-        return isHoly;
-    }
-
-    public void setHoly(boolean holy) {
-        isHoly = holy;
-    }
-
     public Minion duplicate() {
         return null;
     }
 
     public abstract void castSpecialPower();
+
 }
 
 enum MinionAP {
