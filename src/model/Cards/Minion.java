@@ -53,7 +53,6 @@ public abstract class Minion extends Card {
     private int ap;
     private int hp;
     private int costToUse;
-    private boolean isStunning = false;
     private int holyCounter = 0;
     private boolean counterAttack;
     //private SpecialPower specialPower;
@@ -109,6 +108,10 @@ public abstract class Minion extends Card {
 
     public void setTimeOfActivationOfSpecialPower(int timeOfActivationOfSpecialPower) {
         this.timeOfActivationOfSpecialPower = timeOfActivationOfSpecialPower;
+    }
+
+    public int getTimeOfActivationOfSpecialPower() {
+        return timeOfActivationOfSpecialPower;
     }
 
     public Minion(Minion minion) {
@@ -186,14 +189,6 @@ public abstract class Minion extends Card {
             return "Hybrid";
         else
             return null;
-    }
-
-    public boolean isStunning() {
-        return isStunning;
-    }
-
-    public void setStunning(boolean stunning) {
-        isStunning = stunning;
     }
 
     public Minion duplicate() {

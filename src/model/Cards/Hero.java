@@ -1,6 +1,12 @@
 package model.Cards;
 
-import model.Buffs.Buff;
+
+import model.Battles.Battle;
+import model.Buffs.*;
+import model.Cell;
+import model.Deck;
+import model.ErrorType;
+import view.Request;
 
 import java.util.ArrayList;
 
@@ -24,9 +30,7 @@ public abstract class Hero extends Card {
     private int hp;
     private int mp;
     private int holyCounter = 0;
-    private boolean isStunning = false;
     //SpecialPower specialPower;
-    private boolean counterAttack;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
@@ -34,14 +38,6 @@ public abstract class Hero extends Card {
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
-    }
-
-    public boolean isCounterAttack() {
-        return counterAttack;
-    }
-
-    public void setCounterAttack(boolean counterAttack) {
-        this.counterAttack = counterAttack;
     }
 
     public Hero(String name, int ap, int hp, int costOfBuy, int typeOfRange) {
@@ -116,14 +112,6 @@ public abstract class Hero extends Card {
             return null;
     }
 
-    public boolean isStunning() {
-        return isStunning;
-    }
-
-    public void setStunning(boolean stunning) {
-        isStunning = stunning;
-    }
-
     public int getHolyCounter() {
         return holyCounter;
     }
@@ -154,7 +142,7 @@ public abstract class Hero extends Card {
             this.hp -= unit;
     }
 
-    public abstract void castSpecialPower();
+    public abstract void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request);
 
     public Hero duplicate() {
         return null;//todo --> can be abstract
@@ -227,8 +215,11 @@ class WhiteBogey extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        ChangeApBuff changeApBuff = new ChangeApBuff(4);
+        changeApBuff.increment(this);
+        changeApBuff.setTurnCounter(-5);
+        this.getOwnBuffs().add(changeApBuff);
     }
 }
 
@@ -256,8 +247,21 @@ class Simurgh extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        ArrayList<Card> cardsOfEnemy;
+        if (battle.getTurn() % 2 == 0) {
+            cardsOfEnemy = battle.getFirstPlayerInGameCards();
+        } else
+            cardsOfEnemy = battle.getSecondPlayerInGameCards();
+        for (Card card : cardsOfEnemy) {
+            if (!card.getType().equals("Spell")) {
+                StunBuff stunBuff = new StunBuff();
+                stunBuff.setTurnCounter(1);
+                if (card.getType().equals("Hero"))
+                    stunBuff.stun((Hero) card);
+                else stunBuff.stun((Minion) card);
+            }
+        }
     }
 }
 
@@ -285,8 +289,19 @@ class Dragon extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        DisarmBuff disarmBuff = new DisarmBuff();
+        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
+            if (cell.getMinion() != null) {
+                disarmBuff.disarm(cell.getMinion());
+            } else if (cell.getHero() != null) {
+                disarmBuff.disarm(cell.getHero());
+            } else {
+                request.setError(ErrorType.EMPTY_CELL);
+            }
+        } else if (cell.getHero() == null && cell.getMinion() == null) {
+            request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.SELF_HARM);
     }
 }
 
@@ -314,8 +329,20 @@ class Rakhsh extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
+            if (cell.getMinion() != null) {
+                StunBuff stunBuff = new StunBuff();
+                stunBuff.setTurnCounter(1);
+                stunBuff.stun(cell.getMinion());
+            } else if (cell.getHero() != null) {
+                StunBuff stunBuff = new StunBuff();
+                stunBuff.setTurnCounter(1);
+                stunBuff.stun(cell.getHero());
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else if (cell.getHero() == null && cell.getMinion() == null) {
+            request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.SELF_HARM);
     }
 }
 
@@ -344,8 +371,22 @@ class Zahhak extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
+            if (cell.getMinion() != null) {
+                PoisonBuff poisonBuff = new PoisonBuff();
+                poisonBuff.setTurnCounter(3);
+                poisonBuff.poison(cell.getMinion());
+                this.getOwnBuffs().add(poisonBuff);
+            } else if (cell.getHero() != null) {
+                PoisonBuff poisonBuff = new PoisonBuff();
+                poisonBuff.setTurnCounter(3);
+                poisonBuff.poison(cell.getHero());
+                this.getOwnBuffs().add(poisonBuff);
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else if (cell.getHero() == null && cell.getMinion() == null) {
+            request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.SELF_HARM);
     }
 }
 
@@ -373,8 +414,9 @@ class Kaveh extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        HolyEffectedCell holyEffectedCell = new HolyEffectedCell();
+        holyEffectedCell.makeCellHoly(cell);
     }
 }
 
@@ -403,8 +445,23 @@ class Arash extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        ArrayList<Card> cardsOfEnemy;
+        if (battle.getTurn() % 2 == 0)
+            cardsOfEnemy = battle.getFirstPlayerInGameCards();
+        else cardsOfEnemy = battle.getSecondPlayerInGameCards();
+        for (int i = 0; i < battle.getMap().size(); i++) {
+            if (battle.getMap().get(i).contains(cell)) {
+                for (int j = 0; j < battle.getMap().get(i).size(); j++) {
+                    if (battle.getMap().get(i).get(j).getWhichPlayerIsInCell() == battle.getTurn() % 2) {
+                        if (battle.getMap().get(i).get(j).getMinion() != null)
+                            battle.getMap().get(i).get(j).getMinion().decrementHp(4 - battle.getMap().get(i).get(j).getMinion().getHolyCounter());
+                        else if (battle.getMap().get(i).get(j).getHero() != null)
+                            battle.getMap().get(i).get(j).getHero().decrementHp(4 - battle.getMap().get(i).get(j).getHero().getHolyCounter());
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -432,9 +489,20 @@ class Legend extends Hero {
         return details;
     }
 
-    @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
+            if (cell.getMinion() != null) {
+                for (Buff buff : cell.getMinion().getOwnBuffs()) {
+                    buff.dispel(cell.getMinion());
+                }
+            } else if (cell.getHero() != null) {
+                for (Buff buff : cell.getHero().getOwnBuffs()) {
+                    buff.dispel(cell.getHero());
+                }
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else if (cell.getHero() == null && cell.getMinion() == null) {
+            request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.SELF_HARM);
     }
 }
 
@@ -463,8 +531,26 @@ class Esfandyar extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
+            if (cell.getMinion() != null) {
+                for (int i = 0; i < 3; i++) {
+                    HolyBuff holyBuff = new HolyBuff();
+                    holyBuff.setTurnCounter(-4);
+                    holyBuff.holy(cell.getMinion());
+                    this.getOwnBuffs().add(holyBuff);
+                }
+            } else if (cell.getHero() != null) {
+                for (int i = 0; i < 3; i++) {
+                    HolyBuff holyBuff = new HolyBuff();
+                    holyBuff.setTurnCounter(-4);
+                    holyBuff.holy(cell.getHero());
+                    this.getOwnBuffs().add(holyBuff);
+                }
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else if (cell.getHero() == null && cell.getMinion() == null) {
+            request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.SELF_HARM);
     }
 }
 
@@ -491,7 +577,7 @@ class Rostam extends Hero {
     }
 
     @Override
-    public void castSpecialPower() {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+        //doesn't have any special power :)
     }
 }

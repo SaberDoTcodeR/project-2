@@ -3,6 +3,7 @@ package model.Buffs;
 import model.Cards.*;
 
 public class HolyBuff extends Buff {
+    private int effectOfHolyBuff = 1;
 
     public void holy(Hero hero) {
         hero.incrementHolyCounter();
@@ -21,4 +22,5 @@ public class HolyBuff extends Buff {
     public void dispel(Minion minion) {
         minion.setHolyCounter(0);
     }
+
 }

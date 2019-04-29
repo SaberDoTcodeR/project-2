@@ -5,8 +5,12 @@ public abstract class Card {
     private boolean isOnMap;
     private int costOfBuy;
     private long id;
-    private int countOfType=1;
+    private int countOfType = 1;
     private String CardId;
+    private boolean isStunning = false;
+    private boolean counterAttack = true;
+    private boolean canDisarm = true;
+
     public String getName() {
         return name.toLowerCase();
     }
@@ -29,6 +33,22 @@ public abstract class Card {
 
     public void setCardId(String cardId) {
         CardId = cardId;
+    }
+
+    public boolean isStunning() {
+        return isStunning;
+    }
+
+    public void setStunning(boolean stunning) {
+        isStunning = stunning;
+    }
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
     }
 
     public boolean isOnMap() {
@@ -54,8 +74,17 @@ public abstract class Card {
     abstract public String getType();
 
     public abstract String showDetails();
-    public void cardIdGenerator(String playerName){
-        String str=playerName+"_"+this.getName()+"_"+this.getCountOfType();
+
+    public void cardIdGenerator(String playerName) {
+        String str = playerName + "_" + this.getName() + "_" + this.getCountOfType();
         setCardId(str);
+    }
+
+    public void setCanDisarm(boolean canDisarm) {
+        this.canDisarm = canDisarm;
+    }
+
+    public boolean isCanDisarm() {
+        return canDisarm;
     }
 }
