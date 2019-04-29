@@ -56,6 +56,8 @@ public abstract class Spell extends Card {
 
     public abstract void castBuff(Cell cell);
 
+    public abstract String getDesc();
+
     public abstract void castBuff(ArrayList<Cell> cells);
 
     public String getType() {
@@ -94,9 +96,11 @@ enum SpellWork {
     SHOCK("Become stun for 2 turn for enemy force");
 
     private String effect;
+
     public String getMessage() {
         return effect;
     }
+
     SpellWork(String effect) {
         this.effect = effect;
     }
@@ -133,6 +137,11 @@ class TotalDisarm extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.TOTAL_DISARM.getMessage();
+    }
+
+    @Override
     public void castBuff(ArrayList<Cell> cells) {
         DisarmBuff disarmBuff = new DisarmBuff();
         disarmBuff.disarm(cells);
@@ -156,6 +165,10 @@ class AreaDispel extends Spell {
 
     public AreaDispel(AreaDispel areaDispel) {
         super(areaDispel);
+    }
+
+    public String getDesc() {
+        return SpellWork.AREA_DISPEL.getMessage();
     }
 
     public Spell duplicate() {
@@ -201,6 +214,10 @@ class Empower extends Spell {
     public Spell duplicate() {
         Empower empower = new Empower(this);
         return empower;
+    }
+
+    public String getDesc() {
+        return SpellWork.EMPOWER.getMessage();
     }
 
     @Override
@@ -260,6 +277,11 @@ class FireBall extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.FIREBALL.getMessage();
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -287,6 +309,11 @@ class GodStrength extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.GOD_STRENGTH.getMessage();
     }
 
     @Override
@@ -327,6 +354,11 @@ class HellFire extends Spell {
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.HELL_FIRE.getMessage();
     }
 
     @Override
@@ -375,6 +407,11 @@ class LightingBolt extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.LIGHTING_BOLT.getMessage();
+    }
+
+    @Override
     public void castBuff(ArrayList<Cell> cells) {
 
     }
@@ -414,6 +451,11 @@ class PoisonLake extends Spell {
 
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.POISON_LAKE.getMessage();
+    }
     @Override
     public void castBuff(ArrayList<Cell> cells) {
 
@@ -449,6 +491,11 @@ class Madness extends Spell {
         return null;
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.MADNESS.getMessage();
+    }
     @Override
     public void castBuff(Cell cell) {
 
@@ -495,6 +542,10 @@ class AllDisarm extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.ALL_DISARM.getMessage();
+    }
+    @Override
     public void castBuff(ArrayList<Cell> cells) {
 
     }
@@ -538,6 +589,11 @@ class AllPoison extends Spell {
 
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_POISON.getMessage();
+    }
     @Override
     public void castBuff(ArrayList<Cell> cells) {
 
@@ -579,6 +635,10 @@ class Dispel extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.DISPEL.getMessage();
+    }
+    @Override
     public void castBuff(ArrayList<Cell> cells) {
 
     }
@@ -618,6 +678,11 @@ class HealthWithProfit extends Spell {
 
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.HEALTH_WITH_PROFIT.getMessage();
+    }
     @Override
     public void castBuff(ArrayList<Cell> cells) {
 
@@ -663,6 +728,11 @@ class PowerUp extends Spell {
 
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.POWER_UP.getMessage();
+    }
     @Override
     public String showDetails() {
         String details;
@@ -703,6 +773,11 @@ class AllPower extends Spell {
 
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_POWER.getMessage();
+    }
     @Override
     public String showDetails() {
         String details;
@@ -740,6 +815,10 @@ class AllAttack extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.ALL_ATTACK.getMessage();
+    }
+    @Override
     public void castBuff(ArrayList<Cell> cells) {
 
     }
@@ -769,6 +848,11 @@ class Weakening extends Spell {
         return weakening;
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.WEAKENING.getMessage();
+    }
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -814,6 +898,11 @@ class Sacrifice extends Spell {
         return null;
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.SACRIFICE.getMessage();
+    }
     @Override
     public void castBuff(Cell cell) {
 
@@ -849,6 +938,11 @@ class KingsGuard extends Spell {
         return kingsGuard;
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.KINGS_GUARD.getMessage();
+    }
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;
@@ -889,6 +983,11 @@ class Shock extends Spell {
         return shock;
     }
 
+
+    @Override
+    public String getDesc() {
+        return SpellWork.SHOCK.getMessage();
+    }
     @Override
     public ArrayList<Cell> effectedCells() {
         return null;

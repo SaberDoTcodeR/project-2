@@ -9,6 +9,10 @@ import model.Battles.Battle;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
+import model.Cards.Card;
+import model.Cards.Hero;
+import model.Cards.Minion;
+import model.Cards.Spell;
 import model.Menus.Account;
 import model.Menus.Shop;
 
@@ -142,7 +146,7 @@ class Remove extends Command {
             if (Account.getLoginAccount().getCollection().findDeck(deckName).hasThisCard(id)) {
                 Account.getLoginAccount().getCollection().removeFromDeck(id, deckName);
             } else {
-                request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
+                request.setError(ErrorType.WRONG_REMOVE);
             }
         } else {
             request.setError(ErrorType.NO_DECK_FOUND);
@@ -575,10 +579,11 @@ class ShowMyMinions extends Command {
 
     @Override
     public void apply(Request request) {
-        view.showMinions(request.getBattle(),false);
+        view.showMinions(request.getBattle(), false);
 
     }
 }
+
 class ShowOppMinoins extends Command {
     ShowOppMinoins() {
         super(CommandRegex.SHOW_OPP_MINIONS);
@@ -586,7 +591,40 @@ class ShowOppMinoins extends Command {
 
     @Override
     public void apply(Request request) {
-        view.showMinions(request.getBattle(),true);
+        view.showMinions(request.getBattle(), true);
 
+    }
+}
+
+class EndTurn extends Command {
+    EndTurn() {
+        super(CommandRegex.END_TURN);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ShowCardInfo extends Command {
+    ShowCardInfo() {
+        super(CommandRegex.SHOW_CARD_INFO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String cardId = matcher.group(1).trim();
+        Card card = request.isValidCardId(cardId);
+        if (card != null) {
+            if (card.getType().equals("Minion"))
+                view.printMinionInfoInGame((Minion) card);
+            else if(card.getType().equals("Hero"))
+                view.printHeroInfoInGame((Hero) card);
+            else
+                view.printSpellInfoInGame((Spell)card);
+        } else {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
+        }
     }
 }

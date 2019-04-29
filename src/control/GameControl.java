@@ -41,6 +41,9 @@ public class GameControl {
                 if (command != null && !command.equals("help")) {
                     command.apply(request);
                     view.printError(request.getError());
+                } else if (command != null && command.equals("end turn")) {
+                    battle.increamentTurn();
+                    break;
                 } else if (command != null && command.equals("help")) {
                     ////todo list of possible action
                 } else {

@@ -2,6 +2,7 @@ package view;
 
 import model.*;
 import model.Battles.Battle;
+import model.Cards.Card;
 import model.Cards.Hero;
 import model.Cards.Minion;
 import model.Cards.Spell;
@@ -9,6 +10,7 @@ import model.Item.UsableItem;
 import model.Menus.Account;
 import model.Menus.Collection;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Base64;
 
@@ -276,5 +278,35 @@ public class View {
                 continue;
             System.out.println(account.getUserName());
         }
+    }
+    public void printMinionInfoInGame(Minion minion){
+        System.out.println("Minion:\n"+"Name: "+minion.getName());
+        System.out.println("HP: "+minion.getHp()+" AP: "+minion.getAp()+" MP: "+minion.getCostToUse());
+        if(minion.getRange()==0)
+            System.out.println("Range: Melee");
+        else if(minion.getRange()==1)
+            System.out.println("Range: Ranged");
+        else
+            System.out.println("Range: Hybrid");
+
+        System.out.print("Combo-ability: ");
+        if(minion.getTimeOfActivationOfSpecialPower()==2)
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+        System.out.println("Cost: "+minion.getCostOfBuy());
+        System.out.println("Desc: "+minion.getDesc());
+    }
+    public void printHeroInfoInGame(Hero hero){
+        System.out.println("Hero:\n"+"Name: "+hero.getName());
+        System.out.println("Cost: "+hero.getCostOfBuy());
+        System.out.println("Desc: "+hero.getDesc());
+
+    }
+    public void printSpellInfoInGame(Spell spell){
+        System.out.println("Spell:\n"+"Name: "+spell.getName());
+        System.out.println(" MP: "+spell.getCostToUse());
+        System.out.println("Cost: "+spell.getCostOfBuy());
+        System.out.println("Desc: "+spell.getDesc());
     }
 }

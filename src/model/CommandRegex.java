@@ -6,6 +6,11 @@ public enum CommandRegex {
             ),
     SHOW_OPP_MINIONS(
             "^game info$"),
+    END_TURN(
+            "^end turn"
+    ),
+    SHOW_CARD_INFO(
+            "^show card info\\s+(\\w+)$"),
     SHOW_MY_MINIONS(
             "^show opponent minions$"
     ),

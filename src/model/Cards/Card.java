@@ -1,11 +1,14 @@
 package model.Cards;
 
+import model.Battles.Battle;
+
+import java.util.ArrayList;
+
 public abstract class Card {
     private String name;
     private boolean isOnMap;
     private int costOfBuy;
     private long id;
-    private int countOfType=1;
     private String CardId;
     public String getName() {
         return name.toLowerCase();
@@ -13,14 +16,6 @@ public abstract class Card {
 
     public void setName(String nameOfCard) {
         this.name = nameOfCard;
-    }
-
-    public int getCountOfType() {
-        return countOfType;
-    }
-
-    public void increamentCountOfType() {
-        this.countOfType++;
     }
 
     public String getCardId() {
@@ -54,8 +49,26 @@ public abstract class Card {
     abstract public String getType();
 
     public abstract String showDetails();
-    public void cardIdGenerator(String playerName){
-        String str=playerName+"_"+this.getName()+"_"+this.getCountOfType();
+    public void cardIdGenerator(Battle battle){
+        ArrayList<Card>cards;
+        String playerName;
+        if(battle.getTurn()%2==0)
+        {
+            playerName=battle.getFirstPlayer().getUserName();
+            cards=battle.getFirstPlayerInGameCards();
+        }
+        else{
+            cards=battle.getSecondPlayerInGameCards();
+            playerName=battle.getSecondPlayer().getUserName();
+        }
+
+        int count=0;
+        for (Card card :cards) {
+            if(card.getName().equals(this.name)){
+                count++;
+            }
+        }
+        String str=playerName+"_"+this.getName()+"_"+(count+1);
         setCardId(str);
     }
 }

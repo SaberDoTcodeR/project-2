@@ -1,5 +1,6 @@
 package model.Battles;
 
+import model.Cards.Card;
 import model.Menus.Account;
 import model.*;
 
@@ -12,11 +13,28 @@ public abstract class Battle {
     private Hand firstPlayerHand=new Hand();
     private ArrayList<ArrayList<Cell>> map=new ArrayList<>();
     private int turn=1;
+    private ArrayList<Card> firstPlayerInGameCards=new ArrayList<>();
+    private ArrayList<Card> secondPlayerInGameCards=new ArrayList<>();
 
     protected Battle(Account firstPlayer,Deck deck,Deck deck2){
         this.firstPlayer=firstPlayer;
         this.firstPlayerDeck=deck;
         this.secondPlayerDeck=deck2;
+    }
+
+    public void addFirstPlayerInGameCards(Card card) {
+        this.firstPlayerInGameCards.add(card);
+    }
+    public void addSecondPlayerInGameCards(Card card) {
+        this.secondPlayerInGameCards.add(card);
+    }
+
+    public ArrayList<Card> getFirstPlayerInGameCards() {
+        return firstPlayerInGameCards;
+    }
+
+    public ArrayList<Card> getSecondPlayerInGameCards() {
+        return secondPlayerInGameCards;
     }
 
     public int getTurn() {
