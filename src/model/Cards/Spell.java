@@ -1,5 +1,6 @@
 package model.Cards;
 
+import model.Buffs.*;
 import model.Battles.Battle;
 import model.Cell;
 import model.ErrorType;

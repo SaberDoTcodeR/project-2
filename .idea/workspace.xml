@@ -2,12 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/Buff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/HolyBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/PowerBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/StunBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Buff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Buff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Cards/Buff.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Spell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ErrorType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Item/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item/UsableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Menus/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Menus/Account.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,139 +45,24 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
+        <entry file="file://$PROJECT_DIR$/src/model/Item/UsableItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="322" column="5" lean-forward="true" selection-start-line="322" selection-start-column="5" selection-end-line="322" selection-end-column="5" />
+            <state relative-caret-position="223">
+              <caret line="341" column="29" lean-forward="true" selection-start-line="341" selection-start-column="29" selection-end-line="341" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-                <element signature="e#620#621#0" expanded="true" />
-                <element signature="e#978#979#0" expanded="true" />
-                <element signature="e#997#998#0" expanded="true" />
-                <element signature="e#1100#1101#0" expanded="true" />
-                <element signature="e#1189#1190#0" expanded="true" />
-                <element signature="e#1284#1285#0" expanded="true" />
-                <element signature="e#1893#1894#0" expanded="true" />
-                <element signature="e#1928#1929#0" expanded="true" />
-                <element signature="e#1954#1955#0" expanded="true" />
-                <element signature="e#2007#2008#0" expanded="true" />
-                <element signature="e#2329#2330#0" expanded="true" />
-                <element signature="e#2407#2408#0" expanded="true" />
-                <element signature="e#3367#3368#0" expanded="true" />
-                <element signature="e#3396#3397#0" expanded="true" />
-                <element signature="e#3427#3428#0" expanded="true" />
-                <element signature="e#3474#3475#0" expanded="true" />
-                <element signature="e#3614#3615#0" expanded="true" />
-                <element signature="e#3693#3694#0" expanded="true" />
-                <element signature="e#3722#3723#0" expanded="true" />
-                <element signature="e#3741#3742#0" expanded="true" />
-                <element signature="e#3816#3817#0" expanded="true" />
-                <element signature="e#3837#3838#0" expanded="true" />
-                <element signature="e#3995#3996#0" expanded="true" />
-                <element signature="e#4082#4083#0" expanded="true" />
-                <element signature="e#3947#3948#0" expanded="true" />
-                <element signature="e#3966#3967#0" expanded="true" />
-                <element signature="e#4038#4039#0" expanded="true" />
-                <element signature="e#4059#4060#0" expanded="true" />
-                <element signature="e#4426#4427#0" expanded="true" />
-                <element signature="e#4458#4459#0" expanded="true" />
-                <element signature="e#5450#5451#0" expanded="true" />
-                <element signature="e#5482#5483#0" expanded="true" />
-                <element signature="e#6400#6401#0" expanded="true" />
-                <element signature="e#6435#6436#0" expanded="true" />
-                <element signature="e#6476#6477#0" expanded="true" />
-                <element signature="e#6513#6514#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4864#4865#0" expanded="true" />
-                <element signature="e#4898#4899#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Deck.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="108" column="21" selection-start-line="108" selection-start-column="21" selection-end-line="108" selection-end-column="21" />
-              <folding>
-                <element signature="e#596#597#0" expanded="true" />
-                <element signature="e#628#629#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Menus/Collection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="151" column="27" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1812#1813#0" expanded="true" />
-                <element signature="e#1853#1854#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="80" lean-forward="true" selection-start-line="72" selection-end-line="80" />
-              <folding>
-                <element signature="e#884#885#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#903#904#0" expanded="true" />
-                <element signature="e#953#954#0" expanded="true" />
-                <element signature="e#1863#1864#0" expanded="true" />
-                <element signature="e#1891#1892#0" expanded="true" />
-                <element signature="e#1924#1925#0" expanded="true" />
-                <element signature="e#1952#1953#0" expanded="true" />
-                <element signature="e#2488#2489#0" expanded="true" />
-                <element signature="e#2522#2523#0" expanded="true" />
-                <element signature="e#2664#2665#0" expanded="true" />
-                <element signature="e#2710#2711#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="623">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
-              <folding>
-                <element signature="e#1829#1830#0" expanded="true" />
-                <element signature="e#1857#1858#0" expanded="true" />
-                <element signature="e#1890#1891#0" expanded="true" />
-                <element signature="e#1918#1919#0" expanded="true" />
-                <element signature="e#1796#1797#0" expanded="true" />
-                <element signature="e#1832#1833#0" expanded="true" />
-                <element signature="e#1891#1892#0" expanded="true" />
-                <element signature="e#1941#1942#0" expanded="true" />
-                <element signature="e#3125#3126#0" expanded="true" />
-                <element signature="e#3159#3160#0" expanded="true" />
-                <element signature="e#3301#3302#0" expanded="true" />
-                <element signature="e#3347#3348#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="540">
+              <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -171,8 +70,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="80">
+              <caret line="4" column="78" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="218" column="9" lean-forward="true" selection-start-line="195" selection-start-column="8" selection-end-line="218" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,6 +112,7 @@
       <find>God</find>
       <find>Total</find>
       <find>All</find>
+      <find>atta</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -239,21 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/control/Controller.java" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/control/CollectionControl.java" />
-        <option value="$PROJECT_DIR$/src/control/ShopControl.java" />
-        <option value="$PROJECT_DIR$/src/model/CollectableItem.java" />
-        <option value="$PROJECT_DIR$/src/model/RecordedMatch.java" />
-        <option value="$PROJECT_DIR$/src/model/UsableItem.java" />
-        <option value="$PROJECT_DIR$/src/control/MainMenuControl.java" />
-        <option value="$PROJECT_DIR$/src/control/AccountControl.java" />
-        <option value="$PROJECT_DIR$/src/model/Battle.java" />
-        <option value="$PROJECT_DIR$/src/model/Account.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/model/Spell.java" />
-        <option value="$PROJECT_DIR$/src/model/Minion.java" />
-        <option value="$PROJECT_DIR$/src/model/Shop.java" />
         <option value="$PROJECT_DIR$/src/model/Collection.java" />
         <option value="$PROJECT_DIR$/src/model/Card.java" />
         <option value="$PROJECT_DIR$/src/model/Item.java" />
@@ -270,19 +167,41 @@
         <option value="$PROJECT_DIR$/src/model/Battles/Battle.java" />
         <option value="$PROJECT_DIR$/src/view/Command.java" />
         <option value="$PROJECT_DIR$/src/model/Hand.java" />
-        <option value="$PROJECT_DIR$/src/model/Menus/Account.java" />
         <option value="$PROJECT_DIR$/src/model/Battles/HeroBattle.java" />
         <option value="$PROJECT_DIR$/src/control/GameControl.java" />
         <option value="$PROJECT_DIR$/src/model/Item/CollectableItem.java" />
-        <option value="$PROJECT_DIR$/src/model/Item/UsableItem.java" />
         <option value="$PROJECT_DIR$/src/view/View.java" />
-        <option value="$PROJECT_DIR$/src/model/ErrorType.java" />
         <option value="$PROJECT_DIR$/src/model/Deck.java" />
+        <option value="$PROJECT_DIR$/src/model/Menus/Account.java" />
+        <option value="$PROJECT_DIR$/src/model/Buff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/HolyBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/PowerBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/PoisonBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/WeaknessBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/StunBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/DisarmBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/ChangeApBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/ChangeHpBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/PoisonEffectedCell.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Buff.java" />
-        <option value="$PROJECT_DIR$/src/model/Cell.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/FiringEffectedCell.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/HolyBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/PowerBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/StunBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/Buff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/Spell.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Hero.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Minion.java" />
-        <option value="$PROJECT_DIR$/src/model/Cards/Spell.java" />
+        <option value="$PROJECT_DIR$/src/model/Cell.java" />
+        <option value="$PROJECT_DIR$/src/model/ErrorType.java" />
+        <option value="$PROJECT_DIR$/src/model/Item/UsableItem.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java" />
       </list>
     </option>
   </component>
@@ -303,6 +222,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
@@ -320,12 +241,6 @@
               <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
               <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -333,34 +248,19 @@
               <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Battles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Menus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="Item" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556480715823" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556529371079" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -422,7 +322,8 @@
       <workItem from="1556197901817" duration="17937000" />
       <workItem from="1556268937605" duration="24638000" />
       <workItem from="1556359411959" duration="392000" />
-      <workItem from="1556432791724" duration="19587000" />
+      <workItem from="1556432791724" duration="22451000" />
+      <workItem from="1556510877625" duration="7228000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -564,11 +465,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556432996894</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Spell's buff completed;&#10;buff class completed;&#10;some method has been added to others class;">
+      <created>1556483076931</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1556483076931</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179009000" />
+    <option name="totallyTimeSpent" value="189101000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -581,20 +489,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24594595" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Duplicate detector" weight="0.32963988" />
-      <window_info anchor="bottom" id="Educational.CheckDetails" />
-      <window_info anchor="bottom" id="Tail" />
-      <window_info anchor="bottom" id="Statistic" weight="0.32963988" />
+      <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963988" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.51256984" />
@@ -610,8 +513,10 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32686982" />
       <window_info anchor="bottom" id="CheckStyle" order="13" />
       <window_info anchor="bottom" id="SonarLint" order="14" />
-      <window_info anchor="right" id="Json Parser" />
-      <window_info anchor="right" id="Activity Stack View" />
+      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32963988" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="16" />
+      <window_info anchor="bottom" id="Statistic" order="17" weight="0.32963988" />
+      <window_info anchor="bottom" id="Tail" order="18" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24960753" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
@@ -621,40 +526,9 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Database" order="7" weight="0.32980332" />
       <window_info anchor="right" id="Maven" order="8" weight="0.3290469" />
+      <window_info anchor="right" id="Json Parser" order="9" />
+      <window_info anchor="right" id="Activity Stack View" order="10" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21148649" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32963988" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
-      <window_info anchor="bottom" id="CheckStyle" order="13" />
-      <window_info anchor="bottom" id="SonarLint" order="14" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24960753" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven" order="7" weight="0.32967034" />
-      <window_info anchor="right" id="Database" order="8" weight="0.32980332" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -678,855 +552,16 @@
     <MESSAGE value="battle has strated" />
     <MESSAGE value="battle structure coded and several bugs fixed" />
     <MESSAGE value="some castBuff method created and&#10;changes that need applied" />
-    <option name="LAST_COMMIT_MESSAGE" value="some castBuff method created and&#10;changes that need applied" />
+    <MESSAGE value="Spell's buff completed;&#10;buff class completed;&#10;some method has been added to others class;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spell's buff completed;&#10;buff class completed;&#10;some method has been added to others class;" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/control/Controller.java" />
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/Account.java" />
-    <entry file="uml://JAVA/model.Account">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>model.Account</OriginalElement>
-          <nodes>
-            <node x="742.0965700534854" y="1885.0">view.CreateAccount</node>
-            <node x="3157.1109374999996" y="212.0">model.Minion</node>
-            <node x="1768.9046874999995" y="1689.0">control.BattleControl</node>
-            <node x="656.9999999999999" y="169.0">model.Account</node>
-            <node x="1676.9671874999995" y="1885.0">view.EnterBattle</node>
-            <node x="615.4999999999998" y="1689.0">control.MainMenuControl</node>
-            <node x="2804.1109374999996" y="212.0">model.Hero</node>
-            <node x="1232.5313135411543" y="2209.0">view.Request</node>
-            <node x="2139.9046874999995" y="1700.0">view.Exit</node>
-            <node x="1352.6921874999998" y="683.0">model.CommandRegex</node>
-            <node x="1543.6921874999998" y="1689.0">control.CollectionControl</node>
-            <node x="815.4999999999998" y="815.0">view.View</node>
-            <node x="1419.0968749999997" y="1885.0">view.EnterCollection</node>
-            <node x="1173.8749999999998" y="1885.0">view.EnterShop</node>
-            <node x="666.4999999999999" y="0.0">model.RecordedMatch</node>
-            <node x="1900.5921874999995" y="257.5">model.ErrorType</node>
-            <node x="2528.9046874999995" y="1700.0">view.LogOut</node>
-            <node x="597.5468183488465" y="2550.0">control.AccountControl</node>
-            <node x="976.8749999999998" y="1885.0">view.ExitFromSubMenu</node>
-            <node x="21.5" y="1700.0">view.ExitFromMainMenu</node>
-            <node x="1945.9046874999995" y="1700.0">view.Login</node>
-            <node x="1264.6921874999998" y="1298.0">view.Command</node>
-            <node x="3330.506770833333" y="558.0">model.Spell</node>
-            <node x="3318.8331597222223" y="0.0">model.Card</node>
-            <node x="226.5" y="1700.0">view.Save</node>
-            <node x="420.5" y="1700.0">view.ShowLeaderBoard</node>
-            <node x="2333.9046874999995" y="1700.0">view.Help</node>
-            <node x="591.5468183488465" y="2696.0">Main</node>
-            <node x="896.9749999999999" y="1689.0">control.ShopControl</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="view.LogOut" target="control.AccountControl">
-              <point x="65.25" y="37.0" />
-              <point x="2681.1546874999995" y="1855.0" />
-              <point x="2737.1109374999996" y="1855.0" />
-              <point x="2737.1109374999996" y="2510.0" />
-              <point x="721.8384850155131" y="2510.0" />
-              <point x="45.79166666666663" y="-48.0" />
-            </edge>
-            <edge source="control.AccountControl" target="view.Request">
-              <point x="19.625" y="-48.0" />
-              <point x="695.6718183488465" y="2490.0" />
-              <point x="1467.2813135411543" y="2490.0" />
-              <point x="78.25" y="125.5" />
-            </edge>
-            <edge source="view.LogOut" target="model.ErrorType">
-              <point x="69.59999999999991" y="-37.0" />
-              <point x="2685.5046874999994" y="1669.0" />
-              <point x="2669.509580169033" y="1669.0" />
-              <point x="2669.509580169033" y="593.0" />
-              <point x="2055.8421874999995" y="593.0" />
-              <point x="51.75" y="103.5" />
-            </edge>
-            <edge source="control.MainMenuControl" target="view.Command">
-              <point x="58.875" y="-48.0" />
-              <point x="752.8749999999998" y="1589.0" />
-              <point x="1310.3953124999998" y="1589.0" />
-              <point x="-66.796875" y="70.5" />
-            </edge>
-            <edge source="view.EnterBattle" target="model.CommandRegex">
-              <point x="0.0" y="-37.0" />
-              <point x="1763.9671874999995" y="1865.0" />
-              <point x="1740.1671874999995" y="1865.0" />
-              <point x="1740.1671874999995" y="1158.0" />
-              <point x="1482.8075721153846" y="1158.0" />
-              <point x="30.615384615384755" y="202.5" />
-            </edge>
-            <edge source="view.EnterShop" target="control.ShopControl">
-              <point x="-34.799999999999955" y="-37.0" />
-              <point x="1226.0749999999998" y="1805.0" />
-              <point x="1034.35" y="1805.0" />
-              <point x="58.875" y="48.0" />
-            </edge>
-            <edge source="view.CreateAccount" target="model.CommandRegex">
-              <point x="32.625" y="-37.0" />
-              <point x="861.7215700534854" y="1865.0" />
-              <point x="848.5622381798132" y="1865.0" />
-              <point x="848.5622381798132" y="1258.0" />
-              <point x="1406.2691105769227" y="1258.0" />
-              <point x="-45.923076923076906" y="202.5" />
-            </edge>
-            <edge source="view.ExitFromMainMenu" target="view.Command">
-              <point x="69.0" y="-37.0" />
-              <point x="182.5" y="1539.0" />
-              <point x="1275.2390624999998" y="1539.0" />
-              <point x="-101.953125" y="70.5" />
-            </edge>
-            <edge source="Main" target="control.AccountControl">
-              <point x="42.25" y="-25.5" />
-              <point x="718.2968183488465" y="2671.0" />
-              <point x="715.2968183488465" y="2671.0" />
-              <point x="39.25" y="48.0" />
-            </edge>
-            <edge source="view.EnterShop" target="view.Command">
-              <point x="34.799999999999955" y="-37.0" />
-              <point x="1295.6749999999997" y="1865.0" />
-              <point x="1304.812705169033" y="1865.0" />
-              <point x="1304.812705169033" y="1649.0" />
-              <point x="1352.5828124999998" y="1649.0" />
-              <point x="-24.609375" y="70.5" />
-            </edge>
-            <edge source="view.ExitFromMainMenu" target="control.AccountControl">
-              <point x="-69.0" y="37.0" />
-              <point x="44.5" y="1865.0" />
-              <point x="57.25" y="1865.0" />
-              <point x="57.25" y="2510.0" />
-              <point x="630.2551516821798" y="2510.0" />
-              <point x="-45.79166666666674" y="-48.0" />
-            </edge>
-            <edge source="view.LogOut" target="view.Command">
-              <point x="-69.59999999999991" y="-37.0" />
-              <point x="2546.3046874999995" y="1489.0" />
-              <point x="1472.1140624999998" y="1489.0" />
-              <point x="94.921875" y="70.5" />
-            </edge>
-            <edge source="view.Help" target="view.Command">
-              <point x="0.0" y="-37.0" />
-              <point x="2420.9046874999995" y="1509.0" />
-              <point x="1465.0828124999998" y="1509.0" />
-              <point x="87.890625" y="70.5" />
-            </edge>
-            <edge source="view.Exit" target="model.CommandRegex">
-              <point x="58.0" y="-37.0" />
-              <point x="2284.9046874999995" y="1529.0" />
-              <point x="2141.5295458721207" y="1529.0" />
-              <point x="2141.5295458721207" y="1128.0" />
-              <point x="1513.4229567307689" y="1128.0" />
-              <point x="61.23076923076928" y="202.5" />
-            </edge>
-            <edge source="view.ExitFromSubMenu" target="view.Request">
-              <point x="44.25" y="37.0" />
-              <point x="1109.6249999999998" y="2029.0" />
-              <point x="1361.6438135411545" y="2029.0" />
-              <point x="-27.387499999999818" y="-125.5" />
-            </edge>
-            <edge source="view.EnterCollection" target="view.Request">
-              <point x="43.5" y="37.0" />
-              <point x="1549.5968749999997" y="2029.0" />
-              <point x="1416.4188135411541" y="2029.0" />
-              <point x="27.387500000000045" y="-125.5" />
-            </edge>
-            <edge source="control.MainMenuControl" target="view.View">
-              <point x="19.625" y="-48.0" />
-              <point x="713.6249999999998" y="1519.0" />
-              <point x="685.3749999999998" y="1519.0" />
-              <point x="685.3749999999998" y="1218.0" />
-              <point x="874.9999999999998" y="1218.0" />
-              <point x="-42.5" y="70.5" />
-            </edge>
-            <edge source="view.View" target="model.Account">
-              <point x="-76.5" y="-70.5" />
-              <point x="840.9999999999998" y="623.0" />
-              <point x="827.9499999999999" y="623.0" />
-              <point x="39.450000000000045" y="192.0" />
-            </edge>
-            <edge source="view.Command" target="model.CommandRegex">
-              <point x="75.0" y="-70.5" />
-              <point x="0.0" y="202.5" />
-            </edge>
-            <edge source="control.MainMenuControl" target="model.ErrorType">
-              <point x="-58.875" y="-48.0" />
-              <point x="635.1249999999998" y="1519.0" />
-              <point x="632.6423926690331" y="1519.0" />
-              <point x="632.6423926690331" y="633.0" />
-              <point x="1910.9421874999994" y="633.0" />
-              <point x="-93.15000000000009" y="103.5" />
-            </edge>
-            <edge source="view.Request" target="view.Save">
-              <point x="-121.28749999999991" y="-125.5" />
-              <point x="1267.7438135411544" y="2149.0" />
-              <point x="375.63723817981304" y="2149.0" />
-              <point x="375.63723817981304" y="1865.0" />
-              <point x="378.75" y="1865.0" />
-              <point x="65.25" y="37.0" />
-            </edge>
-            <edge source="control.CollectionControl" target="model.ErrorType">
-              <point x="58.875" y="-48.0" />
-              <point x="1681.0671874999998" y="1659.0" />
-              <point x="2044.5295458721207" y="1659.0" />
-              <point x="2044.5295458721207" y="663.0" />
-              <point x="1993.7421874999995" y="663.0" />
-              <point x="-10.349999999999909" y="103.5" />
-            </edge>
-            <edge source="control.ShopControl" target="view.Command">
-              <point x="58.875" y="-48.0" />
-              <point x="1034.35" y="1619.0" />
-              <point x="1331.4890624999998" y="1619.0" />
-              <point x="-45.703125" y="70.5" />
-            </edge>
-            <edge source="view.Request" target="model.Account">
-              <point x="-136.93749999999977" y="-125.5" />
-              <point x="1252.0938135411543" y="2169.0" />
-              <point x="216.0" y="2169.0" />
-              <point x="216.0" y="603.0" />
-              <point x="696.4499999999999" y="603.0" />
-              <point x="-92.04999999999995" y="192.0" />
-            </edge>
-            <edge source="view.CreateAccount" target="control.MainMenuControl">
-              <point x="-54.375" y="-37.0" />
-              <point x="774.7215700534854" y="1855.0" />
-              <point x="723.4374999999998" y="1855.0" />
-              <point x="29.4375" y="48.0" />
-            </edge>
-            <edge source="view.Help" target="model.CommandRegex">
-              <point x="58.0" y="-37.0" />
-              <point x="2478.9046874999995" y="1499.0" />
-              <point x="2221.934438541154" y="1499.0" />
-              <point x="2221.934438541154" y="1118.0" />
-              <point x="1528.7306490384613" y="1118.0" />
-              <point x="76.53846153846166" y="202.5" />
-            </edge>
-            <edge source="model.Account" target="view.View">
-              <point x="92.05000000000007" y="192.0" />
-              <point x="880.55" y="613.0" />
-              <point x="942.9999999999998" y="613.0" />
-              <point x="25.5" y="-70.5" />
-            </edge>
-            <edge source="control.AccountControl" target="view.View">
-              <point x="-71.95833333333337" y="-48.0" />
-              <point x="604.0884850155131" y="2530.0" />
-              <point x="0.0" y="2530.0" />
-              <point x="0.0" y="1188.0" />
-              <point x="823.9999999999998" y="1188.0" />
-              <point x="-93.5" y="70.5" />
-            </edge>
-            <edge source="view.Save" target="model.Account">
-              <point x="-65.25" y="-37.0" />
-              <point x="248.25" y="1519.0" />
-              <point x="257.9090700534855" y="1519.0" />
-              <point x="257.9090700534855" y="613.0" />
-              <point x="722.7499999999999" y="613.0" />
-              <point x="-65.75" y="192.0" />
-            </edge>
-            <edge source="view.Request" target="view.Exit">
-              <point x="105.63750000000005" y="-125.5" />
-              <point x="1494.6688135411541" y="2129.0" />
-              <point x="2245.059580169033" y="2129.0" />
-              <point x="2245.059580169033" y="1865.0" />
-              <point x="2270.4046874999995" y="1865.0" />
-              <point x="43.5" y="37.0" />
-            </edge>
-            <edge source="view.EnterShop" target="view.Request">
-              <point x="43.5" y="37.0" />
-              <point x="1304.3749999999998" y="2009.0" />
-              <point x="1377.2938135411541" y="2009.0" />
-              <point x="-11.737499999999955" y="-125.5" />
-            </edge>
-            <edge source="view.ShowLeaderBoard" target="model.Account">
-              <point x="-65.625" y="-37.0" />
-              <point x="442.375" y="1519.0" />
-              <point x="416.14239266903326" y="1519.0" />
-              <point x="416.14239266903326" y="623.0" />
-              <point x="749.05" y="623.0" />
-              <point x="-39.44999999999993" y="192.0" />
-            </edge>
-            <edge source="control.BattleControl" target="model.ErrorType">
-              <point x="58.875" y="-48.0" />
-              <point x="1906.2796874999995" y="1669.0" />
-              <point x="2243.934438541154" y="1669.0" />
-              <point x="2243.934438541154" y="653.0" />
-              <point x="2014.4421874999994" y="653.0" />
-              <point x="10.349999999999909" y="103.5" />
-            </edge>
-            <edge source="view.ExitFromSubMenu" target="view.Command">
-              <point x="35.40000000000009" y="-37.0" />
-              <point x="1100.7749999999999" y="1855.0" />
-              <point x="1133.501377745793" y="1855.0" />
-              <point x="1133.501377745793" y="1629.0" />
-              <point x="1338.5203124999998" y="1629.0" />
-              <point x="-38.671875" y="70.5" />
-            </edge>
-            <edge source="view.EnterCollection" target="view.Command">
-              <point x="-69.59999999999991" y="-37.0" />
-              <point x="1436.4968749999998" y="1865.0" />
-              <point x="1450.4107958721206" y="1865.0" />
-              <point x="1450.4107958721206" y="1669.0" />
-              <point x="1387.7390624999998" y="1669.0" />
-              <point x="10.546875" y="70.5" />
-            </edge>
-            <edge source="control.CollectionControl" target="view.Command">
-              <point x="-58.875" y="-48.0" />
-              <point x="1563.3171874999998" y="1649.0" />
-              <point x="1401.8015624999998" y="1649.0" />
-              <point x="24.609375" y="70.5" />
-            </edge>
-            <edge source="view.Request" target="view.Command">
-              <point x="3.9125000000001364" y="-125.5" />
-              <point x="1392.9438135411542" y="1989.0" />
-              <point x="1373.2796875" y="1989.0" />
-              <point x="-3.515625" y="70.5" />
-            </edge>
-            <edge source="view.Login" target="view.Request">
-              <point x="-43.5" y="37.0" />
-              <point x="1989.4046874999995" y="1865.0" />
-              <point x="2043.234580169033" y="1865.0" />
-              <point x="2043.234580169033" y="2099.0" />
-              <point x="1471.1938135411542" y="2099.0" />
-              <point x="82.16249999999991" y="-125.5" />
-            </edge>
-            <edge source="view.CreateAccount" target="model.Account">
-              <point x="-32.625" y="-37.0" />
-              <point x="796.4715700534854" y="1865.0" />
-              <point x="782.9999999999998" y="1865.0" />
-              <point x="782.9999999999998" y="623.0" />
-              <point x="775.3499999999999" y="623.0" />
-              <point x="-13.149999999999977" y="192.0" />
-            </edge>
-            <edge source="view.Login" target="model.CommandRegex">
-              <point x="58.0" y="-37.0" />
-              <point x="2090.9046874999995" y="1559.0" />
-              <point x="2033.5295458721207" y="1559.0" />
-              <point x="2033.5295458721207" y="1138.0" />
-              <point x="1498.1152644230765" y="1138.0" />
-              <point x="45.923076923076906" y="202.5" />
-            </edge>
-            <edge source="view.Request" target="view.ExitFromSubMenu">
-              <point x="-35.212499999999864" y="-125.5" />
-              <point x="1353.8188135411542" y="2039.0" />
-              <point x="1021.1249999999998" y="2039.0" />
-              <point x="-44.25" y="37.0" />
-            </edge>
-            <edge source="view.Request" target="view.Help">
-              <point x="113.46250000000009" y="-125.5" />
-              <point x="1502.4938135411544" y="2139.0" />
-              <point x="2431.2345801690335" y="2139.0" />
-              <point x="2431.2345801690335" y="1865.0" />
-              <point x="2377.4046874999995" y="1865.0" />
-              <point x="-43.5" y="37.0" />
-            </edge>
-            <edge source="control.CollectionControl" target="view.Request">
-              <point x="58.875" y="48.0" />
-              <point x="1681.0671874999998" y="1865.0" />
-              <point x="1649.6421874999996" y="1865.0" />
-              <point x="1649.6421874999996" y="2049.0" />
-              <point x="1432.0688135411542" y="2049.0" />
-              <point x="43.03749999999991" y="-125.5" />
-            </edge>
-            <edge source="view.LogOut" target="view.Request">
-              <point x="-65.25" y="37.0" />
-              <point x="2550.6546874999995" y="1865.0" />
-              <point x="2561.884580169033" y="1865.0" />
-              <point x="2561.884580169033" y="2169.0" />
-              <point x="1525.9688135411543" y="2169.0" />
-              <point x="136.9375" y="-125.5" />
-            </edge>
-            <edge source="view.Request" target="view.LogOut">
-              <point x="144.76250000000005" y="-125.5" />
-              <point x="1533.7938135411541" y="2179.0" />
-              <point x="2594.1546874999995" y="2179.0" />
-              <point x="-21.75" y="37.0" />
-            </edge>
-            <edge source="control.ShopControl" target="model.ErrorType">
-              <point x="19.625" y="-48.0" />
-              <point x="995.0999999999999" y="1519.0" />
-              <point x="1029.9999999999998" y="1519.0" />
-              <point x="1029.9999999999998" y="663.0" />
-              <point x="1973.0421874999993" y="663.0" />
-              <point x="-31.050000000000182" y="103.5" />
-            </edge>
-            <edge source="view.Request" target="view.EnterShop">
-              <point x="-19.5625" y="-125.5" />
-              <point x="1369.4688135411543" y="2019.0" />
-              <point x="1217.3749999999998" y="2019.0" />
-              <point x="-43.5" y="37.0" />
-            </edge>
-            <edge source="view.Request" target="view.ShowLeaderBoard">
-              <point x="-113.46249999999986" y="-125.5" />
-              <point x="1275.5688135411542" y="2139.0" />
-              <point x="496.8122381798132" y="2139.0" />
-              <point x="496.8122381798132" y="1865.0" />
-              <point x="464.25" y="1865.0" />
-              <point x="-43.75" y="37.0" />
-            </edge>
-            <edge source="view.ShowLeaderBoard" target="model.CommandRegex">
-              <point x="-21.875" y="-37.0" />
-              <point x="486.125" y="1519.0" />
-              <point x="469.75" y="1519.0" />
-              <point x="469.75" y="1248.0" />
-              <point x="1390.9614182692303" y="1248.0" />
-              <point x="-61.23076923076928" y="202.5" />
-            </edge>
-            <edge source="view.LogOut" target="model.CommandRegex">
-              <point x="0.0" y="-37.0" />
-              <point x="2615.9046874999995" y="1469.0" />
-              <point x="2232.934438541154" y="1469.0" />
-              <point x="2232.934438541154" y="1108.0" />
-              <point x="1544.0383413461536" y="1108.0" />
-              <point x="91.84615384615381" y="202.5" />
-            </edge>
-            <edge source="view.ShowLeaderBoard" target="view.Request">
-              <point x="43.75" y="37.0" />
-              <point x="551.75" y="1865.0" />
-              <point x="504.63723817981327" y="1865.0" />
-              <point x="504.63723817981327" y="2129.0" />
-              <point x="1283.3938135411545" y="2129.0" />
-              <point x="-105.63749999999982" y="-125.5" />
-            </edge>
-            <edge source="view.Request" target="view.CreateAccount">
-              <point x="-66.51249999999982" y="-125.5" />
-              <point x="1322.5188135411545" y="2079.0" />
-              <point x="785.5965700534854" y="2079.0" />
-              <point x="-43.5" y="37.0" />
-            </edge>
-            <edge source="view.Login" target="view.Command">
-              <point x="0.0" y="-37.0" />
-              <point x="2032.9046874999995" y="1569.0" />
-              <point x="1436.9578124999998" y="1569.0" />
-              <point x="59.765625" y="70.5" />
-            </edge>
-            <edge source="control.BattleControl" target="view.View">
-              <point x="19.625" y="-48.0" />
-              <point x="1867.0296874999995" y="1649.0" />
-              <point x="1863.7830607953608" y="1649.0" />
-              <point x="1863.7830607953608" y="1148.0" />
-              <point x="1010.9999999999998" y="1148.0" />
-              <point x="93.5" y="70.5" />
-            </edge>
-            <edge source="view.ShowLeaderBoard" target="view.Command">
-              <point x="21.875" y="-37.0" />
-              <point x="529.875" y="1569.0" />
-              <point x="1296.3328124999998" y="1569.0" />
-              <point x="-80.859375" y="70.5" />
-            </edge>
-            <edge source="view.Request" target="view.EnterCollection">
-              <point x="19.5625" y="-125.5" />
-              <point x="1408.5938135411543" y="2019.0" />
-              <point x="1462.5968749999997" y="2019.0" />
-              <point x="-43.5" y="37.0" />
-            </edge>
-            <edge source="view.Save" target="view.Command">
-              <point x="21.75" y="-37.0" />
-              <point x="335.25" y="1549.0" />
-              <point x="1282.2703124999998" y="1549.0" />
-              <point x="-94.921875" y="70.5" />
-            </edge>
-            <edge source="view.Save" target="control.AccountControl">
-              <point x="-65.25" y="37.0" />
-              <point x="248.25" y="1855.0" />
-              <point x="94.5340700534855" y="1855.0" />
-              <point x="94.5340700534855" y="2490.0" />
-              <point x="656.4218183488465" y="2490.0" />
-              <point x="-19.625" y="-48.0" />
-            </edge>
-            <edge source="model.Spell" target="model.Hero">
-              <point x="-76.66666666666663" y="-126.0" />
-              <point x="3368.8401041666666" y="533.0" />
-              <point x="2970.6109374999996" y="533.0" />
-              <point x="0.0" y="148.0" />
-            </edge>
-            <edge source="view.Command" target="view.View">
-              <point x="0.0" y="-70.5" />
-              <point x="1377.1921874999998" y="1208.0" />
-              <point x="942.9999999999998" y="1208.0" />
-              <point x="25.5" y="70.5" />
-            </edge>
-            <edge source="control.AccountControl" target="view.Command">
-              <point x="58.875" y="-48.0" />
-              <point x="734.9218183488465" y="2520.0" />
-              <point x="2748.1109374999996" y="2520.0" />
-              <point x="2748.1109374999996" y="1459.0" />
-              <point x="1486.1765624999998" y="1459.0" />
-              <point x="108.984375" y="70.5" />
-            </edge>
-            <edge source="view.Request" target="model.ErrorType">
-              <point x="129.11249999999995" y="-125.5" />
-              <point x="1518.143813541154" y="2159.0" />
-              <point x="2518.4046874999995" y="2159.0" />
-              <point x="2518.4046874999995" y="643.0" />
-              <point x="2035.1421874999996" y="643.0" />
-              <point x="31.050000000000182" y="103.5" />
-            </edge>
-            <edge source="view.Request" target="view.Login">
-              <point x="89.98749999999995" y="-125.5" />
-              <point x="1479.018813541154" y="2109.0" />
-              <point x="2051.059580169033" y="2109.0" />
-              <point x="2051.059580169033" y="1865.0" />
-              <point x="2076.4046874999995" y="1865.0" />
-              <point x="43.5" y="37.0" />
-            </edge>
-            <edge source="view.Request" target="view.ExitFromMainMenu">
-              <point x="-144.76249999999982" y="-125.5" />
-              <point x="1244.2688135411545" y="2179.0" />
-              <point x="148.093488179813" y="2179.0" />
-              <point x="148.093488179813" y="1845.0" />
-              <point x="182.5" y="1845.0" />
-              <point x="69.0" y="37.0" />
-            </edge>
-            <edge source="view.EnterCollection" target="model.CommandRegex">
-              <point x="0.0" y="-37.0" />
-              <point x="1506.0968749999997" y="1865.0" />
-              <point x="1533.1921874999998" y="1865.0" />
-              <point x="1533.1921874999998" y="1168.0" />
-              <point x="1467.4998798076922" y="1168.0" />
-              <point x="15.307692307692378" y="202.5" />
-            </edge>
-            <edge source="view.ExitFromMainMenu" target="view.Request">
-              <point x="23.0" y="37.0" />
-              <point x="136.5" y="1845.0" />
-              <point x="116.5340700534855" y="1845.0" />
-              <point x="116.5340700534855" y="2189.0" />
-              <point x="1236.4438135411547" y="2189.0" />
-              <point x="-152.58749999999964" y="-125.5" />
-            </edge>
-            <edge source="view.EnterBattle" target="view.Command">
-              <point x="-69.59999999999991" y="-37.0" />
-              <point x="1694.3671874999995" y="1865.0" />
-              <point x="1718.1671874999995" y="1865.0" />
-              <point x="1718.1671874999995" y="1619.0" />
-              <point x="1408.8328124999998" y="1619.0" />
-              <point x="31.640625" y="70.5" />
-            </edge>
-            <edge source="view.ExitFromMainMenu" target="model.CommandRegex">
-              <point x="-23.0" y="-37.0" />
-              <point x="90.5" y="1669.0" />
-              <point x="73.0" y="1669.0" />
-              <point x="73.0" y="1228.0" />
-              <point x="1360.346033653846" y="1228.0" />
-              <point x="-91.84615384615381" y="202.5" />
-            </edge>
-            <edge source="control.AccountControl" target="model.ErrorType">
-              <point x="71.95833333333337" y="-48.0" />
-              <point x="748.0051516821799" y="2530.0" />
-              <point x="2759.1109374999996" y="2530.0" />
-              <point x="2759.1109374999996" y="573.0" />
-              <point x="2097.2421874999995" y="573.0" />
-              <point x="93.15000000000009" y="103.5" />
-            </edge>
-            <edge source="view.LogOut" target="model.Account">
-              <point x="34.80000000000018" y="-37.0" />
-              <point x="2650.7046874999996" y="1669.0" />
-              <point x="2628.9185652457927" y="1669.0" />
-              <point x="2628.9185652457927" y="603.0" />
-              <point x="906.8499999999999" y="603.0" />
-              <point x="118.35000000000002" y="192.0" />
-            </edge>
-            <edge source="control.ShopControl" target="view.Request">
-              <point x="-19.625" y="48.0" />
-              <point x="955.8499999999999" y="1865.0" />
-              <point x="948.1372381798133" y="1865.0" />
-              <point x="948.1372381798133" y="2049.0" />
-              <point x="1345.9938135411544" y="2049.0" />
-              <point x="-43.03749999999991" y="-125.5" />
-            </edge>
-            <edge source="model.Spell" target="model.Card">
-              <point x="76.66666666666663" y="-126.0" />
-              <point x="3522.1734374999996" y="533.0" />
-              <point x="3523.6109374999996" y="533.0" />
-              <point x="3523.6109374999996" y="182.0" />
-              <point x="3484.2081597222223" y="182.0" />
-              <point x="70.875" y="81.0" />
-            </edge>
-            <edge source="model.Hero" target="model.Card">
-              <point x="0.0" y="-148.0" />
-              <point x="2970.6109374999996" y="182.0" />
-              <point x="3342.4581597222223" y="182.0" />
-              <point x="-70.875" y="81.0" />
-            </edge>
-            <edge source="view.CreateAccount" target="view.Command">
-              <point x="54.375" y="-37.0" />
-              <point x="883.4715700534854" y="1855.0" />
-              <point x="859.5622381798132" y="1855.0" />
-              <point x="859.5622381798132" y="1599.0" />
-              <point x="1317.4265624999998" y="1599.0" />
-              <point x="-59.765625" y="70.5" />
-            </edge>
-            <edge source="view.EnterBattle" target="control.BattleControl">
-              <point x="69.59999999999991" y="-37.0" />
-              <point x="1833.5671874999994" y="1865.0" />
-              <point x="1827.7796874999995" y="1865.0" />
-              <point x="-19.625" y="48.0" />
-            </edge>
-            <edge source="view.EnterShop" target="model.CommandRegex">
-              <point x="0.0" y="-37.0" />
-              <point x="1260.8749999999998" y="1855.0" />
-              <point x="1235.2330607953609" y="1855.0" />
-              <point x="1235.2330607953609" y="1278.0" />
-              <point x="1436.8844951923074" y="1278.0" />
-              <point x="-15.307692307692378" y="202.5" />
-            </edge>
-            <edge source="view.ExitFromSubMenu" target="model.CommandRegex">
-              <point x="0.0" y="-37.0" />
-              <point x="1065.3749999999998" y="1865.0" />
-              <point x="1084.2749999999999" y="1865.0" />
-              <point x="1084.2749999999999" y="1268.0" />
-              <point x="1421.576802884615" y="1268.0" />
-              <point x="-30.615384615384528" y="202.5" />
-            </edge>
-            <edge source="view.Help" target="view.Request">
-              <point x="43.5" y="37.0" />
-              <point x="2464.4046874999995" y="1865.0" />
-              <point x="2439.0595801690333" y="1865.0" />
-              <point x="2439.0595801690333" y="2149.0" />
-              <point x="1510.3188135411542" y="2149.0" />
-              <point x="121.28749999999991" y="-125.5" />
-            </edge>
-            <edge source="view.Request" target="control.MainMenuControl">
-              <point x="-74.33749999999986" y="-125.5" />
-              <point x="1314.6938135411542" y="2089.0" />
-              <point x="670.5215700534853" y="2089.0" />
-              <point x="670.5215700534853" y="1865.0" />
-              <point x="684.1874999999998" y="1865.0" />
-              <point x="-9.8125" y="48.0" />
-            </edge>
-            <edge source="control.BattleControl" target="view.Request">
-              <point x="58.875" y="48.0" />
-              <point x="1906.2796874999995" y="1865.0" />
-              <point x="1923.9170458721208" y="1865.0" />
-              <point x="1923.9170458721208" y="2089.0" />
-              <point x="1463.3688135411544" y="2089.0" />
-              <point x="74.33750000000009" y="-125.5" />
-            </edge>
-            <edge source="view.Exit" target="view.Command">
-              <point x="-58.0" y="-37.0" />
-              <point x="2168.9046874999995" y="1549.0" />
-              <point x="1443.9890624999998" y="1549.0" />
-              <point x="66.796875" y="70.5" />
-            </edge>
-            <edge source="view.Request" target="view.EnterBattle">
-              <point x="50.862499999999955" y="-125.5" />
-              <point x="1439.893813541154" y="2059.0" />
-              <point x="1720.4671874999995" y="2059.0" />
-              <point x="-43.5" y="37.0" />
-            </edge>
-            <edge source="view.EnterBattle" target="view.Request">
-              <point x="43.5" y="37.0" />
-              <point x="1807.4671874999995" y="2069.0" />
-              <point x="1447.7188135411543" y="2069.0" />
-              <point x="58.6875" y="-125.5" />
-            </edge>
-            <edge source="view.CreateAccount" target="view.Request">
-              <point x="43.5" y="37.0" />
-              <point x="872.5965700534854" y="2069.0" />
-              <point x="1330.3438135411543" y="2069.0" />
-              <point x="-58.68749999999977" y="-125.5" />
-            </edge>
-            <edge source="view.ExitFromSubMenu" target="control.MainMenuControl">
-              <point x="-35.40000000000009" y="-37.0" />
-              <point x="1029.9749999999997" y="1825.0" />
-              <point x="762.6874999999998" y="1825.0" />
-              <point x="68.6875" y="48.0" />
-            </edge>
-            <edge source="view.Command" target="view.Request">
-              <point x="3.515625" y="70.5" />
-              <point x="1381.1046874999997" y="1979.0" />
-              <point x="1400.768813541154" y="1979.0" />
-              <point x="11.737499999999955" y="-125.5" />
-            </edge>
-            <edge source="control.CollectionControl" target="view.View">
-              <point x="19.625" y="-48.0" />
-              <point x="1641.8171874999998" y="1629.0" />
-              <point x="1511.1921874999998" y="1629.0" />
-              <point x="1511.1921874999998" y="1188.0" />
-              <point x="976.9999999999998" y="1188.0" />
-              <point x="59.5" y="70.5" />
-            </edge>
-            <edge source="view.Save" target="view.Request">
-              <point x="21.75" y="37.0" />
-              <point x="335.25" y="2159.0" />
-              <point x="1259.9188135411546" y="2159.0" />
-              <point x="-129.11249999999973" y="-125.5" />
-            </edge>
-            <edge source="view.View" target="model.ErrorType">
-              <point x="76.5" y="-70.5" />
-              <point x="993.9999999999998" y="653.0" />
-              <point x="1952.3421874999995" y="653.0" />
-              <point x="-51.75" y="103.5" />
-            </edge>
-            <edge source="view.EnterCollection" target="control.CollectionControl">
-              <point x="69.59999999999991" y="-37.0" />
-              <point x="1575.6968749999996" y="1865.0" />
-              <point x="1602.5671874999998" y="1865.0" />
-              <point x="-19.625" y="48.0" />
-            </edge>
-            <edge source="view.Exit" target="view.Request">
-              <point x="-43.5" y="37.0" />
-              <point x="2183.4046874999995" y="1865.0" />
-              <point x="2237.234580169033" y="1865.0" />
-              <point x="2237.234580169033" y="2119.0" />
-              <point x="1486.8438135411543" y="2119.0" />
-              <point x="97.8125" y="-125.5" />
-            </edge>
-            <edge source="control.MainMenuControl" target="view.Request">
-              <point x="-68.6875" y="48.0" />
-              <point x="625.3124999999998" y="1845.0" />
-              <point x="601.7298926690332" y="1845.0" />
-              <point x="601.7298926690332" y="2119.0" />
-              <point x="1291.2188135411543" y="2119.0" />
-              <point x="-97.81249999999977" y="-125.5" />
-            </edge>
-            <edge source="view.Save" target="model.CommandRegex">
-              <point x="-21.75" y="-37.0" />
-              <point x="291.75" y="1519.0" />
-              <point x="275.5" y="1519.0" />
-              <point x="275.5" y="1238.0" />
-              <point x="1375.6537259615384" y="1238.0" />
-              <point x="-76.53846153846143" y="202.5" />
-            </edge>
-            <edge source="control.BattleControl" target="view.Command">
-              <point x="-58.875" y="-48.0" />
-              <point x="1788.5296874999995" y="1599.0" />
-              <point x="1422.8953124999998" y="1599.0" />
-              <point x="45.703125" y="70.5" />
-            </edge>
-            <edge source="model.Minion" target="model.Card">
-              <point x="0.0" y="-148.0" />
-              <point x="3329.6109374999996" y="192.0" />
-              <point x="3389.7081597222223" y="192.0" />
-              <point x="-23.625" y="81.0" />
-            </edge>
-            <edge source="model.Account" target="model.RecordedMatch">
-              <point x="65.75" y="-192.0" />
-              <point x="854.2499999999999" y="144.0" />
-              <point x="849.4999999999999" y="144.0" />
-              <point x="61.0" y="59.5" />
-            </edge>
-            <edge source="control.ShopControl" target="view.View">
-              <point x="-19.625" y="-48.0" />
-              <point x="955.8499999999999" y="1509.0" />
-              <point x="908.9999999999998" y="1509.0" />
-              <point x="-8.5" y="70.5" />
-            </edge>
-            <edge source="view.CreateAccount" target="model.ErrorType">
-              <point x="10.875" y="-37.0" />
-              <point x="839.9715700534854" y="1845.0" />
-              <point x="804.9999999999998" y="1845.0" />
-              <point x="804.9999999999998" y="643.0" />
-              <point x="1931.6421874999996" y="643.0" />
-              <point x="-72.44999999999982" y="103.5" />
-            </edge>
-            <edge source="view.ExitFromMainMenu" target="model.Account">
-              <point x="-69.0" y="-37.0" />
-              <point x="44.5" y="1669.0" />
-              <point x="54.78407005348549" y="1669.0" />
-              <point x="54.78407005348549" y="593.0" />
-              <point x="670.1499999999999" y="593.0" />
-              <point x="-118.35000000000002" y="192.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="3159.0" y="253.0" />
-          <SelectedNodes>
-            <node>model.Spell</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Fields</Category>
-            <Category>Constructors</Category>
-            <Category>Methods</Category>
-            <Category>Properties</Category>
-            <Category>Inner Classes</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/ShopControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/RecordedMatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buff.java" />
-    <entry file="file://$PROJECT_DIR$/src/control/MainMenuControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/SpecialPower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Menus/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/CollectionControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/regex/Matcher.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/ArrayList.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/Item/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Card.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1595,16 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Menus/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/GameControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
@@ -1622,36 +647,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Item/CollectableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="73" column="29" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="29" />
-          <folding>
-            <element signature="e#875#876#0" expanded="true" />
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1634#1635#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Item/UsableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="88" column="29" selection-start-line="88" selection-start-column="18" selection-end-line="88" selection-end-column="29" />
-          <folding>
-            <element signature="e#1115#1116#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Battles/HeroBattle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1708,131 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="322" column="5" lean-forward="true" selection-start-line="322" selection-start-column="5" selection-end-line="322" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-            <element signature="e#620#621#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#997#998#0" expanded="true" />
-            <element signature="e#1100#1101#0" expanded="true" />
-            <element signature="e#1189#1190#0" expanded="true" />
-            <element signature="e#1284#1285#0" expanded="true" />
-            <element signature="e#1893#1894#0" expanded="true" />
-            <element signature="e#1928#1929#0" expanded="true" />
-            <element signature="e#1954#1955#0" expanded="true" />
-            <element signature="e#2007#2008#0" expanded="true" />
-            <element signature="e#2329#2330#0" expanded="true" />
-            <element signature="e#2407#2408#0" expanded="true" />
-            <element signature="e#3367#3368#0" expanded="true" />
-            <element signature="e#3396#3397#0" expanded="true" />
-            <element signature="e#3427#3428#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3614#3615#0" expanded="true" />
-            <element signature="e#3693#3694#0" expanded="true" />
-            <element signature="e#3722#3723#0" expanded="true" />
-            <element signature="e#3741#3742#0" expanded="true" />
-            <element signature="e#3816#3817#0" expanded="true" />
-            <element signature="e#3837#3838#0" expanded="true" />
-            <element signature="e#3995#3996#0" expanded="true" />
-            <element signature="e#4082#4083#0" expanded="true" />
-            <element signature="e#3947#3948#0" expanded="true" />
-            <element signature="e#3966#3967#0" expanded="true" />
-            <element signature="e#4038#4039#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="e#4426#4427#0" expanded="true" />
-            <element signature="e#4458#4459#0" expanded="true" />
-            <element signature="e#5450#5451#0" expanded="true" />
-            <element signature="e#5482#5483#0" expanded="true" />
-            <element signature="e#6400#6401#0" expanded="true" />
-            <element signature="e#6435#6436#0" expanded="true" />
-            <element signature="e#6476#6477#0" expanded="true" />
-            <element signature="e#6513#6514#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Menus/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="151" column="27" selection-start-line="151" selection-start-column="27" selection-end-line="151" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1812#1813#0" expanded="true" />
-            <element signature="e#1853#1854#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="16" column="55" selection-start-line="16" selection-start-column="55" selection-end-line="16" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="80" lean-forward="true" selection-start-line="72" selection-end-line="80" />
-          <folding>
-            <element signature="e#884#885#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#903#904#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#1863#1864#0" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1924#1925#0" expanded="true" />
-            <element signature="e#1952#1953#0" expanded="true" />
-            <element signature="e#2488#2489#0" expanded="true" />
-            <element signature="e#2522#2523#0" expanded="true" />
-            <element signature="e#2664#2665#0" expanded="true" />
-            <element signature="e#2710#2711#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="e#1829#1830#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
-            <element signature="e#1890#1891#0" expanded="true" />
-            <element signature="e#1918#1919#0" expanded="true" />
-            <element signature="e#1796#1797#0" expanded="true" />
-            <element signature="e#1832#1833#0" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
-            <element signature="e#1941#1942#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-            <element signature="e#3159#3160#0" expanded="true" />
-            <element signature="e#3301#3302#0" expanded="true" />
-            <element signature="e#3347#3348#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="603">
@@ -1844,15 +714,293 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Menus/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="571" lean-forward="true" selection-start-line="571" selection-end-line="571" />
+        <state relative-caret-position="215">
+          <caret line="155" column="32" selection-start-line="155" selection-start-column="32" selection-end-line="155" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4864#4865#0" expanded="true" />
-            <element signature="e#4898#4899#0" expanded="true" />
+            <element signature="e#1812#1813#0" expanded="true" />
+            <element signature="e#1853#1854#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Item/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Item/CollectableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding>
+            <element signature="e#848#849#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Menus/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#799#800#0" expanded="true" />
+            <element signature="e#853#854#0" expanded="true" />
+            <element signature="e#880#881#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buff.java" />
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/HolyBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/PowerBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/PoisonBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/WeaknessBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/StunBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/DisarmBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/ChangeApBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/ChangeHpBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/PoisonEffectedCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/FiringEffectedCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/StunBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PowerBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/Buff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+          <folding>
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#884#885#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#1924#1925#0" expanded="true" />
+            <element signature="e#1952#1953#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="65" column="11" lean-forward="true" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Battles/HeroBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="109" column="56" lean-forward="true" selection-start-line="109" selection-start-column="56" selection-end-line="109" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="218" column="9" lean-forward="true" selection-start-line="195" selection-start-column="8" selection-end-line="218" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="78" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Item/UsableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="341" column="29" lean-forward="true" selection-start-line="341" selection-start-column="29" selection-end-line="341" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
