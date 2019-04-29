@@ -2,9 +2,17 @@ package model.Item;
 
 import java.util.ArrayList;
 
+import model.Battles.*;
+import model.Buffs.*;
+import model.Cell;
+import model.ErrorType;
+import model.Menus.Account;
+import view.View;
+
 public abstract class UsableItem extends Item {
     private int costOfBuy;
     private static ArrayList<UsableItem> usableItems = new ArrayList<>();
+    protected static View view = View.getInstance();
 
     static {
         new AssassinationDagger();
@@ -30,6 +38,8 @@ public abstract class UsableItem extends Item {
         this.setCostOfBuy(usableItem.getCostOfBuy());
         this.setName(usableItem.getName());
     }
+
+    public abstract void applyEffect(Battle battle, Cell cell, Account player);
 
     public int getCostOfBuy() {
         return costOfBuy;
@@ -61,9 +71,11 @@ enum UsableItemWork {
     SOUL_EATER("when insider force die,apply a power buff and 1AP on an insider force"),
     BAPTISM("Any minion when spawning,get holyBuff for 2 turns");
     private String effect;
+
     public String getMessage() {
         return effect;
     }
+
     UsableItemWork(String effect) {
         this.effect = effect;
     }
@@ -78,6 +90,14 @@ class CrownOfWisdom extends UsableItem {
 
     public CrownOfWisdom(CrownOfWisdom crownOfWisdom) {
         super(crownOfWisdom);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        if (battle.getTurn() < 4) {
+            player.incrementMana(1);
+            //todo checking what happen
+        }
     }
 
     public UsableItem duplicate() {
@@ -105,6 +125,20 @@ class ShameEmblem extends UsableItem {
         super(shameEmblem);
     }
 
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        if (cell.getHero() != null && player.getMainDeck().isContain(cell.getHero())) {
+            for (int i = 0; i < 12; i++) {
+                HolyBuff holyBuff = new HolyBuff();
+                holyBuff.setTurnCounter(1);
+                holyBuff.holy(cell.getHero());
+                cell.getHero().getOwnBuffs().add(holyBuff);
+            }
+        } else {
+            view.printError(ErrorType.INVALID_TARGET);
+        }
+    }
+
     public UsableItem duplicate() {
         ShameEmblem shameEmblem = new ShameEmblem(this);
         return shameEmblem;
@@ -128,6 +162,39 @@ class DamolArchery extends UsableItem {
 
     public DamolArchery(DamolArchery damolArchery) {
         super(damolArchery);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        if (player.getMainDeck().getHero().getTypeOfHit().equals("Ranged") ||
+                player.getMainDeck().getHero().getTypeOfHit().equals("Hybrid")) {
+            if (cell.getMinion() == null && cell.getHero() == null) {
+                view.printError(ErrorType.INVALID_TARGET);
+            } else {
+                if (cell.getHero() != null) {
+                    if (!player.getMainDeck().isContain(cell.getHero())) {
+                        DisarmBuff disarmBuff = new DisarmBuff();
+                        disarmBuff.setTurnCounter(1);
+                        disarmBuff.disarm(cell.getHero());
+                        cell.getHero().getOwnBuffs().add(disarmBuff);
+                    } else {
+                        view.printError(ErrorType.INVALID_TARGET);
+                    }
+                }
+                if (cell.getMinion() != null) {
+                    if (!player.getMainDeck().isContain(cell.getMinion())) {
+                        DisarmBuff disarmBuff = new DisarmBuff();
+                        disarmBuff.setTurnCounter(1);
+                        disarmBuff.disarm(cell.getMinion());
+                        cell.getMinion().getOwnBuffs().add(disarmBuff);
+                    } else {
+                        view.printError(ErrorType.INVALID_TARGET);
+                    }
+                }
+            }
+        } else {
+            view.printError(ErrorType.INVALID_HERO_TYPE_HITTING);
+        }
     }
 
     public UsableItem duplicate() {
@@ -154,6 +221,20 @@ class SimorghPlume extends UsableItem {
         super(simorghPlume);
     }
 
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        if (cell.getHero() != null && !player.getMainDeck().isContain(cell.getHero())) {
+            if (cell.getHero().getTypeOfHit().equals("Ranged") ||
+                    cell.getHero().getTypeOfHit().equals("Hybrid")) {
+                cell.getHero().decrementAp(2);
+            } else {
+                view.printError(ErrorType.FALSE_ITEM_USING);
+            }
+        } else {
+            view.printError(ErrorType.INVALID_TARGET);
+        }
+    }
+
     public UsableItem duplicate() {
         SimorghPlume simorghPlume = new SimorghPlume(this);
         return simorghPlume;
@@ -178,6 +259,30 @@ class TerrorHood extends UsableItem {
         super(terrorHood);
     }
 
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if ((cell1.getHero() != null && player.getMainDeck().isContain(cell1.getHero()))) {
+                    WeaknessBuff weaknessBuff = new WeaknessBuff();
+                    weaknessBuff.weakness(cell.getHero());
+                    weaknessBuff.setTurnCounter(-5);
+                    cell1.getHero().getOwnBuffs().add(weaknessBuff);
+
+                    cell1.getHero().decrementAp(2);
+                }
+                if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
+                    WeaknessBuff weaknessBuff = new WeaknessBuff();
+                    weaknessBuff.weakness(cell.getMinion());
+                    weaknessBuff.setTurnCounter(-5);
+                    cell1.getHero().getOwnBuffs().add(weaknessBuff);
+
+                    cell1.getHero().decrementAp(2);
+                }
+            }
+        }
+    }
+
     public UsableItem duplicate() {
         TerrorHood terrorHood = new TerrorHood(this);
         return terrorHood;
@@ -200,6 +305,12 @@ class KingWisdom extends UsableItem {
 
     public KingWisdom(KingWisdom kingWisdom) {
         super(kingWisdom);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        player.incrementMana(1);
+        //todo what should we do?
     }
 
     public UsableItem duplicate() {
@@ -227,6 +338,11 @@ class AssassinationDagger extends UsableItem {
         super(assassinationDagger);
     }
 
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+
+    }
+
     public UsableItem duplicate() {
         AssassinationDagger assassinationDagger = new AssassinationDagger(this);
         return assassinationDagger;
@@ -249,6 +365,11 @@ class PoisonousDagger extends UsableItem {
 
     public PoisonousDagger(PoisonousDagger poisonousDagger) {
         super(poisonousDagger);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+
     }
 
     public UsableItem duplicate() {
@@ -275,6 +396,11 @@ class ShockHammer extends UsableItem {
         super(shockHammer);
     }
 
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+
+    }
+
     public UsableItem duplicate() {
         ShockHammer shockHammer = new ShockHammer(this);
         return shockHammer;
@@ -296,6 +422,11 @@ class SoulEater extends UsableItem {
 
     public SoulEater(SoulEater soulEater) {
         super(soulEater);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+
     }
 
     public UsableItem duplicate() {
@@ -320,6 +451,11 @@ class Baptism extends UsableItem {
 
     public Baptism(Baptism baptism) {
         super(baptism);
+    }
+
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+
     }
 
     public UsableItem duplicate() {

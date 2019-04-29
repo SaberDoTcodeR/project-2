@@ -1,5 +1,7 @@
 package model.Cards;
 
+import model.Buffs.Buff;
+
 import java.util.ArrayList;
 
 public abstract class Minion extends Card {
@@ -52,11 +54,35 @@ public abstract class Minion extends Card {
     private int hp;
     private int costToUse;
     private boolean isStunning = false;
-    private boolean isHoly = false;
+    private int holyCounter = 0;
+    private boolean counterAttack;
     //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
+    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+
+    public ArrayList<Buff> getOwnBuffs() {
+        return ownBuffs;
+    }
+
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
+    }
+
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
+    }
 
     public int getTypeOfRange() {
         return typeOfRange;
@@ -115,12 +141,25 @@ public abstract class Minion extends Card {
         return hp;
     }
 
+    public int getHolyCounter() {
+        return holyCounter;
+    }
+
+    public void incrementHolyCounter() {
+        this.holyCounter++;
+    }
+
+    public void setHolyCounter(int holyCounter) {
+        this.holyCounter = holyCounter;
+    }
+
     public void incrementAp(int unit) {
         this.ap += unit;
     }
 
     public void decrementAp(int unit) {
-        this.ap -= unit;
+        if (unit > 0)
+            this.ap -= unit;
     }
 
     public void changeAP(int unit) {
@@ -136,7 +175,8 @@ public abstract class Minion extends Card {
     }
 
     public void decrementHp(int unit) {
-        this.hp -= unit;
+        if (unit > 0)
+            this.hp -= unit;
     }
 
     /*public SpecialPower getSpecialPower() {
@@ -170,19 +210,12 @@ public abstract class Minion extends Card {
         isStunning = stunning;
     }
 
-    public boolean isHoly() {
-        return isHoly;
-    }
-
-    public void setHoly(boolean holy) {
-        isHoly = holy;
-    }
-
     public Minion duplicate() {
         return null;
     }
 
     public abstract void castSpecialPower();
+
 }
 
 enum MinionAP {

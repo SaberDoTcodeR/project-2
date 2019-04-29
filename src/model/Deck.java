@@ -93,4 +93,19 @@ public class Deck {
         return false;
     }
 
+    public boolean isContain (Hero hero){
+        if (this.getHero().getId() == hero.getId()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isContain(Minion minion) {
+        for (Minion minion1 : this.getMinions()){
+            if (minion1.getId() == minion.getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

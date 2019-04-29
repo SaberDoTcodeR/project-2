@@ -27,6 +27,15 @@ public class Account {
         this.money += money;
     }
 
+    public void incrementMana(int unit){
+        this.mana += unit;
+    }
+
+
+    public void decrementMana(int unit){
+        this.mana -= unit;
+    }
+
     public int getMana() {
         return mana;
     }

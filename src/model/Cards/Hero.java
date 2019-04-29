@@ -1,5 +1,7 @@
 package model.Cards;
 
+import model.Buffs.Buff;
+
 import java.util.ArrayList;
 
 public abstract class Hero extends Card {
@@ -21,12 +23,26 @@ public abstract class Hero extends Card {
     private int ap;
     private int hp;
     private int mp;
+    private int holyCounter = 0;
     private boolean isStunning = false;
-    private boolean isHoly = false;
     //SpecialPower specialPower;
+    private boolean counterAttack;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
+    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+
+    public ArrayList<Buff> getOwnBuffs() {
+        return ownBuffs;
+    }
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
+    }
 
     public Hero(String name, int ap, int hp, int costOfBuy, int typeOfRange) {
         this.setName(name);
@@ -55,6 +71,14 @@ public abstract class Hero extends Card {
 
     public void setMp(int mp) {
         this.mp = mp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public void setAp(int ap) {
+        this.ap = ap;
     }
 
     public void setRange(int range) {
@@ -100,20 +124,25 @@ public abstract class Hero extends Card {
         isStunning = stunning;
     }
 
+    public int getHolyCounter() {
+        return holyCounter;
+    }
+
+    public void incrementHolyCounter() {
+        this.holyCounter++;
+    }
+
+    public void setHolyCounter(int holyCounter) {
+        this.holyCounter = holyCounter;
+    }
+
     public void incrementAp(int unit) {
         this.ap += unit;
     }
 
     public void decrementAp(int unit) {
-        this.ap -= unit;
-    }
-
-    public void changeAP(int unit) {
-        this.ap += unit;
-    }
-
-    public void changeHP(int unit) {
-        this.hp += unit;
+        if (unit > 0)
+            this.ap -= unit;
     }
 
     public void incrementHp(int unit) {
@@ -121,7 +150,8 @@ public abstract class Hero extends Card {
     }
 
     public void decrementHp(int unit) {
-        this.hp -= unit;
+        if (unit > 0)
+            this.hp -= unit;
     }
 
     public abstract void castSpecialPower();
@@ -130,14 +160,6 @@ public abstract class Hero extends Card {
 
     public Hero duplicate() {
         return null;//todo --> can be abstract
-    }
-
-    public boolean isHoly() {
-        return isHoly;
-    }
-
-    public void setHoly(boolean holy) {
-        isHoly = holy;
     }
 
    /* public SpecialPower getSpecialPower() {

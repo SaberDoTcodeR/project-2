@@ -2,6 +2,9 @@ package model;
 
 
 public enum ErrorType {
+    FALSE_ITEM_USING("Item can not be applied because of typ of hero's hitting"),
+    INVALID_HERO_TYPE_HITTING("Hero's typeHit is not efficient"),
+    INVALID_TARGET("Invalid target"),
     SECOND_PLAYER_NOT_CHOSEN_RIGHT("second player not chosen right"),
     SECOND_PLAYER_DECK_NOT_VALID("selected deck for second player is invalid"),
     CARD_NOT_FOUND_IN_GAME("Invalid card id"),
