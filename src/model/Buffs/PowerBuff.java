@@ -1,50 +1,100 @@
 package model.Buffs;
 
 import model.Cards.*;
+import model.Cell;
+
+import java.util.ArrayList;
 
 public class PowerBuff extends Buff {
 
-    private int number;
+    private int unit;
 
-    public void power(Hero hero) {
-        if (getRandomNumber() % 2 == 0) {
-            hero.incrementAp(1);
-        } else {
-            hero.incrementHp(1);
-        }
+    private boolean apOrHp;
+
+    private PowerBuff powerBuff;
+    private Cell cell;
+    private Hero hero;
+    private Minion minion;
+
+    public void setCasting(PowerBuff powerBuff,Cell cell,Hero hero,Minion minion) {
+        this.powerBuff = powerBuff;
+        this.cell = cell;
+        this.hero = hero;
+        this.minion = minion;
     }
 
-    public void power(Minion minion) {
-        if (getNumber() % 2 == 0) {
-            minion.incrementAp(1);
+    public Cell getCell() {
+        return cell;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public Minion getMinion() {
+        return minion;
+    }
+
+    public PowerBuff(int unit, boolean apOrHp){
+        this.unit = unit;
+        this.apOrHp = apOrHp;
+    }
+
+    public void incrementAp(Hero hero){
+        hero.incrementAp(unit);
+    }
+
+    public void incrementHp(Hero hero){
+        hero.incrementHp(unit);
+    }
+
+    public void incrementAp(Minion minion){
+        minion.incrementAp(unit);
+    }
+
+    public void incrementHp(Minion minion){
+        minion.incrementHp(unit);
+    }
+
+    @Override
+    public void castBuff() {
+        if (apOrHp){
+            if (this.hero != null){
+                incrementAp(this.hero);
+            }
+            if (this.minion != null){
+                incrementAp(this.minion);
+            }
         } else {
-            minion.incrementHp(1);
+            if (this.hero != null){
+                incrementHp(this.hero);
+            }
+            if (this.minion != null){
+                incrementHp(this.minion);
+            }
         }
     }
 
     @Override
     public void dispel(Hero hero) {
-        if (getRandomNumber() % 2 == 0) {
-            hero.decrementAp(1);
+        if (apOrHp) {
+            hero.decrementAp(unit);
         } else {
-            hero.decrementHp(1);
+            hero.decrementHp(unit);
         }
     }
 
     @Override
     public void dispel(Minion minion) {
-        if (getNumber() % 2 == 0) {
-            minion.decrementAp(1);
+        if (apOrHp) {
+            minion.decrementAp(unit);
         } else {
-            minion.decrementHp(1);
+            minion.decrementHp(unit);
         }
     }
 
-    public int getNumber() {
-        return number;
+    public PowerBuff getPowerBuff() {
+        return powerBuff;
     }
 
-    public void setNumber() {
-        this.number = getRandomNumber();
-    }
 }

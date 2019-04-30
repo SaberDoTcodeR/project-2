@@ -1,5 +1,7 @@
 package model.Cards;
 
+import model.Buffs.Buff;
+
 public abstract class Card {
     private String name;
     private boolean isOnMap;
@@ -29,6 +31,24 @@ public abstract class Card {
 
     public void setCardId(String cardId) {
         CardId = cardId;
+    }
+
+    public boolean dispelEnemyValidation(String buffName) {
+        for (String str : Buff.getPositiveBuffs()) {
+            if (str.equals(buffName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean dispelInsiderValidation(String buffName) {
+        for (String str : Buff.getNegativeBuffs()) {
+            if (str.equals(buffName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isOnMap() {

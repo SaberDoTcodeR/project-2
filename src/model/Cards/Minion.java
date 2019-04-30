@@ -1010,7 +1010,7 @@ class Magician extends Minion {
         String detail;
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
                 + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : gives itself and all the relative minions which" +
-                " they are in 8 cells around it a power with 2 units increase of hit power and a weakness with 1 unit decrease of health.";
+                " they are in 8 cells around it a power with 2 units increase of hit power and a decrement with 1 unit decrease of health.";
         return detail;
     }
 

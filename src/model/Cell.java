@@ -48,6 +48,50 @@ public class Cell {
         return cellEffect;
     }
 
+    public Cell rightCell(ArrayList<ArrayList<Cell>> map) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(this)) {
+                    return map.get(i).get(j + 1);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell leftCell(ArrayList<ArrayList<Cell>> map) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(this)) {
+                    return map.get(i).get(j - 1);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell downCell(ArrayList<ArrayList<Cell>> map) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(this)) {
+                    return map.get(i + 1).get(j);
+                }
+            }
+        }
+        return null;
+    }
+
+    public Cell upCell(ArrayList<ArrayList<Cell>> map) {
+        for (int i = 0; i < map.size(); i++) {
+            for (int j = 0; j < map.get(i).size(); j++) {
+                if (map.get(i).get(j).equals(this)) {
+                    return map.get(i - 1).get(j);
+                }
+            }
+        }
+        return null;
+    }
+
     public Hero getHero() {
         return hero;
     }
