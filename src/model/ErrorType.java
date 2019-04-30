@@ -2,6 +2,8 @@ package model;
 
 
 public enum ErrorType {
+    SELECT_HERO_OR_MINION("selcet hero or minion."),
+    NO_CARD_SELECTED("No Card been selected"),
     FALSE_ITEM_USING("Item can not be applied because of typ of hero's hitting"),
     INVALID_HERO_TYPE_HITTING("Hero's typeHit is not efficient"),
     INVALID_TARGET("Invalid target"),
@@ -18,7 +20,9 @@ public enum ErrorType {
     WRONG_PASSWORD("Wrong Password"),
     CARD_SUCCESSFULLY_BOUGHT("Card Bought successfully"),
     DONT_HAVE_ENOUGH_MONEY("you don't have enough money"),
+    DONT_HAVE_ENOUGH_MANA("you don't have enough mana"),
     INVALID_NAME("There isn't any item or card with this name"),
+    INVALID_CARD_NAME("There isn't any  card with this name"),
     CARD_EXISTENCE("You don't own this Card"),
     CARD_EXISTENCE_IN_DECK("This CardID Already Existed in This Deck"),
     INVALID_DECK("selected deck is invalid"),

@@ -11,6 +11,7 @@ public abstract class Battle {
     private Deck firstPlayerDeck;
     private Deck secondPlayerDeck;
     private Hand firstPlayerHand=new Hand();
+    private Card selectedCard ;
     private ArrayList<ArrayList<Cell>> map=new ArrayList<>();
     private int turn=1;
     private ArrayList<Card> firstPlayerInGameCards=new ArrayList<>();
@@ -20,6 +21,16 @@ public abstract class Battle {
         this.firstPlayer=firstPlayer;
         this.firstPlayerDeck=deck;
         this.secondPlayerDeck=deck2;
+    }
+
+    public Card getSelectedCard() {
+        return selectedCard;
+    }
+
+    public void setSelectedCard(Card selectedCard) {
+        if(selectedCard.getType().equals("Spell"))
+            return;
+        this.selectedCard = selectedCard;
     }
 
     public void addFirstPlayerInGameCards(Card card) {

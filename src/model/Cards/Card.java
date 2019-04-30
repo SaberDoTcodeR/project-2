@@ -12,8 +12,17 @@ public abstract class Card {
     private int costOfBuy;
     private long id;
     private String CardId;
+    private int remainedMoves=2;
     public String getName() {
         return name.toLowerCase();
+    }
+
+    public int getRemainedMoves() {
+        return remainedMoves;
+    }
+
+    public void setRemainedMoves(int remainedMoves) {
+        this.remainedMoves = remainedMoves;
     }
 
     public void setName(String nameOfCard) {

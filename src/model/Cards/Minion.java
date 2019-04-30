@@ -1,5 +1,6 @@
 package model.Cards;
 
+import model.Battles.Battle;
 import model.Buffs.Buff;
 
 import java.util.ArrayList;
@@ -83,7 +84,17 @@ public abstract class Minion extends Card {
     public void setCounterAttack(boolean counterAttack) {
         this.counterAttack = counterAttack;
     }
-
+    public void moveToGame(Battle battle,int x,int y){
+        if(battle.getTurn()%2==1){
+            battle.getFirstPlayerHand().getCards().remove(this);
+            battle.getFirstPlayerInGameCards().add(this);
+        }else {
+            battle.getSecondPlayerHand().getCards().remove(this);
+            battle.getSecondPlayerInGameCards().add(this);
+        }
+        this.setRemainedMoves(0);
+        this.cardIdGenerator(battle);
+    }
     public int getTypeOfRange() {
         return typeOfRange;
     }
@@ -353,11 +364,6 @@ enum SpecialPower {
             " hero with 6 units hit."),
 
 
-
-
-
-
-
     WHITE_BOGEY("Take a power buff that increase hit power of itself " +
             "4 units forever."),
     SIMURGH("Stun all enemy forces for one turn."),
@@ -367,8 +373,7 @@ enum SpecialPower {
     KAVEH("Make a cell holy for 3 turns."),
     ARASH("Hit all enemy forces in itself row with 4 units hit."),
     LEGEND("Dispel one of the enemy forces."),
-    ESFANDYAR("Has 3 holy buff in continuous mode.")
-    ;
+    ESFANDYAR("Has 3 holy buff in continuous mode.");
     private String effect;
 
     public String getMessage() {
