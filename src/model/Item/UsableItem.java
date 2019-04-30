@@ -61,7 +61,7 @@ public abstract class UsableItem extends Item {
 enum UsableItemWork {
     CROWN_OF_WISDOM("Increase mana in 3 first turns"),
     SHAME_EMBLEM("Active 12 holyBuff in insider force"),
-    DAMOL_ARCHERY("Insider forcecan disarm enemy force's hit in ranged and hybrid mood"),
+    DAMOL_ARCHERY("Insider force can disarm enemy force's hit in ranged and hybrid mood"),
     SIMORGH_PLUME("Reduce 2Ap of enemy force's hit in hybrid and ranged mood"),
     TERROR_HOOD("in its hit, apply weaknessBuff and reduce 2AP on enemy accident force for 1 turn"),
     KING_WISDOM("Increase mana 1unit in all turns"),
@@ -263,21 +263,17 @@ class TerrorHood extends UsableItem {
     public void applyEffect(Battle battle, Cell cell, Account player) {
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
-                if ((cell1.getHero() != null && player.getMainDeck().isContain(cell1.getHero()))) {
-                    WeaknessBuff weaknessBuff = new WeaknessBuff();
-                    weaknessBuff.weakness(cell.getHero());
+                if ((cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero()))) {
+                    WeaknessBuff weaknessBuff = new WeaknessBuff(2 - cell.getHero().getHolyCounter(), true);
+                    weaknessBuff.decrementAp(cell.getHero());
                     weaknessBuff.setTurnCounter(-5);
-                    cell1.getHero().getOwnBuffs().add(weaknessBuff);
-
-                    cell1.getHero().decrementAp(2);
+                    cell.getHero().getOwnBuffs().add(weaknessBuff);
                 }
                 if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
-                    WeaknessBuff weaknessBuff = new WeaknessBuff();
-                    weaknessBuff.weakness(cell.getMinion());
+                    WeaknessBuff weaknessBuff = new WeaknessBuff(2 - cell.getMinion().getHolyCounter(), true);
+                    weaknessBuff.decrementAp(cell.getMinion());
                     weaknessBuff.setTurnCounter(-5);
-                    cell1.getHero().getOwnBuffs().add(weaknessBuff);
-
-                    cell1.getHero().decrementAp(2);
+                    cell.getMinion().getOwnBuffs().add(weaknessBuff);
                 }
             }
         }

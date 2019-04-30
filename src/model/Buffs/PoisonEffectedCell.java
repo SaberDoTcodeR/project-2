@@ -1,6 +1,9 @@
 package model.Buffs;
 
 import model.Cards.*;
+import model.Cell;
+
+import java.util.ArrayList;
 
 public class PoisonEffectedCell extends Buff {
 
@@ -12,6 +15,42 @@ public class PoisonEffectedCell extends Buff {
         minion.decrementHp(1);
     }
 
+    private PoisonEffectedCell poisonEffectedCell;
+    private Cell cell;
+    private Hero hero;
+    private Minion minion;
+
+    public void setCasting(PoisonEffectedCell poisonEffectedCell,Cell cell,Hero hero,Minion minion) {
+        this.poisonEffectedCell = poisonEffectedCell;
+        this.cell = cell;
+        this.hero = hero;
+        this.minion = minion;
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public Minion getMinion() {
+        return minion;
+    }
+
+    @Override
+    public void castBuff() {
+        if (this.cell != null){
+            if (this.cell.getMinion() != null){
+                poison(this.cell.getMinion());
+            }
+            if (this.cell.getHero() != null){
+                poison(this.cell.getHero());
+            }
+        }
+    }
+
     @Override
     public void dispel(Hero hero) {
         //Nothing
@@ -21,4 +60,9 @@ public class PoisonEffectedCell extends Buff {
     public void dispel(Minion minion) {
         //Nothing
     }
+
+    public PoisonEffectedCell getPoisonEffectedCell() {
+        return poisonEffectedCell;
+    }
+
 }
