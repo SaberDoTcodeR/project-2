@@ -75,7 +75,7 @@ enum SpellWork {
     TOTAL_DISARM("An enemy force become disarm until the end of the game"),
     AREA_DISPEL("Disappear positive buffs of enemy force and negative buffs of " +
             "insider force on selected 2x2 square"),
-    EMPOWER("Add 2AP to a enemy force"),
+    EMPOWER("Add 2 AP to a allied force"),
     FIREBALL("Hit an enemy force 4 uint"),
     GOD_STRENGTH("Add 4Ap to a insider hero card"),
     HELL_FIRE("Apply fiery cell effect on selected 2x2 square for 2 turns"),
@@ -245,14 +245,14 @@ class Empower extends Spell {
                 }
             }
             if (cell.getMinion() != null) {
-                if (player.getMainDeck().isContain(cell.getMinion())) {
+                if (cell.getMinion().getCardId().contains(player.getUserName())) {
                     ChangeApBuff changeAp = new ChangeApBuff(2);
                     changeAp.setTurnCounter(1);
                     changeAp.increment(cell.getMinion());
                     changeAp.setCasting(changeAp, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(changeAp);
                 } else {
-                    view.printError(ErrorType.INVALID_TARGET);
+                    view.printError(ErrorType.INVALID_NAME);
                 }
             }
         }

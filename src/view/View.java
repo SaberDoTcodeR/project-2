@@ -213,10 +213,12 @@ public class View {
                     if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())) {
                         printMinionInfo(battle, i, j);
                     }
+
                 } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getMinion() != null) {
                     if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())) {
                         printMinionInfo(battle, i, j);
                     }
+
                 }
             }
         }
@@ -279,34 +281,37 @@ public class View {
             System.out.println(account.getUserName());
         }
     }
-    public void printMinionInfoInGame(Minion minion){
-        System.out.println("Minion:\n"+"Name: "+minion.getName());
-        System.out.println("HP: "+minion.getHp()+" AP: "+minion.getAp()+" MP: "+minion.getCostToUse());
-        if(minion.getRange()==0)
+
+    public void printMinionInfoInGame(Minion minion) {
+        System.out.println("Minion:\n" + "Name: " + minion.getName());
+        System.out.println("HP: " + minion.getHp() + " AP: " + minion.getAp() + " MP: " + minion.getCostToUse());
+        if (minion.getRange() == 0)
             System.out.println("Range: Melee");
-        else if(minion.getRange()==1)
+        else if (minion.getRange() == 1)
             System.out.println("Range: Ranged");
         else
             System.out.println("Range: Hybrid");
 
         System.out.print("Combo-ability: ");
-        if(minion.getTimeOfActivationOfSpecialPower()==2)
+        if (minion.getTimeOfActivationOfSpecialPower() == 2)
             System.out.println("Yes");
         else
             System.out.println("No");
-        System.out.println("Cost: "+minion.getCostOfBuy());
-        System.out.println("Desc: "+minion.getDesc());
+        System.out.println("Cost: " + minion.getCostOfBuy());
+        System.out.println("Desc: " + minion.getDesc());
     }
-    public void printHeroInfoInGame(Hero hero){
-        System.out.println("Hero:\n"+"Name: "+hero.getName());
-        System.out.println("Cost: "+hero.getCostOfBuy());
-        System.out.println("Desc: "+hero.getDesc());
+
+    public void printHeroInfoInGame(Hero hero) {
+        System.out.println("Hero:\n" + "Name: " + hero.getName());
+        System.out.println("Cost: " + hero.getCostOfBuy());
+        System.out.println("Desc: " + hero.getDesc());
 
     }
-    public void printSpellInfoInGame(Spell spell){
-        System.out.println("Spell:\n"+"Name: "+spell.getName());
-        System.out.println(" MP: "+spell.getCostToUse());
-        System.out.println("Cost: "+spell.getCostOfBuy());
-        System.out.println("Desc: "+spell.getDesc());
+
+    public void printSpellInfoInGame(Spell spell) {
+        System.out.println("Spell:\n" + "Name: " + spell.getName());
+        System.out.println(" MP: " + spell.getCostToUse());
+        System.out.println("Cost: " + spell.getCostOfBuy());
+        System.out.println("Desc: " + spell.getDesc());
     }
 }

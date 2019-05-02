@@ -34,8 +34,9 @@ public class Deck {
     public ArrayList<Spell> getSpells() {
         return spells;
     }
-    public Deck duplicate(){
-        Deck deck=new Deck();
+
+    public Deck duplicate() {
+        Deck deck = new Deck();
         deck.setName(this.name);
         deck.setHero(this.getHero());
         deck.setUsableItem(this.usableItem);
@@ -43,6 +44,7 @@ public class Deck {
         deck.setSpells(this.spells);
         return deck;
     }
+
     public void setSpells(ArrayList<Spell> spells) {
         this.spells = spells;
     }
@@ -64,7 +66,7 @@ public class Deck {
     }
 
     public boolean isFilled() {
-        if (getHero() != null&&getSpells().size() + getMinions().size() == 20)
+        if (getHero() != null && getSpells().size() + getMinions().size() == 20)
             return true;
         return false;
     }
@@ -76,7 +78,7 @@ public class Deck {
     }
 
     public boolean hasThisCard(int objectID) {
-        if (getHero()!=null&&getHero().getId() == objectID)
+        if (getHero() != null && getHero().getId() == objectID)
             return true;
         for (Spell spell : getSpells()) {
             if (spell.getId() == objectID) {
@@ -88,20 +90,20 @@ public class Deck {
                 return true;
             }
         }
-        if (getUsableItem()!=null&&getUsableItem().getId() == objectID)
+        if (getUsableItem() != null && getUsableItem().getId() == objectID)
             return true;
         return false;
     }
 
-    public boolean isContain (Hero hero){
-        if (this.getHero().getId() == hero.getId()){
+    public boolean isContain(Hero hero) {
+        if (this.getHero().getId() == hero.getId()) {
             return true;
         }
         return false;
     }
 
     public boolean isContain(Minion minion) {
-        for (Minion minion1 : this.getMinions()){
+        for (Minion minion1 : this.getMinions()) {
             if (minion1.getId() == minion.getId()) {
                 return true;
             }

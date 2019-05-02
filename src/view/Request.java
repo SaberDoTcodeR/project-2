@@ -15,6 +15,7 @@ public class Request {
     private ErrorType error = null;
     private String commandLine;
     private Battle battle;
+
     public void getNewCommand() {
         this.commandLine = scanner.nextLine().toLowerCase().trim();
 
@@ -52,15 +53,14 @@ public class Request {
         commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
-        commands.get(1).add(new EndTurn());
+        //commands.get(1).add(new EndTurn());
         commands.get(1).add(new ShowCardInfo());
         commands.get(1).add(new SelectSoldier());
         commands.get(1).add(new MoveSelectedSoldier());
         commands.get(1).add(new ShowHand());
         commands.get(1).add(new InsertCard());
-        /*
         commands.get(1).add(new Attack());
-        Use special power
+        /*Use special power
         commands.get(1).add(new AttackCombo());
         */
 
@@ -204,14 +204,15 @@ public class Request {
         this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
 
     }
-    public Card isValidCardId(String cardId){
-        for (Card card: this.battle.getFirstPlayerInGameCards() ) {
-             if(card.getCardId().equals(cardId)){
-                 return card;
-             }
+
+    public Card isValidCardId(String cardId) {
+        for (Card card : this.battle.getFirstPlayerInGameCards()) {
+            if (card.getCardId().equals(cardId)) {
+                return card;
+            }
         }
-        for (Card card:this.battle.getSecondPlayerInGameCards()){
-            if(card.getCardId().equals(cardId)){
+        for (Card card : this.battle.getSecondPlayerInGameCards()) {
+            if (card.getCardId().equals(cardId)) {
                 return card;
             }
         }

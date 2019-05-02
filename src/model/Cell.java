@@ -129,16 +129,16 @@ public class Cell {
 
     }
 
-    public int manhataniDistance(int x, int y){
-        return abs(this.x-x)+abs(this.y-y);
+    public int manhataniDistance(int x, int y) {
+        return abs(this.x - x) + abs(this.y - y);
     }
 
-    public int abs(int x)
-    {
-        if(x>0)
+    public int abs(int x) {
+        if (x > 0)
             return x;
         return -x;
     }
+
     public void moveCardPos(int x, int y, Battle battle) {
         int who = battle.getMap().get(x).get(y).whichPlayerIsInCell;
         if (this.hero != null) {

@@ -26,7 +26,7 @@ public abstract class Hero extends Card {
     private int holyCounter = 0;
     private boolean isStunning = false;
     //SpecialPower specialPower;
-    private boolean counterAttack;
+    private boolean counterAttack=true;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int coolDownTime;
@@ -34,6 +34,14 @@ public abstract class Hero extends Card {
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getTypeOfRange() {
+        return typeOfRange;
     }
 
     public boolean isCounterAttack() {

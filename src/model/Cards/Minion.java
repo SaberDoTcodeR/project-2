@@ -56,7 +56,7 @@ public abstract class Minion extends Card {
     private int costToUse;
     private boolean isStunning = false;
     private int holyCounter = 0;
-    private boolean counterAttack;
+    private boolean counterAttack = true;
     //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
@@ -84,17 +84,22 @@ public abstract class Minion extends Card {
     public void setCounterAttack(boolean counterAttack) {
         this.counterAttack = counterAttack;
     }
-    public void moveToGame(Battle battle,int x,int y){
-        if(battle.getTurn()%2==1){
+
+    public void moveToGame(Battle battle, int x, int y) {
+        if (battle.getTurn() % 2 == 1) {
             battle.getFirstPlayerHand().getCards().remove(this);
             battle.getFirstPlayerInGameCards().add(this);
-        }else {
+            battle.getMap().get(x - 1).get(y - 1).setMinion(this, 0);
+        } else {
             battle.getSecondPlayerHand().getCards().remove(this);
             battle.getSecondPlayerInGameCards().add(this);
+            battle.getMap().get(x - 1).get(y - 1).setMinion(this, 1);
         }
+
         this.setRemainedMoves(0);
         this.cardIdGenerator(battle);
     }
+
     public int getTypeOfRange() {
         return typeOfRange;
     }

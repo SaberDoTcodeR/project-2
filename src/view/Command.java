@@ -6,16 +6,9 @@ import java.util.regex.Pattern;
 
 import control.*;
 import model.*;
-import model.Battles.Battle;
-import model.Battles.FlagsBattle;
-import model.Battles.HeroBattle;
-import model.Battles.OneFlagBattle;
-import model.Cards.Card;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cards.Spell;
-import model.Menus.Account;
-import model.Menus.Shop;
+import model.Battles.*;
+import model.Cards.*;
+import model.Menus.*;
 
 public abstract class Command {
     static View view = View.getInstance();
@@ -662,6 +655,10 @@ class MoveSelectedSoldier extends Command {
             request.setError(ErrorType.NO_CARD_SELECTED);
             return;
         }
+        if (((Minion) request.getBattle().getSelectedCard()).isStunning()) {
+            request.setError(ErrorType.CARD_IS_STUNNED);
+            return;
+        }
         Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
                 request.getBattle());//actually is static
         if (cell != null && cell.getHero() == null && cell.getMinion() == null && cell.manhataniDistance(xPos, yPos) <=
@@ -696,11 +693,12 @@ class ShowHand extends Command {
         }
         int i = 1;
         for (Card card2 : cards) {
-            System.out.println(i + " : " + card2.showDetails() + " - " + "CardID : " + card2.getCardId());
+            System.out.println(i + " : " + card2.showDetails());
             i++;
         }
+        i = 1;
         System.out.println("Card will be added next turn : ");
-        System.out.println(i + " : " + card.showDetails() + " - " + "CardID : " + card.getCardId());
+        System.out.println(i + " : " + card.showDetails());
 
     }
 }
@@ -747,14 +745,19 @@ class InsertCard extends Command {
                                 request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
-                            System.out.println(card1.getCardId() + " put" + " (" + xPos + "," + yPos + ")");
+                            System.out.println(card1.getName() + " with " + card1.getCardId() + " inserted to " + " (" + xPos + "," + yPos + ")");
 
                         } else
                             request.setError(ErrorType.INVALID_TARGET);
                     } else {
-                        ((Spell) card1).castSpell(request.getBattle(),request.getBattle().getMap().get(xPos - 1).get(yPos - 1),account);
+                        ((Spell) card1).castSpell(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), account);
+                        account.setMana(account.getMana() - cost);
+                        if (request.getError() == null) {
+                            System.out.println(card1.getName() + " inserted to " + " (" + xPos + "," + yPos + ")");
+                        }
                     }
                 }
+                break;
             }
 
         }
@@ -763,4 +766,56 @@ class InsertCard extends Command {
     }
 }
 
+class Attack extends Command {
+    Attack() {
+        super(CommandRegex.ATTACK);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String oppCardId = matcher.group(1).trim();
+        Card card;
+        if (request.getBattle().getSelectedCard() != null) {
+            request.setError(ErrorType.NO_CARD_SELECTED);
+        } else if (!request.getBattle().getSelectedCard().getCanAttack()) {
+            request.setError(ErrorType.TOO_EXHAUSTED);
+        }
+        if (request.getBattle().getTurn() % 2 == 1)
+            card = request.getBattle().getCard(oppCardId, 1);
+        else
+            card = request.getBattle().getCard(oppCardId, 0);
+        request.getBattle().getSelectedCard().attack(request.getBattle(), card, request);
+    }
+}
+
+class ComboAttack extends Command {
+    ComboAttack() {
+        super(CommandRegex.ATTACK_COMBO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        int x = matcher.groupCount();
+        if (request.getBattle().getSelectedCard() != null)
+            request.setError(ErrorType.NO_CARD_SELECTED);
+        if (request.getBattle().getSelectedCard().getType().equals("Hero")) {
+            request.setError(ErrorType.CANNOT_COMBO_ATTACK);
+            return;
+        } else if (((Minion) request.getBattle().getSelectedCard()).getTimeOfActivationOfSpecialPower() != 2) {
+            request.setError(ErrorType.CANNOT_COMBO_ATTACK);
+            return;
+        }
+        String[] cardId = new String[x];
+        for (int i = 1; i < x; i++) {
+            cardId[i] = matcher.group(i).trim();
+            if (i != 1) {
+                if (((Minion) request.getBattle().getSelectedCard()).getTimeOfActivationOfSpecialPower() != 2) {
+                    request.setError(ErrorType.CANNOT_COMBO_ATTACK);
+                    return;
+                }
+            }
+        }
+        
+    }
+}
 

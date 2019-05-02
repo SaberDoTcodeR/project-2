@@ -1,7 +1,9 @@
 package model;
 
 public enum CommandRegex {
-    INSERT_CARD("^Insert\\s+(\\w+)\\s+in\\s+\\(([1-5]),([1-9])\\)$"),
+    ATTACK_COMBO("^attack combo\\s+((\\w+)?\\s)+$"),//todo check
+    ATTACK("^attack\\s+(\\w+)$"),
+    INSERT_CARD("^insert\\s+(\\w+)\\s+in\\s+\\(([1-5]),([1-9])\\)$"),
 
     SHOW_HAND("^show hand$"),
     MOVE_CARD(
@@ -11,23 +13,22 @@ public enum CommandRegex {
             "^select\\s+(\\w+)$"),
     GAME_INFO(
             "^game info$"
-            ),
+    ),
     SHOW_OPP_MINIONS(
-            "^game info$"),
+            "^show opponent minions$"),
     END_TURN(
             "^end turn"
     ),
     SHOW_CARD_INFO(
             "^show card info\\s+(\\w+)$"),
     SHOW_MY_MINIONS(
-            "^show opponent minions$"
+            "^show my minions$"
     ),
     START_GAME(
             "^start game\\s+(\\w+)\\s+([1-3])\\s+(\\d+)?$"//todo checked
-    )
-    ,SELECT_USER(
+    ), SELECT_USER(
             "^select user\\s+(\\w+)$"
-    ),START_MULTIPLAYER_GAME(
+    ), START_MULTIPLAYER_GAME(
             "^start multiplayer game\\s+([1-3])\\s+(\\d+)?$"//todo checked
     ),
     SHOW(
@@ -36,10 +37,10 @@ public enum CommandRegex {
     SEARCH(
             "^search\\s+(\\w+)$"
     ),
-    CREATE_DECK (
+    CREATE_DECK(
             "^create deck\\s+(\\w+)$"
     ),
-    DELETE_DECK (
+    DELETE_DECK(
             "^delete deck\\s+(\\w+)$"
     ),
     ADD(
@@ -48,16 +49,16 @@ public enum CommandRegex {
     REMOVE(
             "^remove\\s+(\\d+)\\s+from deck\\s+(\\w+)$"
     ),
-    VALIDATE_DECK (
+    VALIDATE_DECK(
             "^validate deck\\s+(\\w+)$"
     ),
-    SELECT_DECK (
+    SELECT_DECK(
             "^select deck\\s+(\\w+)$"
     ),
-    SHOW_ALL_DECKS (
+    SHOW_ALL_DECKS(
             "^show all decks$"
     ),
-    SHOW_DECK (
+    SHOW_DECK(
             "^show deck\\s+(\\w+)$"
     ),
     ENTER_COLLECTION(
@@ -75,10 +76,10 @@ public enum CommandRegex {
     HELP(
             "^help$"
     ),
-    CREATE_ACCOUNT (
+    CREATE_ACCOUNT(
             "^create account\\s+(\\w+)$"
     ),
-    LOGIN (
+    LOGIN(
             "^login\\s+(\\w+)$"
     ),
     SHOW_LEADERBOARD(
