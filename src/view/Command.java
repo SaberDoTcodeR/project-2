@@ -1,5 +1,6 @@
 package view;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +10,10 @@ import model.Battles.Battle;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
+import model.Cards.Card;
+import model.Cards.Hero;
+import model.Cards.Minion;
+import model.Cards.Spell;
 import model.Menus.Account;
 import model.Menus.Shop;
 
@@ -142,7 +147,7 @@ class Remove extends Command {
             if (Account.getLoginAccount().getCollection().findDeck(deckName).hasThisCard(id)) {
                 Account.getLoginAccount().getCollection().removeFromDeck(id, deckName);
             } else {
-                request.setError(ErrorType.CARD_EXISTENCE_IN_DECK);
+                request.setError(ErrorType.WRONG_REMOVE);
             }
         } else {
             request.setError(ErrorType.NO_DECK_FOUND);
@@ -575,10 +580,11 @@ class ShowMyMinions extends Command {
 
     @Override
     public void apply(Request request) {
-        view.showMinions(request.getBattle(),false);
+        view.showMinions(request.getBattle(), false);
 
     }
 }
+
 class ShowOppMinoins extends Command {
     ShowOppMinoins() {
         super(CommandRegex.SHOW_OPP_MINIONS);
@@ -586,7 +592,175 @@ class ShowOppMinoins extends Command {
 
     @Override
     public void apply(Request request) {
-        view.showMinions(request.getBattle(),true);
+        view.showMinions(request.getBattle(), true);
 
     }
 }
+
+class EndTurn extends Command {
+    EndTurn() {
+        super(CommandRegex.END_TURN);
+    }
+
+    @Override
+    public void apply(Request request) {
+
+    }
+}
+
+class ShowCardInfo extends Command {
+    ShowCardInfo() {
+        super(CommandRegex.SHOW_CARD_INFO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String cardId = matcher.group(1).trim();
+        Card card = request.isValidCardId(cardId);
+        if (card != null) {
+            if (card.getType().equals("Minion"))
+                view.printMinionInfoInGame((Minion) card);
+            else if (card.getType().equals("Hero"))
+                view.printHeroInfoInGame((Hero) card);
+            else
+                view.printSpellInfoInGame((Spell) card);
+        } else {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
+        }
+    }
+}
+
+class SelectSoldier extends Command {
+    SelectSoldier() {
+        super(CommandRegex.SELECT_CARD_ID);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String cardId = matcher.group(1).trim();
+        Card card = request.isValidCardId(cardId);
+        if (card != null) {
+            request.getBattle().setSelectedCard(card);
+            if (card.getType().equals("Spell"))
+                request.setError(ErrorType.SELECT_HERO_OR_MINION);
+        } else {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
+        }
+    }
+}
+
+class MoveSelectedSoldier extends Command {
+    MoveSelectedSoldier() {
+        super(CommandRegex.MOVE_CARD);
+    }
+
+    @Override
+    public void apply(Request request) {
+        int xPos = Integer.parseInt(matcher.group(1).trim());
+        int yPos = Integer.parseInt(matcher.group(2).trim());
+        if (request.getBattle().getSelectedCard() == null) {
+            request.setError(ErrorType.NO_CARD_SELECTED);
+            return;
+        }
+        Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
+                request.getBattle());//actually is static
+        if (cell != null && cell.getHero() == null && cell.getMinion() == null && cell.manhataniDistance(xPos, yPos) <=
+                request.getBattle().getSelectedCard().getRemainedMoves()) {//todo checked there is a valid patch to des
+            System.out.println(request.getBattle().getSelectedCard().getCardId() + " moved to" + " (" + xPos + "," + yPos + ")");
+            cell.moveCardPos(xPos, yPos, request.getBattle());
+            request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
+                    - cell.manhataniDistance(xPos, yPos));
+        } else
+            request.setError(ErrorType.INVALID_TARGET);
+    }
+}
+
+class ShowHand extends Command {
+    ShowHand() {
+        super(CommandRegex.SHOW_HAND);
+    }
+
+    @Override
+    public void apply(Request request) {
+        ArrayList<Card> cards;
+        Card card;
+        if (request.getBattle().getTurn() % 2 == 1) {
+            System.out.println("Hand of Player " + request.getBattle().getFirstPlayer().getUserName() + " :");
+            cards = request.getBattle().getFirstPlayerHand().getCards();
+            card = request.getBattle().getFirstPlayerHand().getNextCardInHand();
+
+        } else {
+            System.out.println("Hand of Player " + request.getBattle().getSecondPlayer().getUserName());
+            cards = request.getBattle().getSecondPlayerHand().getCards();
+            card = request.getBattle().getSecondPlayerHand().getNextCardInHand();
+        }
+        int i = 1;
+        for (Card card2 : cards) {
+            System.out.println(i + " : " + card2.showDetails() + " - " + "CardID : " + card2.getCardId());
+            i++;
+        }
+        System.out.println("Card will be added next turn : ");
+        System.out.println(i + " : " + card.showDetails() + " - " + "CardID : " + card.getCardId());
+
+    }
+}
+
+class InsertCard extends Command {
+    InsertCard() {
+        super(CommandRegex.INSERT_CARD);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String cardName = matcher.group(1).trim();
+        int xPos = Integer.parseInt(matcher.group(2).trim());
+        int yPos = Integer.parseInt(matcher.group(3).trim());
+        Account account;
+        if (request.getBattle().getTurn() % 2 == 1)
+            account = request.getBattle().getFirstPlayer();
+        else
+            account = request.getBattle().getSecondPlayer();
+        ArrayList<Card> cards;
+        boolean flag = false;
+        if (request.getBattle().getTurn() % 2 == 1)
+            cards = request.getBattle().getFirstPlayerHand().getCards();
+        else
+            cards = request.getBattle().getSecondPlayerHand().getCards();
+        for (Card card1 : cards) {
+            if (cardName.equals(card1.getName())) {
+                flag = true;
+                int cost = 0;
+                if (card1.getType().equals("Spell")) {
+                    Spell spell = (Spell) card1;
+                    cost = spell.getCostToUse();
+                }
+                if (card1.getType().equals("Minion")) {
+                    Minion minion = (Minion) card1;
+                    cost = minion.getCostToUse();
+                }
+                if (cost > account.getMana()) {
+                    request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                    return;
+                } else {
+                    if (card1.getType().equals("Minion")) {
+                        if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
+                                request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
+                            account.setMana(account.getMana() - cost);
+                            ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
+                            System.out.println(card1.getCardId() + " put" + " (" + xPos + "," + yPos + ")");
+
+                        } else
+                            request.setError(ErrorType.INVALID_TARGET);
+                    } else {
+                        ((Spell) card1).castSpell(request.getBattle(),request.getBattle().getMap().get(xPos - 1).get(yPos - 1),account);
+                    }
+                }
+            }
+
+        }
+        if (!flag)
+            request.setError(ErrorType.INVALID_CARD_NAME);
+    }
+}
+
+

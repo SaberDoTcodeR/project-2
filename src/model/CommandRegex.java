@@ -1,11 +1,24 @@
 package model;
 
 public enum CommandRegex {
+    INSERT_CARD("^Insert\\s+(\\w+)\\s+in\\s+\\(([1-5]),([1-9])\\)$"),
+
+    SHOW_HAND("^show hand$"),
+    MOVE_CARD(
+            "^move to\\s+\\(([1-5]),([1-9])\\)$"
+    ),
+    SELECT_CARD_ID(
+            "^select\\s+(\\w+)$"),
     GAME_INFO(
             "^game info$"
             ),
     SHOW_OPP_MINIONS(
             "^game info$"),
+    END_TURN(
+            "^end turn"
+    ),
+    SHOW_CARD_INFO(
+            "^show card info\\s+(\\w+)$"),
     SHOW_MY_MINIONS(
             "^show opponent minions$"
     ),

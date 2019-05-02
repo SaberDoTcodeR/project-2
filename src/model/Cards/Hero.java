@@ -144,6 +144,8 @@ public abstract class Hero extends Card {
 
     public abstract void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request);
 
+    public abstract String getDesc();
+
     public Hero duplicate() {
         return null;//todo --> can be abstract
     }
@@ -209,8 +211,7 @@ class WhiteBogey extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : take a power buff that increase hit power of itself" +
-                "4 units forever.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.WHITE_BOGEY.getMessage();
         return details;
     }
 
@@ -220,6 +221,11 @@ class WhiteBogey extends Hero {
         changeApBuff.increment(this);
         changeApBuff.setTurnCounter(-5);
         this.getOwnBuffs().add(changeApBuff);
+    }
+
+    @Override
+    public String getDesc() {
+        return SpecialPower.WHITE_BOGEY.getMessage();
     }
 }
 
@@ -242,7 +248,7 @@ class Simurgh extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : stun all enemy forces for one turn.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.SIMURGH.getMessage();
         return details;
     }
 
@@ -262,6 +268,11 @@ class Simurgh extends Hero {
                 else stunBuff.stun((Minion) card);
             }
         }
+    }
+
+    @Override
+    public String getDesc() {
+        return SpecialPower.SIMURGH.getMessage();
     }
 }
 
@@ -284,7 +295,7 @@ class Dragon extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : disarm one person.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.DRAGON.getMessage();
         return details;
     }
 
@@ -302,6 +313,9 @@ class Dragon extends Hero {
         } else if (cell.getHero() == null && cell.getMinion() == null) {
             request.setError(ErrorType.EMPTY_CELL);
         } else request.setError(ErrorType.SELF_HARM);
+    }
+    public String getDesc() {
+        return SpecialPower.DRAGON.getMessage();
     }
 }
 
@@ -324,7 +338,7 @@ class Rakhsh extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : stun one of the enemy forces for one turn.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.RAKHSH.getMessage();
         return details;
     }
 
@@ -343,6 +357,9 @@ class Rakhsh extends Hero {
         } else if (cell.getHero() == null && cell.getMinion() == null) {
             request.setError(ErrorType.EMPTY_CELL);
         } else request.setError(ErrorType.SELF_HARM);
+    }
+    public String getDesc() {
+        return SpecialPower.RAKHSH.getMessage();
     }
 }
 
@@ -366,7 +383,7 @@ class Zahhak extends Hero {
     public String showDetails() {
         String details;
         details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : poison the enemy in time of hitting for 3 turns.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.ZAHHAK.getMessage();
         return details;
     }
 
@@ -387,6 +404,9 @@ class Zahhak extends Hero {
         } else if (cell.getHero() == null && cell.getMinion() == null) {
             request.setError(ErrorType.EMPTY_CELL);
         } else request.setError(ErrorType.SELF_HARM);
+    }
+    public String getDesc() {
+        return SpecialPower.ZAHHAK.getMessage();
     }
 }
 
@@ -409,7 +429,7 @@ class Kaveh extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : make a cell holy for 3 turns.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.KAVEH.getMessage();
         return details;
     }
 
@@ -417,6 +437,9 @@ class Kaveh extends Hero {
     public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
         HolyEffectedCell holyEffectedCell = new HolyEffectedCell();
         holyEffectedCell.makeCellHoly(cell);
+    }
+    public String getDesc() {
+        return SpecialPower.KAVEH.getMessage();
     }
 }
 
@@ -440,7 +463,7 @@ class Arash extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : hit all enemy forces in itself row with 4 units hit.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.ARASH.getMessage();
         return details;
     }
 
@@ -462,6 +485,9 @@ class Arash extends Hero {
                 }
             }
         }
+    }
+    public String getDesc() {
+        return SpecialPower.ARASH.getMessage();
     }
 }
 
@@ -485,7 +511,7 @@ class Legend extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : dispel one of the enemy forces.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.LEGEND.getMessage();
         return details;
     }
 
@@ -503,6 +529,9 @@ class Legend extends Hero {
         } else if (cell.getHero() == null && cell.getMinion() == null) {
             request.setError(ErrorType.EMPTY_CELL);
         } else request.setError(ErrorType.SELF_HARM);
+    }
+    public String getDesc() {
+        return SpecialPower.LEGEND.getMessage();
     }
 }
 
@@ -526,7 +555,7 @@ class Esfandyar extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : has 3 holy buff in continuous mode.";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : "+SpecialPower.ESFANDYAR.getMessage();
         return details;
     }
 
@@ -552,6 +581,9 @@ class Esfandyar extends Hero {
             request.setError(ErrorType.EMPTY_CELL);
         } else request.setError(ErrorType.SELF_HARM);
     }
+    public String getDesc() {
+        return SpecialPower.ESFANDYAR.getMessage();
+    }
 }
 
 class Rostam extends Hero {
@@ -572,12 +604,15 @@ class Rostam extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : - .";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : - ";
         return details;
     }
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
         //doesn't have any special power :)
+    }
+    public String getDesc() {
+        return "Nothing";
     }
 }

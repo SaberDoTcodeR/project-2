@@ -6,6 +6,7 @@ import java.util.Scanner;
 import model.*;
 import control.*;
 import model.Battles.Battle;
+import model.Cards.Card;
 import model.Menus.Account;
 
 public class Request {
@@ -51,12 +52,17 @@ public class Request {
         commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
-        /*commands.get(1).add(new ShowCardInfo());
+        commands.get(1).add(new EndTurn());
+        commands.get(1).add(new ShowCardInfo());
         commands.get(1).add(new SelectSoldier());
         commands.get(1).add(new MoveSelectedSoldier());
+        commands.get(1).add(new ShowHand());
+        commands.get(1).add(new InsertCard());
+        /*
         commands.get(1).add(new Attack());
+        Use special power
         commands.get(1).add(new AttackCombo());
-        commands.get(1).add(new SelectSoldier());*/
+        */
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());
@@ -197,5 +203,18 @@ public class Request {
         }
         this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
 
+    }
+    public Card isValidCardId(String cardId){
+        for (Card card: this.battle.getFirstPlayerInGameCards() ) {
+             if(card.getCardId().equals(cardId)){
+                 return card;
+             }
+        }
+        for (Card card:this.battle.getSecondPlayerInGameCards()){
+            if(card.getCardId().equals(cardId)){
+                return card;
+            }
+        }
+        return null;
     }
 }

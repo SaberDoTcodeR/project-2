@@ -14,18 +14,6 @@ public abstract class Spell extends Card {
     private int costToUse;
     protected static View view = View.getInstance();
 
-    private ArrayList<String> positiveBuffs = new ArrayList<>();
-    private ArrayList<String> negativeBuffs = new ArrayList<>();
-
-    {
-        positiveBuffs.add("HolyBuff");
-        positiveBuffs.add("PowerBuff");
-        negativeBuffs.add("PoisonBuff");
-        negativeBuffs.add("WeaknessBuff");
-        negativeBuffs.add("StunBuff");
-        negativeBuffs.add("DisarmBuff");
-    }
-
     static {
         new AllAttack();
         new AllDisarm();
@@ -62,25 +50,7 @@ public abstract class Spell extends Card {
         this.costToUse = spell.costToUse;
     }
 
-    public boolean dispelEnemyValidation(String buffName) {
-        for (String str : negativeBuffs) {
-            if (str.equals(buffName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean dispelInsiderValidation(String buffName) {
-        for (String str : positiveBuffs) {
-            if (str.equals(buffName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public abstract void castBuff(Battle battle, Cell cell, Account player);
+    public abstract void castSpell(Battle battle, Cell cell, Account player);
 
     public static ArrayList<Spell> getSpells() {
         return spells;
@@ -90,55 +60,13 @@ public abstract class Spell extends Card {
         return costToUse;
     }
 
+    public abstract String getDesc();
+
     public String getType() {
         return "Spell";
     }
 
     public Spell duplicate() {
-        return null;
-    }
-
-    public Cell rightCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
-        for (int i = 0; i < map.size(); i++) {
-            for (int j = 0; j < map.get(i).size(); j++) {
-                if (map.get(i).get(j).equals(cell)) {
-                    return map.get(i).get(j + 1);
-                }
-            }
-        }
-        return null;
-    }
-
-    public Cell leftCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
-        for (int i = 0; i < map.size(); i++) {
-            for (int j = 0; j < map.get(i).size(); j++) {
-                if (map.get(i).get(j).equals(cell)) {
-                    return map.get(i).get(j - 1);
-                }
-            }
-        }
-        return null;
-    }
-
-    public Cell upCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
-        for (int i = 0; i < map.size(); i++) {
-            for (int j = 0; j < map.get(i).size(); j++) {
-                if (map.get(i).get(j).equals(cell)) {
-                    return map.get(i + 1).get(j);
-                }
-            }
-        }
-        return null;
-    }
-
-    public Cell downCell(ArrayList<ArrayList<Cell>> map, Cell cell) {
-        for (int i = 0; i < map.size(); i++) {
-            for (int j = 0; j < map.get(i).size(); j++) {
-                if (map.get(i).get(j).equals(cell)) {
-                    return map.get(i - 1).get(j);
-                }
-            }
-        }
         return null;
     }
 }
@@ -158,13 +86,13 @@ enum SpellWork {
     ALL_POISON("Enemy forces become poison for 4 turns"),
     DISPEL("Disappear positive buffs of enemy force and negative buffs of " +
             "insider force for a insider force or enemy force")/*todo --> what the faz?*/,
-    HEALTH_WITH_PROFIT("Give friend force a weakness buff or reduce HP of force 6 units" +
+    HEALTH_WITH_PROFIT("Give friend force a decrement buff or reduce HP of force 6 units" +
             "but have 2 holy buff for 3 turns"),
     POWER_UP("Apply a power buff and add 6AP for an insider force"),
     ALL_POWER("Apply a power buff and add 6AP for all insider forces permanently"),
     ALL_ATTACK("Hit all enemy forces who in one column 6units"),
-    WEAKENING("Give a enemy minion a weakness buff or reduce HP of minion 4 units"),
-    SACRIFICE("Give a insider minion a weakness buff or reduce HP of minion 6 units" +
+    WEAKENING("Give a enemy minion a decrement buff or reduce HP of minion 4 units"),
+    SACRIFICE("Give a insider minion a decrement buff or reduce HP of minion 6 units" +
             " and give a power buff and add 8AP to insider minion"),
     KINGS_GUARD("Kill enemy force on 8 around cells"),
     SHOCK("Become stun for 2 turn for enemy force");
@@ -192,7 +120,7 @@ class TotalDisarm extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getMinion() == null && cell.getHero() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -201,6 +129,7 @@ class TotalDisarm extends Spell {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.setTurnCounter(-5);//-5 means until end of game
                     disarmBuff.disarm(cell.getHero());
+                    disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(disarmBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -211,6 +140,7 @@ class TotalDisarm extends Spell {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.setTurnCounter(-5);
                     disarmBuff.disarm(cell.getMinion());
+                    disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -227,6 +157,13 @@ class TotalDisarm extends Spell {
         TotalDisarm totalDisarm = new TotalDisarm(this);
         return totalDisarm;
     }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.TOTAL_DISARM.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -248,17 +185,21 @@ class AreaDispel extends Spell {
         super(areaDispel);
     }
 
+    public String getDesc() {
+        return SpellWork.AREA_DISPEL.getMessage();
+    }
+
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(rightCell(battle.getMap(),cell));
-        cells.add(upCell(battle.getMap(),cell));
-        cells.add(upCell(battle.getMap(),cells.get(1)));
+        cells.add(cell.rightCell(battle.getMap()));
+        cells.add(cell.downCell(battle.getMap()));
+        cells.add(cells.get(1).downCell(battle.getMap()));
         //todo check working
-        for (Cell cell1: cells) {
+        for (Cell cell1 : cells) {
             Dispel dispel = new Dispel();
-            dispel.castBuff(battle,cell1,player);
+            dispel.castSpell(battle, cell1, player);
         }
     }
 
@@ -288,7 +229,7 @@ class Empower extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -297,6 +238,7 @@ class Empower extends Spell {
                     ChangeApBuff changeAp = new ChangeApBuff(2);
                     changeAp.setTurnCounter(1);
                     changeAp.increment(cell.getHero());
+                    changeAp.setCasting(changeAp, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(changeAp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -307,6 +249,7 @@ class Empower extends Spell {
                     ChangeApBuff changeAp = new ChangeApBuff(2);
                     changeAp.setTurnCounter(1);
                     changeAp.increment(cell.getMinion());
+                    changeAp.setCasting(changeAp, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(changeAp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -319,6 +262,11 @@ class Empower extends Spell {
         Empower empower = new Empower(this);
         return empower;
     }
+
+    public String getDesc() {
+        return SpellWork.EMPOWER.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -341,40 +289,28 @@ class FireBall extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
-                    if (cell.getHero().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getHero().getHolyCounter());
-                        changeHp.setTurnCounter(1);
-                        changeHp.decrement(cell.getHero());
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(4);
-                        changeHp.setTurnCounter(1);
-                        changeHp.decrement(cell.getHero());
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    }
+                    ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getHero().getHolyCounter());
+                    changeHp.setTurnCounter(1);
+                    changeHp.decrement(cell.getHero());
+                    changeHp.setCasting(changeHp, null, cell.getHero(), null);
+                    cell.getHero().getOwnBuffs().add(changeHp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
             }
             if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
-                    if (cell.getMinion().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getMinion().getHolyCounter());
-                        changeHp.setTurnCounter(1);
-                        changeHp.decrement(cell.getMinion());
-                        cell.getMinion().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(4);
-                        changeHp.setTurnCounter(1);
-                        changeHp.decrement(cell.getMinion());
-                        cell.getMinion().getOwnBuffs().add(changeHp);
-                    }
+                    ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getMinion().getHolyCounter());
+                    changeHp.setTurnCounter(1);
+                    changeHp.decrement(cell.getMinion());
+                    changeHp.setCasting(changeHp, null, null, cell.getMinion());
+                    cell.getMinion().getOwnBuffs().add(changeHp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
@@ -385,6 +321,12 @@ class FireBall extends Spell {
     public Spell duplicate() {
         FireBall fireBall = new FireBall(this);
         return fireBall;
+    }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.FIREBALL.getMessage();
     }
 
     @Override
@@ -408,7 +350,7 @@ class GodStrength extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -417,6 +359,7 @@ class GodStrength extends Spell {
                     ChangeApBuff changeAp = new ChangeApBuff(4);
                     changeAp.setTurnCounter(1);
                     changeAp.increment(cell.getHero());
+                    changeAp.setCasting(changeAp, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(changeAp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -431,6 +374,12 @@ class GodStrength extends Spell {
     public Spell duplicate() {
         GodStrength godStrength = new GodStrength(this);
         return godStrength;
+    }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.GOD_STRENGTH.getMessage();
     }
 
     @Override
@@ -454,23 +403,30 @@ class HellFire extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(rightCell(battle.getMap(),cell));
-        cells.add(upCell(battle.getMap(),cells.get(1)));
-        cells.add(upCell(battle.getMap(),cell));
+        cells.add(cell.rightCell(battle.getMap()));
+        cells.add(cells.get(1).downCell(battle.getMap()));
+        cells.add(cell.downCell(battle.getMap()));
         //todo check working
-        for (Cell cell1: cells) {
-           FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
-           firingEffectedCell.setTurnCounter(2);
-           cell1.getCellEffect().add(firingEffectedCell);
+        for (Cell cell1 : cells) {
+            FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
+            firingEffectedCell.setTurnCounter(2);
+            firingEffectedCell.firing(cell1);
+            firingEffectedCell.setCasting(firingEffectedCell, cell1, null, null);
+            cell1.getCellEffect().add(firingEffectedCell);
         }
     }
 
     public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
         return hellFire;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.HELL_FIRE.getMessage();
     }
 
     @Override
@@ -494,23 +450,17 @@ class LightingBolt extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
-                    if (cell.getHero().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(8 - cell.getHero().getHolyCounter());
-                        changeHp.decrement(cell.getHero());
-                        changeHp.setTurnCounter(1);
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(8);
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    }
+                    ChangeHpBuff changeHp = new ChangeHpBuff(8 - cell.getHero().getHolyCounter());
+                    changeHp.decrement(cell.getHero());
+                    changeHp.setTurnCounter(1);
+                    changeHp.setCasting(changeHp, null, cell.getHero(), null);
+                    cell.getHero().getOwnBuffs().add(changeHp);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
@@ -525,6 +475,12 @@ class LightingBolt extends Spell {
         LightingBolt lightingBolt = new LightingBolt(this);
         return lightingBolt;
     }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.LIGHTING_BOLT.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -547,21 +503,22 @@ class PoisonLake extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(rightCell(battle.getMap(),cell));
-        cells.add(rightCell(battle.getMap(),cells.get(1)));
-        cells.add(upCell(battle.getMap(),cells.get(2)));
-        cells.add(upCell(battle.getMap(),cells.get(3)));
-        cells.add(leftCell(battle.getMap(),cells.get(4)));
-        cells.add(leftCell(battle.getMap(),cells.get(5)));
-        cells.add(downCell(battle.getMap(),cells.get(6)));
-        cells.add(rightCell(battle.getMap(),cells.get(7)));
+        cells.add(cell.rightCell(battle.getMap()));
+        cells.add(cells.get(1).rightCell(battle.getMap()));
+        cells.add(cells.get(2).downCell(battle.getMap()));
+        cells.add(cells.get(3).downCell(battle.getMap()));
+        cells.add(cells.get(4).leftCell(battle.getMap()));
+        cells.add(cells.get(5).leftCell(battle.getMap()));
+        cells.add(cells.get(6).upCell(battle.getMap()));
+        cells.add(cells.get(7).rightCell(battle.getMap()));
         //todo check working
-        for (Cell cell1: cells) {
+        for (Cell cell1 : cells) {
             PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
             poisonEffectedCell.setTurnCounter(1);
+            poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
             cell1.getCellEffect().add(poisonEffectedCell);
         }
     }
@@ -579,6 +536,11 @@ class PoisonLake extends Spell {
                 " - Desc: " + SpellWork.POISON_LAKE.getMessage();
         return details;
     }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.POISON_LAKE.getMessage();
+    }
 }
 
 class Madness extends Spell {
@@ -592,7 +554,7 @@ class Madness extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -601,9 +563,11 @@ class Madness extends Spell {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.setTurnCounter(3);
                     disarmBuff.disarm(cell.getHero());
+                    disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     ChangeApBuff changeAp = new ChangeApBuff(4);
                     changeAp.setTurnCounter(3);
                     changeAp.increment(cell.getHero());
+                    changeAp.setCasting(changeAp, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(disarmBuff);
                     cell.getHero().getOwnBuffs().add(changeAp);
                 }
@@ -616,9 +580,11 @@ class Madness extends Spell {
                 DisarmBuff disarmBuff = new DisarmBuff();
                 disarmBuff.setTurnCounter(3);
                 disarmBuff.disarm(cell.getMinion());
+                disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                 ChangeApBuff changeAp = new ChangeApBuff(4);
                 changeAp.setTurnCounter(3);
                 changeAp.increment(cell.getMinion());
+                changeAp.setCasting(changeAp, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(disarmBuff);
                 cell.getMinion().getOwnBuffs().add(changeAp);
             } else {
@@ -631,6 +597,13 @@ class Madness extends Spell {
         Madness madness = new Madness(this);
         return madness;
     }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.MADNESS.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -653,19 +626,21 @@ class AllDisarm extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getHero());
                     disarmBuff.setTurnCounter(1);
+                    disarmBuff.setCasting(disarmBuff, null, cell1.getHero(), null);
                     cell1.getHero().getOwnBuffs().add(disarmBuff);
                 }
                 if (cell1.getMinion() != null && !player.getMainDeck().isContain(cell1.getMinion())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getMinion());
                     disarmBuff.setTurnCounter(1);
+                    disarmBuff.setCasting(disarmBuff, null, null, cell1.getMinion());
                     cell1.getMinion().getOwnBuffs().add(disarmBuff);
                 }
             }
@@ -676,6 +651,13 @@ class AllDisarm extends Spell {
         AllDisarm allDisarm = new AllDisarm(this);
         return allDisarm;
     }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_DISARM.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -698,19 +680,21 @@ class AllPoison extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
                     PoisonBuff poisonBuff = new PoisonBuff();
                     poisonBuff.poison(cell1.getHero());
                     poisonBuff.setTurnCounter(4);
+                    poisonBuff.setCasting(poisonBuff, null, cell1.getHero(), null);
                     cell1.getHero().getOwnBuffs().add(poisonBuff);
                 }
                 if (cell1.getMinion() != null && !player.getMainDeck().isContain(cell1.getMinion())) {
                     PoisonBuff poisonBuff = new PoisonBuff();
                     poisonBuff.poison(cell1.getMinion());
                     poisonBuff.setTurnCounter(4);
+                    poisonBuff.setCasting(poisonBuff, null, null, cell1.getMinion());
                     cell1.getMinion().getOwnBuffs().add(poisonBuff);
                 }
             }
@@ -724,6 +708,12 @@ class AllPoison extends Spell {
     public Spell duplicate() {
         AllPoison allPoison = new AllPoison(this);
         return allPoison;
+    }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_POISON.getMessage();
     }
 
     @Override
@@ -747,7 +737,7 @@ class Dispel extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -794,6 +784,11 @@ class Dispel extends Spell {
     }
 
     @Override
+    public String getDesc() {
+        return SpellWork.DISPEL.getMessage();
+    }
+
+    @Override
     public String showDetails() {
         String details;
         details = " Type : " + getType() + " - Name : " +
@@ -814,37 +809,24 @@ class HealthWithProfit extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (player.getMainDeck().isContain(cell.getHero())) {
-                    WeaknessBuff weaknessBuff = new WeaknessBuff();
-                    weaknessBuff.weakness(cell.getHero());
-                    weaknessBuff.setTurnCounter(6);
+                    WeaknessBuff weaknessBuff = new WeaknessBuff(6 - cell.getHero().getHolyCounter(), false);
+                    weaknessBuff.decrementHp(cell.getHero());
+                    weaknessBuff.setTurnCounter(3);
+                    weaknessBuff.setCasting(weaknessBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(weaknessBuff);
-
-                    if (cell.getHero().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getHero().getHolyCounter());
-                        changeHp.decrement(cell.getHero());
-                        changeHp.setTurnCounter(3);
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(3);
-                        cell.getHero().getOwnBuffs().add(changeHp);
+                    for (int i = 0; i < 2; i++) {
+                        HolyBuff holyBuff = new HolyBuff();
+                        holyBuff.holy(cell.getHero());
+                        holyBuff.setTurnCounter(3);
+                        holyBuff.setCasting(holyBuff, null, cell.getHero(), null);
+                        cell.getHero().getOwnBuffs().add(holyBuff);
                     }
-
-                    HolyBuff holyBuff1 = new HolyBuff();
-                    holyBuff1.holy(cell.getHero());
-                    holyBuff1.setTurnCounter(3);
-                    cell.getHero().getOwnBuffs().add(holyBuff1);
-                    HolyBuff holyBuff2 = new HolyBuff();
-                    holyBuff2.holy(cell.getHero());
-                    holyBuff2.setTurnCounter(3);
-                    cell.getHero().getOwnBuffs().add(holyBuff2);
                 }
             } else {
                 view.printError(ErrorType.INVALID_TARGET);
@@ -852,31 +834,19 @@ class HealthWithProfit extends Spell {
         }
         if (cell.getMinion() != null) {
             if (player.getMainDeck().isContain(cell.getMinion())) {
-                WeaknessBuff weaknessBuff = new WeaknessBuff();
-                weaknessBuff.weakness(cell.getMinion());
+                WeaknessBuff weaknessBuff = new WeaknessBuff(6 - cell.getMinion().getHolyCounter(), false);
+                weaknessBuff.decrementHp(cell.getMinion());
                 weaknessBuff.setTurnCounter(6);
+                weaknessBuff.setCasting(weaknessBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(weaknessBuff);
 
-                if (cell.getMinion().getHolyCounter() != 0) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getMinion().getHolyCounter());
-                    changeHp.decrement(cell.getMinion());
-                    changeHp.setTurnCounter(3);
-                    cell.getMinion().getOwnBuffs().add(changeHp);
-                } else {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(6);
-                    changeHp.decrement(cell.getMinion());
-                    changeHp.setTurnCounter(3);
-                    cell.getMinion().getOwnBuffs().add(changeHp);
+                for (int i = 0; i < 2; i++) {
+                    HolyBuff holyBuff = new HolyBuff();
+                    holyBuff.holy(cell.getMinion());
+                    holyBuff.setTurnCounter(3);
+                    holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
+                    cell.getMinion().getOwnBuffs().add(holyBuff);
                 }
-
-                HolyBuff holyBuff1 = new HolyBuff();
-                holyBuff1.holy(cell.getMinion());
-                holyBuff1.setTurnCounter(3);
-                cell.getMinion().getOwnBuffs().add(holyBuff1);
-                HolyBuff holyBuff2 = new HolyBuff();
-                holyBuff2.holy(cell.getMinion());
-                holyBuff2.setTurnCounter(3);
-                cell.getMinion().getOwnBuffs().add(holyBuff2);
             } else {
                 view.printError(ErrorType.INVALID_TARGET);
             }
@@ -886,6 +856,11 @@ class HealthWithProfit extends Spell {
     public Spell duplicate() {
         HealthWithProfit healthWithProfit = new HealthWithProfit(this);
         return healthWithProfit;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.HEALTH_WITH_PROFIT.getMessage();
     }
 
     @Override
@@ -909,20 +884,16 @@ class PowerUp extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (player.getMainDeck().isContain(cell.getHero())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(6);
-                    changeAp.setTurnCounter(1);
-                    changeAp.increment(cell.getHero());
-                    cell.getHero().getOwnBuffs().add(changeAp);
-
-                    PowerBuff powerBuff = new PowerBuff();
-                    powerBuff.power(cell.getHero());
+                    PowerBuff powerBuff = new PowerBuff(6, true);
+                    powerBuff.incrementAp(cell.getHero());
                     powerBuff.setTurnCounter(1);
+                    powerBuff.setCasting(powerBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(powerBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -930,14 +901,10 @@ class PowerUp extends Spell {
             }
             if (cell.getMinion() != null) {
                 if (player.getMainDeck().isContain(cell.getMinion())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(6);
-                    changeAp.setTurnCounter(1);
-                    changeAp.increment(cell.getMinion());
-                    cell.getMinion().getOwnBuffs().add(changeAp);
-
-                    PowerBuff powerBuff = new PowerBuff();
-                    powerBuff.power(cell.getMinion());
+                    PowerBuff powerBuff = new PowerBuff(6, true);
+                    powerBuff.incrementAp(cell.getMinion());
                     powerBuff.setTurnCounter(1);
+                    powerBuff.setCasting(powerBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(powerBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -949,6 +916,11 @@ class PowerUp extends Spell {
     public Spell duplicate() {
         PowerUp powerUp = new PowerUp(this);
         return powerUp;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.POWER_UP.getMessage();
     }
 
     @Override
@@ -972,33 +944,25 @@ class AllPower extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null) {
                     if (player.getMainDeck().isContain(cell1.getHero())) {
-                        PowerBuff powerBuff = new PowerBuff();
+                        PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(-5);
-                        powerBuff.power(cell1.getHero());
+                        powerBuff.incrementAp(cell1.getHero());
+                        powerBuff.setCasting(powerBuff, null, cell1.getHero(), null);
                         cell1.getHero().getOwnBuffs().add(powerBuff);
-
-                        ChangeApBuff changeApBuff = new ChangeApBuff(2);
-                        changeApBuff.setTurnCounter(-5);
-                        changeApBuff.increment(cell1.getHero());
-                        cell1.getHero().getOwnBuffs().add(changeApBuff);
                     }
                 }
                 if (cell1.getMinion() != null) {
                     if (player.getMainDeck().isContain(cell1.getMinion())) {
-                        PowerBuff powerBuff = new PowerBuff();
+                        PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(-5);
-                        powerBuff.power(cell1.getMinion());
+                        powerBuff.incrementAp(cell1.getMinion());
+                        powerBuff.setCasting(powerBuff, null, null, cell1.getMinion());
                         cell1.getMinion().getOwnBuffs().add(powerBuff);
-
-                        ChangeApBuff changeApBuff = new ChangeApBuff(2);
-                        changeApBuff.setTurnCounter(-5);
-                        changeApBuff.increment(cell1.getMinion());
-                        cell1.getMinion().getOwnBuffs().add(changeApBuff);
                     }
                 }
             }
@@ -1008,6 +972,11 @@ class AllPower extends Spell {
     public Spell duplicate() {
         AllPower allPower = new AllPower(this);
         return allPower;
+    }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_POWER.getMessage();
     }
 
     @Override
@@ -1032,7 +1001,7 @@ class AllAttack extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         int index = -1;
         for (ArrayList<Cell> cells : battle.getMap()) {
             if (cells.contains(cell)) {
@@ -1042,32 +1011,20 @@ class AllAttack extends Spell {
         for (int i = 0; i < battle.getMap().size(); i++) {
             if (battle.getMap().get(i).get(index).getHero() != null) {
                 if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getHero())) {
-                    if (battle.getMap().get(i).get(index).getHero().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getHero().getHolyCounter());
-                        changeHp.decrement(cell.getHero());
-                        changeHp.setTurnCounter(1);
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        cell.getHero().getOwnBuffs().add(changeHp);
-                    }
+                    ChangeHpBuff changeHp = new ChangeHpBuff(6 - battle.getMap().get(i).get(index).getHero().getHolyCounter());
+                    changeHp.decrement(battle.getMap().get(i).get(index).getHero());
+                    changeHp.setTurnCounter(1);
+                    changeHp.setCasting(changeHp, null, battle.getMap().get(i).get(index).getHero(), null);
+                    battle.getMap().get(i).get(index).getHero().getOwnBuffs().add(changeHp);
                 }
             }
             if (battle.getMap().get(i).get(index).getMinion() != null) {
                 if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getMinion())) {
-                    if (battle.getMap().get(i).get(index).getMinion().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getMinion().getHolyCounter());
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        battle.getMap().get(i).get(index).getMinion().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        battle.getMap().get(i).get(index).getHero().getOwnBuffs().add(changeHp);
-                    }
+                    ChangeHpBuff changeHp = new ChangeHpBuff(6 - battle.getMap().get(i).get(index).getMinion().getHolyCounter());
+                    changeHp.decrement(battle.getMap().get(i).get(index).getHero());
+                    changeHp.setTurnCounter(1);
+                    changeHp.setCasting(changeHp, null, null, battle.getMap().get(i).get(index).getMinion());
+                    battle.getMap().get(i).get(index).getMinion().getOwnBuffs().add(changeHp);
                 }
             }
         }
@@ -1076,6 +1033,12 @@ class AllAttack extends Spell {
     public Spell duplicate() {
         AllAttack allAttack = new AllAttack(this);
         return allAttack;
+    }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.ALL_ATTACK.getMessage();
     }
 
     @Override
@@ -1099,26 +1062,22 @@ class Weakening extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(4);
-                    changeAp.setTurnCounter(1);
-                    changeAp.decrement(cell.getMinion());
-                    cell.getMinion().getOwnBuffs().add(changeAp);
-
-                    WeaknessBuff weaknessBuff = new WeaknessBuff();
-                    weaknessBuff.weakness(cell.getMinion());
+                    WeaknessBuff weaknessBuff = new WeaknessBuff(4, true);
+                    weaknessBuff.decrementAp(cell.getMinion());
                     weaknessBuff.setTurnCounter(1);
+                    weaknessBuff.setCasting(weaknessBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(weaknessBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
             }
-            if (cell.getMinion() != null) {
+            if (cell.getHero() != null) {
                 view.printError(ErrorType.INVALID_TARGET);
             }
         }
@@ -1128,6 +1087,13 @@ class Weakening extends Spell {
         Weakening weakening = new Weakening(this);
         return weakening;
     }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.WEAKENING.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -1150,43 +1116,28 @@ class Sacrifice extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getMinion() != null) {
                 if (player.getMainDeck().isContain(cell.getMinion())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(8);
-                    changeAp.setTurnCounter(1);
-                    changeAp.increment(cell.getMinion());
-                    cell.getMinion().getOwnBuffs().add(changeAp);
-
-                    WeaknessBuff weaknessBuff = new WeaknessBuff();
-                    weaknessBuff.weakness(cell.getMinion());
-                    weaknessBuff.setTurnCounter(1);
-                    cell.getMinion().getOwnBuffs().add(weaknessBuff);
-
-                    PowerBuff powerBuff = new PowerBuff();
+                    PowerBuff powerBuff = new PowerBuff(8, true);
                     powerBuff.setTurnCounter(1);
-                    powerBuff.power(cell.getMinion());
+                    powerBuff.incrementAp(cell.getMinion());
+                    powerBuff.setCasting(powerBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(powerBuff);
 
-                    if (cell.getMinion().getHolyCounter() != 0) {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6 - cell.getMinion().getHolyCounter());
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        cell.getMinion().getOwnBuffs().add(changeHp);
-                    } else {
-                        ChangeHpBuff changeHp = new ChangeHpBuff(6);
-                        changeHp.decrement(cell.getMinion());
-                        changeHp.setTurnCounter(1);
-                        cell.getMinion().getOwnBuffs().add(changeHp);
-                    }
+                    WeaknessBuff weaknessBuff = new WeaknessBuff(6 - cell.getMinion().getHolyCounter(), false);
+                    weaknessBuff.decrementAp(cell.getMinion());
+                    weaknessBuff.setTurnCounter(1);
+                    weaknessBuff.setCasting(weaknessBuff, null, null, cell.getMinion());
+                    cell.getMinion().getOwnBuffs().add(weaknessBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
             }
-            if (cell.getMinion() != null) {
+            if (cell.getHero() != null) {
                 view.printError(ErrorType.INVALID_TARGET);
             }
         }
@@ -1196,6 +1147,12 @@ class Sacrifice extends Spell {
         Sacrifice sacrifice = new Sacrifice(this);
         return sacrifice;
     }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.SACRIFICE.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -1218,19 +1175,20 @@ class KingsGuard extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         ArrayList<Cell> cells = new ArrayList<>();
-        cells.add(rightCell(battle.getMap(),cell));
-        cells.add(upCell(battle.getMap(),cells.get(0)));
-        cells.add(leftCell(battle.getMap(),cells.get(1)));
-        cells.add(leftCell(battle.getMap(),cells.get(2)));
-        cells.add(downCell(battle.getMap(),cells.get(3)));
-        cells.add(downCell(battle.getMap(),cells.get(4)));
-        cells.add(rightCell(battle.getMap(),cells.get(5)));
-        cells.add(rightCell(battle.getMap(),cells.get(6)));
-        for (Cell cell1: cells) {
-            if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())){
+        cells.add(cell.rightCell(battle.getMap()));
+        cells.add(cells.get(0).downCell(battle.getMap()));
+        cells.add(cells.get(1).leftCell(battle.getMap()));
+        cells.add(cells.get(2).leftCell(battle.getMap()));
+        cells.add(cells.get(3).upCell(battle.getMap()));
+        cells.add(cells.get(4).upCell(battle.getMap()));
+        cells.add(cells.get(5).rightCell(battle.getMap()));
+        cells.add(cells.get(6).rightCell(battle.getMap()));
+        for (Cell cell1 : cells) {
+            if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
                 cell1.getMinion().setHp(0);
+                break;
                 //todo goto graveyard
             }
         }
@@ -1240,6 +1198,13 @@ class KingsGuard extends Spell {
         KingsGuard kingsGuard = new KingsGuard(this);
         return kingsGuard;
     }
+
+
+    @Override
+    public String getDesc() {
+        return SpellWork.KINGS_GUARD.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
@@ -1262,7 +1227,7 @@ class Shock extends Spell {
     }
 
     @Override
-    public void castBuff(Battle battle, Cell cell, Account player) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getMinion() == null && cell.getHero() == null) {
             view.printError(ErrorType.INVALID_TARGET);
         } else {
@@ -1271,6 +1236,7 @@ class Shock extends Spell {
                     StunBuff stunBuff = new StunBuff();
                     stunBuff.stun(cell.getHero());
                     stunBuff.setTurnCounter(2);
+                    stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(stunBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -1281,6 +1247,7 @@ class Shock extends Spell {
                     StunBuff stunBuff = new StunBuff();
                     stunBuff.stun(cell.getMinion());
                     stunBuff.setTurnCounter(2);
+                    stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(stunBuff);
                 } else {
                     view.printError(ErrorType.INVALID_TARGET);
@@ -1293,6 +1260,12 @@ class Shock extends Spell {
         Shock shock = new Shock(this);
         return shock;
     }
+
+    @Override
+    public String getDesc() {
+        return SpellWork.SHOCK.getMessage();
+    }
+
 
     @Override
     public String showDetails() {
