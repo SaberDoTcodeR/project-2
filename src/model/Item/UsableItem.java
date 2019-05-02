@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import model.Battles.*;
 import model.Buffs.*;
 import model.Cell;
-import model.ErrorType;
 import model.Menus.Account;
+import view.Request;
 import view.View;
 
 public abstract class UsableItem extends Item {
@@ -39,8 +39,16 @@ public abstract class UsableItem extends Item {
         this.setName(usableItem.getName());
     }
 
-    public abstract void applyEffect(Battle battle, Cell cell, Account player);
+    public abstract void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime);
 
+    /* activeTime:
+     * 0 -> on spawn
+     * 1 -> passive
+     * 2 -> on death
+     * 3 -> on attack
+     * 4 -> on defend
+     * 5 -> combo
+     * */
     public int getCostOfBuy() {
         return costOfBuy;
     }
@@ -58,6 +66,7 @@ public abstract class UsableItem extends Item {
     }
 }
 
+//todo -->
 enum UsableItemWork {
     CROWN_OF_WISDOM("Increase mana in 3 first turns"),
     SHAME_EMBLEM("Active 12 holyBuff in insider force"),
@@ -93,13 +102,14 @@ class CrownOfWisdom extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-        if (battle.getTurn() < 4) {
-            player.incrementMana(1);
-            //todo checking what happen
-        }
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        ManaItemBuff manaItemBuff = new ManaItemBuff(player, 1);
+        manaItemBuff.setTurnCounter(5);
+        manaItemBuff.castBuff();
+        player.getOwnBuffs().add(manaItemBuff);
     }
 
+    @Override
     public UsableItem duplicate() {
         CrownOfWisdom crownOfWisdom = new CrownOfWisdom(this);
         return crownOfWisdom;
@@ -111,7 +121,6 @@ class CrownOfWisdom extends UsableItem {
         details = "Name : " + this.getClass().getSimpleName() +
                 " - Desc: " + UsableItemWork.CROWN_OF_WISDOM.getMessage();
         return details;
-
     }
 }
 
@@ -126,19 +135,17 @@ class ShameEmblem extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-        if (cell.getHero() != null && player.getMainDeck().isContain(cell.getHero())) {
-            for (int i = 0; i < 12; i++) {
-                HolyBuff holyBuff = new HolyBuff();
-                holyBuff.setTurnCounter(1);
-                holyBuff.holy(cell.getHero());
-                cell.getHero().getOwnBuffs().add(holyBuff);
-            }
-        } else {
-            view.printError(ErrorType.INVALID_TARGET);
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        for (int i = 0; i < 12; i++) {
+            HolyBuff holyBuff = new HolyBuff();
+            holyBuff.setCasting(holyBuff, null, player.getMainDeck().getHero(), null);
+            holyBuff.setTurnCounter(-5);
+            holyBuff.castBuff();
+            player.getMainDeck().getHero().getOwnBuffs().add(holyBuff);
         }
     }
 
+    @Override
     public UsableItem duplicate() {
         ShameEmblem shameEmblem = new ShameEmblem(this);
         return shameEmblem;
@@ -150,7 +157,6 @@ class ShameEmblem extends UsableItem {
         details = "Name : " + this.getClass().getSimpleName() +
                 " - Desc: " + UsableItemWork.SHAME_EMBLEM.getMessage();
         return details;
-
     }
 }
 
@@ -165,38 +171,29 @@ class DamolArchery extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         if (player.getMainDeck().getHero().getTypeOfHit().equals("Ranged") ||
                 player.getMainDeck().getHero().getTypeOfHit().equals("Hybrid")) {
-            if (cell.getMinion() == null && cell.getHero() == null) {
-                view.printError(ErrorType.INVALID_TARGET);
-            } else {
+            if (activeTime == 3) {
                 if (cell.getHero() != null) {
-                    if (!player.getMainDeck().isContain(cell.getHero())) {
-                        DisarmBuff disarmBuff = new DisarmBuff();
-                        disarmBuff.setTurnCounter(1);
-                        disarmBuff.disarm(cell.getHero());
-                        cell.getHero().getOwnBuffs().add(disarmBuff);
-                    } else {
-                        view.printError(ErrorType.INVALID_TARGET);
-                    }
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.disarm(cell.getHero());
+                    disarmBuff.setTurnCounter(1);
+                    disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                    cell.getHero().getOwnBuffs().add(disarmBuff);
                 }
                 if (cell.getMinion() != null) {
-                    if (!player.getMainDeck().isContain(cell.getMinion())) {
-                        DisarmBuff disarmBuff = new DisarmBuff();
-                        disarmBuff.setTurnCounter(1);
-                        disarmBuff.disarm(cell.getMinion());
-                        cell.getMinion().getOwnBuffs().add(disarmBuff);
-                    } else {
-                        view.printError(ErrorType.INVALID_TARGET);
-                    }
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.disarm(cell.getMinion());
+                    disarmBuff.setTurnCounter(1);
+                    disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                    cell.getMinion().getOwnBuffs().add(disarmBuff);
                 }
             }
-        } else {
-            view.printError(ErrorType.INVALID_HERO_TYPE_HITTING);
         }
     }
 
+    @Override
     public UsableItem duplicate() {
         DamolArchery damolArchery = new DamolArchery(this);
         return damolArchery;
@@ -222,19 +219,19 @@ class SimorghPlume extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-        if (cell.getHero() != null && !player.getMainDeck().isContain(cell.getHero())) {
-            if (cell.getHero().getTypeOfHit().equals("Ranged") ||
-                    cell.getHero().getTypeOfHit().equals("Hybrid")) {
-                cell.getHero().decrementAp(2);
-            } else {
-                view.printError(ErrorType.FALSE_ITEM_USING);
-            }
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+            if (battle.getSecondPlayer().getMainDeck().getHero().getTypeOfHit().equals("Hybrid") ||
+                    battle.getSecondPlayer().getMainDeck().getHero().getTypeOfHit().equals("Ranged"))
+                battle.getSecondPlayer().getMainDeck().getHero().decrementAp(2);
         } else {
-            view.printError(ErrorType.INVALID_TARGET);
+            if (battle.getFirstPlayer().getMainDeck().getHero().getTypeOfHit().equals("Hybrid") ||
+                    battle.getFirstPlayer().getMainDeck().getHero().getTypeOfHit().equals("Ranged"))
+                battle.getFirstPlayer().getMainDeck().getHero().decrementAp(2);
         }
     }
 
+    @Override
     public UsableItem duplicate() {
         SimorghPlume simorghPlume = new SimorghPlume(this);
         return simorghPlume;
@@ -260,23 +257,42 @@ class TerrorHood extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-        for (ArrayList<Cell> cells : battle.getMap()) {
-            for (Cell cell1 : cells) {
-                if ((cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero()))) {
-                    WeaknessBuff weaknessBuff = new WeaknessBuff(2 - cell.getHero().getHolyCounter(), true);
-                    weaknessBuff.decrementAp(cell.getHero());
-                    weaknessBuff.setTurnCounter(-5);
-                    cell.getHero().getOwnBuffs().add(weaknessBuff);
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 3) {
+            if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+                outer:
+                for (ArrayList<Cell> cells : battle.getMap()) {
+                    for (Cell cell1 : cells) {
+                        if (cell1.getMinion() != null &&
+                                battle.getSecondPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            terrorHoodHelper(cell1);
+                            break outer;
+                        }
+                    }
                 }
-                if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
-                    WeaknessBuff weaknessBuff = new WeaknessBuff(2 - cell.getMinion().getHolyCounter(), true);
-                    weaknessBuff.decrementAp(cell.getMinion());
-                    weaknessBuff.setTurnCounter(-5);
-                    cell.getMinion().getOwnBuffs().add(weaknessBuff);
+                //todo --> kossher zadam behtar she
+            } else {
+                outer:
+                for (ArrayList<Cell> cells : battle.getMap()) {
+                    for (Cell cell1 : cells) {
+                        if (cell1.getMinion() != null &&
+                                battle.getFirstPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            terrorHoodHelper(cell1);
+                            break outer;
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private void terrorHoodHelper(Cell cell1) {
+        int unit = cell1.getMinion().getHolyCounter();
+        WeaknessBuff weaknessBuff = new WeaknessBuff(2 - unit, true);
+        weaknessBuff.setTurnCounter(1);
+        weaknessBuff.setCasting(weaknessBuff, null, null, cell1.getMinion());
+        weaknessBuff.decrementAp(cell1.getMinion());
+        cell1.getMinion().getOwnBuffs().add(weaknessBuff);
     }
 
     public UsableItem duplicate() {
@@ -304,16 +320,17 @@ class KingWisdom extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-        player.incrementMana(1);
-        //todo what should we do?
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        ManaItemBuff manaItemBuff = new ManaItemBuff(player, 1);
+        manaItemBuff.setTurnCounter(-5);
+        manaItemBuff.castBuff();
+        player.getOwnBuffs().add(manaItemBuff);
     }
 
     public UsableItem duplicate() {
         KingWisdom kingWisdom = new KingWisdom(this);
         return kingWisdom;
     }
-
 
     @Override
     public String showDetails() {
@@ -335,8 +352,17 @@ class AssassinationDagger extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 0) {
+            if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+                int unit = battle.getSecondPlayer().getMainDeck().getHero().getHolyCounter();
+                battle.getSecondPlayer().getMainDeck().getHero().decrementHp(1 - unit);
+            }
+            if (battle.getSecondPlayer().getUserName().equals(player.getUserName())) {
+                int unit = battle.getFirstPlayer().getMainDeck().getHero().getHolyCounter();
+                battle.getFirstPlayer().getMainDeck().getHero().decrementHp(1 - unit);
+            }
+        }
     }
 
     public UsableItem duplicate() {
@@ -364,8 +390,41 @@ class PoisonousDagger extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 3) {
+            if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+                outer:
+                for (ArrayList<Cell> cells : battle.getMap()) {
+                    for (Cell cell1 : cells) {
+                        if (cell1.getMinion() != null &&
+                                battle.getSecondPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            poisonousDraggerHelper(cell1);
+                            break outer;
+                        }
+                    }
+                }
+                //todo --> kossher zadam behtar she
+            } else {
+                outer:
+                for (ArrayList<Cell> cells : battle.getMap()) {
+                    for (Cell cell1 : cells) {
+                        if (cell1.getMinion() != null &&
+                                battle.getFirstPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            poisonousDraggerHelper(cell1);
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    private void poisonousDraggerHelper(Cell cell1) {
+        PoisonBuff poisonBuff = new PoisonBuff();
+        poisonBuff.setTurnCounter(1);
+        poisonBuff.poison(cell1.getMinion());
+        poisonBuff.setCasting(poisonBuff, null, null, cell1.getMinion());
+        cell1.getMinion().getOwnBuffs().add(poisonBuff);
     }
 
     public UsableItem duplicate() {
@@ -393,8 +452,23 @@ class ShockHammer extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 3) {
+            if (cell.getHero() != null) {
+                DisarmBuff disarmBuff = new DisarmBuff();
+                disarmBuff.setTurnCounter(1);
+                disarmBuff.disarm(cell.getHero());
+                disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                cell.getHero().getOwnBuffs().add(disarmBuff);
+            }
+            if (cell.getMinion() != null) {
+                DisarmBuff disarmBuff = new DisarmBuff();
+                disarmBuff.setTurnCounter(1);
+                disarmBuff.disarm(cell.getMinion());
+                disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                cell.getMinion().getOwnBuffs().add(disarmBuff);
+            }
+        }
     }
 
     public UsableItem duplicate() {
@@ -421,8 +495,36 @@ class SoulEater extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 2) {
+            PowerBuff powerBuff = new PowerBuff(1, true);
+            outer:
+            for (ArrayList<Cell> cells : battle.getMap()) {
+                for (Cell cell1 : cells) {
+                    if (cell1.getMinion() != null &&
+                            battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+                        if (battle.getFirstPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            soulEaterHelper(powerBuff, cell1);
+                            break outer;
+                        }
+                    }
+                    if (cell1.getMinion() != null &&
+                            battle.getSecondPlayer().getUserName().equals(player.getUserName())) {
+                        if (battle.getSecondPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            soulEaterHelper(powerBuff, cell1);
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    private void soulEaterHelper(PowerBuff powerBuff, Cell cell1) {
+        powerBuff.incrementAp(cell1.getMinion());
+        powerBuff.setTurnCounter(1);
+        powerBuff.setCasting(powerBuff, null, null, cell1.getMinion());
+        cell1.getMinion().getOwnBuffs().add(powerBuff);
     }
 
     public UsableItem duplicate() {
@@ -450,8 +552,16 @@ class Baptism extends UsableItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 0) {
+            if (cell.getMinion() != null) {
+                HolyBuff holyBuff = new HolyBuff();
+                holyBuff.holy(cell.getMinion());
+                holyBuff.setTurnCounter(3);
+                holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
+                cell.getMinion().getOwnBuffs().add(holyBuff);
+            }
+        }
     }
 
     public UsableItem duplicate() {

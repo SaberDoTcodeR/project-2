@@ -10,17 +10,20 @@ public abstract class Battle {
     private Account firstPlayer;
     private Deck firstPlayerDeck;
     private Deck secondPlayerDeck;
-    private Hand firstPlayerHand=new Hand();
-    private Card selectedCard ;
-    private ArrayList<ArrayList<Cell>> map=new ArrayList<>();
-    private int turn=1;
-    private ArrayList<Card> firstPlayerInGameCards=new ArrayList<>();
-    private ArrayList<Card> secondPlayerInGameCards=new ArrayList<>();
+    private boolean isHitting;
+    private boolean isDying;
+    private boolean isComingToMap;
+    private Hand firstPlayerHand = new Hand();
+    private Card selectedCard;
+    private ArrayList<ArrayList<Cell>> map = new ArrayList<>();
+    private int turn = 1;
+    private ArrayList<Card> firstPlayerInGameCards = new ArrayList<>();
+    private ArrayList<Card> secondPlayerInGameCards = new ArrayList<>();
 
-    protected Battle(Account firstPlayer,Deck deck,Deck deck2){
-        this.firstPlayer=firstPlayer;
-        this.firstPlayerDeck=deck;
-        this.secondPlayerDeck=deck2;
+    protected Battle(Account firstPlayer, Deck deck, Deck deck2) {
+        this.firstPlayer = firstPlayer;
+        this.firstPlayerDeck = deck;
+        this.secondPlayerDeck = deck2;
     }
 
     public Card getSelectedCard() {
@@ -28,7 +31,7 @@ public abstract class Battle {
     }
 
     public void setSelectedCard(Card selectedCard) {
-        if(selectedCard.getType().equals("Spell"))
+        if (selectedCard.getType().equals("Spell"))
             return;
         this.selectedCard = selectedCard;
     }
@@ -36,6 +39,7 @@ public abstract class Battle {
     public void addFirstPlayerInGameCards(Card card) {
         this.firstPlayerInGameCards.add(card);
     }
+
     public void addSecondPlayerInGameCards(Card card) {
         this.secondPlayerInGameCards.add(card);
     }
@@ -59,7 +63,9 @@ public abstract class Battle {
     public ArrayList<ArrayList<Cell>> getMap() {
         return map;
     }
+
     public abstract void showDetailedInfo();
+
     public Account getFirstPlayer() {
         return firstPlayer;
     }
@@ -75,8 +81,35 @@ public abstract class Battle {
     public Hand getFirstPlayerHand() {
         return firstPlayerHand;
     }
+
     public abstract boolean isPlayWithAI();
+
     public abstract Account getSecondPlayer();
+
     public abstract Hand getSecondPlayerHand();
+
+    public boolean isDying() {
+        return isDying;
+    }
+
+    public void setDying(boolean dying) {
+        isDying = dying;
+    }
+
+    public boolean isComingToMap() {
+        return isComingToMap;
+    }
+
+    public void setComingToMap(boolean comingToMap) {
+        isComingToMap = comingToMap;
+    }
+
+    public boolean isHitting() {
+        return isHitting;
+    }
+
+    public void setHitting(boolean hitting) {
+        isHitting = hitting;
+    }
 }
 

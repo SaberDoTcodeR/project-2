@@ -1,9 +1,14 @@
 package model.Item;
 
+import model.Battles.Battle;
+import model.Cell;
+import model.Menus.Account;
+import view.Request;
+
 import java.util.ArrayList;
 
-public abstract class CollectableItem extends Item {
-    private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
+public abstract class CollectibleItem extends Item {
+    private static ArrayList<CollectibleItem> collectibleItems = new ArrayList<>();
 
     static {
         new BladesOfAgility();
@@ -17,28 +22,30 @@ public abstract class CollectableItem extends Item {
         new RandomDamage();
     }
 
-    public CollectableItem(String name) {
+    public abstract void applyEffect(Battle battle, Cell cell, Account player, Request request);
+
+    public CollectibleItem(String name) {
         this.setName(name);
-        collectableItems.add(this);
+        collectibleItems.add(this);
     }
 
-    public CollectableItem(CollectableItem collectableItem) {
-        this.setName(collectableItem.getName());
+    public CollectibleItem(CollectibleItem collectibleItem) {
+        this.setName(collectibleItem.getName());
     }
 
-    public static ArrayList<CollectableItem> getCollectableItems() {
-        return collectableItems;
+    public static ArrayList<CollectibleItem> getCollectibleItems() {
+        return collectibleItems;
     }
 
-    public CollectableItem duplicate() {
+    public CollectibleItem duplicate() {
         return null;
     }
 }
 
-enum CollectableItemWork {
+enum CollectibleItemWork {
     DEVASTATION("Increase 6HP a force"),
     DOUBLE_ENTENDRE_ARROW("Increase 2AP of a ranged or hybrid force"),
-    ELEXIR("Increase 3HP and apply 1 powerBuff and add 3AP for minion"),
+    ELIXIR("Increase 3HP and apply 1 powerBuff and add 3AP for minion"),
     MANA_ELECTUARY("Increase mana 3units in the next turn"),
     PERPETUITY_ELECTUARY("Apply 10 holyBuff for insider accident force for 2 turn"),
     DEATH_CURSE("Give a ability to a accident minion that enter 8 hit to a random force that in the nearest distance to it"),
@@ -46,16 +53,18 @@ enum CollectableItemWork {
     BLADES_OF_AGILITY("add 6AP to a random force"),
     CHINESE_SWORD("add 5AP to the melee forces");
     private String effect;
+
     public String getMessage() {
         return effect;
     }
-    CollectableItemWork(String effect) {
+
+    CollectibleItemWork(String effect) {
         this.effect = effect;
     }
 
 }
 
-class Devastation extends CollectableItem {
+class Devastation extends CollectibleItem {
 
     public Devastation() {
         super("Devastation");
@@ -65,7 +74,12 @@ class Devastation extends CollectableItem {
         super(devastation);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         Devastation devastation = new Devastation(this);
         return devastation;
     }
@@ -74,12 +88,12 @@ class Devastation extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEVASTATION.getMessage();
+                " - Desc: " + CollectibleItemWork.DEVASTATION.getMessage();
         return details;
     }
 }
 
-class DoubleEntendreArrow extends CollectableItem {
+class DoubleEntendreArrow extends CollectibleItem {
 
     public DoubleEntendreArrow() {
         super("DoubleEntendreArrow");
@@ -89,7 +103,12 @@ class DoubleEntendreArrow extends CollectableItem {
         super(doubleEntendreArrow);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         DoubleEntendreArrow doubleEntendreArrow = new DoubleEntendreArrow(this);
         return doubleEntendreArrow;
     }
@@ -98,12 +117,12 @@ class DoubleEntendreArrow extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DOUBLE_ENTENDRE_ARROW.getMessage();
+                " - Desc: " + CollectibleItemWork.DOUBLE_ENTENDRE_ARROW.getMessage();
         return details;
     }
 }
 
-class Elexir extends CollectableItem {
+class Elexir extends CollectibleItem {
 
     public Elexir() {
         super("Elexir");
@@ -113,7 +132,12 @@ class Elexir extends CollectableItem {
         super(elexir);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         Elexir elexir = new Elexir(this);
         return elexir;
     }
@@ -122,12 +146,12 @@ class Elexir extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.ELEXIR.getMessage();
+                " - Desc: " + CollectibleItemWork.ELIXIR.getMessage();
         return details;
     }
 }
 
-class ManaElectuary extends CollectableItem {
+class ManaElectuary extends CollectibleItem {
 
     public ManaElectuary() {
         super("ManaElectuary");
@@ -137,7 +161,12 @@ class ManaElectuary extends CollectableItem {
         super(manaElectuary);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         ManaElectuary manaElectuary = new ManaElectuary(this);
         return manaElectuary;
     }
@@ -146,12 +175,12 @@ class ManaElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.MANA_ELECTUARY.getMessage();
+                " - Desc: " + CollectibleItemWork.MANA_ELECTUARY.getMessage();
         return details;
     }
 }
 
-class PerpetuityElectuary extends CollectableItem {
+class PerpetuityElectuary extends CollectibleItem {
 
     public PerpetuityElectuary() {
         super("PerpetuityElectuary");
@@ -161,7 +190,12 @@ class PerpetuityElectuary extends CollectableItem {
         super(perpetuityElectuary);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         PerpetuityElectuary perpetuityElectuary = new PerpetuityElectuary(this);
         return perpetuityElectuary;
     }
@@ -170,12 +204,12 @@ class PerpetuityElectuary extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.PERPETUITY_ELECTUARY.getMessage();
+                " - Desc: " + CollectibleItemWork.PERPETUITY_ELECTUARY.getMessage();
         return details;
     }
 }
 
-class DeathCurse extends CollectableItem {
+class DeathCurse extends CollectibleItem {
 
     public DeathCurse() {
         super("DeathCurse");
@@ -185,7 +219,12 @@ class DeathCurse extends CollectableItem {
         super(deathCurse);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         DeathCurse deathCurse = new DeathCurse(this);
         return deathCurse;
     }
@@ -194,12 +233,12 @@ class DeathCurse extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.DEATH_CURSE.getMessage();
+                " - Desc: " + CollectibleItemWork.DEATH_CURSE.getMessage();
         return details;
     }
 }
 
-class RandomDamage extends CollectableItem {
+class RandomDamage extends CollectibleItem {
 
     public RandomDamage() {
         super("RandomDamage");
@@ -209,7 +248,12 @@ class RandomDamage extends CollectableItem {
         super(randomDamage);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         RandomDamage randomDamage = new RandomDamage(this);
         return randomDamage;
     }
@@ -218,12 +262,12 @@ class RandomDamage extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.RANDOM_DAMAGE.getMessage();
+                " - Desc: " + CollectibleItemWork.RANDOM_DAMAGE.getMessage();
         return details;
     }
 }
 
-class BladesOfAgility extends CollectableItem {
+class BladesOfAgility extends CollectibleItem {
 
     public BladesOfAgility() {
         super("BladesOfAgility");
@@ -233,7 +277,12 @@ class BladesOfAgility extends CollectableItem {
         super(bladesOfAgility);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         BladesOfAgility bladesOfAgility = new BladesOfAgility(this);
         return bladesOfAgility;
     }
@@ -242,12 +291,12 @@ class BladesOfAgility extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.BLADES_OF_AGILITY.getMessage();
+                " - Desc: " + CollectibleItemWork.BLADES_OF_AGILITY.getMessage();
         return details;
     }
 }
 
-class ChineseSword extends CollectableItem {
+class ChineseSword extends CollectibleItem {
 
     public ChineseSword() {
         super("chineseSword");
@@ -257,7 +306,12 @@ class ChineseSword extends CollectableItem {
         super(chineseSword);
     }
 
-    public CollectableItem duplicate() {
+    @Override
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+
+    }
+
+    public CollectibleItem duplicate() {
         ChineseSword chineseSword = new ChineseSword(this);
         return chineseSword;
     }
@@ -266,7 +320,7 @@ class ChineseSword extends CollectableItem {
     public String showDetails() {
         String details;
         details = "Name : " + this.getClass().getSimpleName() +
-                " - Desc: " + CollectableItemWork.CHINESE_SWORD.getMessage();
+                " - Desc: " + CollectibleItemWork.CHINESE_SWORD.getMessage();
         return details;
     }
 }

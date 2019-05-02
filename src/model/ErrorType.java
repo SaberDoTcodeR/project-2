@@ -2,6 +2,7 @@ package model;
 
 
 public enum ErrorType {
+    INVALID_HERO_TYPE_OF_HIT("Hero's hitting is not a kind of melee or hybrid"),
     SELECT_HERO_OR_MINION("selcet hero or minion."),
     NO_CARD_SELECTED("No Card been selected"),
     FALSE_ITEM_USING("Item can not be applied because of typ of hero's hitting"),

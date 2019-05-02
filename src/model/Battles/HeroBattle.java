@@ -2,7 +2,7 @@ package model.Battles;
 
 import model.Cell;
 import model.Hand;
-import model.Item.CollectableItem;
+import model.Item.CollectibleItem;
 import model.Menus.Account;
 import model.Deck;
 import view.View;
@@ -25,7 +25,7 @@ public class HeroBattle extends Battle {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (random.nextInt(100) < 0)
-                    getMap().get(i).add(new Cell(i, j, false, random.nextInt(CollectableItem.getCollectableItems().size())));
+                    getMap().get(i).add(new Cell(i, j, false, random.nextInt(CollectibleItem.getCollectibleItems().size())));
                 else
                     getMap().get(i).add(new Cell(i, j, false, -1));
                 if(i==2&&j==0)

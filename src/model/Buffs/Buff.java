@@ -11,12 +11,12 @@ public abstract class Buff {
     private static ArrayList<String> positiveBuffs = new ArrayList<>();
     private static ArrayList<String> negativeBuffs = new ArrayList<>();
 
-    public static ArrayList<String> getPositiveBuffs(){
+    public static ArrayList<String> getPositiveBuffs() {
         return positiveBuffs;
     }
 
 
-    public static ArrayList<String> getNegativeBuffs(){
+    public static ArrayList<String> getNegativeBuffs() {
         return negativeBuffs;
     }
 
