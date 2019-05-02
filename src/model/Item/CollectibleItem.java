@@ -1,6 +1,8 @@
 package model.Item;
 
 import model.Battles.Battle;
+import model.Buffs.HolyBuff;
+import model.Buffs.PowerBuff;
 import model.Cell;
 import model.Menus.Account;
 import view.Request;
@@ -22,7 +24,7 @@ public abstract class CollectibleItem extends Item {
         new RandomDamage();
     }
 
-    public abstract void applyEffect(Battle battle, Cell cell, Account player, Request request);
+    public abstract void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime);
 
     public CollectibleItem(String name) {
         this.setName(name);
@@ -75,8 +77,13 @@ class Devastation extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getMinion() != null) {
+            cell.getMinion().incrementHp(6);
+        }
+        if (cell.getHero() != null) {
+            cell.getHero().incrementHp(6);
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -104,8 +111,17 @@ class DoubleEntendreArrow extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getMinion() != null) {
+            if (cell.getMinion().getTypeOfHit().equals("Hybrid") ||
+                    cell.getMinion().getTypeOfHit().equals("Ranged"))
+                cell.getMinion().incrementHp(2);
+        }
+        if (cell.getHero() != null) {
+            if (cell.getHero().getTypeOfHit().equals("Hybrid") ||
+                    cell.getHero().getTypeOfHit().equals("Ranged"))
+                cell.getHero().incrementHp(6);
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -133,8 +149,31 @@ class Elexir extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getMinion() != null) {
+            elexirHelper(cell);
+        } else {
+            for (ArrayList<Cell> cells : battle.getMap()) {
+                for (Cell cell1 : cells) {
+                    if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
+                        if (cell1.getMinion() != null && battle.getFirstPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            elexirHelper(cell1);
+                        }
+                    } else {
+                        if (cell1.getMinion() != null && battle.getSecondPlayer().getMainDeck().isContain(cell1.getMinion())) {
+                            elexirHelper(cell1);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
+    private void elexirHelper(Cell cell1) {
+        cell1.getMinion().incrementAp(3);
+        PowerBuff powerBuff = new PowerBuff(3, true);
+        powerBuff.setCasting(powerBuff, null, null, cell1.getMinion());
+        powerBuff.setTurnCounter(1);
     }
 
     public CollectibleItem duplicate() {
@@ -162,8 +201,8 @@ class ManaElectuary extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        //todo .........
     }
 
     public CollectibleItem duplicate() {
@@ -191,8 +230,25 @@ class PerpetuityElectuary extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getHero() != null) {
+            for (int i = 0; i < 10; i++) {
+                HolyBuff holyBuff = new HolyBuff();
+                holyBuff.setCasting(holyBuff, null, cell.getHero(), null);
+                holyBuff.setTurnCounter(2);
+                holyBuff.castBuff();
+                player.getMainDeck().getHero().getOwnBuffs().add(holyBuff);
+            }
+        }
+        if (cell.getMinion() != null) {
+            for (int i = 0; i < 10; i++) {
+                HolyBuff holyBuff = new HolyBuff();
+                holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
+                holyBuff.setTurnCounter(2);
+                holyBuff.castBuff();
+                player.getMainDeck().getHero().getOwnBuffs().add(holyBuff);
+            }
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -220,8 +276,20 @@ class DeathCurse extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if (cell1.getMinion() != null) {
+                    if (activeTime == 2) {
+                        Cell cell2 = nearestEnemyForces(cell);
+                        if (cell2.getHero() != null)
+                            cell2.getHero().decrementHp(8 - cell2.getHero().getHolyCounter());
+                        if (cell2.getMinion() != null)
+                            cell2.getMinion().decrementHp(8 - cell2.getHero().getHolyCounter());
+                    }
+                }
+            }
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -249,8 +317,12 @@ class RandomDamage extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getMinion() != null)
+            cell.getMinion().incrementAp(2);
+        if (cell.getHero() != null) {
+            cell.getHero().incrementAp(2);
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -278,8 +350,13 @@ class BladesOfAgility extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (cell.getMinion() != null) {
+            cell.getMinion().incrementAp(6);
+        }
+        if (cell.getHero() != null) {
+            cell.getHero().incrementAp(6);
+        }
     }
 
     public CollectibleItem duplicate() {
@@ -307,8 +384,21 @@ class ChineseSword extends CollectibleItem {
     }
 
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request) {
-
+    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        for (ArrayList<Cell> cells : battle.getMap()) {
+            for (Cell cell1 : cells) {
+                if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
+                    if (cell1.getMinion().getTypeOfHit().equals("Melee")) {
+                        cell1.getMinion().incrementAp(5);
+                    }
+                }
+                if (cell1.getHero() != null && player.getMainDeck().isContain(cell1.getHero())) {
+                    if (cell1.getHero().getTypeOfHit().equals("Melee")) {
+                        cell1.getMinion().incrementAp(5);
+                    }
+                }
+            }
+        }
     }
 
     public CollectibleItem duplicate() {
