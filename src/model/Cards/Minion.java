@@ -267,16 +267,16 @@ enum SpecialPower {
             " hero with 6 units hit."),
 
 
-    WHITE_BOGEY("Take a power buff that increase hit power of itself " +
-            "4 units forever."),
-    SIMURGH("Stun all enemy forces for one turn."),
-    DRAGON("Disarm one person."),
-    RAKHSH("Stun one of the enemy forces for one turn."),
-    ZAHHAK("Poison the enemy in time of hitting for 3 turns ."),
-    KAVEH("Make a cell holy for 3 turns."),
-    ARASH("Hit all enemy forces in itself row with 4 units hit."),
-    LEGEND("Dispel one of the enemy forces."),
-    ESFANDYAR("Has 3 holy buff in continuous mode.");
+    WHITE_BOGEY("Take a power buff that increase hit power of itself" +
+            "4 units forever." + " - CoolDown Time : 2"),
+    SIMURGH("Stun all enemy forces for one turn." + " - CoolDown Time : 8"),
+    DRAGON("Disarm one person." + " - CoolDown Time : 1"),
+    RAKHSH("Stun one of the enemy forces for one turn." + " - CoolDown Time : 2"),
+    ZAHHAK("Poison the enemy in time of hitting for 3 turns." + " - CoolDown Time : -."),
+    KAVEH("Make a cell holy for 3 turns." + " - CoolDown Time : 3"),
+    ARASH("Hit all enemy forces in itself row with 4 units hit." + " - CoolDown Time : 2"),
+    LEGEND("Dispel one of the enemy forces." + " - CoolDown Time : 2"),
+    ESFANDYAR("Has 3 holy buff in continuous mode." + " - CoolDown Time : -.");
     private String effect;
 
     public String getMessage() {

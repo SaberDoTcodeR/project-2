@@ -60,7 +60,6 @@ public abstract class Hero extends Card {
         this.ap = hero.ap;
         this.hp = hero.hp;
         this.mp = hero.mp;
-        //this.specialPower = hero.specialPower;
     }
 
     public void setCoolDownTime(int coolDownTime) {
@@ -641,7 +640,7 @@ class Rostam extends Hero {
     @Override
     public String showDetails() {
         String details = "Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - Class : " + this.getTypeOfHit() + " – Special power : - ";
+                + " - Class : " + this.getTypeOfHit() + " – Special power : -. - CoolDown Time : -.";
         return details;
     }
 
@@ -651,6 +650,6 @@ class Rostam extends Hero {
     }
 
     public String getDesc() {
-        return "Nothing";
+        return "Nothing" + " - CoolDown Time : -.";
     }
 }
