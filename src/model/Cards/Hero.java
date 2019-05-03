@@ -588,6 +588,13 @@ class Esfandyar extends Hero {
 
     public Hero duplicate() {
         Esfandyar esfandyar = new Esfandyar(this);
+        for (int i = 0; i < 3; i++) {
+            HolyBuff holyBuff = new HolyBuff();
+            holyBuff.setTurnCounter(-4);
+            holyBuff.holy(esfandyar);
+            holyBuff.setCasting(holyBuff, null, esfandyar, null);
+            esfandyar.getOwnBuffs().add(holyBuff);
+        }
         return esfandyar;
     }
 
@@ -600,21 +607,7 @@ class Esfandyar extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (cell.getMinion() != null) {
-            for (int i = 0; i < 3; i++) {
-                HolyBuff holyBuff = new HolyBuff();
-                holyBuff.setTurnCounter(-4);
-                holyBuff.holy(cell.getMinion());
-                this.getOwnBuffs().add(holyBuff);
-            }
-        } else if (cell.getHero() != null) {
-            for (int i = 0; i < 3; i++) {
-                HolyBuff holyBuff = new HolyBuff();
-                holyBuff.setTurnCounter(-4);
-                holyBuff.holy(cell.getHero());
-                this.getOwnBuffs().add(holyBuff);
-            }
-        } else request.setError(ErrorType.EMPTY_CELL);
+        //Its Special Power was set before
     }
 
     public String getDesc() {
@@ -646,7 +639,7 @@ class Rostam extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        //doesn't have any special power :)
+        request.setError(ErrorType.DONT_HAVE_SPECIAL_POWER);
     }
 
     public String getDesc() {

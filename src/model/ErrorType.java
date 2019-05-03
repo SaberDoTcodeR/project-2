@@ -35,7 +35,8 @@ public enum ErrorType {
     CARD_NOT_FOUND_IN_SHOP("This Card doesn't exist"),
     EMPTY_CELL("This cell is empty"),
     SELF_HARM("Hitting own forces"),
-    DIDNT_PASS_ENOUGH_TIME("More time should be passed to complete hero's cool down time");
+    DIDNT_PASS_ENOUGH_TIME("More time should be passed to complete hero's cool down time"),
+    DONT_HAVE_SPECIAL_POWER("This Hero doesn't have any special power");
     private String message;
 
     public String getMessage() {
