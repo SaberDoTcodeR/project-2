@@ -2,6 +2,8 @@ package model;
 
 
 public enum ErrorType {
+    HERO_IS_IN_COOLDOWN("Hero is in cool down"),
+    ONLY_HEROES_HAVE_SPECIAL_POWER("Only Heroes are able to Use Special power"),
     CANNOT_COMBO_ATTACK("Can not attack combo"),
     CARD_IS_STUNNED("Card is Stunned"),
     TOO_EXHAUSTED("Too exhausted "),

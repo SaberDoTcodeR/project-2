@@ -177,6 +177,14 @@ public class View {
         System.out.println(helpstr);
     }
 
+    public void showGraveYardMenu() {
+        String helpstr = "1 : show info [cardId]\n" +
+                "2 : show cards\n" +
+                "3 : exit";
+        System.out.println(helpstr);
+
+    }
+
     public void showDetailedInfoHeroMode(Battle battle) {
         System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + battle.getFirstPlayerDeck().getHero().getHp());
         System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP : " + battle.getSecondPlayerDeck().getHero().getHp());
@@ -220,6 +228,19 @@ public class View {
                     }
 
                 }
+                else if  (whichPlayer == 2 && battle.getMap().get(i).get(j).getHero() != null) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                        printHeroInfo(battle, i, j);
+
+                    }
+
+                }
+                else if  (whichPlayer == 1 && battle.getMap().get(i).get(j).getHero() != null) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                        printHeroInfo(battle, i, j);
+                    }
+
+                }
             }
         }
     }
@@ -229,7 +250,11 @@ public class View {
         System.out.print("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
                 battle.getMap().get(i).get(j).getMinion().getAp());
     }
-
+    public void printHeroInfo(Battle battle, int i, int j) {
+        System.out.print(battle.getMap().get(i).get(j).getHero().getCardId() + " : " + battle.getMap().get(i).get(j).getHero().getName() + ", ");
+        System.out.println("health : " + battle.getMap().get(i).get(j).getHero().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
+                battle.getMap().get(i).get(j).getHero().getAp());
+    }
     public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +

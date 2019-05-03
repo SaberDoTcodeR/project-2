@@ -77,8 +77,16 @@ public abstract class Hero extends Card {
         this.coolDownTime = coolDownTime;
     }
 
+    public int getCoolDownTime() {
+        return coolDownTime;
+    }
+
     public void setMp(int mp) {
         this.mp = mp;
+    }
+
+    public int getMp() {
+        return mp;
     }
 
     public void setHp(int hp) {

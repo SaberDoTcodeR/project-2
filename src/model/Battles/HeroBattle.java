@@ -29,9 +29,14 @@ public class HeroBattle extends Battle {
                 else
                     getMap().get(i).add(new Cell(i, j, false, -1));
                 if(i==2&&j==0)
+                {
                     getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(),0);
+
+                }
                 if(i==2&&j==8)
-                    getMap().get(2).get(0).setHero(getSecondPlayerDeck().getHero().duplicate(),1);
+                {
+                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(),1);
+                }
 
             }
         }
@@ -42,6 +47,9 @@ public class HeroBattle extends Battle {
         this.playWithAI = true;
         Account account=new Account(1);
         this.secondPlayer=account;
+
+       /* this.getMap().get(2).get(0).setHero(opponentDeck.getHero(),1);
+        this.getMap().get(2).get(0).setHero(myDeck.getHero(),0);*/
     }
 
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2) {

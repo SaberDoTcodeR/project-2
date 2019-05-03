@@ -20,7 +20,10 @@ public class GameControl {
         ArrayList<Account> players = new ArrayList<>();
         players.add(battle.getSecondPlayer());
         players.add(battle.getFirstPlayer());
-
+        battle.getMap().get(2).get(0).getHero().cardIdGenerator(battle);
+        battle.increamentTurn();
+        battle.getMap().get(2).get(8).getHero().cardIdGenerator(battle);
+        battle.decreamentTurn();
         while (!finished) {
             battle.getFirstPlayerHand().fillHand(battle, 0);
             battle.getSecondPlayerHand().fillHand(battle, 1);
@@ -38,14 +41,9 @@ public class GameControl {
                 request.getNewCommand();
                 request.setBattle(battle);
                 Command command = request.getMatchedCommand(1);
-                if (command != null && !command.equals("help")) {
+                if (command != null) {
                     command.apply(request);
                     view.printError(request.getError());
-                } else if (command != null && command.equals("end turn")) {
-                    battle.increamentTurn();
-                    break;
-                } else if (command != null && command.equals("help")) {
-                    ////todo list of possible action
                 } else {
                     view.printError(ErrorType.COMMAND);
                 }
@@ -53,3 +51,4 @@ public class GameControl {
         }
     }
 }
+

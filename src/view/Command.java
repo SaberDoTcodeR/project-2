@@ -269,6 +269,47 @@ class Help extends Command {
     }
 }
 
+class HelpInBattle extends Command {
+
+    HelpInBattle() {
+        super(CommandRegex.HELP);
+    }
+
+    @Override
+    public void apply(Request request) {
+        System.out.println("Moves Can be performed:");
+        ArrayList<Card> cards;
+        ArrayList<Card> handCards;
+        int mana;
+        if (request.getBattle().getTurn() % 2 == 1) {
+            cards = request.getBattle().getFirstPlayerInGameCards();
+            handCards = request.getBattle().getFirstPlayerHand().getCards();
+            mana = request.getBattle().getFirstPlayer().getMana();
+        } else {
+            cards = request.getBattle().getSecondPlayerInGameCards();
+            handCards = request.getBattle().getSecondPlayerHand().getCards();
+            mana = request.getBattle().getSecondPlayer().getMana();
+        }
+        for (Card card : cards) {
+            if (card.getRemainedMoves() > 0)
+                System.out.println(card.getCardId() + " can do " + card.getRemainedMoves() + " distance moves.");
+        }
+        System.out.println("Attacks Can be performed:");
+        for (Card card : cards) {
+            if (card.getCanAttack() && ((card.getType().equals("Minion") && !((Minion) card).isStunning()) || (card.getType().equals("Hero")
+                    && !((Hero) card).isStunning())))
+                System.out.println(card.getCardId() + " can do Attack");
+        }
+        System.out.println("Cards Can be put in game:");
+        for (Card card : handCards) {
+            if ((card.getType().equals("Minion") && mana >= ((Minion) card).getCostToUse()) || (card.getType().equals("Spell")
+                    && mana >= ((Spell) card).getCostToUse())) {
+                System.out.println(card.getName() + " can be bought.");
+            }
+        }
+    }
+}
+
 class ExitFromSubMenu extends Command {
 
     ExitFromSubMenu() {
@@ -576,7 +617,9 @@ class ShowMyMinions extends Command {
         view.showMinions(request.getBattle(), false);
 
     }
+
 }
+
 
 class ShowOppMinoins extends Command {
     ShowOppMinoins() {
@@ -784,7 +827,11 @@ class Attack extends Command {
             card = request.getBattle().getCard(oppCardId, 1);
         else
             card = request.getBattle().getCard(oppCardId, 0);
-        request.getBattle().getSelectedCard().attack(request.getBattle(), card, request);
+        if (card == null) {
+            request.getBattle().getSelectedCard().attack(request.getBattle(), card, request);
+            //todo
+
+        }
     }
 }
 
@@ -796,8 +843,10 @@ class ComboAttack extends Command {
     @Override
     public void apply(Request request) {
         int x = matcher.groupCount();
-        if (request.getBattle().getSelectedCard() != null)
+        if (request.getBattle().getSelectedCard() == null) {
             request.setError(ErrorType.NO_CARD_SELECTED);
+            return;
+        }
         if (request.getBattle().getSelectedCard().getType().equals("Hero")) {
             request.setError(ErrorType.CANNOT_COMBO_ATTACK);
             return;
@@ -805,17 +854,143 @@ class ComboAttack extends Command {
             request.setError(ErrorType.CANNOT_COMBO_ATTACK);
             return;
         }
-        String[] cardId = new String[x];
+        String cardId;
+        ArrayList<Minion> cards = new ArrayList<>();
+        cards.add((Minion) request.getBattle().getSelectedCard());
+        Card oppCard = null;
         for (int i = 1; i < x; i++) {
-            cardId[i] = matcher.group(i).trim();
+            cardId = matcher.group(i).trim();
+            Card card = null;
+            if (i == 1)
+                oppCard = request.getBattle().getCard(cardId, (request.getBattle().getTurn()) % 2);
+            else
+                card = request.getBattle().getCard(cardId, (request.getBattle().getTurn() - 1) % 2);
+
             if (i != 1) {
-                if (((Minion) request.getBattle().getSelectedCard()).getTimeOfActivationOfSpecialPower() != 2) {
+                if (card.getType().equals("Hero") || ((Minion) card).getTimeOfActivationOfSpecialPower() != 2) {
                     request.setError(ErrorType.CANNOT_COMBO_ATTACK);
+                    return;
+                }
+                cards.add((Minion) card);
+            }
+        }
+        request.getBattle().ComboAttack(oppCard, cards, request);
+
+    }
+}
+
+class UseSpecialPower extends Command {
+    UseSpecialPower() {
+        super(CommandRegex.SPECIAL_POWER);
+    }
+
+    @Override
+    public void apply(Request request) {
+        if (request.getBattle().getSelectedCard() == null) {
+            request.setError(ErrorType.NO_CARD_SELECTED);
+            return;
+        }
+        if (!request.getBattle().getSelectedCard().getType().equals("Hero")) {
+            request.setError(ErrorType.ONLY_HEROES_HAVE_SPECIAL_POWER);
+            return;
+        }
+        int xPos = Integer.parseInt(matcher.group(1).trim());
+        int yPos = Integer.parseInt(matcher.group(2).trim());
+        if (((Hero) request.getBattle().getSelectedCard()).getCoolDownTime() > 0) {
+            request.setError(ErrorType.HERO_IS_IN_COOLDOWN);
+            return;
+        }
+        if (request.getBattle().getTurn() % 2 == 1) {
+            if (request.getBattle().getFirstPlayer().getMana() < ((Hero) request.getBattle().getSelectedCard()).getMp()) {
+                request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                return;
+            }
+        } else {
+            if (request.getBattle().getSecondPlayer().getMana() < ((Hero) request.getBattle().getSelectedCard()).getMp()) {
+                request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                return;
+            }
+        }
+        ((Hero) request.getBattle().getSelectedCard()).castSpecialPower();
+        //change mana of player
+        //set cool down time
+        //todo check with amin
+
+    }
+}
+
+class ShowNextCard extends Command {
+    ShowNextCard() {
+        super(CommandRegex.SHOW_NEXT_CARD);
+    }
+
+    @Override
+    public void apply(Request request) {
+        if (request.getBattle().getTurn() % 2 == 1)
+            System.out.println(request.getBattle().getFirstPlayerHand().getNextCardInHand().showDetails());
+        else
+            System.out.println(request.getBattle().getSecondPlayerHand().getNextCardInHand().showDetails());
+    }
+}
+
+class EnterGraveYard extends Command {
+    EnterGraveYard() {
+        super(CommandRegex.ENTER_GRAVE_YARD);
+    }
+
+    @Override
+    public void apply(Request request) {
+        if (request.getBattle().getTurn() % 2 == 1) {
+            GraveYard graveYard = new GraveYard();
+            graveYard.main(request.getBattle());
+        } else
+            System.out.println(request.getBattle().getSecondPlayerHand().getNextCardInHand().showDetails());
+    }
+}
+
+class ShowCardInfoInGrave extends Command {
+    ShowCardInfoInGrave() {
+        super(CommandRegex.SHOW_CARD_INFO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String cardId = matcher.group(1).trim();
+        if (request.getBattle().getTurn() % 2 == 1) {
+            for (Card card : request.getBattle().getFirstGrave()) {
+                if (card.getCardId().equals(cardId)) {
+                    System.out.println(card.showDetails());
+                    return;
+                }
+            }
+        } else {
+            for (Card card : request.getBattle().getSecondGrave()) {
+                if (card.getCardId().equals(cardId)) {
+                    System.out.println(card.showDetails());
                     return;
                 }
             }
         }
-        
+        request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
     }
 }
 
+class ShowCardsInGrave extends Command {
+    ShowCardsInGrave() {
+        super(CommandRegex.SHOW_CARDS);
+    }
+
+    @Override
+    public void apply(Request request) {
+        if (request.getBattle().getTurn() % 2 == 1) {
+            for (Card card : request.getBattle().getFirstGrave()) {
+                System.out.println(card.showDetails());
+            }
+        } else {
+            for (Card card : request.getBattle().getSecondGrave()) {
+                System.out.println(card.showDetails());
+            }
+        }
+
+    }
+}

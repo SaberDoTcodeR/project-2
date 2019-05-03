@@ -43,30 +43,73 @@ public abstract class Card {
             request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
             return;
         }
-        if (((Minion) this).isStunning()) {
+
+        if ((this.getType().equals("Minion") && ((Minion) this).isStunning()) ||
+                (this.getType().equals("Hero") && ((Hero) this).isStunning())) {
             request.setError(ErrorType.CARD_IS_STUNNED);
         }
-        if (((Minion) this).getTypeOfRange() == 0 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
-                battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= 2) {
-            ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
-            if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack()) {
-                card.counterAttack(battle, this);
+        int x = 0;
+        if (this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 1) {
+            x = ((Minion) this).getRange();
+        } else if (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 1) {
+            x = ((Hero) this).getRange();
+        }
+        if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 0) ||
+                (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 0) && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
+                        battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= 2) {
+            if (card.getType().equals("Hero") && this.getType().equals("Hero")) {
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp());
+                if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
+            } else if (card.getType().equals("Hero") && this.getType().equals("Minion"))
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+            else if (card.getType().equals("Minion") && this.getType().equals("Minion"))
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp());
+            else {
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp());
+                if (!((Minion) card).isStunning() && ((Minion) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
             }
-        } else if (((Minion) this).getTypeOfRange() == 1 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
+
+
+        } else if (x != 0 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
                 battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) > 2 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
-                battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= ((Minion) this).getRange()) {
-            ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
-            if (!(((Hero) card).isStunning() || !((Hero) card).isStunning())) {
-                card.counterAttack(battle, this);
+                battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= x) {
+            if (card.getType().equals("Hero") && this.getType().equals("Hero")) {
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp());
+                if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
+            } else if (card.getType().equals("Hero") && this.getType().equals("Minion"))
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+            else if (card.getType().equals("Minion") && this.getType().equals("Minion"))
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp());
+            else {
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp());
+                if (!((Minion) card).isStunning() && ((Minion) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
             }
-        } else if (((Minion) this).getTypeOfRange() == 2) {
-            ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
-            if (!(((Hero) card).isStunning() || !((Hero) card).isStunning())) {
-                card.counterAttack(battle, this);
+        } else if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 2) || (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 2)) {
+            if (card.getType().equals("Hero") && this.getType().equals("Hero")) {
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp());
+                if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
+            } else if (card.getType().equals("Hero") && this.getType().equals("Minion"))
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+            else if (card.getType().equals("Minion") && this.getType().equals("Minion"))
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp());
+            else {
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp());
+                if (!((Minion) card).isStunning() && ((Minion) card).isCounterAttack()) {
+                    card.counterAttack(battle, this);
+                }
             }
         }
         card.deadChecker(battle);
-        ((Minion) this).setCounterAttack(false);
         this.deadChecker(battle);
         this.setRemainedMoves(0);
         this.setCanAttack(false);
@@ -88,17 +131,39 @@ public abstract class Card {
 
     public void counterAttack(Battle battle, Card card) {
         Cell cell = battle.getMap().get(0).get(0).getCellOfCard(card, battle);
-
-        if (cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
+        int y = 0;
+        if (this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 1) {
+            y = ((Minion) this).getRange();
+        } else if (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 1) {
+            y = ((Hero) this).getRange();
+        }
+        if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 0) ||
+                (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 0)&&cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
                 battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= 2) {
             ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
 
-        } else if (((Minion) this).getTypeOfRange() == 1 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
+        } else if (y != 0 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
                 battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) > 2 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(card, battle).getX(),
-                battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= ((Minion) this).getRange()) {
-            ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
-        } else if (((Minion) this).getTypeOfRange() == 2) {
-            ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+                battle.getMap().get(0).get(0).getCellOfCard(card, battle).getY()) <= y) {
+            if (card.getType().equals("Hero") && this.getType().equals("Hero")) {
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp());
+            } else if (card.getType().equals("Hero") && this.getType().equals("Minion"))
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+            else if (card.getType().equals("Minion") && this.getType().equals("Minion"))
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp());
+            else {
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp());
+            }
+        } else if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 2) || (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 2)) {
+            if (card.getType().equals("Hero") && this.getType().equals("Hero")) {
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp());
+            } else if (card.getType().equals("Hero") && this.getType().equals("Minion"))
+                ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp());
+            else if (card.getType().equals("Minion") && this.getType().equals("Minion"))
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp());
+            else {
+                ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp());
+            }
         }
     }
 
@@ -171,7 +236,7 @@ public abstract class Card {
             playerName = battle.getSecondPlayer().getUserName();
         }
 
-        int count = 0;
+        int count = 1;
         for (Card card : cards) {
             if (card.getName().equals(this.name)) {
                 count++;

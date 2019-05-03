@@ -1,6 +1,10 @@
 package model;
 
 public enum CommandRegex {
+    SHOW_CARDS("^show cards$"),
+    ENTER_GRAVE_YARD("^enter graveyard$"),
+    SHOW_NEXT_CARD("^show next card$"),
+    SPECIAL_POWER("^use special power \\(([1-5]),([1-9])\\)$"),
     ATTACK_COMBO("^attack combo\\s+((\\w+)?\\s)+$"),//todo check
     ATTACK("^attack\\s+(\\w+)$"),
     INSERT_CARD("^insert\\s+(\\w+)\\s+in\\s+\\(([1-5]),([1-9])\\)$"),

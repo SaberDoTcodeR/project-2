@@ -15,12 +15,12 @@ public class CollectionControl {
             request.getNewCommand();
             Command command = request.getMatchedCommand(2);
 
-            if (command != null && !request.getCommand().equals("help")) {
+            if (command != null && !request.getCommand().equals("help") ) {
                 command.apply(request);
                 view.printError(request.getError());
             } else if (command != null && request.getCommand().equals("help")) {
                 view.showCollectionMenu();
-            } else {
+            }  else {
                 view.printError(ErrorType.COMMAND);
             }
         }
