@@ -6,7 +6,6 @@ import model.Cell;
 import model.Deck;
 import model.ErrorType;
 import view.Request;
-import model.Battles.Battle;
 import model.Buffs.Buff;
 
 import java.util.ArrayList;
@@ -66,6 +65,7 @@ public abstract class Minion extends Card {
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
+    private int numberOfAttacks = 0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
@@ -224,12 +224,20 @@ public abstract class Minion extends Card {
         return null;
     }
 
-    public abstract void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request);
+    public abstract void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime);
 
+    public int getNumberOfAttacks() {
+        return numberOfAttacks;
+    }
+
+    public void increaseNumberOfAttacks() {
+        this.numberOfAttacks++;
+    }
 }
 
 enum SpecialPower {
     PERSIAN_SWORDSMAN("During attack make power stun for this turn."),
+    PERSIAN_GLADIATOR(" Hit the enemy force with 5 more units hit than the number of its attacks in game."),
     TURANIAN_SPY("Disarm enemy force for one turn and poison it for 4 turns."),
     EAGLE("Has a power buff with 10 units increasing health."),
     ONE_EYE_GIANT("Hit minions in 8 cells around it " +
@@ -312,8 +320,8 @@ class PersianArcher extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
-        //Doesn't have any special power
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
+        //nothing
     }
 
     public String getDesc() {
@@ -345,8 +353,20 @@ class PersianSwordsman extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
-
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
+        if (activeTime == 3) {
+            StunBuff stunBuff = new StunBuff();
+            stunBuff.setTurnCounter(0);
+            if (cell.getHero() != null) {
+                stunBuff.stun(cell.getHero());
+                stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
+                cell.getHero().getOwnBuffs().add(stunBuff);
+            } else if (cell.getMinion() != null) {
+                stunBuff.stun(cell.getMinion());
+                stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
+                cell.getMinion().getOwnBuffs().add(stunBuff);
+            }
+        }
     }
 
     public String getDesc() {
@@ -377,7 +397,7 @@ class PersianSpear extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //Doesn't have any special power
     }
 
@@ -409,7 +429,7 @@ class PersianHorseman extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -437,30 +457,23 @@ class PersianGladiator extends Minion {
     public String showDetails() {
         String detail;
         detail = "Type : " + this.getType() + " - Name : " + this.getName() + " - AP : " + this.getAp() + " - HP : " + this.getHp()
-                + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : ";
+                + " - MP : " + this.getCostToUse() + " - Class : " + this.getTypeOfHit() + " - Special power : " + SpecialPower.PERSIAN_GLADIATOR.getMessage();
         return detail;
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
-        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
-            if (cell.getMinion() != null) {
-                StunBuff stunBuff = new StunBuff();
-                stunBuff.setTurnCounter(0);
-                stunBuff.stun(cell.getMinion());
-            } else if (cell.getHero() != null) {
-                StunBuff stunBuff = new StunBuff();
-                stunBuff.setTurnCounter(0);
-                stunBuff.stun(cell.getHero());
-                cell.getHero().getOwnBuffs().add(stunBuff);
-            } else request.setError(ErrorType.EMPTY_CELL);
-        } else if (cell.getHero() == null && cell.getMinion() == null) {
-            request.setError(ErrorType.EMPTY_CELL);
-        } else request.setError(ErrorType.SELF_HARM);
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
+        if (activeTime == 3) {
+            if (cell.getHero() != null) {
+                cell.getHero().decrementHp(this.getNumberOfAttacks() + 5 - cell.getHero().getHolyCounter());
+            } else if (cell.getMinion() != null){
+                cell.getMinion().decrementHp(this.getNumberOfAttacks() + 5 - cell.getMinion().getHolyCounter());
+            }
+        }
     }
 
     public String getDesc() {
-        return " Nothing";
+        return SpecialPower.PERSIAN_GLADIATOR.getMessage();
     }
 }
 
@@ -488,7 +501,7 @@ class PersianGeneralissimo extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
     }
 
     public String getDesc() {
@@ -519,7 +532,7 @@ class TuranianArcher extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -551,7 +564,7 @@ class TuranianStoneHook extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -583,7 +596,7 @@ class TuranianSpear extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -616,30 +629,32 @@ class TuranianSpy extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
-        if (battle.getTurn() % 2 == cell.getWhichPlayerIsInCell()) {
-            if (cell.getMinion() != null) {
-                PoisonBuff poisonBuff = new PoisonBuff();
-                poisonBuff.setTurnCounter(4);
-                poisonBuff.poison(cell.getMinion());
-                cell.getMinion().getOwnBuffs().add(poisonBuff);
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
+        if (activeTime == 3){
+            if (cell.getHero() != null){
                 DisarmBuff disarmBuff = new DisarmBuff();
-                disarmBuff.setTurnCounter(1);
-                disarmBuff.disarm(cell.getMinion());
-                cell.getMinion().getOwnBuffs().add(disarmBuff);
-            } else if (cell.getHero() != null) {
+                disarmBuff.setTurnCounter(1+1-1);
+                disarmBuff.disarm(cell.getHero());
+                disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                cell.getHero().getOwnBuffs().add(disarmBuff);
                 PoisonBuff poisonBuff = new PoisonBuff();
                 poisonBuff.setTurnCounter(4);
                 poisonBuff.poison(cell.getHero());
+                poisonBuff.setCasting(poisonBuff, null, cell.getHero(), null);
                 cell.getHero().getOwnBuffs().add(poisonBuff);
+            } else if (cell.getMinion() != null){
                 DisarmBuff disarmBuff = new DisarmBuff();
-                disarmBuff.setTurnCounter(1);
-                disarmBuff.disarm(cell.getHero());
-                cell.getHero().getOwnBuffs().add(disarmBuff);
-            } else request.setError(ErrorType.EMPTY_CELL);
-        } else if (cell.getHero() == null && cell.getMinion() == null) {
-            request.setError(ErrorType.EMPTY_CELL);
-        } else request.setError(ErrorType.SELF_HARM);
+                disarmBuff.setTurnCounter(1+1-1);
+                disarmBuff.disarm(cell.getMinion());
+                disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
+                cell.getMinion().getOwnBuffs().add(disarmBuff);
+                PoisonBuff poisonBuff = new PoisonBuff();
+                poisonBuff.setTurnCounter(4);
+                poisonBuff.poison(cell.getMinion());
+                poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
+                cell.getMinion().getOwnBuffs().add(poisonBuff);
+            }
+        }
     }
 
     public String getDesc() {
@@ -670,7 +685,7 @@ class TuranianSwampy extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -703,7 +718,7 @@ class TuranianPrince extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -735,7 +750,7 @@ class BlackBogey extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -767,7 +782,7 @@ class CatapultGiant extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -800,7 +815,7 @@ class Eagle extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -832,7 +847,7 @@ class HogRiderBogey extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
         //nothing
     }
 
@@ -865,7 +880,7 @@ class OneEyeGiant extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -898,7 +913,7 @@ class PoisonSnake extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -930,7 +945,7 @@ class FieryDragon extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -964,7 +979,7 @@ class LupinLion extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -997,7 +1012,7 @@ class GiantSnake extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1031,7 +1046,7 @@ class WhiteWolf extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1065,7 +1080,7 @@ class Panther extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
     }
 
     public String getDesc() {
@@ -1098,7 +1113,7 @@ class Wolf extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1132,7 +1147,7 @@ class Magician extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1165,7 +1180,7 @@ class GiantMagician extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1198,7 +1213,7 @@ class Elf extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1232,7 +1247,7 @@ class WildHog extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1266,7 +1281,7 @@ class Piran extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1299,7 +1314,7 @@ class Giv extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1333,7 +1348,7 @@ class Bahman extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1366,7 +1381,7 @@ class Ashkbous extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1398,7 +1413,7 @@ class Iraj extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1430,7 +1445,7 @@ class GiantColossus extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1463,7 +1478,7 @@ class TwoHeadGiant extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1496,7 +1511,7 @@ class ColdGrandma extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1529,7 +1544,7 @@ class SteelArmor extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1562,7 +1577,7 @@ class Siavash extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1595,7 +1610,7 @@ class GiantKing extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
@@ -1628,7 +1643,7 @@ class ArzhangBogey extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Deck deck, Request request, int activeTime) {
 
     }
 
