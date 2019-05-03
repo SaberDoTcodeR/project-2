@@ -34,7 +34,8 @@ public enum ErrorType {
     ALREADY_LOGOUT("you are not in any account"),
     CARD_NOT_FOUND_IN_SHOP("This Card doesn't exist"),
     EMPTY_CELL("This cell is empty"),
-    SELF_HARM("Hitting own forces");
+    SELF_HARM("Hitting own forces"),
+    DIDNT_PASS_ENOUGH_TIME("More time should be passed to complete hero's cool down time");
     private String message;
 
     public String getMessage() {

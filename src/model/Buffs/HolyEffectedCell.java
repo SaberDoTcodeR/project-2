@@ -5,24 +5,61 @@ import model.Cards.Minion;
 import model.Cell;
 
 public class HolyEffectedCell extends Buff {
-    public void makeCellHoly(Cell cell) {
-        HolyBuff holyBuff = new HolyBuff();
-        holyBuff.setTurnCounter(3);
-        if (cell.getMinion() != null){
-            holyBuff.holy(cell.getMinion());
-        } else if (cell.getHero() != null){
-            holyBuff.holy(cell.getHero());
+    public void holy(Hero hero) {
+        hero.incrementHp(1);
+    }
+
+    public void holy(Minion minion) {
+        minion.incrementHp(1);
+    }
+
+    private HolyEffectedCell holyEffectedCell;
+    private Cell cell;
+    private Hero hero;
+    private Minion minion;
+
+    public void setCasting(HolyEffectedCell holyEffectedCell, Cell cell, Hero hero, Minion minion) {
+        this.holyEffectedCell = holyEffectedCell;
+        this.cell = cell;
+        this.hero = hero;
+        this.minion = minion;
+    }
+
+    public Cell getCell() {
+        return cell;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public Minion getMinion() {
+        return minion;
+    }
+
+    @Override
+    public void castBuff() {
+        if (this.cell != null) {
+            if (this.cell.getMinion() != null) {
+                holy(this.cell.getMinion());
+            }
+            if (this.cell.getHero() != null) {
+                holy(this.cell.getHero());
+            }
         }
-        cell.getCellEffect().add(holyBuff);
     }
 
     @Override
     public void dispel(Hero hero) {
-        //nothing
+        //Nothing
     }
 
     @Override
     public void dispel(Minion minion) {
-        //nothing
+        //Nothing
+    }
+
+    public HolyEffectedCell getPoisonEffectedCell() {
+        return holyEffectedCell;
     }
 }

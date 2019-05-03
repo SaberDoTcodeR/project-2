@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import control.*;
 import model.*;
-import model.Battles.Battle;
 import model.Battles.FlagsBattle;
 import model.Battles.HeroBattle;
 import model.Battles.OneFlagBattle;
@@ -461,7 +460,7 @@ class Buy extends Command {
             } else {
                 if (Account.getLoginAccount().getCollection().getUsableItems().size() < 3) {
                     request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
-                    Account.getLoginAccount().decreament(shop.costOfCard(cardName));
+                    Account.getLoginAccount().decrement(shop.costOfCard(cardName));
                     Account.getLoginAccount().getCollection().addToCollection(cardName);
                 } else {
                     request.setError(ErrorType.THREE_ITEMS_ALREADY_OCCUPIED);

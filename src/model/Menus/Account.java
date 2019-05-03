@@ -19,7 +19,7 @@ public class Account {
     public int getMoney() {
         return money;
     }
-    public void decreament(int x){
+    public void decrement(int x){
         this.money-=x;
     }
 

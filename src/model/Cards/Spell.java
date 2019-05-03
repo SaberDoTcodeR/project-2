@@ -304,7 +304,7 @@ class FireBall extends Spell {
                     view.printError(ErrorType.INVALID_TARGET);
                 }
             }
-            if (cell.getMinion() != null) {
+            else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getMinion().getHolyCounter());
                     changeHp.setTurnCounter(1);

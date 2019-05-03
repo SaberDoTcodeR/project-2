@@ -169,7 +169,7 @@ public class View {
     public void showAccountMenu() {
         String helpstr = "1 : create account [your username]\n" +
                 "2 : login [your username]\n" +
-                "3 : show leaderboard\n" +
+                "3 : show LeaderBoard\n" +
                 "4 : Search Collection\n" +
                 "5 : save\n" +
                 "6 : logout\n" +

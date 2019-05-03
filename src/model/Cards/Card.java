@@ -101,7 +101,8 @@ public abstract class Card {
     public abstract String showDetails();
 
     public void cardIdGenerator(String playerName) {
-        String str = playerName + "_" + this.getName() + "_" + this.getCountOfType();
+//        String str = playerName + "_" + this.getName() + "_" + this.getCountOfType();
+    }
     public void cardIdGenerator(Battle battle){
         ArrayList<Card>cards;
         String playerName;
