@@ -184,6 +184,12 @@ public class View {
         System.out.println(helpstr);
 
     }
+    public void showCollectableMenu(){
+        String helpstr = "1 : show info\n" +
+                "2 : Use [location x, y]\n" +
+                "3 : exit";
+        System.out.println(helpstr);
+    }
 
     public void showDetailedInfoHeroMode(Battle battle) {
         System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + battle.getFirstPlayerDeck().getHero().getHp());

@@ -8,6 +8,7 @@ import control.*;
 import model.*;
 import model.Battles.*;
 import model.Cards.*;
+import model.Item.CollectableItem;
 import model.Menus.*;
 
 public abstract class Command {
@@ -710,6 +711,8 @@ class MoveSelectedSoldier extends Command {
             cell.moveCardPos(xPos, yPos, request.getBattle());
             request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
                     - cell.manhataniDistance(xPos, yPos));
+            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectableItem() != null)
+                request.addCollectible(xPos, yPos);
         } else
             request.setError(ErrorType.INVALID_TARGET);
     }
@@ -789,7 +792,9 @@ class InsertCard extends Command {
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
                             System.out.println(card1.getName() + " with " + card1.getCardId() + " inserted to " + " (" + xPos + "," + yPos + ")");
-
+                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectableItem() != null) {
+                                request.addCollectible(xPos, yPos);
+                            }
                         } else
                             request.setError(ErrorType.INVALID_TARGET);
                     } else {
@@ -827,10 +832,13 @@ class Attack extends Command {
             card = request.getBattle().getCard(oppCardId, 1);
         else
             card = request.getBattle().getCard(oppCardId, 0);
-        if (card == null) {
+        if (card != null) {
             request.getBattle().getSelectedCard().attack(request.getBattle(), card, request);
-            //todo
 
+
+        } else {
+            request.setError(ErrorType.INVALID_TARGET);
+            return;
         }
     }
 }
@@ -865,7 +873,14 @@ class ComboAttack extends Command {
                 oppCard = request.getBattle().getCard(cardId, (request.getBattle().getTurn()) % 2);
             else
                 card = request.getBattle().getCard(cardId, (request.getBattle().getTurn() - 1) % 2);
-
+            if (oppCard == null) {
+                request.setError(ErrorType.INVALID_TARGET);
+                return;
+            }
+            if (card == null) {
+                request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
+                return;
+            }
             if (i != 1) {
                 if (card.getType().equals("Hero") || ((Minion) card).getTimeOfActivationOfSpecialPower() != 2) {
                     request.setError(ErrorType.CANNOT_COMBO_ATTACK);
@@ -900,21 +915,19 @@ class UseSpecialPower extends Command {
             request.setError(ErrorType.HERO_IS_IN_COOLDOWN);
             return;
         }
-        if (request.getBattle().getTurn() % 2 == 1) {
-            if (request.getBattle().getFirstPlayer().getMana() < ((Hero) request.getBattle().getSelectedCard()).getMp()) {
-                request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-                return;
-            }
-        } else {
-            if (request.getBattle().getSecondPlayer().getMana() < ((Hero) request.getBattle().getSelectedCard()).getMp()) {
-                request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-                return;
-            }
+
+        if (request.getBattle().getTurn() % 2 == 1)
+            ((Hero) request.getBattle().getSelectedCard()).castSpecialPower(request.getBattle()
+                    , request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getFirstPlayer(), request);
+        else
+            ((Hero) request.getBattle().getSelectedCard()).castSpecialPower(request.getBattle()
+                    , request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getSecondPlayer(), request);
+
+        if (request.getError() == null) {
+            ((Hero) request.getBattle().getSelectedCard()).setCoolDownTime(((Hero) request.getBattle().getSelectedCard())
+                    .getTimeNeededToCool());
         }
-        ((Hero) request.getBattle().getSelectedCard()).castSpecialPower();
-        //change mana of player
-        //set cool down time
-        //todo check with amin
+
 
     }
 }
@@ -991,6 +1004,75 @@ class ShowCardsInGrave extends Command {
                 System.out.println(card.showDetails());
             }
         }
+
+    }
+}
+
+class ShowCollectables extends Command {
+    ShowCollectables() {
+        super(CommandRegex.SHOW_COLLECTABLES);
+    }
+
+    @Override
+    public void apply(Request request) {
+        ArrayList<CollectableItem> collectableItems;
+        if (request.getBattle().getTurn() % 2 == 1)
+            collectableItems = request.getBattle().getFirstPlayerCollectableItem();
+        else
+            collectableItems = request.getBattle().getSecondPlayerCollectableItem();
+        int index = 1;
+        for (CollectableItem collectableItem : collectableItems) {
+            System.out.println(index + ": " + collectableItem.showDetails());
+            index++;
+        }
+
+    }
+}
+
+class SelectCollectable extends Command {
+    SelectCollectable() {
+        super(CommandRegex.SELECT_COLLECTABLE);
+    }
+
+    @Override
+    public void apply(Request request) {
+        String collectableId = matcher.group(1).trim();
+        ArrayList<CollectableItem> collectableItems;
+        if (request.getBattle().getTurn() % 2 == 1)
+            collectableItems = request.getBattle().getFirstPlayerCollectableItem();
+        else
+            collectableItems = request.getBattle().getSecondPlayerCollectableItem();
+        for (CollectableItem collectableItem : collectableItems) {
+            if (collectableId.equals(collectableItem.getCardId())) {
+                request.getBattle().setSelectedCollectable(collectableItem);
+                return;
+            }
+        }
+        request.setError(ErrorType.INVALID_COLLECTABLE_ID);
+    }
+}
+
+class ShowInfoCollectable extends Command {
+    ShowInfoCollectable() {
+        super(CommandRegex.SHOW_INFO);
+    }
+
+    @Override
+    public void apply(Request request) {
+        System.out.println(request.getBattle().getSelectedCollectable().showDetails());
+    }
+}
+
+class UseCollectable extends Command {
+    UseCollectable() {
+        super(CommandRegex.USE_COLLECTABLE);
+    }
+
+    @Override
+    public void apply(Request request) {
+        int xPos = Integer.parseInt(matcher.group(1).trim());
+        int yPos = Integer.parseInt(matcher.group(2).trim());
+        request.getBattle().getSelectedCollectable().//todo with BaBa
 
     }
 }

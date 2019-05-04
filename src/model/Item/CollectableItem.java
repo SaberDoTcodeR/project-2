@@ -1,9 +1,13 @@
 package model.Item;
 
+import model.Battles.Battle;
+import model.Cards.Card;
+
 import java.util.ArrayList;
 
 public abstract class CollectableItem extends Item {
     private static ArrayList<CollectableItem> collectableItems = new ArrayList<>();
+    private String cardId;
 
     static {
         new BladesOfAgility();
@@ -26,6 +30,35 @@ public abstract class CollectableItem extends Item {
         this.setName(collectableItem.getName());
     }
 
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
+    public void cardIdGenerator(Battle battle) {
+        ArrayList<CollectableItem> collectableItems;
+        String playerName;
+        if (battle.getTurn() % 2 == 1) {
+            playerName = battle.getFirstPlayer().getUserName();
+            collectableItems = battle.getFirstPlayerCollectableItem();
+        } else {
+            collectableItems = battle.getSecondPlayerCollectableItem();
+            playerName = battle.getSecondPlayer().getUserName();
+        }
+
+        int count = 1;
+        for (CollectableItem collectableItem : collectableItems) {
+            if (collectableItem.getName().equals(this.getName())) {
+                count++;
+            }
+        }
+        String str = playerName + "_" + this.getName() + "_" + (count);
+        setCardId(str);
+    }
+
+    public String getCardId() {
+        return cardId;
+    }
+
     public static ArrayList<CollectableItem> getCollectableItems() {
         return collectableItems;
     }
@@ -46,9 +79,11 @@ enum CollectableItemWork {
     BLADES_OF_AGILITY("add 6AP to a random force"),
     CHINESE_SWORD("add 5AP to the melee forces");
     private String effect;
+
     public String getMessage() {
         return effect;
     }
+
     CollectableItemWork(String effect) {
         this.effect = effect;
     }

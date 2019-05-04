@@ -29,7 +29,8 @@ public abstract class Hero extends Card {
     private boolean counterAttack=true;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
-    private int coolDownTime;
+    private int coolDownTime=0;
+    private int timeNeededToCool=0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
@@ -38,6 +39,14 @@ public abstract class Hero extends Card {
 
     public int getRange() {
         return range;
+    }
+
+    public int getTimeNeededToCool() {
+        return timeNeededToCool;
+    }
+
+    public void setTimeNeededToCool(int timeNeededToCool) {
+        this.timeNeededToCool = timeNeededToCool;
     }
 
     public int getTypeOfRange() {
@@ -70,7 +79,6 @@ public abstract class Hero extends Card {
         this.ap = hero.ap;
         this.hp = hero.hp;
         this.mp = hero.mp;
-        //this.specialPower = hero.specialPower;
     }
 
     public void setCoolDownTime(int coolDownTime) {

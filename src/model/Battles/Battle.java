@@ -3,6 +3,7 @@ package model.Battles;
 import model.Cards.Card;
 import model.Cards.Hero;
 import model.Cards.Minion;
+import model.Item.CollectableItem;
 import model.Menus.Account;
 import model.*;
 import view.Request;
@@ -15,6 +16,10 @@ public abstract class Battle {
     private Deck secondPlayerDeck;
     private Hand firstPlayerHand = new Hand();
     private Card selectedCard;
+    private CollectableItem selectedCollectable;
+    private ArrayList<CollectableItem> firstPlayerCollectableItem = new ArrayList<>();
+
+    private ArrayList<CollectableItem> secondPlayerCollectableItem = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> map = new ArrayList<>();
     private int turn = 1;
     private ArrayList<Card> firstPlayerInGameCards = new ArrayList<>();
@@ -26,6 +31,22 @@ public abstract class Battle {
         this.firstPlayer = firstPlayer;
         this.firstPlayerDeck = deck;
         this.secondPlayerDeck = deck2;
+    }
+
+    public ArrayList<CollectableItem> getFirstPlayerCollectableItem() {
+        return firstPlayerCollectableItem;
+    }
+
+    public ArrayList<CollectableItem> getSecondPlayerCollectableItem() {
+        return secondPlayerCollectableItem;
+    }
+
+    public void addSecondPlayerCollectableItem(CollectableItem collectableItem) {
+        secondPlayerCollectableItem.add(collectableItem);
+    }
+
+    public void addFirstPlayerCollectableItem(CollectableItem collectableItem) {
+        firstPlayerCollectableItem.add(collectableItem);
     }
 
     public void addToFirstGrave(Card card) {
@@ -67,6 +88,14 @@ public abstract class Battle {
         if (selectedCard.getType().equals("Spell"))
             return;
         this.selectedCard = selectedCard;
+    }
+
+    public void setSelectedCollectable(CollectableItem selectedCollectable) {
+        this.selectedCollectable = selectedCollectable;
+    }
+
+    public CollectableItem getSelectedCollectable() {
+        return selectedCollectable;
     }
 
     public void addFirstPlayerInGameCards(Card card) {

@@ -13,7 +13,7 @@ import java.util.Random;
 public class HeroBattle extends Battle {
     private boolean playWithAI;
     private Account secondPlayer;
-    private Hand secondPlayerHand=new Hand();
+    private Hand secondPlayerHand = new Hand();
 
     {
         Random random = new Random();
@@ -28,14 +28,12 @@ public class HeroBattle extends Battle {
                     getMap().get(i).add(new Cell(i, j, false, random.nextInt(CollectableItem.getCollectableItems().size())));
                 else
                     getMap().get(i).add(new Cell(i, j, false, -1));
-                if(i==2&&j==0)
-                {
-                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(),0);
+                if (i == 2 && j == 0) {
+                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(), 0);
 
                 }
-                if(i==2&&j==8)
-                {
-                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(),1);
+                if (i == 2 && j == 8) {
+                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
                 }
 
             }
@@ -45,11 +43,15 @@ public class HeroBattle extends Battle {
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
-        Account account=new Account(1);
-        this.secondPlayer=account;
+        Account account = new Account(1);
+        this.secondPlayer = account;
 
-       /* this.getMap().get(2).get(0).setHero(opponentDeck.getHero(),1);
-        this.getMap().get(2).get(0).setHero(myDeck.getHero(),0);*/
+        this.getMap().get(2).get(0).getHero().cardIdGenerator(this);
+        this.increamentTurn();
+        this.getMap().get(2).get(8).getHero().cardIdGenerator(this);
+        this.decreamentTurn();
+        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
+        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
     }
 
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2) {
@@ -57,10 +59,12 @@ public class HeroBattle extends Battle {
         this.secondPlayer = player2;
         this.playWithAI = false;
     }
-    public void showDetailedInfo(){
-        View view=View.getInstance();
+
+    public void showDetailedInfo() {
+        View view = View.getInstance();
         view.showDetailedInfoHeroMode(this);
     }
+
     @Override
     public boolean isPlayWithAI() {
         return playWithAI;

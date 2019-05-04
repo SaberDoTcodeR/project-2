@@ -44,6 +44,10 @@ public class Cell {
         return collectableItem;
     }
 
+    public void setCollectableItem(CollectableItem collectableItem) {
+        this.collectableItem = collectableItem;
+    }
+
     public void addCellEffect(Buff buff) {
         this.cellEffect.add(buff);
     }

@@ -34,15 +34,10 @@ public class Request {
     }
 
     private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop 4 Account 5 start Game 6 multiplayer
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
+        for (int i = 0; i < 10; i++) {
+            commands.add(new ArrayList<>());
+        }
+
 
         commands.get(0).add(new EnterBattle());
         commands.get(0).add(new EnterCollection());
@@ -63,6 +58,8 @@ public class Request {
         commands.get(1).add(new ComboAttack());
         commands.get(1).add(new UseSpecialPower());
         commands.get(1).add(new ShowNextCard());
+        commands.get(1).add(new ShowCollectables());
+        commands.get(1).add(new SelectCollectable());
         commands.get(1).add(new EnterGraveYard());
         commands.get(1).add(new HelpInBattle());
         /*
@@ -112,6 +109,11 @@ public class Request {
         commands.get(8).add(new ShowCardsInGrave());
         commands.get(8).add(new Exit());
         commands.get(8).add(new Help());
+
+        commands.get(8).add(new ShowInfoCollectable());
+        commands.get(8).add(new UseCollectable());
+        commands.get(9).add(new Exit());
+        commands.get(9).add(new Help());
     }
 
     public Command getMatchedCommand(int i) {
@@ -153,6 +155,16 @@ public class Request {
             }
         }
         return false;
+    }
+
+    public void addCollectible(int x, int y) {
+        this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem().cardIdGenerator(this.getBattle());
+        if (this.getBattle().getTurn() % 2 == 1) {
+            this.getBattle().addFirstPlayerCollectableItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem());
+        } else {
+            this.getBattle().addSecondPlayerCollectableItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem());
+        }
+        this.getBattle().getMap().get(x - 1).get(y - 1).setCollectableItem(null);
     }
 
     public boolean existThisUser(String userName) {

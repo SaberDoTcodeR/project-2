@@ -20,10 +20,6 @@ public class GameControl {
         ArrayList<Account> players = new ArrayList<>();
         players.add(battle.getSecondPlayer());
         players.add(battle.getFirstPlayer());
-        battle.getMap().get(2).get(0).getHero().cardIdGenerator(battle);
-        battle.increamentTurn();
-        battle.getMap().get(2).get(8).getHero().cardIdGenerator(battle);
-        battle.decreamentTurn();
         while (!finished) {
             battle.getFirstPlayerHand().fillHand(battle, 0);
             battle.getSecondPlayerHand().fillHand(battle, 1);
