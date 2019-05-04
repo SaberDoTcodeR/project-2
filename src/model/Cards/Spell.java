@@ -1240,18 +1240,18 @@ class Shock extends Spell {
                     stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(stunBuff);
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    view.printError(ErrorType.INVALID_TARGET);
                 }
             }
             if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     StunBuff stunBuff = new StunBuff();
                     stunBuff.stun(cell.getMinion());
-                    stunBuff.setTurnCounter(3);
+                    stunBuff.setTurnCounter(2);
                     stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(stunBuff);
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    view.printError(ErrorType.INVALID_TARGET);
                 }
             }
         }
