@@ -1,8 +1,11 @@
 package model.Battles;
 
 import model.Cards.Card;
+import model.Cards.Hero;
+import model.Cards.Minion;
 import model.Menus.Account;
 import model.*;
+import view.Request;
 
 import java.util.ArrayList;
 
@@ -10,15 +13,14 @@ public abstract class Battle {
     private Account firstPlayer;
     private Deck firstPlayerDeck;
     private Deck secondPlayerDeck;
-    private boolean isHitting;
-    private boolean isDying;
-    private boolean isComingToMap;
     private Hand firstPlayerHand = new Hand();
     private Card selectedCard;
     private ArrayList<ArrayList<Cell>> map = new ArrayList<>();
     private int turn = 1;
     private ArrayList<Card> firstPlayerInGameCards = new ArrayList<>();
     private ArrayList<Card> secondPlayerInGameCards = new ArrayList<>();
+    private ArrayList<Card> firstGrave = new ArrayList<>();
+    private ArrayList<Card> secondGrave = new ArrayList<>();
 
     protected Battle(Account firstPlayer, Deck deck, Deck deck2) {
         this.firstPlayer = firstPlayer;
@@ -26,8 +28,39 @@ public abstract class Battle {
         this.secondPlayerDeck = deck2;
     }
 
+    public void addToFirstGrave(Card card) {
+        firstGrave.add(card);
+    }
+
+    public void addToSecondGrave(Card card) {
+        secondGrave.add(card);
+    }
+
+    public ArrayList<Card> getFirstGrave() {
+        return firstGrave;
+    }
+
+    public ArrayList<Card> getSecondGrave() {
+        return secondGrave;
+    }
+
     public Card getSelectedCard() {
         return selectedCard;
+    }
+
+    public Card getCard(String name, int x) {
+        if (x == 0) {
+            for (Card card : this.getFirstPlayerInGameCards()) {
+                if (card.getCardId().equals(name))
+                    return card;
+            }
+        } else {
+            for (Card card : this.getSecondPlayerInGameCards()) {
+                if (card.getCardId().equals(name))
+                    return card;
+            }
+        }
+        return null;
     }
 
     public void setSelectedCard(Card selectedCard) {
@@ -38,6 +71,45 @@ public abstract class Battle {
 
     public void addFirstPlayerInGameCards(Card card) {
         this.firstPlayerInGameCards.add(card);
+    }
+
+    public void ComboAttack(Card oppCard, ArrayList<Minion> cards, Request request) {
+        Cell oppCell = this.getMap().get(0).get(0).getCellOfCard(oppCard, this);
+        if (oppCell == null) {
+            request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
+            return;
+        }
+        if (((Minion) cards.get(0)).isStunning()) {
+            request.setError(ErrorType.CARD_IS_STUNNED);
+        }
+        for (Card card : cards) {
+
+            if (((Minion) card).getTypeOfRange() == 0 && oppCell.manhataniDistance(this.getMap().get(0).get(0).getCellOfCard(card, this).getX(),
+                    this.getMap().get(0).get(0).getCellOfCard(card, this).getY()) <= 2) {
+                if (oppCard.getType().equals("Minion"))
+                    ((Minion) oppCard).setHp(((Minion) oppCard).getHp() - ((Minion) card).getAp());
+                else
+                    ((Hero) oppCard).setHp(((Hero) oppCard).getHp() - ((Minion) card).getAp());
+            } else if (((Minion) card).getTypeOfRange() == 1 && oppCell.manhataniDistance(this.getMap().get(0).get(0).getCellOfCard(card, this).getX(),
+                    this.getMap().get(0).get(0).getCellOfCard(card, this).getY()) > 2 && oppCell.manhataniDistance(this.getMap().get(0).get(0).getCellOfCard(card, this).getX(),
+                    this.getMap().get(0).get(0).getCellOfCard(card, this).getY()) <= ((Minion) card).getRange()) {
+                if (oppCard.getType().equals("Minion"))
+                    ((Minion) oppCard).setHp(((Minion) oppCard).getHp() - ((Minion) card).getAp());
+                else
+                    ((Hero) oppCard).setHp(((Hero) oppCard).getHp() - ((Minion) card).getAp());
+            } else if (((Minion) card).getTypeOfRange() == 2) {
+                if (oppCard.getType().equals("Minion"))
+                    ((Minion) oppCard).setHp(((Minion) oppCard).getHp() - ((Minion) card).getAp());
+                else
+                    ((Hero) oppCard).setHp(((Hero) oppCard).getHp() - ((Minion) card).getAp());
+
+            }
+        }
+        oppCard.counterAttack(this, cards.get(0));
+        oppCard.deadChecker(this);
+        ((Minion) cards.get(0)).setCanAttack(false);
+        ((Minion) cards.get(0)).setRemainedMoves(0);
+        ((Minion) cards.get(0)).deadChecker(this);
     }
 
     public void addSecondPlayerInGameCards(Card card) {
@@ -58,6 +130,10 @@ public abstract class Battle {
 
     public void increamentTurn() {
         this.turn++;
+    }
+
+    public void decreamentTurn() {
+        turn--;
     }
 
     public ArrayList<ArrayList<Cell>> getMap() {
@@ -87,29 +163,5 @@ public abstract class Battle {
     public abstract Account getSecondPlayer();
 
     public abstract Hand getSecondPlayerHand();
-
-    public boolean isDying() {
-        return isDying;
-    }
-
-    public void setDying(boolean dying) {
-        isDying = dying;
-    }
-
-    public boolean isComingToMap() {
-        return isComingToMap;
-    }
-
-    public void setComingToMap(boolean comingToMap) {
-        isComingToMap = comingToMap;
-    }
-
-    public boolean isHitting() {
-        return isHitting;
-    }
-
-    public void setHitting(boolean hitting) {
-        isHitting = hitting;
-    }
 }
 

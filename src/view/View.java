@@ -177,6 +177,14 @@ public class View {
         System.out.println(helpstr);
     }
 
+    public void showGraveYardMenu() {
+        String helpstr = "1 : show info [cardId]\n" +
+                "2 : show cards\n" +
+                "3 : exit";
+        System.out.println(helpstr);
+
+    }
+
     public void showDetailedInfoHeroMode(Battle battle) {
         System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + battle.getFirstPlayerDeck().getHero().getHp());
         System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP : " + battle.getSecondPlayerDeck().getHero().getHp());
@@ -213,10 +221,25 @@ public class View {
                     if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())) {
                         printMinionInfo(battle, i, j);
                     }
+
                 } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getMinion() != null) {
                     if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())) {
                         printMinionInfo(battle, i, j);
                     }
+
+                }
+                else if  (whichPlayer == 2 && battle.getMap().get(i).get(j).getHero() != null) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                        printHeroInfo(battle, i, j);
+
+                    }
+
+                }
+                else if  (whichPlayer == 1 && battle.getMap().get(i).get(j).getHero() != null) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                        printHeroInfo(battle, i, j);
+                    }
+
                 }
             }
         }
@@ -227,7 +250,11 @@ public class View {
         System.out.print("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
                 battle.getMap().get(i).get(j).getMinion().getAp());
     }
-
+    public void printHeroInfo(Battle battle, int i, int j) {
+        System.out.print(battle.getMap().get(i).get(j).getHero().getCardId() + " : " + battle.getMap().get(i).get(j).getHero().getName() + ", ");
+        System.out.println("health : " + battle.getMap().get(i).get(j).getHero().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
+                battle.getMap().get(i).get(j).getHero().getAp());
+    }
     public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +
@@ -279,34 +306,37 @@ public class View {
             System.out.println(account.getUserName());
         }
     }
-    public void printMinionInfoInGame(Minion minion){
-        System.out.println("Minion:\n"+"Name: "+minion.getName());
-        System.out.println("HP: "+minion.getHp()+" AP: "+minion.getAp()+" MP: "+minion.getCostToUse());
-        if(minion.getRange()==0)
+
+    public void printMinionInfoInGame(Minion minion) {
+        System.out.println("Minion:\n" + "Name: " + minion.getName());
+        System.out.println("HP: " + minion.getHp() + " AP: " + minion.getAp() + " MP: " + minion.getCostToUse());
+        if (minion.getRange() == 0)
             System.out.println("Range: Melee");
-        else if(minion.getRange()==1)
+        else if (minion.getRange() == 1)
             System.out.println("Range: Ranged");
         else
             System.out.println("Range: Hybrid");
 
         System.out.print("Combo-ability: ");
-        if(minion.getTimeOfActivationOfSpecialPower()==2)
+        if (minion.getTimeOfActivationOfSpecialPower() == 2)
             System.out.println("Yes");
         else
             System.out.println("No");
-        System.out.println("Cost: "+minion.getCostOfBuy());
-        System.out.println("Desc: "+minion.getDesc());
+        System.out.println("Cost: " + minion.getCostOfBuy());
+        System.out.println("Desc: " + minion.getDesc());
     }
-    public void printHeroInfoInGame(Hero hero){
-        System.out.println("Hero:\n"+"Name: "+hero.getName());
-        System.out.println("Cost: "+hero.getCostOfBuy());
-        System.out.println("Desc: "+hero.getDesc());
+
+    public void printHeroInfoInGame(Hero hero) {
+        System.out.println("Hero:\n" + "Name: " + hero.getName());
+        System.out.println("Cost: " + hero.getCostOfBuy());
+        System.out.println("Desc: " + hero.getDesc());
 
     }
-    public void printSpellInfoInGame(Spell spell){
-        System.out.println("Spell:\n"+"Name: "+spell.getName());
-        System.out.println(" MP: "+spell.getCostToUse());
-        System.out.println("Cost: "+spell.getCostOfBuy());
-        System.out.println("Desc: "+spell.getDesc());
+
+    public void printSpellInfoInGame(Spell spell) {
+        System.out.println("Spell:\n" + "Name: " + spell.getName());
+        System.out.println(" MP: " + spell.getCostToUse());
+        System.out.println("Cost: " + spell.getCostOfBuy());
+        System.out.println("Desc: " + spell.getDesc());
     }
 }
