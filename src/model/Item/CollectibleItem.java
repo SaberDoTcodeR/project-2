@@ -3,11 +3,14 @@ package model.Item;
 import model.Battles.Battle;
 import model.Buffs.HolyBuff;
 import model.Buffs.PowerBuff;
+import model.Cards.Hero;
+import model.Cards.Minion;
 import model.Cell;
 import model.Menus.Account;
 import view.Request;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class CollectibleItem extends Item {
     private static ArrayList<CollectibleItem> collectibleItems = new ArrayList<>();
@@ -76,12 +79,18 @@ class Devastation extends CollectibleItem {
         super(devastation);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getMinion() != null) {
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        if (insiderCell.getMinion() != null) {
             cell.getMinion().incrementHp(6);
         }
-        if (cell.getHero() != null) {
+        if (insiderCell.getHero() != null) {
             cell.getHero().incrementHp(6);
         }
     }
@@ -110,18 +119,52 @@ class DoubleEntendreArrow extends CollectibleItem {
         super(doubleEntendreArrow);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getMinion() != null) {
-            if (cell.getMinion().getTypeOfHit().equals("Hybrid") ||
-                    cell.getMinion().getTypeOfHit().equals("Ranged"))
-                cell.getMinion().incrementHp(2);
+        Cell insiderCell = getRandomForce(battle, player);
+        if (insiderCell.getHero() != null)
+            insiderCell.getHero().incrementAp(2);
+        if (insiderCell.getMinion() != null)
+            insiderCell.getMinion().incrementAp(2);
+    }
+
+    private Cell getRandomForce(Battle battle, Account player) {
+        ArrayList<Cell> insiderCells = new ArrayList<>();
+        if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) { // Insider is firstPlayer
+            addCellToList(battle, insiderCells, battle.getFirstPlayer());
+        } else { // Insider is secondPlayer
+            addCellToList(battle, insiderCells, battle.getSecondPlayer());
         }
-        if (cell.getHero() != null) {
-            if (cell.getHero().getTypeOfHit().equals("Hybrid") ||
-                    cell.getHero().getTypeOfHit().equals("Ranged"))
-                cell.getHero().incrementHp(6);
+        Random random = new Random(insiderCells.size() - 1);
+        return insiderCells.get(random.nextInt());
+    }
+
+    private void addCellToList(Battle battle, ArrayList<Cell> cells, Account player) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (battle.getMap().get(i).get(j).getHero() != null &&
+                        player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero()) &&
+                        checkRightType(battle.getMap().get(i).get(j)))
+                    cells.add(battle.getMap().get(i).get(j));
+                if (battle.getMap().get(i).get(j).getMinion() != null &&
+                        player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion()) &&
+                        checkRightType(battle.getMap().get(i).get(j)))
+                    cells.add(battle.getMap().get(i).get(j));
+            }
         }
+    }
+
+    private boolean checkRightType(Cell cell) {
+        if (cell.getHero().getTypeOfHit().equals("Hybrid") || cell.getHero().getTypeOfHit().equals("Ranged"))
+            return true;
+        if (cell.getMinion().getTypeOfHit().equals("Hybrid") || cell.getMinion().getTypeOfHit().equals("Ranged"))
+            return true;
+        return false;
     }
 
     public CollectibleItem duplicate() {
@@ -148,32 +191,26 @@ class Elexir extends CollectibleItem {
         super(elexir);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getMinion() != null) {
-            elexirHelper(cell);
-        } else {
-            for (ArrayList<Cell> cells : battle.getMap()) {
-                for (Cell cell1 : cells) {
-                    if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) {
-                        if (cell1.getMinion() != null && battle.getFirstPlayer().getMainDeck().isContain(cell1.getMinion())) {
-                            elexirHelper(cell1);
-                        }
-                    } else {
-                        if (cell1.getMinion() != null && battle.getSecondPlayer().getMainDeck().isContain(cell1.getMinion())) {
-                            elexirHelper(cell1);
-                        }
-                    }
-                }
-            }
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        while (insiderCell.getMinion() != null) {
+            insiderCell = getRandomInsiderForce(battle, player);
         }
-    }
+        if (insiderCell.getMinion() != null) {
+            insiderCell.getMinion().incrementHp(3);
+            PowerBuff powerBuff = new PowerBuff(3, true);
+            powerBuff.setCasting(powerBuff, null, null, insiderCell.getMinion());
+            powerBuff.setTurnCounter(-5);
+            powerBuff.incrementAp(insiderCell.getMinion());
+            insiderCell.getMinion().getOwnBuffs().add(powerBuff);
+        }
 
-    private void elexirHelper(Cell cell1) {
-        cell1.getMinion().incrementAp(3);
-        PowerBuff powerBuff = new PowerBuff(3, true);
-        powerBuff.setCasting(powerBuff, null, null, cell1.getMinion());
-        powerBuff.setTurnCounter(1);
     }
 
     public CollectibleItem duplicate() {
@@ -200,9 +237,14 @@ class ManaElectuary extends CollectibleItem {
         super(manaElectuary);
     }
 
+    /*
+     * cell :
+     * player :
+     * activeTime :
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        //todo .........
+
     }
 
     public CollectibleItem duplicate() {
@@ -229,24 +271,30 @@ class PerpetuityElectuary extends CollectibleItem {
         super(perpetuityElectuary);
     }
 
+    /*
+     * cell : no different
+     * player : player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getHero() != null) {
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        if (insiderCell.getHero() != null) {
             for (int i = 0; i < 10; i++) {
                 HolyBuff holyBuff = new HolyBuff();
-                holyBuff.setCasting(holyBuff, null, cell.getHero(), null);
-                holyBuff.setTurnCounter(2);
-                holyBuff.castBuff();
-                player.getMainDeck().getHero().getOwnBuffs().add(holyBuff);
+                holyBuff.setCasting(holyBuff, null, insiderCell.getHero(), null);
+                holyBuff.setTurnCounter(3);
+                holyBuff.holy(insiderCell.getHero());
+                insiderCell.getHero().getOwnBuffs().add(holyBuff);
             }
         }
-        if (cell.getMinion() != null) {
+        if (insiderCell.getMinion() != null) {
             for (int i = 0; i < 10; i++) {
                 HolyBuff holyBuff = new HolyBuff();
-                holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
-                holyBuff.setTurnCounter(2);
-                holyBuff.castBuff();
-                player.getMainDeck().getHero().getOwnBuffs().add(holyBuff);
+                holyBuff.setCasting(holyBuff, null, null, insiderCell.getMinion());
+                holyBuff.setTurnCounter(3);
+                holyBuff.holy(insiderCell.getMinion());
+                insiderCell.getMinion().getOwnBuffs().add(holyBuff);
             }
         }
     }
@@ -275,21 +323,81 @@ class DeathCurse extends CollectibleItem {
         super(deathCurse);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : 2 --> on Death
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        for (ArrayList<Cell> cells : battle.getMap()) {
-            for (Cell cell1 : cells) {
-                if (cell1.getMinion() != null) {
-                    if (activeTime == 2) {
-                        Cell cell2 = nearestEnemyForces(cell);
-                        if (cell2.getHero() != null)
-                            cell2.getHero().decrementHp(8 - cell2.getHero().getHolyCounter());
-                        if (cell2.getMinion() != null)
-                            cell2.getMinion().decrementHp(8 - cell2.getHero().getHolyCounter());
+        if (activeTime == 2) {
+            Cell insiderCell = getRandomInsiderForce(battle, player);
+            while (insiderCell.getMinion() != null) {
+                insiderCell = getRandomInsiderForce(battle, player);
+            }
+            int index_i = 0;
+            int index_j = 0;
+            for (int i = 0; i < 5; i++) {
+                if (battle.getMap().get(i).contains(insiderCell)) {
+                    index_i = i;
+                    index_j = battle.getMap().get(i).indexOf(insiderCell);
+                    break;
+                }
+            }
+            double[][] distance = new double[5][];
+            for (int i = 0; i < 5; i++) {
+                distance[i] = new double[9];
+            }
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    distance[i][j] = 100;
+                }
+            }
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (i == index_i && j == index_j)
+                        continue;
+                    if (battle.getMap().get(i).get(j).getHero() != null &&
+                            isEnemyHero(battle.getMap().get(i).get(j).getHero(), player)) {
+                        distance[i][j] = getPow(index_i, index_j, i, j);
+                    }
+                    if (battle.getMap().get(i).get(j).getMinion() != null &&
+                            isEnemyMinion(battle.getMap().get(i).get(j).getMinion(), player)) {
+                        distance[i][j] = getPow(index_i, index_j, i, j);
                     }
                 }
             }
+            double minValue = distance[0][0];
+            int indexMinI = 0;
+            int indexMinJ = 0;
+            for (int j = 0; j < distance.length; j++) {
+                for (int i = 0; i < distance[j].length; i++) {
+                    if (distance[j][i] < minValue) {
+                        minValue = distance[j][i];
+                        indexMinI = i;
+                        indexMinJ = j;
+                    }
+                }
+            }
+            if (battle.getMap().get(indexMinI).get(indexMinJ).getHero() != null) {
+                battle.getMap().get(indexMinI).get(indexMinJ).getHero().decrementHp(8);
+            }
+            if (battle.getMap().get(indexMinI).get(indexMinJ).getMinion() != null) {
+                battle.getMap().get(indexMinI).get(indexMinJ).getMinion().decrementHp(8);
+            }
         }
+    }
+
+    private boolean isEnemyHero(Hero hero, Account player) {
+        return player.getMainDeck().isContain(hero);
+    }
+
+    private boolean isEnemyMinion(Minion minion, Account player) {
+        return player.getMainDeck().isContain(minion);
+    }
+
+    private double getPow(int index_i, int index_j, int i, int j) {
+        return Math.pow(Math.pow(Math.abs(i - index_i), 2) + Math.pow(Math.abs(j - index_j), 2), 1 / 2);
     }
 
     public CollectibleItem duplicate() {
@@ -316,13 +424,19 @@ class RandomDamage extends CollectibleItem {
         super(randomDamage);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getMinion() != null)
-            cell.getMinion().incrementAp(2);
-        if (cell.getHero() != null) {
-            cell.getHero().incrementAp(2);
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        if (insiderCell.getHero() != null) {
+            insiderCell.getHero().incrementAp(2);
         }
+        if (insiderCell.getMinion() != null)
+            insiderCell.getMinion().incrementAp(2);
     }
 
     public CollectibleItem duplicate() {
@@ -349,13 +463,19 @@ class BladesOfAgility extends CollectibleItem {
         super(bladesOfAgility);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (cell.getMinion() != null) {
-            cell.getMinion().incrementAp(6);
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        if (insiderCell.getHero() != null) {
+            insiderCell.getHero().incrementAp(6);
         }
-        if (cell.getHero() != null) {
-            cell.getHero().incrementAp(6);
+        if (insiderCell.getMinion() != null) {
+            insiderCell.getMinion().incrementAp(6);
         }
     }
 
@@ -383,20 +503,45 @@ class ChineseSword extends CollectibleItem {
         super(chineseSword);
     }
 
+    /*
+     * cell : no different
+     * player : the player who has the item
+     * activeTime : no different
+     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        for (ArrayList<Cell> cells : battle.getMap()) {
-            for (Cell cell1 : cells) {
-                if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
-                    if (cell1.getMinion().getTypeOfHit().equals("Melee")) {
-                        cell1.getMinion().incrementAp(5);
-                    }
-                }
-                if (cell1.getHero() != null && player.getMainDeck().isContain(cell1.getHero())) {
-                    if (cell1.getHero().getTypeOfHit().equals("Melee")) {
-                        cell1.getMinion().incrementAp(5);
-                    }
-                }
+        ArrayList<Cell> meleeForces = getRandomForce(battle, player);
+        for (Cell newCell : meleeForces) {
+            if (newCell.getHero() != null) {
+                newCell.getHero().incrementAp(5);
+            }
+            if (newCell.getMinion() != null) {
+                newCell.getMinion().incrementAp(5);
+            }
+        }
+    }
+
+    private ArrayList<Cell> getRandomForce(Battle battle, Account player) {
+        ArrayList<Cell> enemyCells = new ArrayList<>();
+        if (battle.getSecondPlayer().getUserName().equals(player.getUserName())) { // Insider is secondPlayer
+            addCellToList(battle, enemyCells, battle.getSecondPlayer());
+        } else { // Insider is firstPlayer
+            addCellToList(battle, enemyCells, battle.getFirstPlayer());
+        }
+        return enemyCells;
+    }
+
+    private void addCellToList(Battle battle, ArrayList<Cell> cells, Account player) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (battle.getMap().get(i).get(j).getHero() != null &&
+                        player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero()) &&
+                        battle.getMap().get(i).get(j).getHero().getTypeOfHit().equals("Melee"))
+                    cells.add(battle.getMap().get(i).get(j));
+                if (battle.getMap().get(i).get(j).getMinion() != null &&
+                        player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion()) &&
+                        battle.getMap().get(i).get(j).getHero().getTypeOfHit().equals("Melee"))
+                    cells.add(battle.getMap().get(i).get(j));
             }
         }
     }

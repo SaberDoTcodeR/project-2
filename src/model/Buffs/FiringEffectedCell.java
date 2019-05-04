@@ -3,8 +3,6 @@ package model.Buffs;
 import model.Cards.*;
 import model.Cell;
 
-import java.util.ArrayList;
-
 public class FiringEffectedCell extends Buff {
 
     private FiringEffectedCell firingEffectedCell;

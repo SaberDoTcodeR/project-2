@@ -100,6 +100,7 @@ public class Cell {
 
     public void setHero(Hero hero, int whichPlayerIsInCell) {
         this.hero = hero;
+        this.minion = null;//ezafe shod
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
@@ -113,6 +114,7 @@ public class Cell {
 
     public void setMinion(Minion minion, int whichPlayerIsInCell) {
         this.minion = minion;
+        this.hero = null;//ezafe shod
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
@@ -127,14 +129,14 @@ public class Cell {
 
     }
 
-    public int manhataniDistance(int x, int y){
-        return abs(this.x-x)+abs(this.y-y);
+    public int manhataniDistance(int x, int y) {
+        return abs(this.x - x) + abs(this.y - y);
     }
 
-    public int abs(int x)
-    {
+    public int abs(int x) {
         return Math.abs(x);
     }
+
     public void moveCardPos(int x, int y, Battle battle) {
         int who = battle.getMap().get(x).get(y).whichPlayerIsInCell;
         if (this.hero != null) {
