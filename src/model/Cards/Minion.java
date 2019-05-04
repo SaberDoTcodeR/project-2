@@ -1022,7 +1022,7 @@ class LupinLion extends Minion {
                 changeApBuff.increment(this);
                 changeApBuff.setCasting(changeApBuff, null, null, this);
                 this.getOwnBuffs().add(changeApBuff);
-            } else if (cell.getMinion() != null){
+            } else if (cell.getMinion() != null) {
                 ChangeApBuff changeApBuff = new ChangeApBuff(cell.getMinion().getHolyCounter());
                 changeApBuff.setTurnCounter(0);
                 changeApBuff.increment(this);
@@ -1062,7 +1062,32 @@ class GiantSnake extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 0) {
+            ArrayList<Cell> targetCells = new ArrayList<>();
+            targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(targetCells.get(0).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(0).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(5).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(6).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(6).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(8).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(9).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(9).upCell(battle.getMap()));
+            for (int i = 0; i < 12; i++) {
+                if (targetCells.get(i).getMinion() != null) {
+                    if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
+                        ChangeHpBuff changeHpBuff = new ChangeHpBuff(1);
+                        changeHpBuff.setTurnCounter(-5);
+                        changeHpBuff.decrement(targetCells.get(i).getMinion());
+                        changeHpBuff.setCasting(changeHpBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(changeHpBuff);
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1263,7 +1288,21 @@ class Elf extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 1){
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (battle.getMap().get(i).get(j).getMinion() != null){
+                        if (player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion())){
+                            PowerBuff powerBuff = new PowerBuff(1, true);
+                            powerBuff.setTurnCounter(-4);
+                            powerBuff.incrementAp(battle.getMap().get(i).get(j).getMinion());
+                            powerBuff.setCasting(powerBuff, null, null, battle.getMap().get(i).get(j).getMinion());
+                            battle.getMap().get(i).get(j).getMinion().getOwnBuffs().add(powerBuff);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1528,7 +1567,21 @@ class TwoHeadGiant extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 3) {
+            if (cell.getHero() != null) {
+                for (Buff buff : cell.getHero().getOwnBuffs()) {
+                    if (dispelEnemyValidation(buff.getClass().getSimpleName())){
+                        buff.dispel(cell.getHero());
+                    }
+                }
+            } else if (cell.getMinion() != null){
+                for (Buff buff : cell.getMinion().getOwnBuffs()) {
+                    if (dispelEnemyValidation(buff.getClass().getSimpleName())){
+                        buff.dispel(cell.getMinion());
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1561,7 +1614,28 @@ class ColdGrandma extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 0) {
+            ArrayList<Cell> targetCells = new ArrayList<>();
+            targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(targetCells.get(0).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(0).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(1).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(4).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(6).leftCell(battle.getMap()));
+            for (int i = 0; i < 8; i++) {
+                if (targetCells.get(i).getMinion() != null) {
+                    if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
+                        StunBuff stunBuff = new StunBuff();
+                        stunBuff.setTurnCounter(1);
+                        stunBuff.stun(targetCells.get(i).getMinion());
+                        stunBuff.setCasting(stunBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(stunBuff);
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1581,6 +1655,13 @@ class SteelArmor extends Minion {
 
     public Minion duplicate() {
         SteelArmor steelArmor = new SteelArmor(this);
+        for (int i = 0; i < 12; i++) {
+            HolyBuff holyBuff = new HolyBuff();
+            holyBuff.setTurnCounter(-4);
+            holyBuff.holy(steelArmor);
+            holyBuff.setCasting(holyBuff, null, null, steelArmor);
+            steelArmor.getOwnBuffs().add(holyBuff);
+        }
         return steelArmor;
     }
 
@@ -1594,7 +1675,7 @@ class SteelArmor extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        //already set
     }
 
     public String getDesc() {
@@ -1627,7 +1708,19 @@ class Siavash extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 2) {
+            outer:
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (battle.getMap().get(i).get(j).getHero() != null) {
+                        if (!player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero())) {
+                            battle.getMap().get(i).get(j).getHero().decrementHp(6 - battle.getMap().get(i).get(j).getHero().getHolyCounter());
+                            break outer;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
