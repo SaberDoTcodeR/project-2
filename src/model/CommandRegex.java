@@ -1,13 +1,13 @@
 package model;
 
 public enum CommandRegex {
-    USE_COLLECTABLE("use \\(([1-5]),([1-9])\\)$"),
+    USE_COLLECTIBLE("use \\(([1-5]),([1-9])\\)$"),
 
     SHOW_INFO("^show info$"),
 
-    SELECT_COLLECTABLE("^select\\s+(\\w+)$"),
+    SELECT_COLLECTIBLE("^select\\s+(\\w+)$"),
 
-    SHOW_COLLECTABLES("^show collectables$"),
+    SHOW_COLLECTIBLES("^show collectables$"),
 
     SHOW_CARDS("^show cards$"),
 

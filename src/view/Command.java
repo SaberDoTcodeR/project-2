@@ -8,7 +8,7 @@ import control.*;
 import model.*;
 import model.Battles.*;
 import model.Cards.*;
-import model.Item.CollectableItem;
+import model.Item.CollectibleItem;
 import model.Menus.*;
 
 public abstract class Command {
@@ -711,7 +711,7 @@ class MoveSelectedSoldier extends Command {
             cell.moveCardPos(xPos, yPos, request.getBattle());
             request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
                     - cell.manhataniDistance(xPos, yPos));
-            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectableItem() != null)
+            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null)
                 request.addCollectible(xPos, yPos);
         } else
             request.setError(ErrorType.INVALID_TARGET);
@@ -792,7 +792,7 @@ class InsertCard extends Command {
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
                             System.out.println(card1.getName() + " with " + card1.getCardId() + " inserted to " + " (" + xPos + "," + yPos + ")");
-                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectableItem() != null) {
+                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
                                 request.addCollectible(xPos, yPos);
                             }
                         } else
@@ -1008,71 +1008,74 @@ class ShowCardsInGrave extends Command {
     }
 }
 
-class ShowCollectables extends Command {
-    ShowCollectables() {
-        super(CommandRegex.SHOW_COLLECTABLES);
+class ShowCollectibles extends Command {
+    ShowCollectibles() {
+        super(CommandRegex.SHOW_COLLECTIBLES);
     }
 
     @Override
     public void apply(Request request) {
-        ArrayList<CollectableItem> collectableItems;
+        ArrayList<CollectibleItem> collectibleItems;
         if (request.getBattle().getTurn() % 2 == 1)
-            collectableItems = request.getBattle().getFirstPlayerCollectableItem();
+            collectibleItems = request.getBattle().getFirstPlayerCollectibleItem();
         else
-            collectableItems = request.getBattle().getSecondPlayerCollectableItem();
+            collectibleItems = request.getBattle().getSecondPlayerCollectibleItem();
         int index = 1;
-        for (CollectableItem collectableItem : collectableItems) {
-            System.out.println(index + ": " + collectableItem.showDetails());
+        for (CollectibleItem collectibleItem : collectibleItems) {
+            System.out.println(index + ": " + collectibleItem.showDetails());
             index++;
         }
 
     }
 }
 
-class SelectCollectable extends Command {
-    SelectCollectable() {
-        super(CommandRegex.SELECT_COLLECTABLE);
+class SelectCollectible extends Command {
+    SelectCollectible() {
+        super(CommandRegex.SELECT_COLLECTIBLE);
     }
 
     @Override
     public void apply(Request request) {
-        String collectableId = matcher.group(1).trim();
-        ArrayList<CollectableItem> collectableItems;
+        String collectibleId = matcher.group(1).trim();
+        ArrayList<CollectibleItem> collectibleItems;
         if (request.getBattle().getTurn() % 2 == 1)
-            collectableItems = request.getBattle().getFirstPlayerCollectableItem();
+            collectibleItems = request.getBattle().getFirstPlayerCollectibleItem();
         else
-            collectableItems = request.getBattle().getSecondPlayerCollectableItem();
-        for (CollectableItem collectableItem : collectableItems) {
-            if (collectableId.equals(collectableItem.getCardId())) {
-                request.getBattle().setSelectedCollectable(collectableItem);
+            collectibleItems = request.getBattle().getSecondPlayerCollectibleItem();
+        for (CollectibleItem collectibleItem : collectibleItems) {
+            if (collectibleId.equals(collectibleItem.getCardId())) {
+                request.getBattle().setSelectedCollectible(collectibleItem);
                 return;
             }
         }
-        request.setError(ErrorType.INVALID_COLLECTABLE_ID);
+        request.setError(ErrorType.INVALID_COLLECTIBLE_ID);
     }
 }
 
-class ShowInfoCollectable extends Command {
-    ShowInfoCollectable() {
+class ShowInfoCollectible extends Command {
+    ShowInfoCollectible() {
         super(CommandRegex.SHOW_INFO);
     }
 
     @Override
     public void apply(Request request) {
-        System.out.println(request.getBattle().getSelectedCollectable().showDetails());
+        System.out.println(request.getBattle().getSelectedCollectible().showDetails());
     }
 }
 
-class UseCollectable extends Command {
-    UseCollectable() {
-        super(CommandRegex.USE_COLLECTABLE);
+class UseCollectible extends Command {
+    UseCollectible() {
+        super(CommandRegex.USE_COLLECTIBLE);
     }
 
     @Override
     public void apply(Request request) {
         int xPos = Integer.parseInt(matcher.group(1).trim());
         int yPos = Integer.parseInt(matcher.group(2).trim());
-        request.getBattle().getSelectedCollectable().//todo with BaBa
+        if (request.getBattle().getTurn() % 2 == 1)
+            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getFirstPlayer(), request);
+        else
+            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getSecondPlayer(), request);
 
     }
 }

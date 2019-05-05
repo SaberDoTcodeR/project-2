@@ -3,7 +3,7 @@ package model.Battles;
 import model.Cards.Card;
 import model.Cards.Hero;
 import model.Cards.Minion;
-import model.Item.CollectableItem;
+import model.Item.CollectibleItem;
 import model.Menus.Account;
 import model.*;
 import view.Request;
@@ -16,10 +16,10 @@ public abstract class Battle {
     private Deck secondPlayerDeck;
     private Hand firstPlayerHand = new Hand();
     private Card selectedCard;
-    private CollectableItem selectedCollectable;
-    private ArrayList<CollectableItem> firstPlayerCollectableItem = new ArrayList<>();
+    private CollectibleItem selectedCollectible;
+    private ArrayList<CollectibleItem> firstPlayerCollectibleItem = new ArrayList<>();
 
-    private ArrayList<CollectableItem> secondPlayerCollectableItem = new ArrayList<>();
+    private ArrayList<CollectibleItem> secondPlayerCollectibleItem = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> map = new ArrayList<>();
     private int turn = 1;
     private ArrayList<Card> firstPlayerInGameCards = new ArrayList<>();
@@ -33,20 +33,20 @@ public abstract class Battle {
         this.secondPlayerDeck = deck2;
     }
 
-    public ArrayList<CollectableItem> getFirstPlayerCollectableItem() {
-        return firstPlayerCollectableItem;
+    public ArrayList<CollectibleItem> getFirstPlayerCollectibleItem() {
+        return firstPlayerCollectibleItem;
     }
 
-    public ArrayList<CollectableItem> getSecondPlayerCollectableItem() {
-        return secondPlayerCollectableItem;
+    public ArrayList<CollectibleItem> getSecondPlayerCollectibleItem() {
+        return secondPlayerCollectibleItem;
     }
 
-    public void addSecondPlayerCollectableItem(CollectableItem collectableItem) {
-        secondPlayerCollectableItem.add(collectableItem);
+    public void addSecondPlayerCollectibleItem(CollectibleItem collectibleItem) {
+        secondPlayerCollectibleItem.add(collectibleItem);
     }
 
-    public void addFirstPlayerCollectableItem(CollectableItem collectableItem) {
-        firstPlayerCollectableItem.add(collectableItem);
+    public void addFirstPlayerCollectibleItem(CollectibleItem collectibleItem) {
+        firstPlayerCollectibleItem.add(collectibleItem);
     }
 
     public void addToFirstGrave(Card card) {
@@ -90,12 +90,12 @@ public abstract class Battle {
         this.selectedCard = selectedCard;
     }
 
-    public void setSelectedCollectable(CollectableItem selectedCollectable) {
-        this.selectedCollectable = selectedCollectable;
+    public void setSelectedCollectible(CollectibleItem selectedCollectible) {
+        this.selectedCollectible = selectedCollectible;
     }
 
-    public CollectableItem getSelectedCollectable() {
-        return selectedCollectable;
+    public CollectibleItem getSelectedCollectible() {
+        return selectedCollectible;
     }
 
     public void addFirstPlayerInGameCards(Card card) {

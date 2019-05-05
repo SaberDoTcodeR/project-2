@@ -14,6 +14,7 @@ import java.util.Random;
 
 public abstract class CollectibleItem extends Item {
     private static ArrayList<CollectibleItem> collectibleItems = new ArrayList<>();
+    private String cardId;
 
     static {
         new BladesOfAgility();
@@ -34,6 +35,36 @@ public abstract class CollectibleItem extends Item {
         collectibleItems.add(this);
     }
 
+    public void cardIdGenerator(Battle battle) {
+        ArrayList<CollectibleItem> collectibleItems;
+        String playerName;
+        if (battle.getTurn() % 2 == 1) {
+            playerName = battle.getFirstPlayer().getUserName();
+            collectibleItems = battle.getFirstPlayerCollectibleItem();
+        } else {
+            collectibleItems = battle.getSecondPlayerCollectibleItem();
+            playerName = battle.getSecondPlayer().getUserName();
+        }
+
+        int count = 1;
+        for (CollectibleItem collectibleItem : collectibleItems) {
+            if (collectibleItem.getName().equals(this.getName())) {
+                count++;
+            }
+        }
+        String str = playerName + "_" + this.getName() + "_" + (count);
+        setCardId(str);
+    }
+
+    public void setCardId(String cardId) {
+        this.cardId = cardId;
+    }
+
+
+    public String getCardId() {
+        return cardId;
+    }
+
     public CollectibleItem(CollectibleItem collectibleItem) {
         this.setName(collectibleItem.getName());
     }
@@ -51,7 +82,7 @@ enum CollectibleItemWork {
     DEVASTATION("Increase 6HP a force"),
     DOUBLE_ENTENDRE_ARROW("Increase 2AP of a ranged or hybrid force"),
     ELIXIR("Increase 3HP and apply 1 powerBuff and add 3AP for minion"),
-    MANA_ELECTUARY("Increase mana 3units in the next turn"),
+    MANA_ELECTUARY("Increase mana 3 units in the next turn"),
     PERPETUITY_ELECTUARY("Apply 10 holyBuff for insider accident force for 2 turn"),
     DEATH_CURSE("Give a ability to a accident minion that enter 8 hit to a random force that in the nearest distance to it"),
     RANDOM_DAMAGE("Give 2AP to a random force"),
@@ -244,7 +275,7 @@ class ManaElectuary extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        //todo add
     }
 
     public CollectibleItem duplicate() {

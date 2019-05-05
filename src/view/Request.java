@@ -58,8 +58,8 @@ public class Request {
         commands.get(1).add(new ComboAttack());
         commands.get(1).add(new UseSpecialPower());
         commands.get(1).add(new ShowNextCard());
-        commands.get(1).add(new ShowCollectables());
-        commands.get(1).add(new SelectCollectable());
+        commands.get(1).add(new ShowCollectibles());
+        commands.get(1).add(new SelectCollectible());
         commands.get(1).add(new EnterGraveYard());
         commands.get(1).add(new HelpInBattle());
         /*
@@ -110,8 +110,8 @@ public class Request {
         commands.get(8).add(new Exit());
         commands.get(8).add(new Help());
 
-        commands.get(8).add(new ShowInfoCollectable());
-        commands.get(8).add(new UseCollectable());
+        commands.get(8).add(new ShowInfoCollectible());
+        commands.get(8).add(new UseCollectible());
         commands.get(9).add(new Exit());
         commands.get(9).add(new Help());
     }
@@ -158,13 +158,13 @@ public class Request {
     }
 
     public void addCollectible(int x, int y) {
-        this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem().cardIdGenerator(this.getBattle());
+        this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem().cardIdGenerator(this.getBattle());
         if (this.getBattle().getTurn() % 2 == 1) {
-            this.getBattle().addFirstPlayerCollectableItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem());
+            this.getBattle().addFirstPlayerCollectibleItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem());
         } else {
-            this.getBattle().addSecondPlayerCollectableItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectableItem());
+            this.getBattle().addSecondPlayerCollectibleItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem());
         }
-        this.getBattle().getMap().get(x - 1).get(y - 1).setCollectableItem(null);
+        this.getBattle().getMap().get(x - 1).get(y - 1).setCollectibleItem(null);
     }
 
     public boolean existThisUser(String userName) {
