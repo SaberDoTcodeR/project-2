@@ -1,7 +1,6 @@
 package model.Item;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import model.Battles.*;
 import model.Buffs.*;
@@ -46,9 +45,10 @@ public abstract class UsableItem extends Item {
      * 0 -> on spawn
      * 1 -> passive
      * 2 -> on death
-     * 3 -> on attack
+     * 3 -> on attack hero or minion
      * 4 -> on defend
      * 5 -> combo
+     * 6 -> on Attack -> just Hero
      * */
     public int getCostOfBuy() {
         return costOfBuy;
@@ -68,7 +68,6 @@ public abstract class UsableItem extends Item {
 
 }
 
-//todo -->
 enum UsableItemWork {
     CROWN_OF_WISDOM("Increase mana in 3 first turns"),
     SHAME_EMBLEM("Active 12 holyBuff in insider force"),
@@ -103,7 +102,7 @@ class CrownOfWisdom extends UsableItem {
         super(crownOfWisdom);
     }
 
-    /* --->>> 5 --> to apply on 3 first turn
+    /*
      * cell --> no different
      * player --> The player who has this item
      * activeTime : no different
@@ -111,7 +110,7 @@ class CrownOfWisdom extends UsableItem {
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         ManaItemBuff manaItemBuff = new ManaItemBuff(player, 1);
-        manaItemBuff.setTurnCounter(5);
+        manaItemBuff.setTurnCounter(2);
         manaItemBuff.castBuff();
         player.getOwnBuffs().add(manaItemBuff);
     }
@@ -185,24 +184,24 @@ class DamolArchery extends UsableItem {
     /*
      * cell : enemy cell that player's *hero* want to attack on this
      * player : the player who has this item
-     * activeTime : 3 --> on Attack
+     * activeTime : 6 --> on Attack
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         if (player.getMainDeck().getHero().getTypeOfHit().equals("Ranged") ||
                 player.getMainDeck().getHero().getTypeOfHit().equals("Hybrid")) {
-            if (activeTime == 3) {
+            if (activeTime == 6) {
                 if (cell.getHero() != null) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell.getHero());
-                    disarmBuff.setTurnCounter(1);
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                    disarmBuff.setTurnCounter(0);
                     cell.getHero().getOwnBuffs().add(disarmBuff);
                 }
                 if (cell.getMinion() != null) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell.getMinion());
-                    disarmBuff.setTurnCounter(1);
+                    disarmBuff.setTurnCounter(0);
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
                 }
@@ -276,24 +275,24 @@ class TerrorHood extends UsableItem {
     /*
      * cell : no different
      * player : th player who its force want to attack on enemy
-     * activeTime : 3 --> on Attack
+     * activeTime : 3 or 6 --> on Attack
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 3) {
+        if (activeTime == 3 || activeTime == 6) {
             Cell enemyCell = getRandomEnemyForce(battle, player);
             if (enemyCell.getHero() != null) {
                 WeaknessBuff weaknessBuff = new WeaknessBuff(2, true);
                 weaknessBuff.setCasting(weaknessBuff, null, enemyCell.getHero(), null);
                 weaknessBuff.decrementAp(enemyCell.getHero());
-                weaknessBuff.setTurnCounter(1);
+                weaknessBuff.setTurnCounter(0);
                 enemyCell.getHero().getOwnBuffs().add(weaknessBuff);
             }
             if (enemyCell.getMinion() != null) {
                 WeaknessBuff weaknessBuff = new WeaknessBuff(2, true);
                 weaknessBuff.setCasting(weaknessBuff, null, null, enemyCell.getMinion());
                 weaknessBuff.decrementAp(enemyCell.getMinion());
-                weaknessBuff.setTurnCounter(1);
+                weaknessBuff.setTurnCounter(0);
                 enemyCell.getMinion().getOwnBuffs().add(weaknessBuff);
             }
         }
@@ -399,24 +398,24 @@ class PoisonousDagger extends UsableItem {
     /*
      * cell : no different
      * player : the player that its enemy is attacking
-     * activeTime : 3 --> on Attack
+     * activeTime : 3 or 6 --> on Attack
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 3) {
+        if (activeTime == 3 || activeTime ==6) {
             Cell enemyCell = getRandomEnemyForce(battle, player);
             if (enemyCell.getHero() != null) {
                 PoisonBuff poisonBuff = new PoisonBuff();
                 poisonBuff.setCasting(poisonBuff, null, enemyCell.getHero(), null);
                 poisonBuff.poison(enemyCell.getHero());
-                poisonBuff.setTurnCounter(-5);//todo --> right or not
+                poisonBuff.setTurnCounter(0);
                 enemyCell.getHero().getOwnBuffs().add(poisonBuff);
             }
             if (enemyCell.getMinion() != null) {
                 PoisonBuff poisonBuff = new PoisonBuff();
                 poisonBuff.setCasting(poisonBuff, null, null, enemyCell.getMinion());
                 poisonBuff.poison(enemyCell.getMinion());
-                poisonBuff.setTurnCounter(-5);//todo --> right or not
+                poisonBuff.setTurnCounter(0);
                 enemyCell.getMinion().getOwnBuffs().add(poisonBuff);
             }
         }
@@ -449,21 +448,21 @@ class ShockHammer extends UsableItem {
     /*
      * cell : cell of hero or minion is
      * player : no different
-     * activeTime : 3 --> on Attack
+     * activeTime : 6 --> on Attack
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 3) {
+        if (activeTime == 6) {
             if (cell.getHero() != null) {
                 DisarmBuff disarmBuff = new DisarmBuff();
-                disarmBuff.setTurnCounter(1);
+                disarmBuff.setTurnCounter(0);
                 disarmBuff.disarm(cell.getHero());
                 disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                 cell.getHero().getOwnBuffs().add(disarmBuff);
             }
             if (cell.getMinion() != null) {
                 DisarmBuff disarmBuff = new DisarmBuff();
-                disarmBuff.setTurnCounter(1);
+                disarmBuff.setTurnCounter(0);
                 disarmBuff.disarm(cell.getMinion());
                 disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(disarmBuff);
@@ -555,13 +554,14 @@ class Baptism extends UsableItem {
             if (cell.getMinion() != null) {
                 HolyBuff holyBuff = new HolyBuff();
                 holyBuff.holy(cell.getMinion());
-                holyBuff.setTurnCounter(3);
+                holyBuff.setTurnCounter(1);
                 holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(holyBuff);
             }
         }
     }
 
+    @Override
     public UsableItem duplicate() {
         Baptism baptism = new Baptism(this);
         return baptism;

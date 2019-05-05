@@ -1,6 +1,7 @@
 package model.Item;
 
 import model.Battles.Battle;
+import model.Buffs.ChangeHpBuff;
 import model.Buffs.HolyBuff;
 import model.Buffs.PowerBuff;
 import model.Cards.Hero;
@@ -191,10 +192,14 @@ class DoubleEntendreArrow extends CollectibleItem {
     }
 
     private boolean checkRightType(Cell cell) {
-        if (cell.getHero().getTypeOfHit().equals("Hybrid") || cell.getHero().getTypeOfHit().equals("Ranged"))
-            return true;
-        if (cell.getMinion().getTypeOfHit().equals("Hybrid") || cell.getMinion().getTypeOfHit().equals("Ranged"))
-            return true;
+        if (cell.getHero() != null)
+            if (cell.getHero().getTypeOfHit().equals("Hybrid") ||
+                    cell.getHero().getTypeOfHit().equals("Ranged"))
+                return true;
+        if (cell.getMinion() != null)
+            if (cell.getMinion().getTypeOfHit().equals("Hybrid") ||
+                    cell.getMinion().getTypeOfHit().equals("Ranged"))
+                return true;
         return false;
     }
 
@@ -230,7 +235,7 @@ class Elexir extends CollectibleItem {
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
-        while (insiderCell.getMinion() != null) {
+        while (insiderCell.getMinion() == null) {
             insiderCell = getRandomInsiderForce(battle, player);
         }
         if (insiderCell.getMinion() != null) {
@@ -361,76 +366,14 @@ class DeathCurse extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 2) {
-            Cell insiderCell = getRandomInsiderForce(battle, player);
-            while (insiderCell.getMinion() != null) {
-                insiderCell = getRandomInsiderForce(battle, player);
-            }
-            int index_i = 0;
-            int index_j = 0;
-            for (int i = 0; i < 5; i++) {
-                if (battle.getMap().get(i).contains(insiderCell)) {
-                    index_i = i;
-                    index_j = battle.getMap().get(i).indexOf(insiderCell);
-                    break;
-                }
-            }
-            double[][] distance = new double[5][];
-            for (int i = 0; i < 5; i++) {
-                distance[i] = new double[9];
-            }
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
-                    distance[i][j] = 100;
-                }
-            }
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
-                    if (i == index_i && j == index_j)
-                        continue;
-                    if (battle.getMap().get(i).get(j).getHero() != null &&
-                            isEnemyHero(battle.getMap().get(i).get(j).getHero(), player)) {
-                        distance[i][j] = getPow(index_i, index_j, i, j);
-                    }
-                    if (battle.getMap().get(i).get(j).getMinion() != null &&
-                            isEnemyMinion(battle.getMap().get(i).get(j).getMinion(), player)) {
-                        distance[i][j] = getPow(index_i, index_j, i, j);
-                    }
-                }
-            }
-            double minValue = distance[0][0];
-            int indexMinI = 0;
-            int indexMinJ = 0;
-            for (int j = 0; j < distance.length; j++) {
-                for (int i = 0; i < distance[j].length; i++) {
-                    if (distance[j][i] < minValue) {
-                        minValue = distance[j][i];
-                        indexMinI = i;
-                        indexMinJ = j;
-                    }
-                }
-            }
-            if (battle.getMap().get(indexMinI).get(indexMinJ).getHero() != null) {
-                battle.getMap().get(indexMinI).get(indexMinJ).getHero().decrementHp(8);
-            }
-            if (battle.getMap().get(indexMinI).get(indexMinJ).getMinion() != null) {
-                battle.getMap().get(indexMinI).get(indexMinJ).getMinion().decrementHp(8);
-            }
+        Cell insiderCell = getRandomInsiderForce(battle, player);
+        while (insiderCell.getMinion() == null) {
+            insiderCell = getRandomInsiderForce(battle, player);
         }
+        insiderCell.getMinion().setDeathCurse(true);
     }
 
-    private boolean isEnemyHero(Hero hero, Account player) {
-        return player.getMainDeck().isContain(hero);
-    }
-
-    private boolean isEnemyMinion(Minion minion, Account player) {
-        return player.getMainDeck().isContain(minion);
-    }
-
-    private double getPow(int index_i, int index_j, int i, int j) {
-        return Math.pow(Math.pow(Math.abs(i - index_i), 2) + Math.pow(Math.abs(j - index_j), 2), 1 / 2);
-    }
-
+    @Override
     public CollectibleItem duplicate() {
         DeathCurse deathCurse = new DeathCurse(this);
         return deathCurse;
@@ -470,6 +413,7 @@ class RandomDamage extends CollectibleItem {
             insiderCell.getMinion().incrementAp(2);
     }
 
+    @Override
     public CollectibleItem duplicate() {
         RandomDamage randomDamage = new RandomDamage(this);
         return randomDamage;
@@ -510,6 +454,7 @@ class BladesOfAgility extends CollectibleItem {
         }
     }
 
+    @Override
     public CollectibleItem duplicate() {
         BladesOfAgility bladesOfAgility = new BladesOfAgility(this);
         return bladesOfAgility;
@@ -577,6 +522,7 @@ class ChineseSword extends CollectibleItem {
         }
     }
 
+    @Override
     public CollectibleItem duplicate() {
         ChineseSword chineseSword = new ChineseSword(this);
         return chineseSword;
