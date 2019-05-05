@@ -18,7 +18,7 @@ public abstract class Battle {
     private Card selectedCard;
     private CollectibleItem selectedCollectible;
     private ArrayList<CollectibleItem> firstPlayerCollectibleItem = new ArrayList<>();
-
+    private int reward;
     private ArrayList<CollectibleItem> secondPlayerCollectibleItem = new ArrayList<>();
     private ArrayList<ArrayList<Cell>> map = new ArrayList<>();
     private int turn = 1;
@@ -32,6 +32,16 @@ public abstract class Battle {
         this.firstPlayerDeck = deck;
         this.secondPlayerDeck = deck2;
     }
+
+    public int getReward() {
+        return reward;
+    }
+
+    public void setReward(int reward) {
+        this.reward = reward;
+    }
+
+    abstract public String getType();
 
     public ArrayList<CollectibleItem> getFirstPlayerCollectibleItem() {
         return firstPlayerCollectibleItem;

@@ -24,7 +24,7 @@ public class CollectableControl {
             } else if (command != null && request.getCommand().equals("help")) {
                 view.showCollectableMenu();
             } else if (command != null && request.getCommand().equals("exit")) {
-                request.getBattle().setSelectedCollectable(null);
+                request.getBattle().setSelectedCollectible(null);
                 return;
             } else {
                 view.printError(ErrorType.COMMAND);

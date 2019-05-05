@@ -40,12 +40,16 @@ public class HeroBattle extends Battle {
         }
     }
 
-    public HeroBattle(Deck opponentDeck, Deck myDeck, Account player) {
+    public String getType() {
+        return "HeroBattle";
+    }
+
+    public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
         this.secondPlayer = account;
-
+        this.setReward(reward);
         this.getMap().get(2).get(0).getHero().cardIdGenerator(this);
         this.increamentTurn();
         this.getMap().get(2).get(8).getHero().cardIdGenerator(this);
@@ -54,10 +58,17 @@ public class HeroBattle extends Battle {
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
     }
 
-    public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2) {
+    public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int reward) {
         super(player, myDeck, opponentDeck);
         this.secondPlayer = player2;
         this.playWithAI = false;
+        this.setReward(reward);
+        this.getMap().get(2).get(0).getHero().cardIdGenerator(this);
+        this.increamentTurn();
+        this.getMap().get(2).get(8).getHero().cardIdGenerator(this);
+        this.decreamentTurn();
+        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
+        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
     }
 
     public void showDetailedInfo() {

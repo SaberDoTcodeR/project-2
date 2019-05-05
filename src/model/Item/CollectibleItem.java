@@ -3,6 +3,7 @@ package model.Item;
 import model.Battles.Battle;
 import model.Buffs.ChangeHpBuff;
 import model.Buffs.HolyBuff;
+import model.Buffs.ManaItemBuff;
 import model.Buffs.PowerBuff;
 import model.Cards.Hero;
 import model.Cards.Minion;
@@ -280,7 +281,9 @@ class ManaElectuary extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        //todo add
+        ManaItemBuff manaItemBuff=new ManaItemBuff(player,3);
+        manaItemBuff.setTurnCounter(1);
+        player.getOwnBuffs().add(manaItemBuff);
     }
 
     public CollectibleItem duplicate() {
@@ -319,7 +322,7 @@ class PerpetuityElectuary extends CollectibleItem {
             for (int i = 0; i < 10; i++) {
                 HolyBuff holyBuff = new HolyBuff();
                 holyBuff.setCasting(holyBuff, null, insiderCell.getHero(), null);
-                holyBuff.setTurnCounter(3);
+                holyBuff.setTurnCounter(1);
                 holyBuff.holy(insiderCell.getHero());
                 insiderCell.getHero().getOwnBuffs().add(holyBuff);
             }
@@ -328,7 +331,7 @@ class PerpetuityElectuary extends CollectibleItem {
             for (int i = 0; i < 10; i++) {
                 HolyBuff holyBuff = new HolyBuff();
                 holyBuff.setCasting(holyBuff, null, null, insiderCell.getMinion());
-                holyBuff.setTurnCounter(3);
+                holyBuff.setTurnCounter(1);
                 holyBuff.holy(insiderCell.getMinion());
                 insiderCell.getMinion().getOwnBuffs().add(holyBuff);
             }

@@ -1,5 +1,6 @@
 package view;
 
+import control.MainMenuControl;
 import model.*;
 import model.Battles.Battle;
 import model.Cards.Card;
@@ -10,9 +11,7 @@ import model.Item.UsableItem;
 import model.Menus.Account;
 import model.Menus.Collection;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Base64;
 
 public class View {
     private static final View VIEW = new View();
@@ -69,6 +68,29 @@ public class View {
             index++;
         }
     }
+
+    public void endGame(Battle battle, boolean firstWin) {
+        Account account;
+        if (firstWin)
+            account = battle.getFirstPlayer();
+        else
+            account = battle.getSecondPlayer();
+        account.setMoney(account.getMoney() + battle.getReward());
+        System.out.println("HeroBattle finished :\n" +
+                "Winner is : " + account.getUserName() +
+                "\nReward : " + battle.getReward());
+        Request request = new Request();
+        while (1 == 1) {
+            System.out.print("enter (End game) to exit game :");
+            request.getNewCommand();
+            if (request.getCommand().equals("end game")) {
+                MainMenuControl mainMenuControl = new MainMenuControl();
+                mainMenuControl.main();
+            }
+
+        }
+    }
+
 
     public void printDeckDetails(Deck deck, int counter, boolean allOrNot) {
         if (allOrNot)
@@ -184,7 +206,8 @@ public class View {
         System.out.println(helpstr);
 
     }
-    public void showCollectableMenu(){
+
+    public void showCollectableMenu() {
         String helpstr = "1 : show info\n" +
                 "2 : Use [location x, y]\n" +
                 "3 : exit";
@@ -233,15 +256,13 @@ public class View {
                         printMinionInfo(battle, i, j);
                     }
 
-                }
-                else if  (whichPlayer == 2 && battle.getMap().get(i).get(j).getHero() != null) {
+                } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getHero() != null) {
                     if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getSecondPlayer().getUserName())) {
                         printHeroInfo(battle, i, j);
 
                     }
 
-                }
-                else if  (whichPlayer == 1 && battle.getMap().get(i).get(j).getHero() != null) {
+                } else if (whichPlayer == 1 && battle.getMap().get(i).get(j).getHero() != null) {
                     if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getFirstPlayer().getUserName())) {
                         printHeroInfo(battle, i, j);
                     }
@@ -256,11 +277,13 @@ public class View {
         System.out.print("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
                 battle.getMap().get(i).get(j).getMinion().getAp());
     }
+
     public void printHeroInfo(Battle battle, int i, int j) {
         System.out.print(battle.getMap().get(i).get(j).getHero().getCardId() + " : " + battle.getMap().get(i).get(j).getHero().getName() + ", ");
         System.out.println("health : " + battle.getMap().get(i).get(j).getHero().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
                 battle.getMap().get(i).get(j).getHero().getAp());
     }
+
     public void showBattleMenu() {
         String helpstr = "1 : Game Info\n" +
                 "2 : Show my minions\n" +

@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import control.*;
 import model.*;
 import model.Battles.*;
+import model.Buffs.Buff;
 import model.Cards.*;
 import model.Item.CollectibleItem;
 import model.Menus.*;
@@ -561,7 +562,7 @@ class StartGame extends Command {
                 gameControl.main(battle);
             } else {
                 HeroBattle battle = new HeroBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
-                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount());
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 1000);
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             }
@@ -641,7 +642,44 @@ class EndTurn extends Command {
 
     @Override
     public void apply(Request request) {
+        for (int i = 0; i < 5; i++) {
+            for (Cell cell : request.getBattle().getMap().get(i)) {
+                for (int j = 0; j < cell.getCellEffect().size(); j++) {
+                    if (cell.getCellEffect().get(j).getTurnCounter() == 0) {
+                        cell.getCellEffect().remove(j);
+                        j--;
+                    } else {
+                        cell.getCellEffect().get(j).castBuff();
+                        cell.getCellEffect().get(j).decrementTurnCounter(1);
+                    }
+                }
+                if (cell.getHero() != null) {
+                    for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
+                        if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() == 0) {
+                            cell.getHero().getOwnBuffs().get(j).dispel(cell.getHero());
+                            cell.getHero().getOwnBuffs().remove(j);
+                            j--;
+                        } else {
+                            cell.getHero().getOwnBuffs().get(j).castBuff();
+                            cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
+                        }
+                    }
+                } else if (cell.getMinion() != null) {
+                    for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
+                        if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() == 0) {
+                            cell.getMinion().getOwnBuffs().get(j).dispel(cell.getMinion());
+                            cell.getMinion().getOwnBuffs().remove(j);
+                            j--;
+                        } else {
+                            cell.getMinion().getOwnBuffs().get(j).castBuff();
+                            cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
+                        }
+                    }
+                }
+            }
+        }
 
+        request.getBattle().increamentTurn();
     }
 }
 
@@ -795,6 +833,13 @@ class InsertCard extends Command {
                             if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
                                 request.addCollectible(xPos, yPos);
                             }
+
+                            if (request.getBattle().getTurn() % 2 == 1 && request.getBattle().getFirstPlayerDeck().getUsableItem() != null)
+                                request.getBattle().getFirstPlayerDeck().getUsableItem().applyEffect(request.getBattle(), null, request.getBattle().getFirstPlayer(), 0);
+                            else if (request.getBattle().getTurn() % 2 == 0 && request.getBattle().getSecondPlayerDeck().getUsableItem() != null)
+                                request.getBattle().getSecondPlayerDeck().getUsableItem().applyEffect(request.getBattle(), null, request.getBattle().getSecondPlayer(), 0);
+
+
                         } else
                             request.setError(ErrorType.INVALID_TARGET);
                     } else {
@@ -834,8 +879,6 @@ class Attack extends Command {
             card = request.getBattle().getCard(oppCardId, 0);
         if (card != null) {
             request.getBattle().getSelectedCard().attack(request.getBattle(), card, request);
-
-
         } else {
             request.setError(ErrorType.INVALID_TARGET);
             return;
