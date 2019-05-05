@@ -968,13 +968,13 @@ class OneEyeGiant extends Minion {
         if (activeTime == 2) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(cell.rightCell(battle.getMap()));
+            targetCells.add(cell.leftCell(battle.getMap()));
+            targetCells.add(cell.downCell(battle.getMap()));
             targetCells.add(targetCells.get(0).rightCell(battle.getMap()));
             targetCells.add(targetCells.get(1).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(2).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).upCell(battle.getMap()));
             targetCells.add(targetCells.get(3).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(4).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(5).upCell(battle.getMap()));
-            targetCells.add(targetCells.get(6).upCell(battle.getMap()));
             for (int i = 0; i < 8; i++) {
                 if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
@@ -1145,17 +1145,17 @@ class GiantSnake extends Minion {
         if (activeTime == 0) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             targetCells.add(cell.upCell(battle.getMap()));
-            targetCells.add(targetCells.get(0).upCell(battle.getMap()));
+            targetCells.add(cell.rightCell(battle.getMap()));
+            targetCells.add(cell.leftCell(battle.getMap()));
+            targetCells.add(cell.downCell(battle.getMap()));
             targetCells.add(targetCells.get(0).rightCell(battle.getMap()));
-            targetCells.add(targetCells.get(2).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(3).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(1).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(0).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(1).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).leftCell(battle.getMap()));
             targetCells.add(targetCells.get(3).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(5).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(6).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(6).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(8).upCell(battle.getMap()));
-            targetCells.add(targetCells.get(9).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(9).upCell(battle.getMap()));
             for (int i = 0; i < 12; i++) {
                 if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
@@ -1336,9 +1336,9 @@ class Magician extends Minion {
             targetCells.add(cell.rightCell(battle.getMap()));
             targetCells.add(cell.leftCell(battle.getMap()));
             targetCells.add(targetCells.get(1).rightCell(battle.getMap()));
-            targetCells.add(targetCells.get(2).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).leftCell(battle.getMap()));
             targetCells.add(targetCells.get(4).upCell(battle.getMap()));
-            targetCells.add(targetCells.get(4).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
             for (int i = 0; i < targetCells.size(); i++) {
                 if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
@@ -1797,13 +1797,13 @@ class ColdGrandma extends Minion {
         if (activeTime == 0) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(cell.rightCell(battle.getMap()));
+            targetCells.add(cell.leftCell(battle.getMap()));
+            targetCells.add(cell.downCell(battle.getMap()));
             targetCells.add(targetCells.get(0).rightCell(battle.getMap()));
-            targetCells.add(targetCells.get(0).leftCell(battle.getMap()));
-            targetCells.add(targetCells.get(2).downCell(battle.getMap()));
             targetCells.add(targetCells.get(1).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(4).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(6).leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).leftCell(battle.getMap()));
             for (int i = 0; i < 8; i++) {
                 if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {

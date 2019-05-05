@@ -62,9 +62,8 @@ public class Request {
         commands.get(1).add(new SelectCollectible());
         commands.get(1).add(new EnterGraveYard());
         commands.get(1).add(new HelpInBattle());
-        /*
-//commands.get(1).add(new EndTurn());
-         */
+        commands.get(1).add(new EndTurn());
+
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());
