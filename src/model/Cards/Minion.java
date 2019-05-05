@@ -976,7 +976,7 @@ class OneEyeGiant extends Minion {
             targetCells.add(targetCells.get(5).upCell(battle.getMap()));
             targetCells.add(targetCells.get(6).upCell(battle.getMap()));
             for (int i = 0; i < 8; i++) {
-                if (targetCells.get(i).getMinion() != null) {
+                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         targetCells.get(i).getMinion().decrementHp(2 - targetCells.get(i).getMinion().getHolyCounter());
                     }
@@ -1157,7 +1157,7 @@ class GiantSnake extends Minion {
             targetCells.add(targetCells.get(9).leftCell(battle.getMap()));
             targetCells.add(targetCells.get(9).upCell(battle.getMap()));
             for (int i = 0; i < 12; i++) {
-                if (targetCells.get(i).getMinion() != null) {
+                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         ChangeHpBuff changeHpBuff = new ChangeHpBuff(1);
                         changeHpBuff.setTurnCounter(-5);
@@ -1340,7 +1340,7 @@ class Magician extends Minion {
             targetCells.add(targetCells.get(4).upCell(battle.getMap()));
             targetCells.add(targetCells.get(4).downCell(battle.getMap()));
             for (int i = 0; i < targetCells.size(); i++) {
-                if (targetCells.get(i).getMinion() != null) {
+                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(0);
@@ -1400,7 +1400,7 @@ class GiantMagician extends Minion {
             targetCells.add(targetCells.get(3).downCell(battle.getMap()));
             targetCells.add(targetCells.get(4).leftCell(battle.getMap()));
             for (int i = 0; i < targetCells.size(); i++) {
-                if (targetCells.get(i).getMinion() != null) {
+                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(-4);
@@ -1805,7 +1805,7 @@ class ColdGrandma extends Minion {
             targetCells.add(targetCells.get(3).downCell(battle.getMap()));
             targetCells.add(targetCells.get(6).leftCell(battle.getMap()));
             for (int i = 0; i < 8; i++) {
-                if (targetCells.get(i).getMinion() != null) {
+                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
                     if (!player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         StunBuff stunBuff = new StunBuff();
                         stunBuff.setTurnCounter(1);

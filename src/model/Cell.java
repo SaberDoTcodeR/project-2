@@ -55,6 +55,8 @@ public class Cell {
     }
 
     public Cell rightCell(ArrayList<ArrayList<Cell>> map) {
+        if (this == null)
+            return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
                 if (map.get(i).get(j).equals(this)) {
@@ -66,6 +68,8 @@ public class Cell {
     }
 
     public Cell leftCell(ArrayList<ArrayList<Cell>> map) {
+        if (this == null)
+            return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
                 if (map.get(i).get(j).equals(this)) {
@@ -77,6 +81,9 @@ public class Cell {
     }
 
     public Cell downCell(ArrayList<ArrayList<Cell>> map) {
+
+        if (this == null)
+            return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
                 if (map.get(i).get(j).equals(this)) {
@@ -88,6 +95,8 @@ public class Cell {
     }
 
     public Cell upCell(ArrayList<ArrayList<Cell>> map) {
+        if (this == null)
+            return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
                 if (map.get(i).get(j).equals(this)) {
