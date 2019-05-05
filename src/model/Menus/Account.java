@@ -2,6 +2,7 @@ package model.Menus;
 
 import java.util.ArrayList;
 
+import model.Buffs.Buff;
 import model.Deck;
 import model.RecordedMatch;
 import view.*;
@@ -15,6 +16,7 @@ public class Account {
     private Deck mainDeck;
     private ArrayList<RecordedMatch> matches = new ArrayList<RecordedMatch>();
     private Collection myCollection = new Collection();
+    private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public int getMoney() {
         return money;
@@ -30,7 +32,6 @@ public class Account {
     public void incrementMana(int unit){
         this.mana += unit;
     }
-
 
     public void decrementMana(int unit){
         this.mana -= unit;
@@ -129,5 +130,13 @@ public class Account {
 
     public static void addUser(Account account) {
         allUser.add(account);
+    }
+
+    public ArrayList<Buff> getOwnBuffs() {
+        return ownBuffs;
+    }
+
+    public void setOwnBuffs(ArrayList<Buff> ownBuffs) {
+        this.ownBuffs = ownBuffs;
     }
 }

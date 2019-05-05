@@ -3,6 +3,7 @@ package model;
 
 public enum ErrorType {
     INVALID_COLLECTABLE_ID("invalid collectable ID"),
+    INVALID_HERO_TYPE_OF_HIT("Hero's hitting is not a kind of melee or hybrid"),
     HERO_IS_IN_COOLDOWN("Hero is in cool down"),
     ONLY_HEROES_HAVE_SPECIAL_POWER("Only Heroes are able to Use Special power"),
     CANNOT_COMBO_ATTACK("Can not attack combo"),

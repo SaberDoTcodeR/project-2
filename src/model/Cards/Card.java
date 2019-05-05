@@ -14,6 +14,9 @@ public abstract class Card {
     View view = View.getInstance();
     private String name;
     private boolean isOnMap;
+    private boolean isHitting;
+    private boolean isDying;
+    private boolean isComingToMap;
     private int costOfBuy;
     private long id;
     private String cardId;
@@ -225,5 +228,29 @@ public abstract class Card {
         }
         String str = playerName + "_" + this.getName() + "_" + (count);
         setCardId(str);
+    }
+
+    public boolean isHitting() {
+        return isHitting;
+    }
+
+    public void setHitting(boolean hitting) {
+        isHitting = hitting;
+    }
+
+    public boolean isDying() {
+        return isDying;
+    }
+
+    public void setDying(boolean dying) {
+        isDying = dying;
+    }
+
+    public boolean isComingToMap() {
+        return isComingToMap;
+    }
+
+    public void setComingToMap(boolean comingToMap) {
+        isComingToMap = comingToMap;
     }
 }
