@@ -30,7 +30,7 @@ public abstract class CollectibleItem extends Item {
         new RandomDamage();
     }
 
-    public abstract void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime);
+    public abstract void applyEffect(Battle battle, Cell cell, Account player);
 
     public CollectibleItem(String name) {
         this.setName(name);
@@ -118,7 +118,7 @@ class Devastation extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         if (insiderCell.getMinion() != null) {
             cell.getMinion().incrementHp(6);
@@ -158,7 +158,7 @@ class DoubleEntendreArrow extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomForce(battle, player);
         if (insiderCell.getHero() != null)
             insiderCell.getHero().incrementAp(2);
@@ -234,7 +234,7 @@ class Elexir extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         while (insiderCell.getMinion() == null) {
             insiderCell = getRandomInsiderForce(battle, player);
@@ -280,8 +280,8 @@ class ManaElectuary extends CollectibleItem {
      * activeTime :
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        ManaItemBuff manaItemBuff=new ManaItemBuff(player,3);
+    public void applyEffect(Battle battle, Cell cell, Account player) {
+        ManaItemBuff manaItemBuff = new ManaItemBuff(player, 3);
         manaItemBuff.setTurnCounter(1);
         player.getOwnBuffs().add(manaItemBuff);
     }
@@ -316,7 +316,7 @@ class PerpetuityElectuary extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         if (insiderCell.getHero() != null) {
             for (int i = 0; i < 10; i++) {
@@ -368,7 +368,7 @@ class DeathCurse extends CollectibleItem {
      * activeTime : 2 --> on Death
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         while (insiderCell.getMinion() == null) {
             insiderCell = getRandomInsiderForce(battle, player);
@@ -407,7 +407,7 @@ class RandomDamage extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         if (insiderCell.getHero() != null) {
             insiderCell.getHero().incrementAp(2);
@@ -447,7 +447,7 @@ class BladesOfAgility extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         Cell insiderCell = getRandomInsiderForce(battle, player);
         if (insiderCell.getHero() != null) {
             insiderCell.getHero().incrementAp(6);
@@ -488,7 +488,7 @@ class ChineseSword extends CollectibleItem {
      * activeTime : no different
      * */
     @Override
-    public void applyEffect(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void applyEffect(Battle battle, Cell cell, Account player) {
         ArrayList<Cell> meleeForces = getRandomForce(battle, player);
         for (Cell newCell : meleeForces) {
             if (newCell.getHero() != null) {

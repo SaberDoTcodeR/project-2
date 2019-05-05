@@ -497,7 +497,7 @@ class Buy extends Command {
             } else {
                 if (Account.getLoginAccount().getCollection().getUsableItems().size() < 3) {
                     request.setError(ErrorType.CARD_SUCCESSFULLY_BOUGHT);
-                    Account.getLoginAccount().decreament(shop.costOfCard(cardName));
+                    Account.getLoginAccount().decrement(shop.costOfCard(cardName));
                     Account.getLoginAccount().getCollection().addToCollection(cardName);
                 } else {
                     request.setError(ErrorType.THREE_ITEMS_ALREADY_OCCUPIED);
@@ -843,7 +843,7 @@ class InsertCard extends Command {
                         } else
                             request.setError(ErrorType.INVALID_TARGET);
                     } else {
-                        ((Spell) card1).castSpell(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), account);
+                        ((Spell) card1).castSpell(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), account, request);
                         account.setMana(account.getMana() - cost);
                         if (request.getError() == null) {
                             System.out.println(card1.getName() + " inserted to " + " (" + xPos + "," + yPos + ")");
@@ -1116,9 +1116,9 @@ class UseCollectible extends Command {
         int xPos = Integer.parseInt(matcher.group(1).trim());
         int yPos = Integer.parseInt(matcher.group(2).trim());
         if (request.getBattle().getTurn() % 2 == 1)
-            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getFirstPlayer(), request);
+            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getFirstPlayer());
         else
-            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getSecondPlayer(), request);
+            request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getSecondPlayer());
 
     }
 }
