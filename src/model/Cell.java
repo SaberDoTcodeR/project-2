@@ -5,18 +5,16 @@ import model.Buffs.Buff;
 import model.Cards.Card;
 import model.Cards.Hero;
 import model.Cards.Minion;
-import model.Item.CollectableItem;
-import model.Menus.Account;
+import model.Item.CollectibleItem;
 
 import java.util.ArrayList;
-import java.util.Base64;
 
 public class Cell {
     private int x, y;
     private boolean flag;
     private Hero hero;
     private Minion minion;
-    private CollectableItem collectableItem;
+    private CollectibleItem collectibleItem;
     private int whichPlayerIsInCell;//0 for first player  1 for second player
     private ArrayList<Buff> cellEffect = new ArrayList<>();
 
@@ -40,8 +38,12 @@ public class Cell {
         return flag;
     }
 
-    public CollectableItem getCollectableItem() {
-        return collectableItem;
+    public CollectibleItem getCollectibleItem() {
+        return collectibleItem;
+    }
+
+    public void setCollectibleItem(CollectibleItem collectibleItem) {
+        this.collectibleItem = collectibleItem;
     }
 
     public void addCellEffect(Buff buff) {
@@ -102,6 +104,7 @@ public class Cell {
 
     public void setHero(Hero hero, int whichPlayerIsInCell) {
         this.hero = hero;
+        this.minion = null;//ezafe shod
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
@@ -115,6 +118,7 @@ public class Cell {
 
     public void setMinion(Minion minion, int whichPlayerIsInCell) {
         this.minion = minion;
+        this.hero = null;//ezafe shod
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
@@ -124,21 +128,19 @@ public class Cell {
         this.y = y;
         this.flag = flag;
         if (indexOfCollect != -1) {
-            this.collectableItem = CollectableItem.getCollectableItems().get(indexOfCollect).duplicate();
+            this.collectibleItem = CollectibleItem.getCollectibleItems().get(indexOfCollect).duplicate();
         }
 
     }
 
-    public int manhataniDistance(int x, int y){
-        return abs(this.x-x)+abs(this.y-y);
+    public int manhataniDistance(int x, int y) {
+        return abs(this.x - x) + abs(this.y - y);
     }
 
-    public int abs(int x)
-    {
-        if(x>0)
-            return x;
-        return -x;
+    public int abs(int x) {
+        return Math.abs(x);
     }
+
     public void moveCardPos(int x, int y, Battle battle) {
         int who = battle.getMap().get(x).get(y).whichPlayerIsInCell;
         if (this.hero != null) {

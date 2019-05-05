@@ -16,11 +16,9 @@ public class GameControl {
     public void main(Battle battle) {
         Random rand = new Random();
         view.showBattleMenu();
-
         ArrayList<Account> players = new ArrayList<>();
         players.add(battle.getSecondPlayer());
         players.add(battle.getFirstPlayer());
-
         while (!finished) {
             battle.getFirstPlayerHand().fillHand(battle, 0);
             battle.getSecondPlayerHand().fillHand(battle, 1);
@@ -32,20 +30,24 @@ public class GameControl {
                 players.get(whoseTurn).setMana(battle.getTurn() / 2 + 2);
 
 
+            if (battle.getTurn() == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
+                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), -1);
+            if (battle.getTurn() == 1 && battle.getSecondPlayerDeck().getUsableItem() != null)
+                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), -1);
+
+
             boolean turnFinished = false;
             while (!turnFinished) {
                 Request request = new Request();
                 request.getNewCommand();
                 request.setBattle(battle);
                 Command command = request.getMatchedCommand(1);
-                if (command != null && !command.equals("help")) {
+                if (command != null && !request.getCommand().equals("end turn")) {
                     command.apply(request);
                     view.printError(request.getError());
-                } else if (command != null && command.equals("end turn")) {
-                    battle.increamentTurn();
-                    break;
-                } else if (command != null && command.equals("help")) {
-                    ////todo list of possible action
+                } else if (command != null && request.getCommand().equals("end turn")) {
+                    command.apply(request);
+                    turnFinished = true;
                 } else {
                     view.printError(ErrorType.COMMAND);
                 }
@@ -53,3 +55,4 @@ public class GameControl {
         }
     }
 }
+

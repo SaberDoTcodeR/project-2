@@ -23,6 +23,11 @@ public class FlagsBattle extends Battle {
     }
 
     @Override
+    public String getType() {
+        return "FlagsBattle";
+    }
+
+    @Override
     public Account getSecondPlayer() {
         return secondPlayer;
     }

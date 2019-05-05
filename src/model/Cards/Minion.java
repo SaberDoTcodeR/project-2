@@ -1,11 +1,6 @@
 package model.Cards;
 
-import javafx.beans.binding.IntegerExpression;
 import model.Battles.Battle;
-import model.Buffs.*;
-import model.Cell;
-import model.Menus.Account;
-import view.Request;
 import model.Buffs.Buff;
 
 import java.util.ArrayList;
@@ -56,11 +51,13 @@ public abstract class Minion extends Card {
         new Wolf();
     }
 
+    private boolean isDeathCurse;
     private int ap;
     private int hp;
     private int costToUse;
+    private boolean isStunning = false;
     private int holyCounter = 0;
-    private boolean counterAttack;
+    private boolean counterAttack = true;
     //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
@@ -94,10 +91,13 @@ public abstract class Minion extends Card {
         if (battle.getTurn() % 2 == 1) {
             battle.getFirstPlayerHand().getCards().remove(this);
             battle.getFirstPlayerInGameCards().add(this);
+            battle.getMap().get(x - 1).get(y - 1).setMinion(this, 0);
         } else {
             battle.getSecondPlayerHand().getCards().remove(this);
             battle.getSecondPlayerInGameCards().add(this);
+            battle.getMap().get(x - 1).get(y - 1).setMinion(this, 1);
         }
+
         this.setRemainedMoves(0);
         this.cardIdGenerator(battle);
     }
@@ -140,7 +140,6 @@ public abstract class Minion extends Card {
         this.setCostOfBuy(minion.getCostOfBuy());
         this.ap = minion.ap;
         this.hp = minion.hp;
-        //this.specialPower = minion.specialPower;
         this.costToUse = minion.costToUse;
         this.typeOfRange = minion.typeOfRange;
         this.range = minion.range;
@@ -197,10 +196,6 @@ public abstract class Minion extends Card {
             this.hp -= unit;
     }
 
-    /*public SpecialPower getSpecialPower() {
-        return specialPower;
-    }*/
-
     public static ArrayList<Minion> getMinions() {
         return minions;
     }
@@ -220,6 +215,14 @@ public abstract class Minion extends Card {
             return null;
     }
 
+    public boolean isStunning() {
+        return isStunning;
+    }
+
+    public void setStunning(boolean stunning) {
+        isStunning = stunning;
+    }
+
     public Minion duplicate() {
         return null;
     }
@@ -229,6 +232,79 @@ public abstract class Minion extends Card {
     public int getNumberOfAttacks() {
         return numberOfAttacks;
     }
+    public boolean isDeathCurse() {
+        return isDeathCurse;
+    }
+
+    public void setDeathCurse(boolean deathCurse) {
+        isDeathCurse = deathCurse;
+    }
+
+    public void applyDeathCurse(Battle battle, Account player) {
+        int indexI = 0;
+        int indexJ = 0;
+        for (int i = 0; i < 5; i++) {
+            if (battle.getMap().get(i).contains(this)) {
+                indexI = i;
+                indexJ = battle.getMap().get(i).indexOf(this);
+                break;
+            }
+        }
+        double[][] distance = new double[5][];
+        for (int i = 0; i < 5; i++) {
+            distance[i] = new double[9];
+        }
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                distance[i][j] = 100;
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (i == indexI && j == indexJ)
+                    continue;
+                if (battle.getMap().get(i).get(j).getHero() != null &&
+                        isEnemyHero(battle.getMap().get(i).get(j).getHero(), player)) {
+                    distance[i][j] = getPow(indexI, indexJ, i, j);
+                }
+                if (battle.getMap().get(i).get(j).getMinion() != null &&
+                        isEnemyMinion(battle.getMap().get(i).get(j).getMinion(), player)) {
+                    distance[i][j] = getPow(indexI, indexJ, i, j);
+                }
+            }
+        }
+        double minValue = distance[0][0];
+        int indexMinI = 0;
+        int indexMinJ = 0;
+        for (int j = 0; j < distance.length; j++) {
+            for (int i = 0; i < distance[j].length; i++) {
+                if (distance[j][i] < minValue) {
+                    minValue = distance[j][i];
+                    indexMinI = i;
+                    indexMinJ = j;
+                }
+            }
+        }
+        if (battle.getMap().get(indexMinI).get(indexMinJ).getHero() != null) {
+            battle.getMap().get(indexMinI).get(indexMinJ).getHero().decrementHp(8);
+        }
+        if (battle.getMap().get(indexMinI).get(indexMinJ).getMinion() != null) {
+            battle.getMap().get(indexMinI).get(indexMinJ).getMinion().decrementHp(8);
+        }
+    }
+
+    private boolean isEnemyHero(Hero hero, Account player) {
+        return player.getMainDeck().isContain(hero);
+    }
+
+    private boolean isEnemyMinion(Minion minion, Account player) {
+        return player.getMainDeck().isContain(minion);
+    }
+
+    private double getPow(int indexI, int indexJ, int i, int j) {
+        return Math.pow(Math.pow(Math.abs(i - indexI), 2) + Math.pow(Math.abs(j - indexJ), 2), 1.0 / 2.0);
+    }
+}
 
     public void increaseNumberOfAttacks() {
         this.numberOfAttacks++;

@@ -2,9 +2,16 @@ package model;
 
 
 public enum ErrorType {
-    SELECT_HERO_OR_MINION("selcet hero or minion."),
+    INVALID_COLLECTIBLE_ID("invalid collectible ID"),
+    INVALID_HERO_TYPE_OF_HIT("Hero's hitting is not a kind of melee or hybrid"),
+    HERO_IS_IN_COOLDOWN("Hero is in cool down"),
+    ONLY_HEROES_HAVE_SPECIAL_POWER("Only Heroes are able to Use Special power"),
+    CANNOT_COMBO_ATTACK("Can not attack combo"),
+    CARD_IS_STUNNED("Card is Stunned"),
+    TOO_EXHAUSTED("Too exhausted "),
+    SELECT_HERO_OR_MINION("select hero or minion."),
     NO_CARD_SELECTED("No Card been selected"),
-    FALSE_ITEM_USING("Item can not be applied because of typ of hero's hitting"),
+    FALSE_ITEM_USING("Item can not be applied because of type of hero's hitting"),
     INVALID_HERO_TYPE_HITTING("Hero's typeHit is not efficient"),
     INVALID_TARGET("Invalid target"),
     SECOND_PLAYER_NOT_CHOSEN_RIGHT("second player not chosen right"),

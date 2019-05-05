@@ -15,6 +15,7 @@ public class Request {
     private ErrorType error = null;
     private String commandLine;
     private Battle battle;
+
     public void getNewCommand() {
         this.commandLine = scanner.nextLine().toLowerCase().trim();
 
@@ -33,14 +34,10 @@ public class Request {
     }
 
     private static void setMatchedCommand() {/////0 for main menu   1 for battle    2 for collection    3 for shop 4 Account 5 start Game 6 multiplayer
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
-        commands.add(new ArrayList<>());
+        for (int i = 0; i < 10; i++) {
+            commands.add(new ArrayList<>());
+        }
+
 
         commands.get(0).add(new EnterBattle());
         commands.get(0).add(new EnterCollection());
@@ -52,17 +49,22 @@ public class Request {
         commands.get(1).add(new GameInfo());
         commands.get(1).add(new ShowMyMinions());
         commands.get(1).add(new ShowOppMinoins());
-        commands.get(1).add(new EndTurn());
         commands.get(1).add(new ShowCardInfo());
         commands.get(1).add(new SelectSoldier());
         commands.get(1).add(new MoveSelectedSoldier());
         commands.get(1).add(new ShowHand());
         commands.get(1).add(new InsertCard());
-        /*
         commands.get(1).add(new Attack());
-        Use special power
-        commands.get(1).add(new AttackCombo());
-        */
+        commands.get(1).add(new ComboAttack());
+        commands.get(1).add(new UseSpecialPower());
+        commands.get(1).add(new ShowNextCard());
+        commands.get(1).add(new ShowCollectibles());
+        commands.get(1).add(new SelectCollectible());
+        commands.get(1).add(new EnterGraveYard());
+        commands.get(1).add(new HelpInBattle());
+        /*
+//commands.get(1).add(new EndTurn());
+         */
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());
@@ -102,6 +104,16 @@ public class Request {
         commands.get(6).add(new SelectUser());
 
         commands.get(7).add(new StartMultiPlayerGame());
+
+        commands.get(8).add(new ShowCardInfoInGrave());
+        commands.get(8).add(new ShowCardsInGrave());
+        commands.get(8).add(new Exit());
+        commands.get(8).add(new Help());
+
+        commands.get(8).add(new ShowInfoCollectible());
+        commands.get(8).add(new UseCollectible());
+        commands.get(9).add(new Exit());
+        commands.get(9).add(new Help());
     }
 
     public Command getMatchedCommand(int i) {
@@ -143,6 +155,16 @@ public class Request {
             }
         }
         return false;
+    }
+
+    public void addCollectible(int x, int y) {
+        this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem().cardIdGenerator(this.getBattle());
+        if (this.getBattle().getTurn() % 2 == 1) {
+            this.getBattle().addFirstPlayerCollectibleItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem());
+        } else {
+            this.getBattle().addSecondPlayerCollectibleItem(this.getBattle().getMap().get(x - 1).get(y - 1).getCollectibleItem());
+        }
+        this.getBattle().getMap().get(x - 1).get(y - 1).setCollectibleItem(null);
     }
 
     public boolean existThisUser(String userName) {
@@ -204,14 +226,15 @@ public class Request {
         this.setError(ErrorType.SECOND_PLAYER_NOT_CHOSEN_RIGHT);
 
     }
-    public Card isValidCardId(String cardId){
-        for (Card card: this.battle.getFirstPlayerInGameCards() ) {
-             if(card.getCardId().equals(cardId)){
-                 return card;
-             }
+
+    public Card isValidCardId(String cardId) {
+        for (Card card : this.battle.getFirstPlayerInGameCards()) {
+            if (card.getCardId().equals(cardId)) {
+                return card;
+            }
         }
-        for (Card card:this.battle.getSecondPlayerInGameCards()){
-            if(card.getCardId().equals(cardId)){
+        for (Card card : this.battle.getSecondPlayerInGameCards()) {
+            if (card.getCardId().equals(cardId)) {
                 return card;
             }
         }

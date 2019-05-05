@@ -65,5 +65,4 @@ public class PoisonEffectedCell extends Buff {
     public PoisonEffectedCell getPoisonEffectedCell() {
         return poisonEffectedCell;
     }
-
 }

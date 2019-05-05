@@ -1,14 +1,6 @@
 package model.Cards;
 
-
-import com.sun.javaws.exceptions.ErrorCodeResponseException;
-import model.Battles.Battle;
-import model.Buffs.*;
-import model.Cell;
-import model.Deck;
-import model.ErrorType;
-import model.Menus.Account;
-import view.Request;
+import model.Buffs.Buff;
 
 import java.util.ArrayList;
 
@@ -32,14 +24,40 @@ public abstract class Hero extends Card {
     private int hp;
     private int mp;
     private int holyCounter = 0;
-    private boolean useSpecial = false;
+    private boolean isStunning = false;
+    private boolean counterAttack=true;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
-    private int coolDownTime;
+    private int coolDownTime=0;
+    private int timeNeededToCool=0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public int getTimeNeededToCool() {
+        return timeNeededToCool;
+    }
+
+    public void setTimeNeededToCool(int timeNeededToCool) {
+        this.timeNeededToCool = timeNeededToCool;
+    }
+
+    public int getTypeOfRange() {
+        return typeOfRange;
+    }
+
+    public boolean isCounterAttack() {
+        return counterAttack;
+    }
+
+    public void setCounterAttack(boolean counterAttack) {
+        this.counterAttack = counterAttack;
     }
 
     public Hero(String name, int ap, int hp, int costOfBuy, int typeOfRange) {
@@ -121,6 +139,14 @@ public abstract class Hero extends Card {
             return null;
     }
 
+    public boolean isStunning() {
+        return isStunning;
+    }
+
+    public void setStunning(boolean stunning) {
+        isStunning = stunning;
+    }
+
     public int getHolyCounter() {
         return holyCounter;
     }
@@ -159,13 +185,6 @@ public abstract class Hero extends Card {
         return null;//todo --> can be abstract
     }
 
-    public void setUseSpecial(boolean useSpecial) {
-        this.useSpecial = useSpecial;
-    }
-
-    public boolean isUseSpecial() {
-        return useSpecial;
-    }
 }
 
 class WhiteBogey extends Hero {
