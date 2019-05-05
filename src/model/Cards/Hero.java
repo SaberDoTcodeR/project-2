@@ -1,6 +1,11 @@
 package model.Cards;
 
-import model.Buffs.Buff;
+import model.Battles.Battle;
+import model.Buffs.*;
+import model.Cell;
+import model.ErrorType;
+import model.Menus.Account;
+import view.Request;
 
 import java.util.ArrayList;
 
@@ -25,11 +30,11 @@ public abstract class Hero extends Card {
     private int mp;
     private int holyCounter = 0;
     private boolean isStunning = false;
-    private boolean counterAttack=true;
+    private boolean counterAttack = true;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
-    private int coolDownTime=0;
-    private int timeNeededToCool=0;
+    private int coolDownTime = 0;
+    private int timeNeededToCool = 0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
@@ -212,16 +217,15 @@ class WhiteBogey extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                ChangeApBuff changeApBuff = new ChangeApBuff(4);
-                changeApBuff.increment(this);
-                changeApBuff.setTurnCounter(-5);
-                changeApBuff.setCasting(changeApBuff, null, this, null);
-                this.getOwnBuffs().add(changeApBuff);
-                player.setMana(player.getMana() - this.getMp());
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+        if (player.getMana() >= this.getMp()) {
+            ChangeApBuff changeApBuff = new ChangeApBuff(4);
+            changeApBuff.increment(this);
+            changeApBuff.setTurnCounter(-5);
+            changeApBuff.setCasting(changeApBuff, null, this, null);
+            this.getOwnBuffs().add(changeApBuff);
+            player.setMana(player.getMana() - this.getMp());
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     @Override
@@ -255,31 +259,31 @@ class Simurgh extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                for (int i = 0; i < 5; i++) {
-                    for (int j = 0; j < 9; j++) {
-                        if (battle.getMap().get(i).get(j).getHero() != null) {
-                            if (!player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero())) {
-                                StunBuff stunBuff = new StunBuff();
-                                stunBuff.setTurnCounter(1);
-                                stunBuff.stun(battle.getMap().get(i).get(j).getHero());
-                                stunBuff.setCasting(stunBuff, null, battle.getMap().get(i).get(j).getHero(), null);
-                                battle.getMap().get(i).get(j).getHero().getOwnBuffs().add(stunBuff);
-                            }
-                        } else if (battle.getMap().get(i).get(j).getMinion() != null) {
-                            if (!player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion())) {
-                                StunBuff stunBuff = new StunBuff();
-                                stunBuff.setTurnCounter(1);
-                                stunBuff.stun(battle.getMap().get(i).get(j).getMinion());
-                                stunBuff.setCasting(stunBuff, null, null, battle.getMap().get(i).get(j).getMinion());
-                                battle.getMap().get(i).get(j).getMinion().getOwnBuffs().add(stunBuff);
-                            }
+
+        if (player.getMana() >= this.getMp()) {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (battle.getMap().get(i).get(j).getHero() != null) {
+                        if (!player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero())) {
+                            StunBuff stunBuff = new StunBuff();
+                            stunBuff.setTurnCounter(1);
+                            stunBuff.stun(battle.getMap().get(i).get(j).getHero());
+                            stunBuff.setCasting(stunBuff, null, battle.getMap().get(i).get(j).getHero(), null);
+                            battle.getMap().get(i).get(j).getHero().getOwnBuffs().add(stunBuff);
+                        }
+                    } else if (battle.getMap().get(i).get(j).getMinion() != null) {
+                        if (!player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion())) {
+                            StunBuff stunBuff = new StunBuff();
+                            stunBuff.setTurnCounter(1);
+                            stunBuff.stun(battle.getMap().get(i).get(j).getMinion());
+                            stunBuff.setCasting(stunBuff, null, null, battle.getMap().get(i).get(j).getMinion());
+                            battle.getMap().get(i).get(j).getMinion().getOwnBuffs().add(stunBuff);
                         }
                     }
                 }
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+            }
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     @Override
@@ -313,27 +317,27 @@ class Dragon extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                if (cell.getHero() != null) {
-                    if (!player.getMainDeck().isContain(cell.getHero())) {
-                        DisarmBuff disarmBuff = new DisarmBuff();
-                        disarmBuff.setTurnCounter(1);
-                        disarmBuff.disarm(cell.getHero());
-                        disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
-                        cell.getHero().getOwnBuffs().add(disarmBuff);
-                    } else request.setError(ErrorType.SELF_HARM);
-                } else if (cell.getMinion() != null) {
-                    if (!player.getMainDeck().isContain(cell.getMinion())) {
-                        DisarmBuff disarmBuff = new DisarmBuff();
-                        disarmBuff.setTurnCounter(1);
-                        disarmBuff.disarm(cell.getMinion());
-                        disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
-                        cell.getMinion().getOwnBuffs().add(disarmBuff);
-                    } else request.setError(ErrorType.SELF_HARM);
-                } else request.setError(ErrorType.EMPTY_CELL);
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+
+        if (player.getMana() >= this.getMp()) {
+            if (cell.getHero() != null) {
+                if (!player.getMainDeck().isContain(cell.getHero())) {
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.setTurnCounter(1);
+                    disarmBuff.disarm(cell.getHero());
+                    disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
+                    cell.getHero().getOwnBuffs().add(disarmBuff);
+                } else request.setError(ErrorType.SELF_HARM);
+            } else if (cell.getMinion() != null) {
+                if (!player.getMainDeck().isContain(cell.getMinion())) {
+                    DisarmBuff disarmBuff = new DisarmBuff();
+                    disarmBuff.setTurnCounter(1);
+                    disarmBuff.disarm(cell.getMinion());
+                    disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
+                    cell.getMinion().getOwnBuffs().add(disarmBuff);
+                } else request.setError(ErrorType.SELF_HARM);
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     public String getDesc() {
@@ -366,27 +370,27 @@ class Rakhsh extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                if (cell.getHero() != null) {
-                    if (!player.getMainDeck().isContain(cell.getHero())) {
-                        StunBuff stunBuff = new StunBuff();
-                        stunBuff.setTurnCounter(1);
-                        stunBuff.stun(cell.getHero());
-                        stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
-                        cell.getHero().getOwnBuffs().add(stunBuff);
-                    } else request.setError(ErrorType.SELF_HARM);
-                } else if (cell.getMinion() != null) {
-                    if (!player.getMainDeck().isContain(cell.getMinion())) {
-                        StunBuff stunBuff = new StunBuff();
-                        stunBuff.setTurnCounter(1);
-                        stunBuff.stun(cell.getMinion());
-                        stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
-                        cell.getMinion().getOwnBuffs().add(stunBuff);
-                    } else request.setError(ErrorType.SELF_HARM);
-                } else request.setError(ErrorType.EMPTY_CELL);
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+
+        if (player.getMana() >= this.getMp()) {
+            if (cell.getHero() != null) {
+                if (!player.getMainDeck().isContain(cell.getHero())) {
+                    StunBuff stunBuff = new StunBuff();
+                    stunBuff.setTurnCounter(1);
+                    stunBuff.stun(cell.getHero());
+                    stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
+                    cell.getHero().getOwnBuffs().add(stunBuff);
+                } else request.setError(ErrorType.SELF_HARM);
+            } else if (cell.getMinion() != null) {
+                if (!player.getMainDeck().isContain(cell.getMinion())) {
+                    StunBuff stunBuff = new StunBuff();
+                    stunBuff.setTurnCounter(1);
+                    stunBuff.stun(cell.getMinion());
+                    stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
+                    cell.getMinion().getOwnBuffs().add(stunBuff);
+                } else request.setError(ErrorType.SELF_HARM);
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     public String getDesc() {
@@ -469,19 +473,19 @@ class Kaveh extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                HolyEffectedCell holyEffectedCell = new HolyEffectedCell();
-                holyEffectedCell.setTurnCounter(3);
-                if (cell.getHero() != null) {
-                    holyEffectedCell.holy(cell.getHero());
-                } else if (cell.getMinion() != null) {
-                    holyEffectedCell.holy(cell.getMinion());
-                }
-                holyEffectedCell.setCasting(holyEffectedCell, cell, null, null);
-                cell.getCellEffect().add(holyEffectedCell);
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+
+        if (player.getMana() >= this.getMp()) {
+            HolyEffectedCell holyEffectedCell = new HolyEffectedCell();
+            holyEffectedCell.setTurnCounter(3);
+            if (cell.getHero() != null) {
+                holyEffectedCell.holy(cell.getHero());
+            } else if (cell.getMinion() != null) {
+                holyEffectedCell.holy(cell.getMinion());
+            }
+            holyEffectedCell.setCasting(holyEffectedCell, cell, null, null);
+            cell.getCellEffect().add(holyEffectedCell);
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     public String getDesc() {
@@ -515,24 +519,24 @@ class Arash extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                int indexOfRow = -1;
-                for (int i = 0; i < 5; i++) {
-                    if (battle.getMap().get(i).contains(cell)) {
-                        indexOfRow = i;
-                        break;
-                    }
+
+        if (player.getMana() >= this.getMp()) {
+            int indexOfRow = -1;
+            for (int i = 0; i < 5; i++) {
+                if (battle.getMap().get(i).contains(cell)) {
+                    indexOfRow = i;
+                    break;
                 }
-                for (int i = 0; i < 9; i++) {
-                    if (battle.getMap().get(indexOfRow).get(i).getHero() != null) {
-                        battle.getMap().get(indexOfRow).get(i).getHero().decrementHp(4 - battle.getMap().get(indexOfRow).get(i).getHero().getHolyCounter());
-                    } else if (battle.getMap().get(indexOfRow).get(i).getMinion() != null) {
-                        battle.getMap().get(indexOfRow).get(i).getMinion().decrementHp(4 - battle.getMap().get(indexOfRow).get(i).getMinion().getHolyCounter());
-                    }
+            }
+            for (int i = 0; i < 9; i++) {
+                if (battle.getMap().get(indexOfRow).get(i).getHero() != null) {
+                    battle.getMap().get(indexOfRow).get(i).getHero().decrementHp(4 - battle.getMap().get(indexOfRow).get(i).getHero().getHolyCounter());
+                } else if (battle.getMap().get(indexOfRow).get(i).getMinion() != null) {
+                    battle.getMap().get(indexOfRow).get(i).getMinion().decrementHp(4 - battle.getMap().get(indexOfRow).get(i).getMinion().getHolyCounter());
                 }
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+            }
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     public String getDesc() {
@@ -565,27 +569,27 @@ class Legend extends Hero {
     }
 
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        if (!this.isUseSpecial()) {
-            if (player.getMana() >= this.getMp()) {
-                if (cell.getHero() != null) {
-                    if (!player.getMainDeck().isContain(cell.getHero())) {
-                        for (Buff buff : cell.getHero().getOwnBuffs()) {
-                            if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
-                                buff.dispel(cell.getHero());
-                            }
+
+        if (player.getMana() >= this.getMp()) {
+            if (cell.getHero() != null) {
+                if (!player.getMainDeck().isContain(cell.getHero())) {
+                    for (Buff buff : cell.getHero().getOwnBuffs()) {
+                        if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getHero());
                         }
-                    } else request.setError(ErrorType.INVALID_TARGET);
-                } else if (cell.getMinion() != null) {
-                    if (!player.getMainDeck().isContain(cell.getMinion())) {
-                        for (Buff buff : cell.getMinion().getOwnBuffs()) {
-                            if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
-                                buff.dispel(cell.getMinion());
-                            }
+                    }
+                } else request.setError(ErrorType.INVALID_TARGET);
+            } else if (cell.getMinion() != null) {
+                if (!player.getMainDeck().isContain(cell.getMinion())) {
+                    for (Buff buff : cell.getMinion().getOwnBuffs()) {
+                        if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
+                            buff.dispel(cell.getMinion());
                         }
-                    } else request.setError(ErrorType.INVALID_TARGET);
-                } else request.setError(ErrorType.EMPTY_CELL);
-            } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-        } else request.setError(ErrorType.DIDNT_PASS_ENOUGH_TIME);
+                    }
+                } else request.setError(ErrorType.INVALID_TARGET);
+            } else request.setError(ErrorType.EMPTY_CELL);
+        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+
     }
 
     public String getDesc() {

@@ -1,7 +1,10 @@
 package model.Cards;
 
 import model.Battles.Battle;
-import model.Buffs.Buff;
+import model.Buffs.*;
+import model.Cell;
+import model.Menus.Account;
+import view.Request;
 
 import java.util.ArrayList;
 
@@ -232,6 +235,7 @@ public abstract class Minion extends Card {
     public int getNumberOfAttacks() {
         return numberOfAttacks;
     }
+
     public boolean isDeathCurse() {
         return isDeathCurse;
     }
@@ -304,7 +308,6 @@ public abstract class Minion extends Card {
     private double getPow(int indexI, int indexJ, int i, int j) {
         return Math.pow(Math.pow(Math.abs(i - indexI), 2) + Math.pow(Math.abs(j - indexJ), 2), 1.0 / 2.0);
     }
-}
 
     public void increaseNumberOfAttacks() {
         this.numberOfAttacks++;
@@ -1338,7 +1341,7 @@ class Magician extends Minion {
             targetCells.add(targetCells.get(4).downCell(battle.getMap()));
             for (int i = 0; i < targetCells.size(); i++) {
                 if (targetCells.get(i).getMinion() != null) {
-                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())){
+                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(0);
                         powerBuff.incrementAp(targetCells.get(i).getMinion());
@@ -1398,7 +1401,7 @@ class GiantMagician extends Minion {
             targetCells.add(targetCells.get(4).leftCell(battle.getMap()));
             for (int i = 0; i < targetCells.size(); i++) {
                 if (targetCells.get(i).getMinion() != null) {
-                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())){
+                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
                         PowerBuff powerBuff = new PowerBuff(2, true);
                         powerBuff.setTurnCounter(-4);
                         powerBuff.incrementAp(targetCells.get(i).getMinion());
@@ -1594,8 +1597,8 @@ class Bahman extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 0){
-            if (battle.getTurn() % 2 == 0){
+        if (activeTime == 0) {
+            if (battle.getTurn() % 2 == 0) {
                 ArrayList<Minion> minionsOfEnemy = new ArrayList<>();
                 for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
                     if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero") || battle.getFirstPlayerInGameCards().get(i).getType().equals("Spell"))
