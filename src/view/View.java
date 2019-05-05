@@ -247,23 +247,23 @@ public class View {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (whichPlayer == 1 && battle.getMap().get(i).get(j).getMinion() != null) {
-                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getFirstPlayer().getUserName().toLowerCase())) {
                         printMinionInfo(battle, i, j);
                     }
 
                 } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getMinion() != null) {
-                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                    if (battle.getMap().get(i).get(j).getMinion().getCardId().contains(battle.getSecondPlayer().getUserName().toLowerCase())) {
                         printMinionInfo(battle, i, j);
                     }
 
                 } else if (whichPlayer == 2 && battle.getMap().get(i).get(j).getHero() != null) {
-                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getSecondPlayer().getUserName().toLowerCase())) {
                         printHeroInfo(battle, i, j);
 
                     }
 
                 } else if (whichPlayer == 1 && battle.getMap().get(i).get(j).getHero() != null) {
-                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                    if (battle.getMap().get(i).get(j).getHero().getCardId().contains(battle.getFirstPlayer().getUserName().toLowerCase())) {
                         printHeroInfo(battle, i, j);
                     }
 
@@ -273,9 +273,10 @@ public class View {
     }
 
     public void printMinionInfo(Battle battle, int i, int j) {
-        System.out.print(battle.getMap().get(i).get(j).getMinion().getCardId() + " : " + battle.getMap().get(i).get(j).getMinion().getName() + ", ");
-        System.out.print("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1) + "," + (j + 1) + ")], power : " +
-                battle.getMap().get(i).get(j).getMinion().getAp());
+        System.out.print(battle.getMap().get(i).get(j).getMinion().getCardId() + " : " +
+                battle.getMap().get(i).get(j).getMinion().getName() + ", ");
+        System.out.println("health : " + battle.getMap().get(i).get(j).getMinion().getHp() + ", location : [(" + (i + 1)
+                + "," + (j + 1) + ")], power : " + battle.getMap().get(i).get(j).getMinion().getAp());
     }
 
     public void printHeroInfo(Battle battle, int i, int j) {

@@ -95,7 +95,7 @@ public abstract class Battle {
     }
 
     public void setSelectedCard(Card selectedCard) {
-        if (selectedCard.getType().equals("Spell"))
+        if (selectedCard != null && selectedCard.getType().equals("Spell"))
             return;
         this.selectedCard = selectedCard;
     }

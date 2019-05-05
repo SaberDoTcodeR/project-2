@@ -143,6 +143,8 @@ public class Cell {
     }
 
     public int manhataniDistance(int x, int y) {
+        x--;
+        y--;
         return abs(this.x - x) + abs(this.y - y);
     }
 
@@ -153,10 +155,10 @@ public class Cell {
     public void moveCardPos(int x, int y, Battle battle) {
         int who = battle.getMap().get(x).get(y).whichPlayerIsInCell;
         if (this.hero != null) {
-            battle.getMap().get(y - 1).get(x - 1).setHero(this.hero, who);
+            battle.getMap().get(x - 1).get(y - 1).setHero(this.hero, who);
             this.hero = null;
         } else {
-            battle.getMap().get(y - 1).get(x - 1).setMinion(this.minion, who);
+            battle.getMap().get(x - 1).get(y - 1).setMinion(this.minion, who);
             this.minion = null;
         }
     }

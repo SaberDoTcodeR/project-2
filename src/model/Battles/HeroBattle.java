@@ -50,10 +50,8 @@ public class HeroBattle extends Battle {
         Account account = new Account(1);
         this.secondPlayer = account;
         this.setReward(reward);
-        this.getMap().get(2).get(0).getHero().cardIdGenerator(this);
-        this.increamentTurn();
-        this.getMap().get(2).get(8).getHero().cardIdGenerator(this);
-        this.decreamentTurn();
+        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName()+"_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
+        this.getMap().get(2).get(8).getHero().setCardId(account.getUserName()+"_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
         this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
     }
@@ -63,10 +61,9 @@ public class HeroBattle extends Battle {
         this.secondPlayer = player2;
         this.playWithAI = false;
         this.setReward(reward);
-        this.getMap().get(2).get(0).getHero().cardIdGenerator(this);
-        this.increamentTurn();
-        this.getMap().get(2).get(8).getHero().cardIdGenerator(this);
-        this.decreamentTurn();
+        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName()+"_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
+        this.getMap().get(2).get(8).getHero().setCardId(player2.getUserName()+"_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
+
         this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
     }

@@ -193,7 +193,7 @@ public abstract class Card {
     }
 
     public String getCardId() {
-        return cardId;
+        return cardId.toLowerCase();
     }
 
     public void setCardId(String cardId) {
@@ -253,7 +253,7 @@ public abstract class Card {
             playerName = battle.getSecondPlayer().getUserName();
         }
 
-        int count = 1;
+        int count = 0;
         for (Card card : cards) {
             if (card.getName().equals(this.name)) {
                 count++;

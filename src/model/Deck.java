@@ -1,10 +1,12 @@
 package model;
 
+import model.Buffs.ManaItemBuff;
 import model.Cards.Hero;
 import model.Cards.Minion;
 import model.Cards.Spell;
 import model.Item.UsableItem;
 
+import java.lang.reflect.AnnotatedType;
 import java.util.ArrayList;
 
 public class Deck {
@@ -40,8 +42,18 @@ public class Deck {
         deck.setName(this.name);
         deck.setHero(this.getHero());
         deck.setUsableItem(this.usableItem);
-        deck.setMinions(this.minions);
-        deck.setSpells(this.spells);
+        ArrayList<Minion> minions=new ArrayList<>();
+        ArrayList<Spell> spells=new ArrayList<>();
+        for (Minion minion:this.minions)
+        {
+            minions.add(minion.duplicate());
+        }
+        for (Spell spell:this.spells)
+        {
+            spells.add(spell.duplicate());
+        }
+        deck.setMinions(minions);
+        deck.setSpells(spells);
         return deck;
     }
 
@@ -96,7 +108,7 @@ public class Deck {
     }
 
     public boolean isContain(Hero hero) {
-        if (this.getHero().getId() == hero.getId()) {
+        if (this.getHero().getName().equals(hero.getName())) {
             return true;
         }
         return false;
@@ -104,7 +116,7 @@ public class Deck {
 
     public boolean isContain(Minion minion) {
         for (Minion minion1 : this.getMinions()) {
-            if (minion1.getId() == minion.getId()) {
+            if (minion1.getName().equals(minion.getName())) {
                 return true;
             }
         }
