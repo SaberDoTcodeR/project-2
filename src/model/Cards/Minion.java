@@ -1,5 +1,6 @@
 package model.Cards;
 
+import javafx.beans.binding.IntegerExpression;
 import model.Battles.Battle;
 import model.Buffs.*;
 import model.Cell;
@@ -1121,7 +1122,16 @@ class WhiteWolf extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 3) {
+            if (cell.getMinion() != null && !player.getMainDeck().isContain(cell.getMinion())) {
+                ArrayList<Integer> units = new ArrayList<>();
+                units.add(6);
+                units.add(4);
+                MultiStageBuff multiStageBuff = new MultiStageBuff(units, cell.getMinion());
+                multiStageBuff.setTurnCounter(2);
+                cell.getMinion().getOwnBuffs().add(multiStageBuff);
+            }
+        }
     }
 
     public String getDesc() {
@@ -1155,6 +1165,15 @@ class Panther extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+        if (activeTime == 3) {
+            if (cell.getMinion() != null && !player.getMainDeck().isContain(cell.getMinion())) {
+                ArrayList<Integer> units = new ArrayList<>();
+                units.add(8);
+                MultiStageBuff multiStageBuff = new MultiStageBuff(units, cell.getMinion());
+                multiStageBuff.setTurnCounter(1);
+                cell.getMinion().getOwnBuffs().add(multiStageBuff);
+            }
+        }
     }
 
     public String getDesc() {
@@ -1188,7 +1207,15 @@ class Wolf extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 3) {
+            if (cell.getMinion() != null && !player.getMainDeck().isContain(cell.getMinion())) {
+                ArrayList<Integer> units = new ArrayList<>();
+                units.add(6);
+                MultiStageBuff multiStageBuff = new MultiStageBuff(units, cell.getMinion());
+                multiStageBuff.setTurnCounter(1);
+                cell.getMinion().getOwnBuffs().add(multiStageBuff);
+            }
+        }
     }
 
     public String getDesc() {
@@ -1222,7 +1249,34 @@ class Magician extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 1) {
+            ArrayList<Cell> targetCells = new ArrayList<>();
+            targetCells.add(cell);
+            targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(cell.downCell(battle.getMap()));
+            targetCells.add(cell.rightCell(battle.getMap()));
+            targetCells.add(cell.leftCell(battle.getMap()));
+            targetCells.add(targetCells.get(1).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(4).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(4).downCell(battle.getMap()));
+            for (int i = 0; i < targetCells.size(); i++) {
+                if (targetCells.get(i).getMinion() != null) {
+                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())){
+                        PowerBuff powerBuff = new PowerBuff(2, true);
+                        powerBuff.setTurnCounter(0);
+                        powerBuff.incrementAp(targetCells.get(i).getMinion());
+                        powerBuff.setCasting(powerBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(powerBuff);
+                        WeaknessBuff weaknessBuff = new WeaknessBuff(1, false);
+                        weaknessBuff.setTurnCounter(0);
+                        weaknessBuff.decrementHp(targetCells.get(i).getMinion());
+                        weaknessBuff.setCasting(weaknessBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(weaknessBuff);
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1255,7 +1309,34 @@ class GiantMagician extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 1) {
+            ArrayList<Cell> targetCells = new ArrayList<>();
+            targetCells.add(cell);
+            targetCells.add(cell.leftCell(battle.getMap()));
+            targetCells.add(cell.upCell(battle.getMap()));
+            targetCells.add(cell.rightCell(battle.getMap()));
+            targetCells.add(cell.downCell(battle.getMap()));
+            targetCells.add(targetCells.get(1).upCell(battle.getMap()));
+            targetCells.add(targetCells.get(2).rightCell(battle.getMap()));
+            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
+            targetCells.add(targetCells.get(4).leftCell(battle.getMap()));
+            for (int i = 0; i < targetCells.size(); i++) {
+                if (targetCells.get(i).getMinion() != null) {
+                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())){
+                        PowerBuff powerBuff = new PowerBuff(2, true);
+                        powerBuff.setTurnCounter(-4);
+                        powerBuff.incrementAp(targetCells.get(i).getMinion());
+                        powerBuff.setCasting(powerBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(powerBuff);
+                        HolyBuff holyBuff = new HolyBuff();
+                        holyBuff.setTurnCounter(-4);
+                        holyBuff.holy(targetCells.get(i).getMinion());
+                        holyBuff.setCasting(holyBuff, null, null, targetCells.get(i).getMinion());
+                        targetCells.get(i).getMinion().getOwnBuffs().add(holyBuff);
+                    }
+                }
+            }
+        }
     }
 
     public String getDesc() {
@@ -1288,11 +1369,11 @@ class Elf extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-        if (activeTime == 1){
+        if (activeTime == 1) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
-                    if (battle.getMap().get(i).get(j).getMinion() != null){
-                        if (player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion())){
+                    if (battle.getMap().get(i).get(j).getMinion() != null) {
+                        if (player.getMainDeck().isContain(battle.getMap().get(i).get(j).getMinion())) {
                             PowerBuff powerBuff = new PowerBuff(1, true);
                             powerBuff.setTurnCounter(-4);
                             powerBuff.incrementAp(battle.getMap().get(i).get(j).getMinion());
@@ -1437,7 +1518,27 @@ class Bahman extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
-
+        if (activeTime == 0){
+            if (battle.getTurn() % 2 == 0){
+                ArrayList<Minion> minionsOfEnemy = new ArrayList<>();
+                for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
+                    if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero") || battle.getFirstPlayerInGameCards().get(i).getType().equals("Spell"))
+                        continue;
+                    minionsOfEnemy.add((Minion) battle.getFirstPlayerInGameCards().get(i));
+                }
+                int randomNumber = (int) (Math.random() * minionsOfEnemy.size());
+                minionsOfEnemy.get(randomNumber).decrementHp(16);
+            } else {
+                ArrayList<Minion> minions = new ArrayList<>();
+                for (int i = 0; i < battle.getSecondPlayerInGameCards().size(); i++) {
+                    if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Hero") || battle.getSecondPlayerInGameCards().get(i).getType().equals("Spell"))
+                        continue;
+                    minions.add((Minion) battle.getSecondPlayerInGameCards().get(i));
+                }
+                int random = (int) (Math.random() * minions.size());
+                minions.get(random).decrementHp(16);
+            }
+        }
     }
 
     public String getDesc() {
@@ -1570,13 +1671,13 @@ class TwoHeadGiant extends Minion {
         if (activeTime == 3) {
             if (cell.getHero() != null) {
                 for (Buff buff : cell.getHero().getOwnBuffs()) {
-                    if (dispelEnemyValidation(buff.getClass().getSimpleName())){
+                    if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
                         buff.dispel(cell.getHero());
                     }
                 }
-            } else if (cell.getMinion() != null){
+            } else if (cell.getMinion() != null) {
                 for (Buff buff : cell.getMinion().getOwnBuffs()) {
-                    if (dispelEnemyValidation(buff.getClass().getSimpleName())){
+                    if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
                         buff.dispel(cell.getMinion());
                     }
                 }

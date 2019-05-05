@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Cards/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,63 +34,53 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="553" column="37" lean-forward="true" selection-start-line="553" selection-start-column="37" selection-end-line="553" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cards/Card.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="1297" column="38" selection-start-line="1297" selection-start-column="38" selection-end-line="1297" selection-end-column="38" />
+            <state relative-caret-position="628">
+              <caret line="1529" column="117" selection-start-line="1529" selection-start-column="117" selection-end-line="1529" selection-end-column="117" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11520#11521#0" expanded="true" />
                 <element signature="e#11586#11587#0" expanded="true" />
                 <element signature="e#28811#28812#0" expanded="true" />
                 <element signature="e#28873#28874#0" expanded="true" />
-                <element signature="e#33170#33171#0" expanded="true" />
-                <element signature="e#33229#33230#0" expanded="true" />
+                <element signature="e#35787#35788#0" expanded="true" />
                 <element signature="e#35847#35848#0" expanded="true" />
-                <element signature="e#50161#50162#0" expanded="true" />
-                <element signature="e#52456#52457#0" expanded="true" />
-                <element signature="e#55284#55285#0" expanded="true" />
+                <element signature="e#42853#42854#0" expanded="true" />
+                <element signature="e#50370#50371#0" expanded="true" />
+                <element signature="e#50433#50434#0" expanded="true" />
+                <element signature="e#52667#52668#0" expanded="true" />
+                <element signature="e#52728#52729#0" expanded="true" />
+                <element signature="e#55500#55501#0" expanded="true" />
+                <element signature="e#55556#55557#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1060">
-              <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+            <state relative-caret-position="840">
+              <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+              <folding>
+                <element signature="e#167#168#0" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#849#850#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+                <element signature="e#1033#1034#0" expanded="true" />
+                <element signature="e#1066#1067#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="940">
-              <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+            <state relative-caret-position="-32">
+              <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,11 +88,74 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#441#442#0" expanded="true" />
+                <element signature="e#486#487#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1120">
+              <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#171#172#0" expanded="true" />
+                <element signature="e#206#207#0" expanded="true" />
+                <element signature="e#245#246#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyBuff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-312">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Buffs/PowerBuff.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="-312">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="e#582#583#0" expanded="true" />
                 <element signature="e#609#610#0" expanded="true" />
@@ -108,10 +167,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
+        <entry file="file://$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+            <state relative-caret-position="220">
+              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -187,7 +249,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/Card.java" />
         <option value="$PROJECT_DIR$/src/model/Item.java" />
         <option value="$PROJECT_DIR$/src/model/Hero.java" />
         <option value="$PROJECT_DIR$/src/model/Menus/Shop.java" />
@@ -219,24 +280,25 @@
         <option value="$PROJECT_DIR$/src/model/Cards/FiringEffectedCell.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java" />
-        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/Buff.java" />
         <option value="$PROJECT_DIR$/src/model/Cell.java" />
         <option value="$PROJECT_DIR$/src/model/Item/UsableItem.java" />
-        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/HolyBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Menus/Account.java" />
-        <option value="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" />
-        <option value="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/StunBuff.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Spell.java" />
         <option value="$PROJECT_DIR$/src/view/View.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Card.java" />
-        <option value="$PROJECT_DIR$/src/model/Cards/Hero.java" />
         <option value="$PROJECT_DIR$/src/model/ErrorType.java" />
         <option value="$PROJECT_DIR$/src/model/Buffs/PowerBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Cards/Hero.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" />
+        <option value="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" />
         <option value="$PROJECT_DIR$/src/model/Cards/Minion.java" />
       </list>
     </option>
@@ -249,7 +311,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -258,6 +320,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -316,8 +380,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Course" />
     </panes>
   </component>
@@ -325,7 +387,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556965324308" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557066862359" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -398,7 +460,10 @@
       <workItem from="1556821071299" duration="21505000" />
       <workItem from="1556873958821" duration="10354000" />
       <workItem from="1556914369872" duration="8883000" />
-      <workItem from="1556957451803" duration="7447000" />
+      <workItem from="1556957451803" duration="7723000" />
+      <workItem from="1556993526088" duration="2593000" />
+      <workItem from="1557061667067" duration="3218000" />
+      <workItem from="1557068782879" duration="7358000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -589,11 +654,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556924558053</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Just 10 minions left">
+      <created>1556965407613</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1556965407613</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="282208000" />
+    <option name="totallyTimeSpent" value="295653000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -608,7 +680,7 @@
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1885906" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17315437" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -692,7 +764,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commit checker" />
     <MESSAGE value="branch checker" />
     <MESSAGE value="Account class added" />
     <MESSAGE value="RecordedMatch class added&#10;account class improved minor(alaki) bug" />
@@ -717,14 +788,14 @@
     <MESSAGE value="Improve Implementation of Special Power of Rostam &amp; Esfandyar" />
     <MESSAGE value="Implement castSpecialPower method of 10 minions" />
     <MESSAGE value="Implement castSpecialPower method of 10 other minions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement castSpecialPower method of 10 other minions" />
+    <MESSAGE value="Just 10 minions left" />
+    <option name="LAST_COMMIT_MESSAGE" value="Just 10 minions left" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/src.zip!/java/util/function/Predicate.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Menus/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="820">
@@ -774,13 +845,6 @@
     <entry file="file://$PROJECT_DIR$/src/model/Cards/PoisonEffectedCell.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Cards/FiringEffectedCell.java" />
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Buff.java" />
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -918,56 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="30" column="28" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
-          <folding>
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#1033#1034#0" expanded="true" />
-            <element signature="e#1066#1067#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="65" column="5" selection-start-line="29" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1700">
@@ -1002,20 +1016,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#171#172#0" expanded="true" />
-            <element signature="e#206#207#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-            <element signature="e#282#283#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -1026,10 +1026,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1060">
-          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+        <state relative-caret-position="11140">
+          <caret line="648" column="1" selection-start-line="648" selection-start-column="1" selection-end-line="648" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1043,6 +1053,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1060">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/ErrorType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
@@ -1050,17 +1067,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="60" column="19" selection-start-line="60" selection-start-column="19" selection-end-line="60" selection-end-column="19" />
+        <state relative-caret-position="1120">
+          <caret line="64" column="1" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+            <element signature="e#206#207#0" expanded="true" />
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="553" column="37" lean-forward="true" selection-start-line="553" selection-start-column="37" selection-end-line="553" selection-end-column="37" />
+        <state relative-caret-position="220">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#441#442#0" expanded="true" />
+            <element signature="e#486#487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32">
+          <caret line="67" column="9" lean-forward="true" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PowerBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-312">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+          <folding>
+            <element signature="e#582#583#0" expanded="true" />
+            <element signature="e#609#610#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
+            <element signature="e#940#941#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/HolyBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-312">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="46" column="26" lean-forward="true" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
+          <folding>
+            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#1033#1034#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="14" column="26" lean-forward="true" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1069,33 +1170,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="1297" column="38" selection-start-line="1297" selection-start-column="38" selection-end-line="1297" selection-end-column="38" />
+        <state relative-caret-position="628">
+          <caret line="1529" column="117" selection-start-line="1529" selection-start-column="117" selection-end-line="1529" selection-end-column="117" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#11520#11521#0" expanded="true" />
             <element signature="e#11586#11587#0" expanded="true" />
             <element signature="e#28811#28812#0" expanded="true" />
             <element signature="e#28873#28874#0" expanded="true" />
-            <element signature="e#33170#33171#0" expanded="true" />
-            <element signature="e#33229#33230#0" expanded="true" />
+            <element signature="e#35787#35788#0" expanded="true" />
             <element signature="e#35847#35848#0" expanded="true" />
-            <element signature="e#50161#50162#0" expanded="true" />
-            <element signature="e#52456#52457#0" expanded="true" />
-            <element signature="e#55284#55285#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Buffs/PowerBuff.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#582#583#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#902#903#0" expanded="true" />
-            <element signature="e#940#941#0" expanded="true" />
+            <element signature="e#42853#42854#0" expanded="true" />
+            <element signature="e#50370#50371#0" expanded="true" />
+            <element signature="e#50433#50434#0" expanded="true" />
+            <element signature="e#52667#52668#0" expanded="true" />
+            <element signature="e#52728#52729#0" expanded="true" />
+            <element signature="e#55500#55501#0" expanded="true" />
+            <element signature="e#55556#55557#0" expanded="true" />
           </folding>
         </state>
       </provider>

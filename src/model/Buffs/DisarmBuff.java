@@ -12,7 +12,9 @@ public class DisarmBuff extends Buff {
     }
 
     public void disarm(Minion minion) {
-        minion.setCounterAttack(false);
+        if (!minion.getClass().getSimpleName().equals("WildHog")) {
+            minion.setCounterAttack(false);
+        }
     }
 
     private DisarmBuff disarmBuff;

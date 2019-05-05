@@ -12,7 +12,8 @@ public class PoisonBuff extends Buff {
     }
 
     public void poison(Minion minion) {
-        minion.decrementHp(1);
+        if (!minion.getClass().getSimpleName().equals("Piran"))
+            minion.decrementHp(1);
     }
 
     private PoisonBuff poisonBuff;

@@ -12,7 +12,8 @@ public class PoisonEffectedCell extends Buff {
     }
 
     public void poison(Minion minion) {
-        minion.decrementHp(1);
+        if (!minion.getClass().getSimpleName().equals("Piran"))
+            minion.decrementHp(1);
     }
 
     private PoisonEffectedCell poisonEffectedCell;
@@ -20,7 +21,7 @@ public class PoisonEffectedCell extends Buff {
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(PoisonEffectedCell poisonEffectedCell,Cell cell,Hero hero,Minion minion) {
+    public void setCasting(PoisonEffectedCell poisonEffectedCell, Cell cell, Hero hero, Minion minion) {
         this.poisonEffectedCell = poisonEffectedCell;
         this.cell = cell;
         this.hero = hero;
@@ -41,11 +42,11 @@ public class PoisonEffectedCell extends Buff {
 
     @Override
     public void castBuff() {
-        if (this.cell != null){
-            if (this.cell.getMinion() != null){
+        if (this.cell != null) {
+            if (this.cell.getMinion() != null) {
                 poison(this.cell.getMinion());
             }
-            if (this.cell.getHero() != null){
+            if (this.cell.getHero() != null) {
                 poison(this.cell.getHero());
             }
         }

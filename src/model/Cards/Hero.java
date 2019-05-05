@@ -378,7 +378,7 @@ class Rakhsh extends Hero {
 class Zahhak extends Hero {
     public Zahhak() {
         super("Zahhak", 4, 50, 10000, 0);
-        super.setCoolDownTime(3);
+        super.setCoolDownTime(0);
         super.setMp(1);
     }
 
@@ -404,7 +404,7 @@ class Zahhak extends Hero {
         if (cell.getHero() != null) {
             if (!player.getMainDeck().isContain(cell.getHero())) {
                 PoisonBuff poisonBuff = new PoisonBuff();
-                poisonBuff.setTurnCounter(3);
+                poisonBuff.setTurnCounter(3 + 1 - 1);
                 poisonBuff.poison(cell.getHero());
                 poisonBuff.setCasting(poisonBuff, null, cell.getHero(), null);
                 cell.getHero().getOwnBuffs().add(poisonBuff);
@@ -412,7 +412,7 @@ class Zahhak extends Hero {
         } else if (cell.getMinion() != null) {
             if (!player.getMainDeck().isContain(cell.getMinion())) {
                 PoisonBuff poisonBuff = new PoisonBuff();
-                poisonBuff.setTurnCounter(3);
+                poisonBuff.setTurnCounter(3 + 2 - 2);
                 poisonBuff.poison(cell.getMinion());
                 poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(poisonBuff);
@@ -577,7 +577,7 @@ class Legend extends Hero {
 class Esfandyar extends Hero {
     public Esfandyar() {
         super("Esfandyar", 3, 35, 12000, 2);
-        super.setCoolDownTime(1);
+        super.setCoolDownTime(0);
         super.setMp(0);
         super.setRange(3);
     }
@@ -618,6 +618,7 @@ class Esfandyar extends Hero {
 class Rostam extends Hero {
     public Rostam() {
         super("Rostam", 7, 55, 8000, 2);
+        super.setCoolDownTime(0);
         super.setRange(4);
     }
 
