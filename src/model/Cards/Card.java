@@ -85,7 +85,7 @@ public abstract class Card {
             return;
         }
         if (this.getType().equals("Minion"))
-            ((Minion) card).increaseNumberOfAttacks();
+            ((Minion) this).increaseNumberOfAttacks();
 
         card.deadChecker(battle);
         this.setRemainedMoves(0);
@@ -114,6 +114,8 @@ public abstract class Card {
                 battle.getSecondPlayerInGameCards().remove(this);
                 battle.addToSecondGrave(this);
             }
+            Cell cell=battle.getMap().get(0).get(0).getCellOfCard(this,battle);
+            cell.setMinion(null,2);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
                 battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
@@ -142,6 +144,7 @@ public abstract class Card {
                     battle.getSecondPlayerInGameCards().remove(this);
                     battle.addToSecondGrave(this);
                 }
+                cell.setHero(null,2);
             }
         }
     }

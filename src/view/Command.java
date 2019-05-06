@@ -1170,11 +1170,11 @@ class ShowCardsInGrave extends Command {
     public void apply(Request request) {
         if (request.getBattle().getTurn() % 2 == 1) {
             for (Card card : request.getBattle().getFirstGrave()) {
-                System.out.println(card.showDetails());
+                System.out.println(card.getCardId());
             }
         } else {
             for (Card card : request.getBattle().getSecondGrave()) {
-                System.out.println(card.showDetails());
+                System.out.println(card.getCardId());
             }
         }
 
