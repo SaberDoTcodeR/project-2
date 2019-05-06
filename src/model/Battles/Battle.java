@@ -29,6 +29,14 @@ public abstract class Battle {
     private int firstPlayerFlagCarryTurnCounter = 0;
     private int secondPlayerFlagCarryTurnCounter = 0;
 
+    public void setFirstPlayerFlagCarryTurnCounter(int firstPlayerFlagCarryTurnCounter) {
+        this.firstPlayerFlagCarryTurnCounter = firstPlayerFlagCarryTurnCounter;
+    }
+
+    public void setSecondPlayerFlagCarryTurnCounter(int secondPlayerFlagCarryTurnCounter) {
+        this.secondPlayerFlagCarryTurnCounter = secondPlayerFlagCarryTurnCounter;
+    }
+
     public int getFirstPlayerFlagCarryTurnCounter() {
         return firstPlayerFlagCarryTurnCounter;
     }

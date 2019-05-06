@@ -61,17 +61,16 @@ public abstract class Minion extends Card {
     private boolean isStunning = false;
     private int holyCounter = 0;
     private boolean counterAttack = true;
-    //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
     private int numberOfAttacks = 0;
+    private int numberOfFlag = 0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
     }
-
 
     public void setHp(int hp) {
         this.hp = hp;
@@ -311,6 +310,18 @@ public abstract class Minion extends Card {
 
     public void increaseNumberOfAttacks() {
         this.numberOfAttacks++;
+    }
+
+    public void setNumberOfFlag(int numberOfFlag) {
+        this.numberOfFlag = numberOfFlag;
+    }
+
+    public int getNumberOfFlag() {
+        return numberOfFlag;
+    }
+
+    public void incrementNumberOfFlag(){
+        this.numberOfFlag++;
     }
 }
 

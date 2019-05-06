@@ -93,6 +93,16 @@ public abstract class Card {
 
     public void deadChecker(Battle battle) {
         if (this.getType().equals("Minion") && ((Minion) this).getHp() <= 0) {
+            if (battle.getType().equals("OneFlagBattle")) {
+                if (((Minion) this).getNumberOfFlag() != 0) {
+                    if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                        battle.setFirstPlayerFlagCarryTurnCounter(0);
+                    } else battle.setSecondPlayerFlagCarryTurnCounter(0);
+                }
+                Cell cell = battle.getMap().get(0).get(0).getCellOfCard(this, battle);
+                cell.setNumberOfFlag(((Minion) this).getNumberOfFlag());
+                ((Minion) this).setNumberOfFlag(0);
+            }
             if (battle.getSelectedCard().cardId.equals(this.getCardId()))
                 battle.setSelectedCard(null);
             if (battle.getFirstPlayerInGameCards().contains(this)) {
@@ -106,13 +116,28 @@ public abstract class Card {
                 battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
                 battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 4 - 1);
-
         } else if (this.getType().equals("Hero") && ((Hero) this).getHp() <= 0) {
             if (battle.getType().equals("HeroBattle")) {
                 if (this.getCardId().contains(battle.getSecondPlayer().getUserName()))
                     view.endGame(battle, true);
                 else
                     view.endGame(battle, false);
+            } else if (battle.getType().equals("OneFlagBattle")) {
+                if (((Hero) this).getNumberOfFlags() != 0) {
+                    if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                        battle.setFirstPlayerFlagCarryTurnCounter(0);
+                    } else battle.setSecondPlayerFlagCarryTurnCounter(0);
+                }
+                Cell cell = battle.getMap().get(0).get(0).getCellOfCard(this, battle);
+                cell.setNumberOfFlag(((Hero) this).getNumberOfFlags());
+                ((Hero) this).setNumberOfFlags(0);
+                if (battle.getFirstPlayerInGameCards().contains(this)) {
+                    battle.getFirstPlayerInGameCards().remove(this);
+                    battle.addToFirstGrave(this);
+                } else {
+                    battle.getSecondPlayerInGameCards().remove(this);
+                    battle.addToSecondGrave(this);
+                }
             }
         }
     }
@@ -143,7 +168,7 @@ public abstract class Card {
                 card.counterAttack(battle, this);
             }
         } else if (card.getType().equals("Minion") && this.getType().equals("Minion")) {
-            if (((Minion) this).getAp() >= y &&! (((Minion) this).getAp() < ((Minion) card).getAp() && card.getName().equals("Ashkbous")))
+            if (((Minion) this).getAp() >= y && !(((Minion) this).getAp() < ((Minion) card).getAp() && card.getName().equals("Ashkbous")))
                 ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp() + y);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
                 battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);

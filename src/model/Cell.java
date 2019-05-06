@@ -11,11 +11,11 @@ import java.util.ArrayList;
 
 public class Cell {
     private int x, y;
-    private int flag;
     private Hero hero;
     private Minion minion;
     private CollectibleItem collectibleItem;
     private int whichPlayerIsInCell;//0 for first player  1 for second player
+    private int numberOfFlag = 0;
     private ArrayList<Buff> cellEffect = new ArrayList<>();
 
     public int getWhichPlayerIsInCell() {
@@ -32,10 +32,6 @@ public class Cell {
 
     public int getY() {
         return y;
-    }
-
-    public int howManyFlag() {
-        return flag;
     }
 
     public CollectibleItem getCollectibleItem() {
@@ -117,10 +113,6 @@ public class Cell {
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
     public Minion getMinion() {
         return minion;
     }
@@ -135,7 +127,7 @@ public class Cell {
     public Cell(int x, int y, int flag, int indexOfCollect) {
         this.x = x;
         this.y = y;
-        this.flag = flag;
+        this.numberOfFlag = flag;
         if (indexOfCollect != -1) {
             this.collectibleItem = CollectibleItem.getCollectibleItems().get(indexOfCollect).duplicate();
         }
@@ -174,5 +166,13 @@ public class Cell {
         }
         return null;
 
+    }
+
+    public void setNumberOfFlag(int numberOfFlag) {
+        this.numberOfFlag = numberOfFlag;
+    }
+
+    public int getNumberOfFlag() {
+        return numberOfFlag;
     }
 }

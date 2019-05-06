@@ -35,6 +35,7 @@ public abstract class Hero extends Card {
     private int range;
     private int coolDownTime = 0;
     private int timeNeededToCool = 0;
+    private int numberOfFlags = 0;
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
@@ -190,6 +191,17 @@ public abstract class Hero extends Card {
         return null;//todo --> can be abstract
     }
 
+    public int getNumberOfFlags() {
+        return numberOfFlags;
+    }
+
+    public void incrementNumberOfFlags(){
+        this.numberOfFlags++;
+    }
+
+    public void setNumberOfFlags(int numberOfFlags) {
+        this.numberOfFlags = numberOfFlags;
+    }
 }
 
 class WhiteBogey extends Hero {

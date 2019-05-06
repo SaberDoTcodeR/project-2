@@ -621,16 +621,14 @@ class ShowMyMinions extends Command {
 
 }
 
-
-class ShowOppMinoins extends Command {
-    ShowOppMinoins() {
+class ShowOppMinions extends Command {
+    ShowOppMinions() {
         super(CommandRegex.SHOW_OPP_MINIONS);
     }
 
     @Override
     public void apply(Request request) {
         view.showMinions(request.getBattle(), true);
-
     }
 }
 
@@ -667,6 +665,21 @@ class EndTurn extends Command {
                     cell.getHero().setCanAttack(true);
                     cell.getHero().setRemainedMoves(2);
                 } else if (cell.getMinion() != null) {
+                    if (request.getBattle().getType().equals("OneFlagBattle")) {
+                        if (cell.getMinion().getNumberOfFlag() > 0) {
+                            if (cell.getMinion().getCardId().contains(request.getBattle().getFirstPlayer().getUserName())) {
+                                request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
+                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName())
+                            {
+                                request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
+                             }
+                        }
+                        if (request.getBattle().getFirstPlayerFlagCarryTurnCounter() == 6) {
+                            view.endGame(request.getBattle(), true);
+                        } else if (request.getBattle().getSecondPlayerFlagCarryTurnCounter() == 6) {
+                            view.endGame(request.getBattle(), false);
+                        }
+                    }
                     for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
                         if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() == 0) {
                             cell.getMinion().getOwnBuffs().get(j).dispel(cell.getMinion());
