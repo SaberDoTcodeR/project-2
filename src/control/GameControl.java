@@ -14,7 +14,6 @@ public class GameControl {
     private static View view = View.getInstance();
 
     public void main(Battle battle) {
-        Random rand = new Random();
         view.showBattleMenu();
         ArrayList<Account> players = new ArrayList<>();
         players.add(battle.getSecondPlayer());

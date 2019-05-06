@@ -417,7 +417,9 @@ public class View {
     }
 
     public void showModeList() {
-
+        System.out.println("1 : WhiteBogey _ Prize : 500 _ Mode : Hero Mode");
+        System.out.println("2 : Zahhak _ Prize : 1000 _ Mode : OneFlag Mode");
+        System.out.println("1 : Arash _ Prize : 1500 _ Mode : SomeFlags Mode");
     }
 
     public void showWholePlayers() {

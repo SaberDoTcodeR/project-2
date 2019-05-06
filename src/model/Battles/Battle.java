@@ -135,15 +135,10 @@ public abstract class Battle {
         return selectedCollectible;
     }
 
-    public void addFirstPlayerInGameCards(Card card) {
-        this.firstPlayerInGameCards.add(card);
-    }
-
     public void doCleverThings() {
         boolean hasInsert = false;
         label:
         for (Card card : this.getSecondPlayerHand().getCards()) {
-
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
                     Request request = new Request();
@@ -197,7 +192,7 @@ public abstract class Battle {
                 command.apply(request);
                 if (request.getError() == null) {
                     hasAttack = true;
-                    System.out.println("Attack performed on "+card1.getCardId());
+                    System.out.println("Attack performed on " + card1.getCardId());
                     break label;
                 }
             }
@@ -247,10 +242,6 @@ public abstract class Battle {
         ((Minion) cards.get(0)).setCanAttack(false);
         ((Minion) cards.get(0)).setRemainedMoves(0);
         ((Minion) cards.get(0)).deadChecker(this);
-    }
-
-    public void addSecondPlayerInGameCards(Card card) {
-        this.secondPlayerInGameCards.add(card);
     }
 
     public ArrayList<Card> getFirstPlayerInGameCards() {

@@ -113,6 +113,6 @@ public class OneFlagBattle extends Battle {
 
     @Override
     public Hand getSecondPlayerHand() {
-        return null;
+        return secondPlayerHand;
     }
 }

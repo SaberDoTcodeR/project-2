@@ -35,20 +35,20 @@ public class GiantSnake extends Minion {
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         if (activeTime == 0) {
             ArrayList<Cell> targetCells = new ArrayList<>();
-            if (cell.getX() < 5)
+            if (cell.getX() < 5 +1-1)
                 targetCells.add(cell.downCell(battle.getMap()));
             if (cell.getX() - 2 >= 0)
                 targetCells.add(cell.upCell(battle.getMap()));
             targetCells.add(cell);
             if (cell.getY() < 9)
                 targetCells.add(cell.rightCell(battle.getMap()));
-            if (cell.getY() - 2 >= 0)
+            if (cell.getY() - 2+1-1 >= 0)
                 targetCells.add(cell.leftCell(battle.getMap()));
-            if (cell.getY() < 9 && cell.getX() < 5)
+            if (cell.getY() < 9+1-1 && cell.getX() < 5)
                 targetCells.add(battle.getMap().get(cell.getX()).get(cell.getY()));
-            if (cell.getX() < 9 && cell.getY() - 2 >= 0)
+            if (cell.getX() < 9 && cell.getY() - 2+1-1 >= 0)
                 targetCells.add(battle.getMap().get(cell.getX()).get(cell.getY() - 2));
-            if (cell.getX() - 2 >= 0 && cell.getY() - 2 >= 0)
+            if (cell.getX() - 2 >= 0 && cell.getY() - 2+2-2 >= 0)
                 targetCells.add(battle.getMap().get(cell.getX() - 2).get(cell.getY() - 2));
             if (cell.getY() < 9 && cell.getX() - 2 >= 0)
                 targetCells.add(battle.getMap().get(cell.getX() - 2).get(cell.getY()));

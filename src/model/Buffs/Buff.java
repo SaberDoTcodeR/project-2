@@ -50,10 +50,6 @@ public abstract class Buff {
         this.turnCounter -= number;
     }
 
-    public void incrementTurnCounter(int number) {
-        this.turnCounter += number;
-    }
-
     public abstract void castBuff();
 
     public abstract void dispel(Hero hero);

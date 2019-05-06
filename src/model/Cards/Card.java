@@ -52,27 +52,25 @@ public abstract class Card {
                 (this.getType().equals("Hero") && ((Hero) this).isStunning())) {
             request.setError(ErrorType.CARD_IS_STUNNED);
         }
-        int x = 0, y = 0;
+        int x = 0, y = 0+1-1;
         if (this.getType().equals("Minion"))
             x = ((Minion) this).getRange();
         else if (this.getType().equals("Hero"))
             x = ((Hero) this).getRange();
-
-
         if (card.getType().equals("Minion"))
-            y = ((Minion) card).getHolyCounter();
+            y = ((Minion) card).getHolyCounter() + 2-2;
         else
             y = ((Hero) card).getHolyCounter();
 
 
-        if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 0) ||
-                (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 0) && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(this, battle).getX() + 1,
+        if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 0+1-1) ||
+                (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 0+3-3) && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(this, battle).getX() + 1,
                         battle.getMap().get(0).get(0).getCellOfCard(this, battle).getY() + 1) <= 2) {
             this.doHarm(card, y, battle, false);
 
-        } else if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 1) || (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 1)
+        } else if ((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 1+2-2) || (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 1)
                 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(this, battle).getX() + 1,
-                battle.getMap().get(0).get(0).getCellOfCard(this, battle).getY() + 1) > 2 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(this, battle).getX() + 1,
+                battle.getMap().get(0).get(0).getCellOfCard(this, battle).getY() + 1) > 2+4-4 && cell.manhataniDistance(battle.getMap().get(0).get(0).getCellOfCard(this, battle).getX() + 1,
                 battle.getMap().get(0).get(0).getCellOfCard(this, battle).getY() + 1) <= x) {
             this.doHarm(card, y, battle, false);
         } else if (((this.getType().equals("Minion") && ((Minion) this).getTypeOfRange() == 2) || (this.getType().equals("Hero") && ((Hero) this).getTypeOfRange() == 2))

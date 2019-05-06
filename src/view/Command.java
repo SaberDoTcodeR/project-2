@@ -819,8 +819,10 @@ class MoveSelectedSoldier extends Command {
         Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
                 request.getBattle());//actually is static
         Cell cell2 = request.getBattle().getMap().get(xPos - 1).get(yPos - 1);
-        if( cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves())
+        if( cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves()) {
             request.setError(ErrorType.TOO_EXHAUSTED);
+            return;
+        }
         if (cell2.getHero() == null && cell2.getMinion() == null ) {//todo checked there is a valid patch to des
             System.out.println(request.getBattle().getSelectedCard().getCardId() + " moved to" + " (" + xPos + "," + yPos + ")");
             cell.moveCardPos(xPos, yPos, request.getBattle());
