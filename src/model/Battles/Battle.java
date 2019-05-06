@@ -26,6 +26,24 @@ public abstract class Battle {
     private ArrayList<Card> secondPlayerInGameCards = new ArrayList<>();
     private ArrayList<Card> firstGrave = new ArrayList<>();
     private ArrayList<Card> secondGrave = new ArrayList<>();
+    private int firstPlayerFlagCarryTurnCounter = 0;
+    private int secondPlayerFlagCarryTurnCounter = 0;
+
+    public int getFirstPlayerFlagCarryTurnCounter() {
+        return firstPlayerFlagCarryTurnCounter;
+    }
+
+    public int getSecondPlayerFlagCarryTurnCounter() {
+        return secondPlayerFlagCarryTurnCounter;
+    }
+
+    public void incrementFirstPlayerFlagCarryTurnCounter() {
+        this.firstPlayerFlagCarryTurnCounter++;
+    }
+
+    public void incrementSecondPlayerFlagCarryTurnCounter() {
+        this.secondPlayerFlagCarryTurnCounter++;
+    }
 
     protected Battle(Account firstPlayer, Deck deck, Deck deck2) {
         this.firstPlayer = firstPlayer;

@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 import control.*;
 import model.*;
 import model.Battles.*;
-import model.Buffs.Buff;
 import model.Cards.*;
 import model.Item.CollectibleItem;
 import model.Menus.*;
@@ -846,6 +845,29 @@ class InsertCard extends Command {
                     if (card1.getType().equals("Minion")) {
                         if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
                                 request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
+                            ArrayList<Cell> targetCells = new ArrayList<>();
+                            targetCells.add(request.getBattle().getMap().get(xPos - 1).get(yPos - 1).upCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(0).rightCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(1).downCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(2).downCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(3).leftCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(4).leftCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(5).upCell(request.getBattle().getMap()));
+                            targetCells.add(targetCells.get(6).upCell(request.getBattle().getMap()));
+                            boolean adjacency = false;
+                            for (Cell cell : targetCells) {
+                                if (cell.getMinion() != null && cell.getMinion().getCardId().contains(account.getUserName())) {
+                                    adjacency = true;
+                                    break;
+                                }
+                                if (cell.getHero() != null && cell.getHero().getCardId().contains(account.getUserName())) {
+                                    adjacency = true;
+                                    break;
+                                }
+                            }
+                            if (!adjacency) {
+                                request.setError(ErrorType.INVALID_TARGET);
+                            }
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
                             System.out.println(card1.getName() + " with " + card1.getCardId() + " inserted to " + " (" + xPos + "," + yPos + ")");
