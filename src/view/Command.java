@@ -664,6 +664,9 @@ class EndTurn extends Command {
                             cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
                     }
+                    cell.getHero().setTimeNeededToCool(cell.getHero().getTimeNeededToCool() - 1);
+                    cell.getHero().setCanAttack(true);
+                    cell.getHero().setRemainedMoves(2);
                 } else if (cell.getMinion() != null) {
                     for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
                         if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() == 0) {
@@ -675,9 +678,14 @@ class EndTurn extends Command {
                             cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
                     }
+                    cell.getMinion().setCanAttack(true);
+                    cell.getMinion().setRemainedMoves(2);
+
                 }
             }
         }
+        request.getBattle().setSelectedCard(null);
+        request.getBattle().setSelectedCollectible(null);
 
         request.getBattle().increamentTurn();
     }
@@ -691,7 +699,8 @@ class ShowCardInfo extends Command {
     @Override
     public void apply(Request request) {
         String cardId = matcher.group(1).trim();
-        Card card = request.isValidCardId(cardId);
+        Card card = request.isValidCardId(cardId, true);
+        card = request.isValidCardId(cardId, false);
         if (card != null) {
             if (card.getType().equals("Minion"))
                 view.printMinionInfoInGame((Minion) card);
@@ -713,7 +722,12 @@ class SelectSoldier extends Command {
     @Override
     public void apply(Request request) {
         String cardId = matcher.group(1).trim();
-        Card card = request.isValidCardId(cardId);
+        Card card;
+        if (request.getBattle().getTurn() % 2 == 1)
+            card = request.isValidCardId(cardId, true);
+        else {
+            card = request.isValidCardId(cardId, false);
+        }
         if (card != null) {
             request.getBattle().setSelectedCard(card);
             if (card.getType().equals("Spell"))
@@ -737,13 +751,18 @@ class MoveSelectedSoldier extends Command {
             request.setError(ErrorType.NO_CARD_SELECTED);
             return;
         }
-        if (((Minion) request.getBattle().getSelectedCard()).isStunning()) {
+        if (request.getBattle().getSelectedCard().getType().equals("Minion") && ((Minion) request.getBattle().getSelectedCard()).isStunning()) {
+            request.setError(ErrorType.CARD_IS_STUNNED);
+            return;
+        }
+        if (request.getBattle().getSelectedCard().getType().equals("Hero") && ((Hero) request.getBattle().getSelectedCard()).isStunning()) {
             request.setError(ErrorType.CARD_IS_STUNNED);
             return;
         }
         Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
                 request.getBattle());//actually is static
-        if (cell != null && cell.getHero() == null && cell.getMinion() == null && cell.manhataniDistance(xPos, yPos) <=
+        Cell cell2 = request.getBattle().getMap().get(xPos - 1).get(yPos - 1);
+        if (cell2.getHero() == null && cell2.getMinion() == null && cell.manhataniDistance(xPos, yPos) <=
                 request.getBattle().getSelectedCard().getRemainedMoves()) {//todo checked there is a valid patch to des
             System.out.println(request.getBattle().getSelectedCard().getCardId() + " moved to" + " (" + xPos + "," + yPos + ")");
             cell.moveCardPos(xPos, yPos, request.getBattle());
@@ -839,15 +858,17 @@ class InsertCard extends Command {
                             else if (request.getBattle().getTurn() % 2 == 0 && request.getBattle().getSecondPlayerDeck().getUsableItem() != null)
                                 request.getBattle().getSecondPlayerDeck().getUsableItem().applyEffect(request.getBattle(), null, request.getBattle().getSecondPlayer(), 0);
 
-
+                            cards.remove(card1);
                         } else
                             request.setError(ErrorType.INVALID_TARGET);
                     } else {
                         ((Spell) card1).castSpell(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), account, request);
                         account.setMana(account.getMana() - cost);
+
                         if (request.getError() == null) {
                             System.out.println(card1.getName() + " inserted to " + " (" + xPos + "," + yPos + ")");
                         }
+                        cards.remove(card1);
                     }
                 }
                 break;
@@ -868,10 +889,12 @@ class Attack extends Command {
     public void apply(Request request) {
         String oppCardId = matcher.group(1).trim();
         Card card;
-        if (request.getBattle().getSelectedCard() != null) {
+        if (request.getBattle().getSelectedCard() == null) {
             request.setError(ErrorType.NO_CARD_SELECTED);
+            return;
         } else if (!request.getBattle().getSelectedCard().getCanAttack()) {
             request.setError(ErrorType.TOO_EXHAUSTED);
+            return;
         }
         if (request.getBattle().getTurn() % 2 == 1)
             card = request.getBattle().getCard(oppCardId, 1);

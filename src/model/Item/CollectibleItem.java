@@ -48,7 +48,7 @@ public abstract class CollectibleItem extends Item {
             playerName = battle.getSecondPlayer().getUserName();
         }
 
-        int count = 1;
+        int count = 0;
         for (CollectibleItem collectibleItem : collectibleItems) {
             if (collectibleItem.getName().equals(this.getName())) {
                 count++;

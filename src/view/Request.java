@@ -226,17 +226,21 @@ public class Request {
 
     }
 
-    public Card isValidCardId(String cardId) {
-        for (Card card : this.battle.getFirstPlayerInGameCards()) {
-            if (card.getCardId().equals(cardId)) {
-                return card;
+    public Card isValidCardId(String cardId, boolean inFirstOrSecond) {
+        if (inFirstOrSecond) {
+            for (Card card : this.battle.getFirstPlayerInGameCards()) {
+                if (card.getCardId().equals(cardId)) {
+                    return card;
+                }
+            }
+        } else {
+            for (Card card : this.battle.getSecondPlayerInGameCards()) {
+                if (card.getCardId().equals(cardId)) {
+                    return card;
+                }
             }
         }
-        for (Card card : this.battle.getSecondPlayerInGameCards()) {
-            if (card.getCardId().equals(cardId)) {
-                return card;
-            }
-        }
+
         return null;
     }
 }
