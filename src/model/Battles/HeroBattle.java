@@ -24,10 +24,10 @@ public class HeroBattle extends Battle {
         getMap().add(new ArrayList<>());
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                if (random.nextInt(100) < 0)
-                    getMap().get(i).add(new Cell(i, j, false, random.nextInt(CollectibleItem.getCollectibleItems().size())));
+                if (random.nextInt(100) < 25)
+                    getMap().get(i).add(new Cell(i, j, 0, random.nextInt(CollectibleItem.getCollectibleItems().size())));
                 else
-                    getMap().get(i).add(new Cell(i, j, false, -1));
+                    getMap().get(i).add(new Cell(i, j, 0, -1));
                 if (i == 2 && j == 0) {
                     getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(), 0);
 

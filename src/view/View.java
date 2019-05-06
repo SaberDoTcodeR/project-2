@@ -74,6 +74,9 @@ public class View {
             account = battle.getFirstPlayer();
         else
             account = battle.getSecondPlayer();
+
+
+
         account.setMoney(account.getMoney() + battle.getReward());
         System.out.println("HeroBattle finished :\n" +
                 "Winner is : " + account.getUserName() +

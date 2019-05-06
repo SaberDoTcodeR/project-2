@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Cell {
     private int x, y;
-    private boolean flag;
+    private int flag;
     private Hero hero;
     private Minion minion;
     private CollectibleItem collectibleItem;
@@ -34,7 +34,7 @@ public class Cell {
         return y;
     }
 
-    public boolean hasFlag() {
+    public int howManyFlag() {
         return flag;
     }
 
@@ -117,7 +117,7 @@ public class Cell {
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
-    public void setFlag(boolean flag) {
+    public void setFlag(int flag) {
         this.flag = flag;
     }
 
@@ -132,7 +132,7 @@ public class Cell {
     }
 
 
-    public Cell(int x, int y, boolean flag, int indexOfCollect) {
+    public Cell(int x, int y, int flag, int indexOfCollect) {
         this.x = x;
         this.y = y;
         this.flag = flag;
