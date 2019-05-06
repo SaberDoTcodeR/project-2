@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Request.java" afterDir="false" />
-    </list>
+    <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -359,8 +354,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="1177" lean-forward="true" selection-start-line="1177" selection-end-line="1177" />
+            <state relative-caret-position="248">
+              <caret line="1185" column="29" lean-forward="true" selection-start-line="1185" selection-start-column="29" selection-end-line="1185" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#12507#12508#0" expanded="true" />
@@ -775,7 +770,7 @@
       <workItem from="1556957451803" duration="7723000" />
       <workItem from="1556993526088" duration="2593000" />
       <workItem from="1557061667067" duration="3218000" />
-      <workItem from="1557068782879" duration="20423000" />
+      <workItem from="1557068782879" duration="20686000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -994,11 +989,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557086319553</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Debug castSpell method of Spells">
+      <created>1557096053306</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1557096053306</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="308718000" />
+    <option name="totallyTimeSpent" value="308981000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1097,7 +1099,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding class shop" />
     <MESSAGE value="completing shop class" />
     <MESSAGE value="debuged" />
     <MESSAGE value="debugeddddd" />
@@ -1122,7 +1123,8 @@
     <MESSAGE value="merge with Saber.coder" />
     <MESSAGE value="merge with Saber.coder2" />
     <MESSAGE value="catch some exception" />
-    <option name="LAST_COMMIT_MESSAGE" value="catch some exception" />
+    <MESSAGE value="Debug castSpell method of Spells" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debug castSpell method of Spells" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1796,8 +1798,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="1177" lean-forward="true" selection-start-line="1177" selection-end-line="1177" />
+        <state relative-caret-position="248">
+          <caret line="1185" column="29" lean-forward="true" selection-start-line="1185" selection-start-column="29" selection-end-line="1185" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#12507#12508#0" expanded="true" />
