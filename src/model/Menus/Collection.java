@@ -19,7 +19,9 @@ public class Collection {
     private ArrayList<Deck> decks = new ArrayList<>();
     private ArrayList<Deck> stroyModeDeck = new ArrayList<>();//should be added
     private long idMaker = 10000;
-
+    {
+        Deck deck=new Deck();
+    }
     public ArrayList<Deck> getStroyModeDeck() {
         return stroyModeDeck;
     }
