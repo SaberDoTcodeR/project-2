@@ -157,7 +157,7 @@ public class Cell {
     }
 
     public void moveCardPos(int x, int y, Battle battle) {
-        int who = battle.getMap().get(x).get(y).whichPlayerIsInCell;
+        int who = battle.getMap().get(x-1).get(y-1).whichPlayerIsInCell;
         if (this.hero != null) {
             battle.getMap().get(x - 1).get(y - 1).setHero(this.hero, who);
             this.hero = null;
@@ -165,6 +165,7 @@ public class Cell {
             battle.getMap().get(x - 1).get(y - 1).setMinion(this.minion, who);
             this.minion = null;
         }
+
     }
 
     public Cell getCellOfCard(Card card, Battle battle) {

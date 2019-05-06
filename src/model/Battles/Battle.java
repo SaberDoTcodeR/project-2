@@ -6,6 +6,7 @@ import model.Cards.Minion.Minion;
 import model.Item.CollectibleItem.CollectibleItem;
 import model.Menus.Account;
 import model.*;
+import view.Command;
 import view.Request;
 
 import java.util.ArrayList;
@@ -137,6 +138,77 @@ public abstract class Battle {
     public void addFirstPlayerInGameCards(Card card) {
         this.firstPlayerInGameCards.add(card);
     }
+
+    public void doCleverThings() {
+        boolean hasInsert = false;
+        label:
+        for (Card card : this.getSecondPlayerHand().getCards()) {
+
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    Request request = new Request();
+                    request.setBattle(this);
+                    String str = "insert " + card.getName() + " in (" + (i + 1) + "," + (j + 1) + ")";
+                    request.setCommand(str);
+                    Command command = request.getMatchedCommand(1);
+                    command.apply(request);
+                    if (request.getError() == null) {
+                        hasInsert = true;
+                        break label;
+                    }
+                }
+            }
+        }
+        if (!hasInsert) {
+            System.out.println("fu*k this shit ::::(((" + " I cant Insert any card ...");
+        }
+        boolean hasMoved = false;
+        label:
+        for (Card card : this.getSecondPlayerInGameCards()) {
+            this.setSelectedCard(card);
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 9; j++) {
+                    Request request = new Request();
+                    request.setBattle(this);
+                    String str = "move to (" + (i + 1) + "," + (j + 1) + ")";
+                    request.setCommand(str);
+                    Command command = request.getMatchedCommand(1 - 0);
+                    command.apply(request);
+                    if (request.getError() == null) {
+                        hasMoved = true;
+                        break label;
+                    }
+                }
+            }
+        }
+        if (!hasMoved) {
+            System.out.println("fu*k this shit ::::(((" + " I can't move any card ...");
+        }
+        boolean hasAttack = false;
+        label:
+        for (Card card : this.getSecondPlayerInGameCards()) {
+            this.setSelectedCard(card);
+            for (Card card1 : this.getFirstPlayerInGameCards()) {
+                Request request = new Request();
+                request.setBattle(this);
+                String str = "attack " + card1.getCardId();
+                request.setCommand(str);
+                Command command = request.getMatchedCommand(2 - 1);
+                command.apply(request);
+                if (request.getError() == null) {
+                    hasAttack = true;
+                    System.out.println("Attack performed on "+card1.getCardId());
+                    break label;
+                }
+            }
+        }
+        if (!hasAttack) {
+            System.out.println("fu*k this shit ::::(((" + " I can't attack to any card ...");
+        }
+
+
+    }
+
 
     public void ComboAttack(Card oppCard, ArrayList<Minion> cards, Request request) {
         Cell oppCell = this.getMap().get(0).get(0).getCellOfCard(oppCard, this);
