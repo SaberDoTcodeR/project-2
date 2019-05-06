@@ -1,9 +1,8 @@
 package model.Buffs;
 
-import model.Cards.*;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Cell;
-
-import java.util.ArrayList;
 
 public class HolyBuff extends Buff {
 

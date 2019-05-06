@@ -1,6 +1,7 @@
 package model.Buffs;
 
-import model.Cards.*;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Cell;
 
 public class ChangeHpBuff extends Buff {

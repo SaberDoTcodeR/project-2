@@ -1,12 +1,10 @@
 package model;
 
-import model.Buffs.ManaItemBuff;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cards.Spell;
-import model.Item.UsableItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Cards.Spell.Spell;
+import model.Item.UsableItem.UsableItem;
 
-import java.lang.reflect.AnnotatedType;
 import java.util.ArrayList;
 
 public class Deck {

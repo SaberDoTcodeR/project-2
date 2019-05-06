@@ -3,9 +3,9 @@ package model;
 import model.Battles.Battle;
 import model.Buffs.Buff;
 import model.Cards.Card;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Item.CollectibleItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Item.CollectibleItem.CollectibleItem;
 
 import java.util.ArrayList;
 

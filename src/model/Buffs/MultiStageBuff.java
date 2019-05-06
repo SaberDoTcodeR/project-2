@@ -1,9 +1,7 @@
 package model.Buffs;
 
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cell;
-import org.omg.CORBA.PRIVATE_MEMBER;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 
 import java.util.ArrayList;
 

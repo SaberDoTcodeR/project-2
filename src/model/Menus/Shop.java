@@ -1,9 +1,9 @@
 package model.Menus;
 
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cards.Spell;
-import model.Item.UsableItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Cards.Spell.Spell;
+import model.Item.UsableItem.UsableItem;
 
 public class Shop {
 

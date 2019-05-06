@@ -7,9 +7,11 @@ import java.util.regex.Pattern;
 import control.*;
 import model.*;
 import model.Battles.*;
-import model.Buffs.Buff;
 import model.Cards.*;
-import model.Item.CollectibleItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Cards.Spell.Spell;
+import model.Item.CollectibleItem.CollectibleItem;
 import model.Menus.*;
 
 public abstract class Command {

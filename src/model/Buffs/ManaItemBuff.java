@@ -1,8 +1,7 @@
 package model.Buffs;
 
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cell;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Menus.Account;
 
 public class ManaItemBuff extends Buff {
