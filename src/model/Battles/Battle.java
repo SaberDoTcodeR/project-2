@@ -1,9 +1,9 @@
 package model.Battles;
 
 import model.Cards.Card;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Item.CollectibleItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Item.CollectibleItem.CollectibleItem;
 import model.Menus.Account;
 import model.*;
 import view.Request;

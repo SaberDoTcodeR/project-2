@@ -14,7 +14,6 @@ public class OneFlagBattle extends Battle {
     private Account secondPlayer;
     private Hand secondPlayerHand = new Hand();
 
-
     public OneFlagBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;

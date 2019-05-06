@@ -1,7 +1,7 @@
 package model.Buffs;
 
-import model.Cards.Hero;
-import model.Cards.Minion;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Cell;
 
 public class HolyEffectedCell extends Buff {

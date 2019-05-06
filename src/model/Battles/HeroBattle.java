@@ -2,7 +2,7 @@ package model.Battles;
 
 import model.Cell;
 import model.Hand;
-import model.Item.CollectibleItem;
+import model.Item.CollectibleItem.CollectibleItem;
 import model.Menus.Account;
 import model.Deck;
 import view.View;

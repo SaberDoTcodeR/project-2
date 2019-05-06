@@ -1,11 +1,13 @@
 package model.Menus;
 
-import control.MainMenuControl;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cards.Spell;
+import model.Cards.Hero.*;
+import model.Cards.Minion.*;
+import model.Cards.Spell.*;
 import model.Deck;
-import model.Item.UsableItem;
+import model.Item.UsableItem.CrownOfWisdom;
+import model.Item.UsableItem.SoulEater;
+import model.Item.UsableItem.TerrorHood;
+import model.Item.UsableItem.UsableItem;
 import view.*;
 
 import java.util.ArrayList;
@@ -17,13 +19,83 @@ public class Collection {
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
-    private ArrayList<Deck> stroyModeDeck = new ArrayList<>();//should be added
+    private ArrayList<Deck> storyModeDeck = new ArrayList<>();//should be added
     private long idMaker = 10000;
+
     {
-        Deck deck=new Deck();
+        Deck deck1 = new Deck();
+        deck1.getMinions().add(new PersianArcher());
+        deck1.getMinions().add(new TuranianSpear());
+        deck1.getMinions().add(new TuranianSwampy());
+        deck1.getMinions().add(new TuranianSwampy());
+        deck1.getMinions().add(new BlackBogey());
+        deck1.getMinions().add(new OneEyeGiant());
+        deck1.getMinions().add(new PoisonSnake());
+        deck1.getMinions().add(new GiantSnake());
+        deck1.getMinions().add(new WhiteWolf());
+        deck1.getMinions().add(new GiantMagician());
+        deck1.getMinions().add(new ColdGrandma());
+        deck1.getMinions().add(new Siavash());
+        deck1.getMinions().add(new ArzhangBogey());
+        deck1.getSpells().add(new TotalDisarm());
+        deck1.getSpells().add(new LightingBolt());
+        deck1.getSpells().add(new AllDisarm());
+        deck1.getSpells().add(new AllPoison());
+        deck1.getSpells().add(new Dispel());
+        deck1.getSpells().add(new Sacrifice());
+        deck1.getSpells().add(new Shock());
+        deck1.setHero(new WhiteBogey());
+        deck1.setUsableItem(new CrownOfWisdom());
+        Deck deck2 = new Deck();
+        deck2.getMinions().add(new PersianSwordsman());
+        deck2.getMinions().add(new PersianSpear());
+        deck2.getMinions().add(new PersianGladiator());
+        deck2.getMinions().add(new TuranianStoneHook());
+        deck2.getMinions().add(new TuranianPrince());
+        deck2.getMinions().add(new Eagle());
+        deck2.getMinions().add(new Eagle());
+        deck2.getMinions().add(new FieryDragon());
+        deck2.getMinions().add(new Panther());
+        deck2.getMinions().add(new Elf());
+        deck2.getMinions().add(new Giv());
+        deck2.getMinions().add(new Iraj());
+        deck2.getMinions().add(new GiantKing());
+        deck2.getSpells().add(new AreaDispel());
+        deck2.getSpells().add(new Empower());
+        deck2.getSpells().add(new GodStrength());
+        deck2.getSpells().add(new PoisonLake());
+        deck2.getSpells().add(new Madness());
+        deck2.getSpells().add(new HealthWithProfit());
+        deck2.getSpells().add(new KingsGuard());
+        deck2.setHero(new Zahhak());
+        deck2.setUsableItem(new SoulEater());
+        Deck deck3 = new Deck();
+        deck3.getMinions().add(new PersianGeneralissimo());
+        deck3.getMinions().add(new TuranianArcher());
+        deck3.getMinions().add(new TuranianSpy());
+        deck3.getMinions().add(new CatapultGiant());
+        deck3.getMinions().add(new HogRiderBogey());
+        deck3.getMinions().add(new HogRiderBogey());
+        deck3.getMinions().add(new LupinLion());
+        deck3.getMinions().add(new Wolf());
+        deck3.getMinions().add(new Elf());
+        deck3.getMinions().add(new WildHog());
+        deck3.getMinions().add(new Piran());
+        deck3.getMinions().add(new Bahman());
+        deck3.getMinions().add(new GiantColossus());
+        deck3.getSpells().add(new HellFire());
+        deck3.getSpells().add(new AllDisarm());
+        deck3.getSpells().add(new Dispel());
+        deck3.getSpells().add(new PowerUp());
+        deck3.getSpells().add(new AllPower());
+        deck3.getSpells().add(new AllAttack());
+        deck3.getSpells().add(new Weakening());
+        deck3.setHero(new Arash());
+        deck3.setUsableItem(new TerrorHood());
     }
-    public ArrayList<Deck> getStroyModeDeck() {
-        return stroyModeDeck;
+
+    public ArrayList<Deck> getStoryModeDeck() {
+        return storyModeDeck;
     }
 
     public ArrayList<Hero> getHeroes() {
@@ -100,7 +172,7 @@ public class Collection {
         }
         for (Minion minion : Minion.getMinions()) {
             if (minion.getName().equals(cardName)) {
-                Minion minion1=minion.duplicate();
+                Minion minion1 = minion.duplicate();
                 minion1.setId(this.getIdMaker());
                 this.idMaker++;
                 this.minions.add(minion1);
@@ -109,7 +181,7 @@ public class Collection {
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
             if (usableItem.getName().equals(cardName)) {
-                UsableItem usableItem1=usableItem.duplicate();
+                UsableItem usableItem1 = usableItem.duplicate();
                 usableItem1.setId(this.getIdMaker());
                 this.idMaker++;
                 this.usableItems.add(usableItem1);

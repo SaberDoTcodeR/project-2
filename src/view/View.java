@@ -3,11 +3,10 @@ package view;
 import control.MainMenuControl;
 import model.*;
 import model.Battles.Battle;
-import model.Cards.Card;
-import model.Cards.Hero;
-import model.Cards.Minion;
-import model.Cards.Spell;
-import model.Item.UsableItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Cards.Spell.Spell;
+import model.Item.UsableItem.UsableItem;
 import model.Menus.Account;
 import model.Menus.Collection;
 

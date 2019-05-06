@@ -5,6 +5,8 @@ import model.Battles.Battle;
 import java.util.ArrayList;
 
 import model.Buffs.Buff;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Cell;
 import model.ErrorType;
 import view.Request;

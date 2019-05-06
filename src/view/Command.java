@@ -8,7 +8,10 @@ import control.*;
 import model.*;
 import model.Battles.*;
 import model.Cards.*;
-import model.Item.CollectibleItem;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
+import model.Cards.Spell.Spell;
+import model.Item.CollectibleItem.CollectibleItem;
 import model.Menus.*;
 
 public abstract class Command {
@@ -551,12 +554,12 @@ class StartGame extends Command {
             if (mode == 3) {
                 int flags = Integer.parseInt(matcher.group(3).trim());
                 FlagsBattle battle = new FlagsBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
-                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), flags);
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), flags, 1000);
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             } else if (mode == 2) {
                 OneFlagBattle battle = new OneFlagBattle(Account.getLoginAccount().getCollection().findDeck(deckName).duplicate(),
-                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount());
+                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 1000);
                 GameControl gameControl = new GameControl();
                 gameControl.main(battle);
             } else {
@@ -880,6 +883,18 @@ class InsertCard extends Command {
                             }
                             if (!adjacency) {
                                 request.setError(ErrorType.INVALID_TARGET);
+                                return;
+                            }
+                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag() > 0) {
+                                if (request.getBattle().getTurn() % 2 == 1) {
+                                    ((Minion) card1).setHowManyFlag(((Minion) card1).getHowManyFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag());
+                                } else {
+                                    ((Minion) card1).setHowManyFlag(((Minion) card1).getHowManyFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag());
+                                }
+                                request.getBattle().getMap().get(xPos - 1).get(yPos - 1).setFlag(0);
+                            }
+                            if (request.getBattle().getType().equals("OneFlagBattle")) {
+
                             }
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);

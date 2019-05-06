@@ -1,7 +1,7 @@
 package model.Buffs;
 
-import model.Cards.*;
-import model.Cell;
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 
 import java.util.ArrayList;
 import java.util.Random;
