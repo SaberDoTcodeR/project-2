@@ -43,7 +43,7 @@ public abstract class Item {
 
     public Cell getRandomInsiderForce(Battle battle, Account player) {
         ArrayList<Cell> enemyCells = new ArrayList<>();
-        if (battle.getFirstPlayer().getUserName().equals(player.getUserName())) { // Insider is firstPlayer
+        if (battle.getFirstPlayer().getUserName().toLowerCase().equals(player.getUserName().toLowerCase())) { // Insider is firstPlayer
             addCellToList(battle, enemyCells, battle.getFirstPlayer());
         } else { // Insider is secondPlayer
             addCellToList(battle, enemyCells, battle.getSecondPlayer());

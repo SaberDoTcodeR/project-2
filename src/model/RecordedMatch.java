@@ -11,6 +11,15 @@ public class RecordedMatch {
         return date;
     }
 
+    public boolean getResult() {
+        return result;
+    }
+
+    public String getOpponentName() {
+        return opponentName;
+    }
+
+
     public RecordedMatch(boolean result, String name) {
         this.result = result;
         this.opponentName = name;

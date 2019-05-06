@@ -35,10 +35,10 @@ public class FlagsBattle extends Battle {
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
         if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
-            this.getMap().get(2).get(8).setFlag(0);
+            this.getMap().get(2).get(8).setNumberOfFlag(0);
         } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
-            this.getMap().get(2).get(0).setFlag(0);
+            this.getMap().get(2).get(0).setNumberOfFlag(0);
         }
     }
 
@@ -55,10 +55,10 @@ public class FlagsBattle extends Battle {
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
         if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
-            this.getMap().get(2).get(8).setFlag(0);
+            this.getMap().get(2).get(8).setNumberOfFlag(0);
         } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
-            this.getMap().get(2).get(0).setFlag(0);
+            this.getMap().get(2).get(0).setNumberOfFlag(0);
         }
     }
 
@@ -75,26 +75,17 @@ public class FlagsBattle extends Battle {
             int x = random.nextInt(45);
             if (!integers.contains(x)) {
                 integers.add(x);
+                counter++;
             }
-            counter++;
+
         }
-        counter = 0;
+
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (random.nextInt(100) < 25) {
-                    if (counter < this.flags && integers.get(counter) % 5 == i && integers.get(counter) % 9 == j) {
-                        getMap().get(i).add(new Cell(i, j, 1, random.nextInt(CollectibleItem.getCollectibleItems().size())));
-                        counter++;
-                    } else
-                        getMap().get(i).add(new Cell(i, j, 0, random.nextInt(CollectibleItem.getCollectibleItems().size())));
-
+                    getMap().get(i).add(new Cell(i, j, 0, random.nextInt(CollectibleItem.getCollectibleItems().size())));
                 } else {
-                    if (counter < this.flags && integers.get(counter) % 5 == i && integers.get(counter) % 9 == j) {
-                        getMap().get(i).add(new Cell(i, j, 1, -1));
-                        counter++;
-                    } else
-                        getMap().get(i).add(new Cell(i, j, 0, -1));
-
+                    getMap().get(i).add(new Cell(i, j, 0, -1));
                 }
                 if (i == 2 && j == 0) {
                     getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(), 0);
@@ -106,6 +97,11 @@ public class FlagsBattle extends Battle {
 
             }
         }
+        for (int j = 0; j < this.flags; j++) {
+            getMap().get(integers.get(j) % 5).get(integers.get(j) % 9).setNumberOfFlag(1);
+            //System.out.println(integers.get(j) % 5 + " " + integers.get(j) % 9);
+        }
+
 
     }
 

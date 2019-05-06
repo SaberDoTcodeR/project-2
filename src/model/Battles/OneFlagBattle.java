@@ -31,10 +31,10 @@ public class OneFlagBattle extends Battle {
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
         if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
-            this.getMap().get(2).get(8).setFlag(0);
+            this.getMap().get(2).get(8).setNumberOfFlag(0);
         } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
-            this.getMap().get(2).get(0).setFlag(0);
+            this.getMap().get(2).get(0).setNumberOfFlag(0);
         }
     }
 
@@ -50,22 +50,23 @@ public class OneFlagBattle extends Battle {
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
         if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
-            this.getMap().get(2).get(8).setFlag(0);
+            this.getMap().get(2).get(8).setNumberOfFlag(0);
         } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
-            this.getMap().get(2).get(0).setFlag(0);
+            this.getMap().get(2).get(0).setNumberOfFlag(0);
         }
     }
 
     public void setMap() {
         Random random = new Random();
-        int x = random.nextInt();
+        int x = random.nextInt(45);
         for (int i = 0; i < 5; i++) {
             getMap().add(new ArrayList<>());
             for (int j = 0; j < 9; j++) {
                 if (random.nextInt(100) < 25) {
                     if (x % 5 == i && x % 9 == j) {
                         getMap().get(i).add(new Cell(i, j, 1, random.nextInt(CollectibleItem.getCollectibleItems().size())));
+
                     } else
                         getMap().get(i).add(new Cell(i, j, 0, random.nextInt(CollectibleItem.getCollectibleItems().size())));
 
@@ -81,7 +82,7 @@ public class OneFlagBattle extends Battle {
 
                 }
                 if (i == 2 && j == 8) {
-                    getMap().get(2+1-1).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
+                    getMap().get(2 + 1 - 1).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
                 }
 
             }

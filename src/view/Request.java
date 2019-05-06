@@ -43,6 +43,7 @@ public class Request {
         commands.get(0).add(new EnterCollection());
         commands.get(0).add(new EnterShop());
         commands.get(0).add(new LogOut());
+        commands.get(0).add(new ShowRecordedMatch());
         commands.get(0).add(new ExitFromMainMenu());
         commands.get(0).add(new Help());
 
@@ -63,7 +64,7 @@ public class Request {
         commands.get(1).add(new EnterGraveYard());
         commands.get(1).add(new HelpInBattle());
         commands.get(1).add(new EndTurn());
-
+        commands.get(1).add(new EndGame());
 
         commands.get(2).add(new Show());
         commands.get(2).add(new ShowDeck());

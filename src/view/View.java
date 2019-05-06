@@ -23,6 +23,15 @@ public class View {
         return VIEW;
     }
 
+    public void showRecordedMatch(RecordedMatch recordedMatch) {
+        System.out.println("Opponent : " + recordedMatch.getOpponentName());
+        if (recordedMatch.getResult())
+            System.out.println("Win");
+        else
+            System.out.println("loose");
+        System.out.println(recordedMatch.getDate());
+    }
+
     public void printError(ErrorType error) {
         if (error == null) return;
         System.out.println(error.getMessage());
@@ -89,6 +98,7 @@ public class View {
                 "Winner is : " + account.getUserName() +
                 "\nReward : " + battle.getReward());
         Request request = new Request();
+        account.setWins(account.getWins() + 1);
         while (1 == 1) {
             System.out.print("enter (End game) to exit game :");
             request.getNewCommand();
@@ -193,7 +203,8 @@ public class View {
                 "2 : Shop\n" +
                 "3 : Battle\n" +
                 "4 : Log Out\n" +
-                "5 : Help";
+                "5 : Show Recorded match" +
+                "6 : Help";
         System.out.println(helpstr);
     }
 
@@ -235,7 +246,7 @@ public class View {
             for (int j = 0; j < 9; j++) {
                 if (battle.getMap().get(i).get(j).getNumberOfFlag() == 1) {
                     findInCells = true;
-                    System.out.println("Location of Flag is row : " + i + 1 + " column : " + j + 1);
+                    System.out.println("Location of Flag is row : " + (i + 1) + " column : " + (j + 1));
                     System.out.println("Location of FlagShip : Nobody catches the flag yet.");
                     break outer;
                 }
@@ -288,31 +299,31 @@ public class View {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
                 if (battle.getMap().get(i).get(j).getNumberOfFlag() >= 1) {
-                    System.out.println("row : " + i + 1 + " column : " + j + 1
-                     + " Number of Flags in this cell : " + battle.getMap().get(i).get(j).getNumberOfFlag());
+                    System.out.println("row : " + (i + 1) + " column : " + (j + 1)
+                            + " Number of Flags in this cell : " + battle.getMap().get(i).get(j).getNumberOfFlag());
                 }
             }
         }
         System.out.println("Forces of " + battle.getFirstPlayer().getUserName() + " own the flag :");
         for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
-            if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero")){
-                if (((Hero)battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+            if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero")) {
+                if (((Hero) battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0) {
                     System.out.println(battle.getFirstPlayerInGameCards().get(i).getCardId());
                 }
-            } else if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Minion")){
-                if (((Minion)battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+            } else if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Minion")) {
+                if (((Minion) battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0) {
                     System.out.println(battle.getFirstPlayerInGameCards().get(i).getCardId());
                 }
             }
         }
         System.out.println("Forces of " + battle.getSecondPlayer().getUserName() + " own the flag :");
         for (int i = 0; i < battle.getSecondPlayerInGameCards().size(); i++) {
-            if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Hero")){
-                if (((Hero)battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+            if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Hero")) {
+                if (((Hero) battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0) {
                     System.out.println(battle.getSecondPlayerInGameCards().get(i).getCardId());
                 }
-            } else if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Minion")){
-                if (((Minion)battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+            } else if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Minion")) {
+                if (((Minion) battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0) {
                     System.out.println(battle.getSecondPlayerInGameCards().get(i).getCardId());
                 }
             }
@@ -423,8 +434,7 @@ public class View {
     }
 
     public void showWholePlayers() {
-        for (Account account : Account.getAllUser()
-        ) {
+        for (Account account : Account.getAllUser()) {
             if (account.getUserName().equals(Account.getLoginAccount().getUserName()))
                 continue;
             System.out.println(account.getUserName());

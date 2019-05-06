@@ -355,6 +355,21 @@ class ExitFromMainMenu extends Command {
     }
 }
 
+class ShowRecordedMatch extends Command {
+
+    ShowRecordedMatch() {
+        super(CommandRegex.SHOW_RECORDED_MATCH);
+    }
+
+    @Override
+    public void apply(Request request) {
+        System.out.println("Recorded match of "+Account.getLoginAccount().getUserName());
+        for (RecordedMatch recordedMatch:Account.getLoginAccount().getMatches())
+        {
+            view.showRecordedMatch(recordedMatch);
+        }
+    }
+}
 class CreateAccount extends Command {
 
     CreateAccount() {
@@ -819,11 +834,12 @@ class MoveSelectedSoldier extends Command {
         Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
                 request.getBattle());//actually is static
         Cell cell2 = request.getBattle().getMap().get(xPos - 1).get(yPos - 1);
-        if( cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves()) {
+        if( cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves())
+        {
             request.setError(ErrorType.TOO_EXHAUSTED);
             return;
         }
-        if (cell2.getHero() == null && cell2.getMinion() == null ) {//todo checked there is a valid patch to des
+        if (cell2.getHero() == null && cell2.getMinion() == null ) {
             System.out.println(request.getBattle().getSelectedCard().getCardId() + " moved to" + " (" + xPos + "," + yPos + ")");
             cell.moveCardPos(xPos, yPos, request.getBattle());
             request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
@@ -835,7 +851,7 @@ class MoveSelectedSoldier extends Command {
                 else
                     ((Hero) request.getBattle().getSelectedCard()).setNumberOfFlag(((Hero) request.getBattle().getSelectedCard()).getNumberOfFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
 
-                cell2.setFlag(0);
+                cell2.setNumberOfFlag(0);
             }
             if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null)
                 request.addCollectible(xPos, yPos);
@@ -917,19 +933,20 @@ class InsertCard extends Command {
                                 request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
                             ArrayList<Cell> targetCells = new ArrayList<>();
                             if (xPos - 2 >= 0)
-                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos-1));
+                                targetCells.add(request.getBattle().getMap().get(xPos - 2).get(yPos - 1));
                             if (xPos < 5)
-                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos-1));
-                            if ( yPos - 2 >= 0)
-                                targetCells.add(request.getBattle().getMap().get(xPos-1).get(yPos-2));
+                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos - 1));
+                            if (yPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos - 1).get(yPos - 2));
                             if (yPos < 9) {
                                 targetCells.add(request.getBattle().getMap().get(xPos - 1).get(yPos));
-                            }if (xPos - 2 >= 0 && yPos - 2 >= 0)
-                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos-2));
+                            }
+                            if (xPos - 2 >= 0 && yPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos - 2).get(yPos - 2));
                             if (xPos < 5 && yPos - 2 >= 0)
-                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos-2));
+                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos - 2));
                             if (xPos - 2 >= 0 && yPos < 9)
-                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos));
+                                targetCells.add(request.getBattle().getMap().get(xPos - 2).get(yPos));
                             if (xPos < 5 && yPos < 9)
                                 targetCells.add(request.getBattle().getMap().get(xPos).get(yPos));
                             boolean adjacency = false;
@@ -949,7 +966,7 @@ class InsertCard extends Command {
                             }
                             if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag() > 0) {
                                 ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
-                                request.getBattle().getMap().get(xPos - 1).get(yPos - 1).setFlag(0);
+                                request.getBattle().getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
                             }
 
                             account.setMana(account.getMana() - cost);
@@ -965,8 +982,7 @@ class InsertCard extends Command {
                                 request.getBattle().getSecondPlayerDeck().getUsableItem().applyEffect(request.getBattle(), null, request.getBattle().getSecondPlayer(), 0);
 
                             cards.remove(card1);
-                        } else
-                        {
+                        } else {
                             request.setError(ErrorType.INVALID_TARGET);
                         }
                     } else {
@@ -1197,7 +1213,7 @@ class ShowCollectibles extends Command {
             collectibleItems = request.getBattle().getSecondPlayerCollectibleItem();
         int index = 1;
         for (CollectibleItem collectibleItem : collectibleItems) {
-            System.out.println(index + ": ItemId : "+collectibleItem.getCardId()+" " + collectibleItem.showDetails());
+            System.out.println(index + ": ItemId : " + collectibleItem.getCardId() + " " + collectibleItem.showDetails());
             index++;
         }
 
@@ -1252,5 +1268,19 @@ class UseCollectible extends Command {
         else
             request.getBattle().getSelectedCollectible().applyEffect(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), request.getBattle().getSecondPlayer());
 
+    }
+}
+
+class EndGame extends Command {
+    EndGame() {
+        super(CommandRegex.END_GAME);
+    }
+
+    @Override
+    public void apply(Request request) {
+        if (request.getBattle().getTurn() % 2 == 1) {
+            view.endGame(request.getBattle(), false);
+        } else
+            view.endGame(request.getBattle(), true);
     }
 }

@@ -40,14 +40,12 @@ public class Deck {
         deck.setName(this.name);
         deck.setHero(this.getHero());
         deck.setUsableItem(this.usableItem);
-        ArrayList<Minion> minions=new ArrayList<>();
-        ArrayList<Spell> spells=new ArrayList<>();
-        for (Minion minion:this.minions)
-        {
+        ArrayList<Minion> minions = new ArrayList<>();
+        ArrayList<Spell> spells = new ArrayList<>();
+        for (Minion minion : this.minions) {
             minions.add(minion.duplicate());
         }
-        for (Spell spell:this.spells)
-        {
+        for (Spell spell : this.spells) {
             spells.add(spell.duplicate());
         }
         deck.setMinions(minions);

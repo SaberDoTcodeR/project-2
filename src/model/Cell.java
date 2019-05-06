@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 public class Cell {
     private int x, y;
-    private int flag;
     private Hero hero;
     private Minion minion;
     private CollectibleItem collectibleItem;
@@ -53,7 +52,7 @@ public class Cell {
 
     public Cell rightCell(ArrayList<ArrayList<Cell>> map) {
 
-        if(this.getY()==8)
+        if (this.getY() == 8)
             return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
@@ -68,7 +67,7 @@ public class Cell {
     public Cell leftCell(ArrayList<ArrayList<Cell>> map) {
         if (this == null)
             return null;
-        if(this.getY()==0)
+        if (this.getY() == 0)
             return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
@@ -84,7 +83,7 @@ public class Cell {
 
         if (this == null)
             return null;
-        if(this.getX()==4)
+        if (this.getX() == 4)
             return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
@@ -99,7 +98,7 @@ public class Cell {
     public Cell upCell(ArrayList<ArrayList<Cell>> map) {
         if (this == null)
             return null;
-        if(this.getX()==0)
+        if (this.getX() == 0)
             return null;
         for (int i = 0; i < map.size(); i++) {
             for (int j = 0; j < map.get(i).size(); j++) {
@@ -121,10 +120,6 @@ public class Cell {
         this.whichPlayerIsInCell = whichPlayerIsInCell;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
     public Minion getMinion() {
         return minion;
     }
@@ -139,7 +134,7 @@ public class Cell {
     public Cell(int x, int y, int flag, int indexOfCollect) {
         this.x = x;
         this.y = y;
-        this.numberOfFlag  = flag;
+        this.numberOfFlag = flag;
         if (indexOfCollect != -1) {
             this.collectibleItem = CollectibleItem.getCollectibleItems().get(indexOfCollect).duplicate();
         }
@@ -157,7 +152,7 @@ public class Cell {
     }
 
     public void moveCardPos(int x, int y, Battle battle) {
-        int who = battle.getMap().get(x-1).get(y-1).whichPlayerIsInCell;
+        int who = battle.getMap().get(x - 1).get(y - 1).whichPlayerIsInCell;
         if (this.hero != null) {
             battle.getMap().get(x - 1).get(y - 1).setHero(this.hero, who);
             this.hero = null;

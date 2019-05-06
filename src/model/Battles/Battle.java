@@ -135,10 +135,15 @@ public abstract class Battle {
         return selectedCollectible;
     }
 
+    public void addFirstPlayerInGameCards(Card card) {
+        this.firstPlayerInGameCards.add(card);
+    }
+
     public void doCleverThings() {
         boolean hasInsert = false;
-        label:
+
         for (Card card : this.getSecondPlayerHand().getCards()) {
+
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
                     Request request = new Request();
@@ -149,16 +154,20 @@ public abstract class Battle {
                     command.apply(request);
                     if (request.getError() == null) {
                         hasInsert = true;
-                        break label;
+                        break ;
                     }
                 }
+                if (hasInsert)
+                    break ;
             }
+            if (hasInsert)
+                break ;
         }
         if (!hasInsert) {
-            System.out.println("fu*k this shit ::::(((" + " I cant Insert any card ...");
+            System.out.println("fuuuuu*k ::::(((" + " I cant Insert any card ...");
         }
         boolean hasMoved = false;
-        label:
+
         for (Card card : this.getSecondPlayerInGameCards()) {
             this.setSelectedCard(card);
             for (int i = 0; i < 5; i++) {
@@ -171,16 +180,20 @@ public abstract class Battle {
                     command.apply(request);
                     if (request.getError() == null) {
                         hasMoved = true;
-                        break label;
+                        break ;
                     }
                 }
+                if(hasMoved)
+                    break;
             }
+            if(hasMoved)
+                break;
         }
         if (!hasMoved) {
-            System.out.println("fu*k this shit ::::(((" + " I can't move any card ...");
+            System.out.println("fuuuuuu*k  ::::((( I can't move any card ...");
         }
         boolean hasAttack = false;
-        label:
+        label3:
         for (Card card : this.getSecondPlayerInGameCards()) {
             this.setSelectedCard(card);
             for (Card card1 : this.getFirstPlayerInGameCards()) {
@@ -192,13 +205,13 @@ public abstract class Battle {
                 command.apply(request);
                 if (request.getError() == null) {
                     hasAttack = true;
-                    System.out.println("Attack performed on " + card1.getCardId());
-                    break label;
+                    System.out.println("Attack performed on "+card1.getCardId());
+                    break label3;
                 }
             }
         }
         if (!hasAttack) {
-            System.out.println("fu*k this shit ::::(((" + " I can't attack to any card ...");
+            System.out.println("fuuuuuuuuu*k ::::((( I can't attack to any card ...");
         }
 
 
@@ -242,6 +255,10 @@ public abstract class Battle {
         ((Minion) cards.get(0)).setCanAttack(false);
         ((Minion) cards.get(0)).setRemainedMoves(0);
         ((Minion) cards.get(0)).deadChecker(this);
+    }
+
+    public void addSecondPlayerInGameCards(Card card) {
+        this.secondPlayerInGameCards.add(card);
     }
 
     public ArrayList<Card> getFirstPlayerInGameCards() {

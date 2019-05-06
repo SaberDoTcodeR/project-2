@@ -1,6 +1,8 @@
 package model;
 
 public enum CommandRegex {
+    SHOW_RECORDED_MATCH("show recorded match"),
+    END_GAME("end game"),
     USE_COLLECTIBLE("use \\(([1-5]),([1-9])\\)$"),
 
     SHOW_INFO("^show info$"),

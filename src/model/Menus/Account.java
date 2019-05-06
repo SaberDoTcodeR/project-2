@@ -22,6 +22,10 @@ public class Account {
         this.matches.add(recordedMatch);
     }
 
+    public ArrayList<RecordedMatch> getMatches() {
+        return matches;
+    }
+
     public int getMoney() {
         return money;
     }
@@ -109,6 +113,10 @@ public class Account {
 
     public int getWins() {
         return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
     }
 
     public static Account getLoginAccount() {
