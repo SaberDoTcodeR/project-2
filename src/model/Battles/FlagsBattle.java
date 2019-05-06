@@ -5,6 +5,7 @@ import model.Hand;
 import model.Item.CollectibleItem.*;
 import model.Menus.Account;
 import model.Deck;
+import view.View;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -125,7 +126,8 @@ public class FlagsBattle extends Battle {
 
     @Override
     public void showDetailedInfo() {
-        int x;
+        View view = View.getInstance();
+        view.showDetailedInfoFlagsMode(this);
     }
 
     @Override

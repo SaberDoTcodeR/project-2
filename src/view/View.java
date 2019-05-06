@@ -10,6 +10,7 @@ import model.Item.UsableItem.UsableItem;
 import model.Menus.Account;
 import model.Menus.Collection;
 
+import java.lang.management.MemoryNotificationInfo;
 import java.util.ArrayList;
 
 public class View {
@@ -228,11 +229,94 @@ public class View {
     }
 
     public void showDetailedInfoOneFlagMode(Battle battle) {
-
+        boolean findInCells = false, findInPlayer1 = false;
+        outer:
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (battle.getMap().get(i).get(j).getNumberOfFlag() == 1) {
+                    findInCells = true;
+                    System.out.println("Location of Flag is row : " + i + 1 + " column : " + j + 1);
+                    System.out.println("Location of FlagShip : Nobody catches the flag yet.");
+                    break outer;
+                }
+            }
+        }
+        if (!findInCells) {
+            for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
+                if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero")) {
+                    if (((Hero) battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() == 1) {
+                        Cell cell = battle.getMap().get(0).get(0).getCellOfCard(battle.getFirstPlayerInGameCards().get(i), battle);
+                        System.out.println("Location of Flag is row: " + cell.getX() + 1 + " column : " + cell.getY() + 1);
+                        System.out.println("FlagShip : " + battle.getFirstPlayerInGameCards().get(i).getCardId());
+                        findInPlayer1 = true;
+                        break;
+                    }
+                } else if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Minion")) {
+                    if (((Minion) battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() == 1) {
+                        Cell cell = battle.getMap().get(1).get(0).getCellOfCard(battle.getFirstPlayerInGameCards().get(i), battle);
+                        System.out.println("Location of Flag is row : " + cell.getX() + 1 + " column : " + cell.getY() + 1);
+                        System.out.println("FlagShip : " + battle.getFirstPlayerInGameCards().get(i).getCardId());
+                        findInPlayer1 = true;
+                        break;
+                    }
+                }
+            }
+            if (!findInPlayer1) {
+                for (int i = 0; i < battle.getSecondPlayerInGameCards().size(); i++) {
+                    if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Hero")) {
+                        if (((Hero) battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() == 1) {
+                            Cell cell = battle.getMap().get(0).get(0).getCellOfCard(battle.getSecondPlayerInGameCards().get(i), battle);
+                            System.out.println("Location of Flag is row : " + cell.getX() + 1 + " column : " + cell.getY() + 1);
+                            System.out.println("FlagShip : " + battle.getSecondPlayerInGameCards().get(i).getCardId());
+                            break;
+                        }
+                    } else if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Minion")) {
+                        if (((Minion) battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() == 1) {
+                            Cell cell = battle.getMap().get(1).get(0).getCellOfCard(battle.getSecondPlayerInGameCards().get(i), battle);
+                            System.out.println("Location of Flag is row : " + cell.getX() + 1 + " column :" + cell.getY() + 1);
+                            System.out.println("FlagShip : " + battle.getSecondPlayerInGameCards().get(i).getCardId());
+                            break;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void showDetailedInfoFlagsMode(Battle battle) {
-
+        System.out.println("Location of Flags without owner is : ");
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (battle.getMap().get(i).get(j).getNumberOfFlag() >= 1) {
+                    System.out.println("row : " + i + 1 + " column : " + j + 1
+                     + " Number of Flags in this cell : " + battle.getMap().get(i).get(j).getNumberOfFlag());
+                }
+            }
+        }
+        System.out.println("Forces of " + battle.getFirstPlayer().getUserName() + " own the flag :");
+        for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
+            if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Hero")){
+                if (((Hero)battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+                    System.out.println(battle.getFirstPlayerInGameCards().get(i).getCardId());
+                }
+            } else if (battle.getFirstPlayerInGameCards().get(i).getType().equals("Minion")){
+                if (((Minion)battle.getFirstPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+                    System.out.println(battle.getFirstPlayerInGameCards().get(i).getCardId());
+                }
+            }
+        }
+        System.out.println("Forces of " + battle.getSecondPlayer().getUserName() + " own the flag :");
+        for (int i = 0; i < battle.getSecondPlayerInGameCards().size(); i++) {
+            if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Hero")){
+                if (((Hero)battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+                    System.out.println(battle.getSecondPlayerInGameCards().get(i).getCardId());
+                }
+            } else if (battle.getSecondPlayerInGameCards().get(i).getType().equals("Minion")){
+                if (((Minion)battle.getSecondPlayerInGameCards().get(i)).getNumberOfFlag() > 0){
+                    System.out.println(battle.getSecondPlayerInGameCards().get(i).getCardId());
+                }
+            }
+        }
     }
 
     public void showSingleOrMultiMenu() {
