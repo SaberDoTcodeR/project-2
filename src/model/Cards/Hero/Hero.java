@@ -3,7 +3,6 @@ package model.Cards.Hero;
 import model.Battles.Battle;
 import model.Buffs.*;
 import model.Cards.Card;
-import model.Cards.Minion.*;
 import model.Cell;
 
 import model.Menus.Account;
@@ -13,14 +12,14 @@ import java.util.ArrayList;
 
 public abstract class Hero extends Card {
     private static ArrayList<Hero> heroes = new ArrayList<>();
-    private int howManyFlag = 0;
+    private int numberOfFlag = 0;
 
-    public int getHowManyFlag() {
-        return howManyFlag;
+    public int getNumberOfFlag() {
+        return numberOfFlag;
     }
 
-    public void setHowManyFlag(int howManyFlag) {
-        this.howManyFlag = howManyFlag;
+    public void setNumberOfFlag(int numberOfFlag) {
+        this.numberOfFlag = numberOfFlag;
     }
 
     static {
@@ -198,7 +197,7 @@ public abstract class Hero extends Card {
     public abstract String getDesc();
 
     public Hero duplicate() {
-        return null;//todo --> can be abstract
+        return null;
     }
 
 }

@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public abstract class Minion extends Card {
     private static ArrayList<Minion> minions = new ArrayList<>();
-    private int howManyFlag = 0;
+    private int numberOfFlag = 0;
 
-    public int getHowManyFlag() {
-        return howManyFlag;
+    public int getNumberOfFlag() {
+        return numberOfFlag;
     }
 
-    public void setHowManyFlag(int howManyFlag) {
-        this.howManyFlag = howManyFlag;
+    public void setNumberOfFlag(int howManyFlag) {
+        this.numberOfFlag = howManyFlag;
     }
 
     static {
@@ -72,7 +72,6 @@ public abstract class Minion extends Card {
     private boolean isStunning = false;
     private int holyCounter = 0;
     private boolean counterAttack = true;
-    //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
