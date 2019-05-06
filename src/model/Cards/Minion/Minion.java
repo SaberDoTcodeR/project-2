@@ -72,6 +72,7 @@ public abstract class Minion extends Card {
     private boolean isStunning = false;
     private int holyCounter = 0;
     private boolean counterAttack = true;
+    //private SpecialPower specialPower;
     private int typeOfRange;//0 melee 1 ranged 2 hybrid
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend

@@ -2,7 +2,7 @@ package model.Battles;
 
 import model.Cell;
 import model.Hand;
-import model.Item.CollectibleItem;
+import model.Item.CollectibleItem.*;
 import model.Menus.Account;
 import model.Deck;
 
@@ -16,7 +16,7 @@ public class FlagsBattle extends Battle {
 
     private int flags;
 
-    public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, int flags,int reward) {
+    public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, int flags, int reward) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
@@ -25,7 +25,7 @@ public class FlagsBattle extends Battle {
         this.setMap();
     }
 
-    public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int flags,int reward) {
+    public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int flags, int reward) {
         super(player, myDeck, opponentDeck);
         this.secondPlayer = player2;
         this.playWithAI = false;

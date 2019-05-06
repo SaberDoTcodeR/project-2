@@ -654,6 +654,19 @@ class EndTurn extends Command {
                     }
                 }
                 if (cell.getHero() != null) {
+                    if (request.getBattle().getType().equals("OneFlagBattle")) {
+                        if (cell.getHero().getNumberOfFlag() > 0) {
+                            if (cell.getHero().getCardId().contains(request.getBattle().getFirstPlayer().getUserName())) {
+                                request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
+                            } else
+                                request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
+                        }
+                        if (request.getBattle().getFirstPlayerFlagCarryTurnCounter() == 6) {
+                            view.endGame(request.getBattle(), true);
+                        } else if (request.getBattle().getSecondPlayerFlagCarryTurnCounter() == 6) {
+                            view.endGame(request.getBattle(), false);
+                        }
+                    }
                     for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
                         if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() == 0) {
                             cell.getHero().getOwnBuffs().get(j).dispel(cell.getHero());
@@ -672,7 +685,7 @@ class EndTurn extends Command {
                         if (cell.getMinion().getNumberOfFlag() > 0) {
                             if (cell.getMinion().getCardId().contains(request.getBattle().getFirstPlayer().getUserName())) {
                                 request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
-                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName())
+                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName()))
                             {
                                 request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
                              }
@@ -783,6 +796,15 @@ class MoveSelectedSoldier extends Command {
             cell.moveCardPos(xPos, yPos, request.getBattle());
             request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
                     - cell.manhataniDistance(xPos, yPos));
+
+            if (cell2.getNumberOfFlag() > 0) {
+                if (request.getBattle().getSelectedCard().getType().equals("Minion"))
+                    ((Minion) request.getBattle().getSelectedCard()).setNumberOfFlag(((Minion) request.getBattle().getSelectedCard()).getNumberOfFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
+                else
+                    ((Hero) request.getBattle().getSelectedCard()).setNumberOfFlag(((Hero) request.getBattle().getSelectedCard()).getNumberOfFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
+
+                cell2.setFlag(0);
+            }
             if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null)
                 request.addCollectible(xPos, yPos);
         } else
@@ -885,17 +907,11 @@ class InsertCard extends Command {
                                 request.setError(ErrorType.INVALID_TARGET);
                                 return;
                             }
-                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag() > 0) {
-                                if (request.getBattle().getTurn() % 2 == 1) {
-                                    ((Minion) card1).setHowManyFlag(((Minion) card1).getHowManyFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag());
-                                } else {
-                                    ((Minion) card1).setHowManyFlag(((Minion) card1).getHowManyFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).howManyFlag());
-                                }
+                            if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag() > 0) {
+                                ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
                                 request.getBattle().getMap().get(xPos - 1).get(yPos - 1).setFlag(0);
                             }
-                            if (request.getBattle().getType().equals("OneFlagBattle")) {
 
-                            }
                             account.setMana(account.getMana() - cost);
                             ((Minion) card1).moveToGame(request.getBattle(), xPos, yPos);
                             System.out.println(card1.getName() + " with " + card1.getCardId() + " inserted to " + " (" + xPos + "," + yPos + ")");

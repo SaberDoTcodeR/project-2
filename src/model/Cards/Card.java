@@ -125,14 +125,14 @@ public abstract class Card {
                 else
                     view.endGame(battle, false);
             } else if (battle.getType().equals("OneFlagBattle")) {
-                if (((Hero) this).getNumberOfFlags() != 0) {
+                if (((Hero) this).getNumberOfFlag() != 0) {
                     if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
                         battle.setFirstPlayerFlagCarryTurnCounter(0);
                     } else battle.setSecondPlayerFlagCarryTurnCounter(0);
                 }
                 Cell cell = battle.getMap().get(0).get(0).getCellOfCard(this, battle);
-                cell.setNumberOfFlag(((Hero) this).getNumberOfFlags());
-                ((Hero) this).setNumberOfFlags(0);
+                cell.setNumberOfFlag(((Hero) this).getNumberOfFlag());
+                ((Hero) this).setNumberOfFlag(0);
                 if (battle.getFirstPlayerInGameCards().contains(this)) {
                     battle.getFirstPlayerInGameCards().remove(this);
                     battle.addToFirstGrave(this);

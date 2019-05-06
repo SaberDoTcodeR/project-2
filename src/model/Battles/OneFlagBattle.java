@@ -1,8 +1,10 @@
 package model.Battles;
 
+import model.Cards.Hero.Hero;
+import model.Cards.Minion.Minion;
 import model.Cell;
 import model.Hand;
-import model.Item.CollectibleItem;
+import model.Item.CollectibleItem.*;
 import model.Menus.Account;
 import model.Deck;
 
@@ -25,6 +27,13 @@ public class OneFlagBattle extends Battle {
         this.getMap().get(2).get(8).getHero().setCardId(account.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
         this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
+        if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
+            this.getMap().get(2).get(8).setFlag(0);
+        } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
+            this.getMap().get(2).get(0).setFlag(0);
+        }
     }
 
     public OneFlagBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int reward) {
@@ -37,6 +46,13 @@ public class OneFlagBattle extends Battle {
         this.getMap().get(2).get(8).getHero().setCardId(player2.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
         this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
         this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
+        if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
+            this.getMap().get(2).get(8).setFlag(0);
+        } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
+            this.getMap().get(2).get(0).setFlag(0);
+        }
     }
 
     public void setMap() {

@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Cell {
     private int x, y;
+    private int flag;
     private Hero hero;
     private Minion minion;
     private CollectibleItem collectibleItem;
@@ -111,6 +112,10 @@ public class Cell {
         this.hero = hero;
         this.minion = null;//ezafe shod
         this.whichPlayerIsInCell = whichPlayerIsInCell;
+    }
+
+    public void setFlag(int flag) {
+        this.flag = flag;
     }
 
     public Minion getMinion() {
