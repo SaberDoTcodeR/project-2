@@ -12,6 +12,15 @@ import java.util.ArrayList;
 
 public abstract class Minion extends Card {
     private static ArrayList<Minion> minions = new ArrayList<>();
+    private int howManyFlag = 0;
+
+    public int getHowManyFlag() {
+        return howManyFlag;
+    }
+
+    public void setHowManyFlag(int howManyFlag) {
+        this.howManyFlag = howManyFlag;
+    }
 
     static {
         new ArzhangBogey();

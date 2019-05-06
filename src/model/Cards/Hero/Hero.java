@@ -13,6 +13,15 @@ import java.util.ArrayList;
 
 public abstract class Hero extends Card {
     private static ArrayList<Hero> heroes = new ArrayList<>();
+    private int howManyFlag = 0;
+
+    public int getHowManyFlag() {
+        return howManyFlag;
+    }
+
+    public void setHowManyFlag(int howManyFlag) {
+        this.howManyFlag = howManyFlag;
+    }
 
     static {
         new Arash();

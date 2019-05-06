@@ -2,130 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Arash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Dragon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Esfandyar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Kaveh.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Legend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Rakhsh.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Rostam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Simurgh.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/WhiteBogey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Zahhak.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/ArzhangBogey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Ashkbous.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Bahman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/BlackBogey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/CatapultGiant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/ColdGrandma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Eagle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Elf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/FieryDragon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantColossus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantKing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantMagician.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantSnake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Giv.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/HogRiderBogey.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Iraj.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/LupinLion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Magician.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/OneEyeGiant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Panther.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianArcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianGeneralissimo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianGladiator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianHorseman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianSpear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PersianSwordsman.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Piran.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/PoisonSnake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Siavash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/SpecialPower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/SteelArmor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianArcher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianPrince.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianSpear.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianSpy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianStoneHook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TuranianSwampy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/TwoHeadGiant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/WhiteWolf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/WildHog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Wolf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/AllAttack.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/AllDisarm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/AllPoison.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/AllPower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/AreaDispel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Dispel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Empower.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/FireBall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/GodStrength.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/HealthWithProfit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/HellFire.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/KingsGuard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/LightingBolt.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Madness.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/PoisonLake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/PowerUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Sacrifice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Shock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/SpellWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/TotalDisarm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Weakening.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/BladesOfAgility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/ChineseSword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/CollectibleItemWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/DeathCurse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/Devastation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/DoubleEntendreArrow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/Elexir.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/ManaElectuary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/PerpetuityElectuary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/RandomDamage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/AssassinationDagger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/Baptism.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/CrownOfWisdom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/DamolArchery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/KingWisdom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/PoisonousDagger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/ShameEmblem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/ShockHammer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/SimorghPlume.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/SoulEater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/TerrorHood.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/UsableItemWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/BattleControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/BattleControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battles/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battles/HeroBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/HeroBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/Buff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/Buff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/ChangeApBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/ChangeHpBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/DisarmBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/FiringEffectedCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/HolyBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/HolyBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/HolyEffectedCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/ManaItemBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/ManaItemBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/MultiStageBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/PoisonEffectedCell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/PowerBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/PowerBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/StunBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/StunBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/WeaknessBuff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Spell/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Deck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Item/CollectibleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/CollectibleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Item/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item/UsableItem/UsableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Menus/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Menus/Collection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Menus/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Menus/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Battles/OneFlagBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/OneFlagBattle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -149,12 +27,135 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Menus/Collection.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/view/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="93" column="31" selection-start-line="93" selection-start-column="31" selection-end-line="93" selection-end-column="31" />
+            <state relative-caret-position="393">
+              <caret line="883" column="32" selection-start-line="883" selection-start-column="32" selection-end-line="883" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#7174#7175#0" expanded="true" />
+                <element signature="e#7214#7215#0" expanded="true" />
+                <element signature="e#10969#10970#0" expanded="true" />
+                <element signature="e#11009#11010#0" expanded="true" />
+                <element signature="e#17573#17574#0" expanded="true" />
+                <element signature="e#17617#17618#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Battles/OneFlagBattle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Battles/FlagsBattle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="27" column="108" selection-start-line="27" selection-start-column="108" selection-end-line="27" selection-end-column="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3104#3105#0" expanded="true" />
+                <element signature="e#3136#3137#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero/Hero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Battles/Battle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1206#1207#0" expanded="true" />
+                <element signature="e#1260#1261#0" expanded="true" />
+                <element signature="e#1316#1317#0" expanded="true" />
+                <element signature="e#1371#1372#0" expanded="true" />
+                <element signature="e#1433#1434#0" expanded="true" />
+                <element signature="e#1487#1488#0" expanded="true" />
+                <element signature="e#1550#1551#0" expanded="true" />
+                <element signature="e#1605#1606#0" expanded="true" />
+                <element signature="e#1825#1826#0" expanded="true" />
+                <element signature="e#1854#1855#0" expanded="true" />
+                <element signature="e#1895#1896#0" expanded="true" />
+                <element signature="e#1931#1932#0" expanded="true" />
+                <element signature="e#2043#2044#0" expanded="true" />
+                <element signature="e#2092#2093#0" expanded="true" />
+                <element signature="e#2166#2167#0" expanded="true" />
+                <element signature="e#2216#2217#0" expanded="true" />
+                <element signature="e#2554#2555#0" expanded="true" />
+                <element signature="e#2590#2591#0" expanded="true" />
+                <element signature="e#2637#2638#0" expanded="true" />
+                <element signature="e#2674#2675#0" expanded="true" />
+                <element signature="e#2720#2721#0" expanded="true" />
+                <element signature="e#2753#2754#0" expanded="true" />
+                <element signature="e#2800#2801#0" expanded="true" />
+                <element signature="e#2834#2835#0" expanded="true" />
+                <element signature="e#2871#2872#0" expanded="true" />
+                <element signature="e#2906#2907#0" expanded="true" />
+                <element signature="e#3750#3751#0" expanded="true" />
+                <element signature="e#3792#3793#0" expanded="true" />
+                <element signature="e#3848#3849#0" expanded="true" />
+                <element signature="e#3901#3902#0" expanded="true" />
+                <element signature="e#6241#6242#0" expanded="true" />
+                <element signature="e#6295#6296#0" expanded="true" />
+                <element signature="e#6353#6354#0" expanded="true" />
+                <element signature="e#6398#6399#0" expanded="true" />
+                <element signature="e#6457#6458#0" expanded="true" />
+                <element signature="e#6503#6504#0" expanded="true" />
+                <element signature="e#6531#6532#0" expanded="true" />
+                <element signature="e#6558#6559#0" expanded="true" />
+                <element signature="e#6594#6595#0" expanded="true" />
+                <element signature="e#6621#6622#0" expanded="true" />
+                <element signature="e#6657#6658#0" expanded="true" />
+                <element signature="e#6679#6680#0" expanded="true" />
+                <element signature="e#6729#6730#0" expanded="true" />
+                <element signature="e#6755#6756#0" expanded="true" />
+                <element signature="e#6840#6841#0" expanded="true" />
+                <element signature="e#6874#6875#0" expanded="true" />
+                <element signature="e#6914#6915#0" expanded="true" />
+                <element signature="e#6952#6953#0" expanded="true" />
+                <element signature="e#6993#6994#0" expanded="true" />
+                <element signature="e#7032#7033#0" expanded="true" />
+                <element signature="e#7072#7073#0" expanded="true" />
+                <element signature="e#7110#7111#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/control/BattleControl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -311,56 +312,75 @@
         <subPane>
           <expand>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="Battles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="Cards" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="Cards" type="462c0819:PsiDirectoryNode" />
               <item name="Hero" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Item" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="Menus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="Command.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -673,7 +693,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314414000" />
+    <option name="totallyTimeSpent" value="314483000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -685,7 +705,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="762" y="0" width="781" height="870" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.4317862" />
@@ -804,42 +824,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell/Empower.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell/FireBall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="e#204#205#0" expanded="true" />
-            <element signature="e#245#246#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#318#319#0" expanded="true" />
-            <element signature="e#1371#1372#0" expanded="true" />
-            <element signature="e#1425#1426#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell/GodStrength.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell/HealthWithProfit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Cards/Spell/HellFire.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -1213,6 +1197,51 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="883" column="32" selection-start-line="883" selection-start-column="32" selection-end-line="883" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7174#7175#0" expanded="true" />
+            <element signature="e#7214#7215#0" expanded="true" />
+            <element signature="e#10969#10970#0" expanded="true" />
+            <element signature="e#11009#11010#0" expanded="true" />
+            <element signature="e#17573#17574#0" expanded="true" />
+            <element signature="e#17617#17618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3104#3105#0" expanded="true" />
+            <element signature="e#3136#3137#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Cards/Hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
         </state>
       </provider>
     </entry>
