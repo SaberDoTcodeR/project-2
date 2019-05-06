@@ -18,6 +18,10 @@ public class Account {
     private Collection myCollection = new Collection();
     private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
+    public void addNewRecordedMatch(RecordedMatch recordedMatch){
+        this.matches.add(recordedMatch);
+    }
+
     public int getMoney() {
         return money;
     }

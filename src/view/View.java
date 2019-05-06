@@ -71,10 +71,19 @@ public class View {
 
     public void endGame(Battle battle, boolean firstWin) {
         Account account;
-        if (firstWin)
+        if (firstWin) {
             account = battle.getFirstPlayer();
-        else
+            RecordedMatch recordedMatch = new RecordedMatch(true, battle.getSecondPlayer().getUserName());
+            account.addNewRecordedMatch(recordedMatch);
+            RecordedMatch recordedMatch1 = new RecordedMatch(false, battle.getFirstPlayer().getUserName());
+            battle.getSecondPlayer().addNewRecordedMatch(recordedMatch1);
+        } else {
             account = battle.getSecondPlayer();
+            RecordedMatch recordedMatch = new RecordedMatch(true, battle.getFirstPlayer().getUserName());
+            account.addNewRecordedMatch(recordedMatch);
+            RecordedMatch recordedMatch1 = new RecordedMatch(false, battle.getSecondPlayer().getUserName());
+            battle.getFirstPlayer().addNewRecordedMatch(recordedMatch1);
+        }
         account.setMoney(account.getMoney() + battle.getReward());
         System.out.println("HeroBattle finished :\n" +
                 "Winner is : " + account.getUserName() +

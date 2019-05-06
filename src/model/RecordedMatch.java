@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class RecordedMatch {
     private Date date;
-    private boolean result;//0 losse 1 win
+    private boolean result;//false: loss | true: win
     private String opponentName;
 
     public Date getDate() {
