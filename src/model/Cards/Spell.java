@@ -116,10 +116,6 @@ class TotalDisarm extends Spell {
         super("TotalDisarm", 0, 1000);
     }
 
-    public TotalDisarm(String name, int costToUse, int costOfBuy) {
-        super(name, costToUse, costOfBuy);
-    }
-
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         if (cell.getMinion() == null && cell.getHero() == null) {
@@ -197,10 +193,11 @@ class AreaDispel extends Spell {
         cells.add(cell.rightCell(battle.getMap()));
         cells.add(cell.downCell(battle.getMap()));
         cells.add(cells.get(1).downCell(battle.getMap()));
-        //todo check working
         for (Cell cell1 : cells) {
-            Dispel dispel = new Dispel();
-            dispel.castSpell(battle, cell1, player, request);
+            if (cell != null) {
+                Dispel dispel = new Dispel();
+                dispel.castSpell(battle, cell1, player, request);
+            }
         }
     }
 
@@ -236,22 +233,14 @@ class Empower extends Spell {
         } else {
             if (cell.getHero() != null) {
                 if (player.getMainDeck().isContain(cell.getHero())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(2);
-                    changeAp.setTurnCounter(0);
-                    changeAp.setCasting(changeAp, null, cell.getHero(), null);
-                    changeAp.increment(cell.getHero());
-                    cell.getHero().getOwnBuffs().add(changeAp);
+                    cell.getHero().incrementAp(2);
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
             }
             if (cell.getMinion() != null) {
                 if (player.getMainDeck().isContain(cell.getMinion())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(2);
-                    changeAp.setTurnCounter(0);
-                    changeAp.increment(cell.getMinion());
-                    changeAp.setCasting(changeAp, null, null, cell.getMinion());
-                    cell.getMinion().getOwnBuffs().add(changeAp);
+                    cell.getMinion().incrementAp(2);
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
@@ -296,21 +285,13 @@ class FireBall extends Spell {
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getHero().getHolyCounter());
-                    changeHp.setTurnCounter(0);
-                    changeHp.decrement(cell.getHero());
-                    changeHp.setCasting(changeHp, null, cell.getHero(), null);
-                    cell.getHero().getOwnBuffs().add(changeHp);
+                    cell.getHero().decrementHp(4 - cell.getHero().getHolyCounter());
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
             } else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(4 - cell.getMinion().getHolyCounter());
-                    changeHp.setTurnCounter(0);
-                    changeHp.decrement(cell.getMinion());
-                    changeHp.setCasting(changeHp, null, null, cell.getMinion());
-                    cell.getMinion().getOwnBuffs().add(changeHp);
+                    cell.getMinion().decrementHp(4 - cell.getMinion().getHolyCounter());
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
@@ -356,11 +337,7 @@ class GodStrength extends Spell {
         } else {
             if (cell.getHero() != null) {
                 if (player.getMainDeck().isContain(cell.getHero())) {
-                    ChangeApBuff changeAp = new ChangeApBuff(4);
-                    changeAp.setTurnCounter(0);
-                    changeAp.increment(cell.getHero());
-                    changeAp.setCasting(changeAp, null, cell.getHero(), null);
-                    cell.getHero().getOwnBuffs().add(changeAp);
+                    cell.getHero().incrementAp(4);
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
@@ -409,13 +386,14 @@ class HellFire extends Spell {
         cells.add(cell.rightCell(battle.getMap()));
         cells.add(cells.get(1).downCell(battle.getMap()));
         cells.add(cell.downCell(battle.getMap()));
-        //todo check working
         for (Cell cell1 : cells) {
-            FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
-            firingEffectedCell.setTurnCounter(0);
-            firingEffectedCell.firing(cell1);
-            firingEffectedCell.setCasting(firingEffectedCell, cell1, null, null);
-            cell1.getCellEffect().add(firingEffectedCell);
+            if (cell1 != null) {
+                FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
+                firingEffectedCell.setTurnCounter(1);
+                firingEffectedCell.firing(cell1);
+                firingEffectedCell.setCasting(firingEffectedCell, cell1, null, null);
+                cell1.getCellEffect().add(firingEffectedCell);
+            }
         }
     }
 
@@ -456,11 +434,7 @@ class LightingBolt extends Spell {
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(8 - cell.getHero().getHolyCounter());
-                    changeHp.decrement(cell.getHero());
-                    changeHp.setTurnCounter(0);
-                    changeHp.setCasting(changeHp, null, cell.getHero(), null);
-                    cell.getHero().getOwnBuffs().add(changeHp);
+                    cell.getHero().decrementHp(8 - cell.getHero().getHolyCounter());
                 } else {
                     request.setError(ErrorType.INVALID_TARGET);
                 }
@@ -507,19 +481,20 @@ class PoisonLake extends Spell {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         cells.add(cell.rightCell(battle.getMap()));
-        cells.add(cells.get(1).rightCell(battle.getMap()));
+        cells.add(cell.downCell(battle.getMap()));
         cells.add(cells.get(2).downCell(battle.getMap()));
-        cells.add(cells.get(3).downCell(battle.getMap()));
-        cells.add(cells.get(4).leftCell(battle.getMap()));
-        cells.add(cells.get(5).leftCell(battle.getMap()));
-        cells.add(cells.get(6).upCell(battle.getMap()));
-        cells.add(cells.get(7).rightCell(battle.getMap()));
-        //todo check working
+        cells.add(cells.get(2).rightCell(battle.getMap()));
+        cells.add(cells.get(4).downCell(battle.getMap()));
+        cells.add(cells.get(1).rightCell(battle.getMap()));
+        cells.add(cells.get(6).downCell(battle.getMap()));
+        cells.add(cells.get(7).downCell(battle.getMap()));
         for (Cell cell1 : cells) {
-            PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
-            poisonEffectedCell.setTurnCounter(0);
-            poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
-            cell1.getCellEffect().add(poisonEffectedCell);
+            if (cell1 != null) {
+                PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
+                poisonEffectedCell.setTurnCounter(0);
+                poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
+                cell1.getCellEffect().add(poisonEffectedCell);
+            }
         }
     }
 
@@ -1011,20 +986,12 @@ class AllAttack extends Spell {
         for (int i = 0; i < battle.getMap().size(); i++) {
             if (battle.getMap().get(i).get(index).getHero() != null) {
                 if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getHero())) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(6 - battle.getMap().get(i).get(index).getHero().getHolyCounter());
-                    changeHp.decrement(battle.getMap().get(i).get(index).getHero());
-                    changeHp.setTurnCounter(0);
-                    changeHp.setCasting(changeHp, null, battle.getMap().get(i).get(index).getHero(), null);
-                    battle.getMap().get(i).get(index).getHero().getOwnBuffs().add(changeHp);
+                    battle.getMap().get(i).get(index).getHero().decrementHp(6 - battle.getMap().get(i).get(index).getHero().getHolyCounter());
                 }
             }
             if (battle.getMap().get(i).get(index).getMinion() != null) {
                 if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getMinion())) {
-                    ChangeHpBuff changeHp = new ChangeHpBuff(6 - battle.getMap().get(i).get(index).getMinion().getHolyCounter());
-                    changeHp.decrement(battle.getMap().get(i).get(index).getHero());
-                    changeHp.setTurnCounter(0);
-                    changeHp.setCasting(changeHp, null, null, battle.getMap().get(i).get(index).getMinion());
-                    battle.getMap().get(i).get(index).getMinion().getOwnBuffs().add(changeHp);
+                    battle.getMap().get(i).get(index).getMinion().decrementHp(6 - battle.getMap().get(i).get(index).getMinion().getHolyCounter());
                 }
             }
         }
@@ -1176,20 +1143,35 @@ class KingsGuard extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+        Cell cellOfOwnHero = null;
+        outer:
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (battle.getMap().get(i).get(j).getHero() != null) {
+                    if (player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero())) {
+                        cellOfOwnHero = battle.getMap().get(i).get(j);
+                        break outer;
+                    }
+                }
+            }
+        }
         ArrayList<Cell> cells = new ArrayList<>();
-        cells.add(cell.rightCell(battle.getMap()));
-        cells.add(cells.get(0).downCell(battle.getMap()));
-        cells.add(cells.get(1).leftCell(battle.getMap()));
-        cells.add(cells.get(2).leftCell(battle.getMap()));
+        cells.add(cellOfOwnHero.downCell(battle.getMap()));
+        cells.add(cellOfOwnHero.upCell(battle.getMap()));
+        cells.add(cellOfOwnHero.rightCell(battle.getMap()));
+        cells.add(cellOfOwnHero.leftCell(battle.getMap()));
+        cells.add(cells.get(0).leftCell(battle.getMap()));
+        cells.add(cells.get(1).rightCell(battle.getMap()));
+        cells.add(cells.get(2).downCell(battle.getMap()));
         cells.add(cells.get(3).upCell(battle.getMap()));
-        cells.add(cells.get(4).upCell(battle.getMap()));
-        cells.add(cells.get(5).rightCell(battle.getMap()));
-        cells.add(cells.get(6).rightCell(battle.getMap()));
         for (Cell cell1 : cells) {
-            if (cell1.getMinion() != null && player.getMainDeck().isContain(cell1.getMinion())) {
-                cell1.getMinion().setHp(0);
-                break;
-                //todo goto graveyard
+            if (cell1 != null) {
+                if (cell1.getMinion() != null) {
+                    if (!player.getMainDeck().isContain(cell1.getMinion())) {
+                        cell1.getMinion().setHp(0);
+                        break;
+                    }
+                }
             }
         }
     }
