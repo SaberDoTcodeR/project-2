@@ -36,31 +36,38 @@ public class GiantMagician extends Minion {
     public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
         if (activeTime == 1) {
             ArrayList<Cell> targetCells = new ArrayList<>();
-            targetCells.add(cell);
-            targetCells.add(cell.leftCell(battle.getMap()));
-            targetCells.add(cell.upCell(battle.getMap()));
-            targetCells.add(cell.rightCell(battle.getMap()));
-            targetCells.add(cell.downCell(battle.getMap()));
-            targetCells.add(targetCells.get(1).upCell(battle.getMap()));
-            targetCells.add(targetCells.get(2).rightCell(battle.getMap()));
-            targetCells.add(targetCells.get(3).downCell(battle.getMap()));
-            targetCells.add(targetCells.get(4).leftCell(battle.getMap()));
+            if (cell.getX() < 5)
+                targetCells.add(cell.downCell(battle.getMap()));
+            if (cell.getX() - 2 >= 0)
+                targetCells.add(cell.upCell(battle.getMap()));
+            if (cell.getY() < 9)
+                targetCells.add(cell.rightCell(battle.getMap()));
+            if (cell.getY() - 2 >= 0)
+                targetCells.add(cell.leftCell(battle.getMap()));
+            if (cell.getY() < 9 && cell.getX() < 5)
+                targetCells.add(battle.getMap().get(cell.getX()).get(cell.getY()));
+            if (cell.getX() < 9 && cell.getY() - 2 >= 0)
+                targetCells.add(battle.getMap().get(cell.getX()).get(cell.getY() - 2));
+            if (cell.getX() - 2 >= 0 && cell.getY() - 2 >= 0)
+                targetCells.add(battle.getMap().get(cell.getX() - 2).get(cell.getY() - 2));
+            if (cell.getY() < 9 && cell.getX() - 2 >= 0)
+                targetCells.add(battle.getMap().get(cell.getX() - 2).get(cell.getY()));
             for (int i = 0; i < targetCells.size(); i++) {
-                if (targetCells.get(i) != null && targetCells.get(i).getMinion() != null) {
-                    if (player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
-                        PowerBuff powerBuff = new PowerBuff(2, true);
-                        powerBuff.setTurnCounter(-4);
-                        powerBuff.incrementAp(targetCells.get(i).getMinion());
-                        powerBuff.setCasting(powerBuff, null, null, targetCells.get(i).getMinion());
-                        targetCells.get(i).getMinion().getOwnBuffs().add(powerBuff);
-                        HolyBuff holyBuff = new HolyBuff();
-                        holyBuff.setTurnCounter(-4);
-                        holyBuff.holy(targetCells.get(i).getMinion());
-                        holyBuff.setCasting(holyBuff, null, null, targetCells.get(i).getMinion());
-                        targetCells.get(i).getMinion().getOwnBuffs().add(holyBuff);
-                    }
+                if (targetCells.get(i).getMinion() != null &&
+                        player.getMainDeck().isContain(targetCells.get(i).getMinion())) {
+                    PowerBuff powerBuff = new PowerBuff(2, true);
+                    powerBuff.setTurnCounter(-4);
+                    powerBuff.incrementAp(targetCells.get(i).getMinion());
+                    targetCells.get(i).getMinion().getOwnBuffs().add(powerBuff);
+                    powerBuff.setCasting(powerBuff, null, null, targetCells.get(i).getMinion());
+                    HolyBuff holyBuff = new HolyBuff();
+                    holyBuff.setTurnCounter(-4);
+                    holyBuff.holy(targetCells.get(i).getMinion());
+                    holyBuff.setCasting(holyBuff, null, null, targetCells.get(i).getMinion());
+                    targetCells.get(i).getMinion().getOwnBuffs().add(holyBuff);
                 }
             }
+
         }
     }
 

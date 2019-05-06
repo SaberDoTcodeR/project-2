@@ -25,17 +25,19 @@ public class AreaDispel extends Spell {
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(cell.rightCell(battle.getMap()));
-        cells.add(cell.downCell(battle.getMap()));
-        cells.add(cells.get(1).downCell(battle.getMap()));
+        if (cell.getY() < 9)
+            cells.add(cell.rightCell(battle.getMap()));
+        if (cell.getX() < 5)
+            cells.add(cell.downCell(battle.getMap()));
+        if (cell.getX() < 5 && cell.getY() < 9)
+            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY()));
         for (Cell cell1 : cells) {
-            if (cell != null) {
-                Dispel dispel = new Dispel();
-                dispel.castSpell(battle, cell1, player, request);
-            }
+            Dispel dispel = new Dispel();
+            dispel.castSpell(battle, cell1, player, request);
         }
     }
 
+    @Override
     public Spell duplicate() {
         AreaDispel areaDispel = new AreaDispel(this);
         return areaDispel;

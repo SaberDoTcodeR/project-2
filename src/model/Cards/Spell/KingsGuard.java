@@ -19,50 +19,43 @@ public class KingsGuard extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
-        Cell cellOfOwnHero = null;
-        outer:
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 9; j++) {
-                if (battle.getMap().get(i).get(j).getHero() != null) {
-                    if (player.getMainDeck().isContain(battle.getMap().get(i).get(j).getHero())) {
-                        cellOfOwnHero = battle.getMap().get(i).get(j);
-                        break outer;
-                    }
-                }
-            }
-        }
+        Cell cellOfOwnHero = battle.getMap().get(0).get(0).getCellOfCard(player.getMainDeck().getHero(),battle);
         ArrayList<Cell> cells = new ArrayList<>();
-        cells.add(cellOfOwnHero.downCell(battle.getMap()));
-        cells.add(cellOfOwnHero.upCell(battle.getMap()));
-        cells.add(cellOfOwnHero.rightCell(battle.getMap()));
-        cells.add(cellOfOwnHero.leftCell(battle.getMap()));
-        cells.add(cells.get(0).leftCell(battle.getMap()));
-        cells.add(cells.get(1).rightCell(battle.getMap()));
-        cells.add(cells.get(2).downCell(battle.getMap()));
-        cells.add(cells.get(3).upCell(battle.getMap()));
+        if (cellOfOwnHero.getX() < 5)
+            cells.add(cellOfOwnHero.downCell(battle.getMap()));
+        if (cellOfOwnHero.getX() - 2 >= 0)
+            cells.add(cellOfOwnHero.upCell(battle.getMap()));
+        if (cellOfOwnHero.getY() - 2 >= 0)
+            cells.add(cellOfOwnHero.leftCell(battle.getMap()));
+        if (cellOfOwnHero.getY() < 9)
+            cells.add(cellOfOwnHero.rightCell(battle.getMap()));
+        if (cellOfOwnHero.getY() < 9 && cellOfOwnHero.getX() < 5)
+            cells.add(battle.getMap().get(cellOfOwnHero.getX()).get(cellOfOwnHero.getY()));
+        if (cellOfOwnHero.getX() < 9 && cellOfOwnHero.getY() - 2 >= 0)
+            cells.add(battle.getMap().get(cellOfOwnHero.getX()).get(cellOfOwnHero.getY() - 2));
+        if (cellOfOwnHero.getX() - 2 >= 0 && cellOfOwnHero.getY() - 2 >= 0)
+            cells.add(battle.getMap().get(cellOfOwnHero.getX() - 2).get(cellOfOwnHero.getY() - 2));
+        if (cellOfOwnHero.getY() < 9 && cellOfOwnHero.getX() - 2 >= 0)
+            cells.add(battle.getMap().get(cellOfOwnHero.getX() - 2).get(cellOfOwnHero.getY()));
         for (Cell cell1 : cells) {
-            if (cell1 != null) {
-                if (cell1.getMinion() != null) {
-                    if (!player.getMainDeck().isContain(cell1.getMinion())) {
-                        cell1.getMinion().setHp(0);
-                        break;
-                    }
-                }
+            if (cell1.getMinion() != null &&
+                    !player.getMainDeck().isContain(cell1.getMinion())) {
+                cell1.getMinion().setHp(0);
+                break;
             }
         }
     }
 
+    @Override
     public Spell duplicate() {
         KingsGuard kingsGuard = new KingsGuard(this);
         return kingsGuard;
     }
 
-
     @Override
     public String getDesc() {
         return SpellWork.KINGS_GUARD.getMessage();
     }
-
 
     @Override
     public String showDetails() {

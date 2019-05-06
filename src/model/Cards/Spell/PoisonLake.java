@@ -22,21 +22,27 @@ public class PoisonLake extends Spell {
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(cell.rightCell(battle.getMap()));
-        cells.add(cell.downCell(battle.getMap()));
-        cells.add(cells.get(2).downCell(battle.getMap()));
-        cells.add(cells.get(2).rightCell(battle.getMap()));
-        cells.add(cells.get(4).downCell(battle.getMap()));
-        cells.add(cells.get(1).rightCell(battle.getMap()));
-        cells.add(cells.get(6).downCell(battle.getMap()));
-        cells.add(cells.get(7).downCell(battle.getMap()));
+        if (cell.getX() < 5)
+            cells.add(cell.downCell(battle.getMap()));
+        if (cell.getY() < 9)
+            cells.add(cell.rightCell(battle.getMap()));
+        if (cell.getY() + 1 < 9)
+            cells.add(request.getBattle().getMap().get(cell.getX() - 1).get(cell.getY() + 1));
+        if (cell.getX() + 1 < 5)
+            cells.add(request.getBattle().getMap().get(cell.getX() + 1).get(cell.getY() - 1));
+        if (cell.getY() < 9 && cell.getX() < 5)
+            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY()));
+        if (cell.getY() + 1 < 9 && cell.getX() + 1 < 5)
+            cells.add(request.getBattle().getMap().get(cell.getX() + 1).get(cell.getY() + 1));
+        if (cell.getY() + 1 < 9 && cell.getX() < 5)
+            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY() + 1));
+        if (cell.getY() < 9 && cell.getX() + 1 < 5)
+            cells.add(request.getBattle().getMap().get(cell.getX() + 1).get(cell.getY()));
         for (Cell cell1 : cells) {
-            if (cell1 != null) {
-                PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
-                poisonEffectedCell.setTurnCounter(0);
-                poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
-                cell1.getCellEffect().add(poisonEffectedCell);
-            }
+            PoisonEffectedCell poisonEffectedCell = new PoisonEffectedCell();
+            poisonEffectedCell.setTurnCounter(0);
+            poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
+            cell1.getCellEffect().add(poisonEffectedCell);
         }
     }
 

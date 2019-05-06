@@ -22,9 +22,12 @@ public class HellFire extends Spell {
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        cells.add(cell.rightCell(battle.getMap()));
-        cells.add(cells.get(1).downCell(battle.getMap()));
-        cells.add(cell.downCell(battle.getMap()));
+        if (cell.getX() < 5 && cell.getY() < 9)
+            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY()));
+        if (cell.getY() < 9)
+            cells.add(cell.rightCell(battle.getMap()));
+        if (cell.getX() < 5)
+            cells.add(cell.downCell(battle.getMap()));
         for (Cell cell1 : cells) {
             if (cell1 != null) {
                 FiringEffectedCell firingEffectedCell = new FiringEffectedCell();
@@ -36,6 +39,7 @@ public class HellFire extends Spell {
         }
     }
 
+    @Override
     public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
         return hellFire;
