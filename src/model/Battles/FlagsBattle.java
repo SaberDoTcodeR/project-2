@@ -13,8 +13,11 @@ public class FlagsBattle extends Battle {
     private boolean playWithAI;
     private Account secondPlayer;
     private Hand secondPlayerHand = new Hand();
-
     private int flags;
+
+    public int getFlags() {
+        return flags;
+    }
 
     public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, int flags, int reward) {
         super(player, myDeck, opponentDeck);
@@ -24,6 +27,18 @@ public class FlagsBattle extends Battle {
         this.secondPlayer = account;
         this.flags = flags;
         this.setMap();
+        this.setReward(reward);
+        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName() + "_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
+        this.getMap().get(2).get(8).getHero().setCardId(account.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
+        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
+        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
+        if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
+            this.getMap().get(2).get(8).setFlag(0);
+        } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
+            this.getMap().get(2).get(0).setFlag(0);
+        }
     }
 
     public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int flags, int reward) {
@@ -32,6 +47,18 @@ public class FlagsBattle extends Battle {
         this.playWithAI = false;
         this.flags = flags;
         this.setMap();
+        this.setReward(reward);
+        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName() + "_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
+        this.getMap().get(2).get(8).getHero().setCardId(player2.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
+        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
+        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
+        if (this.getMap().get(2).get(8).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(8).getHero().setNumberOfFlag(this.getMap().get(2).get(8).getHero().getNumberOfFlag() + this.getMap().get(2).get(8).getNumberOfFlag());
+            this.getMap().get(2).get(8).setFlag(0);
+        } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
+            this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
+            this.getMap().get(2).get(0).setFlag(0);
+        }
     }
 
     public void setMap() {

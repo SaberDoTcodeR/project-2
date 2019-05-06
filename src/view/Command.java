@@ -642,6 +642,9 @@ class EndTurn extends Command {
 
     @Override
     public void apply(Request request) {
+        int counterOfFlagFirstPlayer = 0;
+
+        int counterOfFlagSecondPlayer = 0;
         for (int i = 0; i < 5; i++) {
             for (Cell cell : request.getBattle().getMap().get(i)) {
                 for (int j = 0; j < cell.getCellEffect().size(); j++) {
@@ -656,15 +659,28 @@ class EndTurn extends Command {
                 if (cell.getHero() != null) {
                     if (request.getBattle().getType().equals("OneFlagBattle")) {
                         if (cell.getHero().getNumberOfFlag() > 0) {
-                            if (cell.getHero().getCardId().contains(request.getBattle().getFirstPlayer().getUserName())) {
+                            if (cell.getHero().getCardId().toLowerCase().contains(request.getBattle().getFirstPlayer().getUserName().toLowerCase())) {
                                 request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
                             } else
                                 request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
                         }
-                        if (request.getBattle().getFirstPlayerFlagCarryTurnCounter() == 6) {
+                        if (request.getBattle().getFirstPlayerFlagCarryTurnCounter() == 8) {
                             view.endGame(request.getBattle(), true);
-                        } else if (request.getBattle().getSecondPlayerFlagCarryTurnCounter() == 6) {
+                        } else if (request.getBattle().getSecondPlayerFlagCarryTurnCounter() == 8) {
                             view.endGame(request.getBattle(), false);
+                        }
+                    } else if (request.getBattle().getType().equals("FlagsBattle")) {
+                        if (cell.getHero().getCardId().toLowerCase().contains(request.getBattle().getFirstPlayer().getUserName().toLowerCase())) {
+                            counterOfFlagFirstPlayer += cell.getHero().getNumberOfFlag();
+                            if (counterOfFlagFirstPlayer >= ((FlagsBattle) request.getBattle()).getFlags() / 2) {
+                                view.endGame(request.getBattle(), true);
+                            }
+
+                        } else {
+                            counterOfFlagSecondPlayer += cell.getHero().getNumberOfFlag();
+                            if (counterOfFlagSecondPlayer >= ((FlagsBattle) request.getBattle()).getFlags() / 2) {
+                                view.endGame(request.getBattle(), false);
+                            }
                         }
                     }
                     for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
@@ -683,17 +699,29 @@ class EndTurn extends Command {
                 } else if (cell.getMinion() != null) {
                     if (request.getBattle().getType().equals("OneFlagBattle")) {
                         if (cell.getMinion().getNumberOfFlag() > 0) {
-                            if (cell.getMinion().getCardId().contains(request.getBattle().getFirstPlayer().getUserName())) {
+                            if (cell.getMinion().getCardId().toLowerCase().contains(request.getBattle().getFirstPlayer().getUserName().toLowerCase())) {
                                 request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
-                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName()))
-                            {
+                            } else if (cell.getMinion().getCardId().toLowerCase().contains(request.getBattle().getSecondPlayer().getUserName().toLowerCase())) {
                                 request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
-                             }
+                            }
                         }
                         if (request.getBattle().getFirstPlayerFlagCarryTurnCounter() == 6) {
                             view.endGame(request.getBattle(), true);
                         } else if (request.getBattle().getSecondPlayerFlagCarryTurnCounter() == 6) {
                             view.endGame(request.getBattle(), false);
+                        }
+                    } else if (request.getBattle().getType().equals("FlagsBattle")) {
+                        if (cell.getMinion().getCardId().toLowerCase().contains(request.getBattle().getFirstPlayer().getUserName().toLowerCase())) {
+                            counterOfFlagFirstPlayer += cell.getMinion().getNumberOfFlag();
+                            if (counterOfFlagFirstPlayer >= ((FlagsBattle) request.getBattle()).getFlags() / 2) {
+                                view.endGame(request.getBattle(), true);
+                            }
+
+                        } else {
+                            counterOfFlagSecondPlayer += cell.getMinion().getNumberOfFlag();
+                            if (counterOfFlagSecondPlayer >= ((FlagsBattle) request.getBattle()).getFlags() / 2) {
+                                view.endGame(request.getBattle(), false);
+                            }
                         }
                     }
                     for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {

@@ -95,8 +95,8 @@ public abstract class Card {
 
     public void deadChecker(Battle battle) {
         if (this.getType().equals("Minion") && ((Minion) this).getHp() <= 0) {
-            if (battle.getType().equals("OneFlagBattle")) {
-                if (((Minion) this).getNumberOfFlag() != 0) {
+            if (((Minion) this).getNumberOfFlag() != 0) {
+                if (battle.getType().equals("OneFlagBattle")) {
                     if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
                         battle.setFirstPlayerFlagCarryTurnCounter(0);
                     } else battle.setSecondPlayerFlagCarryTurnCounter(0);
@@ -124,11 +124,13 @@ public abstract class Card {
                     view.endGame(battle, true);
                 else
                     view.endGame(battle, false);
-            } else if (battle.getType().equals("OneFlagBattle")) {
-                if (((Hero) this).getNumberOfFlag() != 0) {
-                    if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
-                        battle.setFirstPlayerFlagCarryTurnCounter(0);
-                    } else battle.setSecondPlayerFlagCarryTurnCounter(0);
+            } else {
+                if (battle.getType().equals("OneFlagBattle")) {
+                    if (((Hero) this).getNumberOfFlag() != 0) {
+                        if (this.getCardId().contains(battle.getFirstPlayer().getUserName())) {
+                            battle.setFirstPlayerFlagCarryTurnCounter(0);
+                        } else battle.setSecondPlayerFlagCarryTurnCounter(0);
+                    }
                 }
                 Cell cell = battle.getMap().get(0).get(0).getCellOfCard(this, battle);
                 cell.setNumberOfFlag(((Hero) this).getNumberOfFlag());

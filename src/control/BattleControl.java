@@ -52,7 +52,7 @@ public class BattleControl {
                             //todo after game finished what the hell i suppose to do
                         } else {
                             FlagsBattle battle = new FlagsBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(2).duplicate(),
-                                    Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 11,1500);
+                                    Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 7,1500);
                             GameControl gameControl = new GameControl();
                             gameControl.main(battle);
                             //todo after game finished what the hell i suppose to do
