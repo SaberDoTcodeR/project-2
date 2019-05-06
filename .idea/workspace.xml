@@ -1,23 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="Complete Game Info of OneFlag &amp; SomeFlag Battle">
+    <list default="true" id="3336eb55-516a-4bc1-a8d8-045ad39ecd32" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/GameControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/GameControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battles/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battles/FlagsBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/FlagsBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Battles/OneFlagBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Battles/OneFlagBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Buffs/Buff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Buffs/Buff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion/GiantMagician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantMagician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion/GiantSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion/GiantSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cards/Minion/OneEyeGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cards/Minion/OneEyeGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ErrorType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ErrorType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Item/CollectibleItem/DoubleEntendreArrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Item/CollectibleItem/DoubleEntendreArrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,52 +80,6 @@
                 <element signature="e#9407#9408#0" expanded="true" />
                 <element signature="e#9477#9478#0" expanded="true" />
                 <element signature="e#9517#9518#0" expanded="true" />
-                <element signature="e#9776#9777#0" expanded="true" />
-                <element signature="e#9826#9827#0" expanded="true" />
-                <element signature="e#10423#10424#0" expanded="true" />
-                <element signature="e#10464#10465#0" expanded="true" />
-                <element signature="e#10861#10862#0" expanded="true" />
-                <element signature="e#10913#10914#0" expanded="true" />
-                <element signature="e#10969#10970#0" expanded="true" />
-                <element signature="e#11010#11011#0" expanded="true" />
-                <element signature="e#11056#11057#0" expanded="true" />
-                <element signature="e#11096#11097#0" expanded="true" />
-                <element signature="e#11340#11341#0" expanded="true" />
-                <element signature="e#11382#11383#0" expanded="true" />
-                <element signature="e#11776#11777#0" expanded="true" />
-                <element signature="e#11827#11828#0" expanded="true" />
-                <element signature="e#11883#11884#0" expanded="true" />
-                <element signature="e#11961#11962#0" expanded="true" />
-                <element signature="e#12022#12023#0" expanded="true" />
-                <element signature="e#12064#12065#0" expanded="true" />
-                <element signature="e#12456#12457#0" expanded="true" />
-                <element signature="e#12509#12510#0" expanded="true" />
-                <element signature="e#12972#12973#0" expanded="true" />
-                <element signature="e#13011#13012#0" expanded="true" />
-                <element signature="e#13982#13983#0" expanded="true" />
-                <element signature="e#14022#14023#0" expanded="true" />
-                <element signature="e#14656#14657#0" expanded="true" />
-                <element signature="e#14696#14697#0" expanded="true" />
-                <element signature="e#14752#14753#0" expanded="true" />
-                <element signature="e#14783#14784#0" expanded="true" />
-                <element signature="e#14838#14839#0" expanded="true" />
-                <element signature="e#14884#14885#0" expanded="true" />
-                <element signature="e#16476#16477#0" expanded="true" />
-                <element signature="e#16523#16524#0" expanded="true" />
-                <element signature="e#16763#16764#0" expanded="true" />
-                <element signature="e#16821#16822#0" expanded="true" />
-                <element signature="e#16877#16878#0" expanded="true" />
-                <element signature="e#16899#16900#0" expanded="true" />
-                <element signature="e#16952#16953#0" expanded="true" />
-                <element signature="e#16997#16998#0" expanded="true" />
-                <element signature="e#17218#17219#0" expanded="true" />
-                <element signature="e#17269#17270#0" expanded="true" />
-                <element signature="e#17452#17453#0" expanded="true" />
-                <element signature="e#17504#17505#0" expanded="true" />
-                <element signature="e#17560#17561#0" expanded="true" />
-                <element signature="e#17619#17620#0" expanded="true" />
-                <element signature="e#17670#17671#0" expanded="true" />
-                <element signature="e#17714#17715#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/view/Request.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4180">
-              <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
+              <caret line="229" column="28" lean-forward="true" selection-start-line="229" selection-start-column="28" selection-end-line="229" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -203,7 +142,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/Item/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
+            <state relative-caret-position="-100">
               <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
             </state>
           </provider>
@@ -491,7 +430,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557139397888" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557174337834" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -568,7 +507,7 @@
       <workItem from="1556993526088" duration="2593000" />
       <workItem from="1557061667067" duration="3218000" />
       <workItem from="1557068782879" duration="20686000" />
-      <workItem from="1557162078590" duration="8015000" />
+      <workItem from="1557162078590" duration="9354000" />
     </task>
     <task id="LOCAL-00001" summary="commit checker">
       <created>1555239381607</created>
@@ -808,11 +747,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557156460666</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Add list of story mode &amp; more cleaning">
+      <created>1557172837708</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1557172837708</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332009000" />
+    <option name="totallyTimeSpent" value="333348000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -825,7 +771,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18255034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -911,7 +856,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="debugeddddd" />
     <MESSAGE value="cell class base added" />
     <MESSAGE value="merged whole phase 1.2" />
     <MESSAGE value="make battle create game menu" />
@@ -936,7 +880,8 @@
     <MESSAGE value="Debug castSpell method of Spells" />
     <MESSAGE value="Improve OneFlagBattle mode of game" />
     <MESSAGE value="Complete Game Info of OneFlag &amp; SomeFlag Battle" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete Game Info of OneFlag &amp; SomeFlag Battle" />
+    <MESSAGE value="Add list of story mode &amp; more cleaning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add list of story mode &amp; more cleaning" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1296,52 +1241,6 @@
             <element signature="e#9407#9408#0" expanded="true" />
             <element signature="e#9477#9478#0" expanded="true" />
             <element signature="e#9517#9518#0" expanded="true" />
-            <element signature="e#9776#9777#0" expanded="true" />
-            <element signature="e#9826#9827#0" expanded="true" />
-            <element signature="e#10423#10424#0" expanded="true" />
-            <element signature="e#10464#10465#0" expanded="true" />
-            <element signature="e#10861#10862#0" expanded="true" />
-            <element signature="e#10913#10914#0" expanded="true" />
-            <element signature="e#10969#10970#0" expanded="true" />
-            <element signature="e#11010#11011#0" expanded="true" />
-            <element signature="e#11056#11057#0" expanded="true" />
-            <element signature="e#11096#11097#0" expanded="true" />
-            <element signature="e#11340#11341#0" expanded="true" />
-            <element signature="e#11382#11383#0" expanded="true" />
-            <element signature="e#11776#11777#0" expanded="true" />
-            <element signature="e#11827#11828#0" expanded="true" />
-            <element signature="e#11883#11884#0" expanded="true" />
-            <element signature="e#11961#11962#0" expanded="true" />
-            <element signature="e#12022#12023#0" expanded="true" />
-            <element signature="e#12064#12065#0" expanded="true" />
-            <element signature="e#12456#12457#0" expanded="true" />
-            <element signature="e#12509#12510#0" expanded="true" />
-            <element signature="e#12972#12973#0" expanded="true" />
-            <element signature="e#13011#13012#0" expanded="true" />
-            <element signature="e#13982#13983#0" expanded="true" />
-            <element signature="e#14022#14023#0" expanded="true" />
-            <element signature="e#14656#14657#0" expanded="true" />
-            <element signature="e#14696#14697#0" expanded="true" />
-            <element signature="e#14752#14753#0" expanded="true" />
-            <element signature="e#14783#14784#0" expanded="true" />
-            <element signature="e#14838#14839#0" expanded="true" />
-            <element signature="e#14884#14885#0" expanded="true" />
-            <element signature="e#16476#16477#0" expanded="true" />
-            <element signature="e#16523#16524#0" expanded="true" />
-            <element signature="e#16763#16764#0" expanded="true" />
-            <element signature="e#16821#16822#0" expanded="true" />
-            <element signature="e#16877#16878#0" expanded="true" />
-            <element signature="e#16899#16900#0" expanded="true" />
-            <element signature="e#16952#16953#0" expanded="true" />
-            <element signature="e#16997#16998#0" expanded="true" />
-            <element signature="e#17218#17219#0" expanded="true" />
-            <element signature="e#17269#17270#0" expanded="true" />
-            <element signature="e#17452#17453#0" expanded="true" />
-            <element signature="e#17504#17505#0" expanded="true" />
-            <element signature="e#17560#17561#0" expanded="true" />
-            <element signature="e#17619#17620#0" expanded="true" />
-            <element signature="e#17670#17671#0" expanded="true" />
-            <element signature="e#17714#17715#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1349,7 +1248,7 @@
     <entry file="file://$PROJECT_DIR$/src/view/Request.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4180">
-          <caret line="228" column="28" lean-forward="true" selection-start-line="228" selection-start-column="28" selection-end-line="228" selection-end-column="28" />
+          <caret line="229" column="28" lean-forward="true" selection-start-line="229" selection-start-column="28" selection-end-line="229" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1390,7 +1289,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Item/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
+        <state relative-caret-position="-100">
           <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
