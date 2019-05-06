@@ -242,7 +242,9 @@ public abstract class Card {
 
     public boolean dispelEnemyValidation(String buffName) {
         for (String str : Buff.getPositiveBuffs()) {
-            if (str.equals(buffName)) {
+            System.out.println("___________________________________________________________________");
+            if (str.equalsIgnoreCase(buffName.toLowerCase())) {
+                System.out.println(121223424);
                 return true;
             }
         }

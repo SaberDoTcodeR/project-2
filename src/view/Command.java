@@ -884,21 +884,29 @@ class InsertCard extends Command {
                         if (request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
                                 request.getBattle().getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
                             ArrayList<Cell> targetCells = new ArrayList<>();
-                            targetCells.add(request.getBattle().getMap().get(xPos - 1).get(yPos - 1).upCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(0).rightCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(1).downCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(2).downCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(3).leftCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(4).leftCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(5).upCell(request.getBattle().getMap()));
-                            targetCells.add(targetCells.get(6).upCell(request.getBattle().getMap()));
+                            if (xPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos-1));
+                            if (xPos < 5)
+                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos-1));
+                            if ( yPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos-1).get(yPos-2));
+                            if (yPos < 9) {
+                                targetCells.add(request.getBattle().getMap().get(xPos - 1).get(yPos));
+                            }if (xPos - 2 >= 0 && yPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos-2));
+                            if (xPos < 5 && yPos - 2 >= 0)
+                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos-2));
+                            if (xPos - 2 >= 0 && yPos < 9)
+                                targetCells.add(request.getBattle().getMap().get(xPos-2).get(yPos));
+                            if (xPos < 5 && yPos < 9)
+                                targetCells.add(request.getBattle().getMap().get(xPos).get(yPos));
                             boolean adjacency = false;
                             for (Cell cell : targetCells) {
-                                if (cell.getMinion() != null && cell.getMinion().getCardId().contains(account.getUserName())) {
+                                if (cell.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                                     adjacency = true;
                                     break;
                                 }
-                                if (cell.getHero() != null && cell.getHero().getCardId().contains(account.getUserName())) {
+                                if (cell.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                                     adjacency = true;
                                     break;
                                 }
@@ -926,15 +934,18 @@ class InsertCard extends Command {
 
                             cards.remove(card1);
                         } else
+                        {
                             request.setError(ErrorType.INVALID_TARGET);
+                        }
                     } else {
                         ((Spell) card1).castSpell(request.getBattle(), request.getBattle().getMap().get(xPos - 1).get(yPos - 1), account, request);
                         account.setMana(account.getMana() - cost);
 
                         if (request.getError() == null) {
                             System.out.println(card1.getName() + " inserted to " + " (" + xPos + "," + yPos + ")");
+                            cards.remove(card1);
                         }
-                        cards.remove(card1);
+
                     }
                 }
                 break;
@@ -1043,7 +1054,7 @@ class UseSpecialPower extends Command {
         }
         int xPos = Integer.parseInt(matcher.group(1).trim());
         int yPos = Integer.parseInt(matcher.group(2).trim());
-        if (((Hero) request.getBattle().getSelectedCard()).getCoolDownTime() > 0) {
+        if (((Hero) request.getBattle().getSelectedCard()).getTimeNeededToCool() > 0) {
             request.setError(ErrorType.HERO_IS_IN_COOLDOWN);
             return;
         }
@@ -1154,7 +1165,7 @@ class ShowCollectibles extends Command {
             collectibleItems = request.getBattle().getSecondPlayerCollectibleItem();
         int index = 1;
         for (CollectibleItem collectibleItem : collectibleItems) {
-            System.out.println(index + ": " + collectibleItem.showDetails());
+            System.out.println(index + ": ItemId : "+collectibleItem.getCardId()+" " + collectibleItem.showDetails());
             index++;
         }
 

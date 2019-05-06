@@ -20,6 +20,7 @@ public class OneFlagBattle extends Battle {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
+        account.setMainDeck(opponentDeck);
         this.secondPlayer = account;
         this.setMap();
         this.setReward(reward);

@@ -48,6 +48,7 @@ public class HeroBattle extends Battle {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
+        account.setMainDeck(opponentDeck);
         this.secondPlayer = account;
         this.setReward(reward);
         this.getMap().get(2).get(0).getHero().setCardId(player.getUserName()+"_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));

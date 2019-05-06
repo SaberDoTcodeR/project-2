@@ -20,6 +20,7 @@ public class FlagsBattle extends Battle {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
+        account.setMainDeck(opponentDeck);
         this.secondPlayer = account;
         this.flags = flags;
         this.setMap();

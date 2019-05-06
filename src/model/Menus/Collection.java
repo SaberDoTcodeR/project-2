@@ -92,6 +92,9 @@ public class Collection {
         deck3.getSpells().add(new Weakening());
         deck3.setHero(new Arash());
         deck3.setUsableItem(new TerrorHood());
+        getStoryModeDeck().add(deck1);
+        getStoryModeDeck().add(deck2);
+        getStoryModeDeck().add(deck3);
     }
 
     public ArrayList<Deck> getStoryModeDeck() {
