@@ -7,6 +7,7 @@ import model.Hand;
 import model.Item.CollectibleItem.*;
 import model.Menus.Account;
 import model.Deck;
+import view.View;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -80,7 +81,7 @@ public class OneFlagBattle extends Battle {
 
                 }
                 if (i == 2 && j == 8) {
-                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
+                    getMap().get(2+1-1).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
                 }
 
             }
@@ -106,7 +107,8 @@ public class OneFlagBattle extends Battle {
 
     @Override
     public void showDetailedInfo() {
-        int x;
+        View view = View.getInstance();
+        view.showDetailedInfoOneFlagMode(this);
     }
 
     @Override

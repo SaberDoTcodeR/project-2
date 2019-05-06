@@ -139,7 +139,7 @@ public class Cell {
     public Cell(int x, int y, int flag, int indexOfCollect) {
         this.x = x;
         this.y = y;
-        this.numberOfFlag = flag;
+        this.numberOfFlag  = flag;
         if (indexOfCollect != -1) {
             this.collectibleItem = CollectibleItem.getCollectibleItems().get(indexOfCollect).duplicate();
         }
