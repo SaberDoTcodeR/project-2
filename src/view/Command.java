@@ -708,8 +708,8 @@ class EndTurn extends Command {
                             j--;
                         } else {
                             cell.getHero().getOwnBuffs().get(j).castBuff();
-                            if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
-                                cell.getCellEffect().get(j).decrementTurnCounter(1);
+                            if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() >= 0)
+                                cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
                     }
                     cell.getHero().setTimeNeededToCool(cell.getHero().getTimeNeededToCool() - 1);
@@ -750,8 +750,8 @@ class EndTurn extends Command {
                             j--;
                         } else {
                             cell.getMinion().getOwnBuffs().get(j).castBuff();
-                            if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
-                                cell.getCellEffect().get(j).decrementTurnCounter(1);
+                            if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() >= 0)
+                                cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
                     }
                     cell.getMinion().setCanAttack(true);

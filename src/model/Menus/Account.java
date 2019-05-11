@@ -73,7 +73,7 @@ public class Account {
     public Account(String userName, String passWord) {
         this.userName = userName;
         this.passWord = passWord;
-        this.money = 15000;
+        this.money = 1500000;
 
         allUser.add(this);
 
@@ -81,7 +81,7 @@ public class Account {
     public Account(int x) {
         this.userName = "AI_Player";
         this.passWord = "123";
-        this.money = 15000;
+        this.money = 1500000;
 
     }
 
