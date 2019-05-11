@@ -38,6 +38,19 @@ public class HeroBattle extends Battle {
 
             }
         }
+        if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
+            this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
+            this.increamentTurn();
+            this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size() - 1).cardIdGenerator(this);
+            this.decreamentTurn();
+            this.getMap().get(2).get(8).setCollectibleItem(null);
+        } else if (this.getMap().get(2).get(0).getCollectibleItem() != null) {
+            this.getFirstPlayerCollectibleItem().add(this.getMap().get(2).get(0).getCollectibleItem());
+            this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size() - 1).cardIdGenerator(this);
+
+
+            this.getMap().get(2).get(0).setCollectibleItem(null);
+        }
     }
 
     public String getType() {

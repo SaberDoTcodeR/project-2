@@ -40,6 +40,18 @@ public class FlagsBattle extends Battle {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
             this.getMap().get(2).get(0).setNumberOfFlag(0);
         }
+        if (this.getMap().get(2).get(8).getCollectibleItem()!=null) {
+            this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
+            this.increamentTurn();
+            this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size()-1).cardIdGenerator(this);
+            this.decreamentTurn();
+            this.getMap().get(2).get(8).setCollectibleItem(null);
+        } else if (this.getMap().get(2).get(0).getCollectibleItem() !=null) {
+            this.getFirstPlayerCollectibleItem().add(this.getMap().get(2).get(0).getCollectibleItem());
+            this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size()-1).cardIdGenerator(this);
+
+            this.getMap().get(2).get(0).setCollectibleItem(null);
+        }
     }
 
     public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int flags, int reward) {
@@ -59,6 +71,18 @@ public class FlagsBattle extends Battle {
         } else if (this.getMap().get(2).get(0).getNumberOfFlag() > 0) {
             this.getMap().get(2).get(0).getHero().setNumberOfFlag(this.getMap().get(2).get(0).getHero().getNumberOfFlag() + this.getMap().get(2).get(0).getNumberOfFlag());
             this.getMap().get(2).get(0).setNumberOfFlag(0);
+        }
+        if (this.getMap().get(2).get(8).getCollectibleItem()!=null) {
+            this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
+            this.increamentTurn();
+            this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size()-1).cardIdGenerator(this);
+            this.decreamentTurn();
+            this.getMap().get(2).get(8).setCollectibleItem(null);
+        } else if (this.getMap().get(2).get(0).getCollectibleItem() !=null) {
+            this.getFirstPlayerCollectibleItem().add(this.getMap().get(2).get(0).getCollectibleItem());
+            this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size()-1).cardIdGenerator(this);
+
+            this.getMap().get(2).get(0).setCollectibleItem(null);
         }
     }
 

@@ -7,7 +7,7 @@ public enum CommandRegex {
 
     SHOW_INFO("^show info$"),
 
-    SELECT_COLLECTIBLE("^select\\s+(\\w+)$"),
+    SELECT_COLLECTIBLE("^select collectible\\s+(\\w+)$"),
 
     SHOW_COLLECTIBLES("^show collectibles$"),
 

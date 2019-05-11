@@ -16,7 +16,7 @@ public class CollectableControl {
             Request request = new Request();
             request.getNewCommand();
             request.setBattle(battle);
-            Command command = request.getMatchedCommand(8);
+            Command command = request.getMatchedCommand(9);
 
             if (command != null && !request.getCommand().equals("help") && !request.getCommand().equals("exit")) {
                 command.apply(request);

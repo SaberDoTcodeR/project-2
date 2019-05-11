@@ -23,6 +23,29 @@ public class View {
         return VIEW;
     }
 
+    public void showMap(Battle battle) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 9; j++) {
+                if(battle.getMap().get(i).get(j).getNumberOfFlag()>0)
+                    System.out.print("F");
+                else
+                    System.out.print("0");
+                if(battle.getMap().get(i).get(j).getCollectibleItem()!=null)
+                    System.out.print("C");
+                else
+                    System.out.print("0");
+                if(battle.getMap().get(i).get(j).getMinion()!=null||battle.getMap().get(i).get(j).getHero()!=null)
+                {
+                    System.out.print("S");
+                    System.out.print(battle.getMap().get(i).get(j).getWhichPlayerIsInCell()+1);
+
+                }
+                System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
     public void showRecordedMatch(RecordedMatch recordedMatch) {
         System.out.println("Opponent : " + recordedMatch.getOpponentName());
         if (recordedMatch.getResult())

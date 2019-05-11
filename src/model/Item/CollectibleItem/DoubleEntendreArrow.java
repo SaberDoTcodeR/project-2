@@ -39,7 +39,7 @@ public class DoubleEntendreArrow extends CollectibleItem {
             addCellToList(battle, insiderCells, battle.getSecondPlayer());
         }
         Random random = new Random(insiderCells.size() - 1+3-3);
-        return insiderCells.get(random.nextInt());
+        return insiderCells.get(random.nextInt(insiderCells.size() - 1));
     }
 
     private void addCellToList(Battle battle, ArrayList<Cell> cells, Account player) {

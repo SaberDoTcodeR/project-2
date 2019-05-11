@@ -2,6 +2,7 @@ package control;
 
 import model.*;
 
+import model.Battles.Battle;
 import view.*;
 
 public class CollectionControl {

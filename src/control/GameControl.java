@@ -23,21 +23,7 @@ public class GameControl {
             battle.getSecondPlayerHand().fillHand(battle, 1);
 
             int whoseTurn = battle.getTurn() % 2;
-            if (battle.getTurn() >= 14)
-                players.get(whoseTurn).setMana(9);
-            else {
-                if (battle.getTurn() % 2 == 1) {
-                    players.get(1).setMana(battle.getTurn() / 2 + 2);
-                    players.get(0).setMana((battle.getTurn() + 1) / 2 + 2);
-                }
-            }
-
-            if (battle.getTurn() == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), -1);
-            if (battle.getTurn() == 1 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), -1);
-
-
+            players.get(0).setMana(battle.getTurn()/2+2);
             if (battle.isPlayWithAI() && battle.getTurn() % 2 == 0) {
 
                 battle.doCleverThings();
@@ -46,8 +32,15 @@ public class GameControl {
                 request.setBattle(battle);
                 Command command = request.getMatchedCommand(1);
                 command.apply(request);
-                System.out.println("your turn ;");
+                System.out.println("your turn :");
             }
+            players.get(1).setMana(battle.getTurn()/2+2);
+            if (battle.getTurn() == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
+                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), -1);
+            if (battle.getTurn() == 1 && battle.getSecondPlayerDeck().getUsableItem() != null)
+                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), -1);
+
+
             boolean turnFinished = false;
             while (!turnFinished) {
                 Request request = new Request();

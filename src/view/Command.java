@@ -281,9 +281,11 @@ class HelpInBattle extends Command {
 
     @Override
     public void apply(Request request) {
+        view.showMap(request.getBattle());
         System.out.println("Moves Can be performed:");
         ArrayList<Card> cards;
         ArrayList<Card> handCards;
+
         int mana;
         if (request.getBattle().getTurn() % 2 == 1) {
             cards = request.getBattle().getFirstPlayerInGameCards();
@@ -363,13 +365,13 @@ class ShowRecordedMatch extends Command {
 
     @Override
     public void apply(Request request) {
-        System.out.println("Recorded match of "+Account.getLoginAccount().getUserName());
-        for (RecordedMatch recordedMatch:Account.getLoginAccount().getMatches())
-        {
+        System.out.println("Recorded match of " + Account.getLoginAccount().getUserName());
+        for (RecordedMatch recordedMatch : Account.getLoginAccount().getMatches()) {
             view.showRecordedMatch(recordedMatch);
         }
     }
 }
+
 class CreateAccount extends Command {
 
     CreateAccount() {
@@ -668,7 +670,8 @@ class EndTurn extends Command {
                         j--;
                     } else {
                         cell.getCellEffect().get(j).castBuff();
-                        cell.getCellEffect().get(j).decrementTurnCounter(1);
+                        if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
+                            cell.getCellEffect().get(j).decrementTurnCounter(1);
                     }
                 }
                 if (cell.getHero() != null) {
@@ -705,7 +708,8 @@ class EndTurn extends Command {
                             j--;
                         } else {
                             cell.getHero().getOwnBuffs().get(j).castBuff();
-                            cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
+                            if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
+                                cell.getCellEffect().get(j).decrementTurnCounter(1);
                         }
                     }
                     cell.getHero().setTimeNeededToCool(cell.getHero().getTimeNeededToCool() - 1);
@@ -716,8 +720,7 @@ class EndTurn extends Command {
                         if (cell.getMinion().getNumberOfFlag() > 0) {
                             if (cell.getMinion().getCardId().toLowerCase().contains(request.getBattle().getFirstPlayer().getUserName().toLowerCase())) {
                                 request.getBattle().incrementFirstPlayerFlagCarryTurnCounter();
-                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName()))
-                            {
+                            } else if (cell.getMinion().getCardId().contains(request.getBattle().getSecondPlayer().getUserName())) {
                                 request.getBattle().incrementSecondPlayerFlagCarryTurnCounter();
                             }
                         }
@@ -747,7 +750,8 @@ class EndTurn extends Command {
                             j--;
                         } else {
                             cell.getMinion().getOwnBuffs().get(j).castBuff();
-                            cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
+                            if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
+                                cell.getCellEffect().get(j).decrementTurnCounter(1);
                         }
                     }
                     cell.getMinion().setCanAttack(true);
@@ -834,12 +838,11 @@ class MoveSelectedSoldier extends Command {
         Cell cell = request.getBattle().getMap().get(0).get(0).getCellOfCard(request.getBattle().getSelectedCard(),
                 request.getBattle());//actually is static
         Cell cell2 = request.getBattle().getMap().get(xPos - 1).get(yPos - 1);
-        if( cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves())
-        {
+        if (cell.manhataniDistance(xPos, yPos) > request.getBattle().getSelectedCard().getRemainedMoves()) {
             request.setError(ErrorType.TOO_EXHAUSTED);
             return;
         }
-        if (cell2.getHero() == null && cell2.getMinion() == null ) {
+        if (cell2.getHero() == null && cell2.getMinion() == null) {
             System.out.println(request.getBattle().getSelectedCard().getCardId() + " moved to" + " (" + xPos + "," + yPos + ")");
             cell.moveCardPos(xPos, yPos, request.getBattle());
             request.getBattle().getSelectedCard().setRemainedMoves(request.getBattle().getSelectedCard().getRemainedMoves()
@@ -1236,6 +1239,8 @@ class SelectCollectible extends Command {
         for (CollectibleItem collectibleItem : collectibleItems) {
             if (collectibleId.equals(collectibleItem.getCardId())) {
                 request.getBattle().setSelectedCollectible(collectibleItem);
+                CollectableControl collectableControl = new CollectableControl();
+                collectableControl.main(request.getBattle());
                 return;
             }
         }

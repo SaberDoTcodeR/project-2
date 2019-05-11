@@ -137,6 +137,7 @@ public class Cell {
         this.numberOfFlag = flag;
         if (indexOfCollect != -1) {
             this.collectibleItem = CollectibleItem.getCollectibleItems().get(indexOfCollect).duplicate();
+
         }
 
     }

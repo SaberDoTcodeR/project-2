@@ -37,8 +37,8 @@ public abstract class Item {
         } else { // enemy is firstPlayer
             addCellToList(battle, enemyCells, battle.getFirstPlayer());
         }
-        Random random = new Random(enemyCells.size() - 1);
-        return enemyCells.get(random.nextInt());
+        Random random = new Random();
+        return enemyCells.get(random.nextInt(enemyCells.size() ));
     }
 
     public Cell getRandomInsiderForce(Battle battle, Account player) {
@@ -48,8 +48,8 @@ public abstract class Item {
         } else { // Insider is secondPlayer
             addCellToList(battle, enemyCells, battle.getSecondPlayer());
         }
-        Random random = new Random(enemyCells.size() - 1);
-        return enemyCells.get(random.nextInt());
+        Random random = new Random();
+        return enemyCells.get(random.nextInt(enemyCells.size() ));
     }
 
     private void addCellToList(Battle battle, ArrayList<Cell> cells, Account player) {

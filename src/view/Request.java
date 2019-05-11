@@ -110,8 +110,8 @@ public class Request {
         commands.get(8).add(new Exit());
         commands.get(8).add(new Help());
 
-        commands.get(8).add(new ShowInfoCollectible());
-        commands.get(8).add(new UseCollectible());
+        commands.get(9).add(new ShowInfoCollectible());
+        commands.get(9).add(new UseCollectible());
         commands.get(9).add(new Exit());
         commands.get(9).add(new Help());
     }
