@@ -19,13 +19,8 @@ public class AllAttack extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
-        int index = -1;
-        for (ArrayList<Cell> cells : battle.getMap()) {
-            if (cells.contains(cell)) {
-                index = cells.indexOf(cell);
-            }
-        }
-        for (int i = 0; i < battle.getMap().size(); i++) {
+        int index=cell.getY();
+        for (int i = 0; i < 5; i++) {
             if (battle.getMap().get(i).get(index).getHero() != null) {
                 if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getHero())) {
                     battle.getMap().get(i).get(index).getHero().decrementHp(6 - battle.getMap().get(i).get(index).getHero().getHolyCounter());

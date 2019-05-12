@@ -15,11 +15,6 @@ public class PoisonousDagger extends UsableItem {
         super(poisonousDagger);
     }
 
-    /*
-     * cell : no different
-     * player : the player that its enemy is attacking
-     * activeTime : 3 or 6 --> on Attack
-     * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
         if (activeTime == 3 || activeTime == 6) {

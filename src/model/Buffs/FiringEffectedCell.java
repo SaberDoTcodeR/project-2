@@ -35,6 +35,7 @@ public class FiringEffectedCell extends Buff {
             cell.getHero().decrementHp(2);
         }
         if (cell.getMinion() != null){
+
             cell.getMinion().decrementHp(2);
         }
     }
@@ -42,7 +43,10 @@ public class FiringEffectedCell extends Buff {
     @Override
     public void castBuff() {
         if (this.cell != null)
+        {
+            System.out.println(cell.getX()+","+cell.getY());
             firing(cell);
+        }
     }
 
     @Override

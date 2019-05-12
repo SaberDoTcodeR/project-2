@@ -26,18 +26,28 @@ public class View {
     public void showMap(Battle battle) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 9; j++) {
-                if(battle.getMap().get(i).get(j).getNumberOfFlag()>0)
+                if (battle.getMap().get(i).get(j).getNumberOfFlag() > 0)
                     System.out.print("F");
                 else
                     System.out.print("0");
-                if(battle.getMap().get(i).get(j).getCollectibleItem()!=null)
+                if (battle.getMap().get(i).get(j).getCollectibleItem() != null)
                     System.out.print("C");
                 else
                     System.out.print("0");
-                if(battle.getMap().get(i).get(j).getMinion()!=null||battle.getMap().get(i).get(j).getHero()!=null)
-                {
+                if (battle.getMap().get(i).get(j).getMinion() != null || battle.getMap().get(i).get(j).getHero() != null) {
                     System.out.print("S");
-                    System.out.print(battle.getMap().get(i).get(j).getWhichPlayerIsInCell()+1);
+                    if (battle.getMap().get(i).get(j).getHero() != null) {
+                        if (battle.getMap().get(i).get(j).getHero().getCardId().toLowerCase().contains(battle.getFirstPlayer().getUserName().toLowerCase()))
+                            System.out.print(1);
+                        else
+                            System.out.print(2);
+                    } else if(battle.getMap().get(i).get(j).getMinion() != null) {
+                        if (battle.getMap().get(i).get(j).getMinion().getCardId().toLowerCase().contains(battle.getFirstPlayer().getUserName().toLowerCase()))
+                            System.out.print(1);
+                        else
+                            System.out.print(2);
+                    }
+
 
                 }
                 System.out.print(" ");
@@ -258,8 +268,9 @@ public class View {
     }
 
     public void showDetailedInfoHeroMode(Battle battle) {
-        System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + battle.getFirstPlayerDeck().getHero().getHp());
-        System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP : " + battle.getSecondPlayerDeck().getHero().getHp());
+        System.out.println("Hero of first Player : " + battle.getFirstPlayerDeck().getHero().getName() + " - HP : " + ((Hero) battle.getFirstPlayerInGameCards().get(0)).getHp());
+
+        System.out.println("Hero of Second Player : " + battle.getSecondPlayerDeck().getHero().getName() + " - HP : " + ((Hero) battle.getSecondPlayerInGameCards().get(0)).getHp());
     }
 
     public void showDetailedInfoOneFlagMode(Battle battle) {

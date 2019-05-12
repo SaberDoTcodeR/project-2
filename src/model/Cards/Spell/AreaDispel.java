@@ -25,12 +25,12 @@ public class AreaDispel extends Spell {
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        if (cell.getY() < 9)
+        if (cell.getY() < 8)
             cells.add(cell.rightCell(battle.getMap()));
-        if (cell.getX() < 5)
+        if (cell.getX() < 4)
             cells.add(cell.downCell(battle.getMap()));
-        if (cell.getX() < 5 && cell.getY() < 9)
-            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY()));
+        if (cell.getX() < 4 && cell.getY() < 8)
+            cells.add(request.getBattle().getMap().get(cell.getX()+1).get(cell.getY()+1));
         for (Cell cell1 : cells) {
             Dispel dispel = new Dispel();
             dispel.castSpell(battle, cell1, player, request);

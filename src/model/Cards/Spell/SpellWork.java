@@ -18,7 +18,7 @@ public enum SpellWork {
     HEALTH_WITH_PROFIT("Give friend force a decrement buff or reduce HP of force 6 units" +
             "but have 2 holy buff for 3 turns"),
     POWER_UP("Apply a power buff and add 6AP for an insider force"),
-    ALL_POWER("Apply a power buff and add 6AP for all insider forces permanently"),
+    ALL_POWER("Apply a power buff and add 2 AP for all insider forces permanently"),
     ALL_ATTACK("Hit all enemy forces who in one column 6units"),
     WEAKENING("Give a enemy minion a decrement buff or reduce HP of minion 4 units"),
     SACRIFICE("Give a insider minion a decrement buff or reduce HP of minion 6 units" +

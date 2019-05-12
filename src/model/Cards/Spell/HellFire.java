@@ -22,11 +22,11 @@ public class HellFire extends Spell {
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
         ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
-        if (cell.getX() < 5 && cell.getY() < 9)
-            cells.add(request.getBattle().getMap().get(cell.getX()).get(cell.getY()));
-        if (cell.getY() < 9)
+        if (cell.getX() < 4 && cell.getY() < 8)
+            cells.add(request.getBattle().getMap().get(cell.getX()+1).get(cell.getY()+1));
+        if (cell.getY() < 8)
             cells.add(cell.rightCell(battle.getMap()));
-        if (cell.getX() < 5)
+        if (cell.getX() < 4)
             cells.add(cell.downCell(battle.getMap()));
         for (Cell cell1 : cells) {
             if (cell1 != null) {
