@@ -19,16 +19,26 @@ public class AllAttack extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+        Account account;
+        if(battle.getTurn()%2==1)
+            account=battle.getSecondPlayer();
+        else
+            account=battle.getFirstPlayer();
         int index=cell.getY();
         for (int i = 0; i < 5; i++) {
             if (battle.getMap().get(i).get(index).getHero() != null) {
-                if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getHero())) {
+                if (battle.getMap().get(i).get(index).getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                     battle.getMap().get(i).get(index).getHero().decrementHp(6 - battle.getMap().get(i).get(index).getHero().getHolyCounter());
+                    battle.getMap().get(i).get(index).getMinion().deadChecker(battle);
                 }
             }
             if (battle.getMap().get(i).get(index).getMinion() != null) {
-                if (!player.getMainDeck().isContain(battle.getMap().get(i).get(index).getMinion())) {
+                System.out.println(account.getUserName());
+                System.out.println(battle.getMap().get(i).get(index).getMinion().getCardId().toLowerCase());
+                if (battle.getMap().get(i).get(index).getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
+
                     battle.getMap().get(i).get(index).getMinion().decrementHp(6 - battle.getMap().get(i).get(index).getMinion().getHolyCounter());
+                    battle.getMap().get(i).get(index).getMinion().deadChecker(battle);
                 }
             }
         }

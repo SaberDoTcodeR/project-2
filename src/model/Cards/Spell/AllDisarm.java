@@ -1,5 +1,6 @@
 package model.Cards.Spell;
 
+import com.sun.org.apache.bcel.internal.generic.ACONST_NULL;
 import model.Battles.Battle;
 import model.Buffs.DisarmBuff;
 import model.Cell;
@@ -20,22 +21,27 @@ public class AllDisarm extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+        Account account;
+        if(battle.getTurn()%2==1)
+            account=battle.getSecondPlayer();
+        else
+            account=battle.getFirstPlayer();
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
-                if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
+               /* if (cell1.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase()) ) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getHero());
                     disarmBuff.setTurnCounter(0);
                     disarmBuff.setCasting(disarmBuff, null, cell1.getHero(), null);
                     cell1.getHero().getOwnBuffs().add(disarmBuff);
                 }
-                if (cell1.getMinion() != null && !player.getMainDeck().isContain(cell1.getMinion())) {
+                if (cell1.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getMinion());
                     disarmBuff.setTurnCounter(0);
                     disarmBuff.setCasting(disarmBuff, null, null, cell1.getMinion());
                     cell1.getMinion().getOwnBuffs().add(disarmBuff);
-                }
+                }*/
             }
         }
     }
