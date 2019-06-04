@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Crushed';
+    src: url('Crushed-Regular.ttf');
+}
+
+.root {
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-image: url("counterplay-games-ff.jpg");
+    -fx-background-size: stretch;
+}
+
+.text-field {
+    -fx-text-fill: #c4c4c4;
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #c4c4c4;
+}
+
+.wrongPassword {
+    -fx-background-image: url('wrong.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: right center;
+}
+
+.button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: #c4c4c4;
+    -fx-font-size: 24pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+
+.button:focused {
+    -fx-background-color: #fea144;
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+
+}
+
+
+#button1:focused {
+    -fx-graphic: url("loginBlack.png");
+}
+
+#button2:focused {
+    -fx-graphic: url("signupBlack.png");
+}
+
+#button3:focused {
+    -fx-graphic: url("exitBlack.png");
+}
+
+.button:pressed {
+    -fx-background-color: #fea144;
+    -fx-translate-y: 4px;
+    -fx-text-fill: black;
+}
+
+
+.label {
+
+    -fx-font-size: 18pt;
+    -fx-font-family: Crushed;
+}

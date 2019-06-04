@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="Duelyst.Controller.LoginController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <TextField fx:id="userField" onKeyPressed="#handleOnKeyPressedUser" prefHeight="50.0" prefWidth="300.0"
+                   promptText="        UserName..." GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+
+        </TextField>
+        <PasswordField fx:id="passField" onKeyPressed="#handleOnKeyPressedPass" prefHeight="50.0" prefWidth="300.0"
+                       promptText="        PassWord..." GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <font>
+                <Font size="23.0"/>
+            </font>
+
+        </PasswordField>
+        <Button fx:id="loginBtn" onMouseEntered="#loginBtnActFocus" mnemonicParsing="false" id="button1"
+                onKeyPressed="#handleOnKeyPressedLogin" onMouseClicked="#loginBtnAct" prefHeight="50.0"
+                prefWidth="400.0" style="-fx-background-insets: 2 2 2 2; -fx-background-radius: 15 15 15 15;"
+                text="LOGIN" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Duelyst/css/loginWhite.png"/>
+                    </image>
+
+                </ImageView>
+            </graphic>
+
+        </Button>
+        <Button fx:id="signUpBtn" onMouseEntered="#signUpBtnActFocus" mnemonicParsing="false" id="button2"
+                onKeyPressed="#handleOnKeyPressedSignUp" onMouseClicked="#signUpBtnAct" prefHeight="50.0"
+                prefWidth="400.0" text="SIGN UP" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Duelyst/css/signupWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+
+        </Button>
+        <Button fx:id="exitButton" onMouseEntered="#exitBtnActFocus" defaultButton="true" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedExit" onMouseClicked="#exitGameBtn" prefHeight="50.0" prefWidth="400.0"
+                text="EXIT GAME" GridPane.columnIndex="1" GridPane.rowIndex="5" id="button3">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Duelyst/css/exitWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+
+        </Button>
+
+
+    </children>
+</GridPane>
