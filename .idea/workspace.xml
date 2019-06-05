@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="shop fxml added">
       <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" afterDir="false" />
@@ -149,42 +153,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/LightingBolt.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Madness.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PoisonLake.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PowerUp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Sacrifice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -229,11 +197,53 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Weakening.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-442">
+              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -282,10 +292,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" />
@@ -333,6 +339,10 @@
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/TotalDisarm.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Weakening.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java" />
       </list>
     </option>
   </component>
@@ -422,7 +432,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559736951683" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559737061150" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../projecctt - Copy (2)" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -434,11 +444,11 @@
       <recent name="Duelyst.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\model\Battle" />
       <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\model\Card\Spell" />
       <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\model\Card\Minion" />
       <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\model" />
       <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\css" />
-      <recent name="C:\Users\saber\IdeaProjects\Project_Phase2\src\sample" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\saber\IdeaProjects\projecctt\src\Duelyst\Controller" />
@@ -548,15 +558,16 @@
       <workItem from="1559638714645" duration="10194000" />
       <workItem from="1559661733960" duration="3156000" />
       <workItem from="1559723474293" duration="39000" />
-      <workItem from="1559723631252" duration="9945000" />
+      <workItem from="1559723631252" duration="10212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74431000" />
+    <option name="totallyTimeSpent" value="74698000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.27231467" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -638,40 +649,14 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="shop fxml added" />
+    <option name="LAST_COMMIT_MESSAGE" value="shop fxml added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1002,6 +987,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="16" column="57" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-442">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
         </state>
       </provider>
     </entry>
