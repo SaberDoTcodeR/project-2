@@ -10,10 +10,19 @@
     -fx-background-size: stretch;
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+
+}
+
 .button {
     -fx-border-color: transparent;
     -fx-border-width: 0;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
     -fx-text-fill: #ffffff;
     -fx-font-size: 24pt;
     -fx-font-family: Crushed;
@@ -23,7 +32,7 @@
 
 
 .button:focused {
-    -fx-background-color: #B63750;
+    -fx-background-color: rgba(181, 56, 80, 0.75);
     -fx-text-fill: black;
     -fx-border-width: 1, 1;
     -fx-border-style: solid;
@@ -54,14 +63,24 @@
 
 
 .button:pressed {
-    -fx-background-color: #B63750;
+    -fx-background-color: rgba(181, 56, 80, 0.75);
     -fx-translate-y: 4px;
     -fx-text-fill: black;
 }
 
 
 .label {
-    -fx-text-fill: #ffffff;
+    -fx-text-fill: #000000;
     -fx-font-size: 18pt;
     -fx-font-family: Crushed;
+
+}
+
+#boxNotBoughtStyle {
+
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+
 }

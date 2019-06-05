@@ -52,7 +52,7 @@ public class MainMenuController {
     }
 
     public void shopAct() {
-
+        View.makeShopMenu();
     }
 
     public void collectionAct() {

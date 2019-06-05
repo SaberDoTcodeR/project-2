@@ -12,10 +12,14 @@
 
 .text-field {
     -fx-text-fill: #c4c4c4;
-    -fx-font-size: 24pt;
+    -fx-font-size: 20pt;
     -fx-font-family: Crushed;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-border-radius: 15 15 15 15;
     -fx-prompt-text-fill: #c4c4c4;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
+
 }
 
 .wrongPassword {
@@ -27,7 +31,7 @@
 .button {
     -fx-border-color: transparent;
     -fx-border-width: 0;
-    -fx-background-color: transparent;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
     -fx-text-fill: #c4c4c4;
     -fx-font-size: 24pt;
     -fx-font-family: Crushed;
@@ -37,7 +41,7 @@
 
 
 .button:focused {
-    -fx-background-color: #fea144;
+    -fx-background-color: rgba(254, 161, 68, 1);
     -fx-text-fill: black;
     -fx-border-width: 1, 1;
     -fx-border-style: solid;

@@ -60,4 +60,27 @@ public class View {
         });
 
     }
+
+    public static void makeShopMenu() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                GridPane root = null;
+                try {
+                    root = FXMLLoader.load(MainMenuController.class.getResource("shopMenu.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene mainMenuScene = new Scene(root);
+
+                mainMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+                mainMenuScene.getStylesheets().add(Main.class.getResource("css/css3.css").toExternalForm());
+                primaryStage.setScene(mainMenuScene);
+                primaryStage.setFullScreen(true);
+                primaryStage.setResizable(false);
+
+            }
+        });
+
+    }
 }
