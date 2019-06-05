@@ -1,5 +1,10 @@
 package Duelyst.model.Card.Minion;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
+
+import java.util.ArrayList;
 
 public class OneEyeGiant extends Minion {
     public OneEyeGiant() {

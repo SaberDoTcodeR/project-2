@@ -2,6 +2,10 @@ package Duelyst.model.Card.Hero;
 
 
 import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.StunBuff;
+import Duelyst.model.Card.Minion.SpecialPower;
+import Duelyst.model.Cell;
 
 public class Simurgh extends Hero {
     public Simurgh() {

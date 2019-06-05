@@ -1,8 +1,11 @@
 package Duelyst.model.Card;
 
 
-import Duelyst.model.Buff;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Hero.Hero;
+import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Cell;
 
 import java.util.ArrayList;
 
@@ -254,10 +257,6 @@ public abstract class Card {
             }
         }
         return false;
-    }
-
-    public boolean isOnMap() {
-        return isOnMap;
     }
 
     public void setId(long id) {

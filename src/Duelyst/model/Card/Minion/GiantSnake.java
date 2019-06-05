@@ -1,5 +1,11 @@
 package Duelyst.model.Card.Minion;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
+import Duelyst.model.Buff.ChangeHpBuff;
+
+import java.util.ArrayList;
 
 public class GiantSnake extends Minion {
     public GiantSnake() {

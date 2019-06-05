@@ -1,6 +1,7 @@
 package Duelyst.model;
 
 
+import Duelyst.model.Buff.Buff;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;

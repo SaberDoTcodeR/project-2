@@ -1,13 +1,11 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
-import model.Battles.Battle;
-import model.Buffs.HolyBuff;
-import model.Cell;
-import model.Menus.Account;
-import view.Request;
+import Duelyst.model.Buff.HolyBuff;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Card.Minion.SpecialPower;
+import Duelyst.model.Cell;
 
-import model.Cards.Minion.SpecialPower;
 public class Esfandyar extends Hero {
     public Esfandyar() {
         super("Esfandyar", 3, 35, 12000, 2);

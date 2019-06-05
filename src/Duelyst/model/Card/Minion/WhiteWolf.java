@@ -1,4 +1,10 @@
 package Duelyst.model.Card.Minion;
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.MultiStageBuff;
+import Duelyst.model.Cell;
+
+import java.util.ArrayList;
 
 public class WhiteWolf extends Minion {
     public WhiteWolf() {

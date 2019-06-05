@@ -1,5 +1,11 @@
 package Duelyst.model.Card.Spell;
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.PowerBuff;
+import Duelyst.model.Buff.WeaknessBuff;
+import Duelyst.model.Cell;
 
+import java.util.ArrayList;
 public class Sacrifice extends Spell {
 
     public Sacrifice() {

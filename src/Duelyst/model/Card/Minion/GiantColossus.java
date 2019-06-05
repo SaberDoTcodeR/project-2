@@ -1,5 +1,7 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class GiantColossus extends Minion {
     public GiantColossus() {
         super("GiantColossus", 8, 30, 600, 9, 2, 2);

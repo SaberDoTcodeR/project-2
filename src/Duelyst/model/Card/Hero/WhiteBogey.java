@@ -1,6 +1,10 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.ChangeApBuff;
+import Duelyst.model.Card.Minion.SpecialPower;
+import Duelyst.model.Cell;
 
 public class WhiteBogey extends Hero {
     public WhiteBogey() {

@@ -1,5 +1,8 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.PowerBuff;
+import Duelyst.model.Cell;
 public class Eagle extends Minion {
     public Eagle() {
         super("Eagle", 2, 0, 200, 2, 1, 3);

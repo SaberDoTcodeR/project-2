@@ -1,6 +1,8 @@
 package Duelyst.model.Card.Minion;
 
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class Siavash extends Minion {
     public Siavash() {
         super("Siavash", 5, 8, 350, 4, 0, 0);

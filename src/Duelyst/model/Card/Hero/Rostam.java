@@ -1,6 +1,8 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 
 public class Rostam extends Hero {
     public Rostam() {

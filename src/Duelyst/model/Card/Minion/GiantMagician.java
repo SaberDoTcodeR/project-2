@@ -1,5 +1,13 @@
 package Duelyst.model.Card.Minion;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.HolyBuff;
+import Duelyst.model.Buff.PowerBuff;
+import Duelyst.model.Cell;
+
+import java.util.ArrayList;
+
 public class GiantMagician extends Minion {
     public GiantMagician() {
         super("GiantMagician", 6, 6, 550, 6, 1, 5);

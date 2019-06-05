@@ -1,6 +1,8 @@
 package Duelyst.model.Card.Minion;
 
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class Ashkbous extends Minion {
     public Ashkbous() {
         super("Ashkbous", 8, 14, 400, 7, 0, 0);

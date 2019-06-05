@@ -1,7 +1,14 @@
 package Duelyst.model.Card.Minion;
 
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Card;
+import Duelyst.model.Card.Hero.Hero;
+import Duelyst.model.Cell;
+
+import java.util.ArrayList;
 
 public abstract class Minion extends Card {
     private static ArrayList<Minion> minions = new ArrayList<>();

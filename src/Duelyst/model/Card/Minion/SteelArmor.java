@@ -1,5 +1,8 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.HolyBuff;
+import Duelyst.model.Cell;
 public class SteelArmor extends Minion {
     public SteelArmor() {
         super("SteelArmor", 1, 1, 650, 3, 0, 0);

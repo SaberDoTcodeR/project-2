@@ -1,5 +1,8 @@
 package Duelyst.model.Card.Spell;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.StunBuff;
+import Duelyst.model.Cell;
 
 public class Shock extends Spell {
 

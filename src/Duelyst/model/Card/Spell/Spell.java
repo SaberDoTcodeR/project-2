@@ -1,7 +1,9 @@
 package Duelyst.model.Card.Spell;
 
 import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
 import Duelyst.model.Card.Card;
+import Duelyst.model.Cell;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,10 @@
 package Duelyst.model.Card.Minion;
 
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.DisarmBuff;
+import Duelyst.model.Buff.PoisonBuff;
+import Duelyst.model.Cell;
 public class TuranianSpy extends Minion {
     public TuranianSpy() {
         super("TuranianSpy", 6, 6, 700, 4, 0, 0);

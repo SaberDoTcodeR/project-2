@@ -3,6 +3,13 @@ package Duelyst.model.Battle;
 
 
 import Duelyst.model.Account;
+import Duelyst.model.Card.Card;
+import Duelyst.model.Card.Hero.Hero;
+import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Cell;
+import Duelyst.model.Deck;
+import Duelyst.model.Hand;
+import Duelyst.model.Item.CollectibleItem.CollectibleItem;
 
 import java.util.ArrayList;
 

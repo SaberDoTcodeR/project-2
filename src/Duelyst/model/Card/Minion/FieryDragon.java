@@ -1,5 +1,7 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class FieryDragon extends Minion {
     public FieryDragon() {
         super("FieryDragon", 5, 9, 250, 5, 1, 4);

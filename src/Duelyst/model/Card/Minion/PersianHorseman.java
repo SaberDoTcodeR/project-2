@@ -1,5 +1,7 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class PersianHorseman extends Minion {
     public PersianHorseman() {
         super("PersianHorseman", 6, 10, 200, 4, 0, 0);

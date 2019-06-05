@@ -1,5 +1,7 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class WildHog extends Minion {
     public WildHog() {
         super("WildHog", 14, 10, 500, 6, 0, 0);

@@ -1,6 +1,11 @@
 package Duelyst.model.Card.Spell;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.FiringEffectedCell;
+import Duelyst.model.Cell;
 
+import java.util.ArrayList;
 public class HellFire extends Spell {
 
     public HellFire() {

@@ -1,6 +1,11 @@
 package Duelyst.model.Card.Spell;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.PoisonBuff;
+import Duelyst.model.Cell;
 
+import java.util.ArrayList;
 public class AllPoison extends Spell {
 
     public AllPoison() {

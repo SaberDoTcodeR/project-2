@@ -2,6 +2,10 @@ package Duelyst.model.Battle;
 
 
 import Duelyst.model.Account;
+import Duelyst.model.Cell;
+import Duelyst.model.Deck;
+import Duelyst.model.Hand;
+import Duelyst.model.Item.CollectibleItem.CollectibleItem;
 
 import java.util.ArrayList;
 import java.util.Random;

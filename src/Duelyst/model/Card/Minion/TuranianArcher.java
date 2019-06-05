@@ -1,6 +1,8 @@
 package Duelyst.model.Card.Minion;
 
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 public class TuranianArcher extends Minion {
     public TuranianArcher() {
         super("TuranianArcher", 4, 3, 500, 1, 1, 5);

@@ -1,5 +1,8 @@
 package Duelyst.model.Card.Minion;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.Buff;
+import Duelyst.model.Cell;
 
 public class TwoHeadGiant extends Minion {
     public TwoHeadGiant() {

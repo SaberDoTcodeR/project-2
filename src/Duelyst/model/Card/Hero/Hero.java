@@ -1,8 +1,10 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
-import Duelyst.model.Buff;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Card;
+import Duelyst.model.Cell;
 
 import java.util.ArrayList;
 

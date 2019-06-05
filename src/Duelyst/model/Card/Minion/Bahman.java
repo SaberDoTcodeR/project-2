@@ -1,9 +1,8 @@
 package Duelyst.model.Card.Minion;
 
-import model.Battles.Battle;
-import model.Cell;
-import model.Menus.Account;
-import view.Request;
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 
 import java.util.ArrayList;
 

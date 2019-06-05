@@ -1,7 +1,10 @@
 package Duelyst.model.Card.Minion;
 
 import java.util.ArrayList;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.StunBuff;
+import Duelyst.model.Cell;
 public class ColdGrandma extends Minion {
     public ColdGrandma() {
         super("ColdGrandma", 4, 3, 500, 3, 1, 5);

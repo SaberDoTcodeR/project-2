@@ -1,6 +1,12 @@
 package Duelyst.model.Card.Spell;
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.HolyBuff;
+import Duelyst.model.Buff.WeaknessBuff;
+import Duelyst.model.Cell;
 
+import java.util.ArrayList;
 public class HealthWithProfit extends Spell {
 
     public HealthWithProfit() {

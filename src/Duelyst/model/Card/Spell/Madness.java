@@ -1,5 +1,11 @@
 package Duelyst.model.Card.Spell;
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.ChangeApBuff;
+import Duelyst.model.Buff.DisarmBuff;
+import Duelyst.model.Cell;
 
+import java.util.ArrayList;
 
 public class Madness extends Spell {
 

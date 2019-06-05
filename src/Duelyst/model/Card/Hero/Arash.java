@@ -1,13 +1,10 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
-import model.Battles.Battle;
-import model.Cell;
-import model.ErrorType;
-import model.Menus.Account;
-import view.Request;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 
-import model.Cards.Minion.SpecialPower;
+import Duelyst.model.Card.Minion.SpecialPower;
 
 public class Arash extends Hero {
     public Arash() {

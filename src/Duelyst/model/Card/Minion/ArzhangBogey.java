@@ -1,6 +1,10 @@
 package Duelyst.model.Card.Minion;
 
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
+
 public class ArzhangBogey extends Minion {
     public ArzhangBogey() {
         super("ArzhangBogey", 6, 6, 600, 3, 0, 0);

@@ -1,4 +1,7 @@
 package Duelyst.model.Card.Minion;
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 
 public class PersianGladiator extends Minion {
     public PersianGladiator() {

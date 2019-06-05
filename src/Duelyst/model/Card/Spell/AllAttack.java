@@ -1,5 +1,7 @@
 package Duelyst.model.Card.Spell;
-
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
 
 public class AllAttack extends Spell {
 
