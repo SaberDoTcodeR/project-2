@@ -20,8 +20,8 @@ public class AreaDispel extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
-        ArrayList<Cell> cells = new ArrayList<>();
+    public void castSpell(Battle battle, Cell cell, Account player) {
+       /* ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         if (cell.getY() < 8)
             cells.add(cell.rightCell(battle.getMap()));
@@ -32,7 +32,7 @@ public class AreaDispel extends Spell {
         for (Cell cell1 : cells) {
             Dispel dispel = new Dispel();
             dispel.castSpell(battle, cell1, player, request);
-        }
+        }*/
     }
 
     @Override

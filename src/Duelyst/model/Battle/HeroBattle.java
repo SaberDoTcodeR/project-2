@@ -97,8 +97,8 @@ public class HeroBattle extends Battle {
     }
 
     public void showDetailedInfo() {
-        View view = View.getInstance();
-        view.showDetailedInfoHeroMode(this);
+       /* View view = View.getInstance();
+        view.showDetailedInfoHeroMode(this);*/
     }
 
     @Override

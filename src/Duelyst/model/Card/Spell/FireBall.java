@@ -16,21 +16,21 @@ public class FireBall extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
-            request.setError(ErrorType.INVALID_TARGET);
+            //request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
                     cell.getHero().decrementHp(4 - cell.getHero().getHolyCounter());
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    //request.setError(ErrorType.INVALID_TARGET);
                 }
             } else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     cell.getMinion().decrementHp(4 - cell.getMinion().getHolyCounter());
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    //request.setError(ErrorType.INVALID_TARGET);
                 }
             }
         }

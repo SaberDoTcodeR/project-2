@@ -241,7 +241,7 @@ public abstract class Minion extends Card {
         return null;
     }
 
-    public abstract void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime);
+    public abstract void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime);
 
     public int getNumberOfAttacks() {
         return numberOfAttacks;

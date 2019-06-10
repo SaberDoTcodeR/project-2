@@ -190,7 +190,7 @@ public abstract class Hero extends Card {
             this.hp -= unit;
     }
 
-    public abstract void castSpecialPower(Battle battle, Cell cell, Account player, Request request);
+    public abstract void castSpecialPower(Battle battle, Cell cell, Account player);
 
     public abstract String getDesc();
 

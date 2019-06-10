@@ -47,7 +47,7 @@ public abstract class Spell extends Card {
         this.costToUse = spell.costToUse;
     }
 
-    public abstract void castSpell(Battle battle, Cell cell, Account player, Request request);
+    public abstract void castSpell(Battle battle, Cell cell, Account player);
 
     public static ArrayList<Spell> getSpells() {
         return spells;

@@ -17,8 +17,8 @@ public class PoisonLake extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
-        ArrayList<Cell> cells = new ArrayList<>();
+    public void castSpell(Battle battle, Cell cell, Account player) {
+        /*ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         if (cell.getX() < 5)
             cells.add(cell.downCell(battle.getMap()));
@@ -41,7 +41,7 @@ public class PoisonLake extends Spell {
             poisonEffectedCell.setTurnCounter(0);
             poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
             cell1.getCellEffect().add(poisonEffectedCell);
-        }
+        }*/
     }
 
     public Spell duplicate() {

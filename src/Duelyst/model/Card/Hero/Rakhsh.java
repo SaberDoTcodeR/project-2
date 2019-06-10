@@ -30,7 +30,7 @@ public class Rakhsh extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
         if (player.getMana() >= this.getMp()) {
             if (cell.getHero() != null) {
@@ -40,7 +40,7 @@ public class Rakhsh extends Hero {
                     stunBuff.stun(cell.getHero());
                     stunBuff.setCasting(stunBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(stunBuff);
-                } else request.setError(ErrorType.SELF_HARM);
+                } else {}//request.setError(ErrorType.SELF_HARM);
             } else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     StunBuff stunBuff = new StunBuff();
@@ -48,9 +48,9 @@ public class Rakhsh extends Hero {
                     stunBuff.stun(cell.getMinion());
                     stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(stunBuff);
-                } else request.setError(ErrorType.SELF_HARM);
-            } else request.setError(ErrorType.EMPTY_CELL);
-        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                } else{}// request.setError(ErrorType.SELF_HARM);
+            } else{}// request.setError(ErrorType.EMPTY_CELL);
+        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
 
     }
 

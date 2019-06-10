@@ -30,7 +30,7 @@ public class Bahman extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
         if (activeTime == 0) {
             if (battle.getTurn() % 2 == 0) {
                 ArrayList<Minion> minionsOfEnemy = new ArrayList<>();

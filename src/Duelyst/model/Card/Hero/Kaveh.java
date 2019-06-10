@@ -30,7 +30,7 @@ public class Kaveh extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
         if (player.getMana() >= this.getMp()) {
             HolyEffectedCell holyEffectedCell = new HolyEffectedCell();
@@ -42,7 +42,7 @@ public class Kaveh extends Hero {
             }
             holyEffectedCell.setCasting(holyEffectedCell, cell, null, null);
             cell.getCellEffect().add(holyEffectedCell);
-        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
 
     }
 

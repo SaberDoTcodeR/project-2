@@ -1,6 +1,10 @@
 package Duelyst.model.Card.Minion;
 
 
+import Duelyst.model.Account;
+import Duelyst.model.Battle.Battle;
+import Duelyst.model.Cell;
+
 public class GiantKing extends Minion {
     public GiantKing() {
         super("GiantKing", 4, 10, 600, 5, 0, 0);
@@ -25,7 +29,7 @@ public class GiantKing extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
 
     }
 

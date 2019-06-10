@@ -14,9 +14,9 @@ public class TotalDisarm extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getMinion() == null && cell.getHero() == null) {
-            request.setError(ErrorType.INVALID_TARGET);
+            //request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
@@ -26,7 +26,7 @@ public class TotalDisarm extends Spell {
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(disarmBuff);
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    //request.setError(ErrorType.INVALID_TARGET);
                 }
             }
             if (cell.getMinion() != null) {
@@ -37,7 +37,7 @@ public class TotalDisarm extends Spell {
                     disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                    //request.setError(ErrorType.INVALID_TARGET);
                 }
             }
         }

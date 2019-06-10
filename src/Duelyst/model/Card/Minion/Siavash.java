@@ -27,7 +27,7 @@ public class Siavash extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
         if (activeTime == 2) {
             outer:
             for (int i = 0; i < 5; i++) {

@@ -30,7 +30,7 @@ public class Legend extends Hero {
         return details;
     }
 
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
         if (player.getMana() >= this.getMp()) {
             if (cell.getHero() != null) {
@@ -40,7 +40,7 @@ public class Legend extends Hero {
                             buff.dispel(cell.getHero());
                         }
                     }
-                } else request.setError(ErrorType.INVALID_TARGET);
+                } else{}// request.setError(ErrorType.INVALID_TARGET);
             } else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     for (Buff buff : cell.getMinion().getOwnBuffs()) {
@@ -48,9 +48,9 @@ public class Legend extends Hero {
                             buff.dispel(cell.getMinion());
                         }
                     }
-                } else request.setError(ErrorType.INVALID_TARGET);
-            } else request.setError(ErrorType.EMPTY_CELL);
-        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                } else{}// request.setError(ErrorType.INVALID_TARGET);
+            } else {}//request.setError(ErrorType.EMPTY_CELL);
+        } else {}//request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
 
     }
 

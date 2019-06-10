@@ -141,7 +141,7 @@ public abstract class Battle {
         this.firstPlayerInGameCards.add(card);
     }
 
-    public void doCleverThings() {
+  /*  public void doCleverThings() {
         boolean hasInsert = false;
 
         for (Card card : this.getSecondPlayerHand().getCards()) {
@@ -218,9 +218,9 @@ public abstract class Battle {
 
 
     }
+*/
 
-
-    public void ComboAttack(Card oppCard, ArrayList<Minion> cards, Request request) {
+    /*public void ComboAttack(Card oppCard, ArrayList<Minion> cards) {
         Cell oppCell = this.getMap().get(0).get(0).getCellOfCard(oppCard, this);
         if (oppCell == null) {
             request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
@@ -258,7 +258,7 @@ public abstract class Battle {
         ((Minion) cards.get(0)).setRemainedMoves(0);
         ((Minion) cards.get(0)).deadChecker(this);
     }
-
+*/
     public void addSecondPlayerInGameCards(Card card) {
         this.secondPlayerInGameCards.add(card);
     }

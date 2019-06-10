@@ -32,7 +32,7 @@ public class Wolf extends Minion {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request, int activeTime) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
         if (activeTime == 3) {
             if (cell.getMinion() != null && !player.getMainDeck().isContain(cell.getMinion())) {
                 ArrayList<Integer> units = new ArrayList<>();

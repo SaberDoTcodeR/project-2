@@ -31,7 +31,7 @@ public class Arash extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
         if (player.getMana() >= this.getMp()) {
             int indexOfRow = -1;
@@ -48,7 +48,9 @@ public class Arash extends Hero {
                     battle.getMap().get(indexOfRow).get(i).getMinion().decrementHp(4 - battle.getMap().get(indexOfRow).get(i).getMinion().getHolyCounter());
                 }
             }
-        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+        } else {
+           // ErrorType.DONT_HAVE_ENOUGH_MANA;
+        }
 
     }
 

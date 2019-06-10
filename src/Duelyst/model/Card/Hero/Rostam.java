@@ -28,8 +28,8 @@ public class Rostam extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
-        request.setError(ErrorType.DONT_HAVE_SPECIAL_POWER);
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
+       // request.setError(ErrorType.DONT_HAVE_SPECIAL_POWER);
     }
 
     public String getDesc() {

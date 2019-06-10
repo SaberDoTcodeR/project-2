@@ -149,11 +149,6 @@ public class Collection {
         this.decks.add(deck);
     }
 
-
-    public void showObjects() {
-        view.showCollection(this);
-    }
-
     public void addToCollection(String cardName) {
         for (Hero hero : Hero.getHeroes()) {
             if (hero.getName().equals(cardName)) {
@@ -348,7 +343,7 @@ public class Collection {
         Account.getLoginAccount().setMainDeck(deck);
     }
 
-    public void showAllDecks() {
+    /*public void showAllDecks() {
         //todo check working
         int index = 1;
         if (Account.getLoginAccount().getMainDeck() != null) {
@@ -370,7 +365,7 @@ public class Collection {
     public void showDeck(String deckName) {
         Deck deck = findDeck(deckName);
         view.printDeckDetails(deck, 1, false);
-    }
+    }*/
 
     public void removeCardFromCollection(int objectId) {
         this.getHeroes().removeIf(hero -> hero.getId() == objectId);

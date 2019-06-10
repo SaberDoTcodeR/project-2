@@ -38,7 +38,7 @@ public class Esfandyar extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
         //Its Special Power was set before
     }
 

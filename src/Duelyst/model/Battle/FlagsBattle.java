@@ -146,8 +146,8 @@ public class FlagsBattle extends Battle {
 
     @Override
     public void showDetailedInfo() {
-        View view = View.getInstance();
-        view.showDetailedInfoFlagsMode(this);
+       /* View view = View.getInstance();
+        view.showDetailedInfoFlagsMode(this);*/
     }
 
     @Override

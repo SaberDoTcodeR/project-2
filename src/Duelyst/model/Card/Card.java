@@ -36,8 +36,9 @@ public abstract class Card {
     public int getRemainedMoves() {
         return remainedMoves;
     }
+/*
 
-    public void attack(Battle battle, Card card, Request request) {
+    public void attack(Battle battle, Card card) {
         Cell cell = battle.getMap().get(0).get(0).getCellOfCard(card, battle);
         if (cell == null) {
             request.setError(ErrorType.CARD_NOT_FOUND_IN_GAME);
@@ -86,6 +87,7 @@ public abstract class Card {
         this.setCanAttack(false);
         this.deadChecker(battle);
     }
+*/
 
     public void deadChecker(Battle battle) {
         if (this.getType().equals("Minion") && ((Minion) this).getHp() <= 0) {
@@ -117,9 +119,9 @@ public abstract class Card {
         } else if (this.getType().equals("Hero") && ((Hero) this).getHp() <= 0) {
             if (battle.getType().equals("HeroBattle")) {
                 if (this.getCardId().contains(battle.getSecondPlayer().getUserName()))
-                    view.endGame(battle, true);
+                {} //view.endGame(battle, true);
                 else
-                    view.endGame(battle, false);
+                {}  // view.endGame(battle, false);
             } else {
                 if (battle.getType().equals("OneFlagBattle")) {
                     if (((Hero) this).getNumberOfFlag() != 0) {

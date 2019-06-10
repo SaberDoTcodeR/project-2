@@ -17,8 +17,8 @@ public class HellFire extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
-        ArrayList<Cell> cells = new ArrayList<>();
+    public void castSpell(Battle battle, Cell cell, Account player) {
+       /* ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         if (cell.getX() < 4 && cell.getY() < 8)
             cells.add(request.getBattle().getMap().get(cell.getX()+1).get(cell.getY()+1));
@@ -34,7 +34,7 @@ public class HellFire extends Spell {
                 firingEffectedCell.setCasting(firingEffectedCell, cell1, null, null);
                 cell1.getCellEffect().add(firingEffectedCell);
             }
-        }
+        }*/
     }
 
     @Override

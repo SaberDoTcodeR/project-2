@@ -32,7 +32,7 @@ public class Zahhak extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
         if (cell.getHero() != null) {
             if (!player.getMainDeck().isContain(cell.getHero())) {
                 PoisonBuff poisonBuff = new PoisonBuff();
@@ -40,7 +40,7 @@ public class Zahhak extends Hero {
                 poisonBuff.poison(cell.getHero());
                 poisonBuff.setCasting(poisonBuff, null, cell.getHero(), null);
                 cell.getHero().getOwnBuffs().add(poisonBuff);
-            } else request.setError(ErrorType.SELF_HARM);
+            } else {}//request.setError(ErrorType.SELF_HARM);
         } else if (cell.getMinion() != null) {
             if (!player.getMainDeck().isContain(cell.getMinion())) {
                 PoisonBuff poisonBuff = new PoisonBuff();
@@ -48,8 +48,8 @@ public class Zahhak extends Hero {
                 poisonBuff.poison(cell.getMinion());
                 poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(poisonBuff);
-            } else request.setError(ErrorType.SELF_HARM);
-        } else request.setError(ErrorType.EMPTY_CELL);
+            } else{}// request.setError(ErrorType.SELF_HARM);
+        } else {}//request.setError(ErrorType.EMPTY_CELL);
     }
 
     public String getDesc() {

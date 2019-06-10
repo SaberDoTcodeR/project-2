@@ -17,7 +17,7 @@ public class AllPower extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null) {

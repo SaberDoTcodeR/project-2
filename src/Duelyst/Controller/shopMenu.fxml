@@ -37,7 +37,8 @@
                                 <VBox fx:id="hero1Box" onMouseClicked="#hero1BoxClicked" id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero1" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero1" onMouseClicked="#hero1CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -58,10 +59,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero2Box" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero2Box" layoutX="10.0" onMouseClicked="#hero2BoxClicked" layoutY="10.0"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero2" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero2" onMouseClicked="#hero2CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -82,10 +85,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero3Box" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero3Box" layoutX="10.0" onMouseClicked="#hero3BoxClicked" layoutY="10.0"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero3" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero3" onMouseClicked="#hero3CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -106,10 +111,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero4Box" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero4Box" layoutX="10.0" onMouseClicked="#hero4BoxClicked" layoutY="10.0"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero4" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero4" onMouseClicked="#hero4CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -130,10 +137,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero5Box" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero5Box" layoutX="379.0" layoutY="10.0" onMouseClicked="#hero5BoxClicked"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero5" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero5" onMouseClicked="#hero5CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -154,10 +163,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero6Box" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero6Box" layoutX="502.0" layoutY="10.0" onMouseClicked="#hero6BoxClicked"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero6" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero6" onMouseClicked="#hero6CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -178,10 +189,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero7Box" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero7Box" layoutX="625.0" layoutY="10.0" onMouseClicked="#hero7BoxClicked"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero7" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero7" onMouseClicked="#hero7CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -202,10 +215,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero8Box" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero8Box" layoutX="748.0" layoutY="10.0" onMouseClicked="#hero8BoxClicked"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero8" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero8" onMouseClicked="#hero8CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -226,10 +241,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero9Box" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero9Box" layoutX="871.0" layoutY="10.0" onMouseClicked="#hero9BoxClicked"
+                                      id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero9" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero9" onMouseClicked="#hero9CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -250,10 +267,12 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="hero10Box" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                <VBox fx:id="hero10Box" layoutX="994.0" layoutY="10.0"
+                                      onMouseClicked="#hero10BoxClicked" id="boxNotBoughtStyle"
                                       prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero10" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="hero10" onMouseClicked="#hero10CheckBoxClicked"
+                                                  mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -291,25 +310,33 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" onMouseClicked="#showHeros" prefHeight="50.0" prefWidth="300.0"
+                <Button fx:id="button1" mnemonicParsing="false" onMouseClicked="#showHeroes"
+                        onMouseEntered="#heroesBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="50.0" prefWidth="300.0"
                         text="HEROES">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#showMinions" prefHeight="50.0" prefWidth="300.0"
+                <Button fx:id="button2" mnemonicParsing="false" onMouseEntered="#minionsBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedMinions" onMouseClicked="#showMinions" prefHeight="50.0"
+                        prefWidth="300.0"
                         text="MINIONS" GridPane.columnIndex="1">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#showSpells" prefHeight="50.0" prefWidth="300.0"
+                <Button fx:id="button3" mnemonicParsing="false" onMouseEntered="#spellsBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedSpells" onMouseClicked="#showSpells" prefHeight="50.0"
+                        prefWidth="300.0"
                         text="SPELLS" GridPane.columnIndex="2">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#showItems" prefHeight="50.0" prefWidth="300.0"
+                <Button fx:id="button4" mnemonicParsing="false" onMouseEntered="#itemsBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedItems" onMouseClicked="#showItems" prefHeight="50.0"
+                        prefWidth="300.0"
                         text="ITEMS" GridPane.columnIndex="3">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
@@ -329,19 +356,25 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button mnemonicParsing="false" onMouseClicked="#showMinions" prefHeight="50.0" prefWidth="400.0"
+                <Button fx:id="button5" mnemonicParsing="false" onMouseEntered="#buyBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedBuy" onMouseClicked="#showMinions" prefHeight="50.0"
+                        prefWidth="400.0"
                         text="BUY" GridPane.columnIndex="1">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#showSpells" prefHeight="50.0" prefWidth="400.0"
+                <Button fx:id="button6" mnemonicParsing="false" onMouseEntered="#sellBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedSell" onMouseClicked="#showSpells" prefHeight="50.0"
+                        prefWidth="400.0"
                         text="SELL" GridPane.columnIndex="2">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
                 </Button>
-                <Button mnemonicParsing="false" onMouseClicked="#mainMenuAct" prefHeight="50.0" prefWidth="400.0"
+                <Button fx:id="button7" mnemonicParsing="false" onMouseEntered="#mainMenuBtnActFocus"
+                        onKeyPressed="#handleOnKeyPressedMainMenu" onMouseClicked="#mainMenuAct" prefHeight="50.0"
+                        prefWidth="400.0"
                         text="MAIN MENU" GridPane.columnIndex="3">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
@@ -349,16 +382,16 @@
                 </Button>
             </children>
         </GridPane>
-        <ScrollPane layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0" visible="false"
+        <ScrollPane fx:id="minions" layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0" visible="false"
                     GridPane.columnIndex="1" GridPane.rowIndex="1">
             <content>
                 <AnchorPane>
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <VBox id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="minion1Box" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion1" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -379,10 +412,11 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion2Box" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                      prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion2" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -403,10 +437,11 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion3Box" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
+                                      prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion3" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -601,7 +636,8 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <ScrollPane layoutX="46.0" layoutY="74.0" focusTraversable="false" prefHeight="273.0" prefWidth="605.0"
+        <ScrollPane fx:id="spells" layoutX="46.0" layoutY="74.0" focusTraversable="false" prefHeight="273.0"
+                    prefWidth="605.0"
                     visible="false"
                     GridPane.columnIndex="1" GridPane.rowIndex="1">
             <content>
@@ -854,7 +890,7 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <ScrollPane layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0"
+        <ScrollPane fx:id="items" layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0"
                     GridPane.columnIndex="1" visible="false"
                     GridPane.rowIndex="1">
             <content>
@@ -862,9 +898,12 @@
                     <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <VBox id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox id="boxNotBoughtStyle" fx:id="item1Box" onMouseClicked="#item1BoxClicked"
+                                      prefHeight="200.0" prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item1" mnemonicParsing="false"
+                                                  onMouseClicked="#item1CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -878,17 +917,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Item">
+                                        <Label text="ASSASSINATION DAGGER">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="10.0" layoutY="10.0" fx:id="item2Box" onMouseClicked="#item2BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item2" mnemonicParsing="false"
+                                                  onMouseClicked="#item2CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -902,17 +944,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="BAPTISM">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="10.0" layoutY="10.0" fx:id="item3Box" onMouseClicked="#item3BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item3" mnemonicParsing="false"
+                                                  onMouseClicked="#item3CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -926,17 +971,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="CROWN OF WISDOM">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="10.0" layoutY="10.0" fx:id="item4Box" onMouseClicked="#item4BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item4" mnemonicParsing="false"
+                                                  onMouseClicked="#item4CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -950,17 +998,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="DAMOL ARCHERY">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="379.0" layoutY="10.0" fx:id="item5Box" onMouseClicked="#item5BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item5" mnemonicParsing="false"
+                                                  onMouseClicked="#item5CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -974,17 +1025,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="KING WISDOM">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="502.0" layoutY="10.0" fx:id="item6Box" onMouseClicked="#item6BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item6" mnemonicParsing="false"
+                                                  onMouseClicked="#item6CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -998,17 +1052,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="POISONOUS DAGGER">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="625.0" layoutY="10.0" fx:id="item7Box" onMouseClicked="#item7BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item7" mnemonicParsing="false"
+                                                  onMouseClicked="#item7CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1022,17 +1079,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="SHAME EMBLEM">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="748.0" layoutY="10.0" fx:id="item8Box" onMouseClicked="#item8BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item8" mnemonicParsing="false"
+                                                  onMouseClicked="#item8CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1046,17 +1106,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="SHOCK HAMMER">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="871.0" layoutY="10.0" fx:id="item9Box" onMouseClicked="#item9BoxClicked"
+                                      id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item9" mnemonicParsing="false"
+                                                  onMouseClicked="#item9CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1070,17 +1133,20 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="SIMURGH PLUME">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox layoutX="994.0" layoutY="10.0" fx:id="item10Box"
+                                      onMouseClicked="#item10BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0"
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="item10" mnemonicParsing="false"
+                                                  onMouseClicked="#item10CheckBoxClicked"
+                                                  textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1094,7 +1160,34 @@
                                                 <Insets left="5.0" right="5.0"/>
                                             </VBox.margin>
                                         </ImageView>
-                                        <Label text="Hero">
+                                        <Label text="SOUL EATER">
+                                            <VBox.margin>
+                                                <Insets left="10.0" top="10.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <VBox layoutX="994.0" layoutY="10.0" fx:id="item11Box"
+                                      onMouseClicked="#item11BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0"
+                                      prefWidth="100.0">
+                                    <children>
+                                        <CheckBox fx:id="item11" mnemonicParsing="false"
+                                                  onMouseClicked="#item11CheckBoxClicked"
+                                                  textAlignment="CENTER">
+                                            <padding>
+                                                <Insets left="30.0" right="30.0" bottom="40"/>
+                                            </padding>
+                                        </CheckBox>
+                                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                                                   preserveRatio="true">
+                                            <image>
+                                                <Image url="Duelyst/css/avatar3.jpg"/>
+                                            </image>
+                                            <VBox.margin>
+                                                <Insets left="5.0" right="5.0"/>
+                                            </VBox.margin>
+                                        </ImageView>
+                                        <Label text="TERROR HOOD">
                                             <VBox.margin>
                                                 <Insets left="10.0" top="10.0"/>
                                             </VBox.margin>

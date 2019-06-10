@@ -130,8 +130,8 @@ public class OneFlagBattle extends Battle {
 
     @Override
     public void showDetailedInfo() {
-        View view = View.getInstance();
-        view.showDetailedInfoOneFlagMode(this);
+        /*View view = View.getInstance();
+        view.showDetailedInfoOneFlagMode(this);*/
     }
 
     @Override

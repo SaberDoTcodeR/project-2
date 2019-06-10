@@ -16,19 +16,19 @@ public class GodStrength extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         if (cell.getHero() == null && cell.getMinion() == null) {
-            request.setError(ErrorType.INVALID_TARGET);
+            //request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
                 if (player.getMainDeck().isContain(cell.getHero())) {
                     cell.getHero().incrementAp(4);
                 } else {
-                    request.setError(ErrorType.INVALID_TARGET);
+                   // request.setError(ErrorType.INVALID_TARGET);
                 }
             }
             if (cell.getMinion() != null) {
-                request.setError(ErrorType.INVALID_TARGET);
+               // request.setError(ErrorType.INVALID_TARGET);
             }
         }
     }

@@ -16,7 +16,7 @@ public class AllDisarm extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpell(Battle battle, Cell cell, Account player) {
         Account account;
         if(battle.getTurn()%2==1)
             account=battle.getSecondPlayer();

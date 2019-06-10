@@ -30,7 +30,7 @@ public class Dragon extends Hero {
     }
 
     @Override
-    public void castSpecialPower(Battle battle, Cell cell, Account player, Request request) {
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
         if (player.getMana() >= this.getMp()) {
             if (cell.getHero() != null) {
@@ -40,7 +40,9 @@ public class Dragon extends Hero {
                     disarmBuff.disarm(cell.getHero());
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     cell.getHero().getOwnBuffs().add(disarmBuff);
-                } else request.setError(ErrorType.SELF_HARM);
+                } else {
+                    // request.setError(ErrorType.SELF_HARM);
+                }
             } else if (cell.getMinion() != null) {
                 if (!player.getMainDeck().isContain(cell.getMinion())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
@@ -48,9 +50,9 @@ public class Dragon extends Hero {
                     disarmBuff.disarm(cell.getMinion());
                     disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
-                } else request.setError(ErrorType.SELF_HARM);
-            } else request.setError(ErrorType.EMPTY_CELL);
-        } else request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+                } else{}// request.setError(ErrorType.SELF_HARM);
+            } else {}// request.setError(ErrorType.EMPTY_CELL);
+        } else {}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
 
     }
 
