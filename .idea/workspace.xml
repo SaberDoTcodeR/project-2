@@ -1,100 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="old class added">
-      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/buyBlack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/buyWhite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-crystal-caverns-1080-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/hero.jpg" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="item and hero in shop added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/Controller/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/Controller/mainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Buff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Collection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Deck.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/css/css3.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/css/css3.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Elf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Elf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/FieryDragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/FieryDragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantColossus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantColossus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantKing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantKing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/OneEyeGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/OneEyeGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Panther.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Panther.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGeneralissimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGeneralissimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGladiator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGladiator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianHorseman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianHorseman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSwordsman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSwordsman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Piran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Piran.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PoisonSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PoisonSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Siavash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Siavash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SteelArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SteelArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllDisarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllDisarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPoison.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPoison.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AreaDispel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AreaDispel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Dispel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Dispel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Empower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Empower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/FireBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/FireBall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/GodStrength.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/GodStrength.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HealthWithProfit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HealthWithProfit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HellFire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HellFire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/KingsGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/KingsGuard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/LightingBolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/LightingBolt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Madness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Madness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PoisonLake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PoisonLake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Sacrifice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Sacrifice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Shock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Shock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/TotalDisarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/TotalDisarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Weakening.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Weakening.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Collection.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -107,6 +18,20 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="DebuggerManager">
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true" converted="true">
@@ -151,34 +76,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="31" column="59" selection-start-line="30" selection-start-column="47" selection-end-line="31" selection-end-column="59" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="904" column="87" selection-start-line="904" selection-start-column="87" selection-end-line="904" selection-end-column="87" />
-              <folding>
-                <element signature="n#GridPane#0;n#children#0;n#GridPane#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="392" column="26" lean-forward="true" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="578" column="30" lean-forward="true" selection-start-line="578" selection-start-column="30" selection-end-line="578" selection-end-column="30" />
+            <state relative-caret-position="245">
+              <caret line="194" column="27" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -186,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Collection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
+            <state relative-caret-position="3774">
               <caret line="261" column="22" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
             </state>
           </provider>
@@ -195,8 +107,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="238">
+              <caret line="281" column="27" selection-start-line="281" selection-start-column="27" selection-end-line="281" selection-end-column="27" />
               <folding>
                 <element signature="e#560#561#0" expanded="true" />
                 <element signature="e#601#602#0" expanded="true" />
@@ -254,8 +166,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="78" column="18" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="18" />
+            <state relative-caret-position="53">
+              <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -272,13 +184,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GridPane.columnIndex=&quot;3&quot;</find>
-      <find>@87059%20-%20Copy.jpg</find>
-      <find>&lt;Insets left=&quot;30.0&quot; right=&quot;30.0&quot;/&gt;</find>
-      <find>MAI</find>
-      <find>id</find>
-      <find>vis</find>
-      <find>prefHeight=&quot;200.0&quot; prefWidth=&quot;100.0&quot;</find>
       <find>fx:id=&quot;hero2Box&quot;  layoutX=&quot;10.0&quot; layoutY=&quot;10.0&quot;</find>
       <find>style</find>
       <find>Battles</find>
@@ -302,6 +207,13 @@
       <find>itemesBought</find>
       <find>item</find>
       <find>12</find>
+      <find>minion1s</find>
+      <find>minion3sBought</find>
+      <find>spell</find>
+      <find>minion3chec</find>
+      <find>prefHeight</find>
+      <find>CheckBoxClicked</find>
+      <find>mini</find>
     </findStrings>
     <replaceStrings>
       <replace>GridPane.columnIndex=&quot;1&quot;</replace>
@@ -317,6 +229,9 @@
       <replace>Duelyst.model</replace>
       <replace>CheckBoxClicked</replace>
       <replace>itemsBought</replace>
+      <replace>minions</replace>
+      <replace>minionsBought</replace>
+      <replace>CheckBox</replace>
     </replaceStrings>
   </component>
   <component name="FindManager">
@@ -452,7 +367,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Item" type="462c0819:PsiDirectoryNode" />
+              <item name="Card" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
@@ -460,8 +375,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Item" type="462c0819:PsiDirectoryNode" />
-              <item name="UsableItem" type="462c0819:PsiDirectoryNode" />
+              <item name="Card" type="462c0819:PsiDirectoryNode" />
+              <item name="Minion" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -480,7 +395,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560188387261" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560243052907" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ThermalEquilibrium" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -609,7 +524,8 @@
       <workItem from="1559723631252" duration="23202000" />
       <workItem from="1559812669257" duration="507000" />
       <workItem from="1560187872682" duration="1074000" />
-      <workItem from="1560192192775" duration="9695000" />
+      <workItem from="1560192192775" duration="9801000" />
+      <workItem from="1560237390373" duration="5643000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -632,17 +548,24 @@
       <option name="project" value="LOCAL" />
       <updated>1559744725311</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="item and hero in shop added">
+      <created>1560206117977</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1560206117977</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98964000" />
+    <option name="totallyTimeSpent" value="104713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28517398" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28971255" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -671,7 +594,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
       <window_info anchor="right" id="JetGradle" order="3" />
       <window_info anchor="right" id="Maven" order="4" weight="0.32980332" />
-      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32980332" />
       <window_info anchor="right" id="Palette" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
@@ -724,52 +647,14 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="shop fxml added" />
     <MESSAGE value="old class added" />
-    <option name="LAST_COMMIT_MESSAGE" value="old class added" />
+    <MESSAGE value="item and hero in shop added" />
+    <option name="LAST_COMMIT_MESSAGE" value="item and hero in shop added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="42" column="27" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
-          <folding>
-            <element signature="e#2177#2178#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-          <folding>
-            <element signature="e#414#415#0" expanded="true" />
-            <element signature="e#444#445#0" expanded="true" />
-            <element signature="e#2566#2567#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
-          <folding>
-            <element signature="e#1542#1543#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
@@ -1020,21 +905,6 @@
     <entry file="file://$PROJECT_DIR$/src/Duelyst/css/exitWhite.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1445">
-          <caret line="116" column="9" selection-start-line="112" selection-start-column="7" selection-end-line="116" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="31" column="59" selection-start-line="30" selection-start-column="47" selection-end-line="31" selection-end-column="59" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1042,10 +912,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Parent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="1153" column="41" selection-start-line="1153" selection-start-column="41" selection-end-line="1153" selection-end-column="41" />
+          <folding>
+            <element signature="e#44827#45690#0" expanded="true" />
+            <element signature="e#45689#45690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/AssassinationDagger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="59" selection-start-line="30" selection-start-column="47" selection-end-line="31" selection-end-column="59" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3774">
+          <caret line="261" column="22" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="116" column="9" selection-start-line="112" selection-start-column="7" selection-end-line="116" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="194" column="27" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="53">
+          <caret line="72" column="26" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/UsableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        <state relative-caret-position="238">
+          <caret line="281" column="27" selection-start-line="281" selection-start-column="27" selection-end-line="281" selection-end-column="27" />
           <folding>
             <element signature="e#560#561#0" expanded="true" />
             <element signature="e#601#602#0" expanded="true" />
@@ -1081,66 +1026,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/ShameEmblem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="78" column="18" selection-start-line="78" selection-start-column="1" selection-end-line="78" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="158" column="13" selection-start-line="158" selection-start-column="13" selection-end-line="158" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Parent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="1153" column="41" selection-start-line="1153" selection-start-column="41" selection-end-line="1153" selection-end-column="41" />
+        <state relative-caret-position="102">
+          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
           <folding>
-            <element signature="e#44827#45690#0" expanded="true" />
-            <element signature="e#45689#45690#0" expanded="true" />
+            <element signature="e#242#243#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Collection.java">
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="261" column="22" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/AssassinationDagger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        <state relative-caret-position="-166">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="578" column="30" lean-forward="true" selection-start-line="578" selection-start-column="30" selection-end-line="578" selection-end-column="30" />
+        <state relative-caret-position="221">
+          <caret line="416" column="12" selection-start-line="416" selection-start-column="12" selection-end-line="416" selection-end-column="12" />
+          <folding>
+            <element signature="e#11819#11820#0" expanded="true" />
+            <element signature="e#11854#11855#0" expanded="true" />
+            <element signature="e#67998#67999#0" expanded="true" />
+            <element signature="e#68036#68037#0" expanded="true" />
+            <element signature="e#68076#68077#0" expanded="true" />
+            <element signature="e#68114#68115#0" expanded="true" />
+            <element signature="e#68153#68154#0" expanded="true" />
+            <element signature="e#68191#68192#0" expanded="true" />
+            <element signature="e#68229#68230#0" expanded="true" />
+            <element signature="e#68267#68268#0" expanded="true" />
+            <element signature="e#68304#68305#0" expanded="true" />
+            <element signature="e#68342#68343#0" expanded="true" />
+            <element signature="e#68378#68379#0" expanded="true" />
+            <element signature="e#68416#68417#0" expanded="true" />
+            <element signature="e#68457#68458#0" expanded="true" />
+            <element signature="e#68495#68496#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="904" column="87" selection-start-line="904" selection-start-column="87" selection-end-line="904" selection-end-column="87" />
-          <folding>
-            <element signature="n#GridPane#0;n#children#0;n#GridPane#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="392" column="26" lean-forward="true" selection-start-line="392" selection-start-column="26" selection-end-line="392" selection-end-column="26" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />

@@ -27,17 +27,17 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
-        <ScrollPane fx:id="heroes" prefHeight="273.0" prefWidth="605.0" GridPane.columnIndex="1"
+        <ScrollPane fx:id="heroes"  prefWidth="605.0" GridPane.columnIndex="1"
                     GridPane.rowIndex="1">
             <content>
                 <AnchorPane>
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox  prefWidth="200.0">
                             <children>
                                 <VBox fx:id="hero1Box" onMouseClicked="#hero1BoxClicked" id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="300.0">
                                     <children>
-                                        <CheckBox fx:id="hero1" onMouseClicked="#hero1CheckBoxClicked"
+                                        <CheckBox fx:id="hero1" onMouseClicked="#hero1CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -61,9 +61,9 @@
                                 </VBox>
                                 <VBox fx:id="hero2Box" layoutX="10.0" onMouseClicked="#hero2BoxClicked" layoutY="10.0"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero2" onMouseClicked="#hero2CheckBoxClicked"
+                                        <CheckBox fx:id="hero2" onMouseClicked="#hero2CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -87,9 +87,9 @@
                                 </VBox>
                                 <VBox fx:id="hero3Box" layoutX="10.0" onMouseClicked="#hero3BoxClicked" layoutY="10.0"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero3" onMouseClicked="#hero3CheckBoxClicked"
+                                        <CheckBox fx:id="hero3" onMouseClicked="#hero3CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -113,9 +113,9 @@
                                 </VBox>
                                 <VBox fx:id="hero4Box" layoutX="10.0" onMouseClicked="#hero4BoxClicked" layoutY="10.0"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero4" onMouseClicked="#hero4CheckBoxClicked"
+                                        <CheckBox fx:id="hero4" onMouseClicked="#hero4CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -139,9 +139,9 @@
                                 </VBox>
                                 <VBox fx:id="hero5Box" layoutX="379.0" layoutY="10.0" onMouseClicked="#hero5BoxClicked"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero5" onMouseClicked="#hero5CheckBoxClicked"
+                                        <CheckBox fx:id="hero5" onMouseClicked="#hero5CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -165,9 +165,9 @@
                                 </VBox>
                                 <VBox fx:id="hero6Box" layoutX="502.0" layoutY="10.0" onMouseClicked="#hero6BoxClicked"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero6" onMouseClicked="#hero6CheckBoxClicked"
+                                        <CheckBox fx:id="hero6" onMouseClicked="#hero6CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -191,9 +191,9 @@
                                 </VBox>
                                 <VBox fx:id="hero7Box" layoutX="625.0" layoutY="10.0" onMouseClicked="#hero7BoxClicked"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero7" onMouseClicked="#hero7CheckBoxClicked"
+                                        <CheckBox fx:id="hero7" onMouseClicked="#hero7CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -217,9 +217,9 @@
                                 </VBox>
                                 <VBox fx:id="hero8Box" layoutX="748.0" layoutY="10.0" onMouseClicked="#hero8BoxClicked"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero8" onMouseClicked="#hero8CheckBoxClicked"
+                                        <CheckBox fx:id="hero8" onMouseClicked="#hero8CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -243,9 +243,9 @@
                                 </VBox>
                                 <VBox fx:id="hero9Box" layoutX="871.0" layoutY="10.0" onMouseClicked="#hero9BoxClicked"
                                       id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero9" onMouseClicked="#hero9CheckBoxClicked"
+                                        <CheckBox fx:id="hero9" onMouseClicked="#hero9CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -269,9 +269,9 @@
                                 </VBox>
                                 <VBox fx:id="hero10Box" layoutX="994.0" layoutY="10.0"
                                       onMouseClicked="#hero10BoxClicked" id="boxNotBoughtStyle"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="hero10" onMouseClicked="#hero10CheckBoxClicked"
+                                        <CheckBox fx:id="hero10" onMouseClicked="#hero10CheckBox"
                                                   mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -382,16 +382,16 @@
                 </Button>
             </children>
         </GridPane>
-        <ScrollPane fx:id="minions" layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0" visible="false"
+        <ScrollPane fx:id="minions" layoutX="46.0" layoutY="74.0"  prefWidth="605.0" visible="false"
                     GridPane.columnIndex="1" GridPane.rowIndex="1">
             <content>
                 <AnchorPane>
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefWidth="200.0">
                             <children>
-                                <VBox fx:id="minion1Box" onMouseClicked="#minion1BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="minion1Box" onMouseClicked="#minion1BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion1" onMouseClicked="#minion1CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion1" onMouseClicked="#minion1CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -413,10 +413,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion2Box" onMouseClicked="#minion2BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion2" onMouseClicked="#minion1CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion2" onMouseClicked="#minion2CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -438,10 +438,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion3Box" onMouseClicked="#minion3BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion3" onMouseClicked="#minion3CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion3" onMouseClicked="#minion3CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -462,10 +462,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion4Box" onMouseClicked="#minion4BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion4Box" onMouseClicked="#minion4BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion4" onMouseClicked="#minion4CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion4" onMouseClicked="#minion4CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -486,10 +486,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion5Box" onMouseClicked="#minion5BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion5Box" onMouseClicked="#minion5BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion5" onMouseClicked="#minion5CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion5" onMouseClicked="#minion5CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -510,10 +510,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion6Box" onMouseClicked="#minion6BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion6Box" onMouseClicked="#minion6BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion6" onMouseClicked="#minion6CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion6" onMouseClicked="#minion6CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -534,10 +534,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion7Box" onMouseClicked="#minion7BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion7Box" onMouseClicked="#minion7BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion7" onMouseClicked="#minion7CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion7" onMouseClicked="#minion7CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -558,10 +558,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion8Box" onMouseClicked="#minion8BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion8Box" onMouseClicked="#minion8BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion8" onMouseClicked="#minion8CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion8" onMouseClicked="#minion8CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -582,10 +582,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion9Box" onMouseClicked="#minion9BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion9Box" onMouseClicked="#minion9BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion9" onMouseClicked="#minion9CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion9" onMouseClicked="#minion9CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -606,10 +606,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion10Box" onMouseClicked="#minion10BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion10Box" onMouseClicked="#minion10BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion10" onMouseClicked="#minion10CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion10" onMouseClicked="#minion10CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -630,9 +630,9 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion11Box" onMouseClicked="#minion11BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="minion11Box" onMouseClicked="#minion11BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion11" onMouseClicked="#minion11CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion11" onMouseClicked="#minion11CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -654,10 +654,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion12Box" onMouseClicked="#minion12BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion12" onMouseClicked="#minion11CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion12" onMouseClicked="#minion11CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -679,10 +679,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion13Box" onMouseClicked="#minion13BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion13" onMouseClicked="#minion13CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion13" onMouseClicked="#minion13CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -703,10 +703,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion14Box" onMouseClicked="#minion14BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion14Box" onMouseClicked="#minion14BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion14" onMouseClicked="#minion14CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion14" onMouseClicked="#minion14CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -727,10 +727,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion15Box" onMouseClicked="#minion15BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion15Box" onMouseClicked="#minion15BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion15" onMouseClicked="#minion15CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion15" onMouseClicked="#minion15CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -751,10 +751,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion16Box" onMouseClicked="#minion16BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion16Box" onMouseClicked="#minion16BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion16" onMouseClicked="#minion16CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion16" onMouseClicked="#minion16CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -775,10 +775,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion17Box" onMouseClicked="#minion17BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion17Box" onMouseClicked="#minion17BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion17" onMouseClicked="#minion17CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion17" onMouseClicked="#minion17CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -799,10 +799,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion18Box" onMouseClicked="#minion18BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion18Box" onMouseClicked="#minion18BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion18" onMouseClicked="#minion18CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion18" onMouseClicked="#minion18CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -823,10 +823,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion19Box" onMouseClicked="#minion19BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion19Box" onMouseClicked="#minion19BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion19" onMouseClicked="#minion19CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion19" onMouseClicked="#minion19CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -847,10 +847,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion20Box" onMouseClicked="#minion20BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion20Box" onMouseClicked="#minion20BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion20" onMouseClicked="#minion20CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion20" onMouseClicked="#minion20CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -871,9 +871,9 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion21Box" onMouseClicked="#minion21BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="minion21Box" onMouseClicked="#minion21BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion21" onMouseClicked="#minion21CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion21" onMouseClicked="#minion21CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -895,10 +895,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion22Box" onMouseClicked="#minion22BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion22" onMouseClicked="#minion21CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion22" onMouseClicked="#minion21CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -920,10 +920,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion23Box" onMouseClicked="#minion23BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion23" onMouseClicked="#minion23CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion23" onMouseClicked="#minion23CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -944,10 +944,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion24Box" onMouseClicked="#minion24BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion24Box" onMouseClicked="#minion24BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion24" onMouseClicked="#minion24CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion24" onMouseClicked="#minion24CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -968,10 +968,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion25Box" onMouseClicked="#minion25BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion25Box" onMouseClicked="#minion25BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion25" onMouseClicked="#minion25CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion25" onMouseClicked="#minion25CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -992,10 +992,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion26Box" onMouseClicked="#minion26BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion26Box" onMouseClicked="#minion26BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion26" onMouseClicked="#minion26CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion26" onMouseClicked="#minion26CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1016,10 +1016,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion27Box" onMouseClicked="#minion27BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion27Box" onMouseClicked="#minion27BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion27" onMouseClicked="#minion27CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion27" onMouseClicked="#minion27CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1040,10 +1040,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion28Box" onMouseClicked="#minion28BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion28Box" onMouseClicked="#minion28BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion28" onMouseClicked="#minion28CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion28" onMouseClicked="#minion28CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1064,10 +1064,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion29Box" onMouseClicked="#minion29BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion29Box" onMouseClicked="#minion29BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion29" onMouseClicked="#minion29CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion29" onMouseClicked="#minion29CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1088,10 +1088,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion30Box" onMouseClicked="#minion30BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion30Box" onMouseClicked="#minion30BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion30" onMouseClicked="#minion30CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion30" onMouseClicked="#minion30CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1112,9 +1112,9 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion31Box" onMouseClicked="#minion31BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="minion31Box" onMouseClicked="#minion31BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion31" onMouseClicked="#minion31CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion31" onMouseClicked="#minion31CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1136,10 +1136,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion32Box" onMouseClicked="#minion32BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion32" onMouseClicked="#minion31CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion32" onMouseClicked="#minion31CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1161,10 +1161,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="minion33Box" onMouseClicked="#minion33BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion33" onMouseClicked="#minion33CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion33" onMouseClicked="#minion33CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1185,10 +1185,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion34Box" onMouseClicked="#minion34BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion34Box" onMouseClicked="#minion34BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion34" onMouseClicked="#minion34CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion34" onMouseClicked="#minion34CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1209,10 +1209,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion35Box" onMouseClicked="#minion35BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion35Box" onMouseClicked="#minion35BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion35" onMouseClicked="#minion35CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion35" onMouseClicked="#minion35CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1233,10 +1233,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion36Box" onMouseClicked="#minion36BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion36Box" onMouseClicked="#minion36BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion36" onMouseClicked="#minion36CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion36" onMouseClicked="#minion36CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1257,10 +1257,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion37Box" onMouseClicked="#minion37BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion37Box" onMouseClicked="#minion37BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion37" onMouseClicked="#minion37CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion37" onMouseClicked="#minion37CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1281,10 +1281,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion38Box" onMouseClicked="#minion38BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion38Box" onMouseClicked="#minion38BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion38" onMouseClicked="#minion38CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion38" onMouseClicked="#minion38CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1305,10 +1305,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion39Box" onMouseClicked="#minion39BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion39Box" onMouseClicked="#minion39BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion39" onMouseClicked="#minion39CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion39" onMouseClicked="#minion39CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1329,10 +1329,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="minion40Box" onMouseClicked="#minion40BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="minion40Box" onMouseClicked="#minion40BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="minion40" onMouseClicked="#minion40CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="minion40" onMouseClicked="#minion40CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1359,18 +1359,18 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <ScrollPane fx:id="spells" layoutX="46.0" layoutY="74.0" focusTraversable="false" prefHeight="273.0"
+        <ScrollPane fx:id="spells" layoutX="46.0" layoutY="74.0" focusTraversable="false"
                     prefWidth="605.0"
                     visible="false"
                     GridPane.columnIndex="1" GridPane.rowIndex="1">
             <content>
                 <AnchorPane>
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox  prefWidth="200.0">
                             <children>
-                                <VBox fx:id="spell1Box" onMouseClicked="#spell1BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="spell1Box" onMouseClicked="#spell1BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell1" onMouseClicked="#spell1CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell1" onMouseClicked="#spell1CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1392,10 +1392,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="spell2Box" onMouseClicked="#spell2BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell2" onMouseClicked="#spell1CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell2" onMouseClicked="#spell1CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1417,10 +1417,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="spell3Box" onMouseClicked="#spell3BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell3" onMouseClicked="#spell3CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell3" onMouseClicked="#spell3CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1441,10 +1441,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell4Box" onMouseClicked="#spell4BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell4Box" onMouseClicked="#spell4BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell4" onMouseClicked="#spell4CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell4" onMouseClicked="#spell4CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1465,10 +1465,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell5Box" onMouseClicked="#spell5BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell5Box" onMouseClicked="#spell5BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell5" onMouseClicked="#spell5CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell5" onMouseClicked="#spell5CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1489,10 +1489,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell6Box" onMouseClicked="#spell6BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell6Box" onMouseClicked="#spell6BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell6" onMouseClicked="#spell6CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell6" onMouseClicked="#spell6CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1513,10 +1513,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell7Box" onMouseClicked="#spell7BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell7Box" onMouseClicked="#spell7BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell7" onMouseClicked="#spell7CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell7" onMouseClicked="#spell7CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1537,10 +1537,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell8Box" onMouseClicked="#spell8BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell8Box" onMouseClicked="#spell8BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell8" onMouseClicked="#spell8CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell8" onMouseClicked="#spell8CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1561,10 +1561,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell9Box" onMouseClicked="#spell9BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell9Box" onMouseClicked="#spell9BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell9" onMouseClicked="#spell9CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell9" onMouseClicked="#spell9CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1585,10 +1585,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell10Box" onMouseClicked="#spell10BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell10Box" onMouseClicked="#spell10BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell10" onMouseClicked="#spell10CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell10" onMouseClicked="#spell10CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1609,9 +1609,9 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell11Box" onMouseClicked="#spell11BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0" prefWidth="100.0">
+                                <VBox fx:id="spell11Box" onMouseClicked="#spell11BoxClicked" id="boxNotBoughtStyle"  prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell11" onMouseClicked="#spell11CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell11" onMouseClicked="#spell11CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1633,10 +1633,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="spell12Box" onMouseClicked="#spell12BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell12" onMouseClicked="#spell11CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell12" onMouseClicked="#spell11CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1658,10 +1658,10 @@
                                     </children>
                                 </VBox>
                                 <VBox fx:id="spell13Box" onMouseClicked="#spell13BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle"
-                                      prefHeight="200.0"
+                                      
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell13" onMouseClicked="#spell13CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell13" onMouseClicked="#spell13CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1682,10 +1682,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell14Box" onMouseClicked="#spell14BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell14Box" onMouseClicked="#spell14BoxClicked" layoutX="10.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell14" onMouseClicked="#spell14CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell14" onMouseClicked="#spell14CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1706,10 +1706,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell15Box" onMouseClicked="#spell15BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell15Box" onMouseClicked="#spell15BoxClicked" layoutX="379.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell15" onMouseClicked="#spell15CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell15" onMouseClicked="#spell15CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1730,10 +1730,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell16Box" onMouseClicked="#spell16BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell16Box" onMouseClicked="#spell16BoxClicked" layoutX="502.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell16" onMouseClicked="#spell16CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell16" onMouseClicked="#spell16CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1754,10 +1754,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell17Box" onMouseClicked="#spell17BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell17Box" onMouseClicked="#spell17BoxClicked" layoutX="625.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell17" onMouseClicked="#spell17CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell17" onMouseClicked="#spell17CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1778,10 +1778,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell18Box" onMouseClicked="#spell18BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell18Box" onMouseClicked="#spell18BoxClicked" layoutX="748.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell18" onMouseClicked="#spell18CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell18" onMouseClicked="#spell18CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1802,10 +1802,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell19Box" onMouseClicked="#spell19BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell19Box" onMouseClicked="#spell19BoxClicked" layoutX="871.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell19" onMouseClicked="#spell19CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell19" onMouseClicked="#spell19CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1826,10 +1826,10 @@
                                         </Label>
                                     </children>
                                 </VBox>
-                                <VBox fx:id="spell20Box" onMouseClicked="#spell20BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" prefHeight="200.0"
+                                <VBox fx:id="spell20Box" onMouseClicked="#spell20BoxClicked" layoutX="994.0" layoutY="10.0" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
-                                        <CheckBox fx:id="spell20" onMouseClicked="#spell20CheckBoxClicked" mnemonicParsing="false" textAlignment="CENTER">
+                                        <CheckBox fx:id="spell20" onMouseClicked="#spell20CheckBox" mnemonicParsing="false" textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
                                             </padding>
@@ -1856,19 +1856,19 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <ScrollPane fx:id="items" layoutX="46.0" layoutY="74.0" prefHeight="273.0" prefWidth="605.0"
+        <ScrollPane fx:id="items" layoutX="46.0" layoutY="74.0" prefWidth="605.0"
                     GridPane.columnIndex="1" visible="false"
                     GridPane.rowIndex="1">
             <content>
                 <AnchorPane>
                     <children>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <HBox prefWidth="200.0">
                             <children>
                                 <VBox id="boxNotBoughtStyle" fx:id="item1Box" onMouseClicked="#item1BoxClicked"
-                                      prefHeight="200.0" prefWidth="100.0">
+                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item1" mnemonicParsing="false"
-                                                  onMouseClicked="#item1CheckBoxClicked"
+                                                  onMouseClicked="#item1CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1891,11 +1891,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="10.0" layoutY="10.0" fx:id="item2Box" onMouseClicked="#item2BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item2" mnemonicParsing="false"
-                                                  onMouseClicked="#item2CheckBoxClicked"
+                                                  onMouseClicked="#item2CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1918,11 +1918,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="10.0" layoutY="10.0" fx:id="item3Box" onMouseClicked="#item3BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item3" mnemonicParsing="false"
-                                                  onMouseClicked="#item3CheckBoxClicked"
+                                                  onMouseClicked="#item3CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1945,11 +1945,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="10.0" layoutY="10.0" fx:id="item4Box" onMouseClicked="#item4BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item4" mnemonicParsing="false"
-                                                  onMouseClicked="#item4CheckBoxClicked"
+                                                  onMouseClicked="#item4CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1972,11 +1972,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="379.0" layoutY="10.0" fx:id="item5Box" onMouseClicked="#item5BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item5" mnemonicParsing="false"
-                                                  onMouseClicked="#item5CheckBoxClicked"
+                                                  onMouseClicked="#item5CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1999,11 +1999,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="502.0" layoutY="10.0" fx:id="item6Box" onMouseClicked="#item6BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item6" mnemonicParsing="false"
-                                                  onMouseClicked="#item6CheckBoxClicked"
+                                                  onMouseClicked="#item6CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -2026,11 +2026,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="625.0" layoutY="10.0" fx:id="item7Box" onMouseClicked="#item7BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item7" mnemonicParsing="false"
-                                                  onMouseClicked="#item7CheckBoxClicked"
+                                                  onMouseClicked="#item7CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -2053,11 +2053,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="748.0" layoutY="10.0" fx:id="item8Box" onMouseClicked="#item8BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item8" mnemonicParsing="false"
-                                                  onMouseClicked="#item8CheckBoxClicked"
+                                                  onMouseClicked="#item8CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -2080,11 +2080,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="871.0" layoutY="10.0" fx:id="item9Box" onMouseClicked="#item9BoxClicked"
-                                      id="boxNotBoughtStyle" prefHeight="200.0"
+                                      id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item9" mnemonicParsing="false"
-                                                  onMouseClicked="#item9CheckBoxClicked"
+                                                  onMouseClicked="#item9CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -2107,11 +2107,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="994.0" layoutY="10.0" fx:id="item10Box"
-                                      onMouseClicked="#item10BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0"
+                                      onMouseClicked="#item10BoxClicked" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item10" mnemonicParsing="false"
-                                                  onMouseClicked="#item10CheckBoxClicked"
+                                                  onMouseClicked="#item10CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
@@ -2134,11 +2134,11 @@
                                     </children>
                                 </VBox>
                                 <VBox layoutX="994.0" layoutY="10.0" fx:id="item11Box"
-                                      onMouseClicked="#item11BoxClicked" id="boxNotBoughtStyle" prefHeight="200.0"
+                                      onMouseClicked="#item11BoxClicked" id="boxNotBoughtStyle" 
                                       prefWidth="100.0">
                                     <children>
                                         <CheckBox fx:id="item11" mnemonicParsing="false"
-                                                  onMouseClicked="#item11CheckBoxClicked"
+                                                  onMouseClicked="#item11CheckBox"
                                                   textAlignment="CENTER">
                                             <padding>
                                                 <Insets left="30.0" right="30.0" bottom="40"/>
