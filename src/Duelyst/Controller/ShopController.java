@@ -2404,19 +2404,15 @@ public class ShopController {
         }
     }
 
-
     public void handleOnKeyPressedSell(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             sellBtnAct();
         }
     }
 
-
     public void handleOnKeyPressedBuy(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             buyBtnAct();
         }
     }
-
-
 }
