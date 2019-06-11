@@ -547,7 +547,79 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
-        // Account.getLoginAccount().getCollection().hasThisCard()
+        ArrayList<String> notEnoughMoney = new ArrayList<>();
+        ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
+        Shop shop = new Shop();
+        for (VBox vBox : heroBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
+                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
+                        Account.getLoginAccount().getCollection().addToCollection(string);
+                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+            }
+        }
+        for (VBox vBox : minionBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
+                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
+                        Account.getLoginAccount().getCollection().addToCollection(string);
+                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+            }
+        }
+        for (VBox vBox : spellBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
+                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
+                        Account.getLoginAccount().getCollection().addToCollection(string);
+                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+            }
+        }
+        for (VBox vBox : itemBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
+                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
+                        Account.getLoginAccount().getCollection().addToCollection(string);
+                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+            }
+        }
+        if (notEnoughMoney.size() != 0 && alreadyHaveThisCard.size() != 0) {
+            String string = "";
+            if (notEnoughMoney.size() != 0) {
+                string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
+                for (int i = 0; i < notEnoughMoney.size(); i++) {
+                    if (i == notEnoughMoney.size() - 1)
+                        string += notEnoughMoney.get(i);
+                    else string += (notEnoughMoney.get(i) + " , ");
+                }
+            }
+            if (alreadyHaveThisCard.size() != 0) {
+                if (string.equals(""))
+                    string = "YOU ALREADY HAVE THIS CARDS IN YOUR COLLECTION :\n";
+                else {
+                    string += "\nYOU ALREADY HAVE THESE CARDS :\n";
+                    for (int i = 0; i < alreadyHaveThisCard.size(); i++) {
+                        if (i == alreadyHaveThisCard.size() - 1)
+                            string += alreadyHaveThisCard.get(i);
+                        else
+                            string += alreadyHaveThisCard.get(i) + " , ";
+                    }
+                }
+            }
+            Alert alert = new Alert(Alert.AlertType.WARNING, string);
+            alert.showAndWait();
+        }
     }
 
     public void hero1BoxClicked() {
