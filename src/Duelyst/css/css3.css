@@ -42,25 +42,32 @@
 }
 
 #button1:focused {
-    -fx-graphic: url("startGameBlack.png");
+    -fx-graphic: url("heroBlack.png");
 }
 
 #button2:focused {
-    -fx-graphic: url("recordBlack.png");
+    -fx-graphic: url("minionBlack.png");
 }
 
 #button3:focused {
-    -fx-graphic: url("shopBlack.png");
+    -fx-graphic: url("spellBlack.png");
 }
 
 #button4:focused {
-    -fx-graphic: url("collectionBlack.png");
+    -fx-graphic: url("itemBlack.png");
 }
 
 #button5:focused {
-    -fx-graphic: url("logoutBlack.png");
+    -fx-graphic: url("buyBlack.png");
 }
 
+#button6:focused {
+    -fx-graphic: url("sellBlack.png");
+}
+
+#button7:focused {
+    -fx-graphic: url("mainMenuBlack.png");
+}
 
 .button:pressed {
     -fx-background-color: rgba(13, 254, 221, 0.8);
@@ -87,6 +94,7 @@
     -fx-background-radius: 15 15 15 15;
 
 }
+
 #boxBoughtStyle {
 
     -fx-border-width: 2, 1;
@@ -98,6 +106,7 @@
     -fx-background-radius: 15 15 15 15;
 
 }
+
 #boxPendingBoughtStyle {
 
     -fx-border-width: 2, 1;
@@ -109,6 +118,7 @@
     -fx-background-radius: 15 15 15 15;
 
 }
+
 .scroll-bar:horizontal .track,
 .scroll-bar:vertical .track {
     -fx-background-color: transparent;

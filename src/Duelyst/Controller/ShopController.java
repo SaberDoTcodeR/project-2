@@ -6,6 +6,7 @@ import Duelyst.model.Buff.ManaItemBuff;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
+import Duelyst.model.Item.Item;
 import Duelyst.model.Item.UsableItem.UsableItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,6 +16,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
 
 public class ShopController {
     public boolean[] heroesBought = new boolean[10];
@@ -473,7 +476,10 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
-
+        ArrayList<Hero> heroes = new ArrayList<>();
+        ArrayList<Minion> minions = new ArrayList<>();
+        ArrayList<Spell> spells = new ArrayList<>();
+        ArrayList<Item> items = new ArrayList<>();
     }
 
     public void hero1BoxClicked() {

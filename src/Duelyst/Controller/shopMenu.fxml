@@ -310,37 +310,65 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button fx:id="button1" mnemonicParsing="false" onMouseClicked="#showHeroes"
+                <Button fx:id="button1" id="button1" mnemonicParsing="false" onMouseClicked="#showHeroes"
                         onMouseEntered="#heroesBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="50.0" prefWidth="300.0"
                         text="HEROES">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/heroWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <Button fx:id="button2" mnemonicParsing="false" onMouseEntered="#minionsBtnActFocus"
+                <Button fx:id="button2" id="button2" mnemonicParsing="false" onMouseEntered="#minionsBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedMinions" onMouseClicked="#showMinions" prefHeight="50.0"
                         prefWidth="300.0"
                         text="MINIONS" GridPane.columnIndex="1">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/minionWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <Button fx:id="button3" mnemonicParsing="false" onMouseEntered="#spellsBtnActFocus"
+                <Button fx:id="button3" id="button3" mnemonicParsing="false" onMouseEntered="#spellsBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedSpells" onMouseClicked="#showSpells" prefHeight="50.0"
                         prefWidth="300.0"
                         text="SPELLS" GridPane.columnIndex="2">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/spellWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <Button fx:id="button4" mnemonicParsing="false" onMouseEntered="#itemsBtnActFocus"
+                <Button fx:id="button4" id="button4" mnemonicParsing="false" onMouseEntered="#itemsBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedItems" onMouseClicked="#showItems" prefHeight="50.0"
                         prefWidth="300.0"
                         text="ITEMS" GridPane.columnIndex="3">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/itemWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
             </children>
         </GridPane>
@@ -356,29 +384,50 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button fx:id="button5" mnemonicParsing="false" onMouseEntered="#buyBtnActFocus"
+                <Button fx:id="button5" id="button5" mnemonicParsing="false" onMouseEntered="#buyBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedBuy" onMouseClicked="#showMinions" prefHeight="50.0"
                         prefWidth="400.0"
                         text="BUY" GridPane.columnIndex="1">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/buyWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <Button fx:id="button6" mnemonicParsing="false" onMouseEntered="#sellBtnActFocus"
+                <Button fx:id="button6" id="button6" mnemonicParsing="false" onMouseEntered="#sellBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedSell" onMouseClicked="#showSpells" prefHeight="50.0"
                         prefWidth="400.0"
                         text="SELL" GridPane.columnIndex="2">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="Duelyst/css/sellWhite.png"/>
+                            </image>
+                        </ImageView>
+                    </graphic>
                 </Button>
-                <Button fx:id="button7" mnemonicParsing="false" onMouseEntered="#mainMenuBtnActFocus"
+                <Button fx:id="button7" id="button7" mnemonicParsing="false" onMouseEntered="#mainMenuBtnActFocus"
                         onKeyPressed="#handleOnKeyPressedMainMenu" onMouseClicked="#mainMenuAct" prefHeight="50.0"
                         prefWidth="400.0"
                         text="MAIN MENU" GridPane.columnIndex="3">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0"/>
                     </GridPane.margin>
+                    <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="Duelyst/css/mainMenuWhite.png"/>
+                        </image>
+                    </ImageView>
+                    </graphic>
                 </Button>
             </children>
         </GridPane>
