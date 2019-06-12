@@ -17,69 +17,60 @@ import static Duelyst.Main.primaryStage;
 
 public class View {
     public static void makeLoginScene() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                GridPane root = null;
-                try {
-                    root = FXMLLoader.load(LoginController.class.getResource("loginMenu.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Scene loginScene = new Scene(root);
-                loginScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
-                loginScene.getStylesheets().add(Main.class.getResource("css/css.css").toExternalForm());
-                primaryStage.setScene(loginScene);
-                primaryStage.setFullScreen(true);
-                primaryStage.setResizable(false);
-
+        Platform.runLater(() -> {
+            GridPane root = null;
+            try {
+                root = FXMLLoader.load(LoginController.class.getResource("loginMenu.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Scene loginScene = new Scene(root);
+            loginScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+            loginScene.getStylesheets().add(Main.class.getResource("css/css.css").toExternalForm());
+            primaryStage.setScene(loginScene);
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(false);
+
         });
 
     }
 
     public static void makeMainMenu() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                GridPane root = null;
-                try {
-                    root = FXMLLoader.load(MainMenuController.class.getResource("mainMenu.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Scene mainMenuScene = new Scene(root);
-
-                mainMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
-                mainMenuScene.getStylesheets().add(Main.class.getResource("css/css2.css").toExternalForm());
-                primaryStage.setScene(mainMenuScene);
-                primaryStage.setFullScreen(true);
-                primaryStage.setResizable(false);
-
+        Platform.runLater(() -> {
+            GridPane root = null;
+            try {
+                root = FXMLLoader.load(MainMenuController.class.getResource("mainMenu.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Scene mainMenuScene = new Scene(root);
+
+            mainMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+            mainMenuScene.getStylesheets().add(Main.class.getResource("css/css2.css").toExternalForm());
+            primaryStage.setScene(mainMenuScene);
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(false);
+
         });
 
     }
 
     public static void makeShopMenu() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                StackPane root = null;
-                try {
-                    root = FXMLLoader.load(MainMenuController.class.getResource("shopMenu.fxml"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                Scene mainMenuScene = new Scene(root);
-
-                mainMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
-                mainMenuScene.getStylesheets().add(Main.class.getResource("css/css3.css").toExternalForm());
-                primaryStage.setScene(mainMenuScene);
-                primaryStage.setFullScreen(true);
-                primaryStage.setResizable(false);
-
+        Platform.runLater(() -> {
+            StackPane root = null;
+            try {
+                root = FXMLLoader.load(MainMenuController.class.getResource("shopMenu.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            Scene mainMenuScene = new Scene(root);
+
+            mainMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+            mainMenuScene.getStylesheets().add(Main.class.getResource("css/css3.css").toExternalForm());
+            primaryStage.setScene(mainMenuScene);
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(false);
+
         });
 
     }

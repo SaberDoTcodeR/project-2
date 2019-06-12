@@ -32,8 +32,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <children>
-            <Button  GridPane.halignment="CENTER" GridPane.valignment="CENTER" id="button1" mnemonicParsing="false" onMouseClicked="#showHeroes"
-                     onMouseEntered="#heroesBtnActFocus" GridPane.columnIndex="1" GridPane.rowIndex="2"
+            <Button fx:id="addButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER" id="button-add" mnemonicParsing="false" onMouseClicked="#showHeroes"
+                     onMouseEntered="#addBtnActFocus" GridPane.columnIndex="1" GridPane.rowIndex="2"
                      onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="90.0" prefWidth="90.0">
                 <GridPane.margin>
                     <Insets left="10.0" right="10.0"/>
@@ -41,7 +41,7 @@
                 <graphic>
                     <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                            <Image url="Duelyst/css/heroWhite.png"/>
+                            <Image url="Duelyst/css/addWhite.png"/>
                         </image>
                     </ImageView>
                 </graphic>
@@ -409,7 +409,21 @@
                 </rowConstraints>
                 <children>
                     <ComboBox prefHeight="50.0" prefWidth="300.0" GridPane.columnIndex="1"/>
-                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="300.0" text="Button"/>
+                    <Button fx:id="setMainButton" mnemonicParsing="false" onMouseEntered="#setMainBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedItems" onMouseClicked="#showItems" prefHeight="50.0"
+                            prefWidth="300.0"
+                            GridPane.columnIndex="3" text="MAIN DECK" style="-fx-font-size: 30px">
+                        <GridPane.margin>
+                            <Insets left="10.0" right="10.0"/>
+                        </GridPane.margin>
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="Duelyst/css/star.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
                 </children>
             </GridPane>
             <GridPane GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -422,8 +436,8 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 </rowConstraints>
                 <children>
-                    <Button  id="button1" mnemonicParsing="false" onMouseClicked="#showHeroes"
-                            onMouseEntered="#heroesBtnActFocus"
+                    <Button fx:id="deleteButton" id="delete-button" mnemonicParsing="false" onMouseClicked="#showHeroes"
+                            onMouseEntered="#deleteBtnActFocus"
                             onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="50.0" prefWidth="300.0">
                         <GridPane.margin>
                             <Insets left="10.0" right="10.0"/>
@@ -431,12 +445,12 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/heroWhite.png"/>
+                                    <Image url="Duelyst/css/deleteWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
                     </Button>
-                    <Button  id="button2" mnemonicParsing="false" onMouseEntered="#minionsBtnActFocus"
+                    <Button fx:id="createButton" id="create-button" mnemonicParsing="false" onMouseEntered="#createBtnActFocus"
                             onKeyPressed="#handleOnKeyPressedMinions" onMouseClicked="#showMinions" prefHeight="50.0"
                             prefWidth="300.0"
                             GridPane.columnIndex="1">
@@ -446,12 +460,12 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/minionWhite.png"/>
+                                    <Image url="Duelyst/css/createWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
                     </Button>
-                    <Button  id="button3" mnemonicParsing="false" onMouseEntered="#spellsBtnActFocus"
+                    <Button fx:id="crossButton" id="cross-button" mnemonicParsing="false" onMouseEntered="#crossBtnActFocus"
                             onKeyPressed="#handleOnKeyPressedSpells" onMouseClicked="#showSpells" prefHeight="50.0"
                             prefWidth="300.0"
                             GridPane.columnIndex="2">
@@ -461,7 +475,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/spellWhite.png"/>
+                                    <Image url="Duelyst/css/crossWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>

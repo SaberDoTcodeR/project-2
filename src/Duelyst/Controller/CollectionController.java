@@ -5,6 +5,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
+import Duelyst.model.Deck;
 import Duelyst.model.Item.UsableItem.UsableItem;
 import Duelyst.model.Shop;
 import com.jfoenix.controls.JFXButton;
@@ -53,11 +54,15 @@ public class CollectionController {
     @FXML
     public Button button4;
     @FXML
-    public Button button5;
+    public Button addButton;
     @FXML
-    public Button button6;
+    public Button createButton;
     @FXML
-    public Button button7;
+    public Button deleteButton;
+    @FXML
+    public Button crossButton;
+    @FXML
+    public Button setMainButton;
 
     public VBox hero1Box;
     public VBox hero2Box;
@@ -2403,9 +2408,20 @@ public class CollectionController {
         button4.requestFocus();
     }
 
-    public void mainMenuBtnActFocus() {
-        button7.requestFocus();
-
+    public void addBtnActFocus() {
+        addButton.requestFocus();
+    }
+    public void createBtnActFocus() {
+        createButton.requestFocus();
+    }
+    public void deleteBtnActFocus() {
+        deleteButton.requestFocus();
+    }
+    public void crossBtnActFocus() {
+        crossButton.requestFocus();
+    }
+    public void setMainBtnActFocus() {
+        setMainButton.requestFocus();
     }
 
     public void handleOnKeyPressedHeroes(KeyEvent keyEvent) {
@@ -2438,5 +2454,53 @@ public class CollectionController {
         }
     }
 
+    public void plusBtnAct() {
+        for (VBox vBox : heroBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                //functionOfAdding
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                return;
+            }
+        }
+        for (VBox vBox : minionBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2 - 1 + 1))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                //functionOfAdding
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                return;
+            }
+        }
+        for (VBox vBox : spellBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2 + 1 - 1))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                //functionOfAdding
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                return;
+            }
+        }
+        for (VBox vBox : itemBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String string = ((Label) (vBox.getChildren().get(2 + 3 - 3))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                //functionOfAdding
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                return;
+            }
+        }
+    }
 
+    //NAME OF vBox = deckBox            we must have a deck field witch named deck:)
+    /*public void deleteBtnAct() {
+        for (HBox hBox : deckBox.getChildren()) {
+            if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
+                Account.getLoginAccount().getCollection().removeFromDeck(cardName, deck.getName());
+                deckBox.getChildren().remove(hBox);
+            }
+        }
+    }
+
+    public void setMainDeckOfUser() {
+        Account.getLoginAccount().setMainDeck(deck);
+    }*/
 }

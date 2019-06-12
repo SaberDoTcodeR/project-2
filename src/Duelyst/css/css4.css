@@ -57,17 +57,22 @@
     -fx-graphic: url("itemBlack.png");
 }
 
-#button5:focused {
-    -fx-graphic: url("buyBlack.png");
+#button-add:focused {
+    -fx-graphic: url("addBlack.png");
 }
 
-#button6:focused {
-    -fx-graphic: url("sellBlack.png");
+#create-button:focused {
+    -fx-graphic: url("createBlack.png");
 }
 
-#button7:focused {
-    -fx-graphic: url("mainMenuBlack.png");
+#delete-button:focused {
+    -fx-graphic: url("deleteBlack.png");
 }
+
+#cross-button:focused {
+    -fx-graphic: url("crossBlack.png");
+}
+
 
 .button:pressed {
     -fx-background-color: rgba(187, 64, 27, 0.8);
@@ -99,6 +104,7 @@
     -fx-background-insets: 2 2 2 2;
     -fx-background-radius: 15 15 15 15;
 }
+
 .dialog-button:hover {
     -fx-background-color: rgba(187, 64, 27, 0.8);
     -fx-text-fill: black;
@@ -107,6 +113,7 @@
     -fx-border-insets: 2 2 2 2;
     -fx-border-radius: 15 15 15 15;
 }
+
 #boxNotBoughtStyle {
 
     -fx-border-width: 2, 1;
