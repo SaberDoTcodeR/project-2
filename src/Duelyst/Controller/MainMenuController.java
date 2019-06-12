@@ -56,7 +56,7 @@ public class MainMenuController {
     }
 
     public void collectionAct() {
-
+        View.makeCollectionMenu();
     }
 
     public void recordedMatchAct() {

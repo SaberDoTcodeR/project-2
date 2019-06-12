@@ -83,4 +83,24 @@ public class View {
         });
 
     }
+
+    public static void makeCollectionMenu() {
+
+                StackPane root = null;
+                try {
+                    root = FXMLLoader.load(MainMenuController.class.getResource("collectionMenu.fxml"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene collectionScene = new Scene(root);
+
+                collectionScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+                collectionScene.getStylesheets().add(Main.class.getResource("css/css3.css").toExternalForm());
+                primaryStage.setScene(collectionScene);
+                primaryStage.setFullScreen(true);
+                primaryStage.setResizable(false);
+
+
+
+    }
 }

@@ -14,16 +14,16 @@ import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
-public class ShopController {
+public class CollectionController {
     public boolean[] heroesBought = new boolean[10];
     public boolean[] itemsBought = new boolean[12];
     public boolean[] minionsBought = new boolean[40];
@@ -33,6 +33,10 @@ public class ShopController {
     public ScrollPane minions;
     public ScrollPane spells;
     public ScrollPane items;
+    public HBox heroHBox;
+    public HBox minionHBox;
+    public HBox spellHBox;
+    public HBox itemHBox;
 
     @FXML
     StackPane stackPane = new StackPane();
@@ -399,10 +403,14 @@ public class ShopController {
         minionBoxes[38] = minion39Box;
         minionBoxes[39] = minion40Box;
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0, x = 0; i < 10; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (heroBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
                 heroesBought[i] = true;
+
+            } else {
+                heroHBox.getChildren().remove(x);
+                x--;
             }
             String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
 
@@ -410,10 +418,13 @@ public class ShopController {
                     ((Label) (heroBoxes[i].getChildren().get(2))).getText() + "\n" + heroInfo);
             ((Label) (heroBoxes[i].getChildren().get(2))).setWrapText(true);
         }
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0, x = 0; i < 11; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (itemBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
                 itemsBought[i] = true;
+            } else {
+                itemHBox.getChildren().remove(x);
+                x--;
             }
             String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
 
@@ -421,10 +432,13 @@ public class ShopController {
                     ((Label) (itemBoxes[i].getChildren().get(2))).getText() + "\n" + itemInfo);
             ((Label) (itemBoxes[i].getChildren().get(2))).setWrapText(true);
         }
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0, x = 0; i < 40; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (minionBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
                 minionsBought[i] = true;
+            } else {
+                minionHBox.getChildren().remove(x);
+                x--;
             }
             String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
 
@@ -432,10 +446,13 @@ public class ShopController {
                     ((Label) (minionBoxes[i].getChildren().get(2))).getText() + "\n" + minionInfo);
             ((Label) (minionBoxes[i].getChildren().get(2))).setWrapText(true);
         }
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0, x = 0; i < 20; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (spellBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
                 spellsBought[i] = true;
+            } else {
+                spellHBox.getChildren().remove(x);
+                x--;
             }
             String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
 
@@ -480,227 +497,6 @@ public class ShopController {
 
     public void mainMenuAct() {
         View.makeMainMenu();
-    }
-
-    public void sellBtnAct() {
-        Shop shop = new Shop();
-        ArrayList<String> notOwnedCard = new ArrayList<>();
-        int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    heroesBought[count] = false;
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    minionsBought[count] = false;
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    spellsBought[count] = false;
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    itemsBought[count] = false;
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        if (notOwnedCard.size() != 0) {
-            String errorText;
-            if (notOwnedCard.size() != 1) {
-                errorText = "you don't have these cards : \n";
-            } else {
-                errorText = "you don't have this card : \n";
-            }
-            for (int i = 0; i < notOwnedCard.size(); i++) {
-                if (i + 1 != notOwnedCard.size()) {
-                    errorText += notOwnedCard.get(i) + " , ";
-                } else
-                    errorText += notOwnedCard.get(i);
-            }
-
-            showDialog(errorText);
-        }
-        reBorderAll();
-
-    }
-
-
-    private void reBorderAll() {
-        int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (heroesBought[count]) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (minionsBought[count]) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (spellsBought[count]) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (itemsBought[count]) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-    }
-
-    public void buyBtnAct() {
-        ArrayList<String> notEnoughMoney = new ArrayList<>();
-        ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
-        Shop shop = new Shop();
-        int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        heroesBought[count] = true;
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        minionsBought[count] = true;
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        spellsBought[count] = true;
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        itemsBought[count] = true;
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        if (notEnoughMoney.size() != 0 || alreadyHaveThisCard.size() != 0) {
-            String string = "";
-            if (notEnoughMoney.size() != 0) {
-                string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
-                for (int i = 0; i < notEnoughMoney.size(); i++) {
-                    if (i == notEnoughMoney.size() - 1)
-                        string += notEnoughMoney.get(i);
-                    else string += (notEnoughMoney.get(i) + " , ");
-                }
-            }
-            if (alreadyHaveThisCard.size() != 0) {
-                if (string.equals(""))
-                    string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                else {
-                    string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                }
-                for (int i = 0; i < alreadyHaveThisCard.size(); i++) {
-                    if (i == alreadyHaveThisCard.size() - 1)
-                        string += alreadyHaveThisCard.get(i);
-                    else
-                        string += alreadyHaveThisCard.get(i) + " , ";
-                }
-            }
-            showDialog(string);
-        }
-        reBorderAll();
     }
 
     private void showDialog(String string) {
@@ -2606,14 +2402,6 @@ public class ShopController {
         button4.requestFocus();
     }
 
-    public void sellBtnActFocus() {
-        button6.requestFocus();
-    }
-
-    public void buyBtnActFocus() {
-        button5.requestFocus();
-    }
-
     public void mainMenuBtnActFocus() {
         button7.requestFocus();
     }
@@ -2648,15 +2436,4 @@ public class ShopController {
         }
     }
 
-    public void handleOnKeyPressedSell(KeyEvent keyEvent) {
-        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-            sellBtnAct();
-        }
-    }
-
-    public void handleOnKeyPressedBuy(KeyEvent keyEvent) {
-        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-            buyBtnAct();
-        }
-    }
 }
