@@ -56,6 +56,8 @@ public class ShopController {
     public VBox hero9Box;
     public VBox hero10Box;
     public VBox[] heroBoxes = new VBox[10];
+
+
     public VBox spell1Box;
     public VBox spell2Box;
     public VBox spell3Box;
@@ -476,10 +478,7 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
-        ArrayList<Hero> heroes = new ArrayList<>();
-        ArrayList<Minion> minions = new ArrayList<>();
-        ArrayList<Spell> spells = new ArrayList<>();
-        ArrayList<Item> items = new ArrayList<>();
+      // Account.getLoginAccount().getCollection().hasThisCard()
     }
 
     public void hero1BoxClicked() {
