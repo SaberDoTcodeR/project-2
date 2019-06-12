@@ -95,7 +95,7 @@ public class View {
                 Scene collectionScene = new Scene(root);
 
                 collectionScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
-                collectionScene.getStylesheets().add(Main.class.getResource("css/css3.css").toExternalForm());
+                collectionScene.getStylesheets().add(Main.class.getResource("css/css4.css").toExternalForm());
                 primaryStage.setScene(collectionScene);
                 primaryStage.setFullScreen(true);
                 primaryStage.setResizable(false);

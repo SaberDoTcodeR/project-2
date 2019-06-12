@@ -37,6 +37,7 @@ public class CollectionController {
     public HBox minionHBox;
     public HBox spellHBox;
     public HBox itemHBox;
+    public ImageView imageee;
 
     @FXML
     StackPane stackPane = new StackPane();
@@ -460,7 +461,6 @@ public class CollectionController {
                     ((Label) (spellBoxes[i].getChildren().get(2))).getText() + "\n" + spellInfo);
             ((Label) (spellBoxes[i].getChildren().get(2))).setWrapText(true);
         }
-        reBorderAll();
     }
 
     @FXML
@@ -498,6 +498,7 @@ public class CollectionController {
     public void mainMenuAct() {
         View.makeMainMenu();
     }
+
 
     private void showDialog(String string) {
         BoxBlur blur = new BoxBlur(5, 5, 10);
@@ -2404,6 +2405,7 @@ public class CollectionController {
 
     public void mainMenuBtnActFocus() {
         button7.requestFocus();
+
     }
 
     public void handleOnKeyPressedHeroes(KeyEvent keyEvent) {
@@ -2435,5 +2437,6 @@ public class CollectionController {
             mainMenuAct();
         }
     }
+
 
 }
