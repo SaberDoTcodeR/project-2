@@ -77,10 +77,6 @@ public class Account {
         this.money = money;
     }
 
-    public void decrement(int x) {
-        this.money -= x;
-    }
-
     public void incrementMoney(int money) {
         this.money += money;
     }

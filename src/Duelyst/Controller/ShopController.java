@@ -1,5 +1,6 @@
 package Duelyst.Controller;
 
+import Duelyst.Main;
 import Duelyst.View.View;
 import Duelyst.model.Account;
 import Duelyst.model.Buff.ManaItemBuff;
@@ -8,11 +9,9 @@ import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Item.Item;
 import Duelyst.model.Item.UsableItem.UsableItem;
+import Duelyst.model.Shop;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
@@ -474,11 +473,81 @@ public class ShopController {
     }
 
     public void sellBtnAct() {
+        Shop shop = new Shop();
+        ArrayList<String> notOwnedCard = new ArrayList<>();
+        for (VBox vBox : heroBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                        .replaceAll("\\s", "").toLowerCase();
+                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
+                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
+                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                } else {
+                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                }
+            }
+        }
+        for (VBox vBox : minionBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                        .replaceAll("\\s", "").toLowerCase();
+                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
+                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
+                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                } else {
+                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                }
+            }
+        }
+        for (VBox vBox : spellBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                        .replaceAll("\\s", "").toLowerCase();
+                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
+                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
+                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                } else {
+                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                }
+            }
+        }
+        for (VBox vBox : itemBoxes) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                        .replaceAll("\\s", "").toLowerCase();
+                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
+                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
+                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                } else {
+                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                }
+            }
+        }
+        if (notOwnedCard.size() != 0) {
+            String errorText;
+            if (notOwnedCard.size() != 1) {
+                errorText = "you don't have these cards : ";
+            } else {
+                errorText = "you don't have this card : ";
+            }
+            for (int i = 0; i < notOwnedCard.size(); i++) {
+                if (i + 1 != notOwnedCard.size()) {
+                    errorText += notOwnedCard.get(i) + " , ";
+                } else
+                    errorText += notOwnedCard.get(i);
+            }
+
+
+            Alert alert = new Alert(Alert.AlertType.WARNING, errorText, ButtonType.OK);
+            alert.show();
+
+        }
+        initialize();
 
     }
 
     public void buyBtnAct() {
-      // Account.getLoginAccount().getCollection().hasThisCard()
+        // Account.getLoginAccount().getCollection().hasThisCard()
     }
 
     public void hero1BoxClicked() {

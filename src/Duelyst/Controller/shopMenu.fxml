@@ -400,7 +400,7 @@
                     </graphic>
                 </Button>
                 <Button fx:id="button6" id="button6" mnemonicParsing="false" onMouseEntered="#sellBtnActFocus"
-                        onKeyPressed="#handleOnKeyPressedSell" onMouseClicked="#showSpells" prefHeight="50.0"
+                        onKeyPressed="#handleOnKeyPressedSell" onMouseClicked="#sellBtnAct" prefHeight="50.0"
                         prefWidth="400.0"
                         text="SELL" GridPane.columnIndex="2">
                     <GridPane.margin>
