@@ -680,7 +680,7 @@ public class ShopController {
                 } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
             }
         }
-        if (notEnoughMoney.size() != 0 && alreadyHaveThisCard.size() != 0) {
+        if (notEnoughMoney.size() != 0 ||alreadyHaveThisCard.size() != 0) {
             String string = "";
             if (notEnoughMoney.size() != 0) {
                 string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
