@@ -500,8 +500,8 @@ public class ShopController {
                 }
 
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                count++;
             }
+            count++;
         }
         count = 0;
         for (VBox vBox : minionBoxes) {
@@ -517,8 +517,8 @@ public class ShopController {
                 }
 
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                count++;
             }
+            count++;
         }
         count = 0;
         for (VBox vBox : spellBoxes) {
@@ -532,10 +532,9 @@ public class ShopController {
                 } else {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
-
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                count++;
             }
+            count++;
         }
         count = 0;
         for (VBox vBox : itemBoxes) {
@@ -550,8 +549,8 @@ public class ShopController {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                count++;
             }
+            count++;
         }
         if (notOwnedCard.size() != 0) {
             String errorText;
@@ -636,6 +635,7 @@ public class ShopController {
         ArrayList<String> notEnoughMoney = new ArrayList<>();
         ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
         Shop shop = new Shop();
+        int count = 0;
         for (VBox vBox : heroBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
@@ -643,10 +643,14 @@ public class ShopController {
                     if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
                         Account.getLoginAccount().getCollection().addToCollection(string);
                         Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                        heroesBought[count] = true;
                     } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
+            count++;
         }
+        count = 0;
         for (VBox vBox : minionBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
@@ -654,10 +658,14 @@ public class ShopController {
                     if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
                         Account.getLoginAccount().getCollection().addToCollection(string);
                         Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                        minionsBought[count] = true;
                     } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
+            count++;
         }
+        count = 0;
         for (VBox vBox : spellBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
@@ -665,10 +673,14 @@ public class ShopController {
                     if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
                         Account.getLoginAccount().getCollection().addToCollection(string);
                         Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                        spellsBought[count] = true;
                     } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
+            count++;
         }
+        count = 0;
         for (VBox vBox : itemBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
@@ -676,11 +688,14 @@ public class ShopController {
                     if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
                         Account.getLoginAccount().getCollection().addToCollection(string);
                         Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
+                        itemsBought[count] = true;
                     } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
+            count++;
         }
-        if (notEnoughMoney.size() != 0 ||alreadyHaveThisCard.size() != 0) {
+        if (notEnoughMoney.size() != 0 || alreadyHaveThisCard.size() != 0) {
             String string = "";
             if (notEnoughMoney.size() != 0) {
                 string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
@@ -692,20 +707,38 @@ public class ShopController {
             }
             if (alreadyHaveThisCard.size() != 0) {
                 if (string.equals(""))
-                    string = "YOU ALREADY HAVE THIS CARDS IN YOUR COLLECTION :\n";
+                    string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
                 else {
                     string += "\nYOU ALREADY HAVE THESE CARDS :\n";
-                    for (int i = 0; i < alreadyHaveThisCard.size(); i++) {
-                        if (i == alreadyHaveThisCard.size() - 1)
-                            string += alreadyHaveThisCard.get(i);
-                        else
-                            string += alreadyHaveThisCard.get(i) + " , ";
-                    }
+                }
+                for (int i = 0; i < alreadyHaveThisCard.size(); i++) {
+                    if (i == alreadyHaveThisCard.size() - 1)
+                        string += alreadyHaveThisCard.get(i);
+                    else
+                        string += alreadyHaveThisCard.get(i) + " , ";
                 }
             }
-            Alert alert = new Alert(Alert.AlertType.WARNING, string);
-            alert.showAndWait();
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(string);
+            label.setStyle("-fx-font-size: 20px");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
         }
+        reBorderAll();
     }
 
     public void hero1BoxClicked() {
