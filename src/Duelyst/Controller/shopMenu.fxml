@@ -385,7 +385,7 @@
             </rowConstraints>
             <children>
                 <Button fx:id="button5" id="button5" mnemonicParsing="false" onMouseEntered="#buyBtnActFocus"
-                        onKeyPressed="#handleOnKeyPressedBuy" onMouseClicked="#showMinions" prefHeight="50.0"
+                        onKeyPressed="#handleOnKeyPressedBuy" onMouseClicked="#buyBtnAct" prefHeight="50.0"
                         prefWidth="400.0"
                         text="BUY" GridPane.columnIndex="1">
                     <GridPane.margin>

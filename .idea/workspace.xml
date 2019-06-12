@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="shop design completed added">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="sell added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Collection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Collection.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Collection.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -80,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="402" column="90" selection-start-line="402" selection-start-column="90" selection-end-line="402" selection-end-column="90" />
+            <state relative-caret-position="66">
+              <caret line="387" column="88" selection-start-line="387" selection-start-column="88" selection-end-line="387" selection-end-column="88" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -92,15 +91,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
               <caret line="541" column="25" selection-start-line="541" selection-start-column="25" selection-end-line="541" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/DialogPane.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="153" column="13" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -243,8 +233,8 @@
       <find>mini</find>
       <find>buybtn</find>
       <find>addtoco</find>
-      <find>sell</find>
       <find>btnact</find>
+      <find>sell</find>
     </findStrings>
     <replaceStrings>
       <replace>GridPane.columnIndex=&quot;1&quot;</replace>
@@ -325,8 +315,8 @@
         <option value="$PROJECT_DIR$/src/Duelyst/model/Shop.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Collection.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Account.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" />
         <option value="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" />
       </list>
     </option>
   </component>
@@ -399,7 +389,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560371956323" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560372137412" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ThermalEquilibrium" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -531,7 +521,7 @@
       <workItem from="1560192192775" duration="9801000" />
       <workItem from="1560237390373" duration="5835000" />
       <workItem from="1560332683253" duration="599000" />
-      <workItem from="1560366819252" duration="5260000" />
+      <workItem from="1560366819252" duration="5889000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -575,11 +565,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560367583356</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="sell added">
+      <created>1560372112036</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560372112036</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110764000" />
+    <option name="totallyTimeSpent" value="111393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -669,7 +666,8 @@
     <MESSAGE value="old class added" />
     <MESSAGE value="item and hero in shop added" />
     <MESSAGE value="shop design completed added" />
-    <option name="LAST_COMMIT_MESSAGE" value="shop design completed added" />
+    <MESSAGE value="sell added" />
+    <option name="LAST_COMMIT_MESSAGE" value="sell added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1058,20 +1056,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="402" column="90" selection-start-line="402" selection-start-column="90" selection-end-line="402" selection-end-column="90" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/control/DialogPane.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="153" column="13" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="387" column="88" selection-start-line="387" selection-start-column="88" selection-end-line="387" selection-end-column="88" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
