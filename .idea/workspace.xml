@@ -4,14 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="414" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="ERRORS OF BUY HANDLED WITH JFOENIX">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="COLLECTION MENU IS GRAPHICALLY COMPLETED">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/View/View$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/View/View$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/View/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/View/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/css/css4.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/css/css4.css" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -145,8 +139,8 @@
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="416" column="62" lean-forward="true" selection-start-line="416" selection-start-column="62" selection-end-line="416" selection-end-column="62" />
+            <state relative-caret-position="210">
+              <caret line="414" column="9" lean-forward="true" selection-start-line="414" selection-start-column="9" selection-end-line="414" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -425,9 +419,10 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560374500907" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560374610908" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jfoenix-8.0.8.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -629,11 +624,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560383220011</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="COLLECTION MENU IS GRAPHICALLY COMPLETED">
+      <created>1560374683335</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1560374683336</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133465000" />
+    <option name="totallyTimeSpent" value="133790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -725,7 +727,8 @@
     <MESSAGE value="shop design completed added" />
     <MESSAGE value="sell added" />
     <MESSAGE value="dialog error of sell finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="dialog error of sell finished" />
+    <MESSAGE value="COLLECTION MENU IS GRAPHICALLY COMPLETED" />
+    <option name="LAST_COMMIT_MESSAGE" value="COLLECTION MENU IS GRAPHICALLY COMPLETED" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1101,8 +1104,8 @@
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="416" column="62" lean-forward="true" selection-start-line="416" selection-start-column="62" selection-end-line="416" selection-end-column="62" />
+        <state relative-caret-position="210">
+          <caret line="414" column="9" lean-forward="true" selection-start-line="414" selection-start-column="9" selection-end-line="414" selection-end-column="9" />
         </state>
       </provider>
     </entry>
