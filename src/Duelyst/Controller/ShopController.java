@@ -1,20 +1,27 @@
 package Duelyst.Controller;
 
-import Duelyst.Main;
 import Duelyst.View.View;
 import Duelyst.model.Account;
-import Duelyst.model.Buff.ManaItemBuff;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
-import Duelyst.model.Item.Item;
 import Duelyst.model.Item.UsableItem.UsableItem;
 import Duelyst.model.Shop;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -29,6 +36,11 @@ public class ShopController {
     public ScrollPane spells;
     public ScrollPane items;
 
+    @FXML
+    StackPane stackPane = new StackPane();
+
+    @FXML
+    GridPane gridPane = new GridPane();
     @FXML
     public Button button1;
     @FXML
@@ -389,7 +401,6 @@ public class ShopController {
         minionBoxes[38] = minion39Box;
         minionBoxes[39] = minion40Box;
 
-        ((Label) (heroBoxes[0].getChildren().get(2))).setWrapText(true);
         for (int i = 0; i < 10; i++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (heroBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
@@ -475,6 +486,7 @@ public class ShopController {
     public void sellBtnAct() {
         Shop shop = new Shop();
         ArrayList<String> notOwnedCard = new ArrayList<>();
+        int count = 0;
         for (VBox vBox : heroBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
@@ -482,11 +494,16 @@ public class ShopController {
                 if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
                     Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
                     Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                    heroesBought[count] = false;
                 } else {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
+
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                count++;
             }
         }
+        count = 0;
         for (VBox vBox : minionBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
@@ -494,11 +511,16 @@ public class ShopController {
                 if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
                     Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
                     Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                    minionsBought[count] = false;
                 } else {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
+
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                count++;
             }
         }
+        count = 0;
         for (VBox vBox : spellBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
@@ -506,11 +528,16 @@ public class ShopController {
                 if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
                     Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
                     Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                    spellsBought[count] = false;
                 } else {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
+
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                count++;
             }
         }
+        count = 0;
         for (VBox vBox : itemBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
@@ -518,17 +545,20 @@ public class ShopController {
                 if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
                     Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
                     Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
+                    itemsBought[count] = false;
                 } else {
                     notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
                 }
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                count++;
             }
         }
         if (notOwnedCard.size() != 0) {
             String errorText;
             if (notOwnedCard.size() != 1) {
-                errorText = "you don't have these cards : ";
+                errorText = "you don't have these cards : \n";
             } else {
-                errorText = "you don't have this card : ";
+                errorText = "you don't have this card : \n";
             }
             for (int i = 0; i < notOwnedCard.size(); i++) {
                 if (i + 1 != notOwnedCard.size()) {
@@ -538,12 +568,68 @@ public class ShopController {
             }
 
 
-            Alert alert = new Alert(Alert.AlertType.WARNING, errorText, ButtonType.OK);
-            alert.show();
-
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(errorText);
+            label.setStyle("-fx-font-size: 16px");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
         }
-        initialize();
+        reBorderAll();
 
+    }
+
+
+    private void reBorderAll() {
+        int count = 0;
+        for (VBox vBox : heroBoxes) {
+            if (heroesBought[count]) {
+                vBox.setId("boxBoughtStyle");
+            } else {
+                vBox.setId("boxNotBoughtStyle");
+            }
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : minionBoxes) {
+            if (minionsBought[count]) {
+                vBox.setId("boxBoughtStyle");
+            } else {
+                vBox.setId("boxNotBoughtStyle");
+            }
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : spellBoxes) {
+            if (spellsBought[count]) {
+                vBox.setId("boxBoughtStyle");
+            } else {
+                vBox.setId("boxNotBoughtStyle");
+            }
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : itemBoxes) {
+            if (itemsBought[count]) {
+                vBox.setId("boxBoughtStyle");
+            } else {
+                vBox.setId("boxNotBoughtStyle");
+            }
+            count++;
+        }
     }
 
     public void buyBtnAct() {

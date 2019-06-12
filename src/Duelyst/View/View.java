@@ -65,7 +65,7 @@ public class View {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                GridPane root = null;
+                StackPane root = null;
                 try {
                     root = FXMLLoader.load(MainMenuController.class.getResource("shopMenu.fxml"));
                 } catch (IOException e) {
