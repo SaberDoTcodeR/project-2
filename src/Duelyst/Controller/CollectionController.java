@@ -541,24 +541,14 @@ public class CollectionController {
         for (Object node : deckList.getItems()) {
             String label = (String) node;
             if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck().getName())) {
-                if (currentDeck != null && currentDeck.getName().equals(label) && (deckList.getValue() == null
-                        || !deckList.getValue().equals(label))) {
-                    deckList.setValue(label);
-                    deckList.setCellFactory(param -> {
-                        ListCell<String> cell=new ListCell<String>(){
-                            @Override
-                            protected void updateItem(String item, boolean empty) {
-                                setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
-                                System.out.println("asd");
-                            }
-                        };
-                        return cell;
-                    });
+                if (currentDeck != null && currentDeck.getName().equals(label)) {
+
+                    deckList.setValue("*" + label + "*");
+
                     return;
                 }
             } else {
-                if (currentDeck != null && currentDeck.getName().equals(label) && (deckList.getValue() == null
-                        || !deckList.getValue().equals(label))) {
+                if (currentDeck != null && currentDeck.getName().equals(label)) {
                     deckList.setValue(label);
                     return;
                 }
@@ -2485,6 +2475,7 @@ public class CollectionController {
 
     public void addBtnActFocus() {
         addButton.requestFocus();
+
     }
 
     public void createBtnActFocus() {
@@ -2494,6 +2485,9 @@ public class CollectionController {
     public void deleteBtnActFocus() {
         deleteButton.requestFocus();
     }
+
+    public ImageView crossImage;
+    public ImageView addImage;
 
     public void crossBtnActFocus() {
         crossButton.requestFocus();
@@ -2582,7 +2576,8 @@ public class CollectionController {
         Account.getLoginAccount().getCollection().addDeck(deck);
         myDecks = Account.getLoginAccount().getCollection().getDecks();
         deckList.getItems().add(deckName);
-        deckList.setValue(deckName);
+        currentDeck = deck;
+        reChooseComboBox();
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
@@ -2631,11 +2626,28 @@ public class CollectionController {
     }
 
     public void deleteBtnAct() {
+        for (Deck deck : myDecks) {
+            if (deck.getName().equals(deckList.getValue())) {
+                deckList.getItems().remove(deckList.getValue());
+                myDecks.remove(deck);
+                reChooseComboBox();
+                return;
+            }
 
+            if (deckList.getValue().equals("*" + deck.getName() + "*")) {
+                deckList.getItems().remove(deck.getName());
+                Account.getLoginAccount().getCollection().deleteDeck(deck.getName());
+                myDecks = Account.getLoginAccount().getCollection().getDecks();
+                Account.getLoginAccount().setMainDeck(null);
+                reChooseComboBox();
+                return;
+            }
+        }
     }
 
     public void setMainBtnAct() {
-         Account.getLoginAccount().setMainDeck(currentDeck);
-         reChooseComboBox();
+
+        Account.getLoginAccount().setMainDeck(currentDeck);
+        reChooseComboBox();
     }
 }

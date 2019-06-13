@@ -49,7 +49,7 @@
                             <Insets left="10.0" right="10.0"/>
                         </GridPane.margin>
                         <graphic>
-                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <ImageView fx:id="addImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="Duelyst/css/addWhite.png"/>
                                 </image>
@@ -502,7 +502,7 @@
                             <Insets left="10.0" right="10.0"/>
                         </GridPane.margin>
                         <graphic>
-                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                            <ImageView fx:id="crossImage"  fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="Duelyst/css/crossWhite.png"/>
                                 </image>
