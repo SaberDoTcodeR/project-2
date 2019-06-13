@@ -21,6 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.util.Callback;
 
 import java.util.ArrayList;
 
@@ -36,11 +37,8 @@ public class CollectionController {
             if (deck.getName().equals(name))
                 this.currentDeck = deck;
         }
-        if(deckList.getValue()!=null&&name.equals(((Label)deckList.getValue()).getText()))
-        {
-            System.out.println(123);
-            reChooseComboBox();
-        }
+        reChooseComboBox();
+
     }
 
     private Deck currentDeck;
@@ -341,21 +339,16 @@ public class CollectionController {
 
     public void initialize() {
         deckList.setOnAction(event -> {
-                setCurrentDeck(((Label) deckList.getValue()).getText());
+            setCurrentDeck((String) (deckList.getValue()));
         });
         deckList.setPromptText("CHOOSE A DECK :");
         myDecks = Account.getLoginAccount().getCollection().getDecks();
 
         for (Deck deck : myDecks) {
             if (Account.getLoginAccount().getMainDeck() != null && deck.getName().equals(Account.getLoginAccount().getMainDeck())) {
-                Label label = new Label(deck.getName());
-                label.setStyle("-fx-background-color: transparent");
-                label.setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
-                deckList.getItems().add(label);
+                deckList.getItems().add(deck.getName());
             } else {
-                Label label = new Label(deck.getName());
-                label.setStyle("-fx-background-color: transparent");
-                deckList.getItems().add(label);
+                deckList.getItems().add(deck.getName());
 
             }
         }
@@ -543,6 +536,40 @@ public class CollectionController {
         View.makeMainMenu();
     }
 
+    private void reChooseComboBox() {
+        myDecks = Account.getLoginAccount().getCollection().getDecks();
+        for (Object node : deckList.getItems()) {
+            String label = (String) node;
+            if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck())) {
+                if (currentDeck != null && currentDeck.getName().equals(label) && (deckList.getValue() == null
+                        || !deckList.getValue().equals(label))) {
+                    deckList.setValue(label);
+                    deckList.setCellFactory(new Callback<ListView, ListCell>() {
+                        @Override
+                        public ListCell call(ListView param) {
+                            ListCell<String> cell=new ListCell<String>(){
+                                @Override
+                                protected void updateItem(String item, boolean empty) {
+                                    setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
+                                    System.out.println("asd");
+                                }
+                            };
+                            return cell;
+                        }
+                    });
+                    return;
+                }
+            } else {
+                if (currentDeck != null && currentDeck.getName().equals(label) && (deckList.getValue() == null
+                        || !deckList.getValue().equals(label))) {
+                    deckList.setValue(label);
+                    return;
+                }
+            }
+
+
+        }
+    }
 
     private void showDialog(String promptText, String message) {
         BoxBlur blur = new BoxBlur(5, 5, 10);
@@ -2549,10 +2576,8 @@ public class CollectionController {
         deck.setName(deckName);
         Account.getLoginAccount().getCollection().addDeck(deck);
         myDecks = Account.getLoginAccount().getCollection().getDecks();
-        Label label = new Label(deckName);
-        label.setStyle("-fx-background-color: transparent");
-        deckList.getItems().add(label);
-        setCurrentDeck(deckName);
+        deckList.getItems().add(deckName);
+        deckList.setValue(deckName);
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
@@ -2609,6 +2634,7 @@ public class CollectionController {
     }
 
     public void setMainBtnAct() {
-        /* Account.getLoginAccount().setMainDeck(currentDeck);*/
+         Account.getLoginAccount().setMainDeck(currentDeck);
+         reChooseComboBox();
     }
 }
