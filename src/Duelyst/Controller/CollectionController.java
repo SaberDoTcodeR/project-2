@@ -12,7 +12,6 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDialogEvent;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -23,7 +22,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import javafx.util.Callback;
 
 import java.util.ArrayList;
 
@@ -2612,7 +2610,6 @@ public class CollectionController {
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
                 showCard(string, 0);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                return;
             }
         }
         for (VBox vBox : minionBoxes) {
@@ -2621,7 +2618,6 @@ public class CollectionController {
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
                 showCard(string, 1);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                return;
             }
         }
         for (VBox vBox : spellBoxes) {
@@ -2630,7 +2626,6 @@ public class CollectionController {
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
                 showCard(string, 2);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                return;
             }
         }
         for (VBox vBox : itemBoxes) {
@@ -2639,7 +2634,6 @@ public class CollectionController {
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
                 showCard(string, 3);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                return;
             }
         }
     }
@@ -2676,6 +2670,7 @@ public class CollectionController {
                 deckList.getItems().remove(deckList.getValue());
                 myDecks.remove(deck);
                 reChooseComboBox();
+                deckBox.getChildren().clear();
                 return;
             }
 
@@ -2685,15 +2680,41 @@ public class CollectionController {
                 myDecks = Account.getLoginAccount().getCollection().getDecks();
                 Account.getLoginAccount().setMainDeck(null);
                 reChooseComboBox();
+                deckBox.getChildren().clear();
                 return;
             }
         }
-        deckBox.getChildren().clear();
+
+    }
+
+    private void showDialog(String string) {
+        BoxBlur blur = new BoxBlur(5, 5, 10);
+        JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+        JFXButton jfxButton = new JFXButton("OK");
+        jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+        JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+        jfxButton.getStyleClass().add("dialog-button");
+        jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                    jfxDialog.close();
+                }
+        );
+        jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+            gridPane.setEffect(null);
+        });
+        Label label = new Label(string);
+        label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+        jfxDialogLayout.setBody(label);
+        jfxDialogLayout.setActions(jfxButton);
+        jfxDialog.show();
+        gridPane.setEffect(blur);
     }
 
     public void setMainBtnAct() {
-
-        Account.getLoginAccount().setMainDeck(currentDeck);
-        reChooseComboBox();
+        if (currentDeck.isValid()) {
+            Account.getLoginAccount().setMainDeck(currentDeck);
+            reChooseComboBox();
+        } else {
+            showDialog("Chosen Deck Is Invalid \nPlease Choose a valid deck 0_0");
+        }
     }
 }

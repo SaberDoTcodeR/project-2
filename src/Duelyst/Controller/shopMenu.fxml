@@ -757,7 +757,7 @@
 
                                           prefWidth="100.0">
                                         <children>
-                                            <CheckBox fx:id="minion12" onMouseClicked="#minion11CheckBox"
+                                            <CheckBox fx:id="minion12" onMouseClicked="#minion12CheckBox"
                                                       mnemonicParsing="false" textAlignment="CENTER">
                                                 <padding>
                                                     <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1022,7 +1022,7 @@
 
                                           prefWidth="100.0">
                                         <children>
-                                            <CheckBox fx:id="minion22" onMouseClicked="#minion21CheckBox"
+                                            <CheckBox fx:id="minion22" onMouseClicked="#minion22CheckBox"
                                                       mnemonicParsing="false" textAlignment="CENTER">
                                                 <padding>
                                                     <Insets left="30.0" right="30.0" bottom="40"/>
@@ -1287,7 +1287,7 @@
 
                                           prefWidth="100.0">
                                         <children>
-                                            <CheckBox fx:id="minion32" onMouseClicked="#minion31CheckBox"
+                                            <CheckBox fx:id="minion32" onMouseClicked="#minion32CheckBox"
                                                       mnemonicParsing="false" textAlignment="CENTER">
                                                 <padding>
                                                     <Insets left="30.0" right="30.0" bottom="40"/>
