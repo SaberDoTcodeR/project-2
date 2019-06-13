@@ -291,28 +291,28 @@ public class Collection {
         return false;
     }
 
-    public void addToDeck(int objectId, String deckName) {
+    public void addToDeck(String cardName, String deckName) {
         Deck deck = findDeck(deckName);
         for (Hero hero : getHeroes()) {
-            if (hero.getId() == objectId) {
+            if (hero.getName().equals(cardName)) {
                 deck.setHero(hero);
                 return;
             }
         }
         for (Spell spell : getSpells()) {
-            if (spell.getId() == objectId) {
+            if (spell.getName().equals(cardName)) {
                 deck.getSpells().add(spell);
                 return;
             }
         }
         for (Minion minion : getMinions()) {
-            if (minion.getId() == objectId) {
+            if (minion.getName().equals(cardName)) {
                 deck.getMinions().add(minion);
                 return;
             }
         }
         for (UsableItem usableItem : getUsableItems()) {
-            if (usableItem.getId() == objectId) {
+            if (usableItem.getName().equals(cardName)) {
                 deck.setUsableItem(usableItem);
                 return;
             }

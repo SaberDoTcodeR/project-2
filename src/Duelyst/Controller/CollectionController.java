@@ -540,22 +540,19 @@ public class CollectionController {
         myDecks = Account.getLoginAccount().getCollection().getDecks();
         for (Object node : deckList.getItems()) {
             String label = (String) node;
-            if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck())) {
+            if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck().getName())) {
                 if (currentDeck != null && currentDeck.getName().equals(label) && (deckList.getValue() == null
                         || !deckList.getValue().equals(label))) {
                     deckList.setValue(label);
-                    deckList.setCellFactory(new Callback<ListView, ListCell>() {
-                        @Override
-                        public ListCell call(ListView param) {
-                            ListCell<String> cell=new ListCell<String>(){
-                                @Override
-                                protected void updateItem(String item, boolean empty) {
-                                    setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
-                                    System.out.println("asd");
-                                }
-                            };
-                            return cell;
-                        }
+                    deckList.setCellFactory(param -> {
+                        ListCell<String> cell=new ListCell<String>(){
+                            @Override
+                            protected void updateItem(String item, boolean empty) {
+                                setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
+                                System.out.println("asd");
+                            }
+                        };
+                        return cell;
                     });
                     return;
                 }
@@ -2559,6 +2556,14 @@ public class CollectionController {
     }
 
     public void crossBtnAct() {
+        for (Node ignored : deckBox.getChildren()) {
+            HBox hBox = (HBox) ignored;
+            if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
+                String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
+                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.currentDeck.getName());
+                deckBox.getChildren().remove(hBox);
+            }
+        }
     }
 
     public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
@@ -2588,25 +2593,28 @@ public class CollectionController {
 
     public void addBtnAct() {
         for (VBox vBox : heroBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                //functionOfAdding
+                Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
+                showCard(string);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
         }
         for (VBox vBox : minionBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                //functionOfAdding
+                Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
+                showCard(string);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
         }
         for (VBox vBox : spellBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
+            if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                //functionOfAdding
+                Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
+                showCard(string);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
@@ -2614,23 +2622,16 @@ public class CollectionController {
         for (VBox vBox : itemBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                //functionOfAdding
+                Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
+                showCard(string);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
         }
     }
 
-    //NAME OF vBox = deckBox            we must have a currentDeck field witch named currentDeck:)
     public void deleteBtnAct() {
-        for (Node ignored : deckBox.getChildren()) {
-            HBox hBox = (HBox) ignored;
-            if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
-                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.currentDeck.getName());
-                deckBox.getChildren().remove(hBox);
-            }
-        }
+
     }
 
     public void setMainBtnAct() {
