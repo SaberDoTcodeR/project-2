@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="414" />
+    <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="426" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="COLLECTION MENU IS GRAPHICALLY COMPLETED &amp; SOME OF ITS METHODS IMPLEMENTED">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="some fxml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/View/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/View/View.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,10 +79,72 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="438" column="34" selection-start-line="432" selection-start-column="24" selection-end-line="438" selection-end-column="34" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="2660" column="5" lean-forward="true" selection-start-line="2660" selection-start-column="5" selection-end-line="2660" selection-end-column="5" />
+            <state relative-caret-position="289">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="2490" column="5" lean-forward="true" selection-start-line="2490" selection-start-column="5" selection-end-line="2490" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#14396#14397#0" expanded="true" />
+                <element signature="e#14431#14432#0" expanded="true" />
+                <element signature="e#71338#71339#0" expanded="true" />
+                <element signature="e#71376#71377#0" expanded="true" />
+                <element signature="e#71416#71417#0" expanded="true" />
+                <element signature="e#71454#71455#0" expanded="true" />
+                <element signature="e#71493#71494#0" expanded="true" />
+                <element signature="e#71531#71532#0" expanded="true" />
+                <element signature="e#71569#71570#0" expanded="true" />
+                <element signature="e#71607#71608#0" expanded="true" />
+                <element signature="e#71643#71644#0" expanded="true" />
+                <element signature="e#71683#71684#0" expanded="true" />
+                <element signature="e#71721#71722#0" expanded="true" />
+                <element signature="e#71764#71765#0" expanded="true" />
+                <element signature="e#71802#71803#0" expanded="true" />
+                <element signature="e#71845#71846#0" expanded="true" />
+                <element signature="e#71882#71883#0" expanded="true" />
+                <element signature="e#71924#71925#0" expanded="true" />
+                <element signature="e#71963#71964#0" expanded="true" />
+                <element signature="e#72007#72008#0" expanded="true" />
+                <element signature="e#72046#72047#0" expanded="true" />
+                <element signature="e#72091#72092#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+              <folding>
+                <element signature="e#1346#1347#0" expanded="true" />
+                <element signature="e#1387#1388#0" expanded="true" />
+                <element signature="e#2711#2712#0" expanded="true" />
+                <element signature="e#2746#2747#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,73 +152,40 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-648">
-              <caret line="34" column="163" selection-start-line="34" selection-start-column="153" selection-end-line="34" selection-end-column="163" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="396" column="57" lean-forward="true" selection-start-line="396" selection-start-column="57" selection-end-line="396" selection-end-column="57" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1007">
-              <caret line="2490" column="11" lean-forward="true" selection-start-line="2490" selection-start-column="11" selection-end-line="2490" selection-end-column="11" />
+            <state relative-caret-position="118">
+              <caret line="436" column="39" selection-start-line="436" selection-start-column="39" selection-end-line="436" selection-end-column="39" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#14352#14353#0" expanded="true" />
-                <element signature="e#14387#14388#0" expanded="true" />
-                <element signature="e#71838#71839#0" expanded="true" />
-                <element signature="e#71880#71881#0" expanded="true" />
-                <element signature="e#71919#71920#0" expanded="true" />
-                <element signature="e#71963#71964#0" expanded="true" />
-                <element signature="e#72002#72003#0" expanded="true" />
-                <element signature="e#72031#72032#0" expanded="true" />
+                <element signature="n#ScrollPane#1;n#children#0;n#GridPane#0;n#StackPane#0;n#!!top" />
+                <element signature="n#ScrollPane#2;n#children#0;n#GridPane#0;n#StackPane#0;n#!!top" />
               </folding>
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/abc.jpg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/31-512.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/addBlack.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/addWhite.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/avatar2.jpg">
-          <provider selected="true" editor-type-id="images" />
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="88" column="85" selection-start-line="88" selection-start-column="85" selection-end-line="88" selection-end-column="85" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1628">
-              <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+            <state relative-caret-position="68">
+              <caret line="67" selection-start-line="67" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css4.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="74" column="16" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -173,13 +202,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>GridPane</find>
-      <find>&lt;ScrollPane</find>
-      <find>butt</find>
-      <find>hero2Box.getStylesheets().remove(0);</find>
-      <find>hero1</find>
-      <find>BoxClicked</find>
-      <find>itemesBought</find>
       <find>item</find>
       <find>12</find>
       <find>minion1s</find>
@@ -203,6 +225,13 @@
       <find>button1</find>
       <find>button5</find>
       <find>button-add</find>
+      <find>dele</find>
+      <find>createBtn</find>
+      <find>main</find>
+      <find>arash</find>
+      <find>c</find>
+      <find>combo</find>
+      <find>create</find>
     </findStrings>
     <replaceStrings>
       <replace>GridPane.columnIndex=&quot;1&quot;</replace>
@@ -310,59 +339,58 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Battle" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -593,28 +621,33 @@
       <option name="project" value="LOCAL" />
       <updated>1560374782688</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="some fxml">
+      <created>1560421144050</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1560421144050</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="136926000" />
+    <option name="totallyTimeSpent" value="137929000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18053691" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18154311" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
-      <window_info anchor="bottom" id="Statistic" />
-      <window_info anchor="bottom" id="SonarLint" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25139666" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25040916" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -629,6 +662,8 @@
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" />
+      <window_info anchor="bottom" id="Statistic" order="17" />
+      <window_info anchor="bottom" id="SonarLint" order="18" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24962178" />
@@ -693,7 +728,8 @@
     <MESSAGE value="dialog error of sell finished" />
     <MESSAGE value="COLLECTION MENU IS GRAPHICALLY COMPLETED" />
     <MESSAGE value="COLLECTION MENU IS GRAPHICALLY COMPLETED &amp; SOME OF ITS METHODS IMPLEMENTED" />
-    <option name="LAST_COMMIT_MESSAGE" value="COLLECTION MENU IS GRAPHICALLY COMPLETED &amp; SOME OF ITS METHODS IMPLEMENTED" />
+    <MESSAGE value="some fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="some fxml" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -892,13 +928,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="7878" column="16" selection-start-line="7878" selection-start-column="16" selection-end-line="7878" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/Node.java" />
     <entry file="file://$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/View/View.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -950,54 +980,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        <state relative-caret-position="1275">
+          <caret line="88" column="85" selection-start-line="88" selection-start-column="85" selection-end-line="88" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css4.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1628">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="221">
+          <caret line="74" column="16" selection-start-line="74" selection-start-column="1" selection-end-line="74" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="209">
+          <caret line="100" column="28" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
           <folding>
+            <element signature="e#1346#1347#0" expanded="true" />
             <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#2711#2712#0" expanded="true" />
+            <element signature="e#2746#2747#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1628">
-          <caret line="74" column="25" selection-start-line="74" selection-start-column="25" selection-end-line="74" selection-end-column="25" />
+        <state relative-caret-position="68">
+          <caret line="67" selection-start-line="67" selection-end-line="70" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/control/Labeled.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="766" column="28" selection-start-line="766" selection-start-column="28" selection-end-line="766" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/control/Labeled.java" />
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="396" column="57" lean-forward="true" selection-start-line="396" selection-start-column="57" selection-end-line="396" selection-end-column="57" />
+        <state relative-caret-position="390">
+          <caret line="438" column="34" selection-start-line="432" selection-start-column="24" selection-end-line="438" selection-end-column="34" />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="2660" column="5" lean-forward="true" selection-start-line="2660" selection-start-column="5" selection-end-line="2660" selection-end-column="5" />
+        <state relative-caret-position="289">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1018,26 +1048,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="34" column="163" selection-start-line="34" selection-start-column="153" selection-end-line="34" selection-end-column="163" />
+        <state relative-caret-position="118">
+          <caret line="436" column="39" selection-start-line="436" selection-start-column="39" selection-end-line="436" selection-end-column="39" />
+          <folding>
+            <element signature="n#ScrollPane#1;n#children#0;n#GridPane#0;n#StackPane#0;n#!!top" />
+            <element signature="n#ScrollPane#2;n#children#0;n#GridPane#0;n#StackPane#0;n#!!top" />
+          </folding>
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1007">
-          <caret line="2490" column="11" lean-forward="true" selection-start-line="2490" selection-start-column="11" selection-end-line="2490" selection-end-column="11" />
+        <state relative-caret-position="191">
+          <caret line="2490" column="5" lean-forward="true" selection-start-line="2490" selection-start-column="5" selection-end-line="2490" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14352#14353#0" expanded="true" />
-            <element signature="e#14387#14388#0" expanded="true" />
-            <element signature="e#71838#71839#0" expanded="true" />
-            <element signature="e#71880#71881#0" expanded="true" />
-            <element signature="e#71919#71920#0" expanded="true" />
+            <element signature="e#14396#14397#0" expanded="true" />
+            <element signature="e#14431#14432#0" expanded="true" />
+            <element signature="e#71338#71339#0" expanded="true" />
+            <element signature="e#71376#71377#0" expanded="true" />
+            <element signature="e#71416#71417#0" expanded="true" />
+            <element signature="e#71454#71455#0" expanded="true" />
+            <element signature="e#71493#71494#0" expanded="true" />
+            <element signature="e#71531#71532#0" expanded="true" />
+            <element signature="e#71569#71570#0" expanded="true" />
+            <element signature="e#71607#71608#0" expanded="true" />
+            <element signature="e#71643#71644#0" expanded="true" />
+            <element signature="e#71683#71684#0" expanded="true" />
+            <element signature="e#71721#71722#0" expanded="true" />
+            <element signature="e#71764#71765#0" expanded="true" />
+            <element signature="e#71802#71803#0" expanded="true" />
+            <element signature="e#71845#71846#0" expanded="true" />
+            <element signature="e#71882#71883#0" expanded="true" />
+            <element signature="e#71924#71925#0" expanded="true" />
             <element signature="e#71963#71964#0" expanded="true" />
-            <element signature="e#72002#72003#0" expanded="true" />
-            <element signature="e#72031#72032#0" expanded="true" />
+            <element signature="e#72007#72008#0" expanded="true" />
+            <element signature="e#72046#72047#0" expanded="true" />
+            <element signature="e#72091#72092#0" expanded="true" />
           </folding>
         </state>
       </provider>

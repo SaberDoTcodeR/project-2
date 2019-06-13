@@ -39,6 +39,8 @@ public class CollectionController {
     public HBox spellHBox;
     public HBox itemHBox;
     public ImageView imageee;
+    public VBox deckBox;
+    public ComboBox deckList;
 
     @FXML
     StackPane stackPane = new StackPane();
@@ -2484,8 +2486,8 @@ public class CollectionController {
         }
     }
 
-    private void createBtnAct() {
-
+    public void createBtnAct() {
+        
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
