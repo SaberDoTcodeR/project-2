@@ -63,6 +63,8 @@ public class CollectionController {
     public Button crossButton;
     @FXML
     public Button setMainButton;
+    @FXML
+    public Button mainMenuButton;
 
     public VBox hero1Box;
     public VBox hero2Box;
@@ -2423,6 +2425,9 @@ public class CollectionController {
     public void setMainBtnActFocus() {
         setMainButton.requestFocus();
     }
+    public void mainMenuBtnActFocus(){
+        mainMenuButton.requestFocus();
+    }
 
     public void handleOnKeyPressedHeroes(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
@@ -2454,7 +2459,41 @@ public class CollectionController {
         }
     }
 
-    public void plusBtnAct() {
+    public void handleOnKeyPressedAdd(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            addBtnAct();
+        }
+    }
+    public void handleOnKeyPressedDelete(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            deleteBtnAct();
+        }
+    }
+    public void handleOnKeyPressedCross(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            crossBtnAct();
+        }
+    }
+
+    public void crossBtnAct() {
+    }
+
+    public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            createBtnAct();
+        }
+    }
+
+    private void createBtnAct() {
+
+    }
+
+    public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            setMainBtnAct();
+        }
+    }
+    public void addBtnAct() {
         for (VBox vBox : heroBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
@@ -2465,7 +2504,7 @@ public class CollectionController {
         }
         for (VBox vBox : minionBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2 - 1 + 1))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 //functionOfAdding
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
@@ -2473,7 +2512,7 @@ public class CollectionController {
         }
         for (VBox vBox : spellBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2 + 1 - 1))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 //functionOfAdding
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
@@ -2481,7 +2520,7 @@ public class CollectionController {
         }
         for (VBox vBox : itemBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2 + 3 - 3))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 //functionOfAdding
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
@@ -2490,17 +2529,17 @@ public class CollectionController {
     }
 
     //NAME OF vBox = deckBox            we must have a deck field witch named deck:)
-    /*public void deleteBtnAct() {
-        for (HBox hBox : deckBox.getChildren()) {
+    public void deleteBtnAct() {
+/*        for (HBox hBox : deckBox.getChildren()) {
             if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().removeFromDeck(cardName, deck.getName());
                 deckBox.getChildren().remove(hBox);
             }
-        }
+        }*/
     }
 
-    public void setMainDeckOfUser() {
-        Account.getLoginAccount().setMainDeck(deck);
-    }*/
+    public void setMainBtnAct() {
+       /* Account.getLoginAccount().setMainDeck(deck);*/
+    }
 }
