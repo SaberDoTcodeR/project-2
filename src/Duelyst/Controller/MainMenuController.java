@@ -48,7 +48,7 @@ public class MainMenuController {
     }
 
     public void startGameAct() {
-
+        View.makeSingleOrMultiMenu();
     }
 
     public void shopAct() {

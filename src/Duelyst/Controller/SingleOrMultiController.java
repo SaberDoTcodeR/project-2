@@ -27,7 +27,7 @@ public class SingleOrMultiController {
     }
 
     public void singleGameBtnAct() {
-
+        View.makeModeMenuMenu();
     }
 
     public void multiGameBtnAct() {

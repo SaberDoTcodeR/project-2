@@ -94,4 +94,42 @@ public class View {
 
 
     }
+    public static void makeSingleOrMultiMenu() {
+
+        GridPane root = null;
+        try {
+            root = FXMLLoader.load(MainMenuController.class.getResource("singleOrMultiMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene singleOrMultiScene = new Scene(root);
+
+        singleOrMultiScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+        singleOrMultiScene.getStylesheets().add(Main.class.getResource("css/css5.css").toExternalForm());
+        primaryStage.setScene(singleOrMultiScene);
+        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
+
+
+
+    }
+    public static void makeModeMenuMenu() {
+
+        GridPane root = null;
+        try {
+            root = FXMLLoader.load(MainMenuController.class.getResource("gameModeMenu.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene modeMenuScene = new Scene(root);
+
+        modeMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+        modeMenuScene.getStylesheets().add(Main.class.getResource("css/css5.css").toExternalForm());
+        primaryStage.setScene(modeMenuScene);
+        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
+
+
+
+    }
 }
