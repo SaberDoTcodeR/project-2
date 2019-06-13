@@ -1567,7 +1567,7 @@
 
                                           prefWidth="100.0">
                                         <children>
-                                            <CheckBox fx:id="spell2" onMouseClicked="#spell1CheckBox"
+                                            <CheckBox fx:id="spell2" onMouseClicked="#spell2CheckBox"
                                                       mnemonicParsing="false"
                                                       textAlignment="CENTER">
                                                 <padding>
@@ -1847,7 +1847,7 @@
 
                                           prefWidth="100.0">
                                         <children>
-                                            <CheckBox fx:id="spell12" onMouseClicked="#spell11CheckBox"
+                                            <CheckBox fx:id="spell12" onMouseClicked="#spell12CheckBox"
                                                       mnemonicParsing="false"
                                                       textAlignment="CENTER">
                                                 <padding>

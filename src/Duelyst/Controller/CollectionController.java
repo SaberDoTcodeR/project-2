@@ -10,32 +10,40 @@ import Duelyst.model.Item.UsableItem.UsableItem;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDialogEvent;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+
+import java.util.ArrayList;
 
 public class CollectionController {
+    public ArrayList<Deck> myDecks = new ArrayList<>();
     public boolean[] heroesBought = new boolean[10];
     public boolean[] itemsBought = new boolean[12];
     public boolean[] minionsBought = new boolean[40];
     public boolean[] spellsBought = new boolean[20];
 
-    public void setDeck(String name) {
+    public void setCurrentDeck(String name) {
         for (Deck deck : myDecks) {
-            if(deck.getName().equals(name))
-                this.deck = deck;
+            if (deck.getName().equals(name))
+                this.currentDeck = deck;
+        }
+        if(deckList.getValue()!=null&&name.equals(((Label)deckList.getValue()).getText()))
+        {
+            System.out.println(123);
+            reChooseComboBox();
         }
     }
 
-    private Deck deck;
+    private Deck currentDeck;
     @FXML
     public ScrollPane heroes;
     public ScrollPane minions;
@@ -45,7 +53,6 @@ public class CollectionController {
     public HBox minionHBox;
     public HBox spellHBox;
     public HBox itemHBox;
-    public ImageView imageee;
     public VBox deckBox;
     public ComboBox deckList;
 
@@ -333,7 +340,25 @@ public class CollectionController {
     private CheckBox minion40;
 
     public void initialize() {
-        deckList.setOnAction(event -> setDeck(((Label) deckList.getValue()).getText()));
+        deckList.setOnAction(event -> {
+                setCurrentDeck(((Label) deckList.getValue()).getText());
+        });
+        deckList.setPromptText("CHOOSE A DECK :");
+        myDecks = Account.getLoginAccount().getCollection().getDecks();
+
+        for (Deck deck : myDecks) {
+            if (Account.getLoginAccount().getMainDeck() != null && deck.getName().equals(Account.getLoginAccount().getMainDeck())) {
+                Label label = new Label(deck.getName());
+                label.setStyle("-fx-background-color: transparent");
+                label.setGraphic(new ImageView(new Image("Duelyst/css/starYellow.png")));
+                deckList.getItems().add(label);
+            } else {
+                Label label = new Label(deck.getName());
+                label.setStyle("-fx-background-color: transparent");
+                deckList.getItems().add(label);
+
+            }
+        }
 
 
         heroBoxes[0] = hero1Box;
@@ -519,23 +544,35 @@ public class CollectionController {
     }
 
 
-    private void showDialog(String string) {
+    private void showDialog(String promptText, String message) {
         BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("OK");
+        JFXTextField jfxTextField = new JFXTextField();
+        jfxTextField.setPromptText(promptText);
+
+        jfxTextField.setId("text");
         jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
         JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
         jfxButton.getStyleClass().add("dialog-button");
         jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                    jfxDialog.close();
+                    if (!jfxTextField.getText().equals("") && Account.getLoginAccount().getCollection().findDeck(jfxTextField.getText()) == null) {
+                        createDeck(jfxTextField.getText());
+                        jfxDialog.close();
+                    } else {
+                        jfxTextField.setId("wrongPassword");
+                    }
+
                 }
         );
         jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
             gridPane.setEffect(null);
         });
-        Label label = new Label(string);
+        Label label = new Label(message);
         label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
-        jfxDialogLayout.setBody(label);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(label, jfxTextField);
+        jfxDialogLayout.getBody().add(vBox);
         jfxDialogLayout.setActions(jfxButton);
         jfxDialog.show();
         gridPane.setEffect(blur);
@@ -2503,13 +2540,19 @@ public class CollectionController {
         }
     }
 
+    public void createBtnAct() {
+        showDialog("DECK NAME... ", "ENTER A NAME FOR A NEW DECK :\n");
+    }
+
     public void createDeck(String deckName) {
         Deck deck = new Deck();
         deck.setName(deckName);
         Account.getLoginAccount().getCollection().addDeck(deck);
         myDecks = Account.getLoginAccount().getCollection().getDecks();
-        deckList.getItems().add(deckName);
-        setDeck(deckName);
+        Label label = new Label(deckName);
+        label.setStyle("-fx-background-color: transparent");
+        deckList.getItems().add(label);
+        setCurrentDeck(deckName);
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
@@ -2553,19 +2596,19 @@ public class CollectionController {
         }
     }
 
-    //NAME OF vBox = deckBox            we must have a deck field witch named deck:)
+    //NAME OF vBox = deckBox            we must have a currentDeck field witch named currentDeck:)
     public void deleteBtnAct() {
         for (Node ignored : deckBox.getChildren()) {
             HBox hBox = (HBox) ignored;
             if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
-                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.deck.getName());
+                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.currentDeck.getName());
                 deckBox.getChildren().remove(hBox);
             }
         }
     }
 
     public void setMainBtnAct() {
-        /* Account.getLoginAccount().setMainDeck(deck);*/
+        /* Account.getLoginAccount().setMainDeck(currentDeck);*/
     }
 }
