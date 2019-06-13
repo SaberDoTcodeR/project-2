@@ -72,6 +72,9 @@
 #cross-button:focused {
     -fx-graphic: url("crossBlack.png");
 }
+#button-mainmenu:focused {
+    -fx-graphic: url("mainMenuBlack.png");
+}
 
 
 .button:pressed {

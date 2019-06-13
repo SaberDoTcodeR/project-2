@@ -32,9 +32,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <children>
-            <Button fx:id="addButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER" id="button-add" mnemonicParsing="false" onMouseClicked="#showHeroes"
+            <Button fx:id="addButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER" id="button-add" mnemonicParsing="false" onMouseClicked="#addBtnAct"
                      onMouseEntered="#addBtnActFocus" GridPane.columnIndex="1" GridPane.rowIndex="2"
-                     onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="90.0" prefWidth="90.0">
+                     onKeyPressed="#handleOnKeyPressedAdd" prefHeight="90.0" prefWidth="90.0">
                 <GridPane.margin>
                     <Insets left="10.0" right="10.0"/>
                 </GridPane.margin>
@@ -42,6 +42,20 @@
                     <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                             <Image url="Duelyst/css/addWhite.png"/>
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="mainMenuButton" GridPane.halignment="CENTER" GridPane.valignment="CENTER" id="button-mainmenu" mnemonicParsing="false" onMouseClicked="#mainMenuAct"
+                    onMouseEntered="#mainMenuBtnActFocus" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                    onKeyPressed="#handleOnKeyPressedMainMenu" prefHeight="90.0" prefWidth="90.0">
+                <GridPane.margin>
+                    <Insets left="10.0" right="10.0"/>
+                </GridPane.margin>
+                <graphic>
+                    <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="Duelyst/css/mainMenuWhite.png"/>
                         </image>
                     </ImageView>
                 </graphic>
@@ -410,9 +424,9 @@
                 <children>
                     <ComboBox prefHeight="50.0" prefWidth="300.0" GridPane.columnIndex="1"/>
                     <Button fx:id="setMainButton" mnemonicParsing="false" onMouseEntered="#setMainBtnActFocus"
-                            onKeyPressed="#handleOnKeyPressedItems" onMouseClicked="#showItems" prefHeight="50.0"
+                            onKeyPressed="#handleOnKeyPressedSetMain" onMouseClicked="#setMainBtnAct" prefHeight="50.0"
                             prefWidth="300.0"
-                            GridPane.columnIndex="3" text="MAIN DECK" style="-fx-font-size: 30px">
+                            GridPane.columnIndex="3" text="SET AS MAIN DECK" style="-fx-font-size: 25px">
                         <GridPane.margin>
                             <Insets left="10.0" right="10.0"/>
                         </GridPane.margin>
@@ -436,9 +450,9 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                 </rowConstraints>
                 <children>
-                    <Button fx:id="deleteButton" id="delete-button" mnemonicParsing="false" onMouseClicked="#showHeroes"
+                    <Button fx:id="deleteButton" id="delete-button" mnemonicParsing="false" onMouseClicked="#deleteBtnAct"
                             onMouseEntered="#deleteBtnActFocus"
-                            onKeyPressed="#handleOnKeyPressedHeroes" prefHeight="50.0" prefWidth="300.0">
+                            onKeyPressed="#handleOnKeyPressedDelete" prefHeight="50.0" prefWidth="300.0">
                         <GridPane.margin>
                             <Insets left="10.0" right="10.0"/>
                         </GridPane.margin>
@@ -451,7 +465,7 @@
                         </graphic>
                     </Button>
                     <Button fx:id="createButton" id="create-button" mnemonicParsing="false" onMouseEntered="#createBtnActFocus"
-                            onKeyPressed="#handleOnKeyPressedMinions" onMouseClicked="#showMinions" prefHeight="50.0"
+                            onKeyPressed="#handleOnKeyPressedCreate" onMouseClicked="#createBtnAct" prefHeight="50.0"
                             prefWidth="300.0"
                             GridPane.columnIndex="1">
                         <GridPane.margin>
@@ -466,7 +480,7 @@
                         </graphic>
                     </Button>
                     <Button fx:id="crossButton" id="cross-button" mnemonicParsing="false" onMouseEntered="#crossBtnActFocus"
-                            onKeyPressed="#handleOnKeyPressedSpells" onMouseClicked="#showSpells" prefHeight="50.0"
+                            onKeyPressed="#handleOnKeyPressedCross" onMouseClicked="#crossBtnAct" prefHeight="50.0"
                             prefWidth="300.0"
                             GridPane.columnIndex="2">
                         <GridPane.margin>
