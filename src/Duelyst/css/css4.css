@@ -67,7 +67,6 @@
 
 #button-add:focused {
     -fx-graphic: url("addBlack.png");
-    -fx-rotate: 45;
 
 }
 

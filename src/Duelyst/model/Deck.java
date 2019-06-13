@@ -10,8 +10,8 @@ import java.util.ArrayList;
 public class Deck {
 
     private String name;
-    private Hero hero;
-    private UsableItem usableItem;
+    private ArrayList<Hero> heroes = new ArrayList<>();
+    private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();
 
@@ -23,12 +23,12 @@ public class Deck {
         this.name = name;
     }
 
-    public Hero getHero() {
-        return hero;
+    public ArrayList<Hero> getHero() {
+        return heroes;
     }
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
+    public void setHero(ArrayList<Hero> heroes) {
+        this.heroes = heroes;
     }
 
     public ArrayList<Spell> getSpells() {
@@ -39,7 +39,7 @@ public class Deck {
         Deck deck = new Deck();
         deck.setName(this.name);
         deck.setHero(this.getHero());
-        deck.setUsableItem(this.usableItem);
+        deck.setUsableItem(this.usableItems);
         ArrayList<Minion> minions = new ArrayList<>();
         ArrayList<Spell> spells = new ArrayList<>();
         for (Minion minion : this.minions) {
@@ -57,12 +57,12 @@ public class Deck {
         this.spells = spells;
     }
 
-    public UsableItem getUsableItem() {
-        return usableItem;
+    public ArrayList<UsableItem>  getUsableItem() {
+        return usableItems;
     }
 
-    public void setUsableItem(UsableItem usableItem) {
-        this.usableItem = usableItem;
+    public void setUsableItem(ArrayList<UsableItem>  usableItem) {
+        this.usableItems = usableItem;
     }
 
     public ArrayList<Minion> getMinions() {
@@ -86,8 +86,11 @@ public class Deck {
     }
 
     public boolean hasThisCard(int objectID) {
-        if (getHero() != null && getHero().getId() == objectID)
-            return true;
+        for (Hero hero : getHero()) {
+            if (hero.getId() == objectID) {
+                return true;
+            }
+        }
         for (Spell spell : getSpells()) {
             if (spell.getId() == objectID) {
                 return true;
@@ -98,14 +101,19 @@ public class Deck {
                 return true;
             }
         }
-        if (getUsableItem() != null && getUsableItem().getId() == objectID)
-            return true;
+        for (UsableItem usableItem : getUsableItem()) {
+            if (usableItem.getId() == objectID) {
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean isContain(Hero hero) {
-        if (this.getHero().getName().equals(hero.getName())) {
-            return true;
+        for (Hero hero1 : this.getHero()) {
+            if (hero.getName().equals(hero1.getName())) {
+                return true;
+            }
         }
         return false;
     }

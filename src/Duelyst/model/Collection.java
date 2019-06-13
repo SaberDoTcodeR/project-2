@@ -43,8 +43,8 @@ public class Collection {
         deck1.getSpells().add(new Dispel());
         deck1.getSpells().add(new Sacrifice());
         deck1.getSpells().add(new Shock());
-        deck1.setHero(new WhiteBogey());
-        deck1.setUsableItem(new CrownOfWisdom());
+        deck1.getHero().add(new WhiteBogey());
+        deck1.getUsableItem().add(new CrownOfWisdom());
         Deck deck2 = new Deck();
         deck2.getMinions().add(new PersianSwordsman());
         deck2.getMinions().add(new PersianSpear());
@@ -66,8 +66,8 @@ public class Collection {
         deck2.getSpells().add(new Madness());
         deck2.getSpells().add(new HealthWithProfit());
         deck2.getSpells().add(new KingsGuard());
-        deck2.setHero(new Zahhak());
-        deck2.setUsableItem(new SoulEater());
+        deck2.getHero().add(new Zahhak());
+        deck2.getUsableItem().add(new SoulEater());
         Deck deck3 = new Deck();
         deck3.getMinions().add(new PersianGeneralissimo());
         deck3.getMinions().add(new TuranianArcher());
@@ -89,8 +89,8 @@ public class Collection {
         deck3.getSpells().add(new AllPower());
         deck3.getSpells().add(new AllAttack());
         deck3.getSpells().add(new Weakening());
-        deck3.setHero(new Arash());
-        deck3.setUsableItem(new TerrorHood());
+        deck3.getHero().add(new Arash());
+        deck3.getUsableItem().add(new TerrorHood());
         getStoryModeDeck().add(deck1);
         getStoryModeDeck().add(deck2);
         getStoryModeDeck().add(deck3);
@@ -220,12 +220,9 @@ public class Collection {
 
     public void removeFromDeck(String cardName, String deckName) {
         Deck deck = findDeck(deckName);
-        if (deck.getHero().getName().equals(cardName)) {
-            deck.setHero(null);
-        }
-        if (deck.getUsableItem().getName().equals(cardName)) {
-            deck.setUsableItem(null);
-        }
+
+        deck.getHero().removeIf(hero -> hero.getName().equals(cardName));
+        deck.getUsableItem().removeIf(item -> item.getName().equals(cardName));
         deck.getSpells().removeIf(spell -> spell.getName().equals(cardName));
         deck.getMinions().removeIf(minion -> minion.getName().equals(cardName));
     }
@@ -295,7 +292,7 @@ public class Collection {
         Deck deck = findDeck(deckName);
         for (Hero hero : getHeroes()) {
             if (hero.getName().equals(cardName)) {
-                deck.setHero(hero);
+                deck.getHero().add(hero);
                 return;
             }
         }
@@ -313,7 +310,7 @@ public class Collection {
         }
         for (UsableItem usableItem : getUsableItems()) {
             if (usableItem.getName().equals(cardName)) {
-                deck.setUsableItem(usableItem);
+                deck.getUsableItem().add(usableItem);
                 return;
             }
         }

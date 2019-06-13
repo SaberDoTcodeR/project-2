@@ -29,11 +29,11 @@ public class HeroBattle extends Battle {
                 else
                     getMap().get(i).add(new Cell(i, j, 0, -1));
                 if (i == 2 && j == 0) {
-                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(), 0);
+                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().get(0).duplicate(), 0);
 
                 }
                 if (i == 2 && j == 8) {
-                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
+                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().get(0).duplicate(), 1);
                 }
 
             }

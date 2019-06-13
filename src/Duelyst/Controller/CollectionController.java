@@ -14,6 +14,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
@@ -340,6 +342,7 @@ public class CollectionController {
     public void initialize() {
         deckList.setOnAction(event -> {
             setCurrentDeck((String) (deckList.getValue()));
+            showDeck();
         });
         deckList.setPromptText("CHOOSE A DECK :");
         myDecks = Account.getLoginAccount().getCollection().getDecks();
@@ -497,6 +500,22 @@ public class CollectionController {
             ((Label) (spellBoxes[i].getChildren().get(2))).setText(
                     ((Label) (spellBoxes[i].getChildren().get(2))).getText() + "\n" + spellInfo);
             ((Label) (spellBoxes[i].getChildren().get(2))).setWrapText(true);
+        }
+    }
+
+    private void showDeck() {
+        deckBox.getChildren().clear();
+        for (Hero hero : currentDeck.getHero()) {
+            showCard(hero.getName().toUpperCase(), 0);
+        }
+        for (Minion minion : currentDeck.getMinions()) {
+            showCard(minion.getName().toUpperCase(), 1);
+        }
+        for (Spell spell : currentDeck.getSpells()) {
+            showCard(spell.getName().toUpperCase(), 2);
+        }
+        for (UsableItem item : currentDeck.getUsableItem()) {
+            showCard(item.getName().toUpperCase(), 3);
         }
     }
 
@@ -2591,7 +2610,7 @@ public class CollectionController {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
-                showCard(string);
+                showCard(string, 0);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
@@ -2600,7 +2619,7 @@ public class CollectionController {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
-                showCard(string);
+                showCard(string, 1);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
@@ -2609,7 +2628,7 @@ public class CollectionController {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
-                showCard(string);
+                showCard(string, 2);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
@@ -2618,11 +2637,37 @@ public class CollectionController {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
-                showCard(string);
+                showCard(string, 3);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 return;
             }
         }
+    }
+
+    private void showCard(String cardName, int type) {//0 hero 1 minion 2 spell 3 item
+        HBox hBox = new HBox();
+        hBox.setId("boxBoughtStyle");
+        CheckBox checkBox = new CheckBox();
+        checkBox.setAlignment(Pos.CENTER);
+        checkBox.setPadding(new Insets(40, 0, 0, 20));
+        ImageView imageView;
+        if (type == 0) {
+            imageView = new ImageView(new Image("Duelyst/css/heroDeck.jpg"));
+        } else if (type == 1) {
+            imageView = new ImageView(new Image("Duelyst/css/minionDeck.jpg"));
+        } else if (type == 2) {
+            imageView = new ImageView(new Image("Duelyst/css/spellDeck.jpg"));
+        } else {
+            imageView = new ImageView(new Image("Duelyst/css/itemDeck.jpg"));
+        }
+        imageView.setPreserveRatio(true);
+        imageView.setPickOnBounds(true);
+        imageView.setFitHeight(200);
+        Label label = new Label(cardName);
+        label.setId("label-deck");
+        label.setPadding(new Insets(70, 20, 0, 20));
+        hBox.getChildren().addAll(checkBox, imageView, label);
+        deckBox.getChildren().addAll(hBox);
     }
 
     public void deleteBtnAct() {
@@ -2643,6 +2688,7 @@ public class CollectionController {
                 return;
             }
         }
+        deckBox.getChildren().clear();
     }
 
     public void setMainBtnAct() {

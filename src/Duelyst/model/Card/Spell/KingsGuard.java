@@ -17,7 +17,7 @@ public class KingsGuard extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        Cell cellOfOwnHero = battle.getMap().get(0).get(0).getCellOfCard(player.getMainDeck().getHero(),battle);
+        Cell cellOfOwnHero = battle.getMap().get(0).get(0).getCellOfCard(player.getMainDeck().getHero().get(0),battle);
         ArrayList<Cell> cells = new ArrayList<>();
         if (cellOfOwnHero.getX() < 4)
             cells.add(cellOfOwnHero.downCell(battle.getMap()));

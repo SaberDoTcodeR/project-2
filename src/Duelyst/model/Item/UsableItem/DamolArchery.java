@@ -22,8 +22,8 @@ public class DamolArchery extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        if (player.getMainDeck().getHero().getTypeOfHit().equals("Ranged") ||
-                player.getMainDeck().getHero().getTypeOfHit().equals("Hybrid")) {
+        if (player.getMainDeck().getHero().get(0).getTypeOfHit().equals("Ranged") ||
+                player.getMainDeck().getHero().get(0).getTypeOfHit().equals("Hybrid")) {
             if (activeTime == 6) {
                 if (cell.getHero() != null) {
                     DisarmBuff disarmBuff = new DisarmBuff();

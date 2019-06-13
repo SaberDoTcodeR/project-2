@@ -113,9 +113,9 @@ public abstract class Card {
             Cell cell = battle.getMap().get(0).get(0).getCellOfCard(this, battle);
             cell.setMinion(null, 2);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);
+                battle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getFirstPlayer(), 3);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 4 - 1);
+                battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 4 - 1);
         } else if (this.getType().equals("Hero") && ((Hero) this).getHp() <= 0) {
             if (battle.getType().equals("HeroBattle")) {
                 if (this.getCardId().contains(battle.getSecondPlayer().getUserName()))
@@ -150,9 +150,9 @@ public abstract class Card {
             if (((Hero) this).getAp() >= y && !(((Hero) this).getAp() < ((Hero) card).getAp() && card.getName().equals("Ashkbous")))
                 ((Hero) card).setHp(((Hero) card).getHp() - ((Hero) this).getAp() + y);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 6);
+                battle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getFirstPlayer(), 6);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 6);
+                battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 6);
 
 
             if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack() && !isCounter) {
@@ -163,9 +163,9 @@ public abstract class Card {
             if (((Minion) this).getAp() >= y && !(((Minion) this).getAp() < ((Hero) card).getAp() && card.getName().equals("Ashkbous")))
                 ((Hero) card).setHp(((Hero) card).getHp() - ((Minion) this).getAp() + y);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 6);
+                battle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getFirstPlayer(), 6);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 7 - 1);
+                battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 7 - 1);
 
             if (!((Hero) card).isStunning() && ((Hero) card).isCounterAttack() && !isCounter) {
                 card.counterAttack(battle, this);
@@ -174,9 +174,9 @@ public abstract class Card {
             if (((Minion) this).getAp() >= y && !(((Minion) this).getAp() < ((Minion) card).getAp() && card.getName().equals("Ashkbous")))
                 ((Minion) card).setHp(((Minion) card).getHp() - ((Minion) this).getAp() + y);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);
+                battle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getFirstPlayer(), 3);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 3);
+                battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 3);
 
             if (!((Minion) card).isStunning() && ((Minion) card).isCounterAttack()) {
                 card.counterAttack(battle, this);
@@ -185,9 +185,9 @@ public abstract class Card {
             if (((Hero) this).getAp() >= y && !(((Hero) this).getAp() < ((Minion) card).getAp() && card.getName().equals("Ashkbous")))
                 ((Minion) card).setHp(((Minion) card).getHp() - ((Hero) this).getAp() + y);
             if (battle.getTurn() % 2 == 1 && battle.getFirstPlayerDeck().getUsableItem() != null)
-                battle.getFirstPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getFirstPlayer(), 3);
+                battle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getFirstPlayer(), 3);
             if (battle.getTurn() % 2 == 0 && battle.getSecondPlayerDeck().getUsableItem() != null)
-                battle.getSecondPlayerDeck().getUsableItem().applyEffect(battle, null, battle.getSecondPlayer(), 2 + 1);
+                battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 2 + 1);
 
             if (!((Minion) card).isStunning() && ((Minion) card).isCounterAttack()) {
                 card.counterAttack(battle, this);

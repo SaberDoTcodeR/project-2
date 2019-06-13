@@ -100,11 +100,11 @@ public class OneFlagBattle extends Battle {
 
                 }
                 if (i == 2 && j == 0) {
-                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().duplicate(), 0);
+                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().get(0).duplicate(), 0);
 
                 }
                 if (i == 2 && j == 8) {
-                    getMap().get(2 + 1 - 1).get(8).setHero(getSecondPlayerDeck().getHero().duplicate(), 1);
+                    getMap().get(2 + 1 - 1).get(8).setHero(getSecondPlayerDeck().getHero().get(0).duplicate(), 1);
                 }
 
             }
