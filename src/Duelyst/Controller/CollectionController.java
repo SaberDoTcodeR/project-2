@@ -7,12 +7,12 @@ import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Deck;
 import Duelyst.model.Item.UsableItem.UsableItem;
-import Duelyst.model.Shop;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
@@ -22,13 +22,20 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
-
 public class CollectionController {
     public boolean[] heroesBought = new boolean[10];
     public boolean[] itemsBought = new boolean[12];
     public boolean[] minionsBought = new boolean[40];
     public boolean[] spellsBought = new boolean[20];
+
+    public void setDeck(String name) {
+        for (Deck deck : myDecks) {
+            if(deck.getName().equals(name))
+                this.deck = deck;
+        }
+    }
+
+    private Deck deck;
     @FXML
     public ScrollPane heroes;
     public ScrollPane minions;
@@ -326,6 +333,8 @@ public class CollectionController {
     private CheckBox minion40;
 
     public void initialize() {
+        deckList.setOnAction(event -> setDeck(((Label) deckList.getValue()).getText()));
+
 
         heroBoxes[0] = hero1Box;
         heroBoxes[1] = hero2Box;
@@ -412,6 +421,7 @@ public class CollectionController {
         minionBoxes[37] = minion38Box;
         minionBoxes[38] = minion39Box;
         minionBoxes[39] = minion40Box;
+
 
         for (int i = 0, x = 0; i < 10; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
@@ -2415,19 +2425,24 @@ public class CollectionController {
     public void addBtnActFocus() {
         addButton.requestFocus();
     }
+
     public void createBtnActFocus() {
         createButton.requestFocus();
     }
+
     public void deleteBtnActFocus() {
         deleteButton.requestFocus();
     }
+
     public void crossBtnActFocus() {
         crossButton.requestFocus();
     }
+
     public void setMainBtnActFocus() {
         setMainButton.requestFocus();
     }
-    public void mainMenuBtnActFocus(){
+
+    public void mainMenuBtnActFocus() {
         mainMenuButton.requestFocus();
     }
 
@@ -2466,11 +2481,13 @@ public class CollectionController {
             addBtnAct();
         }
     }
+
     public void handleOnKeyPressedDelete(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             deleteBtnAct();
         }
     }
+
     public void handleOnKeyPressedCross(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             crossBtnAct();
@@ -2486,8 +2503,13 @@ public class CollectionController {
         }
     }
 
-    public void createBtnAct() {
-        
+    public void createDeck(String deckName) {
+        Deck deck = new Deck();
+        deck.setName(deckName);
+        Account.getLoginAccount().getCollection().addDeck(deck);
+        myDecks = Account.getLoginAccount().getCollection().getDecks();
+        deckList.getItems().add(deckName);
+        setDeck(deckName);
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
@@ -2495,6 +2517,7 @@ public class CollectionController {
             setMainBtnAct();
         }
     }
+
     public void addBtnAct() {
         for (VBox vBox : heroBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
@@ -2532,16 +2555,17 @@ public class CollectionController {
 
     //NAME OF vBox = deckBox            we must have a deck field witch named deck:)
     public void deleteBtnAct() {
-/*        for (HBox hBox : deckBox.getChildren()) {
+        for (Node ignored : deckBox.getChildren()) {
+            HBox hBox = (HBox) ignored;
             if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
-                Account.getLoginAccount().getCollection().removeFromDeck(cardName, deck.getName());
+                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.deck.getName());
                 deckBox.getChildren().remove(hBox);
             }
-        }*/
+        }
     }
 
     public void setMainBtnAct() {
-       /* Account.getLoginAccount().setMainDeck(deck);*/
+        /* Account.getLoginAccount().setMainDeck(deck);*/
     }
 }
