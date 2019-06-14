@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class GameModeController {
+    public static int MODE;// 0 for HeroMode 1 for OneFlag 2 for SeveralFlag
     @FXML
     public Button mode1Button;
     @FXML
@@ -56,17 +57,20 @@ public class GameModeController {
 
     public void handleOnKeyPressedMode1(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            MODE = 0;
             mode1BtnAct();
         }
     }
 
     public void handleOnKeyPressedMode2(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            MODE = 1;
             mode2BtnAct();
         }
     }
     public void handleOnKeyPressedMode3(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            MODE = 2;
             mode3BtnAct();
         }
     }
