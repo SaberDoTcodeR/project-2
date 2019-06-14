@@ -51,6 +51,7 @@ public class BattleController {
     private void showHand(Card cardInHand) {
 
     }
+/*
 
     public void handleTurn() {
         currentBattle.increamentTurn();
@@ -64,12 +65,13 @@ public class BattleController {
         if (currentBattle.getTurn() == 1 && currentBattle.getSecondPlayerDeck().getUsableItem() != null)
             currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), -1);
     }
+*/
 
     private void showMana(int manaPlayer, int manaAI) {
 
     }
     public void initialize() {
-        switch (GameModeController.MODE) {
+       /* switch (GameModeController.MODE) {
             case 0: {
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(0).duplicate(),
                         Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 500);
@@ -85,7 +87,7 @@ public class BattleController {
                         Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 11, 1500);
                 break;
             }
-        }
+        }*/
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         PerspectiveTransform transform=new PerspectiveTransform();
         transform.setLry(primaryScreenBounds.getHeight()-300);

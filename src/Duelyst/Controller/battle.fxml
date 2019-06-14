@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
+<?import javafx.scene.shape.Rectangle?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Duelyst.Controller.BattleController">
     <children>
         <GridPane fx:id="stack">
@@ -40,7 +41,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <ImageView fitHeight="53.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" />
+                        <Rectangle id="tile"/>
                         <ImageView fitHeight="53.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
                         <ImageView fitHeight="53.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
                         <ImageView fitHeight="53.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
