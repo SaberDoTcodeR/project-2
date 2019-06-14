@@ -132,4 +132,23 @@ public class View {
 
 
     }
+    public static void makeBattle() {
+
+        StackPane root = null;
+        try {
+            root = FXMLLoader.load(MainMenuController.class.getResource("battle.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene modeMenuScene = new Scene(root);
+
+        modeMenuScene.setCursor(new ImageCursor(new Image("Duelyst/css/OzFOdVG.png")));
+        modeMenuScene.getStylesheets().add(Main.class.getResource("css/css6.css").toExternalForm());
+        primaryStage.setScene(modeMenuScene);
+        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
+
+
+
+    }
 }

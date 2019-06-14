@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage1) throws Exception {
         primaryStage = primaryStage1;
 
-        View.makeLoginScene();
+        View.makeBattle();
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
         primaryStage.show();
