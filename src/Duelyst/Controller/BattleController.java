@@ -1,6 +1,7 @@
 package Duelyst.Controller;
 
 import Duelyst.Main;
+import Duelyst.model.Card.Hero.Kaveh;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
@@ -11,6 +12,7 @@ import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.util.Duration;
 
@@ -38,6 +40,21 @@ public class BattleController {
     public GridPane stack;
     public static boolean finished = false;
     public Battle currentBattle;
+    public Rectangle rect1;
+    public Rectangle rect2;
+    public Rectangle rect3;
+    public Rectangle rect4;
+    public Rectangle rect5;
+    public Rectangle rect6;
+    public Rectangle rect7;
+    public Rectangle rect8;
+    public Rectangle rect9;
+    public Rectangle rect10;
+    public Rectangle rect11;
+    public Rectangle rect12;
+    public Rectangle rect13;
+    public Rectangle rect14;
+    Rectangle[] rectangles = new Rectangle[45];
 
 
     public void handleHand() {
@@ -70,7 +87,19 @@ public class BattleController {
     private void showMana(int manaPlayer, int manaAI) {
 
     }
+
     public void initialize() {
+        rectangles[0]=rect1;
+        rectangles[1]=rect2;
+        rectangles[2]=rect3;
+        rectangles[3]=rect4;
+        rectangles[4]=rect5;
+        rectangles[5]=rect6;
+        rectangles[6]=rect7;
+        rectangles[7]=rect8;
+        rectangles[8]=rect9;
+        rectangles[9]=rect10;
+        rectangles[10]=rect11;
        /* switch (GameModeController.MODE) {
             case 0: {
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(0).duplicate(),
@@ -89,15 +118,21 @@ public class BattleController {
             }
         }*/
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        PerspectiveTransform transform=new PerspectiveTransform();
-        transform.setLry(primaryScreenBounds.getHeight()-300);
-        transform.setLrx(primaryScreenBounds.getWidth()-500);
-        transform.setLly(primaryScreenBounds.getHeight()-300);
+        final double KASHI = primaryScreenBounds.getWidth() / 18;
+        for (int i = 0; i < 11; i++) {
+            rectangles[i].setWidth(KASHI);
+
+            rectangles[i].setHeight(KASHI);
+        }
+        PerspectiveTransform transform = new PerspectiveTransform();
+        transform.setLry(KASHI*5);
+        transform.setLrx(KASHI*9);
+        transform.setLly(KASHI*5);
         transform.setLlx(0);
         transform.setUry(0);
-        transform.setUrx(primaryScreenBounds.getWidth()-540);
+        transform.setUrx(KASHI*9-KASHI/3);
         transform.setUly(0);
-        transform.setUlx(40);
+        transform.setUlx(KASHI/3);
         mapGrid.setEffect(transform);
     }
 
