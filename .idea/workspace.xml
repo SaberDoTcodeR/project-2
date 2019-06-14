@@ -4,7 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="426" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="battle added">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="battle added12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" afterDir="false" />
@@ -87,56 +87,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2698">
-              <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+            <state relative-caret-position="289">
+              <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4537#4538#0" expanded="true" />
                 <element signature="e#4582#4583#0" expanded="true" />
-                <element signature="e#5101#5102#0" expanded="true" />
-                <element signature="e#5146#5147#0" expanded="true" />
-                <element signature="e#5665#5666#0" expanded="true" />
-                <element signature="e#5710#5711#0" expanded="true" />
-                <element signature="e#6229#6230#0" expanded="true" />
-                <element signature="e#6274#6275#0" expanded="true" />
-                <element signature="e#6793#6794#0" expanded="true" />
-                <element signature="e#6838#6839#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
-              <folding>
-                <element signature="e#2365#2366#0" expanded="true" />
-                <element signature="e#2401#2402#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="138" selection-start-line="138" selection-end-line="138" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+            <state relative-caret-position="102">
+              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -154,9 +124,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>buyBtnAct</find>
-      <find>button</find>
-      <find>button1</find>
       <find>button5</find>
       <find>button-add</find>
       <find>createBtn</find>
@@ -184,6 +151,9 @@
       <find>show</find>
       <find>label</find>
       <find>star</find>
+      <find>ImageView fitHeight=&quot;53.0&quot; fitWidth=&quot;47.0&quot; pickOnBounds=&quot;true&quot; preserveRatio=&quot;true&quot;</find>
+      <find>150</find>
+      <find>100</find>
     </findStrings>
     <replaceStrings>
       <replace>GridPane.columnIndex=&quot;1&quot;</replace>
@@ -204,6 +174,9 @@
       <replace>CheckBox</replace>
       <replace>.get(0)</replace>
       <replace>get(0)</replace>
+      <replace>Rectangle width=&quot;50.0&quot; height=&quot;50.0&quot;</replace>
+      <replace>100</replace>
+      <replace>50</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\ahura\Desktop\project-2\src\Duelyst</dir>
@@ -269,8 +242,8 @@
         <option value="$PROJECT_DIR$/src/Duelyst/Main.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/View/View.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/css/css6.css" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" />
         <option value="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" />
       </list>
     </option>
   </component>
@@ -366,7 +339,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560526298670" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560530799266" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jfoenix-8.0.8.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -506,7 +479,7 @@
       <workItem from="1560353907463" duration="717000" />
       <workItem from="1560410968885" duration="3030000" />
       <workItem from="1560445854461" duration="8353000" />
-      <workItem from="1560503691033" duration="21642000" />
+      <workItem from="1560503691033" duration="25910000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -627,17 +600,31 @@
       <option name="project" value="LOCAL" />
       <updated>1560526263547</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="battle added1">
+      <created>1560526657499</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1560526657500</updated>
+    </task>
+    <task id="LOCAL-00019" summary="battle added12">
+      <created>1560528058507</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1560528058507</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183580000" />
+    <option name="totallyTimeSpent" value="187848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26096824" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -646,7 +633,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25040916" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25040916" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -676,7 +663,7 @@
       <window_info anchor="right" id="Theme Preview" order="10" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.3464448" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -735,14 +722,15 @@
     <MESSAGE value="collection finished expect validation" />
     <MESSAGE value="ready to add map of game" />
     <MESSAGE value="battle added" />
-    <option name="LAST_COMMIT_MESSAGE" value="battle added" />
+    <MESSAGE value="battle added1" />
+    <MESSAGE value="battle added12" />
+    <option name="LAST_COMMIT_MESSAGE" value="battle added12" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/input/Clipboard.java" />
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Shop.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1127,9 +1115,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="-1921">
           <caret line="68" column="16" selection-start-line="68" selection-start-column="16" selection-end-line="68" selection-end-column="16" />
           <folding>
             <element signature="e#2365#2366#0" expanded="true" />
@@ -1138,38 +1133,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/card_background.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="138" selection-start-line="138" selection-end-line="138" />
+        <state relative-caret-position="289">
+          <caret line="120" column="67" selection-start-line="120" selection-start-column="67" selection-end-line="120" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4537#4538#0" expanded="true" />
+            <element signature="e#4582#4583#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="41" column="37" lean-forward="true" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2698">
-          <caret line="28" column="28" lean-forward="true" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4537#4538#0" expanded="true" />
-            <element signature="e#4582#4583#0" expanded="true" />
-            <element signature="e#5101#5102#0" expanded="true" />
-            <element signature="e#5146#5147#0" expanded="true" />
-            <element signature="e#5665#5666#0" expanded="true" />
-            <element signature="e#5710#5711#0" expanded="true" />
-            <element signature="e#6229#6230#0" expanded="true" />
-            <element signature="e#6274#6275#0" expanded="true" />
-            <element signature="e#6793#6794#0" expanded="true" />
-            <element signature="e#6838#6839#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
         </state>
       </provider>
     </entry>

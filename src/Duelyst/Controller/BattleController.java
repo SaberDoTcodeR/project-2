@@ -118,10 +118,9 @@ public class BattleController {
             }
         }*/
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        final double KASHI = primaryScreenBounds.getWidth() / 18;
+        final double KASHI = primaryScreenBounds.getWidth()*7 / 100;
         for (int i = 0; i < 11; i++) {
             rectangles[i].setWidth(KASHI);
-
             rectangles[i].setHeight(KASHI);
         }
         PerspectiveTransform transform = new PerspectiveTransform();
@@ -151,7 +150,7 @@ public class BattleController {
         });
     }
 
-    public void enterHand2(MouseEvent event) {
+   /* public void enterHand2(MouseEvent event) {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image1);
         rotate.setFromAngle(image1.getRotate());
         rotate.setToAngle(image1.getRotate() + 360);
@@ -209,7 +208,7 @@ public class BattleController {
                 rotate.stop();
             }
         });
-    }
+    }*/
 
     double orgSceneX, orgSceneY;
     double orgTranslateX, orgTranslateY;
