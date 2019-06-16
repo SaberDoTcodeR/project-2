@@ -1,5 +1,7 @@
 package Duelyst.Controller;
 
+import Duelyst.Main;
+import Duelyst.model.Card.Hero.Kaveh;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
@@ -9,8 +11,12 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.util.Duration;
@@ -40,26 +46,57 @@ public class BattleController {
     public GridPane stack;
     public static boolean finished = false;
     public Battle currentBattle;
-    public Rectangle rect1;
-    public Rectangle rect2;
-    public Rectangle rect3;
-    public Rectangle rect4;
-    public Rectangle rect5;
-    public Rectangle rect6;
-    public Rectangle rect7;
-    public Rectangle rect8;
-    public Rectangle rect9;
-    public Rectangle rect10;
-    public Rectangle rect11;
-    public Rectangle rect12;
-    public Rectangle rect13;
-    public Rectangle rect14;
+    public Region rect1;
+    public Region rect2;
+    public Region rect3;
+    public Region rect4;
+    public Region rect5;
+    public Region rect6;
+    public Region rect7;
+    public Region rect8;
+    public Region rect9;
+    public Region rect10;
+    public Region rect11;
+    public Region rect12;
+    public Region rect13;
+    public Region rect14;
+    public Region rect15;
+    public Region rect16;
+    public Region rect17;
+    public Region rect18;
+    public Region rect19;
+    public Region rect20;
+    public Region rect21;
+    public Region rect22;
+    public Region rect23;
+    public Region rect24;
+    public Region rect25;
+    public Region rect26;
+    public Region rect27;
+    public Region rect28;
+    public Region rect29;
+    public Region rect30;
+    public Region rect31;
+    public Region rect32;
+    public Region rect33;
+    public Region rect34;
+    public Region rect35;
+    public Region rect36;
+    public Region rect37;
+    public Region rect38;
+    public Region rect39;
+    public Region rect40;
+    public Region rect41;
+    public Region rect42;
+    public Region rect43;
+    public Region rect44;
+    public Region rect45;
 
     public ImageView image6;
     public ImageView gif6;
 
 
-    Rectangle[] rectangles = new Rectangle[45];
+    Region[] rectangles = new Region[45];
 
 
     public void handleHand() {
@@ -125,7 +162,41 @@ public class BattleController {
         rectangles[8] = rect9;
         rectangles[9] = rect10;
         rectangles[10] = rect11;
-
+        rectangles[11] = rect12;
+        rectangles[12] = rect13;
+        rectangles[13] = rect14;
+        rectangles[14] = rect15;
+        rectangles[15] = rect16;
+        rectangles[16] = rect17;
+        rectangles[17] = rect18;
+        rectangles[18] = rect19;
+        rectangles[19] = rect20;
+        rectangles[20] = rect21;
+        rectangles[21] = rect22;
+        rectangles[22] = rect23;
+        rectangles[23] = rect24;
+        rectangles[24] = rect25;
+        rectangles[25] = rect26;
+        rectangles[26] = rect27;
+        rectangles[27] = rect28;
+        rectangles[28] = rect29;
+        rectangles[29] = rect30;
+        rectangles[30] = rect31;
+        rectangles[31] = rect32;
+        rectangles[32] = rect33;
+        rectangles[33] = rect34;
+        rectangles[34] = rect35;
+        rectangles[35] = rect36;
+        rectangles[36] = rect37;
+        rectangles[37] = rect38;
+        rectangles[38] = rect39;
+        rectangles[39] = rect40;
+        rectangles[40] = rect41;
+        rectangles[41] = rect42;
+        rectangles[42] = rect43;
+        rectangles[43] = rect44;
+        rectangles[44] = rect45;
+        gif1.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
         switch (GameModeController.MODE) {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
@@ -148,9 +219,9 @@ public class BattleController {
         handleHand();
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
         final double KASHI = primaryScreenBounds.getWidth() * 7 / 100;
-        for (int i = 0; i < 11; i++) {
-            rectangles[i].setWidth(KASHI);
-            rectangles[i].setHeight(KASHI);
+        for (int i = 1; i < 45; i++) {
+            rectangles[i].setPrefWidth(KASHI);
+            rectangles[i].setPrefHeight(KASHI);
         }
         PerspectiveTransform transform = new PerspectiveTransform();
         transform.setLry(KASHI * 5);
@@ -264,3 +335,4 @@ public class BattleController {
         ((ImageView) (event.getSource())).setTranslateY(image1.getY());
     }
 }
+
