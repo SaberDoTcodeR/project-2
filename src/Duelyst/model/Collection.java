@@ -52,7 +52,6 @@ public class Collection {
         deck2.getMinions().add(new TuranianStoneHook());
         deck2.getMinions().add(new TuranianPrince());
         deck2.getMinions().add(new Eagle());
-        deck2.getMinions().add(new Eagle());
         deck2.getMinions().add(new FieryDragon());
         deck2.getMinions().add(new Panther());
         deck2.getMinions().add(new Elf());

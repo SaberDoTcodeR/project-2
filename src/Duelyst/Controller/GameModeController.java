@@ -7,7 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class GameModeController {
-    public static int MODE;// 0 for HeroMode 1 for OneFlag 2 for SeveralFlag
+    public static int MODE=0;// 0 for HeroMode 1 for OneFlag 2 for SeveralFlag
     @FXML
     public Button mode1Button;
     @FXML
@@ -34,7 +34,7 @@ public class GameModeController {
     }
 
     public void mode1BtnAct() {
-
+        View.makeBattle();
     }
 
     public void mode2BtnAct() {

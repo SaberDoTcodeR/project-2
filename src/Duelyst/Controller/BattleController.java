@@ -1,7 +1,5 @@
 package Duelyst.Controller;
 
-import Duelyst.Main;
-import Duelyst.model.Card.Hero.Kaveh;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
@@ -9,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.effect.PerspectiveTransform;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -36,6 +35,7 @@ public class BattleController {
     public ImageView gif3;
     public ImageView gif4;
     public ImageView gif5;
+    public ImageView[] handGifs;
     public GridPane mapGrid;
     public GridPane stack;
     public static boolean finished = false;
@@ -54,19 +54,37 @@ public class BattleController {
     public Rectangle rect12;
     public Rectangle rect13;
     public Rectangle rect14;
+
+    public ImageView image6;
+    public ImageView gif6;
+
+
     Rectangle[] rectangles = new Rectangle[45];
 
 
     public void handleHand() {
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
+
         for (Card card : currentBattle.getFirstPlayerHand().getCards()) {
-            showHand(card);
+            showHand(card, false);
         }
+        showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
         currentBattle.getSecondPlayerHand().fillHand(currentBattle, 1);
     }
 
-    private void showHand(Card cardInHand) {
-
+    private void showHand(Card cardInHand, boolean nextCard) {
+        if (nextCard) {
+            //gif6.setImage(cardInHand.getImage());
+            gif6.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
+            return;
+        }
+        for (ImageView imageView : handGifs) {
+            if (imageView.getImage() == null) {
+                //imageView.setImage(cardInHand.getImage());
+                imageView.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
+                return;
+            }
+        }
     }
 /*
 
@@ -89,21 +107,31 @@ public class BattleController {
     }
 
     public void initialize() {
-        rectangles[0]=rect1;
-        rectangles[1]=rect2;
-        rectangles[2]=rect3;
-        rectangles[3]=rect4;
-        rectangles[4]=rect5;
-        rectangles[5]=rect6;
-        rectangles[6]=rect7;
-        rectangles[7]=rect8;
-        rectangles[8]=rect9;
-        rectangles[9]=rect10;
-        rectangles[10]=rect11;
-       /* switch (GameModeController.MODE) {
+        handGifs = new ImageView[5];
+        handGifs[0] = gif1;
+        handGifs[1] = gif2;
+        handGifs[2] = gif3;
+        handGifs[3] = gif4;
+        handGifs[4] = gif5;
+
+        rectangles[0] = rect1;
+        rectangles[1] = rect2;
+        rectangles[2] = rect3;
+        rectangles[3] = rect4;
+        rectangles[4] = rect5;
+        rectangles[5] = rect6;
+        rectangles[6] = rect7;
+        rectangles[7] = rect8;
+        rectangles[8] = rect9;
+        rectangles[9] = rect10;
+        rectangles[10] = rect11;
+
+        switch (GameModeController.MODE) {
             case 0: {
+                Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(0).duplicate(),
                         Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 500);
+
                 break;
             }
             case 1: {
@@ -116,22 +144,23 @@ public class BattleController {
                         Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 11, 1500);
                 break;
             }
-        }*/
+        }
+        handleHand();
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-        final double KASHI = primaryScreenBounds.getWidth()*7 / 100;
+        final double KASHI = primaryScreenBounds.getWidth() * 7 / 100;
         for (int i = 0; i < 11; i++) {
             rectangles[i].setWidth(KASHI);
             rectangles[i].setHeight(KASHI);
         }
         PerspectiveTransform transform = new PerspectiveTransform();
-        transform.setLry(KASHI*5);
-        transform.setLrx(KASHI*9);
-        transform.setLly(KASHI*5);
+        transform.setLry(KASHI * 5);
+        transform.setLrx(KASHI * 9);
+        transform.setLly(KASHI * 5);
         transform.setLlx(0);
         transform.setUry(0);
-        transform.setUrx(KASHI*9-KASHI/3);
+        transform.setUrx(KASHI * 9 - KASHI / 3);
         transform.setUly(0);
-        transform.setUlx(KASHI/3);
+        transform.setUlx(KASHI / 3);
         mapGrid.setEffect(transform);
     }
 
@@ -225,7 +254,6 @@ public class BattleController {
         double offsetY = event.getSceneY() - orgSceneY;
         double newTranslateX = orgTranslateX + offsetX;
         double newTranslateY = orgTranslateY + offsetY;
-
         ((ImageView) (event.getSource())).setTranslateX(newTranslateX);
         ((ImageView) (event.getSource())).setTranslateY(newTranslateY);
     }

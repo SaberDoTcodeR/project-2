@@ -28,6 +28,7 @@ public class Hand {
 
     public void fillHand(Battle battle, int whichPlayer) {
         while (this.cards.size() < 5) {
+
             Random random = new Random();
             if (this.nextCardInHand != null) {
                 this.cards.add(nextCardInHand);
