@@ -5,7 +5,10 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Cell;
+import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
@@ -20,6 +23,22 @@ public abstract class Card {
     private String cardId;
     private int remainedMoves = 2;
     private boolean canAttack = true;
+
+    public static Card getCard(String string) {
+        for (Hero hero : Hero.getHeroes()) {
+            if (hero.getName().equals(string))
+                return hero;
+        }
+        for (Minion minion : Minion.getMinions()) {
+            if (minion.getName().equals(string))
+                return minion;
+        }
+        for (Spell spell : Spell.getSpells()) {
+            if (spell.getName().equals(string))
+                return spell;
+        }
+        return null;
+    }
 
     public String getName() {
         return name.toLowerCase();
@@ -118,10 +137,10 @@ public abstract class Card {
                 battle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(battle, null, battle.getSecondPlayer(), 4 - 1);
         } else if (this.getType().equals("Hero") && ((Hero) this).getHp() <= 0) {
             if (battle.getType().equals("HeroBattle")) {
-                if (this.getCardId().contains(battle.getSecondPlayer().getUserName()))
-                {} //view.endGame(battle, true);
-                else
-                {}  // view.endGame(battle, false);
+                if (this.getCardId().contains(battle.getSecondPlayer().getUserName())) {
+                } //view.endGame(battle, true);
+                else {
+                }  // view.endGame(battle, false);
             } else {
                 if (battle.getType().equals("OneFlagBattle")) {
                     if (((Hero) this).getNumberOfFlag() != 0) {

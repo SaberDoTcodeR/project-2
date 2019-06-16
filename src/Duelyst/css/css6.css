@@ -29,6 +29,14 @@
     -fx-background-radius: 15 15 15 15;
 }
 
+#tile:hover {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-insets: 1 1 1 1;
+    -fx-background-radius: 15 15 15 15;
+}
+
 #tileWhite{
     -fx-border-color: transparent;
     -fx-border-width: 0;
