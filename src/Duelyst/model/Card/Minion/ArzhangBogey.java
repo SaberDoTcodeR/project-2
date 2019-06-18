@@ -4,6 +4,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class ArzhangBogey extends Minion {
     public ArzhangBogey() {
@@ -17,6 +18,7 @@ public class ArzhangBogey extends Minion {
 
     public Minion duplicate() {
         ArzhangBogey arzhangBogey = new ArzhangBogey(this);
+        arzhangBogey.cardImage = new Image("Duelyst/css/unit_gifs/boss_andromeda_breathing.gif");
         return arzhangBogey;
     }
 

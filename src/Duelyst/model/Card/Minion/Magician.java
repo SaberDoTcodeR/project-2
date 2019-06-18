@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Buff.WeaknessBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class Magician extends Minion {
 
     public Minion duplicate() {
         Magician magician = new Magician(this);
+        magician.cardImage = new Image("Duelyst/css/unit_gifs/boss_invader_breathing.gif");
         return magician;
     }
 

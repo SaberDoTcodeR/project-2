@@ -111,7 +111,7 @@ public class BattleController {
             return;
         }
         for (ImageView imageView : handGifs) {
-            if (imageView.getImage() == null) {
+            if (imageView == null) {
                 //imageView.setImage(cardInHand.getImage());
                 imageView.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
                 return;
@@ -393,10 +393,10 @@ public class BattleController {
     }
 
     public void rect1DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect1.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect1.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect1.setId("tile");
     }
@@ -414,10 +414,10 @@ public class BattleController {
     }
 
     public void rect2DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect2.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect2.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect2.setId("tile");
     }
@@ -435,10 +435,10 @@ public class BattleController {
     }
 
     public void rect3DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect3.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect3.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect3.setId("tile");
     }
@@ -456,10 +456,10 @@ public class BattleController {
     }
 
     public void rect4DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect4.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect4.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect4.setId("tile");
     }
@@ -477,10 +477,10 @@ public class BattleController {
     }
 
     public void rect5DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect5.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect5.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect5.setId("tile");
     }
@@ -497,10 +497,10 @@ public class BattleController {
     }
 
     public void rect6DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect6.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect6.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect6.setId("tile");
     }
@@ -518,10 +518,10 @@ public class BattleController {
     }
 
     public void rect7DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect7.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect7.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect7.setId("tile");
     }
@@ -543,10 +543,10 @@ public class BattleController {
     }
 
     public void rect8DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect8.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect8.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect8.setId("tile");
     }
@@ -559,10 +559,10 @@ public class BattleController {
     }
 
     public void rect9DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect9.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect9.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect9.setId("tile");
     }
@@ -580,10 +580,10 @@ public class BattleController {
     }
 
     public void rect10DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect10.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect10.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect10.setId("tile");
     }
@@ -601,10 +601,10 @@ public class BattleController {
     }
 
     public void rect11DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect11.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect11.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect11.setId("tile");
     }
@@ -622,10 +622,10 @@ public class BattleController {
     }
 
     public void rect12DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect12.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect12.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect12.setId("tile");
     }
@@ -643,10 +643,10 @@ public class BattleController {
     }
 
     public void rect13DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect13.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect13.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect13.setId("tile");
     }
@@ -664,10 +664,10 @@ public class BattleController {
     }
 
     public void rect14DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect14.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect14.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect14.setId("tile");
     }
@@ -685,10 +685,10 @@ public class BattleController {
     }
 
     public void rect15DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect15.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect15.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect15.setId("tile");
     }
@@ -705,10 +705,10 @@ public class BattleController {
     }
 
     public void rect16DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect16.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect16.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect16.setId("tile");
     }
@@ -726,14 +726,13 @@ public class BattleController {
     }
 
     public void rect17DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect17.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect17.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect17.setId("tile");
     }
-
 
     public void rect17DragExited(DragEvent event) {
         rect17.setId("tile");
@@ -747,10 +746,10 @@ public class BattleController {
     }
 
     public void rect18DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect18.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect18.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect18.setId("tile");
     }
@@ -767,10 +766,10 @@ public class BattleController {
     }
 
     public void rect19DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect19.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect19.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect19.setId("tile");
     }
@@ -788,10 +787,10 @@ public class BattleController {
     }
 
     public void rect20DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect20.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect20.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect20.setId("tile");
     }
@@ -809,10 +808,10 @@ public class BattleController {
     }
 
     public void rect21DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect21.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect21.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect21.setId("tile");
     }
@@ -830,10 +829,10 @@ public class BattleController {
     }
 
     public void rect22DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect22.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect22.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect22.setId("tile");
     }
@@ -851,10 +850,10 @@ public class BattleController {
     }
 
     public void rect23DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect23.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect23.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect23.setId("tile");
     }
@@ -872,10 +871,10 @@ public class BattleController {
     }
 
     public void rect24DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect24.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect24.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect24.setId("tile");
     }
@@ -893,10 +892,10 @@ public class BattleController {
     }
 
     public void rect25DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect25.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect25.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect25.setId("tile");
     }
@@ -913,10 +912,10 @@ public class BattleController {
     }
 
     public void rect26DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect26.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect26.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect26.setId("tile");
     }
@@ -934,10 +933,10 @@ public class BattleController {
     }
 
     public void rect27DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect27.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect27.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect27.setId("tile");
     }
@@ -955,10 +954,10 @@ public class BattleController {
     }
 
     public void rect28DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect28.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect28.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect28.setId("tile");
     }
@@ -975,10 +974,10 @@ public class BattleController {
     }
 
     public void rect29DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect29.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect29.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect29.setId("tile");
     }
@@ -996,10 +995,10 @@ public class BattleController {
     }
 
     public void rect30DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect30.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect30.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect30.setId("tile");
     }
@@ -1017,10 +1016,10 @@ public class BattleController {
     }
 
     public void rect31DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect31.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect31.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect31.setId("tile");
     }
@@ -1038,10 +1037,10 @@ public class BattleController {
     }
 
     public void rect32DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect32.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect32.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect32.setId("tile");
     }
@@ -1059,10 +1058,10 @@ public class BattleController {
     }
 
     public void rect33DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect33.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect33.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect33.setId("tile");
     }
@@ -1080,10 +1079,10 @@ public class BattleController {
     }
 
     public void rect34DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect34.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect34.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect34.setId("tile");
     }
@@ -1101,10 +1100,10 @@ public class BattleController {
     }
 
     public void rect35DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect35.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect35.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect35.setId("tile");
     }
@@ -1121,10 +1120,10 @@ public class BattleController {
     }
 
     public void rect36DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect36.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect36.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect36.setId("tile");
     }
@@ -1142,10 +1141,10 @@ public class BattleController {
     }
 
     public void rect37DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect37.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect37.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect37.setId("tile");
     }
@@ -1163,10 +1162,10 @@ public class BattleController {
     }
 
     public void rect38DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect38.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect38.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect38.setId("tile");
     }
@@ -1183,10 +1182,10 @@ public class BattleController {
     }
 
     public void rect39DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect39.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect39.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect39.setId("tile");
     }
@@ -1204,10 +1203,10 @@ public class BattleController {
     }
 
     public void rect40DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect40.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect40.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect40.setId("tile");
     }
@@ -1225,10 +1224,10 @@ public class BattleController {
     }
 
     public void rect41DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect41.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect41.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect41.setId("tile");
     }
@@ -1246,10 +1245,10 @@ public class BattleController {
     }
 
     public void rect42DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect42.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect42.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect42.setId("tile");
     }
@@ -1267,10 +1266,10 @@ public class BattleController {
     }
 
     public void rect43DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect43.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect43.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect43.setId("tile");
     }
@@ -1288,10 +1287,10 @@ public class BattleController {
     }
 
     public void rect44DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(event.getDragboard().getImage());
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect44.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect44.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect44.setId("tile");
     }
@@ -1312,7 +1311,7 @@ public class BattleController {
         ImageView imageView = new ImageView();
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect45.getChildren().add(Card.getCard(event.getDragboard().getString()).getImage());
+        rect45.getChildren().add(imageView);
         handGifs[whichHand].setImage(null);
         rect45.setId("tile");
     }

@@ -2,6 +2,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class FieryDragon extends Minion {
     public FieryDragon() {
         super("FieryDragon", 5, 9, 250, 5, 1, 4);
@@ -13,6 +15,7 @@ public class FieryDragon extends Minion {
 
     public Minion duplicate() {
         FieryDragon fieryDragon = new FieryDragon(this);
+        fieryDragon.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlechassis_breathing.gif");
         return fieryDragon;
     }
 

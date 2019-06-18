@@ -7,6 +7,7 @@ import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Card;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -322,6 +323,9 @@ public abstract class Minion extends Card {
 
     public void increaseNumberOfAttacks() {
         this.numberOfAttacks++;
+    }
+    public Image getImage(){
+        return this.cardImage;
     }
 }
 

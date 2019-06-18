@@ -8,6 +8,7 @@ import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Cell;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public abstract class Card {
     private String cardId;
     private int remainedMoves = 2;
     private boolean canAttack = true;
+    protected Image cardImage;
 
     public static Card getCard(String string) {
         for (Hero hero : Hero.getHeroes()) {
@@ -344,4 +346,6 @@ public abstract class Card {
     public void setComingToMap(boolean comingToMap) {
         isComingToMap = comingToMap;
     }
+
+    public abstract Image getImage();
 }

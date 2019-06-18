@@ -3,6 +3,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class Eagle extends Minion {
     public Eagle() {
         super("Eagle", 2, 0, 200, 2, 1, 3);
@@ -15,6 +17,7 @@ public class Eagle extends Minion {
 
     public Minion duplicate() {
         Eagle eagle = new Eagle(this);
+        eagle.cardImage = new Image("C:\\Users\\ahura\\Desktop\\project-2\\src\\Duelyst\\css\\unit_gifs\\boss_crystal_breathing.gif");
         PowerBuff powerBuff = new PowerBuff(12, false);
         powerBuff.setTurnCounter(-4);
         powerBuff.incrementHp(eagle);

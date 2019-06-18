@@ -3,6 +3,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class PersianSpear extends Minion {
     public PersianSpear() {
         super("PersianSpear", 3, 5, 500, 1, 2, 3);
@@ -14,6 +16,7 @@ public class PersianSpear extends Minion {
 
     public Minion duplicate() {
         PersianSpear persianSpear = new PersianSpear(this);
+        persianSpear.cardImage = new Image("Duelyst/css/unit_gifs/boss_oriasidol_breathing.gif");
         return persianSpear;
     }
 

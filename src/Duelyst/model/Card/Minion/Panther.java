@@ -3,6 +3,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.MultiStageBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class Panther extends Minion {
 
     public Minion duplicate() {
         Panther panther = new Panther(this);
+        panther.cardImage = new Image("Duelyst/css/unit_gifs/boss_kron_breathing.gif");
         return panther;
     }
 

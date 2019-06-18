@@ -4,6 +4,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PoisonBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class PoisonSnake extends Minion {
     public PoisonSnake() {
         super("PoisonSnake", 6, 5, 300, 4, 1, 4);
@@ -16,6 +18,7 @@ public class PoisonSnake extends Minion {
 
     public Minion duplicate() {
         PoisonSnake poisonSnake = new PoisonSnake(this);
+        poisonSnake.cardImage = new Image("Duelyst/css/unit_gifs/boss_sandpanther_breathing.gif");
         return poisonSnake;
     }
 

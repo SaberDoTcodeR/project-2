@@ -2,6 +2,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class Iraj extends Minion {
     public Iraj() {
         super("Iraj", 20, 6, 500, 4, 1, 3);
@@ -13,6 +15,7 @@ public class Iraj extends Minion {
 
     public Minion duplicate() {
         Iraj iraj = new Iraj(this);
+        iraj.cardImage = new Image("Duelyst/css/unit_gifs/boss_grym_breathing.gif");
         return iraj;
     }
 

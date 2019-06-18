@@ -5,6 +5,8 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.DisarmBuff;
 import Duelyst.model.Buff.PoisonBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class TuranianSpy extends Minion {
     public TuranianSpy() {
         super("TuranianSpy", 6, 6, 700, 4, 0, 0);
@@ -17,6 +19,7 @@ public class TuranianSpy extends Minion {
 
     public Minion duplicate() {
         TuranianSpy turanianSpy = new TuranianSpy(this);
+        turanianSpy.cardImage = new Image("Duelyst/css/unit_gifs/boss_solfist_breathing.gif");
         return turanianSpy;
     }
 

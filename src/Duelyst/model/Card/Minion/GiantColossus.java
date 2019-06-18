@@ -2,6 +2,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class GiantColossus extends Minion {
     public GiantColossus() {
         super("GiantColossus", 8, 30, 600, 9, 2, 2);
@@ -13,6 +15,7 @@ public class GiantColossus extends Minion {
 
     public Minion duplicate() {
         GiantColossus giantColossus = new GiantColossus(this);
+        giantColossus.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlehelm_breathing.gif");
         return giantColossus;
     }
 

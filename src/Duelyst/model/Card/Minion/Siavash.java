@@ -3,6 +3,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class Siavash extends Minion {
     public Siavash() {
         super("Siavash", 5, 8, 350, 4, 0, 0);
@@ -15,6 +17,7 @@ public class Siavash extends Minion {
 
     public Minion duplicate() {
         Siavash siavash = new Siavash(this);
+        siavash.cardImage = new Image("Duelyst/css/unit_gifs/boss_serpenti_breathing.gif");
         return siavash;
     }
 

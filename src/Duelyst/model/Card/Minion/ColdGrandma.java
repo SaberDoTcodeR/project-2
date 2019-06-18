@@ -5,6 +5,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.StunBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class ColdGrandma extends Minion {
     public ColdGrandma() {
         super("ColdGrandma", 4, 3, 500, 3, 1, 5);
@@ -17,6 +19,7 @@ public class ColdGrandma extends Minion {
 
     public Minion duplicate() {
         ColdGrandma coldGrandma = new ColdGrandma(this);
+        coldGrandma.cardImage = new Image("Duelyst/css/unit_gifs/boss_cindera_breathing.gif");
         return coldGrandma;
     }
 

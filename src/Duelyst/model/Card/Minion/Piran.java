@@ -4,6 +4,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Piran extends Minion {
     public Piran() {
@@ -17,6 +18,7 @@ public class Piran extends Minion {
 
     public Minion duplicate() {
         Piran piran = new Piran(this);
+        piran.cardImage = new Image("Duelyst/css/unit_gifs/boss_protector_breathing.gif");
         return piran;
     }
 

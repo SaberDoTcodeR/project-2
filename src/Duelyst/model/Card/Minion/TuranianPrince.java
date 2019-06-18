@@ -3,6 +3,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class TuranianPrince extends Minion {
     public TuranianPrince() {
         super("TuranianPrince", 10, 6, 800, 6, 0, 0);
@@ -15,6 +17,7 @@ public class TuranianPrince extends Minion {
 
     public Minion duplicate() {
         TuranianPrince turanianPrince = new TuranianPrince(this);
+        turanianPrince.cardImage = new Image("Duelyst/css/unit_gifs/boss_skurge_breathing.gif");
         return turanianPrince;
     }
 

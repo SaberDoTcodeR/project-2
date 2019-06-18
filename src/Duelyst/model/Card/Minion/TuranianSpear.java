@@ -3,6 +3,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class TuranianSpear extends Minion {
     public TuranianSpear() {
         super("TuranianSpear", 4, 4, 600, 1, 2, 3);
@@ -14,6 +16,7 @@ public class TuranianSpear extends Minion {
 
     public Minion duplicate() {
         TuranianSpear turanianSpear = new TuranianSpear(this);
+        turanianSpear.cardImage = new Image("Duelyst/css/unit_gifs/boss_skyfalltyrant_breathing.gif");
         return turanianSpear;
     }
 

@@ -4,6 +4,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.ChangeApBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class LupinLion extends Minion {
     public LupinLion() {
         super("LupinLion", 8, 1, 600, 2, 0, 0);
@@ -17,6 +19,7 @@ public class LupinLion extends Minion {
 
     public Minion duplicate() {
         LupinLion lupinLion = new LupinLion(this);
+        lupinLion.cardImage = new Image("Duelyst/css/unit_gifs/boss_harmony_breathing.gif");
         return lupinLion;
     }
 

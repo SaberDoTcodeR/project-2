@@ -3,6 +3,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class TwoHeadGiant extends Minion {
     public TwoHeadGiant() {
@@ -16,6 +17,7 @@ public class TwoHeadGiant extends Minion {
 
     public Minion duplicate() {
         TwoHeadGiant twoHeadGiant = new TwoHeadGiant(this);
+        twoHeadGiant.cardImage = new Image("Duelyst/css/unit_gifs/boss_taskmaster_breathing.gif");
         return twoHeadGiant;
     }
 

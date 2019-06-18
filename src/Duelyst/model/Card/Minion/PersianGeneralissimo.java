@@ -2,6 +2,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class PersianGeneralissimo extends Minion {
     public PersianGeneralissimo() {
@@ -15,6 +16,7 @@ public class PersianGeneralissimo extends Minion {
 
     public Minion duplicate() {
         PersianGeneralissimo persianGeneralissimo = new PersianGeneralissimo(this);
+        persianGeneralissimo.cardImage = new Image("Duelyst/css/unit_gifs/boss_malyk_breathing.gif");
         return persianGeneralissimo;
     }
 

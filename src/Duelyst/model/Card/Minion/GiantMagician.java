@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class GiantMagician extends Minion {
 
     public Minion duplicate() {
         GiantMagician giantMagician = new GiantMagician(this);
+        giantMagician.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlesword_breathing.gif");
         return giantMagician;
     }
 

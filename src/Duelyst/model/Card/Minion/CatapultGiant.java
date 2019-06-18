@@ -3,6 +3,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class CatapultGiant extends Minion {
     public CatapultGiant() {
@@ -15,6 +16,7 @@ public class CatapultGiant extends Minion {
 
     public Minion duplicate() {
         CatapultGiant catapultGiant = new CatapultGiant(this);
+        catapultGiant.cardImage = new Image("Duelyst/css/unit_gifs/boss_christmas_breathing.gif");
         return catapultGiant;
     }
 

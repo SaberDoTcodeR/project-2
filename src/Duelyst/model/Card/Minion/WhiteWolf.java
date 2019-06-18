@@ -3,6 +3,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.MultiStageBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class WhiteWolf extends Minion {
 
     public Minion duplicate() {
         WhiteWolf whiteWolf = new WhiteWolf(this);
+        whiteWolf.cardImage = new Image("Duelyst/css/unit_gifs/boss_umbra_breathing.gif");
         return whiteWolf;
     }
 

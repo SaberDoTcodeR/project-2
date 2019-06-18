@@ -4,6 +4,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class Elf extends Minion {
     public Elf() {
         super("Elf", 4, 10, 500, 5, 1, 4);
@@ -16,6 +18,7 @@ public class Elf extends Minion {
 
     public Minion duplicate() {
         Elf elf = new Elf(this);
+        elf.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticle_breathing.gif");
         return elf;
     }
 

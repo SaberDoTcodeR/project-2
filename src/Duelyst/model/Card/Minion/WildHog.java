@@ -2,6 +2,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class WildHog extends Minion {
     public WildHog() {
         super("WildHog", 14, 10, 500, 6, 0, 0);
@@ -14,6 +16,7 @@ public class WildHog extends Minion {
 
     public Minion duplicate() {
         WildHog wildHog = new WildHog(this);
+        wildHog.cardImage = new Image("Duelyst/css/unit_gifs/boss_unhallowed_breathing.gif");
         return wildHog;
     }
 

@@ -3,6 +3,8 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class TuranianStoneHook extends Minion {
     public TuranianStoneHook() {
         super("TuranianStoneHook", 2, 4, 600, 1, 1, 7);
@@ -14,6 +16,7 @@ public class TuranianStoneHook extends Minion {
 
     public Minion duplicate() {
         TuranianStoneHook turanianStoneHook = new TuranianStoneHook(this);
+        turanianStoneHook.cardImage = new Image("Duelyst/css/unit_gifs/boss_soulstealer_breath.gif");
         return turanianStoneHook;
     }
 

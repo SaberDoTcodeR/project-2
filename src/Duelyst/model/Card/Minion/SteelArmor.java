@@ -3,6 +3,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 public class SteelArmor extends Minion {
     public SteelArmor() {
         super("SteelArmor", 1, 1, 650, 3, 0, 0);
@@ -15,6 +17,7 @@ public class SteelArmor extends Minion {
 
     public Minion duplicate() {
         SteelArmor steelArmor = new SteelArmor(this);
+        steelArmor.cardImage = new Image("Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif");
         for (int i = 0; i < 12; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);

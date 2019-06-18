@@ -3,6 +3,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class OneEyeGiant extends Minion {
 
     public Minion duplicate() {
         OneEyeGiant oneEyeGiant = new OneEyeGiant(this);
+        oneEyeGiant.cardImage = new Image("Duelyst/css/unit_gifs/boss_kane_breathing.gif");
         return oneEyeGiant;
     }
 

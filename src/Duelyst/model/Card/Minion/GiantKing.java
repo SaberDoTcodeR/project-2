@@ -4,6 +4,7 @@ package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class GiantKing extends Minion {
     public GiantKing() {
@@ -17,6 +18,7 @@ public class GiantKing extends Minion {
 
     public Minion duplicate() {
         GiantKing giantKing = new GiantKing(this);
+        giantKing.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticleprime_breathing.gif");
         return giantKing;
     }
 
