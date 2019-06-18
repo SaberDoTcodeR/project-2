@@ -1,8 +1,10 @@
 package Duelyst.model.Card.Spell;
+
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,7 @@ public class AllPower extends Spell {
 
     public Spell duplicate() {
         AllPower allPower = new AllPower(this);
+        allPower.cardImage = new Image("Duelyst/css/unit_gifs/f3_ciphyronmk2_breathing.gif");
         return allPower;
     }
 

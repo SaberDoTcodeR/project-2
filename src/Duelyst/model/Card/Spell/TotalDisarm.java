@@ -5,6 +5,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.DisarmBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class TotalDisarm extends Spell {
@@ -49,6 +50,8 @@ public class TotalDisarm extends Spell {
 
     public Spell duplicate() {
         TotalDisarm totalDisarm = new TotalDisarm(this);
+
+        totalDisarm.cardImage=new Image("Duelyst/css/unit_gifs/neutral_zyxfestive_breathing.gif");
         return totalDisarm;
     }
 

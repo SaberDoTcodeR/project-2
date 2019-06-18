@@ -4,6 +4,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.ChangeApBuff;
 import Duelyst.model.Buff.DisarmBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -59,6 +60,8 @@ public class Madness extends Spell {
 
     public Spell duplicate() {
         Madness madness = new Madness(this);
+
+        madness.cardImage=new Image("Duelyst/css/unit_gifs/f6_faiefestive_breathing.gif");
         return madness;
     }
 

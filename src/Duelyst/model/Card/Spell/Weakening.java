@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.WeaknessBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class Weakening extends Spell {
@@ -40,6 +41,7 @@ public class Weakening extends Spell {
 
     public Spell duplicate() {
         Weakening weakening = new Weakening(this);
+        weakening.cardImage=new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
         return weakening;
     }
 

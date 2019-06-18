@@ -2,6 +2,7 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,8 @@ public class AreaDispel extends Spell {
     @Override
     public Spell duplicate() {
         AreaDispel areaDispel = new AreaDispel(this);
+
+        areaDispel.cardImage = new Image("Duelyst/css/unit_gifs/f3_tier2general_breathing.gif");
         return areaDispel;
     }
 

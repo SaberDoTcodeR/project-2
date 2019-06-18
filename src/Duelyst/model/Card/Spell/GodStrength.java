@@ -3,6 +3,7 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class GodStrength extends Spell {
@@ -35,6 +36,7 @@ public class GodStrength extends Spell {
 
     public Spell duplicate() {
         GodStrength godStrength = new GodStrength(this);
+        godStrength.cardImage=new Image("Duelyst/css/unit_gifs/f4_tier2general_breathing.gif");
         return godStrength;
     }
 

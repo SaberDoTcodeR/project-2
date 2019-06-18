@@ -3,6 +3,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class PowerUp extends Spell {
@@ -47,6 +48,7 @@ public class PowerUp extends Spell {
 
     public Spell duplicate() {
         PowerUp powerUp = new PowerUp(this);
+        powerUp.cardImage=new Image("Duelyst/css/unit_gifs/f6_snowchasermk2_breathing.gif");
         return powerUp;
     }
 

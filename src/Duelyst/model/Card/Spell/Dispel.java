@@ -4,6 +4,8 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 public class Dispel extends Spell {
 
@@ -59,6 +61,9 @@ public class Dispel extends Spell {
 
     public Spell duplicate() {
         Dispel dispel = new Dispel(this);
+
+        dispel.cardImage = new Image("Duelyst/css/unit_gifs/f3_zirixfestive_breathing.gif");
+
         return dispel;
     }
 

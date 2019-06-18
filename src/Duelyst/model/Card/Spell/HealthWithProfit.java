@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Buff.WeaknessBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class HealthWithProfit extends Spell {
@@ -64,6 +65,8 @@ public class HealthWithProfit extends Spell {
 
     public Spell duplicate() {
         HealthWithProfit healthWithProfit = new HealthWithProfit(this);
+
+        healthWithProfit.cardImage=new Image("Duelyst/css/unit_gifs/f5_ragnoramk2_breathing.gif");
         return healthWithProfit;
     }
 

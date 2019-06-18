@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PoisonEffectedCell;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class PoisonLake extends Spell {
@@ -46,6 +47,9 @@ public class PoisonLake extends Spell {
 
     public Spell duplicate() {
         PoisonLake poisonLake = new PoisonLake(this);
+
+        poisonLake.cardImage=new Image("Duelyst/css/unit_gifs/f6_ilenamk2_breathing.gif");
+
         return poisonLake;
     }
 

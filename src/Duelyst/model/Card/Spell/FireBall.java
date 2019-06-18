@@ -3,6 +3,7 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class FireBall extends Spell {
@@ -38,6 +39,8 @@ public class FireBall extends Spell {
 
     public Spell duplicate() {
         FireBall fireBall = new FireBall(this);
+
+        fireBall.cardImage = new Image("Duelyst/css/unit_gifs/f4_maehvmk2_breathing.gif");
         return fireBall;
     }
 

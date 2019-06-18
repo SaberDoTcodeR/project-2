@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Card.Card;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -65,6 +66,11 @@ public abstract class Spell extends Card {
 
     public Spell duplicate() {
         return null;
+    }
+
+    @Override
+    public Image getImage() {
+        return cardImage;
     }
 }
 

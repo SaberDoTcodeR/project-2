@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.FiringEffectedCell;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class HellFire extends Spell {
@@ -40,6 +41,7 @@ public class HellFire extends Spell {
     @Override
     public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
+        hellFire.cardImage=new Image("Duelyst/css/unit_gifs/f5_altgeneraltier2_breathing.gif");
         return hellFire;
     }
 

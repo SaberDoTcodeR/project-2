@@ -3,6 +3,7 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class KingsGuard extends Spell {
@@ -48,6 +49,8 @@ public class KingsGuard extends Spell {
     @Override
     public Spell duplicate() {
         KingsGuard kingsGuard = new KingsGuard(this);
+
+        kingsGuard.cardImage=new Image("Duelyst/css/unit_gifs/f5_tier2general_breathing.gif");
         return kingsGuard;
     }
 

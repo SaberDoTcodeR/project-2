@@ -4,6 +4,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Buff.WeaknessBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 public class Sacrifice extends Spell {
@@ -46,6 +47,8 @@ public class Sacrifice extends Spell {
 
     public Spell duplicate() {
         Sacrifice sacrifice = new Sacrifice(this);
+
+        sacrifice.cardImage=new Image("Duelyst/css/unit_gifs/f6_tier2general_breathing.gif");
         return sacrifice;
     }
 

@@ -3,6 +3,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.StunBuff;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Shock extends Spell {
 
@@ -46,6 +47,8 @@ public class Shock extends Spell {
 
     public Spell duplicate() {
         Shock shock = new Shock(this);
+        shock.cardImage=new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
+
         return shock;
     }
 
