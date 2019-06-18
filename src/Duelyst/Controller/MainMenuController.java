@@ -40,7 +40,7 @@ public class MainMenuController {
     public void initialize() {
         setProfile(Account.getLoginAccount().getAvatar());
         accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MONEY :" + Account.getLoginAccount().getMoney());
-
+        accountInfo.setGraphicTextGap(10);
     }
 
     public void logOutBtnAct() {

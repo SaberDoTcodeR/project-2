@@ -70,9 +70,14 @@
 
 
 .label {
-    -fx-text-fill: #000000;
-    -fx-font-size: 18pt;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.6);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
     -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
 
 }
 

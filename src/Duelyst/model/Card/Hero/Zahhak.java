@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 public class Zahhak extends Hero {
     public Zahhak() {
         super("Zahhak", 4, 50, 10000, 0);
+
+        super.cardImage = new Image("Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif");
         super.setCoolDownTime(0);
         super.setMp(1);
         super.cardImage = new Image("Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif");
