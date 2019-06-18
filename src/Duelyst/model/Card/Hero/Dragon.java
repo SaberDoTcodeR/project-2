@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.DisarmBuff;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Dragon extends Hero {
     public Dragon() {
@@ -19,6 +20,7 @@ public class Dragon extends Hero {
 
     public Hero duplicate() {
         Dragon dragon = new Dragon(this);
+        dragon.cardImage = new Image("Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif");
         return dragon;
     }
 

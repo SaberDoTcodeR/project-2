@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Legend extends Hero {
     public Legend() {
@@ -20,6 +21,7 @@ public class Legend extends Hero {
 
     public Hero duplicate() {
         Legend legend = new Legend(this);
+        legend.cardImage = new Image("Duelyst/css/unit_gifs/f1_altgeneraltier2_breathing.gif");
         return legend;
     }
 

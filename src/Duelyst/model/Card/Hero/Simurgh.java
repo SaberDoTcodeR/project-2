@@ -6,6 +6,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.StunBuff;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Simurgh extends Hero {
     public Simurgh() {
@@ -20,6 +21,7 @@ public class Simurgh extends Hero {
 
     public Hero duplicate() {
         Simurgh simurgh = new Simurgh(this);
+        simurgh.cardImage = new Image("Duelyst/css/unit_gifs/f1_tier2general_breathing.gif");
         return simurgh;
     }
 

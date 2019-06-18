@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.HolyEffectedCell;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Kaveh extends Hero {
     public Kaveh() {
@@ -19,6 +20,7 @@ public class Kaveh extends Hero {
 
     public Hero duplicate() {
         Kaveh kaveh = new Kaveh(this);
+        kaveh.cardImage = new Image("Duelyst/css/unit_gifs/boss_wujin_breathing.gif");
         return kaveh;
     }
 

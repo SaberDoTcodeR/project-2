@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Card.Card;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -196,6 +197,9 @@ public abstract class Hero extends Card {
 
     public Hero duplicate() {
         return null;
+    }
+    public Image getImage(){
+        return this.cardImage;
     }
 
 }

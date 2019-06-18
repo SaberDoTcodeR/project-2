@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.ChangeApBuff;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class WhiteBogey extends Hero {
     public WhiteBogey() {
@@ -19,6 +20,7 @@ public class WhiteBogey extends Hero {
 
     public Hero duplicate() {
         WhiteBogey whiteBogey = new WhiteBogey(this);
+        whiteBogey.cardImage = new Image("Duelyst/css/unit_gifs/f2_altgeneraltier2_breathing.gif");
         return whiteBogey;
     }
 

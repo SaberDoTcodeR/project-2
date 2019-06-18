@@ -4,51 +4,18 @@
     <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="440" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="BATTLE MAP &amp; HAND UPDATED WITH DRAG &amp; DROP">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="MINION IMAGES &amp; RELATIVE METHODS UPDATED">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Elf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Elf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/FieryDragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/FieryDragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantColossus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantColossus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantKing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantKing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/OneEyeGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/OneEyeGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Panther.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Panther.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGeneralissimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGeneralissimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGladiator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGladiator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianHorseman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianHorseman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSwordsman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSwordsman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Piran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Piran.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PoisonSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PoisonSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Siavash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Siavash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SteelArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SteelArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -122,30 +89,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21828">
-              <caret line="1289" column="101" selection-start-line="1289" selection-start-column="101" selection-end-line="1289" selection-end-column="101" />
+            <state relative-caret-position="6710">
+              <caret line="319" lean-forward="true" selection-start-line="319" selection-end-line="319" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8447#8448#0" expanded="true" />
-                <element signature="e#8492#8493#0" expanded="true" />
-                <element signature="e#8642#8643#0" expanded="true" />
-                <element signature="e#8687#8688#0" expanded="true" />
-                <element signature="e#9206#9207#0" expanded="true" />
-                <element signature="e#9251#9252#0" expanded="true" />
-                <element signature="e#9401#9402#0" expanded="true" />
-                <element signature="e#9446#9447#0" expanded="true" />
-                <element signature="e#9965#9966#0" expanded="true" />
-                <element signature="e#10010#10011#0" expanded="true" />
-                <element signature="e#10160#10161#0" expanded="true" />
-                <element signature="e#10205#10206#0" expanded="true" />
                 <element signature="e#10724#10725#0" expanded="true" />
                 <element signature="e#10769#10770#0" expanded="true" />
-                <element signature="e#10919#10920#0" expanded="true" />
-                <element signature="e#10964#10965#0" expanded="true" />
-                <element signature="e#11483#11484#0" expanded="true" />
-                <element signature="e#11528#11529#0" expanded="true" />
-                <element signature="e#11678#11679#0" expanded="true" />
-                <element signature="e#11723#11724#0" expanded="true" />
                 <element signature="e#13945#13946#0" expanded="true" />
                 <element signature="e#13980#13981#0" expanded="true" />
                 <element signature="e#14598#14599#0" expanded="true" />
@@ -232,90 +181,88 @@
                 <element signature="e#40975#40976#0" expanded="true" />
                 <element signature="e#41599#41600#0" expanded="true" />
                 <element signature="e#41635#41636#0" expanded="true" />
-                <element signature="e#41115#41116#0" expanded="true" />
-                <element signature="e#41151#41152#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="19" column="96" selection-start-line="19" selection-start-column="96" selection-end-line="19" selection-end-column="96" />
+            <state relative-caret-position="352">
+              <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="18" column="102" selection-start-line="18" selection-start-column="102" selection-end-line="18" selection-end-column="102" />
+            <state relative-caret-position="330">
+              <caret line="22" column="86" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="21" column="94" selection-start-line="21" selection-start-column="94" selection-end-line="21" selection-end-column="94" />
+            <state relative-caret-position="352">
+              <caret line="23" column="95" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="18" column="101" selection-start-line="18" selection-start-column="101" selection-end-line="18" selection-end-column="101" />
+            <state relative-caret-position="330">
+              <caret line="22" column="88" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="17" column="100" selection-start-line="17" selection-start-column="100" selection-end-line="17" selection-end-column="100" />
+            <state relative-caret-position="330">
+              <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="19" column="98" selection-start-line="19" selection-start-column="98" selection-end-line="19" selection-end-column="98" />
+            <state relative-caret-position="374">
+              <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="21" column="90" selection-start-line="21" selection-start-column="90" selection-end-line="21" selection-end-column="90" />
+            <state relative-caret-position="330">
+              <caret line="22" column="99" selection-start-line="22" selection-start-column="99" selection-end-line="22" selection-end-column="99" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
+            <state relative-caret-position="522">
+              <caret line="202" column="5" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="22" column="87" selection-start-line="22" selection-start-column="87" selection-end-line="22" selection-end-column="87" />
+            <state relative-caret-position="4416">
+              <caret line="328" column="5" lean-forward="true" selection-start-line="326" selection-start-column="3" selection-end-line="328" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -404,16 +351,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/SingleOrMultiController.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/css/css5.css" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/GameModeController.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/css/css6.css" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Hand.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" />
-        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" />
@@ -455,6 +392,16 @@
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" />
       </list>
     </option>
   </component>
@@ -541,7 +488,7 @@
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="Card" type="462c0819:PsiDirectoryNode" />
-              <item name="Minion" type="462c0819:PsiDirectoryNode" />
+              <item name="Hero" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -560,7 +507,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560858971163" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560859131095" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Game2048" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -701,7 +648,7 @@
       <workItem from="1560410968885" duration="25833000" />
       <workItem from="1560504147855" duration="22000000" />
       <workItem from="1560674627307" duration="27831000" />
-      <workItem from="1560855631719" duration="3217000" />
+      <workItem from="1560855631719" duration="4443000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -843,11 +790,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560707938253</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="MINION IMAGES &amp; RELATIVE METHODS UPDATED">
+      <created>1560859074265</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1560859074265</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212777000" />
+    <option name="totallyTimeSpent" value="214003000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -952,129 +906,14 @@
     <MESSAGE value="CONTROLLER OF BATTLE CREATED &amp; SOME ITS METHOD IMPLEMENTED" />
     <MESSAGE value="merged with saber" />
     <MESSAGE value="BATTLE MAP &amp; HAND UPDATED WITH DRAG &amp; DROP" />
-    <option name="LAST_COMMIT_MESSAGE" value="BATTLE MAP &amp; HAND UPDATED WITH DRAG &amp; DROP" />
+    <MESSAGE value="MINION IMAGES &amp; RELATIVE METHODS UPDATED" />
+    <option name="LAST_COMMIT_MESSAGE" value="MINION IMAGES &amp; RELATIVE METHODS UPDATED" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/UsableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#673#674#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#789#790#0" expanded="true" />
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#1491#1492#0" expanded="true" />
-            <element signature="e#1527#1528#0" expanded="true" />
-            <element signature="e#1580#1581#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1682#1683#0" expanded="true" />
-            <element signature="e#1727#1728#0" expanded="true" />
-            <element signature="e#1772#1773#0" expanded="true" />
-            <element signature="e#1802#1803#0" expanded="true" />
-            <element signature="e#1859#1860#0" expanded="true" />
-            <element signature="e#1897#1898#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Hand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="9" column="54" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_112/javafx-src.zip!/javafx/scene/input/Clipboard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="373" column="23" selection-start-line="373" selection-start-column="23" selection-end-line="373" selection-end-column="23" />
-          <folding>
-            <element signature="e#11751#11752#0" expanded="true" />
-            <element signature="e#11816#11817#0" expanded="true" />
-            <element signature="e#14678#14679#0" expanded="true" />
-            <element signature="e#14737#14738#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-256">
-          <caret line="129" column="103" lean-forward="true" selection-start-line="129" selection-start-column="103" selection-end-line="129" selection-end-column="103" />
-          <folding>
-            <element signature="e#8998#8999#0" expanded="true" />
-            <element signature="e#9024#9025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="20" column="97" selection-start-line="20" selection-start-column="97" selection-end-line="20" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="17" column="97" selection-start-line="17" selection-start-column="97" selection-end-line="17" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="18" column="98" selection-start-line="18" selection-start-column="98" selection-end-line="18" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="34" column="92" lean-forward="true" selection-start-line="34" selection-start-column="92" selection-end-line="34" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -1334,32 +1173,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="91" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="86" selection-start-line="22" selection-start-column="86" selection-end-line="22" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="23" column="95" selection-start-line="23" selection-start-column="95" selection-end-line="23" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="88" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="20" column="103" selection-start-line="20" selection-start-column="103" selection-end-line="20" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="99" selection-start-line="22" selection-start-column="99" selection-end-line="22" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="23" column="91" selection-start-line="23" selection-start-column="91" selection-end-line="23" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4416">
+          <caret line="328" column="5" lean-forward="true" selection-start-line="326" selection-start-column="3" selection-end-line="328" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="202" column="5" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21828">
-          <caret line="1289" column="101" selection-start-line="1289" selection-start-column="101" selection-end-line="1289" selection-end-column="101" />
+        <state relative-caret-position="6710">
+          <caret line="319" lean-forward="true" selection-start-line="319" selection-end-line="319" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8447#8448#0" expanded="true" />
-            <element signature="e#8492#8493#0" expanded="true" />
-            <element signature="e#8642#8643#0" expanded="true" />
-            <element signature="e#8687#8688#0" expanded="true" />
-            <element signature="e#9206#9207#0" expanded="true" />
-            <element signature="e#9251#9252#0" expanded="true" />
-            <element signature="e#9401#9402#0" expanded="true" />
-            <element signature="e#9446#9447#0" expanded="true" />
-            <element signature="e#9965#9966#0" expanded="true" />
-            <element signature="e#10010#10011#0" expanded="true" />
-            <element signature="e#10160#10161#0" expanded="true" />
-            <element signature="e#10205#10206#0" expanded="true" />
             <element signature="e#10724#10725#0" expanded="true" />
             <element signature="e#10769#10770#0" expanded="true" />
-            <element signature="e#10919#10920#0" expanded="true" />
-            <element signature="e#10964#10965#0" expanded="true" />
-            <element signature="e#11483#11484#0" expanded="true" />
-            <element signature="e#11528#11529#0" expanded="true" />
-            <element signature="e#11678#11679#0" expanded="true" />
-            <element signature="e#11723#11724#0" expanded="true" />
             <element signature="e#13945#13946#0" expanded="true" />
             <element signature="e#13980#13981#0" expanded="true" />
             <element signature="e#14598#14599#0" expanded="true" />
@@ -1446,8 +1351,6 @@
             <element signature="e#40975#40976#0" expanded="true" />
             <element signature="e#41599#41600#0" expanded="true" />
             <element signature="e#41635#41636#0" expanded="true" />
-            <element signature="e#41115#41116#0" expanded="true" />
-            <element signature="e#41151#41152#0" expanded="true" />
           </folding>
         </state>
       </provider>

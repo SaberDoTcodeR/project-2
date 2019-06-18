@@ -3,6 +3,7 @@ package Duelyst.model.Card.Hero;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Rostam extends Hero {
     public Rostam() {
@@ -17,6 +18,7 @@ public class Rostam extends Hero {
 
     public Hero duplicate() {
         Rostam rostam = new Rostam(this);
+        rostam.cardImage = new Image("Duelyst/css/unit_gifs/f1_general_skinroguelegacy_breathing.gif");
         return rostam;
     }
 

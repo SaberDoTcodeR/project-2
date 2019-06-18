@@ -5,6 +5,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
 
 import Duelyst.model.Card.Minion.SpecialPower;
+import javafx.scene.image.Image;
 
 public class Arash extends Hero {
     public Arash() {
@@ -20,6 +21,7 @@ public class Arash extends Hero {
 
     public Hero duplicate() {
         Arash arash = new Arash(this);
+        arash.cardImage = new Image("Duelyst/css/unit_gifs/boss_vampire_breathing.gif");
         return arash;
     }
 

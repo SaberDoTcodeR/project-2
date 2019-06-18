@@ -5,6 +5,7 @@ import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Esfandyar extends Hero {
     public Esfandyar() {
@@ -20,6 +21,7 @@ public class Esfandyar extends Hero {
 
     public Hero duplicate() {
         Esfandyar esfandyar = new Esfandyar(this);
+        esfandyar.cardImage = new Image("Duelyst/css/unit_gifs/boss_wraith_breathing.gif");
         for (int i = 0; i < 3; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);
