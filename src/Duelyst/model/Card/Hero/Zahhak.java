@@ -6,6 +6,7 @@ import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PoisonBuff;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;
+import javafx.scene.image.Image;
 
 public class Zahhak extends Hero {
     public Zahhak() {
@@ -20,6 +21,7 @@ public class Zahhak extends Hero {
 
     public Hero duplicate() {
         Zahhak zahhak = new Zahhak(this);
+        zahhak.cardImage = new Image("Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif");
         return zahhak;
     }
 

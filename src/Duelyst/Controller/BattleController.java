@@ -106,14 +106,12 @@ public class BattleController {
 
     private void showHand(Card cardInHand, boolean nextCard) {
         if (nextCard) {
-            //gif6.setImage(cardInHand.getImage());
-            gif6.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
+            gif6.setImage(cardInHand.getImage());
             return;
         }
         for (ImageView imageView : handGifs) {
-            if (imageView == null) {
-                //imageView.setImage(cardInHand.getImage());
-                imageView.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
+            if (imageView.getImage() == null) {
+                imageView.setImage(cardInHand.getImage());
                 return;
             }
         }
@@ -353,6 +351,7 @@ public class BattleController {
         Dragboard db = gif2.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putImage(gif2.getImage());
+        content.putString(currentBattle.getFirstPlayerHand().getCards().get(1).getName());
         db.setContent(content);
         whichHand = 1;
         event.consume();
@@ -362,6 +361,7 @@ public class BattleController {
         Dragboard db = gif3.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putImage(gif3.getImage());
+        content.putString(currentBattle.getFirstPlayerHand().getCards().get(2).getName());
         db.setContent(content);
         whichHand = 2;
         event.consume();
@@ -371,6 +371,7 @@ public class BattleController {
         Dragboard db = gif4.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putImage(gif4.getImage());
+        content.putString(currentBattle.getFirstPlayerHand().getCards().get(3).getName());
         db.setContent(content);
         whichHand = 3;
         event.consume();
@@ -380,6 +381,7 @@ public class BattleController {
         Dragboard db = gif5.startDragAndDrop(TransferMode.ANY);
         ClipboardContent content = new ClipboardContent();
         content.putImage(gif5.getImage());
+        content.putString(currentBattle.getFirstPlayerHand().getCards().get(4).getName());
         db.setContent(content);
         whichHand = 4;
         event.consume();
