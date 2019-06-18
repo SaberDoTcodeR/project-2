@@ -10,6 +10,7 @@ public class Elf extends Minion {
     public Elf() {
         super("Elf", 4, 10, 500, 5, 1, 4);
         super.setTimeOfActivationOfSpecialPower(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticle_breathing.gif");
     }
 
     public Elf(Elf elf) {

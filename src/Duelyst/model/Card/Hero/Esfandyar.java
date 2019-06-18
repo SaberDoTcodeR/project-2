@@ -12,6 +12,7 @@ public class Esfandyar extends Hero {
         super("Esfandyar", 3, 35, 12000, 2);
         super.setCoolDownTime(0);
         super.setMp(0);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_wraith_breathing.gif");
         super.setRange(3);
     }
 

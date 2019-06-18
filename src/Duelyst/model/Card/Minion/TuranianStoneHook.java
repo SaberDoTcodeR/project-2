@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 public class TuranianStoneHook extends Minion {
     public TuranianStoneHook() {
         super("TuranianStoneHook", 2, 4, 600, 1, 1, 7);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_soulstealer_breath.gif");
     }
 
     public TuranianStoneHook(TuranianStoneHook turanianStoneHook) {

@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 public class TuranianSpear extends Minion {
     public TuranianSpear() {
         super("TuranianSpear", 4, 4, 600, 1, 2, 3);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_skyfalltyrant_breathing.gif");
     }
 
     public TuranianSpear(TuranianSpear turanianSpear) {

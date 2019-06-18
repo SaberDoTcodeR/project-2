@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 public class Arash extends Hero {
     public Arash() {
         super("Arash", 2, 30, 10000, 1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_vampire_breathing.gif");
         super.setCoolDownTime(2);
         super.setMp(2);
         super.setRange(6);

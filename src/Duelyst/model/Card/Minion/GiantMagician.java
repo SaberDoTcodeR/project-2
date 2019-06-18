@@ -13,6 +13,7 @@ public class GiantMagician extends Minion {
     public GiantMagician() {
         super("GiantMagician", 6, 6, 550, 6, 1, 5);
         super.setTimeOfActivationOfSpecialPower(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlesword_breathing.gif");
     }
 
     public GiantMagician(GiantMagician giantMagician) {

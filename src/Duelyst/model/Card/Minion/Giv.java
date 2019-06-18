@@ -9,6 +9,7 @@ public class Giv extends Minion {
     public Giv() {
         super("Giv", 7, 5, 450, 4, 1, 5);
         super.setTimeOfActivationOfSpecialPower(6);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_emp_breathing.gif");
     }
 
     public Giv(Giv giv) {

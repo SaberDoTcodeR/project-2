@@ -10,6 +10,7 @@ public class GiantKing extends Minion {
     public GiantKing() {
         super("GiantKing", 4, 10, 600, 5, 0, 0);
         super.setTimeOfActivationOfSpecialPower(2);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticleprime_breathing.gif");
     }
 
     public GiantKing(GiantKing giantKing) {

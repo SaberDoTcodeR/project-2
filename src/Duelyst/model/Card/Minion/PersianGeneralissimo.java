@@ -8,6 +8,7 @@ public class PersianGeneralissimo extends Minion {
     public PersianGeneralissimo() {
         super("PersianGeneralissimo", 4, 12, 800, 7, 0, 0);
         super.setTimeOfActivationOfSpecialPower(2);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_malyk_breathing.gif");
     }
 
     public PersianGeneralissimo(PersianGeneralissimo persianGeneralissimo) {

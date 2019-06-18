@@ -9,6 +9,7 @@ public class Ashkbous extends Minion {
     public Ashkbous() {
         super("Ashkbous", 8, 14, 400, 7, 0, 0);
         super.setTimeOfActivationOfSpecialPower(6);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_antiswarm_breathing.gif");
     }
 
     public Ashkbous(Ashkbous ashkbous) {

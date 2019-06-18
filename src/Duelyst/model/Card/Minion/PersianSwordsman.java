@@ -10,6 +10,7 @@ public class PersianSwordsman extends Minion {
     public PersianSwordsman() {
         super("PersianSwordsman", 4, 6, 400, 2, 0, 0);
         super.setTimeOfActivationOfSpecialPower(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_paragon_breathing.gif");
     }
 
     public PersianSwordsman(PersianSwordsman persianSwordsman) {

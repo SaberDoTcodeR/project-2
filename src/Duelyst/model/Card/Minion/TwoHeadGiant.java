@@ -9,6 +9,7 @@ public class TwoHeadGiant extends Minion {
     public TwoHeadGiant() {
         super("TwoHeadGiant", 4, 10, 550, 4, 0, 0);
         super.setTimeOfActivationOfSpecialPower(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_taskmaster_breathing.gif");
     }
 
     public TwoHeadGiant(TwoHeadGiant twoHeadGiant) {

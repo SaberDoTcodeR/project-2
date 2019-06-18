@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 public class PersianSpear extends Minion {
     public PersianSpear() {
         super("PersianSpear", 3, 5, 500, 1, 2, 3);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_oriasidol_breathing.gif");
     }
 
     public PersianSpear(PersianSpear persianSpear) {

@@ -12,6 +12,7 @@ public class AllPower extends Spell {
 
     public AllPower() {
         super("AllPower", 4, 2000);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/f3_ciphyronmk2_breathing.gif");
     }
 
     public AllPower(AllPower allPower) {

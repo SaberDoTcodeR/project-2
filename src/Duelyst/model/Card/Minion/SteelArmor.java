@@ -9,6 +9,7 @@ public class SteelArmor extends Minion {
     public SteelArmor() {
         super("SteelArmor", 1, 1, 650, 3, 0, 0);
         super.setTimeOfActivationOfSpecialPower(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif");
     }
 
     public SteelArmor(SteelArmor steelArmor) {

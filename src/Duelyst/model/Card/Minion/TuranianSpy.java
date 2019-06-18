@@ -11,6 +11,7 @@ public class TuranianSpy extends Minion {
     public TuranianSpy() {
         super("TuranianSpy", 6, 6, 700, 4, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_solfist_breathing.gif");
     }
 
     public TuranianSpy(TuranianSpy turanianSpy) {

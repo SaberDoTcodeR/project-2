@@ -8,6 +8,7 @@ public class WildHog extends Minion {
     public WildHog() {
         super("WildHog", 14, 10, 500, 6, 0, 0);
         super.setTimeOfActivationOfSpecialPower(6);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_unhallowed_breathing.gif");
     }
 
     public WildHog(WildHog wildHog) {

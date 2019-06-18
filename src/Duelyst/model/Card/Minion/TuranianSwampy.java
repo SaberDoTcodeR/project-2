@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 public class TuranianSwampy extends Minion {
     public TuranianSwampy() {
         super("TuranianSwampy", 10, 3, 450, 2, 0, 0);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_spelleater_breathing.gif");
     }
 
     public TuranianSwampy(TuranianSwampy turanianSwampy) {

@@ -11,6 +11,7 @@ public class ColdGrandma extends Minion {
     public ColdGrandma() {
         super("ColdGrandma", 4, 3, 500, 3, 1, 5);
         super.setTimeOfActivationOfSpecialPower(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_cindera_breathing.gif");
     }
 
     public ColdGrandma(ColdGrandma coldGrandma) {

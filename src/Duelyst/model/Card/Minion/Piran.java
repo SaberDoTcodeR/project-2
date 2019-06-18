@@ -10,6 +10,7 @@ public class Piran extends Minion {
     public Piran() {
         super("Piran", 12, 20, 400, 8, 0, 0);
         super.setTimeOfActivationOfSpecialPower(6);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_protector_breathing.gif");
     }
 
     public Piran(Piran piran) {

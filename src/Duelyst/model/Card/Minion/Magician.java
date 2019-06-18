@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Magician extends Minion {
     public Magician() {
         super("Magician", 4, 5, 550, 4, 1, 3);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_invader_breathing.gif");
         super.setTimeOfActivationOfSpecialPower(4);
     }
 

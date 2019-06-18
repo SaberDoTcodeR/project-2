@@ -11,6 +11,7 @@ public class Dragon extends Hero {
     public Dragon() {
         super("Dragon", 4, 50, 8000, 0);
         super.setCoolDownTime(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif");
         super.setMp(0);
     }
 

@@ -12,6 +12,7 @@ public class GiantSnake extends Minion {
     public GiantSnake() {
         super("GiantSnake", 7, 14, 500, 8, 1, 5);
         super.setTimeOfActivationOfSpecialPower(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlewings_breathing.gif");
     }
 
     public GiantSnake(GiantSnake giantSnake) {

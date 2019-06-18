@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 public class BlackBogey extends Minion {
     public BlackBogey() {
         super("BlackBogey", 10, 14, 300, 9, 2, 7);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_chaosknight_breathing.gif");
     }
 
     public BlackBogey(BlackBogey blackBogey) {

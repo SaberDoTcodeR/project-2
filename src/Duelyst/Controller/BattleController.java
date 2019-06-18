@@ -194,7 +194,6 @@ public class BattleController {
         rectangles[42] = rect43;
         rectangles[43] = rect44;
         rectangles[44] = rect45;
-        gif1.setImage(new Image("Duelyst/css/boss_decepticlewings_breathing.gif"));
         switch (GameModeController.MODE) {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));

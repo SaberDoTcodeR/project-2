@@ -10,6 +10,7 @@ public class Rostam extends Hero {
         super("Rostam", 7, 55, 8000, 2);
         super.setCoolDownTime(0);
         super.setRange(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/f1_general_skinroguelegacy_breathing.gif");
     }
 
     public Rostam(Rostam rostam) {

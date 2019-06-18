@@ -11,6 +11,8 @@ public class Bahman extends Minion {
     public Bahman() {
         super("Bahman", 9, 16, 450, 8, 0, 0);
         super.setTimeOfActivationOfSpecialPower(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_borealjuggernaut_breathing.gif");
+
     }
 
     public Bahman(Bahman bahman) {

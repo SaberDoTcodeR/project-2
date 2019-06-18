@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 public class PersianHorseman extends Minion {
     public PersianHorseman() {
         super("PersianHorseman", 6, 10, 200, 4, 0, 0);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_orias_breathing.gif");
     }
 
     public PersianHorseman(PersianHorseman persianHorseman) {

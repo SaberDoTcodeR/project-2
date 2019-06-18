@@ -9,6 +9,7 @@ public class Eagle extends Minion {
     public Eagle() {
         super("Eagle", 2, 0, 200, 2, 1, 3);
         super.setTimeOfActivationOfSpecialPower(4);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_crystal_breathing.gif");
     }
 
     public Eagle(Eagle eagle) {

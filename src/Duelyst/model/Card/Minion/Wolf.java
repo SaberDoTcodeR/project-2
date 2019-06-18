@@ -12,6 +12,7 @@ public class Wolf extends Minion {
     public Wolf() {
         super("Wolf", 1, 6, 400, 3, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_valiant_breathing.gif");
     }
 
     public Wolf(Wolf wolf) {

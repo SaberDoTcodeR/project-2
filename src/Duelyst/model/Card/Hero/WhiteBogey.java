@@ -12,6 +12,7 @@ public class WhiteBogey extends Hero {
         super("WhiteBogey", 4, 50, 8000, 0);
         super.setCoolDownTime(2);
         super.setMp(1);
+        super.cardImage = new Image("Duelyst/css/unit_gifs/f2_altgeneraltier2_breathing.gif");
     }
 
     public WhiteBogey(WhiteBogey whiteBogey) {
