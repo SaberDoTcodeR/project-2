@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
-
 <?import javafx.scene.layout.Pane?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.Pane?>
@@ -49,169 +48,169 @@
                     </rowConstraints>
                     <children>
                         <Pane onDragExited="#rect1DragExited" onDragOver="#rect1DragOver"
-                              onDragDropped="#rect1DragDropped" fx:id="rect1" id="tile" prefHeight="50.0"
+                              onDragDropped="#rect1DragDropped" onDragDetected="#dragRect1" fx:id="rect1" id="tile" prefHeight="50.0"
                               prefWidth="50.0"/>
                         <Pane onDragExited="#rect2DragExited" onDragOver="#rect2DragOver"
-                              onDragDropped="#rect2DragDropped" id="tile" fx:id="rect2" prefHeight="50.0"
+                              onDragDropped="#rect2DragDropped" onDragDetected="#dragRect2" id="tile" fx:id="rect2" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"/>
                         <Pane onDragExited="#rect3DragExited" onDragOver="#rect3DragOver"
-                              onDragDropped="#rect3DragDropped" id="tile" fx:id="rect3" prefHeight="50.0"
+                              onDragDropped="#rect3DragDropped"  onDragDetected="#dragRect3" id="tile" fx:id="rect3" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"/>
                         <Pane onDragExited="#rect4DragExited" onDragOver="#rect4DragOver"
-                              onDragDropped="#rect4DragDropped" id="tile" fx:id="rect4" prefHeight="50.0"
+                              onDragDropped="#rect4DragDropped" onDragDetected="#dragRect4" id="tile" fx:id="rect4" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"/>
-                        <Pane onDragExited="#rect5DragExited" onDragOver="#rect5DragOver"
-                              onDragDropped="#rect5DragDropped" id="tile" fx:id="rect5" prefHeight="50.0"
+                        <Pane onDragExited="#rect5DragExited" onDragDetected="#dragRect5" onDragOver="#rect5DragOver"
+                              onDragDropped="#rect5DragDropped"  id="tile" fx:id="rect5" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"/>
-                        <Pane onDragExited="#rect6DragExited" onDragOver="#rect6DragOver"
+                        <Pane onDragExited="#rect6DragExited" onDragDetected="#dragRect6" onDragOver="#rect6DragOver"
                               onDragDropped="#rect6DragDropped" id="tile" fx:id="rect6" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="5"/>
-                        <Pane onDragExited="#rect7DragExited" onDragOver="#rect7DragOver"
+                        <Pane onDragExited="#rect7DragExited" onDragDetected="#dragRect7" onDragOver="#rect7DragOver"
                               onDragDropped="#rect7DragDropped" id="tile" fx:id="rect7" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="6"/>
-                        <Pane onDragExited="#rect8DragExited" onDragOver="#rect8DragOver"
+                        <Pane onDragExited="#rect8DragExited" onDragDetected="#dragRect8" onDragOver="#rect8DragOver"
                               onDragDropped="#rect8DragDropped" id="tile" fx:id="rect8" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="7"/>
-                        <Pane onDragExited="#rect9DragExited" onDragOver="#rect9DragOver"
+                        <Pane onDragExited="#rect9DragExited" onDragDetected="#dragRect9" onDragOver="#rect9DragOver"
                               onDragDropped="#rect9DragDropped" id="tile" fx:id="rect9" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="8"/>
-                        <Pane onDragExited="#rect10DragExited" onDragOver="#rect10DragOver"
+                        <Pane onDragExited="#rect10DragExited" onDragDetected="#dragRect10" onDragOver="#rect10DragOver"
                               onDragDropped="#rect10DragDropped" id="tile" fx:id="rect10" prefHeight="50.0"
                               prefWidth="50.0" GridPane.rowIndex="1"/>
                         <Pane onDragExited="#rect11DragExited" onDragOver="#rect11DragOver"
-                              onDragDropped="#rect11DragDropped" id="tile" fx:id="rect11" prefHeight="50.0"
+                              onDragDropped="#rect11DragDropped" onDragDetected="#dragRect11" id="tile" fx:id="rect11" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect12DragExited" onDragOver="#rect12DragOver"
+                        <Pane onDragExited="#rect12DragExited" onDragDetected="#dragRect12" onDragOver="#rect12DragOver"
                               onDragDropped="#rect12DragDropped" id="tile" fx:id="rect12" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect13DragExited" onDragOver="#rect13DragOver"
+                        <Pane onDragExited="#rect13DragExited" onDragDetected="#dragRect13"  onDragOver="#rect13DragOver"
                               onDragDropped="#rect13DragDropped" id="tile" fx:id="rect13" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect14DragExited" onDragOver="#rect14DragOver"
+                        <Pane onDragExited="#rect14DragExited" onDragDetected="#dragRect14" onDragOver="#rect14DragOver"
                               onDragDropped="#rect14DragDropped" id="tile" fx:id="rect14" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect15DragExited" onDragOver="#rect15DragOver"
+                        <Pane onDragExited="#rect15DragExited" onDragDetected="#dragRect15" onDragOver="#rect15DragOver"
                               onDragDropped="#rect15DragDropped" id="tile" fx:id="rect15" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="5"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect16DragExited" onDragOver="#rect16DragOver"
+                        <Pane onDragExited="#rect16DragExited" onDragDetected="#dragRect16" onDragOver="#rect16DragOver"
                               onDragDropped="#rect16DragDropped" id="tile" fx:id="rect16" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="6"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect17DragExited" onDragOver="#rect17DragOver"
+                        <Pane onDragExited="#rect17DragExited" onDragDetected="#dragRect17" onDragOver="#rect17DragOver"
                               onDragDropped="#rect17DragDropped" id="tile" fx:id="rect17" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="7"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect18DragExited" onDragOver="#rect18DragOver"
+                        <Pane onDragExited="#rect18DragExited" onDragDetected="#dragRect18" onDragOver="#rect18DragOver"
                               onDragDropped="#rect18DragDropped" id="tile" fx:id="rect18" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="8"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect19DragExited" onDragOver="#rect19DragOver"
+                        <Pane onDragExited="#rect19DragExited" onDragOver="#rect19DragOver" onDragDetected="#dragRect19"
                               onDragDropped="#rect19DragDropped" id="tile" fx:id="rect19" prefHeight="50.0"
                               prefWidth="50.0" GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect20DragExited" onDragOver="#rect20DragOver"
+                        <Pane onDragExited="#rect20DragExited" onDragOver="#rect20DragOver" onDragDetected="#dragRect20"
                               onDragDropped="#rect20DragDropped" id="tile" fx:id="rect20" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect21DragExited" onDragOver="#rect21DragOver"
+                        <Pane onDragExited="#rect21DragExited" onDragDetected="#dragRect21" onDragOver="#rect21DragOver"
                               onDragDropped="#rect21DragDropped" id="tile" fx:id="rect21" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect22DragExited" onDragOver="#rect22DragOver"
+                        <Pane onDragExited="#rect22DragExited" onDragOver="#rect22DragOver" onDragDetected="#dragRect22"
                               onDragDropped="#rect22DragDropped" id="tile" fx:id="rect22" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect23DragExited" onDragOver="#rect23DragOver"
+                        <Pane onDragExited="#rect23DragExited" onDragOver="#rect23DragOver" onDragDetected="#dragRect23"
                               onDragDropped="#rect23DragDropped" id="tile" fx:id="rect23" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect24DragExited" onDragOver="#rect24DragOver"
+                        <Pane onDragExited="#rect24DragExited" onDragOver="#rect24DragOver" onDragDetected="#dragRect24"
                               onDragDropped="#rect24DragDropped" id="tile" fx:id="rect24" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="5"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect25DragExited" onDragOver="#rect25DragOver"
+                        <Pane onDragExited="#rect25DragExited" onDragOver="#rect25DragOver" onDragDetected="#dragRect25"
                               onDragDropped="#rect25DragDropped" id="tile" fx:id="rect25" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="6"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect26DragExited" onDragOver="#rect26DragOver"
+                        <Pane onDragExited="#rect26DragExited" onDragOver="#rect26DragOver" onDragDetected="#dragRect26"
                               onDragDropped="#rect26DragDropped" id="tile" fx:id="rect26" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="7"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect27DragExited" onDragOver="#rect27DragOver"
+                        <Pane onDragExited="#rect27DragExited" onDragOver="#rect27DragOver" onDragDetected="#dragRect27"
                               onDragDropped="#rect27DragDropped" id="tile" fx:id="rect27" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="8"
                               GridPane.rowIndex="2"/>
-                        <Pane onDragExited="#rect28DragExited" onDragOver="#rect28DragOver"
+                        <Pane onDragExited="#rect28DragExited" onDragOver="#rect28DragOver" onDragDetected="#dragRect28"
                               onDragDropped="#rect28DragDropped" id="tile" fx:id="rect28" prefHeight="50.0"
                               prefWidth="50.0" GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect29DragExited" onDragOver="#rect29DragOver"
+                        <Pane onDragExited="#rect29DragExited" onDragOver="#rect29DragOver" onDragDetected="#dragRect29"
                               onDragDropped="#rect29DragDropped" id="tile" fx:id="rect29" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect30DragExited" onDragOver="#rect30DragOver"
+                        <Pane onDragExited="#rect30DragExited" onDragOver="#rect30DragOver" onDragDetected="#dragRect30"
                               onDragDropped="#rect30DragDropped" id="tile" fx:id="rect30" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect31DragExited" onDragOver="#rect31DragOver"
+                        <Pane onDragExited="#rect31DragExited" onDragOver="#rect31DragOver" onDragDetected="#dragRect31"
                               onDragDropped="#rect31DragDropped" id="tile" fx:id="rect31" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect32DragExited" onDragOver="#rect32DragOver"
+                        <Pane onDragExited="#rect32DragExited" onDragOver="#rect32DragOver" onDragDetected="#dragRect32"
                               onDragDropped="#rect32DragDropped" id="tile" fx:id="rect32" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect33DragExited" onDragOver="#rect33DragOver"
+                        <Pane onDragExited="#rect33DragExited" onDragOver="#rect33DragOver" onDragDetected="#dragRect33"
                               onDragDropped="#rect33DragDropped" id="tile" fx:id="rect33" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="5"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect34DragExited" onDragOver="#rect34DragOver"
+                        <Pane onDragExited="#rect34DragExited" onDragOver="#rect34DragOver" onDragDetected="#dragRect34"
                               onDragDropped="#rect34DragDropped" id="tile" fx:id="rect34" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="6"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect35DragExited" onDragOver="#rect35DragOver"
+                        <Pane onDragExited="#rect35DragExited" onDragOver="#rect35DragOver" onDragDetected="#dragRect35"
                               onDragDropped="#rect35DragDropped" id="tile" fx:id="rect35" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="7"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect36DragExited" onDragOver="#rect36DragOver"
+                        <Pane onDragExited="#rect36DragExited" onDragOver="#rect36DragOver" onDragDetected="#dragRect36"
                               onDragDropped="#rect36DragDropped" id="tile" fx:id="rect36" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="8"
                               GridPane.rowIndex="3"/>
-                        <Pane onDragExited="#rect37DragExited" onDragOver="#rect37DragOver"
+                        <Pane onDragExited="#rect37DragExited" onDragOver="#rect37DragOver" onDragDetected="#dragRect37"
                               onDragDropped="#rect37DragDropped" id="tile" fx:id="rect37" prefHeight="50.0"
                               prefWidth="50.0" GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect38DragExited" onDragOver="#rect38DragOver"
+                        <Pane onDragExited="#rect38DragExited" onDragOver="#rect38DragOver" onDragDetected="#dragRect38"
                               onDragDropped="#rect38DragDropped" id="tile" fx:id="rect38" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect39DragExited" onDragOver="#rect39DragOver"
+                        <Pane onDragExited="#rect39DragExited" onDragOver="#rect39DragOver" onDragDetected="#dragRect39"
                               onDragDropped="#rect39DragDropped" id="tile" fx:id="rect39" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect40DragExited" onDragOver="#rect40DragOver"
+                        <Pane onDragExited="#rect40DragExited" onDragOver="#rect40DragOver" onDragDetected="#dragRect40"
                               onDragDropped="#rect40DragDropped" id="tile" fx:id="rect40" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect41DragExited" onDragOver="#rect41DragOver"
+                        <Pane onDragExited="#rect41DragExited" onDragOver="#rect41DragOver" onDragDetected="#dragRect41"
                               onDragDropped="#rect41DragDropped" id="tile" fx:id="rect41" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect42DragExited" onDragOver="#rect42DragOver"
+                        <Pane onDragExited="#rect42DragExited" onDragOver="#rect42DragOver" onDragDetected="#dragRect42"
                               onDragDropped="#rect42DragDropped" id="tile" fx:id="rect42" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="5"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect43DragExited" onDragOver="#rect43DragOver"
+                        <Pane onDragExited="#rect43DragExited" onDragOver="#rect43DragOver" onDragDetected="#dragRect43"
                               onDragDropped="#rect43DragDropped" id="tile" fx:id="rect43" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="6"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect44DragExited" onDragOver="#rect44DragOver"
+                        <Pane onDragExited="#rect44DragExited" onDragOver="#rect44DragOver" onDragDetected="#dragRect44"
                               onDragDropped="#rect44DragDropped" id="tile" fx:id="rect44" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="7"
                               GridPane.rowIndex="4"/>
-                        <Pane onDragExited="#rect45DragExited" onDragOver="#rect45DragOver"
+                        <Pane onDragExited="#rect45DragExited" onDragOver="#rect45DragOver" onDragDetected="#dragRect45"
                               onDragDropped="#rect45DragDropped" id="tile" fx:id="rect45" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="8"
                               GridPane.rowIndex="4"/>

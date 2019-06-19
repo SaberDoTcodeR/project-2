@@ -4,19 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="426" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="image for each card added">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="basic battle finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/Controller/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/Controller/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/css/css2.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/css/css2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Project_Phase2/Duelyst/model/Collection.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/css/css2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/css/css2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/css/css6.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/css/css6.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/model/Hand.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,105 +79,158 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css6.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="31" column="39" selection-start-line="24" selection-start-column="4" selection-end-line="31" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css2.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-15">
-              <caret line="299" column="70" selection-start-line="299" selection-start-column="70" selection-end-line="299" selection-end-column="70" />
+            <state relative-caret-position="131">
+              <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="147" selection-start-line="147" selection-end-line="147" selection-end-column="34" />
+            <state relative-caret-position="239">
+              <caret line="2243" column="82" lean-forward="true" selection-start-line="2243" selection-start-column="82" selection-end-line="2243" selection-end-column="82" />
               <folding>
-                <element signature="e#9132#9133#0" expanded="true" />
-                <element signature="e#9177#9178#0" expanded="true" />
-                <element signature="e#9327#9328#0" expanded="true" />
-                <element signature="e#9372#9373#0" expanded="true" />
-                <element signature="e#9891#9892#0" expanded="true" />
-                <element signature="e#9936#9937#0" expanded="true" />
-                <element signature="e#10086#10087#0" expanded="true" />
-                <element signature="e#10131#10132#0" expanded="true" />
-                <element signature="e#10650#10651#0" expanded="true" />
-                <element signature="e#10695#10696#0" expanded="true" />
-                <element signature="e#10845#10846#0" expanded="true" />
-                <element signature="e#10890#10891#0" expanded="true" />
-                <element signature="e#11409#11410#0" expanded="true" />
-                <element signature="e#11454#11455#0" expanded="true" />
-                <element signature="e#11604#11605#0" expanded="true" />
-                <element signature="e#11649#11650#0" expanded="true" />
-                <element signature="e#12168#12169#0" expanded="true" />
-                <element signature="e#12213#12214#0" expanded="true" />
-                <element signature="e#12363#12364#0" expanded="true" />
-                <element signature="e#12408#12409#0" expanded="true" />
-                <element signature="e#15183#15184#0" expanded="true" />
-                <element signature="e#15836#15837#0" expanded="true" />
-                <element signature="e#16489#16490#0" expanded="true" />
-                <element signature="e#17142#17143#0" expanded="true" />
-                <element signature="e#17794#17795#0" expanded="true" />
-                <element signature="e#18447#18448#0" expanded="true" />
-                <element signature="e#19100#19101#0" expanded="true" />
-                <element signature="e#19187#19188#0" expanded="true" />
-                <element signature="e#20405#20406#0" expanded="true" />
-                <element signature="e#21065#21066#0" expanded="true" />
-                <element signature="e#21725#21726#0" expanded="true" />
-                <element signature="e#22385#22386#0" expanded="true" />
-                <element signature="e#23045#23046#0" expanded="true" />
-                <element signature="e#23705#23706#0" expanded="true" />
-                <element signature="e#24364#24365#0" expanded="true" />
-                <element signature="e#25024#25025#0" expanded="true" />
-                <element signature="e#25683#25684#0" expanded="true" />
-                <element signature="e#26342#26343#0" expanded="true" />
-                <element signature="e#27002#27003#0" expanded="true" />
-                <element signature="e#27662#27663#0" expanded="true" />
-                <element signature="e#28322#28323#0" expanded="true" />
-                <element signature="e#28982#28983#0" expanded="true" />
-                <element signature="e#29642#29643#0" expanded="true" />
-                <element signature="e#30302#30303#0" expanded="true" />
-                <element signature="e#30961#30962#0" expanded="true" />
-                <element signature="e#31621#31622#0" expanded="true" />
-                <element signature="e#32281#32282#0" expanded="true" />
-                <element signature="e#32940#32941#0" expanded="true" />
-                <element signature="e#33600#33601#0" expanded="true" />
-                <element signature="e#34260#34261#0" expanded="true" />
-                <element signature="e#34920#34921#0" expanded="true" />
-                <element signature="e#35580#35581#0" expanded="true" />
-                <element signature="e#36240#36241#0" expanded="true" />
-                <element signature="e#36900#36901#0" expanded="true" />
-                <element signature="e#37559#37560#0" expanded="true" />
-                <element signature="e#38219#38220#0" expanded="true" />
-                <element signature="e#38879#38880#0" expanded="true" />
-                <element signature="e#39538#39539#0" expanded="true" />
-                <element signature="e#40198#40199#0" expanded="true" />
-                <element signature="e#40858#40859#0" expanded="true" />
-                <element signature="e#41518#41519#0" expanded="true" />
-                <element signature="e#42178#42179#0" expanded="true" />
-                <element signature="e#42838#42839#0" expanded="true" />
-                <element signature="e#43498#43499#0" expanded="true" />
-                <element signature="e#44100#44101#0" expanded="true" />
+                <element signature="e#9451#9452#0" expanded="true" />
+                <element signature="e#9496#9497#0" expanded="true" />
+                <element signature="e#9646#9647#0" expanded="true" />
+                <element signature="e#9691#9692#0" expanded="true" />
+                <element signature="e#10210#10211#0" expanded="true" />
+                <element signature="e#10255#10256#0" expanded="true" />
+                <element signature="e#10405#10406#0" expanded="true" />
+                <element signature="e#10450#10451#0" expanded="true" />
+                <element signature="e#10969#10970#0" expanded="true" />
+                <element signature="e#11014#11015#0" expanded="true" />
+                <element signature="e#11164#11165#0" expanded="true" />
+                <element signature="e#11209#11210#0" expanded="true" />
+                <element signature="e#11728#11729#0" expanded="true" />
+                <element signature="e#11773#11774#0" expanded="true" />
+                <element signature="e#11923#11924#0" expanded="true" />
+                <element signature="e#11968#11969#0" expanded="true" />
+                <element signature="e#12487#12488#0" expanded="true" />
+                <element signature="e#12532#12533#0" expanded="true" />
+                <element signature="e#12682#12683#0" expanded="true" />
+                <element signature="e#12727#12728#0" expanded="true" />
+                <element signature="e#16319#16320#0" expanded="true" />
+                <element signature="e#16354#16355#0" expanded="true" />
+                <element signature="e#17975#17976#0" expanded="true" />
+                <element signature="e#18010#18011#0" expanded="true" />
+                <element signature="e#19786#19787#0" expanded="true" />
+                <element signature="e#19821#19822#0" expanded="true" />
+                <element signature="e#21441#21442#0" expanded="true" />
+                <element signature="e#21476#21477#0" expanded="true" />
+                <element signature="e#23095#23096#0" expanded="true" />
+                <element signature="e#23130#23131#0" expanded="true" />
+                <element signature="e#24750#24751#0" expanded="true" />
+                <element signature="e#24785#24786#0" expanded="true" />
+                <element signature="e#26405#26406#0" expanded="true" />
+                <element signature="e#26440#26441#0" expanded="true" />
+                <element signature="e#26492#26493#0" expanded="true" />
+                <element signature="e#26527#26528#0" expanded="true" />
+                <element signature="e#29714#29715#0" expanded="true" />
+                <element signature="e#29749#29750#0" expanded="true" />
+                <element signature="e#31379#31380#0" expanded="true" />
+                <element signature="e#31415#31416#0" expanded="true" />
+                <element signature="e#33045#33046#0" expanded="true" />
+                <element signature="e#33081#33082#0" expanded="true" />
+                <element signature="e#34711#34712#0" expanded="true" />
+                <element signature="e#34747#34748#0" expanded="true" />
+                <element signature="e#36377#36378#0" expanded="true" />
+                <element signature="e#36413#36414#0" expanded="true" />
+                <element signature="e#38043#38044#0" expanded="true" />
+                <element signature="e#38079#38080#0" expanded="true" />
+                <element signature="e#39708#39709#0" expanded="true" />
+                <element signature="e#39744#39745#0" expanded="true" />
+                <element signature="e#41374#41375#0" expanded="true" />
+                <element signature="e#41410#41411#0" expanded="true" />
+                <element signature="e#43039#43040#0" expanded="true" />
+                <element signature="e#43075#43076#0" expanded="true" />
+                <element signature="e#44704#44705#0" expanded="true" />
+                <element signature="e#44740#44741#0" expanded="true" />
+                <element signature="e#46370#46371#0" expanded="true" />
+                <element signature="e#46406#46407#0" expanded="true" />
+                <element signature="e#48036#48037#0" expanded="true" />
+                <element signature="e#48072#48073#0" expanded="true" />
+                <element signature="e#49702#49703#0" expanded="true" />
+                <element signature="e#49738#49739#0" expanded="true" />
+                <element signature="e#51368#51369#0" expanded="true" />
+                <element signature="e#51404#51405#0" expanded="true" />
+                <element signature="e#53034#53035#0" expanded="true" />
+                <element signature="e#53070#53071#0" expanded="true" />
+                <element signature="e#54701#54702#0" expanded="true" />
+                <element signature="e#54737#54738#0" expanded="true" />
+                <element signature="e#56367#56368#0" expanded="true" />
+                <element signature="e#56403#56404#0" expanded="true" />
+                <element signature="e#58034#58035#0" expanded="true" />
+                <element signature="e#58070#58071#0" expanded="true" />
+                <element signature="e#59701#59702#0" expanded="true" />
+                <element signature="e#59737#59738#0" expanded="true" />
+                <element signature="e#61367#61368#0" expanded="true" />
+                <element signature="e#61403#61404#0" expanded="true" />
+                <element signature="e#63034#63035#0" expanded="true" />
+                <element signature="e#63070#63071#0" expanded="true" />
+                <element signature="e#64701#64702#0" expanded="true" />
+                <element signature="e#64737#64738#0" expanded="true" />
+                <element signature="e#66368#66369#0" expanded="true" />
+                <element signature="e#66404#66405#0" expanded="true" />
+                <element signature="e#68035#68036#0" expanded="true" />
+                <element signature="e#68071#68072#0" expanded="true" />
+                <element signature="e#69448#69449#0" expanded="true" />
+                <element signature="e#69484#69485#0" expanded="true" />
+                <element signature="e#71115#71116#0" expanded="true" />
+                <element signature="e#71151#71152#0" expanded="true" />
+                <element signature="e#72782#72783#0" expanded="true" />
+                <element signature="e#72818#72819#0" expanded="true" />
+                <element signature="e#74449#74450#0" expanded="true" />
+                <element signature="e#74485#74486#0" expanded="true" />
+                <element signature="e#76116#76117#0" expanded="true" />
+                <element signature="e#76152#76153#0" expanded="true" />
+                <element signature="e#77782#77783#0" expanded="true" />
+                <element signature="e#77818#77819#0" expanded="true" />
+                <element signature="e#79449#79450#0" expanded="true" />
+                <element signature="e#79485#79486#0" expanded="true" />
+                <element signature="e#81116#81117#0" expanded="true" />
+                <element signature="e#81152#81153#0" expanded="true" />
+                <element signature="e#82783#82784#0" expanded="true" />
+                <element signature="e#82819#82820#0" expanded="true" />
+                <element signature="e#84451#84452#0" expanded="true" />
+                <element signature="e#84487#84488#0" expanded="true" />
+                <element signature="e#86118#86119#0" expanded="true" />
+                <element signature="e#86154#86155#0" expanded="true" />
+                <element signature="e#87785#87786#0" expanded="true" />
+                <element signature="e#87821#87822#0" expanded="true" />
+                <element signature="e#89709#89710#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="141" column="22" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Cell.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="35">
+              <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -194,7 +238,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/GameModeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="408">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#863#864#0" expanded="true" />
@@ -205,28 +249,28 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="1377">
               <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
             </state>
           </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="425">
               <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Collection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+            <state relative-caret-position="663">
+              <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
               <folding>
                 <element signature="e#4372#4373#0" expanded="true" />
                 <element signature="e#4408#4409#0" expanded="true" />
@@ -238,7 +282,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Account.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
+            <state relative-caret-position="408">
               <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
               <folding>
                 <element signature="e#937#938#0" expanded="true" />
@@ -261,15 +305,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>create</find>
-      <find>combo</find>
-      <find>wr</find>
-      <find>-fx-background-image</find>
-      <find>main</find>
-      <find>jfxDialogLayout</find>
-      <find>init</find>
-      <find>spell1</find>
-      <find>choo</find>
       <find>spell11</find>
       <find>out</find>
       <find>!--</find>
@@ -291,6 +326,15 @@
       <find>gif1</find>
       <find>syste</find>
       <find>s</find>
+      <find>onDragDropped=&quot;#rectDragDropped&quot;</find>
+      <find>rect(\d+)\.getChildren\(\)\.add\(imageView\)</find>
+      <find>rect(\d+)\.getChildren\(\)\.add\(imageView\);</find>
+      <find>23</find>
+      <find>Dragboard db = rect(\d+).getChildren\(\).get\(0\).startDragAndDrop\(TransferMode.MOVE\);</find>
+      <find>Dragboard db = rect(\d+).getChildren\(\).get\(0\).startDragAndDrop\(TransferMode.ANY\);</find>
+      <find>rect(\d+).getChildren\(\).add\(imageView\);</find>
+      <find>System.out.println</find>
+      <find>Rect36</find>
     </findStrings>
     <replaceStrings>
       <replace>GridPane.columnIndex=&quot;1&quot;</replace>
@@ -315,6 +359,11 @@
       <replace>100</replace>
       <replace>50</replace>
       <replace>Card.getCard(event.getDragboard().getString()).getImage()</replace>
+      <replace>rect$1</replace>
+      <replace>rect$1\.getChildren\(\)\.add\(imageView\);rect$1</replace>
+      <replace>.get(($1 - 1) % 9).get(($1 - 1) /5)</replace>
+      <replace>.get(($1 - 1) / 9)</replace>
+      <replace>rect$1.getChildren().add(imageView);rectangles[$1-1].getChildren().clear();</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\ahura\Desktop\project-2\src\Duelyst</dir>
@@ -378,10 +427,10 @@
         <option value="$PROJECT_DIR$/src/Duelyst/model/Hand.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/css/css6.css" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" />
-        <option value="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java" />
         <option value="$PROJECT_DIR$/src/Duelyst/css/css2.css" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" />
       </list>
     </option>
   </component>
@@ -392,10 +441,11 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
+    <option name="y" value="130" />
     <option name="width" value="1382" />
-    <option name="height" value="735" />
+    <option name="height" value="605" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -403,7 +453,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -466,22 +515,14 @@
               <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="Card" type="462c0819:PsiDirectoryNode" />
-              <item name="Hero" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projecctt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projecctt" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="Card" type="462c0819:PsiDirectoryNode" />
-              <item name="Spell" type="462c0819:PsiDirectoryNode" />
+              <item name="Minion" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -639,7 +680,9 @@
       <workItem from="1560600008515" duration="35000" />
       <workItem from="1560622304355" duration="1403000" />
       <workItem from="1560673735228" duration="10395000" />
-      <workItem from="1560853779150" duration="10158000" />
+      <workItem from="1560853779150" duration="10211000" />
+      <workItem from="1560886886223" duration="3217000" />
+      <workItem from="1560954305274" duration="8027000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -795,17 +838,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560860569967</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="basic battle finished">
+      <created>1560864704607</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1560864704607</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211476000" />
+    <option name="totallyTimeSpent" value="222773000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="0" width="1382" height="735" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.27609682" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.28517398" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -814,7 +864,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24916944" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2487725" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3986711" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -824,7 +874,7 @@
       <window_info anchor="bottom" id="Problems" order="9" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" weight="0.32724252" />
+      <window_info anchor="bottom" id="Event Log" order="12" weight="0.22749591" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.4833887" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
@@ -908,19 +958,14 @@
     <MESSAGE value="hand and map added" />
     <MESSAGE value="hand and drag drop added" />
     <MESSAGE value="image for each card added" />
-    <option name="LAST_COMMIT_MESSAGE" value="image for each card added" />
+    <MESSAGE value="basic battle finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic battle finished" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/unit_gifs/heroSpell/f5_altgeneraltier2_breathing.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/unit_gifs/heroSpell/f5_tier2general_breathing.gif">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-323">
@@ -977,17 +1022,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="23" selection-start-line="23" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
-          <folding>
-            <element signature="e#1669#1670#0" expanded="true" />
-            <element signature="e#1700#1701#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1183,24 +1217,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4221">
-          <caret line="349" column="26" selection-start-line="349" selection-start-column="26" selection-end-line="349" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="e#937#938#0" expanded="true" />
-            <element signature="e#966#967#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/image/ImageView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -1225,9 +1241,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css6.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="39" selection-start-line="24" selection-start-column="4" selection-end-line="31" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+          <folding>
+            <element signature="e#1669#1670#0" expanded="true" />
+            <element signature="e#1701#1702#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/GameModeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
+        <state relative-caret-position="408">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="e#863#864#0" expanded="true" />
@@ -1235,124 +1276,186 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="147" selection-start-line="147" selection-end-line="147" selection-end-column="34" />
-          <folding>
-            <element signature="e#9132#9133#0" expanded="true" />
-            <element signature="e#9177#9178#0" expanded="true" />
-            <element signature="e#9327#9328#0" expanded="true" />
-            <element signature="e#9372#9373#0" expanded="true" />
-            <element signature="e#9891#9892#0" expanded="true" />
-            <element signature="e#9936#9937#0" expanded="true" />
-            <element signature="e#10086#10087#0" expanded="true" />
-            <element signature="e#10131#10132#0" expanded="true" />
-            <element signature="e#10650#10651#0" expanded="true" />
-            <element signature="e#10695#10696#0" expanded="true" />
-            <element signature="e#10845#10846#0" expanded="true" />
-            <element signature="e#10890#10891#0" expanded="true" />
-            <element signature="e#11409#11410#0" expanded="true" />
-            <element signature="e#11454#11455#0" expanded="true" />
-            <element signature="e#11604#11605#0" expanded="true" />
-            <element signature="e#11649#11650#0" expanded="true" />
-            <element signature="e#12168#12169#0" expanded="true" />
-            <element signature="e#12213#12214#0" expanded="true" />
-            <element signature="e#12363#12364#0" expanded="true" />
-            <element signature="e#12408#12409#0" expanded="true" />
-            <element signature="e#15183#15184#0" expanded="true" />
-            <element signature="e#15836#15837#0" expanded="true" />
-            <element signature="e#16489#16490#0" expanded="true" />
-            <element signature="e#17142#17143#0" expanded="true" />
-            <element signature="e#17794#17795#0" expanded="true" />
-            <element signature="e#18447#18448#0" expanded="true" />
-            <element signature="e#19100#19101#0" expanded="true" />
-            <element signature="e#19187#19188#0" expanded="true" />
-            <element signature="e#20405#20406#0" expanded="true" />
-            <element signature="e#21065#21066#0" expanded="true" />
-            <element signature="e#21725#21726#0" expanded="true" />
-            <element signature="e#22385#22386#0" expanded="true" />
-            <element signature="e#23045#23046#0" expanded="true" />
-            <element signature="e#23705#23706#0" expanded="true" />
-            <element signature="e#24364#24365#0" expanded="true" />
-            <element signature="e#25024#25025#0" expanded="true" />
-            <element signature="e#25683#25684#0" expanded="true" />
-            <element signature="e#26342#26343#0" expanded="true" />
-            <element signature="e#27002#27003#0" expanded="true" />
-            <element signature="e#27662#27663#0" expanded="true" />
-            <element signature="e#28322#28323#0" expanded="true" />
-            <element signature="e#28982#28983#0" expanded="true" />
-            <element signature="e#29642#29643#0" expanded="true" />
-            <element signature="e#30302#30303#0" expanded="true" />
-            <element signature="e#30961#30962#0" expanded="true" />
-            <element signature="e#31621#31622#0" expanded="true" />
-            <element signature="e#32281#32282#0" expanded="true" />
-            <element signature="e#32940#32941#0" expanded="true" />
-            <element signature="e#33600#33601#0" expanded="true" />
-            <element signature="e#34260#34261#0" expanded="true" />
-            <element signature="e#34920#34921#0" expanded="true" />
-            <element signature="e#35580#35581#0" expanded="true" />
-            <element signature="e#36240#36241#0" expanded="true" />
-            <element signature="e#36900#36901#0" expanded="true" />
-            <element signature="e#37559#37560#0" expanded="true" />
-            <element signature="e#38219#38220#0" expanded="true" />
-            <element signature="e#38879#38880#0" expanded="true" />
-            <element signature="e#39538#39539#0" expanded="true" />
-            <element signature="e#40198#40199#0" expanded="true" />
-            <element signature="e#40858#40859#0" expanded="true" />
-            <element signature="e#41518#41519#0" expanded="true" />
-            <element signature="e#42178#42179#0" expanded="true" />
-            <element signature="e#42838#42839#0" expanded="true" />
-            <element signature="e#43498#43499#0" expanded="true" />
-            <element signature="e#44100#44101#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1377">
+          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="425">
           <caret line="42" column="40" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css6.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="31" column="39" selection-start-line="24" selection-start-column="4" selection-end-line="31" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-15">
-          <caret line="299" column="70" selection-start-line="299" selection-start-column="70" selection-end-line="299" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="81" column="28" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+        <state relative-caret-position="663">
+          <caret line="50" column="49" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
           <folding>
             <element signature="e#4372#4373#0" expanded="true" />
             <element signature="e#4408#4409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+          <folding>
+            <element signature="e#937#938#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="127" column="55" selection-start-line="127" selection-start-column="55" selection-end-line="127" selection-end-column="55" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="141" column="22" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="2243" column="82" lean-forward="true" selection-start-line="2243" selection-start-column="82" selection-end-line="2243" selection-end-column="82" />
+          <folding>
+            <element signature="e#9451#9452#0" expanded="true" />
+            <element signature="e#9496#9497#0" expanded="true" />
+            <element signature="e#9646#9647#0" expanded="true" />
+            <element signature="e#9691#9692#0" expanded="true" />
+            <element signature="e#10210#10211#0" expanded="true" />
+            <element signature="e#10255#10256#0" expanded="true" />
+            <element signature="e#10405#10406#0" expanded="true" />
+            <element signature="e#10450#10451#0" expanded="true" />
+            <element signature="e#10969#10970#0" expanded="true" />
+            <element signature="e#11014#11015#0" expanded="true" />
+            <element signature="e#11164#11165#0" expanded="true" />
+            <element signature="e#11209#11210#0" expanded="true" />
+            <element signature="e#11728#11729#0" expanded="true" />
+            <element signature="e#11773#11774#0" expanded="true" />
+            <element signature="e#11923#11924#0" expanded="true" />
+            <element signature="e#11968#11969#0" expanded="true" />
+            <element signature="e#12487#12488#0" expanded="true" />
+            <element signature="e#12532#12533#0" expanded="true" />
+            <element signature="e#12682#12683#0" expanded="true" />
+            <element signature="e#12727#12728#0" expanded="true" />
+            <element signature="e#16319#16320#0" expanded="true" />
+            <element signature="e#16354#16355#0" expanded="true" />
+            <element signature="e#17975#17976#0" expanded="true" />
+            <element signature="e#18010#18011#0" expanded="true" />
+            <element signature="e#19786#19787#0" expanded="true" />
+            <element signature="e#19821#19822#0" expanded="true" />
+            <element signature="e#21441#21442#0" expanded="true" />
+            <element signature="e#21476#21477#0" expanded="true" />
+            <element signature="e#23095#23096#0" expanded="true" />
+            <element signature="e#23130#23131#0" expanded="true" />
+            <element signature="e#24750#24751#0" expanded="true" />
+            <element signature="e#24785#24786#0" expanded="true" />
+            <element signature="e#26405#26406#0" expanded="true" />
+            <element signature="e#26440#26441#0" expanded="true" />
+            <element signature="e#26492#26493#0" expanded="true" />
+            <element signature="e#26527#26528#0" expanded="true" />
+            <element signature="e#29714#29715#0" expanded="true" />
+            <element signature="e#29749#29750#0" expanded="true" />
+            <element signature="e#31379#31380#0" expanded="true" />
+            <element signature="e#31415#31416#0" expanded="true" />
+            <element signature="e#33045#33046#0" expanded="true" />
+            <element signature="e#33081#33082#0" expanded="true" />
+            <element signature="e#34711#34712#0" expanded="true" />
+            <element signature="e#34747#34748#0" expanded="true" />
+            <element signature="e#36377#36378#0" expanded="true" />
+            <element signature="e#36413#36414#0" expanded="true" />
+            <element signature="e#38043#38044#0" expanded="true" />
+            <element signature="e#38079#38080#0" expanded="true" />
+            <element signature="e#39708#39709#0" expanded="true" />
+            <element signature="e#39744#39745#0" expanded="true" />
+            <element signature="e#41374#41375#0" expanded="true" />
+            <element signature="e#41410#41411#0" expanded="true" />
+            <element signature="e#43039#43040#0" expanded="true" />
+            <element signature="e#43075#43076#0" expanded="true" />
+            <element signature="e#44704#44705#0" expanded="true" />
+            <element signature="e#44740#44741#0" expanded="true" />
+            <element signature="e#46370#46371#0" expanded="true" />
+            <element signature="e#46406#46407#0" expanded="true" />
+            <element signature="e#48036#48037#0" expanded="true" />
+            <element signature="e#48072#48073#0" expanded="true" />
+            <element signature="e#49702#49703#0" expanded="true" />
+            <element signature="e#49738#49739#0" expanded="true" />
+            <element signature="e#51368#51369#0" expanded="true" />
+            <element signature="e#51404#51405#0" expanded="true" />
+            <element signature="e#53034#53035#0" expanded="true" />
+            <element signature="e#53070#53071#0" expanded="true" />
+            <element signature="e#54701#54702#0" expanded="true" />
+            <element signature="e#54737#54738#0" expanded="true" />
+            <element signature="e#56367#56368#0" expanded="true" />
+            <element signature="e#56403#56404#0" expanded="true" />
+            <element signature="e#58034#58035#0" expanded="true" />
+            <element signature="e#58070#58071#0" expanded="true" />
+            <element signature="e#59701#59702#0" expanded="true" />
+            <element signature="e#59737#59738#0" expanded="true" />
+            <element signature="e#61367#61368#0" expanded="true" />
+            <element signature="e#61403#61404#0" expanded="true" />
+            <element signature="e#63034#63035#0" expanded="true" />
+            <element signature="e#63070#63071#0" expanded="true" />
+            <element signature="e#64701#64702#0" expanded="true" />
+            <element signature="e#64737#64738#0" expanded="true" />
+            <element signature="e#66368#66369#0" expanded="true" />
+            <element signature="e#66404#66405#0" expanded="true" />
+            <element signature="e#68035#68036#0" expanded="true" />
+            <element signature="e#68071#68072#0" expanded="true" />
+            <element signature="e#69448#69449#0" expanded="true" />
+            <element signature="e#69484#69485#0" expanded="true" />
+            <element signature="e#71115#71116#0" expanded="true" />
+            <element signature="e#71151#71152#0" expanded="true" />
+            <element signature="e#72782#72783#0" expanded="true" />
+            <element signature="e#72818#72819#0" expanded="true" />
+            <element signature="e#74449#74450#0" expanded="true" />
+            <element signature="e#74485#74486#0" expanded="true" />
+            <element signature="e#76116#76117#0" expanded="true" />
+            <element signature="e#76152#76153#0" expanded="true" />
+            <element signature="e#77782#77783#0" expanded="true" />
+            <element signature="e#77818#77819#0" expanded="true" />
+            <element signature="e#79449#79450#0" expanded="true" />
+            <element signature="e#79485#79486#0" expanded="true" />
+            <element signature="e#81116#81117#0" expanded="true" />
+            <element signature="e#81152#81153#0" expanded="true" />
+            <element signature="e#82783#82784#0" expanded="true" />
+            <element signature="e#82819#82820#0" expanded="true" />
+            <element signature="e#84451#84452#0" expanded="true" />
+            <element signature="e#84487#84488#0" expanded="true" />
+            <element signature="e#86118#86119#0" expanded="true" />
+            <element signature="e#86154#86155#0" expanded="true" />
+            <element signature="e#87785#87786#0" expanded="true" />
+            <element signature="e#87821#87822#0" expanded="true" />
+            <element signature="e#89709#89710#0" expanded="true" />
           </folding>
         </state>
       </provider>

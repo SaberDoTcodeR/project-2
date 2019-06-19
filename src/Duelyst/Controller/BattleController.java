@@ -1,5 +1,7 @@
 package Duelyst.Controller;
 
+import Duelyst.model.Card.Hero.Hero;
+import Duelyst.model.Card.Minion.Minion;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.PathTransition;
@@ -28,6 +30,7 @@ import Duelyst.model.Battle.FlagsBattle;
 import Duelyst.model.Battle.HeroBattle;
 import Duelyst.model.Battle.OneFlagBattle;
 import Duelyst.model.Card.Card;
+import jdk.nashorn.internal.objects.NativeUint8Array;
 
 
 public class BattleController {
@@ -98,6 +101,11 @@ public class BattleController {
     public ImageView profile;
     public Label accountInfo;
 
+    int whichHand = -1;
+    int whichRect = -1;
+    static Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+    static final double KASHI = primaryScreenBounds.getWidth() * 7 / 100;
+
 
     Pane[] rectangles = new Pane[45];
 
@@ -145,7 +153,7 @@ public class BattleController {
 
     public void setProfile(Image imagePro) {
         accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + Account.getLoginAccount().getMana());
-accountInfo.setGraphicTextGap(10);
+        accountInfo.setGraphicTextGap(10);
         profile.setImage(imagePro);
         Rectangle clip = new Rectangle(
                 profile.getFitWidth(), profile.getFitHeight()
@@ -160,10 +168,6 @@ accountInfo.setGraphicTextGap(10);
         profile.setEffect(new DropShadow(20, Color.BLACK));
         profile.setImage(image);
     }
-
-    int whichHand;
-    static Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-    static final double KASHI = primaryScreenBounds.getWidth() * 7 / 100;
 
     public void initialize() {
         setProfile(Account.getLoginAccount().getAvatar());
@@ -425,7 +429,27 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect1.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+            System.out.println("task1Done");
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect1.setId("tile");
     }
 
@@ -446,7 +470,27 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect2.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
+
         rect2.setId("tile");
     }
 
@@ -467,7 +511,32 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect3.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            System.out.println("sh");
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            System.out.println("shi");
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+            System.out.println("shi2");
+
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+
+        if (whichHand != -1) {
+            System.out.println(123);
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect3.setId("tile");
     }
 
@@ -488,7 +557,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect4.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect4.setId("tile");
     }
 
@@ -509,7 +597,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect5.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect5.setId("tile");
     }
 
@@ -529,7 +636,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect6.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect6.setId("tile");
     }
 
@@ -550,7 +676,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect7.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect7.setId("tile");
     }
 
@@ -575,7 +720,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect8.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect8.setId("tile");
     }
 
@@ -591,7 +755,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect9.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect9.setId("tile");
     }
 
@@ -612,7 +795,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect10.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect10.setId("tile");
     }
 
@@ -633,7 +835,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect11.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect11.setId("tile");
     }
 
@@ -654,7 +875,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect12.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect12.setId("tile");
     }
 
@@ -675,7 +915,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect13.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect13.setId("tile");
     }
 
@@ -696,7 +955,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect14.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect14.setId("tile");
     }
 
@@ -717,7 +995,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect15.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect15.setId("tile");
     }
 
@@ -737,7 +1034,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect16.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect16.setId("tile");
     }
 
@@ -758,7 +1074,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect17.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect17.setId("tile");
     }
 
@@ -778,7 +1113,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect18.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect18.setId("tile");
     }
 
@@ -798,7 +1152,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect19.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect19.setId("tile");
     }
 
@@ -819,7 +1192,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect20.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect20.setId("tile");
     }
 
@@ -840,7 +1232,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect21.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect21.setId("tile");
     }
 
@@ -861,7 +1272,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect22.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect22.setId("tile");
     }
 
@@ -882,7 +1312,26 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect23.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect23.setId("tile");
     }
 
@@ -902,8 +1351,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect24.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect24.setId("tile");
     }
 
@@ -923,8 +1392,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect25.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect25.setId("tile");
     }
 
@@ -943,8 +1432,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect26.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect26.setId("tile");
     }
 
@@ -964,8 +1473,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect27.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect27.setId("tile");
     }
 
@@ -985,8 +1514,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect28.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect28.setId("tile");
     }
 
@@ -1005,8 +1554,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect29.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect29.setId("tile");
     }
 
@@ -1026,8 +1595,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect30.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect30.setId("tile");
     }
 
@@ -1047,8 +1636,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect31.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect31.setId("tile");
     }
 
@@ -1068,8 +1677,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect32.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect32.setId("tile");
     }
 
@@ -1090,7 +1719,21 @@ accountInfo.setGraphicTextGap(10);
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect33.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+        rectangles[whichRect].getChildren().clear();
+
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect33.setId("tile");
     }
 
@@ -1110,8 +1753,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect34.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect34.setId("tile");
     }
 
@@ -1131,8 +1794,29 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect35.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect35.setId("tile");
     }
 
@@ -1151,8 +1835,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect36.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect36.setId("tile");
     }
 
@@ -1172,8 +1876,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect37.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect37.setId("tile");
     }
 
@@ -1193,8 +1917,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect38.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect38.setId("tile");
     }
 
@@ -1213,8 +1957,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect39.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect39.setId("tile");
     }
 
@@ -1234,8 +1998,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect40.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect40.setId("tile");
     }
 
@@ -1255,8 +2039,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect41.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect41.setId("tile");
     }
 
@@ -1276,8 +2080,29 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect42.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect42.setId("tile");
     }
 
@@ -1297,8 +2122,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect43.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect43.setId("tile");
     }
 
@@ -1318,8 +2163,28 @@ accountInfo.setGraphicTextGap(10);
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect44.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect44.setId("tile");
     }
 
@@ -1336,16 +2201,718 @@ accountInfo.setGraphicTextGap(10);
     }
 
     public void rect45DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView();
+        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
+
         rect45.getChildren().add(imageView);
-        handGifs[whichHand].setImage(null);
+
+        if (whichRect != -1) {
+            rectangles[whichRect].getChildren().clear();
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
+            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            whichRect = -1;
+        }
+
+        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
+            currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
+            currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
+                    .getString())), (currentBattle.getTurn() - 1) % 2);
+        } else {
+            //spell insert???
+        }
+        if (whichHand != -1) {
+            handGifs[whichHand].setImage(null);
+            whichHand = -1;
+        }
         rect45.setId("tile");
     }
 
     public void rect45DragExited(DragEvent event) {
         rect45.setId("tile");
+    }
+
+
+    public void dragRect1(MouseEvent event) {
+        if (currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero() != null || currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getMinion() != null) {
+            System.out.println("task2Done");
+            Dragboard db = rect1.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 1 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect1.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect2(MouseEvent event) {
+        if (currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero() != null || currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect2.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 2 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect2.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect3(MouseEvent event) {
+        if (currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero() != null || currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect3.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 3 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect3.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect4(MouseEvent event) {
+        if (currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero() != null || currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect4.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 4 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect4.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect5(MouseEvent event) {
+        if (currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero() != null || currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect5.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 5 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect5.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect6(MouseEvent event) {
+        if (currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero() != null || currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect6.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 6 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect6.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect7(MouseEvent event) {
+        if (currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero() != null || currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect7.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 7 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect7.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect8(MouseEvent event) {
+        if (currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero() != null || currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect8.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 8 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect8.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect9(MouseEvent event) {
+        if (currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero() != null || currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect9.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 9 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect9.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect10(MouseEvent event) {
+        if (currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero() != null || currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect10.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 10 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect10.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect11(MouseEvent event) {
+        if (currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero() != null || currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect11.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 11 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect11.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect13(MouseEvent event) {
+        if (currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero() != null || currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect13.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 13 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect13.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect12(MouseEvent event) {
+        if (currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero() != null || currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect12.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 12 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect12.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect14(MouseEvent event) {
+        if (currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero() != null || currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect14.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 14 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect14.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect15(MouseEvent event) {
+        if (currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero() != null || currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect15.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 15 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect15.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect16(MouseEvent event) {
+        if (currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero() != null || currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect16.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 16 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect16.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect17(MouseEvent event) {
+        if (currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero() != null || currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect17.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 17 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect17.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect18(MouseEvent event) {
+        if (currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero() != null || currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect18.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 18 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect18.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect19(MouseEvent event) {
+        if (currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero() != null || currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect19.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 19 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect19.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+
+    public void dragRect20(MouseEvent event) {
+        if (currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero() != null || currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect20.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 20 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect20.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect21(MouseEvent event) {
+        if (currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero() != null || currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect21.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 21 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect21.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect22(MouseEvent event) {
+        if (currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero() != null || currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect22.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 22 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect22.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect23(MouseEvent event) {
+        if (currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero() != null || currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect23.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 23 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect23.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect24(MouseEvent event) {
+        if (currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero() != null || currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect24.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 24 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect24.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect25(MouseEvent event) {
+        if (currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero() != null || currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect25.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 25 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect25.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect26(MouseEvent event) {
+        if (currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero() != null || currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect26.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 26 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect26.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect27(MouseEvent event) {
+        if (currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero() != null || currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect27.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 27 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect27.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect28(MouseEvent event) {
+        if (currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero() != null || currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect28.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 28 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect28.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect29(MouseEvent event) {
+        if (currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero() != null || currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect29.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 29 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect29.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+
+    public void dragRect30(MouseEvent event) {
+        if (currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero() != null || currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect30.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 30 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect30.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect31(MouseEvent event) {
+        if (currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero() != null || currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect31.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 31 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect31.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect32(MouseEvent event) {
+        if (currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero() != null || currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect32.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 32 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect32.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect33(MouseEvent event) {
+        if (currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero() != null || currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect33.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 33 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect33.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect34(MouseEvent event) {
+        if (currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero() != null || currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect34.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 34 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect34.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect35(MouseEvent event) {
+        if (currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero() != null || currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect35.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 35 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect35.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect36(MouseEvent event) {
+        if (currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero() != null || currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect36.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 36 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect36.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect37(MouseEvent event) {
+        if (currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero() != null || currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect37.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 37 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect37.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect38(MouseEvent event) {
+        if (currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero() != null || currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect38.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 38 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect38.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect39(MouseEvent event) {
+        if (currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero() != null || currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect39.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 39 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect39.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+
+    public void dragRect40(MouseEvent event) {
+        if (currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero() != null || currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect40.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 40 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect40.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect41(MouseEvent event) {
+        if (currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero() != null || currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect41.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 41 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect41.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect42(MouseEvent event) {
+        if (currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero() != null || currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect42.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 42 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect42.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect43(MouseEvent event) {
+        if (currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero() != null || currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect43.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 43 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect43.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
+    }
+
+    public void dragRect44(MouseEvent event) {
+        if (currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero() != null || currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect44.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 44 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect44.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+
+        }
+    }
+
+    public void dragRect45(MouseEvent event) {
+        if (currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero() != null || currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getMinion() != null) {
+            Dragboard db = rect45.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
+            whichRect = 45 - 1;
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(((ImageView) rect45.getChildren().get(0)).getImage());
+            if (currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero() != null)
+                content.putString(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero().getName());
+            else
+                content.putString(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getMinion().getName());
+            db.setContent(content);
+            event.consume();
+        }
     }
 }
 
