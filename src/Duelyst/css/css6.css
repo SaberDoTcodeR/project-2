@@ -48,7 +48,7 @@
     -fx-background-radius: 15 15 15 15;
 }
 
-#tileWhite{
+#tileWhite {
     -fx-border-color: transparent;
     -fx-border-width: 0;
     -fx-background-color: rgba(255, 255, 255, 0.5);
@@ -95,4 +95,24 @@
     -fx-background-color: #8F5681;
     -fx-translate-y: 4px;
     -fx-text-fill: black;
+}
+
+.dialog-button {
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-insets: 2 2 2 2;
+    -fx-background-radius: 15 15 15 15;
+}
+
+.dialog-button:hover {
+    -fx-background-color: rgba(13, 254, 221, 0.8);
+    -fx-text-fill: black;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
 }

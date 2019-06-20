@@ -11,10 +11,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.Label?>
-<StackPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="Duelyst.Controller.BattleController">
     <children>
-        <GridPane fx:id="stack">
+        <GridPane fx:id="gridPane">
             <columnConstraints>
 
                 <ColumnConstraints hgrow="SOMETIMES" percentWidth="20"/>

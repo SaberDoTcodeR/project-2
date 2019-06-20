@@ -7,6 +7,10 @@ import Duelyst.model.ErrorType;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Cell;
 import Duelyst.model.ErrorType;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
@@ -15,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Label;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.image.Image;
@@ -23,6 +28,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -54,7 +60,7 @@ public class BattleController {
     public ImageView gif5;
     public ImageView[] handGifs;
     public GridPane mapGrid;
-    public GridPane stack;
+    public GridPane gridPane;
     public static boolean finished = false;
     public Battle currentBattle;
     public Pane rect1;
@@ -107,6 +113,7 @@ public class BattleController {
     public ImageView gif6;
     public ImageView profile;
     public Label accountInfo;
+    public StackPane stackPane;
 
     int whichHand = -1;
     int whichRect = -1;
@@ -121,7 +128,8 @@ public class BattleController {
     Card card3;
     Card card4;
     Card card5;
-    Card[] cardsOfHand=new Card[5];
+    Card[] cardsOfHand = new Card[5];
+
     public void handleHand() {
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
 
@@ -133,11 +141,11 @@ public class BattleController {
         card3 = currentBattle.getFirstPlayerHand().getCards().get(2);
         card4 = currentBattle.getFirstPlayerHand().getCards().get(3);
         card5 = currentBattle.getFirstPlayerHand().getCards().get(4);
-        cardsOfHand[0]=card1;
-        cardsOfHand[1]=card2;
-        cardsOfHand[2]=card3;
-        cardsOfHand[3]=card4;
-        cardsOfHand[4]=card5;
+        cardsOfHand[0] = card1;
+        cardsOfHand[1] = card2;
+        cardsOfHand[2] = card3;
+        cardsOfHand[3] = card4;
+        cardsOfHand[4] = card5;
         showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
         currentBattle.getSecondPlayerHand().fillHand(currentBattle, 1);
     }
@@ -425,6 +433,30 @@ public class BattleController {
         return null;
     }
 
+    private void showDialog(ErrorType errorType) {
+        if (errorType != null && !errorType.getMessage().equals("OK")) {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(errorType.getMessage());
+            label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
+        }
+    }
+
     public void enterHand1() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image1);
         rotate.setFromAngle(image1.getRotate());
@@ -572,7 +604,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect1.setId("tile");
@@ -614,7 +646,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
 
@@ -659,7 +691,7 @@ public class BattleController {
 
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect3.setId("tile");
@@ -701,7 +733,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect4.setId("tile");
@@ -743,7 +775,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect5.setId("tile");
@@ -784,7 +816,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect6.setId("tile");
@@ -826,7 +858,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect7.setId("tile");
@@ -872,7 +904,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect8.setId("tile");
@@ -909,7 +941,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect9.setId("tile");
@@ -951,7 +983,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect10.setId("tile");
@@ -993,7 +1025,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect11.setId("tile");
@@ -1035,7 +1067,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect12.setId("tile");
@@ -1077,7 +1109,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect13.setId("tile");
@@ -1119,7 +1151,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect14.setId("tile");
@@ -1161,7 +1193,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect15.setId("tile");
@@ -1202,7 +1234,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect16.setId("tile");
@@ -1244,7 +1276,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect17.setId("tile");
@@ -1285,7 +1317,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect18.setId("tile");
@@ -1326,7 +1358,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect19.setId("tile");
@@ -1368,7 +1400,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect20.setId("tile");
@@ -1410,7 +1442,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect21.setId("tile");
@@ -1452,14 +1484,14 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect22.setId("tile");
     }
 
 
-    public void rect22DragExited(DragEvent event) {
+    public void rect22DragExited() {
         rect22.setId("tile");
     }
 
@@ -1494,7 +1526,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect23.setId("tile");
@@ -1537,7 +1569,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect24.setId("tile");
@@ -1580,7 +1612,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect25.setId("tile");
@@ -1622,7 +1654,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect26.setId("tile");
@@ -1665,7 +1697,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect27.setId("tile");
@@ -1708,7 +1740,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect28.setId("tile");
@@ -1750,7 +1782,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect29.setId("tile");
@@ -1793,7 +1825,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect30.setId("tile");
@@ -1836,7 +1868,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect31.setId("tile");
@@ -1879,7 +1911,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect32.setId("tile");
@@ -1917,7 +1949,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect33.setId("tile");
@@ -1960,7 +1992,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect34.setId("tile");
@@ -2004,7 +2036,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect35.setId("tile");
@@ -2046,7 +2078,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect36.setId("tile");
@@ -2089,7 +2121,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect37.setId("tile");
@@ -2132,7 +2164,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect38.setId("tile");
@@ -2174,7 +2206,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect39.setId("tile");
@@ -2217,7 +2249,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect40.setId("tile");
@@ -2260,7 +2292,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect41.setId("tile");
@@ -2305,7 +2337,7 @@ public class BattleController {
         if (whichHand != -1) {
 
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect42.setId("tile");
@@ -2349,7 +2381,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect43.setId("tile");
@@ -2392,7 +2424,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect44.setId("tile");
@@ -2436,7 +2468,7 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
+            showDialog(insertCard(event.getDragboard().getString(), rectNum));
             whichHand = -1;
         }
         rect45.setId("tile");

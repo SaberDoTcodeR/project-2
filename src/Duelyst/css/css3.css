@@ -93,6 +93,7 @@
     -fx-background-insets: 2 2 2 2;
     -fx-background-radius: 15 15 15 15;
 }
+
 .dialog-button:hover {
     -fx-background-color: rgba(13, 254, 221, 0.8);
     -fx-text-fill: black;
@@ -101,6 +102,7 @@
     -fx-border-insets: 2 2 2 2;
     -fx-border-radius: 15 15 15 15;
 }
+
 #boxNotBoughtStyle {
 
     -fx-border-width: 2, 1;
