@@ -147,7 +147,15 @@ public class Cell {
         y--;
         return abs(this.x - x) + abs(this.y - y);
     }
-
+    public static void addCollectible(int x, int y,Battle battle) {
+        battle.getMap().get(x - 1).get(y - 1).getCollectibleItem().cardIdGenerator(battle);
+        if (battle.getTurn() % 2 == 1) {
+            battle.addFirstPlayerCollectibleItem(battle.getMap().get(x - 1).get(y - 1).getCollectibleItem());
+        } else {
+            battle.addSecondPlayerCollectibleItem(battle.getMap().get(x - 1).get(y - 1).getCollectibleItem());
+        }
+        battle.getMap().get(x - 1).get(y - 1).setCollectibleItem(null);
+    }
     public int abs(int x) {
         return Math.abs(x);
     }

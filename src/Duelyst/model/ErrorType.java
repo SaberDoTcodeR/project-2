@@ -1,7 +1,7 @@
 package Duelyst.model;
 
-
 public enum ErrorType {
+    SUCCESSFUL_MOVE("OK"),
     INVALID_COLLECTIBLE_ID("invalid collectible ID"),
     HERO_IS_IN_COOLDOWN("Hero is in cool down"),
     ONLY_HEROES_HAVE_SPECIAL_POWER("Only Heroes are able to Use Special power"),

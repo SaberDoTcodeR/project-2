@@ -2,12 +2,13 @@ package Duelyst.Controller;
 
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Cell;
 import Duelyst.model.ErrorType;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
-import javafx.animation.PathTransition;
 import javafx.animation.RotateTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,7 +36,6 @@ import Duelyst.model.Battle.FlagsBattle;
 import Duelyst.model.Battle.HeroBattle;
 import Duelyst.model.Battle.OneFlagBattle;
 import Duelyst.model.Card.Card;
-import jdk.nashorn.internal.objects.NativeUint8Array;
 
 import java.util.ArrayList;
 
@@ -116,12 +116,23 @@ public class BattleController {
 
     Pane[] rectangles = new Pane[45];
 
+    Card card1;
+    Card card2;
+    Card card3;
+    Card card4;
+    Card card5;
 
     public void handleHand() {
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
+
         for (Card card : currentBattle.getFirstPlayerHand().getCards()) {
             showHand(card, false);
         }
+        card1=currentBattle.getFirstPlayerHand().getCards().get(0);
+        card2=currentBattle.getFirstPlayerHand().getCards().get(1);
+        card3=currentBattle.getFirstPlayerHand().getCards().get(2);
+        card4=currentBattle.getFirstPlayerHand().getCards().get(3);
+        card5=currentBattle.getFirstPlayerHand().getCards().get(4);
         showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
         currentBattle.getSecondPlayerHand().fillHand(currentBattle, 1);
     }
@@ -137,6 +148,45 @@ public class BattleController {
                 return;
             }
         }
+    }
+
+    public ErrorType moveSelectedCard(int rect) {
+        int xPos = (rect - 1) / 9;
+        int yPos = (rect - 1) % 9;
+        if (currentBattle.getSelectedCard() == null) {
+            return ErrorType.NO_CARD_SELECTED;
+        }
+        if (currentBattle.getSelectedCard().getType().equals("Minion") && ((Minion) currentBattle.getSelectedCard()).isStunning()) {
+            return ErrorType.CARD_IS_STUNNED;
+        }
+        if (currentBattle.getSelectedCard().getType().equals("Hero") && ((Hero) currentBattle.getSelectedCard()).isStunning()) {
+            return ErrorType.CARD_IS_STUNNED;
+        }
+        Cell srcCell = currentBattle.getMap().get(0).get(0).getCellOfCard(currentBattle.getSelectedCard(), currentBattle);//actually is static
+        Cell destCell = currentBattle.getMap().get(xPos).get(yPos);
+        if (srcCell.manhataniDistance(xPos + 1, yPos + 1) > currentBattle.getSelectedCard().getRemainedMoves()) {
+            return ErrorType.TOO_EXHAUSTED;
+
+        }
+        if (destCell.getHero() == null && destCell.getMinion() == null) {
+            srcCell.moveCardPos(xPos + 1, yPos + 1, currentBattle);
+            currentBattle.getSelectedCard().setRemainedMoves(currentBattle.getSelectedCard().getRemainedMoves()
+                    - srcCell.manhataniDistance(xPos + 1, yPos + 1));
+
+            /*if (destCell.getNumberOfFlag() > 0) {
+                if (currentBattle.getSelectedCard().getType().equals("Minion"))
+                    ((Minion) currentBattle.getSelectedCard()).setNumberOfFlag(((Minion) currentBattle.getSelectedCard()).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
+                else
+                    ((Hero) currentBattle.getSelectedCard()).setNumberOfFlag(((Hero) currentBattle.getSelectedCard()).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
+
+                cell2.setNumberOfFlag(0);
+            }*/
+            if (currentBattle.getMap().get(xPos).get(yPos).getCollectibleItem() != null)
+                Cell.addCollectible(xPos + 1, yPos + 1, currentBattle);
+            return ErrorType.SUCCESSFUL_MOVE;
+        } else
+            return ErrorType.INVALID_TARGET;
+
     }
 /*
 
@@ -350,13 +400,13 @@ public class BattleController {
                             return ErrorType.INVALID_TARGET;
                         }
                     } else {
-                        ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
+                        // ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
                         account.setMana(account.getMana() - cost);
                         cards.remove(card1);
                         return ErrorType.SUCCESSFUL_INSERT;
                     }
                 }
-                break;
+
             }
         }
         return null;
@@ -468,53 +518,63 @@ public class BattleController {
     }
 
     public void dragHand1(MouseEvent event) {
-        Dragboard db = gif1.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putImage(gif1.getImage());
-        content.putString(currentBattle.getFirstPlayerHand().getCards().get(0).getName());
-        db.setContent(content);
-        whichHand = 0;
-        event.consume();
+        if (gif1.getImage() != null&&card1!=null) {
+            Dragboard db = gif1.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(gif1.getImage());
+            content.putString(card1.getName());
+            db.setContent(content);
+            whichHand = 0;
+            event.consume();
+        }
     }
 
     public void dragHand2(MouseEvent event) {
-        Dragboard db = gif2.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putImage(gif2.getImage());
-        content.putString(currentBattle.getFirstPlayerHand().getCards().get(1).getName());
-        db.setContent(content);
-        whichHand = 1;
-        event.consume();
+        if (gif2.getImage() != null&&card2!=null) {
+            Dragboard db = gif2.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(gif2.getImage());
+            content.putString(card2.getName());
+            db.setContent(content);
+            whichHand = 1;
+            event.consume();
+        }
     }
 
     public void dragHand3(MouseEvent event) {
-        Dragboard db = gif3.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putImage(gif3.getImage());
-        content.putString(currentBattle.getFirstPlayerHand().getCards().get(2).getName());
-        db.setContent(content);
-        whichHand = 2;
-        event.consume();
+        if (gif3.getImage() != null&&card3!=null) {
+            Dragboard db = gif3.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(gif3.getImage());
+            content.putString(card3.getName());
+            db.setContent(content);
+            whichHand = 2;
+            event.consume();
+        }
     }
 
     public void dragHand4(MouseEvent event) {
-        Dragboard db = gif4.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putImage(gif4.getImage());
-        content.putString(currentBattle.getFirstPlayerHand().getCards().get(3).getName());
-        db.setContent(content);
-        whichHand = 3;
-        event.consume();
+        if (gif4.getImage() != null&&card4!=null) {
+            Dragboard db = gif4.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(gif4.getImage());
+            content.putString(card4.getName());
+            db.setContent(content);
+            whichHand = 3;
+            event.consume();
+        }
     }
 
     public void dragHand5(MouseEvent event) {
-        Dragboard db = gif5.startDragAndDrop(TransferMode.ANY);
-        ClipboardContent content = new ClipboardContent();
-        content.putImage(gif5.getImage());
-        content.putString(currentBattle.getFirstPlayerHand().getCards().get(4).getName());
-        db.setContent(content);
-        whichHand = 4;
-        event.consume();
+        if (gif5.getImage() != null&&card5!=null) {
+            Dragboard db = gif5.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(gif5.getImage());
+            content.putString(card5.getName());
+            db.setContent(content);
+            whichHand = 4;
+            event.consume();
+        }
     }
 
     public void rect1DragOver(DragEvent event) {
@@ -528,12 +588,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect1.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect1.getChildren().add(imageView);
+        int rectNum = 1;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -548,8 +609,6 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
-            insertCard(event.getDragboard().getString(), rectNum);
             insertCard(event.getDragboard().getString(), rectNum);
             whichHand = -1;
         }
@@ -572,12 +631,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect2.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect2.getChildren().add(imageView);
+        int rectNum = 2;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -591,7 +651,6 @@ public class BattleController {
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
-            insertCard(event.getDragboard().getString(), rectNum);
             insertCard(event.getDragboard().getString(), rectNum);
             whichHand = -1;
         }
@@ -615,16 +674,14 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect3.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect3.getChildren().add(imageView);
+        int rectNum = 3;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            System.out.println("sh");
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            System.out.println("shi");
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
-            System.out.println("shi2");
 
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -638,7 +695,6 @@ public class BattleController {
         }
 
         if (whichHand != -1) {
-            System.out.println(123);
             handGifs[whichHand].setImage(null);
             insertCard(event.getDragboard().getString(), rectNum);
             whichHand = -1;
@@ -662,12 +718,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect4.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect4.getChildren().add(imageView);
+        int rectNum = 4;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -703,12 +760,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect5.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect5.getChildren().add(imageView);
+        int rectNum = 5;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -743,12 +801,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect6.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect6.getChildren().add(imageView);
+        int rectNum = 6;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -763,7 +822,6 @@ public class BattleController {
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
             insertCard(event.getDragboard().getString(), rectNum);
-            insert
             whichHand = -1;
         }
         rect6.setId("tile");
@@ -785,12 +843,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect7.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect7.getChildren().add(imageView);
+        int rectNum = 7;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -830,12 +889,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect8.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect8.getChildren().add(imageView);
+        int rectNum = 8;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -866,12 +926,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect9.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect9.getChildren().add(imageView);
+        int rectNum = 9;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -907,12 +968,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect10.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect10.getChildren().add(imageView);
+        int rectNum = 10;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -948,12 +1010,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect11.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect11.getChildren().add(imageView);
+        int rectNum = 11;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -989,12 +1052,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect12.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect12.getChildren().add(imageView);
+        int rectNum = 12;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1030,12 +1094,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect13.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect13.getChildren().add(imageView);
+        int rectNum = 13;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1071,12 +1136,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect14.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect14.getChildren().add(imageView);
+        int rectNum = 14;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1112,12 +1178,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect15.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect15.getChildren().add(imageView);
+        int rectNum = 15;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1152,12 +1219,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect16.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect16.getChildren().add(imageView);
+        int rectNum = 16;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1193,12 +1261,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect17.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect17.getChildren().add(imageView);
+        int rectNum = 17;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1233,12 +1302,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect18.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect18.getChildren().add(imageView);
+        int rectNum = 18;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1273,12 +1343,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect19.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect19.getChildren().add(imageView);
+        int rectNum = 19;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1314,12 +1385,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect20.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect20.getChildren().add(imageView);
+        int rectNum = 20;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1355,12 +1427,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect21.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect21.getChildren().add(imageView);
+        int rectNum = 21;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1396,12 +1469,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect22.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect22.getChildren().add(imageView);
+        int rectNum = 22;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1437,12 +1511,13 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect23.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect23.getChildren().add(imageView);
+        int rectNum = 23;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1479,12 +1554,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect24.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect24.getChildren().add(imageView);
+        int rectNum = 24;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1521,12 +1597,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect25.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect25.getChildren().add(imageView);
+        int rectNum = 25;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1562,12 +1639,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect26.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect26.getChildren().add(imageView);
+        int rectNum = 26;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1604,12 +1682,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect27.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect27.getChildren().add(imageView);
+        int rectNum = 27;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1646,12 +1725,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect28.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect28.getChildren().add(imageView);
+        int rectNum = 28;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1687,12 +1767,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect29.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect29.getChildren().add(imageView);
+        int rectNum = 29;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1729,12 +1810,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect30.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect30.getChildren().add(imageView);
+        int rectNum = 30;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1771,12 +1853,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect31.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect31.getChildren().add(imageView);
+        int rectNum = 31;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1813,12 +1896,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect32.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect32.getChildren().add(imageView);
+        int rectNum = 32;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1854,7 +1938,9 @@ public class BattleController {
         ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
-        rect33.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect33.getChildren().add(imageView);
+        int rectNum = 33;
         rectangles[whichRect].getChildren().clear();
 
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1891,12 +1977,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect34.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect34.getChildren().add(imageView);
+        int rectNum = 34;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -1933,12 +2020,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect35.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect35.getChildren().add(imageView);
+        int rectNum = 35;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
 
         }
@@ -1975,12 +2063,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect36.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect36.getChildren().add(imageView);
+        int rectNum = 36;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2017,12 +2106,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect37.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect37.getChildren().add(imageView);
+        int rectNum = 37;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2059,12 +2149,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect38.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect38.getChildren().add(imageView);
+        int rectNum = 38;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2100,12 +2191,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect39.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect39.getChildren().add(imageView);
+        int rectNum = 39;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2142,12 +2234,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect40.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect40.getChildren().add(imageView);
+        int rectNum = 40;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2184,12 +2277,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect41.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect41.getChildren().add(imageView);
+        int rectNum = 41;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2226,12 +2320,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect42.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect42.getChildren().add(imageView);
+        int rectNum = 42;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
 
@@ -2245,6 +2340,7 @@ public class BattleController {
             //spell insert???
         }
         if (whichHand != -1) {
+
             handGifs[whichHand].setImage(null);
             insertCard(event.getDragboard().getString(), rectNum);
             whichHand = -1;
@@ -2269,12 +2365,14 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect43.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect43.getChildren().add(imageView);
+        int rectNum = 43;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
+
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2311,12 +2409,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect44.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect44.getChildren().add(imageView);
+        int rectNum = 44;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
         if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
@@ -2353,12 +2452,13 @@ public class BattleController {
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
 
-        rect45.getChildren().add(imageView);
+        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
+            rect45.getChildren().add(imageView);
+        int rectNum = 45;
 
         if (whichRect != -1) {
             rectangles[whichRect].getChildren().clear();
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setMinion(null, 1);
-            currentBattle.getMap().get(whichRect / 9).get(whichRect % 9).setHero(null, 1);
+            moveSelectedCard(rectNum);
             whichRect = -1;
         }
 
@@ -2391,10 +2491,13 @@ public class BattleController {
             whichRect = 1 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect1.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2406,10 +2509,14 @@ public class BattleController {
             whichRect = 2 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect2.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).getMinion());
+            }
+
             db.setContent(content);
             event.consume();
         }
@@ -2421,10 +2528,13 @@ public class BattleController {
             whichRect = 3 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect3.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2436,10 +2546,13 @@ public class BattleController {
             whichRect = 4 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect4.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2451,10 +2564,13 @@ public class BattleController {
             whichRect = 5 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect5.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2466,10 +2582,13 @@ public class BattleController {
             whichRect = 6 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect6.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2481,10 +2600,13 @@ public class BattleController {
             whichRect = 7 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect7.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2496,10 +2618,13 @@ public class BattleController {
             whichRect = 8 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect8.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2511,10 +2636,13 @@ public class BattleController {
             whichRect = 9 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect9.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2526,10 +2654,13 @@ public class BattleController {
             whichRect = 10 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect10.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2541,10 +2672,13 @@ public class BattleController {
             whichRect = 11 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect11.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2556,10 +2690,13 @@ public class BattleController {
             whichRect = 13 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect13.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2571,10 +2708,13 @@ public class BattleController {
             whichRect = 12 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect12.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2586,10 +2726,13 @@ public class BattleController {
             whichRect = 14 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect14.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2601,10 +2744,13 @@ public class BattleController {
             whichRect = 15 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect15.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2616,10 +2762,13 @@ public class BattleController {
             whichRect = 16 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect16.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2631,10 +2780,13 @@ public class BattleController {
             whichRect = 17 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect17.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2646,10 +2798,13 @@ public class BattleController {
             whichRect = 18 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect18.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2661,10 +2816,13 @@ public class BattleController {
             whichRect = 19 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect19.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2677,10 +2835,13 @@ public class BattleController {
             whichRect = 20 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect20.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2692,10 +2853,13 @@ public class BattleController {
             whichRect = 21 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect21.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2707,10 +2871,13 @@ public class BattleController {
             whichRect = 22 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect22.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2722,10 +2889,13 @@ public class BattleController {
             whichRect = 23 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect23.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2737,10 +2907,13 @@ public class BattleController {
             whichRect = 24 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect24.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2752,10 +2925,13 @@ public class BattleController {
             whichRect = 25 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect25.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2767,10 +2943,13 @@ public class BattleController {
             whichRect = 26 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect26.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2782,10 +2961,13 @@ public class BattleController {
             whichRect = 27 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect27.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2797,10 +2979,13 @@ public class BattleController {
             whichRect = 28 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect28.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2812,10 +2997,13 @@ public class BattleController {
             whichRect = 29 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect29.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2828,10 +3016,13 @@ public class BattleController {
             whichRect = 30 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect30.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2843,10 +3034,13 @@ public class BattleController {
             whichRect = 31 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect31.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2858,10 +3052,13 @@ public class BattleController {
             whichRect = 32 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect32.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2873,10 +3070,13 @@ public class BattleController {
             whichRect = 33 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect33.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2888,10 +3088,13 @@ public class BattleController {
             whichRect = 34 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect34.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2903,10 +3106,13 @@ public class BattleController {
             whichRect = 35 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect35.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2918,10 +3124,13 @@ public class BattleController {
             whichRect = 36 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect36.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2933,10 +3142,13 @@ public class BattleController {
             whichRect = 37 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect37.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2948,10 +3160,13 @@ public class BattleController {
             whichRect = 38 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect38.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2963,10 +3178,13 @@ public class BattleController {
             whichRect = 39 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect39.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2979,10 +3197,13 @@ public class BattleController {
             whichRect = 40 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect40.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -2994,10 +3215,13 @@ public class BattleController {
             whichRect = 41 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect41.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -3009,10 +3233,13 @@ public class BattleController {
             whichRect = 42 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect42.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -3024,10 +3251,13 @@ public class BattleController {
             whichRect = 43 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect43.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
         }
@@ -3039,10 +3269,13 @@ public class BattleController {
             whichRect = 44 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect44.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).getMinion());
+            }
             db.setContent(content);
             event.consume();
 
@@ -3055,10 +3288,14 @@ public class BattleController {
             whichRect = 45 - 1;
             ClipboardContent content = new ClipboardContent();
             content.putImage(((ImageView) rect45.getChildren().get(0)).getImage());
-            if (currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero() != null)
+            if (currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero() != null) {
                 content.putString(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero().getName());
-            else
+                currentBattle.setSelectedCard(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getHero());
+            } else {
                 content.putString(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getMinion().getName());
+                currentBattle.setSelectedCard(currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).getMinion());
+            }
+
             db.setContent(content);
             event.consume();
         }
