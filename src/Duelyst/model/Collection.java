@@ -58,13 +58,20 @@ public class Collection {
         deck2.getMinions().add(new Giv());
         deck2.getMinions().add(new Iraj());
         deck2.getMinions().add(new GiantKing());
-        deck2.getSpells().add(new AreaDispel());
+        deck2.getMinions().add(new Eagle());
+        deck2.getMinions().add(new FieryDragon());
+        deck2.getMinions().add(new Panther());
+        deck2.getMinions().add(new Elf());
+        deck2.getMinions().add(new Giv());
+        deck2.getMinions().add(new Iraj());
+        deck2.getMinions().add(new GiantKing());
+        /*deck2.getSpells().add(new AreaDispel());
         deck2.getSpells().add(new Empower());
         deck2.getSpells().add(new GodStrength());
         deck2.getSpells().add(new PoisonLake());
         deck2.getSpells().add(new Madness());
         deck2.getSpells().add(new HealthWithProfit());
-        deck2.getSpells().add(new KingsGuard());
+        deck2.getSpells().add(new KingsGuard());*/
         deck2.getHero().add(new Zahhak());
         deck2.getUsableItem().add(new SoulEater());
         Deck deck3 = new Deck();

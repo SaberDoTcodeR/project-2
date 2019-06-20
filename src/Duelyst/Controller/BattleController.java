@@ -1,12 +1,11 @@
 package Duelyst.Controller;
 
 import Duelyst.model.Card.Hero.Hero;
+import Duelyst.model.Card.Hero.Kaveh;
 import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Cell;
 import Duelyst.model.ErrorType;
 import Duelyst.model.Card.Spell.Spell;
-import Duelyst.model.Cell;
-import Duelyst.model.ErrorType;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -14,7 +13,6 @@ import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.SnapshotParameters;
@@ -130,6 +128,142 @@ public class BattleController {
     Card card5;
     Card[] cardsOfHand = new Card[5];
 
+    public ErrorType insertCard(String cardName, int rect, DragEvent event) {
+        int xPos = (rect - 1) / 9 + 1;
+        int yPos = ((rect - 1) % 9) + 1;
+        Account account;
+        if (currentBattle.getTurn() % 2 == 1)
+            account = currentBattle.getFirstPlayer();
+        else
+            account = currentBattle.getSecondPlayer();
+        ArrayList<Card> cards;
+        if (currentBattle.getTurn() % 2 == 1)
+            cards = currentBattle.getFirstPlayerHand().getCards();
+        else
+            cards = currentBattle.getSecondPlayerHand().getCards();
+        for (Card card1 : cards) {
+            if (cardName.equals(card1.getName())) {
+                int cost = 0;
+                if (card1.getType().equals("Spell")) {
+                    Spell spell = (Spell) card1;
+                    cost = spell.getCostToUse();
+                }
+                if (card1.getType().equals("Minion")) {
+                    Minion minion = (Minion) card1;
+                    cost = minion.getCostToUse();
+                }
+                if (cost > account.getMana()) {
+                    return ErrorType.DONT_HAVE_ENOUGH_MANA;
+                } else {
+                    if (card1.getType().equals("Minion")) {
+
+                        if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
+                                currentBattle.getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
+                            ArrayList<Cell> targetCells = new ArrayList<>();
+                            if (xPos - 2 >= 0)
+                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos - 1));
+                            if (xPos < 5)
+                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos - 1));
+                            if (yPos - 2 >= 0)
+                                targetCells.add(currentBattle.getMap().get(xPos - 1).get(yPos - 2));
+                            if (yPos < 9) {
+                                targetCells.add(currentBattle.getMap().get(xPos - 1).get(yPos));
+                            }
+                            if (xPos - 2 >= 0 && yPos - 2 >= 0)
+                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos - 2));
+                            if (xPos < 5 && yPos - 2 >= 0)
+                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos - 2));
+                            if (xPos - 2 >= 0 && yPos < 9)
+                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos));
+                            if (xPos < 5 && yPos < 9)
+                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos));
+
+                            boolean adjacency = false;
+                            for (Cell cell : targetCells) {
+                                if (cell.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
+                                    System.out.println("here1");
+                                    adjacency = true;
+                                    break;
+                                }
+                                if (cell.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
+                                    adjacency = true;
+                                    break;
+                                }
+                            }
+                            if (!adjacency) {
+                                return ErrorType.INVALID_TARGET;
+                            }
+                            //if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag() > 0) {
+                            //  ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
+                            //currentBattle.getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
+                            //}
+
+                            account.setMana(account.getMana() - cost);
+                            System.out.println(account.getMana() + " " + cost);
+                            ((Minion) card1).moveToGame(currentBattle, xPos, yPos);
+                            if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
+                                Cell.addCollectible(xPos, yPos, currentBattle);
+                            }
+                            ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
+                            System.out.println(event.getDragboard().getString());
+                            imageView.setFitHeight(KASHI);
+                            imageView.setFitWidth(KASHI);
+                            rectangles[rect - 1].getChildren().add(imageView);
+                            if (currentBattle.getTurn() % 2 == 1 && currentBattle.getFirstPlayerDeck().getUsableItem().get(0) != null)
+                                currentBattle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getFirstPlayer(), 0);
+                            else if (currentBattle.getTurn() % 2 == 0 && currentBattle.getSecondPlayerDeck().getUsableItem().get(0) != null)
+                                currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), 0);
+                            cards.remove(card1);
+                            updateProfile();
+                            handGifs[whichHand].setImage(null);
+
+                            cardsOfHand[whichHand] = null;
+                            return ErrorType.SUCCESSFUL_INSERT;
+                        } else {
+                            return ErrorType.INVALID_TARGET;
+                        }
+                    } else {
+                        // ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
+                        account.setMana(account.getMana() - cost);
+                        cards.remove(card1);
+                        updateProfile();
+                        handGifs[whichHand].setImage(null);
+                        cardsOfHand[whichHand] = null;
+                        return ErrorType.SUCCESSFUL_INSERT;
+
+                    }
+                }
+
+            }
+        }
+        return null;
+    }
+
+    private void showDialog(ErrorType errorType) {
+        if (errorType != null) {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(errorType.getMessage());
+            label.getStyleClass().add("label3");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
+        } else
+            System.out.println("null");
+    }
+
     public void handleHand() {
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
 
@@ -163,7 +297,7 @@ public class BattleController {
         }
     }
 
-    public ErrorType moveSelectedCard(int rect) {
+    public ErrorType moveSelectedCard(int rect, DragEvent event) {
         int xPos = (rect - 1) / 9;
         int yPos = (rect - 1) % 9;
         if (currentBattle.getSelectedCard() == null) {
@@ -185,7 +319,10 @@ public class BattleController {
             srcCell.moveCardPos(xPos + 1, yPos + 1, currentBattle);
             currentBattle.getSelectedCard().setRemainedMoves(currentBattle.getSelectedCard().getRemainedMoves()
                     - srcCell.manhataniDistance(xPos + 1, yPos + 1));
-
+            ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
+            imageView.setFitHeight(KASHI);
+            imageView.setFitWidth(KASHI);
+            rectangles[rect - 1].getChildren().add(imageView);
             /*if (destCell.getNumberOfFlag() > 0) {
                 if (currentBattle.getSelectedCard().getType().equals("Minion"))
                     ((Minion) currentBattle.getSelectedCard()).setNumberOfFlag(((Minion) currentBattle.getSelectedCard()).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
@@ -197,6 +334,7 @@ public class BattleController {
             if (currentBattle.getMap().get(xPos).get(yPos).getCollectibleItem() != null)
                 Cell.addCollectible(xPos + 1, yPos + 1, currentBattle);
             updateProfile();
+            rectangles[whichRect].getChildren().clear();
             return ErrorType.SUCCESSFUL_MOVE;
         } else
             return ErrorType.INVALID_TARGET;
@@ -347,127 +485,14 @@ public class BattleController {
         currentBattle.getMap().get(2).get(0).setHero(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0), 0);
         currentBattle.getSecondPlayerInGameCards().add(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0));
         currentBattle.getMap().get(2).get(8).setHero(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0), 1);
+
+        currentBattle.getFirstPlayer().getMainDeck().getHero().get(0).cardIdGenerator(currentBattle);
+        currentBattle.increamentTurn();
+
+        currentBattle.getSecondPlayer().getMainDeck().getHero().get(0).cardIdGenerator(currentBattle);
+        currentBattle.decreamentTurn();
     }
 
-    public ErrorType insertCard(String cardName, int rect) {
-        int xPos = (rect - 1) / 9 + 1;
-        int yPos = ((rect - 1) % 9) + 1;
-        Account account;
-        if (currentBattle.getTurn() % 2 == 1)
-            account = currentBattle.getFirstPlayer();
-        else
-            account = currentBattle.getSecondPlayer();
-        ArrayList<Card> cards;
-        if (currentBattle.getTurn() % 2 == 1)
-            cards = currentBattle.getFirstPlayerHand().getCards();
-        else
-            cards = currentBattle.getSecondPlayerHand().getCards();
-        for (Card card1 : cards) {
-            if (cardName.equals(card1.getName())) {
-                int cost = 0;
-                if (card1.getType().equals("Spell")) {
-                    Spell spell = (Spell) card1;
-                    cost = spell.getCostToUse();
-                }
-                if (card1.getType().equals("Minion")) {
-                    Minion minion = (Minion) card1;
-                    cost = minion.getCostToUse();
-                }
-                if (cost > account.getMana()) {
-                    return ErrorType.DONT_HAVE_ENOUGH_MANA;
-                } else {
-                    if (card1.getType().equals("Minion")) {
-                        if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
-                                currentBattle.getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
-                            ArrayList<Cell> targetCells = new ArrayList<>();
-                            if (xPos - 2 >= 0)
-                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos - 1));
-                            if (xPos < 5)
-                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos - 1));
-                            if (yPos - 2 >= 0)
-                                targetCells.add(currentBattle.getMap().get(xPos - 1).get(yPos - 2));
-                            if (yPos < 9) {
-                                targetCells.add(currentBattle.getMap().get(xPos - 1).get(yPos));
-                            }
-                            if (xPos - 2 >= 0 && yPos - 2 >= 0)
-                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos - 2));
-                            if (xPos < 5 && yPos - 2 >= 0)
-                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos - 2));
-                            if (xPos - 2 >= 0 && yPos < 9)
-                                targetCells.add(currentBattle.getMap().get(xPos - 2).get(yPos));
-                            if (xPos < 5 && yPos < 9)
-                                targetCells.add(currentBattle.getMap().get(xPos).get(yPos));
-                            boolean adjacency = false;
-                            for (Cell cell : targetCells) {
-                                if (cell.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
-                                    adjacency = true;
-                                    break;
-                                }
-                                if (cell.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
-                                    adjacency = true;
-                                    break;
-                                }
-                            }
-                            if (!adjacency) {
-                                return ErrorType.INVALID_TARGET;
-                            }
-                            //if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag() > 0) {
-                            //  ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
-                            //currentBattle.getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
-                            //}
-                            account.setMana(account.getMana() - cost);
-                            ((Minion) card1).moveToGame(currentBattle, xPos, yPos);
-                            if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
-                                Cell.addCollectible(xPos, yPos, currentBattle);
-                            }
-
-                            if (currentBattle.getTurn() % 2 == 1 && currentBattle.getFirstPlayerDeck().getUsableItem().get(0) != null)
-                                currentBattle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getFirstPlayer(), 0);
-                            else if (currentBattle.getTurn() % 2 == 0 && currentBattle.getSecondPlayerDeck().getUsableItem().get(0) != null)
-                                currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), 0);
-                            cards.remove(card1);
-                            updateProfile();
-                            return ErrorType.SUCCESSFUL_INSERT;
-                        } else {
-                            return ErrorType.INVALID_TARGET;
-                        }
-                    } else {
-                        // ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
-                        account.setMana(account.getMana() - cost);
-                        cards.remove(card1);
-                        updateProfile();
-                        return ErrorType.SUCCESSFUL_INSERT;
-                    }
-                }
-
-            }
-        }
-        return null;
-    }
-
-    private void showDialog(ErrorType errorType) {
-        if (errorType != null && !errorType.getMessage().equals("OK")) {
-            BoxBlur blur = new BoxBlur(5, 5, 10);
-            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
-            JFXButton jfxButton = new JFXButton("OK");
-            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
-            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
-            jfxButton.getStyleClass().add("dialog-button");
-            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                        jfxDialog.close();
-                    }
-            );
-            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
-                gridPane.setEffect(null);
-            });
-            Label label = new Label(errorType.getMessage());
-            label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
-            jfxDialogLayout.setBody(label);
-            jfxDialogLayout.setActions(jfxButton);
-            jfxDialog.show();
-            gridPane.setEffect(blur);
-        }
-    }
 
     public void enterHand1() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image1);
@@ -592,31 +617,15 @@ public class BattleController {
     }
 
     public void rect1DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect1.getChildren().add(imageView);
-        int rectNum = 1;
 
+
+        int rectNum = 1;
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-            System.out.println("task1Done");
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect1.setId("tile");
@@ -635,30 +644,18 @@ public class BattleController {
     }
 
     public void rect2DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect2.getChildren().add(imageView);
+
         int rectNum = 2;
 
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((2 - 1) / 9).get((2 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
+
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
 
@@ -678,32 +675,15 @@ public class BattleController {
     }
 
     public void rect3DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect3.getChildren().add(imageView);
         int rectNum = 3;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
 
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((3 - 1) / 9).get((3 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
-
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect3.setId("tile");
@@ -722,30 +702,16 @@ public class BattleController {
     }
 
     public void rect4DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect4.getChildren().add(imageView);
+
+
         int rectNum = 4;
 
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((4 - 1) / 9).get((4 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect4.setId("tile");
@@ -764,30 +730,13 @@ public class BattleController {
     }
 
     public void rect5DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect5.getChildren().add(imageView);
         int rectNum = 5;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((5 - 1) / 9).get((5 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect5.setId("tile");
@@ -805,30 +754,13 @@ public class BattleController {
     }
 
     public void rect6DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect6.getChildren().add(imageView);
         int rectNum = 6;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((6 - 1) / 9).get((6 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect6.setId("tile");
@@ -847,30 +779,13 @@ public class BattleController {
     }
 
     public void rect7DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect7.getChildren().add(imageView);
         int rectNum = 7;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((7 - 1) / 9).get((7 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect7.setId("tile");
@@ -893,30 +808,14 @@ public class BattleController {
     }
 
     public void rect8DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect8.getChildren().add(imageView);
         int rectNum = 8;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((8 - 1) / 9).get((8 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect8.setId("tile");
@@ -930,30 +829,13 @@ public class BattleController {
     }
 
     public void rect9DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect9.getChildren().add(imageView);
         int rectNum = 9;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((9 - 1) / 9).get((9 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect9.setId("tile");
@@ -972,30 +854,13 @@ public class BattleController {
     }
 
     public void rect10DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect10.getChildren().add(imageView);
         int rectNum = 10;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((10 - 1) / 9).get((10 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect10.setId("tile");
@@ -1014,30 +879,13 @@ public class BattleController {
     }
 
     public void rect11DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect11.getChildren().add(imageView);
         int rectNum = 11;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((11 - 1) / 9).get((11 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect11.setId("tile");
@@ -1056,30 +904,13 @@ public class BattleController {
     }
 
     public void rect12DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect12.getChildren().add(imageView);
         int rectNum = 12;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((12 - 1) / 9).get((12 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect12.setId("tile");
@@ -1098,30 +929,13 @@ public class BattleController {
     }
 
     public void rect13DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect13.getChildren().add(imageView);
         int rectNum = 13;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((13 - 1) / 9).get((13 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect13.setId("tile");
@@ -1140,30 +954,13 @@ public class BattleController {
     }
 
     public void rect14DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect14.getChildren().add(imageView);
         int rectNum = 14;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((14 - 1) / 9).get((14 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            insertCard(event.getDragboard().getString(), rectNum, event);
             whichHand = -1;
         }
         rect14.setId("tile");
@@ -1182,30 +979,13 @@ public class BattleController {
     }
 
     public void rect15DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect15.getChildren().add(imageView);
         int rectNum = 15;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((15 - 1) / 9).get((15 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect15.setId("tile");
@@ -1223,30 +1003,13 @@ public class BattleController {
     }
 
     public void rect16DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect16.getChildren().add(imageView);
         int rectNum = 16;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((16 - 1) / 9).get((16 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect16.setId("tile");
@@ -1265,30 +1028,13 @@ public class BattleController {
     }
 
     public void rect17DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect17.getChildren().add(imageView);
         int rectNum = 17;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((17 - 1) / 9).get((17 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect17.setId("tile");
@@ -1306,30 +1052,13 @@ public class BattleController {
     }
 
     public void rect18DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect18.getChildren().add(imageView);
         int rectNum = 18;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((18 - 1) / 9).get((18 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect18.setId("tile");
@@ -1347,30 +1076,13 @@ public class BattleController {
     }
 
     public void rect19DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect19.getChildren().add(imageView);
         int rectNum = 19;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((19 - 1) / 9).get((19 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect19.setId("tile");
@@ -1389,30 +1101,13 @@ public class BattleController {
     }
 
     public void rect20DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect20.getChildren().add(imageView);
         int rectNum = 20;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((20 - 1) / 9).get((20 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect20.setId("tile");
@@ -1431,30 +1126,13 @@ public class BattleController {
     }
 
     public void rect21DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect21.getChildren().add(imageView);
         int rectNum = 21;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((21 - 1) / 9).get((21 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect21.setId("tile");
@@ -1473,21 +1151,13 @@ public class BattleController {
     }
 
     public void rect22DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect22.getChildren().add(imageView);
         int rectNum = 22;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect22.setId("tile");
@@ -1506,21 +1176,13 @@ public class BattleController {
     }
 
     public void rect23DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect23.getChildren().add(imageView);
         int rectNum = 23;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect23.setId("tile");
@@ -1539,22 +1201,13 @@ public class BattleController {
     }
 
     public void rect24DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect24.getChildren().add(imageView);
         int rectNum = 24;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect24.setId("tile");
@@ -1573,22 +1226,13 @@ public class BattleController {
     }
 
     public void rect25DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect25.getChildren().add(imageView);
         int rectNum = 25;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect25.setId("tile");
@@ -1606,22 +1250,13 @@ public class BattleController {
     }
 
     public void rect26DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect26.getChildren().add(imageView);
         int rectNum = 26;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect26.setId("tile");
@@ -1640,22 +1275,13 @@ public class BattleController {
     }
 
     public void rect27DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect27.getChildren().add(imageView);
         int rectNum = 27;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect27.setId("tile");
@@ -1674,31 +1300,13 @@ public class BattleController {
     }
 
     public void rect28DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect28.getChildren().add(imageView);
         int rectNum = 28;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((28 - 1) / 9).get((28 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect28.setId("tile");
@@ -1716,31 +1324,13 @@ public class BattleController {
     }
 
     public void rect29DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect29.getChildren().add(imageView);
         int rectNum = 29;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((29 - 1) / 9).get((29 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect29.setId("tile");
@@ -1759,31 +1349,13 @@ public class BattleController {
     }
 
     public void rect30DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect30.getChildren().add(imageView);
         int rectNum = 30;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((30 - 1) / 9).get((30 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect30.setId("tile");
@@ -1802,31 +1374,13 @@ public class BattleController {
     }
 
     public void rect31DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect31.getChildren().add(imageView);
         int rectNum = 31;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((31 - 1) / 9).get((31 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect31.setId("tile");
@@ -1845,31 +1399,13 @@ public class BattleController {
     }
 
     public void rect32DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect32.getChildren().add(imageView);
         int rectNum = 32;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((32 - 1) / 9).get((32 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect32.setId("tile");
@@ -1888,26 +1424,13 @@ public class BattleController {
     }
 
     public void rect33DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect33.getChildren().add(imageView);
         int rectNum = 33;
-        rectangles[whichRect].getChildren().clear();
-
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((33 - 1) / 9).get((33 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
+        if (whichRect != -1) {
+            showDialog(moveSelectedCard(rectNum, event));
+            whichRect = -1;
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect33.setId("tile");
@@ -1926,31 +1449,13 @@ public class BattleController {
     }
 
     public void rect34DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect34.getChildren().add(imageView);
         int rectNum = 34;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((34 - 1) / 9).get((34 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect34.setId("tile");
@@ -1969,32 +1474,13 @@ public class BattleController {
     }
 
     public void rect35DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect35.getChildren().add(imageView);
         int rectNum = 35;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
-
-        }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((35 - 1) / 9).get((35 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
         }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect35.setId("tile");
@@ -2012,31 +1498,13 @@ public class BattleController {
     }
 
     public void rect36DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect36.getChildren().add(imageView);
         int rectNum = 36;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((36 - 1) / 9).get((36 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect36.setId("tile");
@@ -2055,31 +1523,13 @@ public class BattleController {
     }
 
     public void rect37DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect37.getChildren().add(imageView);
         int rectNum = 37;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((37 - 1) / 9).get((37 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect37.setId("tile");
@@ -2098,31 +1548,13 @@ public class BattleController {
     }
 
     public void rect38DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect38.getChildren().add(imageView);
         int rectNum = 38;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((38 - 1) / 9).get((38 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect38.setId("tile");
@@ -2140,31 +1572,13 @@ public class BattleController {
     }
 
     public void rect39DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect39.getChildren().add(imageView);
         int rectNum = 39;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((39 - 1) / 9).get((39 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect39.setId("tile");
@@ -2183,31 +1597,13 @@ public class BattleController {
     }
 
     public void rect40DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect40.getChildren().add(imageView);
         int rectNum = 40;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((40 - 1) / 9).get((40 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect40.setId("tile");
@@ -2226,31 +1622,13 @@ public class BattleController {
     }
 
     public void rect41DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect41.getChildren().add(imageView);
         int rectNum = 41;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((41 - 1) / 9).get((41 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect41.setId("tile");
@@ -2269,33 +1647,14 @@ public class BattleController {
     }
 
     public void rect42DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect42.getChildren().add(imageView);
         int rectNum = 42;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
-        }
-
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((42 - 1) / 9).get((42 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
         }
         if (whichHand != -1) {
 
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect42.setId("tile");
@@ -2314,32 +1673,13 @@ public class BattleController {
     }
 
     public void rect43DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect43.getChildren().add(imageView);
         int rectNum = 43;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
-
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((43 - 1) / 9).get((43 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect43.setId("tile");
@@ -2358,31 +1698,13 @@ public class BattleController {
     }
 
     public void rect44DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect44.getChildren().add(imageView);
         int rectNum = 44;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((44 - 1) / 9).get((44 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect44.setId("tile");
@@ -2401,32 +1723,13 @@ public class BattleController {
     }
 
     public void rect45DragDropped(DragEvent event) {
-        ImageView imageView = new ImageView(Card.getCard(event.getDragboard().getString()).getImage());
-        imageView.setFitHeight(KASHI);
-        imageView.setFitWidth(KASHI);
-
-        if (!Card.getCard(event.getDragboard().getString()).getType().equals("Spell"))
-            rect45.getChildren().add(imageView);
         int rectNum = 45;
-
         if (whichRect != -1) {
-            rectangles[whichRect].getChildren().clear();
-            moveSelectedCard(rectNum);
+            showDialog(moveSelectedCard(rectNum, event));
             whichRect = -1;
         }
-
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((45 - 1) / 9).get((45 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
-            handGifs[whichHand].setImage(null);
-            showDialog(insertCard(event.getDragboard().getString(), rectNum));
+            showDialog(insertCard(event.getDragboard().getString(), rectNum, event));
             whichHand = -1;
         }
         rect45.setId("tile");
