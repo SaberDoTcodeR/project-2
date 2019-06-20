@@ -121,18 +121,23 @@ public class BattleController {
     Card card3;
     Card card4;
     Card card5;
-
+    Card[] cardsOfHand=new Card[5];
     public void handleHand() {
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
 
         for (Card card : currentBattle.getFirstPlayerHand().getCards()) {
             showHand(card, false);
         }
-        card1=currentBattle.getFirstPlayerHand().getCards().get(0);
-        card2=currentBattle.getFirstPlayerHand().getCards().get(1);
-        card3=currentBattle.getFirstPlayerHand().getCards().get(2);
-        card4=currentBattle.getFirstPlayerHand().getCards().get(3);
-        card5=currentBattle.getFirstPlayerHand().getCards().get(4);
+        card1 = currentBattle.getFirstPlayerHand().getCards().get(0);
+        card2 = currentBattle.getFirstPlayerHand().getCards().get(1);
+        card3 = currentBattle.getFirstPlayerHand().getCards().get(2);
+        card4 = currentBattle.getFirstPlayerHand().getCards().get(3);
+        card5 = currentBattle.getFirstPlayerHand().getCards().get(4);
+        cardsOfHand[0]=card1;
+        cardsOfHand[1]=card2;
+        cardsOfHand[2]=card3;
+        cardsOfHand[3]=card4;
+        cardsOfHand[4]=card5;
         showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
         currentBattle.getSecondPlayerHand().fillHand(currentBattle, 1);
     }
@@ -183,9 +188,15 @@ public class BattleController {
             }*/
             if (currentBattle.getMap().get(xPos).get(yPos).getCollectibleItem() != null)
                 Cell.addCollectible(xPos + 1, yPos + 1, currentBattle);
+            updateProfile();
             return ErrorType.SUCCESSFUL_MOVE;
         } else
             return ErrorType.INVALID_TARGET;
+
+    }
+
+    private void updateProfile() {
+        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
 
     }
 /*
@@ -209,7 +220,7 @@ public class BattleController {
     }
 
     public void setProfile(Image imagePro) {
-        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + Account.getLoginAccount().getMana());
+        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
         accountInfo.setGraphicTextGap(10);
         profile.setImage(imagePro);
         Rectangle clip = new Rectangle(
@@ -227,8 +238,6 @@ public class BattleController {
     }
 
     public void initialize() {
-        setProfile(Account.getLoginAccount().getAvatar());
-
         handGifs = new ImageView[5];
         handGifs[0] = gif1;
         handGifs[1] = gif2;
@@ -301,6 +310,8 @@ public class BattleController {
             }
         }
         handleHand();
+        currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
+        setProfile(Account.getLoginAccount().getAvatar());
 
         for (int i = 1; i < 45; i++) {
             rectangles[i].setPrefWidth(KASHI);
@@ -395,6 +406,7 @@ public class BattleController {
                             else if (currentBattle.getTurn() % 2 == 0 && currentBattle.getSecondPlayerDeck().getUsableItem().get(0) != null)
                                 currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), 0);
                             cards.remove(card1);
+                            updateProfile();
                             return ErrorType.SUCCESSFUL_INSERT;
                         } else {
                             return ErrorType.INVALID_TARGET;
@@ -403,6 +415,7 @@ public class BattleController {
                         // ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
                         account.setMana(account.getMana() - cost);
                         cards.remove(card1);
+                        updateProfile();
                         return ErrorType.SUCCESSFUL_INSERT;
                     }
                 }
@@ -412,67 +425,37 @@ public class BattleController {
         return null;
     }
 
-    public void enterHand1(MouseEvent event) {
+    public void enterHand1() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image1);
         rotate.setFromAngle(image1.getRotate());
         rotate.setToAngle(image1.getRotate() + 360);
         rotate.setCycleCount(Animation.INDEFINITE);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.play();
-        gif1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
-        image1.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
+        gif1.setOnMouseExited(event1 -> rotate.stop());
+        image1.setOnMouseExited(event -> rotate.stop());
     }
 
-    public void enterHand2(MouseEvent event) {
+    public void enterHand2() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image2);
         rotate.setFromAngle(image2.getRotate());
         rotate.setToAngle(image2.getRotate() + 360);
         rotate.setCycleCount(Animation.INDEFINITE);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.play();
-        gif2.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
-        image2.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
+        gif2.setOnMouseExited(event -> rotate.stop());
+        image2.setOnMouseExited(event -> rotate.stop());
     }
 
-    public void enterHand3(MouseEvent event) {
+    public void enterHand3() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image3);
         rotate.setFromAngle(image3.getRotate());
         rotate.setToAngle(image3.getRotate() + 360);
         rotate.setCycleCount(Animation.INDEFINITE);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.play();
-        gif3.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
-        image3.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
+        gif3.setOnMouseExited(event -> rotate.stop());
+        image3.setOnMouseExited(event -> rotate.stop());
     }
 
     public void enterHand4(MouseEvent event) {
@@ -482,43 +465,23 @@ public class BattleController {
         rotate.setCycleCount(Animation.INDEFINITE);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.play();
-        gif4.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
-        image4.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
+        gif4.setOnMouseExited(event1 -> rotate.stop());
+        image4.setOnMouseExited(event12 -> rotate.stop());
     }
 
-    public void enterHand5(MouseEvent event) {
+    public void enterHand5() {
         RotateTransition rotate = new RotateTransition(Duration.millis(4000), image5);
         rotate.setFromAngle(image5.getRotate());
         rotate.setToAngle(image5.getRotate() + 360);
         rotate.setCycleCount(Animation.INDEFINITE);
         rotate.setInterpolator(Interpolator.LINEAR);
         rotate.play();
-        gif5.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
-        image5.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                rotate.stop();
-            }
-        });
+        gif5.setOnMouseExited(event1 -> rotate.stop());
+        image5.setOnMouseExited(event -> rotate.stop());
     }
 
     public void dragHand1(MouseEvent event) {
-        if (gif1.getImage() != null&&card1!=null) {
+        if (gif1.getImage() != null && card1 != null) {
             Dragboard db = gif1.startDragAndDrop(TransferMode.ANY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif1.getImage());
@@ -530,7 +493,7 @@ public class BattleController {
     }
 
     public void dragHand2(MouseEvent event) {
-        if (gif2.getImage() != null&&card2!=null) {
+        if (gif2.getImage() != null && card2 != null) {
             Dragboard db = gif2.startDragAndDrop(TransferMode.ANY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif2.getImage());
@@ -542,7 +505,7 @@ public class BattleController {
     }
 
     public void dragHand3(MouseEvent event) {
-        if (gif3.getImage() != null&&card3!=null) {
+        if (gif3.getImage() != null && card3 != null) {
             Dragboard db = gif3.startDragAndDrop(TransferMode.ANY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif3.getImage());
@@ -554,7 +517,7 @@ public class BattleController {
     }
 
     public void dragHand4(MouseEvent event) {
-        if (gif4.getImage() != null&&card4!=null) {
+        if (gif4.getImage() != null && card4 != null) {
             Dragboard db = gif4.startDragAndDrop(TransferMode.ANY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif4.getImage());
@@ -566,7 +529,7 @@ public class BattleController {
     }
 
     public void dragHand5(MouseEvent event) {
-        if (gif5.getImage() != null&&card5!=null) {
+        if (gif5.getImage() != null && card5 != null) {
             Dragboard db = gif5.startDragAndDrop(TransferMode.ANY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif5.getImage());
