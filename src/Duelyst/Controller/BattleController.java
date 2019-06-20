@@ -335,6 +335,18 @@ public class BattleController {
         transform.setUly(0);
         transform.setUlx(KASHI / 3);
         mapGrid.setEffect(transform);
+        ImageView imageView = new ImageView(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0).getImage());
+        imageView.setFitHeight(KASHI);
+        imageView.setFitWidth(KASHI);
+        rect19.getChildren().add(imageView);
+        ImageView imageView1 = new ImageView(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0).getImage());
+        imageView1.setFitHeight(KASHI);
+        imageView1.setFitWidth(KASHI);
+        rect27.getChildren().add(imageView1);
+        currentBattle.getFirstPlayerInGameCards().add(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0));
+        currentBattle.getMap().get(2).get(0).setHero(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0), 0);
+        currentBattle.getSecondPlayerInGameCards().add(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0));
+        currentBattle.getMap().get(2).get(8).setHero(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0), 1);
     }
 
     public ErrorType insertCard(String cardName, int rect) {
@@ -1473,15 +1485,6 @@ public class BattleController {
             moveSelectedCard(rectNum);
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((22 - 1) / 9).get((22 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
             showDialog(insertCard(event.getDragboard().getString(), rectNum));
@@ -1514,15 +1517,6 @@ public class BattleController {
             rectangles[whichRect].getChildren().clear();
             moveSelectedCard(rectNum);
             whichRect = -1;
-        }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((23 - 1) / 9).get((23 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
@@ -1558,15 +1552,6 @@ public class BattleController {
             moveSelectedCard(rectNum);
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((24 - 1) / 9).get((24 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
             showDialog(insertCard(event.getDragboard().getString(), rectNum));
@@ -1601,15 +1586,6 @@ public class BattleController {
             moveSelectedCard(rectNum);
             whichRect = -1;
         }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((25 - 1) / 9).get((25 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
-        }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
             showDialog(insertCard(event.getDragboard().getString(), rectNum));
@@ -1642,15 +1618,6 @@ public class BattleController {
             rectangles[whichRect].getChildren().clear();
             moveSelectedCard(rectNum);
             whichRect = -1;
-        }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((26 - 1) / 9).get((26 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
@@ -1685,15 +1652,6 @@ public class BattleController {
             rectangles[whichRect].getChildren().clear();
             moveSelectedCard(rectNum);
             whichRect = -1;
-        }
-        if (Card.getCard(event.getDragboard().getString()).getType().equals("Hero"))
-            currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).setHero((Hero) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        else if (Card.getCard(event.getDragboard().getString()).getType().equals("Minion")) {
-            currentBattle.getMap().get((27 - 1) / 9).get((27 - 1) % 9).setMinion((Minion) (Card.getCard(event.getDragboard()
-                    .getString())), (currentBattle.getTurn() - 1) % 2);
-        } else {
-            //spell insert???
         }
         if (whichHand != -1) {
             handGifs[whichHand].setImage(null);
