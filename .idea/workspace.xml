@@ -4,11 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" line="426" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="handle t">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="handle turn and ai added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Duelyst/css/css6.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/css/css6.css" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,11 +77,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="363" column="73" lean-forward="true" selection-start-line="363" selection-start-column="73" selection-end-line="363" selection-end-column="73" />
+            <state relative-caret-position="142">
+              <caret line="272" column="44" lean-forward="true" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3518#3519#0" expanded="true" />
@@ -183,20 +181,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Hand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1037">
-              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="83" selection-end-column="1" />
+            <state relative-caret-position="245">
+              <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/css/css3.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="19" column="24" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+            <state relative-caret-position="-1037">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="83" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -282,7 +280,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Dragboard db = rect(\d+).getChildren\(\).get\(0\).startDragAndDrop\(TransferMode.MOVE\);</find>
       <find>Dragboard db = rect(\d+).getChildren\(\).get\(0\).startDragAndDrop\(TransferMode.ANY\);</find>
       <find>rect(\d+).getChildren\(\).add\(imageView\);</find>
       <find>System.out.println</find>
@@ -312,6 +309,7 @@
       <find>showdi</find>
       <find>black</find>
       <find>insertCard(event.getDragboard().getString(), rectNum)</find>
+      <find>handleti</find>
     </findStrings>
     <replaceStrings>
       <replace>id=&quot;style&quot; prefHeight=&quot;200.0&quot; prefWidth=&quot;100.0&quot;</replace>
@@ -647,7 +645,7 @@
       <workItem from="1560886886223" duration="3217000" />
       <workItem from="1560954305274" duration="8447000" />
       <workItem from="1561023244626" duration="1410000" />
-      <workItem from="1561031033033" duration="22355000" />
+      <workItem from="1561031033033" duration="22994000" />
     </task>
     <task id="LOCAL-00001" summary="shop fxml added">
       <created>1559737064715</created>
@@ -831,11 +829,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561055962534</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="handle turn and ai added">
+      <created>1561063170031</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1561063170031</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246958000" />
+    <option name="totallyTimeSpent" value="247597000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -948,7 +953,8 @@
     <MESSAGE value="moves in battle map works fine except for spells" />
     <MESSAGE value="logic of moves checked" />
     <MESSAGE value="insert of minion and moves works" />
-    <option name="LAST_COMMIT_MESSAGE" value="insert of minion and moves works" />
+    <MESSAGE value="handle turn and ai added" />
+    <option name="LAST_COMMIT_MESSAGE" value="handle turn and ai added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1176,13 +1182,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Hand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1336,8 +1335,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="363" column="73" lean-forward="true" selection-start-line="363" selection-start-column="73" selection-end-line="363" selection-end-column="73" />
+        <state relative-caret-position="142">
+          <caret line="272" column="44" lean-forward="true" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3518#3519#0" expanded="true" />
@@ -1433,6 +1432,13 @@
             <element signature="e#58559#58560#0" expanded="true" />
             <element signature="e#58595#58596#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Hand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
         </state>
       </provider>
     </entry>

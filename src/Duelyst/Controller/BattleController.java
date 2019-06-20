@@ -351,6 +351,7 @@ public class BattleController {
     }
 
     public void handleTurn() {
+
         currentBattle.increamentTurn();
         currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
         currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 2);
