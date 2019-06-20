@@ -125,7 +125,6 @@ public class BattleController {
     Card card3;
     Card card4;
     Card card5;
-    Card[] cardsOfHand = new Card[5];
 
     public void mainMenuAct() {
         View.makeMainMenu();
@@ -219,7 +218,17 @@ public class BattleController {
                             if (!ai) {
                                 updateProfile();
                                 handGifs[whichHand].setImage(null);
-                                cardsOfHand[whichHand] = null;
+                                if (whichHand == 0) {
+                                    card1 = null;
+                                } else if (whichHand == 1) {
+                                    card2 = null;
+                                } else if (whichHand == 2) {
+                                    card3 = null;
+                                } else if (whichHand == 3) {
+                                    card4 = null;
+                                } else if (whichHand == 4) {
+                                    card5 = null;
+                                }
                             }
                             return ErrorType.SUCCESSFUL_INSERT;
                         } else {
@@ -232,7 +241,17 @@ public class BattleController {
                         if (!ai) {
                             updateProfile();
                             handGifs[whichHand].setImage(null);
-                            cardsOfHand[whichHand] = null;
+                            if (whichHand == 0) {
+                                card1 = null;
+                            } else if (whichHand == 1) {
+                                card2 = null;
+                            } else if (whichHand == 2) {
+                                card3 = null;
+                            } else if (whichHand == 3) {
+                                card4 = null;
+                            } else if (whichHand == 4) {
+                                card5 = null;
+                            }
                         }
                         return ErrorType.SUCCESSFUL_INSERT;
 
@@ -269,21 +288,18 @@ public class BattleController {
             System.out.println("null");
     }
 
-    public void  handleHand() {
+    public void handleHand() {
+        int size = currentBattle.getFirstPlayerHand().getCards().size();
         currentBattle.getFirstPlayerHand().fillHand(currentBattle, 0);
-        for (Card card : currentBattle.getFirstPlayerHand().getCards()) {
-            showHand(card, false);
+        if (currentBattle.getTurn() == 1)
+            for (Card card : currentBattle.getFirstPlayerHand().getCards()) {
+                showHand(card, false);
+            }
+        else {
+            for (int i = 0; i < 5 - size; i++) {
+                showHand(currentBattle.getFirstPlayerHand().getCards().get(size + i), false);
+            }
         }
-        card1 = currentBattle.getFirstPlayerHand().getCards().get(0);
-        card2 = currentBattle.getFirstPlayerHand().getCards().get(1);
-        card3 = currentBattle.getFirstPlayerHand().getCards().get(2);
-        card4 = currentBattle.getFirstPlayerHand().getCards().get(3);
-        card5 = currentBattle.getFirstPlayerHand().getCards().get(4);
-        cardsOfHand[0] = card1;
-        cardsOfHand[1] = card2;
-        cardsOfHand[2] = card3;
-        cardsOfHand[3] = card4;
-        cardsOfHand[4] = card5;
         showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
         currentBattle.getSecondPlayerHand().fillHand(currentBattle, 1);
     }
@@ -293,9 +309,20 @@ public class BattleController {
             gif6.setImage(cardInHand.getImage());
             return;
         }
-        for (ImageView imageView : handGifs) {
-            if (imageView.getImage() == null) {
-                imageView.setImage(cardInHand.getImage());
+        for (int i = 0; i < 5; i++) {
+            if (handGifs[i].getImage() == null) {
+                handGifs[i].setImage(cardInHand.getImage());
+                if (i == 0) {
+                    card1 = cardInHand;
+                } else if (i == 1) {
+                    card2 = cardInHand;
+                } else if (i == 2) {
+                    card3 = cardInHand;
+                } else if (i == 3) {
+                    card4 = cardInHand;
+                } else if (i == 4) {
+                    card5 = cardInHand;
+                }
                 return;
             }
         }
@@ -351,7 +378,6 @@ public class BattleController {
     }
 
     public void handleTurn() {
-
         currentBattle.increamentTurn();
         if (currentBattle.getTurn() % 2 == 1) {
             currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
@@ -361,10 +387,10 @@ public class BattleController {
         }
         if (currentBattle.getTurn() % 2 == 0)
             doCleverThings();
-        if (currentBattle.getTurn() == 1 && currentBattle.getFirstPlayerDeck().getUsableItem() != null)
+        /*if (currentBattle.getTurn() == 1 && currentBattle.getFirstPlayerDeck().getUsableItem() != null)
             currentBattle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getFirstPlayer(), -1);
         if (currentBattle.getTurn() == 1 && currentBattle.getSecondPlayerDeck().getUsableItem() != null)
-            currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), -1);
+            currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), -1);*/
         if (currentBattle.getTurn() % 2 == 0)
             handleTurn();
     }
@@ -504,6 +530,12 @@ public class BattleController {
             }
         }
         handleHand();
+        card1 = currentBattle.getFirstPlayerHand().getCards().get(0);
+        card2 = currentBattle.getFirstPlayerHand().getCards().get(1);
+        card3 = currentBattle.getFirstPlayerHand().getCards().get(2);
+        card4 = currentBattle.getFirstPlayerHand().getCards().get(3);
+        card5 = currentBattle.getFirstPlayerHand().getCards().get(4);
+
         currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
         setProfile(Account.getLoginAccount().getAvatar());
 
@@ -603,6 +635,8 @@ public class BattleController {
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif1.getImage());
             content.putString(card1.getName());
+            System.out.println(card1.getName());
+            System.out.println(currentBattle.getFirstPlayerHand().getCards().get(0).getName());
             db.setContent(content);
             whichHand = 0;
             event.consume();
