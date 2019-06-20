@@ -11,6 +11,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 <StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="Duelyst.Controller.BattleController">
     <children>
@@ -22,9 +25,9 @@
                 <ColumnConstraints hgrow="SOMETIMES" percentWidth="20"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints percentHeight="20.0" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="60.0" vgrow="ALWAYS"/>
-                <RowConstraints percentHeight="20.0" vgrow="ALWAYS"/>
+                <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
+                <RowConstraints percentHeight="60.0" vgrow="SOMETIMES"/>
+                <RowConstraints percentHeight="20.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
                 <GridPane fx:id="mapGrid" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -48,19 +51,23 @@
                     </rowConstraints>
                     <children>
                         <Pane onDragExited="#rect1DragExited" onDragOver="#rect1DragOver"
-                              onDragDropped="#rect1DragDropped" onDragDetected="#dragRect1" fx:id="rect1" id="tile" prefHeight="50.0"
+                              onDragDropped="#rect1DragDropped" onDragDetected="#dragRect1" fx:id="rect1" id="tile"
+                              prefHeight="50.0"
                               prefWidth="50.0"/>
                         <Pane onDragExited="#rect2DragExited" onDragOver="#rect2DragOver"
-                              onDragDropped="#rect2DragDropped" onDragDetected="#dragRect2" id="tile" fx:id="rect2" prefHeight="50.0"
+                              onDragDropped="#rect2DragDropped" onDragDetected="#dragRect2" id="tile" fx:id="rect2"
+                              prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"/>
                         <Pane onDragExited="#rect3DragExited" onDragOver="#rect3DragOver"
-                              onDragDropped="#rect3DragDropped"  onDragDetected="#dragRect3" id="tile" fx:id="rect3" prefHeight="50.0"
+                              onDragDropped="#rect3DragDropped" onDragDetected="#dragRect3" id="tile" fx:id="rect3"
+                              prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"/>
                         <Pane onDragExited="#rect4DragExited" onDragOver="#rect4DragOver"
-                              onDragDropped="#rect4DragDropped" onDragDetected="#dragRect4" id="tile" fx:id="rect4" prefHeight="50.0"
+                              onDragDropped="#rect4DragDropped" onDragDetected="#dragRect4" id="tile" fx:id="rect4"
+                              prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"/>
                         <Pane onDragExited="#rect5DragExited" onDragDetected="#dragRect5" onDragOver="#rect5DragOver"
-                              onDragDropped="#rect5DragDropped"  id="tile" fx:id="rect5" prefHeight="50.0"
+                              onDragDropped="#rect5DragDropped" id="tile" fx:id="rect5" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="4"/>
                         <Pane onDragExited="#rect6DragExited" onDragDetected="#dragRect6" onDragOver="#rect6DragOver"
                               onDragDropped="#rect6DragDropped" id="tile" fx:id="rect6" prefHeight="50.0"
@@ -78,14 +85,15 @@
                               onDragDropped="#rect10DragDropped" id="tile" fx:id="rect10" prefHeight="50.0"
                               prefWidth="50.0" GridPane.rowIndex="1"/>
                         <Pane onDragExited="#rect11DragExited" onDragOver="#rect11DragOver"
-                              onDragDropped="#rect11DragDropped" onDragDetected="#dragRect11" id="tile" fx:id="rect11" prefHeight="50.0"
+                              onDragDropped="#rect11DragDropped" onDragDetected="#dragRect11" id="tile" fx:id="rect11"
+                              prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="1"
                               GridPane.rowIndex="1"/>
                         <Pane onDragExited="#rect12DragExited" onDragDetected="#dragRect12" onDragOver="#rect12DragOver"
                               onDragDropped="#rect12DragDropped" id="tile" fx:id="rect12" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="2"
                               GridPane.rowIndex="1"/>
-                        <Pane onDragExited="#rect13DragExited" onDragDetected="#dragRect13"  onDragOver="#rect13DragOver"
+                        <Pane onDragExited="#rect13DragExited" onDragDetected="#dragRect13" onDragOver="#rect13DragOver"
                               onDragDropped="#rect13DragDropped" id="tile" fx:id="rect13" prefHeight="50.0"
                               prefWidth="50.0" GridPane.columnIndex="3"
                               GridPane.rowIndex="1"/>
@@ -309,13 +317,53 @@
                         <Insets left="50"/>
                     </GridPane.margin>
                 </ImageView>
-                <Label  fx:id="accountInfo" prefHeight="150.0" prefWidth="500.0">
+                <Label id="label-account" fx:id="accountInfo" prefHeight="150.0" prefWidth="500.0">
                     <graphic>
-                        <ImageView fx:id="profile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="profile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
+                                   preserveRatio="true">
 
                         </ImageView>
                     </graphic>
                 </Label>
+                <StackPane GridPane.rowIndex="2" GridPane.columnIndex="2" prefWidth="200" prefHeight="100">
+                    <VBox>
+                        <children>
+                            <StackPane>
+                                <children>
+                                    <ImageView fitWidth="200"  id="end-turn" onMouseClicked="#handleTurn" pickOnBounds="true"
+                                               preserveRatio="true">
+                                        <image>
+                                            <Image url="Duelyst/css/button_end_turn_mine.png"/>
+                                        </image>
+
+                                    </ImageView>
+                                    <Label id="next-turn-text" text="NEXT TURN"  textAlignment="CENTER"/>
+                                </children>
+                            </StackPane>
+                            <HBox>
+                                <children>
+                                    <StackPane>
+                                        <children>
+                                            <!--onMouseClicked="#mainMenuAct"-->
+                                            <ImageView fitWidth="130" id="main-menu" pickOnBounds="true"
+                                                       preserveRatio="true"/>
+                                            <Label id="menu-text" text="MAIN MENU" textAlignment="CENTER"/>
+                                        </children>
+                                    </StackPane>
+                                    <StackPane>
+                                        <children>
+                                            <ImageView fitWidth="130" id="show-log" onMouseClicked="#showLogAct" pickOnBounds="true"
+                                                       preserveRatio="true"/>
+                                            <Label id="show-log-text" text="SHOW LOG" textAlignment="CENTER"/>
+                                        </children>
+                                    </StackPane>
+                                </children>
+
+                            </HBox>
+                        </children>
+                    </VBox>
+                </StackPane>
+
             </children>
 
 
