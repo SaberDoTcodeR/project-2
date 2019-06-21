@@ -1,3 +1,4 @@
+
 package Duelyst.model.Buff;
 
 import Duelyst.model.Card.Hero.Hero;
@@ -15,7 +16,8 @@ public class HolyBuff extends Buff {
         minion.incrementHolyCounter();
     }
 
-    /*
+
+
         private HolyBuff holyBuff;
         private Cell cell;
         private Hero hero;
@@ -26,7 +28,8 @@ public class HolyBuff extends Buff {
             this.cell = cell;
             this.hero = hero;
             this.minion = minion;
-        }*/
+        }
+
     public HolyBuff(int effectValue, int delay, int last) {
         this.effectValue = effectValue;
         this.delay = delay;

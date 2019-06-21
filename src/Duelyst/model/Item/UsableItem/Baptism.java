@@ -1,7 +1,7 @@
 package Duelyst.model.Item.UsableItem;
 
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.HolyBuff;
+//import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Cell;
 import Duelyst.model.Account;
 
@@ -22,7 +22,7 @@ public class Baptism extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 0) {
+        /*if (activeTime == 0) {
             if (cell.getMinion() != null) {
                 HolyBuff holyBuff = new HolyBuff();
                 holyBuff.holy(cell.getMinion());
@@ -30,7 +30,7 @@ public class Baptism extends UsableItem {
                 holyBuff.setCasting(holyBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(holyBuff);
             }
-        }
+        }*/
     }
 
     @Override

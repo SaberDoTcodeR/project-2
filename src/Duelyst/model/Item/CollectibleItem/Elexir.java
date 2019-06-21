@@ -23,7 +23,7 @@ public class Elexir extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player) {
-        Cell insiderCell = getRandomInsiderForce(battle, player);
+        /*Cell insiderCell = getRandomInsiderForce(battle, player);
         while (insiderCell.getMinion() == null) {
             insiderCell = getRandomInsiderForce(battle, player);
         }
@@ -34,7 +34,7 @@ public class Elexir extends CollectibleItem {
             powerBuff.setTurnCounter(-5);
             powerBuff.incrementAp(insiderCell.getMinion());
             insiderCell.getMinion().getOwnBuffs().add(powerBuff);
-        }
+        }*/
 
     }
 

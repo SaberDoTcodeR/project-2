@@ -394,7 +394,7 @@
                 </rowConstraints>
                 <children>
                     <Button fx:id="button8" id="button8" mnemonicParsing="false" onMouseEntered="#createBtnActFocus"
-                            onKeyPressed="#handleOnKeyPressedCreate" onMouseClicked="#CreateBtnAct" prefHeight="50.0"
+                            onKeyPressed="#handleOnKeyPressedCreate" onMouseClicked="#createBtnAct" prefHeight="50.0"
                             prefWidth="400.0"
                             text="CREATE" GridPane.columnIndex="0">
                         <GridPane.margin>

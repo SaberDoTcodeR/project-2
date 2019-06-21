@@ -1,7 +1,7 @@
 package Duelyst.model.Card.Hero;
 
 import Duelyst.model.Account;
-import Duelyst.model.Buff.HolyBuff;
+//import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Card.Minion.SpecialPower;
 import Duelyst.model.Cell;

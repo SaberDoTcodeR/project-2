@@ -22,6 +22,7 @@ public class TerrorHood extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
+/*
 
         if (activeTime == 3 || activeTime == 6) {
             Cell enemyCell = getRandomEnemyForce(battle, player);
@@ -40,6 +41,7 @@ public class TerrorHood extends UsableItem {
                 enemyCell.getMinion().getOwnBuffs().add(weaknessBuff);
             }
         }
+*/
 
     }
 

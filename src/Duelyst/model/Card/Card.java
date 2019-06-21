@@ -263,22 +263,22 @@ public abstract class Card {
     }
 
     public boolean dispelEnemyValidation(String buffName) {
-        for (String str : Buff.getPositiveBuffs()) {
+        /*for (String str : Buff.getPositiveBuffs()) {
             System.out.println("___________________________________________________________________");
             if (str.equalsIgnoreCase(buffName.toLowerCase())) {
                 System.out.println(121223424);
                 return true;
             }
-        }
+        }*/
         return false;
     }
 
     public boolean dispelInsiderValidation(String buffName) {
-        for (String str : Buff.getNegativeBuffs()) {
+        /*for (String str : Buff.getNegativeBuffs()) {
             if (str.equals(buffName)) {
                 return true;
             }
-        }
+        }*/
         return false;
     }
 

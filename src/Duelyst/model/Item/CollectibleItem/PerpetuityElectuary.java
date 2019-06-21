@@ -2,7 +2,7 @@ package Duelyst.model.Item.CollectibleItem;
 
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.HolyBuff;
+//import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Cell;
 
 public class PerpetuityElectuary extends CollectibleItem {
@@ -22,7 +22,7 @@ public class PerpetuityElectuary extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player) {
-        Cell insiderCell = getRandomInsiderForce(battle, player);
+        /*Cell insiderCell = getRandomInsiderForce(battle, player);
         if (insiderCell.getHero() != null) {
             for (int i = 0; i < 10; i++) {
                 HolyBuff holyBuff = new HolyBuff();
@@ -40,7 +40,7 @@ public class PerpetuityElectuary extends CollectibleItem {
                 holyBuff.holy(insiderCell.getMinion());
                 insiderCell.getMinion().getOwnBuffs().add(holyBuff);
             }
-        }
+        }*/
     }
 
     public CollectibleItem duplicate() {

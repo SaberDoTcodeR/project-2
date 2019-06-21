@@ -25,7 +25,7 @@ public class DamolArchery extends UsableItem {
         if (player.getMainDeck().getHero().get(0).getTypeOfHit().equals("Ranged") ||
                 player.getMainDeck().getHero().get(0).getTypeOfHit().equals("Hybrid")) {
             if (activeTime == 6) {
-                if (cell.getHero() != null) {
+                /*if (cell.getHero() != null) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell.getHero());
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
@@ -38,7 +38,7 @@ public class DamolArchery extends UsableItem {
                     disarmBuff.setTurnCounter(0);
                     disarmBuff.setCasting(disarmBuff, null, cell.getHero(), null);
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
-                }
+                }*/
             }
         }
     }

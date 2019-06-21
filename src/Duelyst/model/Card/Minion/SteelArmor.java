@@ -1,7 +1,7 @@
 package Duelyst.model.Card.Minion;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.HolyBuff;
+//import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Cell;
 import javafx.scene.image.Image;
 

@@ -22,7 +22,7 @@ public class ShockHammer extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 6) {
+        /*if (activeTime == 6) {
             if (cell.getHero() != null) {
                 DisarmBuff disarmBuff = new DisarmBuff();
                 disarmBuff.setTurnCounter(0);
@@ -37,7 +37,7 @@ public class ShockHammer extends UsableItem {
                 disarmBuff.setCasting(disarmBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(disarmBuff);
             }
-        }
+        }*/
     }
 
     public UsableItem duplicate() {

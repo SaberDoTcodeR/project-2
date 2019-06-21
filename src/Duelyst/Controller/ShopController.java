@@ -7,9 +7,7 @@ import Duelyst.model.Card.Minion.Minion;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Item.UsableItem.UsableItem;
 import Duelyst.model.Shop;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -479,9 +477,75 @@ public class ShopController {
         spells.setVisible(true);
     }
 
-    public void CreateBtnAct(MouseEvent event) {
+    public void createBtnAct() {
+        BoxBlur blur = new BoxBlur(5, 5, 10);
+        JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+        JFXButton jfxButton = new JFXButton("Create Card");
+        JFXTextField jfxTextField = new JFXTextField();
+        jfxTextField.setPromptText("Name...");
+        jfxTextField.setId("text");
+        jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.4);");
+        JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+        jfxButton.getStyleClass().add("dialog-button");
+        jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+            gridPane.setEffect(null);
+        });
+        JFXComboBox<String> typeBox = new JFXComboBox<>();
+        typeBox.getItems().addAll("Hero", "Minion", "Spell");
+        typeBox.setPromptText("Choose Type Of Card");
+        JFXTextField ap = new JFXTextField();
+        ap.setPromptText("AP...");
+        ap.setId("text");
+        JFXTextField hp = new JFXTextField();
+        hp.setPromptText("HP...");
+        hp.setId("text");
+        JFXTextField costOfCard = new JFXTextField();
+        costOfCard.setPromptText("Cost Of Card...");
+        costOfCard.setId("text");
+        JFXTextField coolDown = new JFXTextField();
+        coolDown.setPromptText("CoolDown Time...");
+        coolDown.setId("text");
+        JFXTextField activeTime = new JFXTextField();
+        activeTime.setPromptText("Active Time...");
+        activeTime.setId("text");
+        JFXTextField range = new JFXTextField();
+        range.setPromptText("Range...");
+        range.setId("text");
+        JFXComboBox<String> typeRangeBox = new JFXComboBox<>();
+        typeRangeBox.setPromptText("Choose Type Of Attack");
+        typeRangeBox.getItems().addAll("Melee", "Hybrid", "Ranged");
+        Label label = new Label("Make Your Ideal Card");
+        label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(label, jfxTextField, typeBox, costOfCard);
+        typeBox.setOnAction(event -> {
+            if (typeBox.getValue().equals("Hero")) {
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+                vBox.getChildren().addAll(ap, hp, typeRangeBox, range, coolDown);
+            } else if (typeBox.getValue().equals("Minion")){
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+                vBox.getChildren().addAll(ap, hp, typeRangeBox, range, activeTime);
+            } else {
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+            }
+        });
+        jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                    if (!jfxTextField.getText().equals("") && Account.getLoginAccount().getCollection().findDeck(jfxTextField.getText()) == null) {
+
+                        jfxDialog.close();
+                    } else {
+                        jfxTextField.setId("wrongPassword");
+                    }
+
+                }
+        );
+        jfxDialogLayout.getBody().add(vBox);
+        jfxDialogLayout.setActions(jfxButton);
+        jfxDialog.show();
+        gridPane.setEffect(blur);
 
     }
+
     public void mainMenuAct() {
         View.makeMainMenu();
     }
@@ -2621,6 +2685,7 @@ public class ShopController {
     public void mainMenuBtnActFocus() {
         button7.requestFocus();
     }
+
     public void createBtnActFocus() {
         button8.requestFocus();
     }
@@ -2666,10 +2731,10 @@ public class ShopController {
             buyBtnAct();
         }
     }
-    
+
     public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-            createBtnActFocus();
+            createBtnAct();
         }
     }
 

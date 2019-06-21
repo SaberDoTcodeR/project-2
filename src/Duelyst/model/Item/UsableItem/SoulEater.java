@@ -21,7 +21,7 @@ public class SoulEater extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 2) {
+        /*if (activeTime == 2) {
             Cell insiderCell = getRandomInsiderForce(battle, player);
             if (insiderCell.getHero() != null) {
                 PowerBuff powerBuff = new PowerBuff(1, true);
@@ -37,7 +37,7 @@ public class SoulEater extends UsableItem {
                 powerBuff.incrementAp(insiderCell.getMinion());
                 insiderCell.getMinion().getOwnBuffs().add(powerBuff);
             }
-        }
+        }*/
     }
 
     public UsableItem duplicate() {
