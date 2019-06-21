@@ -130,6 +130,117 @@ public class BattleController {
         View.makeMainMenu();
     }
 
+    public void endTurn() {
+        int counterOfFlagFirstPlayer = 0;
+        int counterOfFlagSecondPlayer = 0;
+        for (int i = 0; i < 5; i++) {
+            for (Cell cell : currentBattle.getMap().get(i)) {
+                for (int j = 0; j < cell.getCellEffect().size(); j++) {
+                    if (cell.getCellEffect().get(j).getTurnCounter() == 0) {
+                        cell.getCellEffect().remove(j);
+                        j--;
+                    } else {
+                        cell.getCellEffect().get(j).castBuff();
+                        if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
+                            cell.getCellEffect().get(j).decrementTurnCounter(1);
+                    }
+                }
+                if (cell.getHero() != null) {
+                    /*if (currentBattle.getType().equals("OneFlagBattle")) {
+                        if (cell.getHero().getNumberOfFlag() > 0) {
+                            if (cell.getHero().getCardId().toLowerCase().contains(currentBattle.getFirstPlayer().getUserName().toLowerCase())) {
+                                currentBattle.incrementFirstPlayerFlagCarryTurnCounter();
+                            } else
+                                currentBattle.incrementSecondPlayerFlagCarryTurnCounter();
+                        }
+                        if (currentBattle.getFirstPlayerFlagCarryTurnCounter() == 8) {
+                            System.out.println(123);
+                            view.endGame(currentBattle, true);
+
+                        } else if (currentBattle.getSecondPlayerFlagCarryTurnCounter() == 8) {
+                            System.out.println(1234);
+                            view.endGame(currentBattle, false);
+                        }
+                    } else if (currentBattle.getType().equals("FlagsBattle")) {
+                        if (cell.getHero().getCardId().toLowerCase().contains(currentBattle.getFirstPlayer().getUserName().toLowerCase())) {
+                            counterOfFlagFirstPlayer += cell.getHero().getNumberOfFlag();
+                            if (counterOfFlagFirstPlayer >= ((FlagsBattle) currentBattle).getFlags() / 2) {
+                                view.endGame(currentBattle, true);
+                            }
+
+                        } else {
+                            counterOfFlagSecondPlayer += cell.getHero().getNumberOfFlag();
+                            if (counterOfFlagSecondPlayer >= ((FlagsBattle) currentBattle).getFlags() / 2) {
+                                view.endGame(currentBattle, false);
+                            }
+                        }
+                    }*/
+                    for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
+                        if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() == 0) {
+                            cell.getHero().getOwnBuffs().get(j).dispel(cell.getHero());
+                            cell.getHero().getOwnBuffs().remove(j);
+                            j--;
+                        } else {
+                            cell.getHero().getOwnBuffs().get(j).castBuff();
+                            if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() >= 0)
+                                cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
+                        }
+                    }
+                    cell.getHero().setTimeNeededToCool(cell.getHero().getTimeNeededToCool() - 1);
+                    cell.getHero().setCanAttack(true);
+                    cell.getHero().setRemainedMoves(2);
+                } else if (cell.getMinion() != null) {
+                    /*if (currentBattle.getType().equals("OneFlagBattle")) {
+                        if (cell.getMinion().getNumberOfFlag() > 0) {
+                            if (cell.getMinion().getCardId().toLowerCase().contains(currentBattle.getFirstPlayer().getUserName().toLowerCase())) {
+                                currentBattle.incrementFirstPlayerFlagCarryTurnCounter();
+                            } else if (cell.getMinion().getCardId().contains(currentBattle.getSecondPlayer().getUserName())) {
+                                currentBattle.incrementSecondPlayerFlagCarryTurnCounter();
+                            }
+                        }
+                        if (currentBattle.getFirstPlayerFlagCarryTurnCounter() == 6) {
+                            System.out.println(12345);
+                            view.endGame(currentBattle, true);
+                        } else if (currentBattle.getSecondPlayerFlagCarryTurnCounter() == 6) {
+                            System.out.println(123456);
+                            view.endGame(currentBattle, false);
+                        }
+                    } else if (currentBattle.getType().equals("FlagsBattle")) {
+                        if (cell.getMinion().getCardId().toLowerCase().contains(currentBattle.getFirstPlayer().getUserName().toLowerCase())) {
+                            counterOfFlagFirstPlayer += cell.getMinion().getNumberOfFlag();
+                            if (counterOfFlagFirstPlayer >= ((FlagsBattle) currentBattle).getFlags() / 2) {
+                                view.endGame(currentBattle, true);
+                            }
+
+                        } else {
+                            counterOfFlagSecondPlayer += cell.getMinion().getNumberOfFlag();
+                            if (counterOfFlagSecondPlayer >= ((FlagsBattle) currentBattle).getFlags() / 2) {
+                                view.endGame(currentBattle, false);
+                            }
+                        }
+                    }*/
+                    for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
+                        if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() == 0) {
+                            cell.getMinion().getOwnBuffs().get(j).dispel(cell.getMinion());
+                            cell.getMinion().getOwnBuffs().remove(j);
+                            j--;
+                        } else {
+                            cell.getMinion().getOwnBuffs().get(j).castBuff();
+                            if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() >= 0)
+                                cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
+                        }
+                    }
+                    cell.getMinion().setCanAttack(true);
+                    cell.getMinion().setRemainedMoves(2);
+
+                }
+            }
+        }
+        currentBattle.setSelectedCard(null);
+        currentBattle.setSelectedCollectible(null);
+        handleTurn();
+    }
+
     public ErrorType insertCard(String cardName, int rect, boolean ai) {
         int xPos = (rect - 1) / 9 + 1;
         int yPos = ((rect - 1) % 9) + 1;
@@ -392,7 +503,7 @@ public class BattleController {
         if (currentBattle.getTurn() == 1 && currentBattle.getSecondPlayerDeck().getUsableItem() != null)
             currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), -1);*/
         if (currentBattle.getTurn() % 2 == 0)
-            handleTurn();
+            endTurn();
     }
 
     public void doCleverThings() {

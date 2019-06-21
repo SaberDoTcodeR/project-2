@@ -330,24 +330,19 @@
                         <children>
                             <StackPane>
                                 <children>
-                                    <ImageView fitWidth="200"  id="end-turn" onMouseClicked="#handleTurn" pickOnBounds="true"
+                                    <ImageView fitWidth="200"  id="end-turn" onMouseClicked="#endTurn" pickOnBounds="true"
                                                preserveRatio="true">
-                                        <image>
-                                            <Image url="Duelyst/css/button_end_turn_mine.png"/>
-                                        </image>
-
                                     </ImageView>
-                                    <Label id="next-turn-text" text="NEXT TURN"  textAlignment="CENTER"/>
+                                    <Label id="next-turn-text" onMouseClicked="#endTurn" text="NEXT TURN"  textAlignment="CENTER"/>
                                 </children>
                             </StackPane>
                             <HBox>
                                 <children>
                                     <StackPane>
                                         <children>
-                                            <!--onMouseClicked="#mainMenuAct"-->
-                                            <ImageView fitWidth="130" id="main-menu" pickOnBounds="true"
+                                            <ImageView fitWidth="130" id="main-menu" onMouseClicked="#mainMenuAct" pickOnBounds="true"
                                                        preserveRatio="true"/>
-                                            <Label id="menu-text" text="MAIN MENU" textAlignment="CENTER"/>
+                                            <Label id="menu-text" text="MAIN MENU" onMouseClicked="#mainMenuAct" textAlignment="CENTER"/>
                                         </children>
                                     </StackPane>
                                     <StackPane>
@@ -358,15 +353,11 @@
                                         </children>
                                     </StackPane>
                                 </children>
-
                             </HBox>
                         </children>
                     </VBox>
                 </StackPane>
-
             </children>
-
-
         </GridPane>
     </children>
 </StackPane>

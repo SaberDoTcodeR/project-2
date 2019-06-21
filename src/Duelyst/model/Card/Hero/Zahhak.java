@@ -15,7 +15,6 @@ public class Zahhak extends Hero {
         super.cardImage = new Image("Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif");
         super.setCoolDownTime(0);
         super.setMp(1);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif");
     }
 
     public Zahhak(Zahhak zahhak) {
