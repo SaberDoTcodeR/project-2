@@ -33,7 +33,7 @@ public class LupinLion extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+      /*  if (activeTime == 3) {
             if (cell.getHero() != null) {
                 ChangeApBuff changeApBuff = new ChangeApBuff(cell.getHero().getHolyCounter());
                 changeApBuff.setTurnCounter(0);
@@ -47,7 +47,7 @@ public class LupinLion extends Minion {
                 changeApBuff.setCasting(changeApBuff, null, null, this);
                 this.getOwnBuffs().add(changeApBuff);
             }
-        }
+        }*/
     }
 
     public String getDesc() {

@@ -19,11 +19,11 @@ public class Eagle extends Minion {
     public Minion duplicate() {
         Eagle eagle = new Eagle(this);
         eagle.cardImage = new Image("Duelyst/css/unit_gifs/boss_crystal_breathing.gif");
-        PowerBuff powerBuff = new PowerBuff(12, false);
+      /*  PowerBuff powerBuff = new PowerBuff(12, false);
         powerBuff.setTurnCounter(-4);
         powerBuff.incrementHp(eagle);
         powerBuff.setCasting(powerBuff, null, null, eagle);
-        eagle.getOwnBuffs().add(powerBuff);
+        eagle.getOwnBuffs().add(powerBuff);*/
         return eagle;
     }
 

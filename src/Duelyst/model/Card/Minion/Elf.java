@@ -33,7 +33,7 @@ public class Elf extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 1) {
+       /* if (activeTime == 1) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
                     if (battle.getMap().get(i).get(j).getMinion() != null) {
@@ -47,7 +47,7 @@ public class Elf extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

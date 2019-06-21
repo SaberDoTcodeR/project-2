@@ -21,7 +21,7 @@ public class AllPoison extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        for (ArrayList<Cell> cells : battle.getMap()) {
+       /* for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
                     PoisonBuff poisonBuff = new PoisonBuff();
@@ -38,7 +38,7 @@ public class AllPoison extends Spell {
                     cell1.getMinion().getOwnBuffs().add(poisonBuff);
                 }
             }
-        }
+        }*/
     }
 
     public AllPoison(AllPoison allPoison) {

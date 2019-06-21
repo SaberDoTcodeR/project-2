@@ -36,7 +36,7 @@ public class Dragon extends Hero {
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
-        if (player.getMana() >= this.getMp()) {
+        /*if (player.getMana() >= this.getMp()) {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
@@ -56,7 +56,7 @@ public class Dragon extends Hero {
                     cell.getMinion().getOwnBuffs().add(disarmBuff);
                 } else{}// request.setError(ErrorType.SELF_HARM);
             } else {}// request.setError(ErrorType.EMPTY_CELL);
-        } else {}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+        } else {}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);*/
 
     }
 

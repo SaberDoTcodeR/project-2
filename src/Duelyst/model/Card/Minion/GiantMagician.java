@@ -36,7 +36,7 @@ public class GiantMagician extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 1) {
+        /*if (activeTime == 1) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             if (cell.getX() < 5)
                 targetCells.add(cell.downCell(battle.getMap()));
@@ -70,7 +70,7 @@ public class GiantMagician extends Minion {
                 }
             }
 
-        }
+        }*/
     }
 
     public String getDesc() {

@@ -35,7 +35,8 @@ public class Simurgh extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
-        if (player.getMana() >= this.getMp()) {
+
+      /*  if (player.getMana() >= this.getMp()) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
                     if (battle.getMap().get(i).get(j).getHero() != null) {
@@ -57,7 +58,7 @@ public class Simurgh extends Hero {
                     }
                 }
             }
-        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);*/
 
     }
 

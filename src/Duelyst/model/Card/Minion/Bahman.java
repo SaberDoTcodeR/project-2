@@ -35,7 +35,7 @@ public class Bahman extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 0) {
+/*        if (activeTime == 0) {
             if (battle.getTurn() % 2 == 0) {
                 ArrayList<Minion> minionsOfEnemy = new ArrayList<>();
                 for (int i = 0; i < battle.getFirstPlayerInGameCards().size(); i++) {
@@ -55,7 +55,7 @@ public class Bahman extends Minion {
                 int random = (int) (Math.random() * minions.size());
                 minions.get(random).decrementHp(16);
             }
-        }
+        }*/
     }
 
     public String getDesc() {

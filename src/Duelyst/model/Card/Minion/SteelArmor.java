@@ -19,13 +19,13 @@ public class SteelArmor extends Minion {
     public Minion duplicate() {
         SteelArmor steelArmor = new SteelArmor(this);
         steelArmor.cardImage = new Image("Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif");
-        for (int i = 0; i < 12; i++) {
+       /* for (int i = 0; i < 12; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);
             holyBuff.holy(steelArmor);
             holyBuff.setCasting(holyBuff, null, null, steelArmor);
             steelArmor.getOwnBuffs().add(holyBuff);
-        }
+        }*/
         return steelArmor;
     }
 

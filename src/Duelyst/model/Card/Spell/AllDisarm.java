@@ -20,14 +20,14 @@ public class AllDisarm extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        Account account;
+      /*  Account account;
         if (battle.getTurn() % 2 == 1)
             account = battle.getSecondPlayer();
         else
             account = battle.getFirstPlayer();
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
-               /* if (cell1.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase()) ) {
+               *//* if (cell1.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase()) ) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getHero());
                     disarmBuff.setTurnCounter(0);
@@ -40,9 +40,9 @@ public class AllDisarm extends Spell {
                     disarmBuff.setTurnCounter(0);
                     disarmBuff.setCasting(disarmBuff, null, null, cell1.getMinion());
                     cell1.getMinion().getOwnBuffs().add(disarmBuff);
-                }*/
+                }*//*
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

@@ -35,7 +35,7 @@ public class GiantSnake extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 0) {
+      /*  if (activeTime == 0) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             if (cell.getX() < 5 + 1 - 1)
                 targetCells.add(cell.downCell(battle.getMap()));
@@ -66,7 +66,7 @@ public class GiantSnake extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

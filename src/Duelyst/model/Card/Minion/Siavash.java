@@ -32,7 +32,7 @@ public class Siavash extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 2) {
+        /*if (activeTime == 2) {
             outer:
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
@@ -44,7 +44,7 @@ public class Siavash extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

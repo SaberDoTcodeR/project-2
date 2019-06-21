@@ -135,7 +135,7 @@ public class BattleController {
         int counterOfFlagSecondPlayer = 0;
         for (int i = 0; i < 5; i++) {
             for (Cell cell : currentBattle.getMap().get(i)) {
-                for (int j = 0; j < cell.getCellEffect().size(); j++) {
+              /*  for (int j = 0; j < cell.getCellEffect().size(); j++) {
                     if (cell.getCellEffect().get(j).getTurnCounter() == 0) {
                         cell.getCellEffect().remove(j);
                         j--;
@@ -144,7 +144,7 @@ public class BattleController {
                         if (cell.getCellEffect().get(j).getTurnCounter() >= 0)
                             cell.getCellEffect().get(j).decrementTurnCounter(1);
                     }
-                }
+                }*/
                 if (cell.getHero() != null) {
                     /*if (currentBattle.getType().equals("OneFlagBattle")) {
                         if (cell.getHero().getNumberOfFlag() > 0) {
@@ -175,7 +175,7 @@ public class BattleController {
                             }
                         }
                     }*/
-                    for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
+                   /* for (int j = 0; j < cell.getHero().getOwnBuffs().size(); j++) {
                         if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() == 0) {
                             cell.getHero().getOwnBuffs().get(j).dispel(cell.getHero());
                             cell.getHero().getOwnBuffs().remove(j);
@@ -185,7 +185,7 @@ public class BattleController {
                             if (cell.getHero().getOwnBuffs().get(j).getTurnCounter() >= 0)
                                 cell.getHero().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
-                    }
+                    }*/
                     cell.getHero().setTimeNeededToCool(cell.getHero().getTimeNeededToCool() - 1);
                     cell.getHero().setCanAttack(true);
                     cell.getHero().setRemainedMoves(2);
@@ -219,7 +219,7 @@ public class BattleController {
                             }
                         }
                     }*/
-                    for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
+                   /* for (int j = 0; j < cell.getMinion().getOwnBuffs().size(); j++) {
                         if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() == 0) {
                             cell.getMinion().getOwnBuffs().get(j).dispel(cell.getMinion());
                             cell.getMinion().getOwnBuffs().remove(j);
@@ -229,7 +229,7 @@ public class BattleController {
                             if (cell.getMinion().getOwnBuffs().get(j).getTurnCounter() >= 0)
                                 cell.getMinion().getOwnBuffs().get(j).decrementTurnCounter(1);
                         }
-                    }
+                    }*/
                     cell.getMinion().setCanAttack(true);
                     cell.getMinion().setRemainedMoves(2);
 
@@ -309,11 +309,8 @@ public class BattleController {
                             //  ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
                             //currentBattle.getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
                             //}
-                            System.out.println(account.getMana());
                             account.setMana(account.getMana() - cost);
-                            System.out.println("ho");
                             ((Minion) card1).moveToGame(currentBattle, xPos, yPos);
-                            System.out.println("hi");
                             if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
                                 Cell.addCollectible(xPos, yPos, currentBattle);
                             }

@@ -34,7 +34,7 @@ public class TuranianSpy extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+     /*   if (activeTime == 3) {
             if (cell.getHero() != null) {
                 DisarmBuff disarmBuff = new DisarmBuff();
                 disarmBuff.setTurnCounter(1 + 1 - 1);
@@ -58,7 +58,7 @@ public class TuranianSpy extends Minion {
                 poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(poisonBuff);
             }
-        }
+        }*/
     }
 
     public String getDesc() {

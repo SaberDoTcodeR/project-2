@@ -18,7 +18,7 @@ public class TotalDisarm extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        if (cell.getMinion() == null && cell.getHero() == null) {
+      /*  if (cell.getMinion() == null && cell.getHero() == null) {
             //request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
@@ -43,7 +43,7 @@ public class TotalDisarm extends Spell {
                     //request.setError(ErrorType.INVALID_TARGET);
                 }
             }
-        }
+        }*/
     }
 
     public TotalDisarm(TotalDisarm totalDisarm) {

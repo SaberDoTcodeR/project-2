@@ -18,7 +18,7 @@ public class AllAttack extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        Account account;
+       /* Account account;
         if (battle.getTurn() % 2 == 1)
             account = battle.getSecondPlayer();
         else
@@ -40,7 +40,7 @@ public class AllAttack extends Spell {
                     battle.getMap().get(i).get(index).getMinion().deadChecker(battle);
                 }
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

@@ -35,7 +35,7 @@ public class Legend extends Hero {
 
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
-        if (player.getMana() >= this.getMp()) {
+     /*   if (player.getMana() >= this.getMp()) {
             if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
                     for (Buff buff : cell.getHero().getOwnBuffs()) {
@@ -54,7 +54,7 @@ public class Legend extends Hero {
                 } else{}// request.setError(ErrorType.INVALID_TARGET);
             } else {}//request.setError(ErrorType.EMPTY_CELL);
         } else {}//request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-
+*/
     }
 
     public String getDesc() {

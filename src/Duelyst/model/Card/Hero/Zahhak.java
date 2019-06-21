@@ -37,7 +37,7 @@ public class Zahhak extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
-        if (cell.getHero() != null) {
+       /* if (cell.getHero() != null) {
             if (!player.getMainDeck().isContain(cell.getHero())) {
                 PoisonBuff poisonBuff = new PoisonBuff();
                 poisonBuff.setTurnCounter(3 + 1 - 1);
@@ -53,7 +53,7 @@ public class Zahhak extends Hero {
                 poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(poisonBuff);
             } else{}// request.setError(ErrorType.SELF_HARM);
-        } else {}//request.setError(ErrorType.EMPTY_CELL);
+        } else {}//request.setError(ErrorType.EMPTY_CELL);*/
     }
 
     public String getDesc() {

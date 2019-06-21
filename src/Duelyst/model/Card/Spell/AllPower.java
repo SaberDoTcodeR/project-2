@@ -21,7 +21,7 @@ public class AllPower extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        for (ArrayList<Cell> cells : battle.getMap()) {
+        /*for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null) {
                     if (player.getMainDeck().isContain(cell1.getHero())) {
@@ -42,7 +42,7 @@ public class AllPower extends Spell {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

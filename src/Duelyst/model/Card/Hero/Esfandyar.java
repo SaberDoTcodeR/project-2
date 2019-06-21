@@ -23,13 +23,13 @@ public class Esfandyar extends Hero {
     public Hero duplicate() {
         Esfandyar esfandyar = new Esfandyar(this);
         esfandyar.cardImage = new Image("Duelyst/css/unit_gifs/boss_wraith_breathing.gif");
-        for (int i = 0; i < 3; i++) {
+        /*for (int i = 0; i < 3; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);
             holyBuff.holy(esfandyar);
             holyBuff.setCasting(holyBuff, null, esfandyar, null);
             esfandyar.getOwnBuffs().add(holyBuff);
-        }
+        }*/
         return esfandyar;
     }
 

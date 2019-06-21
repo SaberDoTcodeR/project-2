@@ -34,7 +34,7 @@ public class WhiteBogey extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
-        if (player.getMana() >= this.getMp()) {
+     /*   if (player.getMana() >= this.getMp()) {
             ChangeApBuff changeApBuff = new ChangeApBuff(4);
             changeApBuff.increment(this);
             changeApBuff.setTurnCounter(-5);
@@ -42,7 +42,7 @@ public class WhiteBogey extends Hero {
             this.getOwnBuffs().add(changeApBuff);
             player.setMana(player.getMana() - this.getMp());
         } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
-
+*/
     }
 
     @Override

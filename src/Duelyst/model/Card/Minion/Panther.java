@@ -35,7 +35,7 @@ public class Panther extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+       /* if (activeTime == 3) {
             if (cell.getMinion() != null && !player.getMainDeck().isContain(cell.getMinion())) {
                 ArrayList<Integer> units = new ArrayList<>();
                 units.add(8);
@@ -44,7 +44,7 @@ public class Panther extends Minion {
                 cell.getMinion().getOwnBuffs().add(multiStageBuff);
             }
         }
-    }
+*/    }
 
     public String getDesc() {
         return SpecialPower.PANTHER.getMessage();

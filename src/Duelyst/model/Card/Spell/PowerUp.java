@@ -19,7 +19,7 @@ public class PowerUp extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        if (cell.getHero() == null && cell.getMinion() == null) {
+     /*   if (cell.getHero() == null && cell.getMinion() == null) {
            // request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
@@ -44,7 +44,7 @@ public class PowerUp extends Spell {
                   //  request.setError(ErrorType.INVALID_TARGET);
                 }
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

@@ -19,7 +19,7 @@ public class Shock extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        if (cell.getMinion() == null && cell.getHero() == null) {
+       /* if (cell.getMinion() == null && cell.getHero() == null) {
             //request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getHero() != null) {
@@ -44,7 +44,7 @@ public class Shock extends Spell {
                     //  view.printError(ErrorType.INVALID_TARGET);
                 }
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

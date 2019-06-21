@@ -37,7 +37,7 @@ public class Magician extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 1) {
+       /* if (activeTime == 1) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             targetCells.add(cell);
             if (cell.getX() < 5)
@@ -72,7 +72,7 @@ public class Magician extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

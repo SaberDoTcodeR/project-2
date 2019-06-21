@@ -33,7 +33,7 @@ public class PersianSwordsman extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+       /* if (activeTime == 3) {
             StunBuff stunBuff = new StunBuff();
             stunBuff.setTurnCounter(0);
             if (cell.getHero() != null) {
@@ -45,7 +45,7 @@ public class PersianSwordsman extends Minion {
                 stunBuff.setCasting(stunBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(stunBuff);
             }
-        }
+        }*/
     }
 
     public String getDesc() {

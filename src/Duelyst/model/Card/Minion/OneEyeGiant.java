@@ -34,7 +34,7 @@ public class OneEyeGiant extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 2) {
+       /* if (activeTime == 2) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             if (cell.getX() < 5)
                 targetCells.add(cell.downCell(battle.getMap()));
@@ -59,7 +59,7 @@ public class OneEyeGiant extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

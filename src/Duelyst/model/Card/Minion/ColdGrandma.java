@@ -34,7 +34,7 @@ public class ColdGrandma extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 0) {
+      /*  if (activeTime == 0) {
             ArrayList<Cell> targetCells = new ArrayList<>();
             if (cell.getY() < 9 && cell.getX() < 5)
                 targetCells.add(battle.getMap().get(cell.getX()).get(cell.getY()));
@@ -62,7 +62,7 @@ public class ColdGrandma extends Minion {
                     targetCells.get(i).getMinion().getOwnBuffs().add(stunBuff);
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

@@ -31,13 +31,13 @@ public class PersianGladiator extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+      /*  if (activeTime == 3) {
             if (cell.getHero() != null) {
                 cell.getHero().decrementHp(this.getNumberOfAttacks() + 5 - cell.getHero().getHolyCounter());
             } else if (cell.getMinion() != null) {
                 cell.getMinion().decrementHp(this.getNumberOfAttacks() + 5 - cell.getMinion().getHolyCounter());
             }
-        }
+        }*/
     }
 
     public String getDesc() {

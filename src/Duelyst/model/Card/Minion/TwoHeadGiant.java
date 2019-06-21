@@ -32,7 +32,7 @@ public class TwoHeadGiant extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+    /*    if (activeTime == 3) {
             if (cell.getHero() != null) {
                 for (Buff buff : cell.getHero().getOwnBuffs()) {
                     if (dispelEnemyValidation(buff.getClass().getSimpleName())) {
@@ -46,7 +46,7 @@ public class TwoHeadGiant extends Minion {
                     }
                 }
             }
-        }
+        }*/
     }
 
     public String getDesc() {

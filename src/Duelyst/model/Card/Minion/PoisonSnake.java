@@ -33,7 +33,7 @@ public class PoisonSnake extends Minion {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime) {
-        if (activeTime == 3) {
+       /* if (activeTime == 3) {
             if (cell.getHero() != null) {
                 PoisonBuff poisonBuff = new PoisonBuff();
                 poisonBuff.setTurnCounter(3);
@@ -47,7 +47,7 @@ public class PoisonSnake extends Minion {
                 poisonBuff.setCasting(poisonBuff, null, null, cell.getMinion());
                 cell.getMinion().getOwnBuffs().add(poisonBuff);
             }
-        }
+        }*/
     }
 
     public String getDesc() {

@@ -35,8 +35,8 @@ public class Rakhsh extends Hero {
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
 
-        if (player.getMana() >= this.getMp()) {
-            if (cell.getHero() != null) {
+
+     /*  if (player.getMana() >= this.getMp()) {      if (cell.getHero() != null) {
                 if (!player.getMainDeck().isContain(cell.getHero())) {
                     StunBuff stunBuff = new StunBuff();
                     stunBuff.setTurnCounter(1);
@@ -53,7 +53,7 @@ public class Rakhsh extends Hero {
                     cell.getMinion().getOwnBuffs().add(stunBuff);
                 } else{}// request.setError(ErrorType.SELF_HARM);
             } else{}// request.setError(ErrorType.EMPTY_CELL);
-        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);
+        } else{}// request.setError(ErrorType.DONT_HAVE_ENOUGH_MANA);*/
 
     }
 

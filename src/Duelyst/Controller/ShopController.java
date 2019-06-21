@@ -33,6 +33,7 @@ public class ShopController {
     public ScrollPane minions;
     public ScrollPane spells;
     public ScrollPane items;
+    public Button button8;
 
     @FXML
     StackPane stackPane = new StackPane();
@@ -478,6 +479,9 @@ public class ShopController {
         spells.setVisible(true);
     }
 
+    public void CreateBtnAct(MouseEvent event) {
+
+    }
     public void mainMenuAct() {
         View.makeMainMenu();
     }
@@ -2617,6 +2621,9 @@ public class ShopController {
     public void mainMenuBtnActFocus() {
         button7.requestFocus();
     }
+    public void createBtnActFocus() {
+        button8.requestFocus();
+    }
 
     public void handleOnKeyPressedHeroes(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
@@ -2659,4 +2666,11 @@ public class ShopController {
             buyBtnAct();
         }
     }
+    
+    public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            createBtnActFocus();
+        }
+    }
+
 }

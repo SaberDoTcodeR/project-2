@@ -20,7 +20,7 @@ public class Sacrifice extends Spell {
 
     @Override
     public void castSpell(Battle battle, Cell cell, Account player) {
-        if (cell.getHero() == null && cell.getMinion() == null) {
+        /*if (cell.getHero() == null && cell.getMinion() == null) {
           //  request.setError(ErrorType.INVALID_TARGET);
         } else {
             if (cell.getMinion() != null) {
@@ -43,7 +43,7 @@ public class Sacrifice extends Spell {
             if (cell.getHero() != null) {
                // request.setError(ErrorType.INVALID_TARGET);
             }
-        }
+        }*/
     }
 
     public Spell duplicate() {

@@ -68,6 +68,9 @@
 #button7:focused {
     -fx-graphic: url("mainMenuBlack.png");
 }
+#button8:focused {
+    -fx-graphic: url("createBlack.png");
+}
 
 .button:pressed {
     -fx-background-color: rgba(13, 254, 221, 0.8);
