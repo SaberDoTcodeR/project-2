@@ -494,8 +494,8 @@ public class BattleController {
     public void handleTurn() {
         currentBattle.increamentTurn();
         if (currentBattle.getTurn() % 2 == 1) {
-            currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 20);
-            currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 30);
+            currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
+            currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 3);
             updateProfile();
             handleHand();
         }
@@ -528,7 +528,7 @@ public class BattleController {
                 for (int j = 0; j < 9; j++) {
                     //String str = "move to (" + (i + 1) + "," + (j + 1) + ")";
                     if (moveSelectedCard(9 * i + j + 1).getMessage().equals("OK")) {
-                        break outer;
+                        continue outer;
                     }
                 }
             }

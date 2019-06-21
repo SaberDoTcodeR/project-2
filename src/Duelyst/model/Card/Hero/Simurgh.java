@@ -35,7 +35,6 @@ public class Simurgh extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
-
         if (player.getMana() >= this.getMp()) {
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {

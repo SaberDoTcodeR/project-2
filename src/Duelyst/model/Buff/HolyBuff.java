@@ -5,6 +5,7 @@ import Duelyst.model.Card.Minion.Minion;
 import javafx.scene.control.Cell;
 
 public class HolyBuff extends Buff {
+    private boolean use = false;
 
     public void holy(Hero hero) {
         hero.incrementHolyCounter();
@@ -14,16 +15,23 @@ public class HolyBuff extends Buff {
         minion.incrementHolyCounter();
     }
 
-    private HolyBuff holyBuff;
-    private Cell cell;
-    private Hero hero;
-    private Minion minion;
+    /*
+        private HolyBuff holyBuff;
+        private Cell cell;
+        private Hero hero;
+        private Minion minion;
 
-    public void setCasting(HolyBuff holyBuff,Cell cell,Hero hero,Minion minion) {
-        this.holyBuff = holyBuff;
-        this.cell = cell;
-        this.hero = hero;
-        this.minion = minion;
+        public void setCasting(HolyBuff holyBuff,Cell cell,Hero hero,Minion minion) {
+            this.holyBuff = holyBuff;
+            this.cell = cell;
+            this.hero = hero;
+            this.minion = minion;
+        }*/
+    public HolyBuff(int effectValue, int delay, int last) {
+        this.effectValue = effectValue;
+        this.delay = delay;
+        this.last = last;
+        this.forEnemy = false;
     }
 
     public Cell getCell() {
@@ -40,10 +48,10 @@ public class HolyBuff extends Buff {
 
     @Override
     public void castBuff() {
-        if (this.hero != null){
+        if (this.hero != null) {
             holy(this.hero);
         }
-        if (this.minion != null){
+        if (this.minion != null) {
             holy(this.minion);
         }
     }

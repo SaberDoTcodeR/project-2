@@ -35,7 +35,6 @@ public class Arash extends Hero {
 
     @Override
     public void castSpecialPower(Battle battle, Cell cell, Account player) {
-
         if (player.getMana() >= this.getMp()) {
             int indexOfRow = -1;
             for (int i = 0; i < 5; i++) {
