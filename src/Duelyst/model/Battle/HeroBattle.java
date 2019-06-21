@@ -28,13 +28,6 @@ public class HeroBattle extends Battle {
                     getMap().get(i).add(new Cell(i, j, 0, random.nextInt(CollectibleItem.getCollectibleItems().size())));
                 else
                     getMap().get(i).add(new Cell(i, j, 0, -1));
-                if (i == 2 && j == 0) {
-                    getMap().get(2).get(0).setHero(getFirstPlayerDeck().getHero().get(0).duplicate(), 0);
-
-                }
-                if (i == 2 && j == 8) {
-                    getMap().get(2).get(8).setHero(getSecondPlayerDeck().getHero().get(0).duplicate(), 1);
-                }
 
             }
         }
@@ -52,11 +45,7 @@ public class HeroBattle extends Battle {
         account.setMainDeck(opponentDeck);
         this.secondPlayer = account;
         this.setReward(reward);
-        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName() + "_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
-        this.getMap().get(2).get(8).getHero().setCardId(account.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
-        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
-        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
-        if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
+            if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
             this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
             this.increamentTurn();
             this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size() - 1).cardIdGenerator(this);

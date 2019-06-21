@@ -294,7 +294,6 @@ public class BattleController {
                             boolean adjacency = false;
                             for (Cell cell : targetCells) {
                                 if (cell.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
-                                    System.out.println("here1");
                                     adjacency = true;
                                     break;
                                 }
@@ -310,10 +309,11 @@ public class BattleController {
                             //  ((Minion) card1).setNumberOfFlag(((Minion) card1).getNumberOfFlag() + currentBattle.getMap().get(xPos - 1).get(yPos - 1).getNumberOfFlag());
                             //currentBattle.getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
                             //}
-
+                            System.out.println(account.getMana());
                             account.setMana(account.getMana() - cost);
-                            System.out.println(account.getMana() + " " + cost);
+                            System.out.println("ho");
                             ((Minion) card1).moveToGame(currentBattle, xPos, yPos);
+                            System.out.println("hi");
                             if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
                                 Cell.addCollectible(xPos, yPos, currentBattle);
                             }
@@ -395,8 +395,7 @@ public class BattleController {
             jfxDialogLayout.setActions(jfxButton);
             jfxDialog.show();
             gridPane.setEffect(blur);
-        } else
-            System.out.println("null");
+        }
     }
 
     public void handleHand() {
@@ -407,8 +406,9 @@ public class BattleController {
                 showHand(card, false);
             }
         else {
-            for (int i = 0; i < 5 - size; i++) {
-                showHand(currentBattle.getFirstPlayerHand().getCards().get(size + i), false);
+            for (int i = 0; i < 5 - size && i < currentBattle.getFirstPlayerHand().getCards().size(); i++) {
+                if (currentBattle.getFirstPlayerHand().getCards().get(size + i) != null)
+                    showHand(currentBattle.getFirstPlayerHand().getCards().get(size + i), false);
             }
         }
         showHand(currentBattle.getFirstPlayerHand().getNextCardInHand(), true);
@@ -417,7 +417,10 @@ public class BattleController {
 
     private void showHand(Card cardInHand, boolean nextCard) {
         if (nextCard) {
-            gif6.setImage(cardInHand.getImage());
+            if (cardInHand != null)
+                gif6.setImage(cardInHand.getImage());
+            else
+                gif6.setImage(null);
             return;
         }
         for (int i = 0; i < 5; i++) {
@@ -476,7 +479,7 @@ public class BattleController {
             if (currentBattle.getMap().get(xPos).get(yPos).getCollectibleItem() != null)
                 Cell.addCollectible(xPos + 1, yPos + 1, currentBattle);
             updateProfile();
-            rectangles[whichRect].getChildren().clear();
+            rectangles[srcCell.getX() * 9 + srcCell.getY()].getChildren().clear();
             return ErrorType.SUCCESSFUL_MOVE;
         } else
             return ErrorType.INVALID_TARGET;
@@ -491,8 +494,8 @@ public class BattleController {
     public void handleTurn() {
         currentBattle.increamentTurn();
         if (currentBattle.getTurn() % 2 == 1) {
-            currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
-            currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 3);
+            currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 20);
+            currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 30);
             updateProfile();
             handleHand();
         }
@@ -518,18 +521,19 @@ public class BattleController {
                 }
             }
         }
-        /*outer:
+        outer:
         for (Card card : currentBattle.getSecondPlayerInGameCards()) {
             currentBattle.setSelectedCard(card);
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 9; j++) {
                     //String str = "move to (" + (i + 1) + "," + (j + 1) + ")";
-                    if (moveSelectedCard(9 * i + j).getMessage().equals("OK")) {
+                    if (moveSelectedCard(9 * i + j + 1).getMessage().equals("OK")) {
                         break outer;
                     }
                 }
             }
-        }*/
+        }
+        currentBattle.setSelectedCard(null);
         /*label3:
         for (Card card : currentBattle.getSecondPlayerInGameCards()) {
             currentBattle.setSelectedCard(card);
@@ -625,8 +629,8 @@ public class BattleController {
         switch (GameModeController.MODE) {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
-                currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(0).duplicate(),
-                        Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 500);
+                currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(),
+                        Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(), Account.getLoginAccount(), 500);
                 break;
             }
             case 1: {
@@ -664,23 +668,22 @@ public class BattleController {
         transform.setUly(0);
         transform.setUlx(KASHI / 3);
         mapGrid.setEffect(transform);
-        ImageView imageView = new ImageView(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0).getImage());
+        ImageView imageView = new ImageView(currentBattle.getFirstPlayerDeck().getHero().get(0).getImage());
         imageView.setFitHeight(KASHI);
         imageView.setFitWidth(KASHI);
         rect19.getChildren().add(imageView);
-        ImageView imageView1 = new ImageView(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0).getImage());
+        ImageView imageView1 = new ImageView(currentBattle.getSecondPlayerDeck().getHero().get(0).getImage());
         imageView1.setFitHeight(KASHI);
         imageView1.setFitWidth(KASHI);
         rect27.getChildren().add(imageView1);
-        currentBattle.getFirstPlayerInGameCards().add(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0));
-        currentBattle.getMap().get(2).get(0).setHero(currentBattle.getFirstPlayer().getMainDeck().getHero().get(0), 0);
-        currentBattle.getSecondPlayerInGameCards().add(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0));
-        currentBattle.getMap().get(2).get(8).setHero(currentBattle.getSecondPlayer().getMainDeck().getHero().get(0), 1);
+        currentBattle.getFirstPlayerInGameCards().add(currentBattle.getFirstPlayerDeck().getHero().get(0));
+        currentBattle.getMap().get(2).get(0).setHero(currentBattle.getFirstPlayerDeck().getHero().get(0), 0);
+        currentBattle.getSecondPlayerInGameCards().add(currentBattle.getSecondPlayerDeck().getHero().get(0));
 
-        currentBattle.getFirstPlayer().getMainDeck().getHero().get(0).cardIdGenerator(currentBattle);
+        currentBattle.getMap().get(2).get(8).setHero(currentBattle.getSecondPlayerDeck().getHero().get(0), 1);
+        currentBattle.getFirstPlayerDeck().getHero().get(0).cardIdGenerator(currentBattle);
         currentBattle.increamentTurn();
-
-        currentBattle.getSecondPlayer().getMainDeck().getHero().get(0).cardIdGenerator(currentBattle);
+        currentBattle.getSecondPlayerDeck().getHero().get(0).cardIdGenerator(currentBattle);
         currentBattle.decreamentTurn();
     }
 
@@ -746,8 +749,6 @@ public class BattleController {
             ClipboardContent content = new ClipboardContent();
             content.putImage(gif1.getImage());
             content.putString(card1.getName());
-            System.out.println(card1.getName());
-            System.out.println(currentBattle.getFirstPlayerHand().getCards().get(0).getName());
             db.setContent(content);
             whichHand = 0;
             event.consume();
@@ -841,13 +842,11 @@ public class BattleController {
         int rectNum = 2;
 
         if (whichRect != -1) {
-
             showDialog(moveSelectedCard(rectNum));
             whichRect = -1;
         }
 
         if (whichHand != -1) {
-
             showDialog(insertCard(event.getDragboard().getString(), rectNum, false));
             whichHand = -1;
         }
@@ -1935,7 +1934,6 @@ public class BattleController {
 
     public void dragRect1(MouseEvent event) {
         if (currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getHero() != null || currentBattle.getMap().get((1 - 1) / 9).get((1 - 1) % 9).getMinion() != null) {
-            System.out.println("task2Done");
             Dragboard db = rect1.getChildren().get(0).startDragAndDrop(TransferMode.MOVE);
             whichRect = 1 - 1;
             ClipboardContent content = new ClipboardContent();

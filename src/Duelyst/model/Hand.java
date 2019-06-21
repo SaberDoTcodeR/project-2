@@ -34,6 +34,12 @@ public class Hand {
                 nextCardInHand = null;
             }
             while (this.nextCardInHand == null) {
+                if(whichPlayer==0&&battle.getFirstPlayerDeck().getMinions().isEmpty()&&battle.getFirstPlayerDeck().getSpells().isEmpty()){
+                    return;
+                }
+                if(whichPlayer==1&&battle.getSecondPlayerDeck().getMinions().isEmpty()&&battle.getSecondPlayerDeck().getSpells().isEmpty()){
+                    return;
+                }
                 if (whichPlayer == 1 && battle.getSecondPlayerDeck().getSpells().size() != 0 && random.nextBoolean()) {
                     int x = random.nextInt(battle.getSecondPlayerDeck().getSpells().size());
                     this.nextCardInHand = (battle.getSecondPlayerDeck().getSpells().get(x));
@@ -51,7 +57,9 @@ public class Hand {
                     this.nextCardInHand = (battle.getFirstPlayerDeck().getMinions().get(x));
                     battle.getFirstPlayerDeck().getMinions().remove(x);
                 }
+
             }
+
         }
     }
 }

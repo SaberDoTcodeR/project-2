@@ -38,8 +38,14 @@ public class Deck {
     public Deck duplicate() {
         Deck deck = new Deck();
         deck.setName(this.name);
-        deck.setHero(this.getHero());
-        deck.setUsableItem(this.usableItems);
+        ArrayList<Hero> hero = new ArrayList<>();
+        ArrayList<UsableItem> usableItem = new ArrayList<>();
+        for (Hero hero1 : this.heroes) {
+            hero.add(hero1.duplicate());
+        }
+        for (UsableItem usableItem1 : this.usableItems) {
+            usableItem.add(usableItem1.duplicate());
+        }
         ArrayList<Minion> minions = new ArrayList<>();
         ArrayList<Spell> spells = new ArrayList<>();
         for (Minion minion : this.minions) {
@@ -48,6 +54,8 @@ public class Deck {
         for (Spell spell : this.spells) {
             spells.add(spell.duplicate());
         }
+        deck.setHero(hero);
+        deck.setUsableItem(usableItem);
         deck.setMinions(minions);
         deck.setSpells(spells);
         return deck;

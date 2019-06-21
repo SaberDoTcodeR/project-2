@@ -178,7 +178,9 @@ public class Cell {
                 if (cell.getMinion() != null && cell.getMinion().getCardId().equals(card.getCardId()))
                     return cell;
                 else if (cell.getHero() != null && cell.getHero().getCardId().equals(card.getCardId()))
+                {
                     return cell;
+                }
             }
         }
         return null;
