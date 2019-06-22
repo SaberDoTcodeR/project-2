@@ -68,8 +68,13 @@
 #button7:focused {
     -fx-graphic: url("mainMenuBlack.png");
 }
+
 #button8:focused {
     -fx-graphic: url("createBlack.png");
+}
+
+#buttonSearch:focused {
+    -fx-graphic: url("searchBlack.png");
 }
 
 .button:pressed {
@@ -123,6 +128,18 @@
     -fx-border-width: 2, 1;
     -fx-border-style: solid;
     -fx-border-color: #4bb639;
+    -fx-border-insets: 2 2 2 2;
+    -fx-border-radius: 15 15 15 15;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-background-radius: 15 15 15 15;
+
+}
+
+#boxFoundStyle {
+
+    -fx-border-width: 2, 1;
+    -fx-border-style: solid;
+    -fx-border-color: blue;
     -fx-border-insets: 2 2 2 2;
     -fx-border-radius: 15 15 15 15;
     -fx-background-color: rgba(0, 0, 0, 0.4);

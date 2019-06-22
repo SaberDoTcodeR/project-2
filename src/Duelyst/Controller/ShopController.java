@@ -32,6 +32,8 @@ public class ShopController {
     public ScrollPane spells;
     public ScrollPane items;
     public Button button8;
+    public Button searchButton;
+    public TextField search;
 
     @FXML
     StackPane stackPane = new StackPane();
@@ -477,6 +479,194 @@ public class ShopController {
         spells.setVisible(true);
     }
 
+    public void searchBtnAct() {
+        String card = search.getText();
+        for (VBox vBox : heroBoxes) {
+            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "").toLowerCase()))) {
+                for (VBox vBox1 : heroBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        vBox.setId("boxFoundStyle");
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : minionBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : spellBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : itemBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        for (VBox vBox : minionBoxes) {
+            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "").toLowerCase()))) {
+                vBox.setId("boxFoundStyle");
+                for (VBox vBox1 : heroBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : minionBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : spellBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : itemBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        for (VBox vBox : spellBoxes) {
+            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "").toLowerCase()))) {
+                vBox.setId("boxFoundStyle");
+                for (VBox vBox1 : heroBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : minionBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : spellBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : itemBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+        for (VBox vBox : itemBoxes) {
+            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "").toLowerCase()))) {
+                vBox.setId("boxFoundStyle");
+                for (VBox vBox1 : heroBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : minionBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : spellBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+                for (VBox vBox1 : itemBoxes) {
+                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "").toLowerCase()))) {
+                        if (vBox1.getId().equals("boxFoundStyle")) {
+                            vBox1.setId("boxNotBoughtStyle");
+                            vBox.setId("boxFoundStyle");
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void createBtnAct() {
         BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
@@ -522,7 +712,7 @@ public class ShopController {
             if (typeBox.getValue().equals("Hero")) {
                 vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
                 vBox.getChildren().addAll(ap, hp, typeRangeBox, range, coolDown);
-            } else if (typeBox.getValue().equals("Minion")){
+            } else if (typeBox.getValue().equals("Minion")) {
                 vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
                 vBox.getChildren().addAll(ap, hp, typeRangeBox, range, activeTime);
             } else {
@@ -2690,6 +2880,10 @@ public class ShopController {
         button8.requestFocus();
     }
 
+    public void searchBtnActFocus() {
+        searchButton.requestFocus();
+    }
+
     public void handleOnKeyPressedHeroes(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             showHeroes();
@@ -2735,6 +2929,12 @@ public class ShopController {
     public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             createBtnAct();
+        }
+    }
+
+    public void handleOnKeyPressedSearch(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            searchBtnAct();
         }
     }
 

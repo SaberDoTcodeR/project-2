@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.TextField?>
 <StackPane fx:id="stackPane" fx:controller="Duelyst.Controller.ShopController" xmlns="http://javafx.com/javafx/8.0.181"
            xmlns:fx="http://javafx.com/fxml/1">
     <GridPane  fx:id="gridPane" prefHeight="400.0" prefWidth="600.0">
@@ -2434,6 +2435,30 @@
                     </AnchorPane>
                 </content>
             </ScrollPane>
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="20">
+                <children>
+                    <TextField fx:id="search" promptText="Find Your Card" >
+                        <VBox.margin>
+                            <Insets left="25.0" right="25.0"/>
+                        </VBox.margin>
+                    </TextField>
+                    <Button fx:id="searchButton" id="buttonSearch" mnemonicParsing="false" onMouseClicked="#searchBtnAct"
+                            onMouseEntered="#searchBtnActFocus"
+                            onKeyPressed="#handleOnKeyPressedSearch" prefHeight="50.0" prefWidth="300.0"
+                            text="SEARCH">
+                        <VBox.margin>
+                            <Insets left="50.0" right="25.0"/>
+                        </VBox.margin>
+                        <graphic>
+                            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="Duelyst/css/searchWhite.png"/>
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                </children>
+            </VBox>
         </children>
     </GridPane>
 </StackPane>
