@@ -262,25 +262,25 @@ public abstract class Card {
         this.cardId = cardId;
     }
 
-    public boolean dispelEnemyValidation(String buffName) {
-        /*for (String str : Buff.getPositiveBuffs()) {
+    /*public boolean dispelEnemyValidation(String buffName) {
+        for (String str : Buff.getPositiveBuffs()) {
             System.out.println("___________________________________________________________________");
             if (str.equalsIgnoreCase(buffName.toLowerCase())) {
                 System.out.println(121223424);
                 return true;
             }
-        }*/
+        }
         return false;
-    }
+    }*/
 
-    public boolean dispelInsiderValidation(String buffName) {
-        /*for (String str : Buff.getNegativeBuffs()) {
+   /* public boolean dispelInsiderValidation(String buffName) {
+        for (String str : Buff.getNegativeBuffs()) {
             if (str.equals(buffName)) {
                 return true;
             }
-        }*/
+        }
         return false;
-    }
+    }*/
 
     public void setId(long id) {
         this.id = id;

@@ -15,13 +15,11 @@ public class PoisonEffectedCell extends Buff {
             minion.decrementHp(1);
     }
 
-    private PoisonEffectedCell poisonEffectedCell;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(PoisonEffectedCell poisonEffectedCell, Cell cell, Hero hero, Minion minion) {
-        this.poisonEffectedCell = poisonEffectedCell;
+    public void setCasting( Cell cell, Hero hero, Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -61,7 +59,4 @@ public class PoisonEffectedCell extends Buff {
         //Nothing
     }
 
-    public PoisonEffectedCell getPoisonEffectedCell() {
-        return poisonEffectedCell;
-    }
 }

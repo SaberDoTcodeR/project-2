@@ -2,11 +2,9 @@ package Duelyst.model.Card.Spell;
 
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.PoisonEffectedCell;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 public class PoisonLake extends Spell {
 
@@ -20,7 +18,7 @@ public class PoisonLake extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
         /*ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         if (cell.getX() < 5)
@@ -45,6 +43,7 @@ public class PoisonLake extends Spell {
             poisonEffectedCell.setCasting(poisonEffectedCell, cell1, null, null);
             cell1.getCellEffect().add(poisonEffectedCell);
         }*/
+        return null;
     }
 
     public Spell duplicate() {

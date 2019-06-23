@@ -15,18 +15,21 @@ public class StunBuff extends Buff {
         minion.setStunning(true);
     }
 
-    private StunBuff stunBuff;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(StunBuff stunBuff,Cell cell,Hero hero,Minion minion) {
-        this.stunBuff = stunBuff;
+    public void setCasting(Cell cell,Hero hero,Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
     }
-
+    public StunBuff(int effectValue, int delay, int last) {
+        this.effectValue = effectValue;
+        this.delay = delay;
+        this.last = last;
+        this.forEnemy = true;
+    }
     public Cell getCell() {
         return cell;
     }
@@ -59,8 +62,5 @@ public class StunBuff extends Buff {
         minion.setStunning(false);
     }
 
-    public StunBuff getStunBuff() {
-        return stunBuff;
-    }
 
 }

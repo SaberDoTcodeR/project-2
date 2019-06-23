@@ -14,13 +14,11 @@ public class HolyEffectedCell extends Buff {
         minion.incrementHp(1);
     }
 
-    private HolyEffectedCell holyEffectedCell;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(HolyEffectedCell holyEffectedCell, Cell cell, Hero hero, Minion minion) {
-        this.holyEffectedCell = holyEffectedCell;
+    public void setCasting( Cell cell, Hero hero, Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -60,7 +58,4 @@ public class HolyEffectedCell extends Buff {
         //Nothing
     }
 
-    public HolyEffectedCell getPoisonEffectedCell() {
-        return holyEffectedCell;
-    }
 }

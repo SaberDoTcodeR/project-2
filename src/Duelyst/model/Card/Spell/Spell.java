@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Card.Card;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public abstract class Spell extends Card {
         this.costToUse = spell.costToUse;
     }
 
-    public abstract void castSpell(Battle battle, Cell cell, Account player);
+    public abstract ErrorType castSpell(Battle battle, Cell cell, Account player);
 
     public static ArrayList<Spell> getSpells() {
         return spells;

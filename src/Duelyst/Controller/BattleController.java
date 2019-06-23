@@ -254,21 +254,21 @@ public class BattleController {
             cards = currentBattle.getFirstPlayerHand().getCards();
         else
             cards = currentBattle.getSecondPlayerHand().getCards();
-        for (Card card1 : cards) {
-            if (cardName.equals(card1.getName())) {
+        for (Card card11 : cards) {
+            if (cardName.equals(card11.getName())) {
                 int cost = 0;
-                if (card1.getType().equals("Spell")) {
-                    Spell spell = (Spell) card1;
+                if (card11.getType().equals("Spell")) {
+                    Spell spell = (Spell) card11;
                     cost = spell.getCostToUse();
                 }
-                if (card1.getType().equals("Minion")) {
-                    Minion minion = (Minion) card1;
+                if (card11.getType().equals("Minion")) {
+                    Minion minion = (Minion) card11;
                     cost = minion.getCostToUse();
                 }
                 if (cost > account.getMana()) {
                     return ErrorType.DONT_HAVE_ENOUGH_MANA;
                 } else {
-                    if (card1.getType().equals("Minion")) {
+                    if (card11.getType().equals("Minion")) {
 
                         if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getMinion() == null &&
                                 currentBattle.getMap().get(xPos - 1).get(yPos - 1).getHero() == null) {
@@ -310,7 +310,7 @@ public class BattleController {
                             //currentBattle.getMap().get(xPos - 1).get(yPos - 1).setNumberOfFlag(0);
                             //}
                             account.setMana(account.getMana() - cost);
-                            ((Minion) card1).moveToGame(currentBattle, xPos, yPos);
+                            ((Minion) card11).moveToGame(currentBattle, xPos, yPos);
                             if (currentBattle.getMap().get(xPos - 1).get(yPos - 1).getCollectibleItem() != null) {
                                 Cell.addCollectible(xPos, yPos, currentBattle);
                             }
@@ -322,7 +322,7 @@ public class BattleController {
                                 currentBattle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getFirstPlayer(), 0);
                             else if (currentBattle.getTurn() % 2 == 0 && currentBattle.getSecondPlayerDeck().getUsableItem().get(0) != null)
                                 currentBattle.getSecondPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getSecondPlayer(), 0);
-                            cards.remove(card1);
+                            cards.remove(card11);
                             if (!ai) {
                                 updateProfile();
                                 handGifs[whichHand].setImage(null);
@@ -343,9 +343,9 @@ public class BattleController {
                             return ErrorType.INVALID_TARGET;
                         }
                     } else {
-                        // ((Spell) card1).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account, request);
+                        ((Spell) card11).castSpell(currentBattle, currentBattle.getMap().get(xPos - 1).get(yPos - 1), account);
                         account.setMana(account.getMana() - cost);
-                        cards.remove(card1);
+                        cards.remove(card11);
                         if (!ai) {
                             updateProfile();
                             handGifs[whichHand].setImage(null);

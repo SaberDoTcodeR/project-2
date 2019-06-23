@@ -3,9 +3,8 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 public class AreaDispel extends Spell {
 
@@ -23,7 +22,7 @@ public class AreaDispel extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
        /* ArrayList<Cell> cells = new ArrayList<>();
         cells.add(cell);
         if (cell.getY() < 8)
@@ -36,6 +35,7 @@ public class AreaDispel extends Spell {
             Dispel dispel = new Dispel();
             dispel.castSpell(battle, cell1, player, request);
         }*/
+        return null;
     }
 
     @Override

@@ -3,6 +3,7 @@ package Duelyst.model.Buff;
 import Duelyst.model.Account;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Cell;
 
 public class ManaItemBuff extends Buff {
     private Account player;
@@ -15,6 +16,11 @@ public class ManaItemBuff extends Buff {
 //todo --> need setCasting or not
     public void castBuff() {
         this.player.incrementMana(unit);
+    }
+
+    @Override
+    public void setCasting(Cell cell, Hero hero, Minion minion) {
+
     }
 
     @Override

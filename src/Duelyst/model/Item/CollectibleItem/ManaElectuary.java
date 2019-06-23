@@ -23,7 +23,7 @@ public class ManaElectuary extends CollectibleItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player) {
-        /*ManaItemBuff manaItemBuff = new ManaItemBuff(player, 3);
+    /*    ManaItemBuff manaItemBuff = new ManaItemBuff(player, 3);
         manaItemBuff.setTurnCounter(1);
         player.getOwnBuffs().add(manaItemBuff);*/
     }

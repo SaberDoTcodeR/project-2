@@ -8,21 +8,24 @@ import Duelyst.model.Cell;
 public class PoisonBuff extends Buff {
 
     public void poison(Hero hero) {
-        hero.decrementHp(1);
+        hero.decrementHp(effectValue);
     }
 
     public void poison(Minion minion) {
         if (!minion.getClass().getSimpleName().equals("Piran"))
-            minion.decrementHp(1);
+            minion.decrementHp(effectValue);
     }
-
-    private PoisonBuff poisonBuff;
+    public PoisonBuff(int effectValue, int delay, int last) {
+        this.effectValue = effectValue;
+        this.delay = delay;
+        this.last = last;
+        this.forEnemy = true;
+    }
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(PoisonBuff poisonBuff, Cell cell, Hero hero, Minion minion) {
-        this.poisonBuff = poisonBuff;
+    public void setCasting( Cell cell, Hero hero, Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -58,8 +61,5 @@ public class PoisonBuff extends Buff {
         //nothing
     }
 
-    public PoisonBuff getPoisonBuff() {
-        return poisonBuff;
-    }
 
 }

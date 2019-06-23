@@ -3,9 +3,8 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 public class LightingBolt extends Spell {
 
@@ -19,7 +18,7 @@ public class LightingBolt extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
    /*     if (cell.getHero() == null && cell.getMinion() == null) {
             //request.setError(ErrorType.INVALID_TARGET);
         } else {
@@ -34,7 +33,11 @@ public class LightingBolt extends Spell {
                 //request.setError(ErrorType.INVALID_TARGET);
             }
         }
-    */}
+
+
+    */
+        return null;
+    }
 
     public Spell duplicate() {
         LightingBolt lightingBolt = new LightingBolt(this);

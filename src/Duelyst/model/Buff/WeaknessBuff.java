@@ -10,14 +10,11 @@ public class WeaknessBuff extends Buff {
     private int unit;
 
     private boolean apOrHp;
-
-    private WeaknessBuff weaknessBuff;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(WeaknessBuff weaknessBuff,Cell cell,Hero hero,Minion minion) {
-        this.weaknessBuff = weaknessBuff;
+    public void setCasting(Cell cell,Hero hero,Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -91,8 +88,5 @@ public class WeaknessBuff extends Buff {
             minion.incrementHp(unit);
     }
 
-    public WeaknessBuff getWeaknessBuff() {
-        return weaknessBuff;
-    }
 
 }

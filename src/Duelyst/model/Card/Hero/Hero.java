@@ -168,6 +168,9 @@ public abstract class Hero extends Card {
     public void incrementHolyCounter() {
         this.holyCounter++;
     }
+    public void decrementHolyCounter() {
+        this.holyCounter--;
+    }
 
     public void setHolyCounter(int holyCounter) {
         this.holyCounter = holyCounter;

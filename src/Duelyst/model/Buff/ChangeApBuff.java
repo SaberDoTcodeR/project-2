@@ -8,13 +8,11 @@ public class ChangeApBuff extends Buff {
     private int unit;
     private boolean isIncremented;
 
-    private ChangeApBuff changeApBuff;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(ChangeApBuff changeApBuff, Cell cell, Hero hero, Minion minion) {
-        this.changeApBuff = changeApBuff;
+    public void setCasting( Cell cell, Hero hero, Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -90,8 +88,5 @@ public class ChangeApBuff extends Buff {
         }
     }
 
-    public ChangeApBuff getChangeApBuff() {
-        return changeApBuff;
-    }
 
 }

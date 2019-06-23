@@ -3,6 +3,7 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
 
 public class AllAttack extends Spell {
@@ -17,8 +18,8 @@ public class AllAttack extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
-       /* Account account;
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
+        Account account;
         if (battle.getTurn() % 2 == 1)
             account = battle.getSecondPlayer();
         else
@@ -32,15 +33,13 @@ public class AllAttack extends Spell {
                 }
             }
             if (battle.getMap().get(i).get(index).getMinion() != null) {
-                System.out.println(account.getUserName());
-                System.out.println(battle.getMap().get(i).get(index).getMinion().getCardId().toLowerCase());
                 if (battle.getMap().get(i).get(index).getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
-
                     battle.getMap().get(i).get(index).getMinion().decrementHp(6 - battle.getMap().get(i).get(index).getMinion().getHolyCounter());
                     battle.getMap().get(i).get(index).getMinion().deadChecker(battle);
                 }
             }
-        }*/
+        }
+        return ErrorType.SUCCESSFUL_INSERT;
     }
 
     public Spell duplicate() {

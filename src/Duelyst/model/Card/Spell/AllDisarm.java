@@ -2,7 +2,9 @@ package Duelyst.model.Card.Spell;
 
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
+import Duelyst.model.Buff.DisarmBuff;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -19,30 +21,32 @@ public class AllDisarm extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
-      /*  Account account;
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
+        /*Account account;
         if (battle.getTurn() % 2 == 1)
             account = battle.getSecondPlayer();
         else
             account = battle.getFirstPlayer();
         for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
-               *//* if (cell1.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase()) ) {
+                if (cell1.getHero() != null && cell.getHero().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getHero());
-                    disarmBuff.setTurnCounter(0);
-                    disarmBuff.setCasting(disarmBuff, null, cell1.getHero(), null);
+                    disarmBuff.last = 0;
+                    disarmBuff.setCasting(null, cell1.getHero(), null);
                     cell1.getHero().getOwnBuffs().add(disarmBuff);
                 }
                 if (cell1.getMinion() != null && cell.getMinion().getCardId().toLowerCase().contains(account.getUserName().toLowerCase())) {
                     DisarmBuff disarmBuff = new DisarmBuff();
                     disarmBuff.disarm(cell1.getMinion());
-                    disarmBuff.setTurnCounter(0);
-                    disarmBuff.setCasting(disarmBuff, null, null, cell1.getMinion());
+                    disarmBuff.last = 0;
+                    disarmBuff.setCasting(null, null, cell1.getMinion());
                     cell1.getMinion().getOwnBuffs().add(disarmBuff);
-                }*//*
+                }
             }
-        }*/
+        }
+*/
+        return ErrorType.SUCCESSFUL_INSERT;
     }
 
     public Spell duplicate() {

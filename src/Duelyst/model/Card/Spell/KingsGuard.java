@@ -3,9 +3,8 @@ package Duelyst.model.Card.Spell;
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 public class KingsGuard extends Spell {
 
@@ -19,7 +18,7 @@ public class KingsGuard extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
      /*   Cell cellOfOwnHero = battle.getMap().get(0).get(0).getCellOfCard(player.getMainDeck().getHero().get(0), battle);
         ArrayList<Cell> cells = new ArrayList<>();
         if (cellOfOwnHero.getX() < 4)
@@ -46,6 +45,8 @@ public class KingsGuard extends Spell {
                 break;
             }
         }*/
+
+        return null;
     }
 
     @Override

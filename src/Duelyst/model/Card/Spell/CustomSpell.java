@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.Buff;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 
 import java.util.ArrayList;
 
@@ -16,14 +17,12 @@ public class CustomSpell extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
         for (Buff buff : this.buffs) {
-            if (cell.getHero() != null){
-                if (battle.getFirstPlayerInGameCards().contains(cell.getHero())){
-
-                }
-            }
+            buff.setCasting(cell, cell.getHero(), cell.getMinion());
+            buff.castBuff();
         }
+        return ErrorType.SUCCESSFUL_INSERT;
     }
 
     @Override

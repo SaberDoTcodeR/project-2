@@ -4,6 +4,7 @@ import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
 import Duelyst.model.Buff.PoisonBuff;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class AllPoison extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
        /* for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null && !player.getMainDeck().isContain(cell1.getHero())) {
@@ -38,7 +39,9 @@ public class AllPoison extends Spell {
                     cell1.getMinion().getOwnBuffs().add(poisonBuff);
                 }
             }
-        }*/
+        }
+*/
+        return null;
     }
 
     public AllPoison(AllPoison allPoison) {

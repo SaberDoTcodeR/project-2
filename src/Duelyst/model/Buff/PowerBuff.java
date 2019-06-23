@@ -11,13 +11,11 @@ public class PowerBuff extends Buff {
 
     private boolean apOrHp;
 
-    private PowerBuff powerBuff;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(PowerBuff powerBuff,Cell cell,Hero hero,Minion minion) {
-        this.powerBuff = powerBuff;
+    public void setCasting(Cell cell,Hero hero,Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -93,8 +91,5 @@ public class PowerBuff extends Buff {
         }
     }
 
-    public PowerBuff getPowerBuff() {
-        return powerBuff;
-    }
 
 }

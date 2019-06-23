@@ -2,22 +2,26 @@ package Duelyst.Controller;
 
 import Duelyst.View.View;
 import Duelyst.model.Account;
+import Duelyst.model.Card.Card;
+import Duelyst.model.Card.Hero.CustomHero;
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Card.Spell.AllAttack;
 import Duelyst.model.Card.Spell.Spell;
 import Duelyst.model.Item.UsableItem.UsableItem;
 import Duelyst.model.Shop;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.util.ArrayList;
 
@@ -720,11 +724,36 @@ public class ShopController {
             }
         });
         jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                    if (!jfxTextField.getText().equals("") && Account.getLoginAccount().getCollection().findDeck(jfxTextField.getText()) == null) {
-
-                        jfxDialog.close();
-                    } else {
-                        jfxTextField.setId("wrongPassword");
+                    if (Card.getCard(jfxTextField.getText()) == null) {
+                        if (typeBox.getValue().equals("Hero")) {
+                            CustomHero customHero = new CustomHero(jfxTextField.getText(), Integer.parseInt(ap.getText())
+                                    , Integer.parseInt(hp.getText()), Integer.parseInt(costOfCard.getText()), 0, 1,
+                                    new Image("Duelyst/css/unit_gifs/boss_andromeda_breathing.gif"), new AllAttack(), Integer.parseInt(coolDown.getText()), 1);
+                            VBox vBox1 = new VBox();
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                @Override
+                                public void handle(MouseEvent event) {
+                                    if (checkBox.isSelected()) {
+                                        vBox1.setId("boxPendingBoughtStyle");
+                                    } else {
+                                        if (Account.getLoginAccount().getCollection().getHeroes().contains(jfxTextField.getText()))
+                                            vBox1.setId("boxBoughtStyle");
+                                        else
+                                            vBox1.setId("boxNotBoughtStyle");
+                                    }
+                                }
+                            });
+                            ImageView imageView = new ImageView(new Image("Duelyst/css/hero.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            Label label1 = new Label();
+                            label1.setText(jfxTextField.getText());
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            ((HBox)((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+                        }
                     }
 
                 }

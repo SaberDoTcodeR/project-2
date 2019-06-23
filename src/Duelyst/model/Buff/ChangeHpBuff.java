@@ -8,13 +8,11 @@ public class ChangeHpBuff extends Buff {
     private int unit;
     private boolean isIncremented;
 
-    private ChangeHpBuff changeHpBuff;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(ChangeHpBuff changeHpBuff,Cell cell,Hero hero,Minion minion) {
-        this.changeHpBuff = changeHpBuff;
+    public void setCasting(Cell cell,Hero hero,Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -91,7 +89,4 @@ public class ChangeHpBuff extends Buff {
         }
     }
 
-    public ChangeHpBuff getChangeHpBuff() {
-        return changeHpBuff;
-    }
 }

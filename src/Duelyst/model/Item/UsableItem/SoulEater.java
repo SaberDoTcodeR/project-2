@@ -21,7 +21,7 @@ public class SoulEater extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        /*if (activeTime == 2) {
+       /* if (activeTime == 2) {
             Cell insiderCell = getRandomInsiderForce(battle, player);
             if (insiderCell.getHero() != null) {
                 PowerBuff powerBuff = new PowerBuff(1, true);

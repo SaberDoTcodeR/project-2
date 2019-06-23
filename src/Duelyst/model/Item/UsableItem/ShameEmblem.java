@@ -1,7 +1,7 @@
 package Duelyst.model.Item.UsableItem;
 
 import Duelyst.model.Battle.Battle;
-//import Duelyst.model.Buff.HolyBuff;
+import Duelyst.model.Buff.HolyBuff;
 import Duelyst.model.Cell;
 import Duelyst.model.Account;
 
@@ -22,7 +22,7 @@ public class ShameEmblem extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        /*if (activeTime != -1)
+       /* if (activeTime != -1)
             return;
         for (int i = 0; i < 12; i++) {
             HolyBuff holyBuff = new HolyBuff();

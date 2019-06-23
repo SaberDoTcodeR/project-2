@@ -2,16 +2,20 @@ package Duelyst.model.Buff;
 
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
+import Duelyst.model.Cell;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Buff {
-    protected boolean forEnemy;
-    protected int effectValue;
-    protected int delay;
-    protected int last;
+    public boolean forEnemy;
+    public int effectValue;
+    public int delay;
+    public int last;
+
     public abstract void castBuff();
+
+    public abstract void setCasting( Cell cell, Hero hero, Minion minion);
 
     public abstract void dispel(Hero hero);
 

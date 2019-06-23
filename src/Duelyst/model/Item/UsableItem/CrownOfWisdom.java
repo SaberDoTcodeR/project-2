@@ -22,7 +22,7 @@ public class CrownOfWisdom extends UsableItem {
      * */
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        /*if (activeTime != -1)
+    /*    if (activeTime != -1)
             return;
         ManaItemBuff manaItemBuff = new ManaItemBuff(player, 1);
         manaItemBuff.setTurnCounter(2);

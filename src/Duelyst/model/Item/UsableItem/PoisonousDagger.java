@@ -17,7 +17,7 @@ public class PoisonousDagger extends UsableItem {
 
     @Override
     public void applyEffect(Battle battle, Cell cell, Account player, int activeTime) {
-        /*if (activeTime == 3 || activeTime == 6) {
+     /*   if (activeTime == 3 || activeTime == 6) {
             Cell enemyCell = getRandomEnemyForce(battle, player);
             if (enemyCell.getHero() != null) {
                 PoisonBuff poisonBuff = new PoisonBuff();

@@ -2,11 +2,9 @@ package Duelyst.model.Card.Spell;
 
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.PowerBuff;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
-
-import java.util.ArrayList;
 
 public class AllPower extends Spell {
 
@@ -20,7 +18,7 @@ public class AllPower extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
         /*for (ArrayList<Cell> cells : battle.getMap()) {
             for (Cell cell1 : cells) {
                 if (cell1.getHero() != null) {
@@ -43,6 +41,8 @@ public class AllPower extends Spell {
                 }
             }
         }*/
+
+        return null;
     }
 
     public Spell duplicate() {

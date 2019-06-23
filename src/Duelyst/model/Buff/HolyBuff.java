@@ -1,34 +1,22 @@
-
 package Duelyst.model.Buff;
 
 import Duelyst.model.Card.Hero.Hero;
 import Duelyst.model.Card.Minion.Minion;
-import javafx.scene.control.Cell;
+import Duelyst.model.Cell;
+
 
 public class HolyBuff extends Buff {
-    private boolean use = false;
+    private boolean used = false;
 
-    public void holy(Hero hero) {
-        hero.incrementHolyCounter();
+    private Hero hero;
+    private Minion minion;
+    private Cell cell;
+
+    public void setCasting(Cell cell, Hero hero, Minion minion) {
+        this.cell = cell;
+        this.hero = hero;
+        this.minion = minion;
     }
-
-    public void holy(Minion minion) {
-        minion.incrementHolyCounter();
-    }
-
-
-
-        private HolyBuff holyBuff;
-        private Cell cell;
-        private Hero hero;
-        private Minion minion;
-
-        public void setCasting(HolyBuff holyBuff,Cell cell,Hero hero,Minion minion) {
-            this.holyBuff = holyBuff;
-            this.cell = cell;
-            this.hero = hero;
-            this.minion = minion;
-        }
 
     public HolyBuff(int effectValue, int delay, int last) {
         this.effectValue = effectValue;
@@ -37,40 +25,32 @@ public class HolyBuff extends Buff {
         this.forEnemy = false;
     }
 
-    public Cell getCell() {
-        return cell;
-    }
-
-    public Hero getHero() {
-        return hero;
-    }
-
-    public Minion getMinion() {
-        return minion;
-    }
-
     @Override
     public void castBuff() {
-        if (this.hero != null) {
-            holy(this.hero);
-        }
-        if (this.minion != null) {
-            holy(this.minion);
+        if (!used) {
+            if (this.hero != null) {
+                for (int i = 0; i < effectValue; i++)
+                    this.hero.incrementHolyCounter();
+            }
+            if (this.minion != null) {
+                for (int i = 0; i < effectValue; i++)
+                    this.hero.incrementHolyCounter();
+            }
+            used = true;
         }
     }
+
 
     @Override
     public void dispel(Hero hero) {
-        hero.setHolyCounter(0);
+        for (int i = 0; i < effectValue; i++)
+            this.hero.decrementHolyCounter();
     }
 
     @Override
     public void dispel(Minion minion) {
-        minion.setHolyCounter(0);
-    }
-
-    public HolyBuff getHolyBuff() {
-        return holyBuff;
+        for (int i = 0; i < effectValue; i++)
+            this.hero.decrementHolyCounter();
     }
 
 }

@@ -7,13 +7,11 @@ import Duelyst.model.Cell;
 
 public class FiringEffectedCell extends Buff {
 
-    private FiringEffectedCell firingEffectedCell;
     private Cell cell;
     private Hero hero;
     private Minion minion;
 
-    public void setCasting(FiringEffectedCell firingEffectedCell,Cell cell,Hero hero,Minion minion) {
-        this.firingEffectedCell = firingEffectedCell;
+    public void setCasting(Cell cell, Hero hero, Minion minion) {
         this.cell = cell;
         this.hero = hero;
         this.minion = minion;
@@ -60,8 +58,5 @@ public class FiringEffectedCell extends Buff {
         //nothing
     }
 
-    public FiringEffectedCell getFiringEffectedCell() {
-        return firingEffectedCell;
-    }
 
 }

@@ -2,8 +2,8 @@ package Duelyst.model.Card.Spell;
 
 import Duelyst.model.Account;
 import Duelyst.model.Battle.Battle;
-import Duelyst.model.Buff.StunBuff;
 import Duelyst.model.Cell;
+import Duelyst.model.ErrorType;
 import javafx.scene.image.Image;
 
 public class Shock extends Spell {
@@ -18,7 +18,7 @@ public class Shock extends Spell {
     }
 
     @Override
-    public void castSpell(Battle battle, Cell cell, Account player) {
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
        /* if (cell.getMinion() == null && cell.getHero() == null) {
             //request.setError(ErrorType.INVALID_TARGET);
         } else {
@@ -45,6 +45,7 @@ public class Shock extends Spell {
                 }
             }
         }*/
+        return null;
     }
 
     public Spell duplicate() {
