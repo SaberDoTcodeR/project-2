@@ -7,7 +7,7 @@ import Duelyst.model.Buff.StunBuff;
 import Duelyst.model.Cell;
 import javafx.scene.image.Image;
 
-public class ColdGrandma extends Minion {
+public class  ColdGrandma extends Minion {
     public ColdGrandma() {
         super("ColdGrandma", 4, 3, 500, 3, 1, 5);
         super.setTimeOfActivationOfSpecialPower(1);

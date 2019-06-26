@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public abstract class Hero extends Card {
     private static ArrayList<Hero> heroes = new ArrayList<>();
     private int numberOfFlag = 0;
+    private boolean flag = false;
 
     public int getNumberOfFlag() {
         return numberOfFlag;
@@ -92,6 +93,14 @@ public abstract class Hero extends Card {
         this.ap = hero.ap;
         this.hp = hero.hp;
         this.mp = hero.mp;
+        for (int i = 0; i < heroes.size(); i++) {
+            if (heroes.get(i).getName().equals(hero.getName())){
+                flag = true;
+                break;
+            }
+        }
+        if (!flag)
+            heroes.add(hero);
     }
 
     public void setCoolDownTime(int coolDownTime) {
@@ -204,6 +213,4 @@ public abstract class Hero extends Card {
     public Image getImage(){
         return this.cardImage;
     }
-
-
 }

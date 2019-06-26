@@ -27,10 +27,10 @@ import java.util.ArrayList;
 
 public class CollectionController {
     public ArrayList<Deck> myDecks = new ArrayList<>();
-    public boolean[] heroesBought = new boolean[10];
-    public boolean[] itemsBought = new boolean[12];
-    public boolean[] minionsBought = new boolean[40];
-    public boolean[] spellsBought = new boolean[20];
+    public ArrayList<Boolean> heroesBought = new ArrayList<>();
+    public ArrayList<Boolean> itemsBought = new ArrayList<>();
+    public ArrayList<Boolean> minionsBought = new ArrayList<>();
+    public ArrayList<Boolean> spellsBought = new ArrayList<>();
 
     public void setCurrentDeck(String name) {
         for (Deck deck : myDecks) {
@@ -90,7 +90,7 @@ public class CollectionController {
     public VBox hero8Box;
     public VBox hero9Box;
     public VBox hero10Box;
-    public VBox[] heroBoxes = new VBox[10];
+    public ArrayList<VBox> heroBoxes = new ArrayList<>();
 
 
     public VBox spell1Box;
@@ -113,7 +113,7 @@ public class CollectionController {
     public VBox spell18Box;
     public VBox spell19Box;
     public VBox spell20Box;
-    public VBox[] spellBoxes = new VBox[20];
+    public ArrayList<VBox> spellBoxes = new ArrayList<>();
 
     public VBox minion1Box;
     public VBox minion2Box;
@@ -155,7 +155,7 @@ public class CollectionController {
     public VBox minion38Box;
     public VBox minion39Box;
     public VBox minion40Box;
-    public VBox[] minionBoxes = new VBox[40];
+    public ArrayList<VBox> minionBoxes = new ArrayList<>();
 
     public VBox item1Box;
     public VBox item2Box;
@@ -168,7 +168,7 @@ public class CollectionController {
     public VBox item9Box;
     public VBox item10Box;
     public VBox item11Box;
-    public VBox[] itemBoxes = new VBox[11];
+    public ArrayList<VBox> itemBoxes = new ArrayList<>();
 
     @FXML
     private CheckBox hero1;
@@ -355,149 +355,186 @@ public class CollectionController {
         }
 
 
-        heroBoxes[0] = hero1Box;
-        heroBoxes[1] = hero2Box;
-        heroBoxes[2] = hero3Box;
-        heroBoxes[3] = hero4Box;
-        heroBoxes[4] = hero5Box;
-        heroBoxes[5] = hero6Box;
-        heroBoxes[6] = hero7Box;
-        heroBoxes[7] = hero8Box;
-        heroBoxes[8] = hero9Box;
-        heroBoxes[9] = hero10Box;
+        heroBoxes.add(hero1Box);
+        heroBoxes.add(hero2Box);
+        heroBoxes.add(hero3Box);
+        heroBoxes.add(hero4Box);
+        heroBoxes.add(hero5Box);
+        heroBoxes.add(hero6Box);
+        heroBoxes.add(hero7Box);
+        heroBoxes.add(hero8Box);
+        heroBoxes.add(hero9Box);
+        heroBoxes.add(hero10Box);
 
-        itemBoxes[0] = item1Box;
-        itemBoxes[1] = item2Box;
-        itemBoxes[2] = item3Box;
-        itemBoxes[3] = item4Box;
-        itemBoxes[4] = item5Box;
-        itemBoxes[5] = item6Box;
-        itemBoxes[6] = item7Box;
-        itemBoxes[7] = item8Box;
-        itemBoxes[8] = item9Box;
-        itemBoxes[9] = item10Box;
-        itemBoxes[10] = item11Box;
-
-
-        spellBoxes[0] = spell1Box;
-        spellBoxes[1] = spell2Box;
-        spellBoxes[2] = spell3Box;
-        spellBoxes[3] = spell4Box;
-        spellBoxes[4] = spell5Box;
-        spellBoxes[5] = spell6Box;
-        spellBoxes[6] = spell7Box;
-        spellBoxes[7] = spell8Box;
-        spellBoxes[8] = spell9Box;
-        spellBoxes[9] = spell10Box;
-        spellBoxes[10] = spell11Box;
-        spellBoxes[11] = spell12Box;
-        spellBoxes[12] = spell13Box;
-        spellBoxes[13] = spell14Box;
-        spellBoxes[14] = spell15Box;
-        spellBoxes[15] = spell16Box;
-        spellBoxes[16] = spell17Box;
-        spellBoxes[17] = spell18Box;
-        spellBoxes[18] = spell19Box;
-        spellBoxes[19] = spell20Box;
-
-        minionBoxes[0] = minion1Box;
-        minionBoxes[1] = minion2Box;
-        minionBoxes[2] = minion3Box;
-        minionBoxes[3] = minion4Box;
-        minionBoxes[4] = minion5Box;
-        minionBoxes[5] = minion6Box;
-        minionBoxes[6] = minion7Box;
-        minionBoxes[7] = minion8Box;
-        minionBoxes[8] = minion9Box;
-        minionBoxes[9] = minion10Box;
-        minionBoxes[10] = minion11Box;
-        minionBoxes[11] = minion12Box;
-        minionBoxes[12] = minion13Box;
-        minionBoxes[13] = minion14Box;
-        minionBoxes[14] = minion15Box;
-        minionBoxes[15] = minion16Box;
-        minionBoxes[16] = minion17Box;
-        minionBoxes[17] = minion18Box;
-        minionBoxes[18] = minion19Box;
-        minionBoxes[19] = minion20Box;
-        minionBoxes[20] = minion21Box;
-        minionBoxes[21] = minion22Box;
-        minionBoxes[22] = minion23Box;
-        minionBoxes[23] = minion24Box;
-        minionBoxes[24] = minion25Box;
-        minionBoxes[25] = minion26Box;
-        minionBoxes[26] = minion27Box;
-        minionBoxes[27] = minion28Box;
-        minionBoxes[28] = minion29Box;
-        minionBoxes[29] = minion30Box;
-        minionBoxes[30] = minion31Box;
-        minionBoxes[31] = minion32Box;
-        minionBoxes[32] = minion33Box;
-        minionBoxes[33] = minion34Box;
-        minionBoxes[34] = minion35Box;
-        minionBoxes[35] = minion36Box;
-        minionBoxes[36] = minion37Box;
-        minionBoxes[37] = minion38Box;
-        minionBoxes[38] = minion39Box;
-        minionBoxes[39] = minion40Box;
+        itemBoxes.add(item1Box);
+        itemBoxes.add(item2Box);
+        itemBoxes.add(item3Box);
+        itemBoxes.add(item4Box);
+        itemBoxes.add(item5Box);
+        itemBoxes.add(item6Box);
+        itemBoxes.add(item7Box);
+        itemBoxes.add(item8Box);
+        itemBoxes.add(item9Box);
+        itemBoxes.add(item10Box);
+        itemBoxes.add(item11Box);
 
 
-        for (int i = 0, x = 0; i < 10; i++, x++) {
+        spellBoxes.add(spell1Box);
+        spellBoxes.add(spell2Box);
+        spellBoxes.add(spell3Box);
+        spellBoxes.add(spell4Box);
+        spellBoxes.add(spell5Box);
+        spellBoxes.add(spell6Box);
+        spellBoxes.add(spell7Box);
+        spellBoxes.add(spell8Box);
+        spellBoxes.add(spell9Box);
+        spellBoxes.add(spell10Box);
+        spellBoxes.add(spell11Box);
+        spellBoxes.add(spell12Box);
+        spellBoxes.add(spell13Box);
+        spellBoxes.add(spell14Box);
+        spellBoxes.add(spell15Box);
+        spellBoxes.add(spell16Box);
+        spellBoxes.add(spell17Box);
+        spellBoxes.add(spell18Box);
+        spellBoxes.add(spell19Box);
+        spellBoxes.add(spell20Box);
+
+        minionBoxes.add(minion1Box);
+        minionBoxes.add(minion2Box);
+        minionBoxes.add(minion3Box);
+        minionBoxes.add(minion4Box);
+        minionBoxes.add(minion5Box);
+        minionBoxes.add(minion6Box);
+        minionBoxes.add(minion7Box);
+        minionBoxes.add(minion8Box);
+        minionBoxes.add(minion9Box);
+        minionBoxes.add(minion10Box);
+        minionBoxes.add(minion11Box);
+        minionBoxes.add(minion12Box);
+        minionBoxes.add(minion13Box);
+        minionBoxes.add(minion14Box);
+        minionBoxes.add(minion15Box);
+        minionBoxes.add(minion16Box);
+        minionBoxes.add(minion17Box);
+        minionBoxes.add(minion18Box);
+        minionBoxes.add(minion19Box);
+        minionBoxes.add(minion20Box);
+        minionBoxes.add(minion21Box);
+        minionBoxes.add(minion22Box);
+        minionBoxes.add(minion23Box);
+        minionBoxes.add(minion24Box);
+        minionBoxes.add(minion25Box);
+        minionBoxes.add(minion26Box);
+        minionBoxes.add(minion27Box);
+        minionBoxes.add(minion28Box);
+        minionBoxes.add(minion29Box);
+        minionBoxes.add(minion30Box);
+        minionBoxes.add(minion31Box);
+        minionBoxes.add(minion32Box);
+        minionBoxes.add(minion33Box);
+        minionBoxes.add(minion34Box);
+        minionBoxes.add(minion35Box);
+        minionBoxes.add(minion36Box);
+        minionBoxes.add(minion37Box);
+        minionBoxes.add(minion38Box);
+        minionBoxes.add(minion39Box);
+        minionBoxes.add(minion40Box);
+
+        for (int i = 0; i < heroBoxes.size(); i++) {
+            heroesBought.add(false);
+        }
+        for (int i = 0; i < itemBoxes.size(); i++) {
+            itemsBought.add(false);
+        }
+        for (int i = 0; i < minionBoxes.size(); i++) {
+            minionsBought.add(false);
+        }
+        for (int i = 0; i < spellBoxes.size(); i++) {
+            spellsBought.add(false);
+        }
+        if (heroBoxes.size() == 10 && ShopController.createdHeroes.size() != 0) {
+            for (int i = 0; i < ShopController.createdHeroes.size(); i++) {
+                ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(ShopController.createdHeroes.get(i));
+                heroBoxes.add(ShopController.createdHeroes.get(i));
+                heroesBought.add(false);
+            }
+        }
+        if (minionBoxes.size() == 40 && ShopController.createdMinions.size() != 0) {
+            for (int i = 0; i < ShopController.createdMinions.size(); i++) {
+                ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(ShopController.createdMinions.get(i));
+                minionBoxes.add(ShopController.createdMinions.get(i));
+                minionsBought.add(false);
+            }
+        }
+        if (spellBoxes.size() == 20 && ShopController.createdSpells.size() != 0) {
+            for (int i = 0; i < ShopController.createdSpells.size(); i++) {
+                ((HBox) ((AnchorPane) spells.getContent()).getChildren().get(0)).getChildren().add(ShopController.createdSpells.get(i));
+                spellBoxes.add(ShopController.createdSpells.get(i));
+                spellsBought.add(false);
+            }
+        }
+
+        for (int i = 0, x = 0; i < heroBoxes.size(); i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (heroBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                heroesBought[i] = true;
+                    (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                heroesBought.set(i, true);
 
             } else {
                 heroHBox.getChildren().remove(x);
                 x--;
             }
-            String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
-
-            ((Label) (heroBoxes[i].getChildren().get(2))).setText(
-                    ((Label) (heroBoxes[i].getChildren().get(2))).getText() + "\n" + heroInfo);
-            ((Label) (heroBoxes[i].getChildren().get(2))).setWrapText(true);
+            if (i < 10) {
+                String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
+                ((Label) (heroBoxes.get(i).getChildren().get(2))).setText(
+                        ((Label) (heroBoxes.get(i).getChildren().get(2))).getText() + "\n" + heroInfo);
+                ((Label) (heroBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            }
         }
-        for (int i = 0, x = 0; i < 11; i++, x++) {
+        for (int i = 0, x = 0; i < itemBoxes.size(); i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (itemBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                itemsBought[i] = true;
+                    (((Label) (itemBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                itemsBought.set(i, true);
             } else {
                 itemHBox.getChildren().remove(x);
                 x--;
             }
-            String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
-
-            ((Label) (itemBoxes[i].getChildren().get(2))).setText(
-                    ((Label) (itemBoxes[i].getChildren().get(2))).getText() + "\n" + itemInfo);
-            ((Label) (itemBoxes[i].getChildren().get(2))).setWrapText(true);
+            if (i < 11) {
+                String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
+                ((Label) (itemBoxes.get(i).getChildren().get(2))).setText(
+                        ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo);
+                ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            }
         }
         for (int i = 0, x = 0; i < 40; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (minionBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                minionsBought[i] = true;
+                    (((Label) (minionBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                minionsBought.set(i, true);
             } else {
                 minionHBox.getChildren().remove(x);
                 x--;
             }
-            String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
-
-            ((Label) (minionBoxes[i].getChildren().get(2))).setText(
-                    ((Label) (minionBoxes[i].getChildren().get(2))).getText() + "\n" + minionInfo);
-            ((Label) (minionBoxes[i].getChildren().get(2))).setWrapText(true);
+            if (i < 40) {
+                String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
+                ((Label) (minionBoxes.get(i).getChildren().get(2))).setText(
+                        ((Label) (minionBoxes.get(i).getChildren().get(2))).getText() + "\n" + minionInfo);
+                ((Label) (minionBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            }
         }
         for (int i = 0, x = 0; i < 20; i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (spellBoxes[i].getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                spellsBought[i] = true;
+                    (((Label) (spellBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                spellsBought.set(i, true);
             } else {
                 spellHBox.getChildren().remove(x);
                 x--;
             }
-            String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
-
-            ((Label) (spellBoxes[i].getChildren().get(2))).setText(
-                    ((Label) (spellBoxes[i].getChildren().get(2))).getText() + "\n" + spellInfo);
-            ((Label) (spellBoxes[i].getChildren().get(2))).setWrapText(true);
+            if (i < 20) {
+                String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
+                ((Label) (spellBoxes.get(i).getChildren().get(2))).setText(
+                        ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo);
+                ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            }
         }
     }
 
@@ -614,7 +651,7 @@ public class CollectionController {
         if (hero1.isSelected()) {
             hero1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[0])
+            if (heroesBought.get(0))
                 hero1Box.setId("boxBoughtStyle");
             else
                 hero1Box.setId("boxNotBoughtStyle");
@@ -626,7 +663,7 @@ public class CollectionController {
         if (hero2.isSelected()) {
             hero2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[1])
+            if (heroesBought.get(1))
                 hero2Box.setId("boxBoughtStyle");
             else
                 hero2Box.setId("boxNotBoughtStyle");
@@ -638,7 +675,7 @@ public class CollectionController {
         if (hero3.isSelected()) {
             hero3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[2])
+            if (heroesBought.get(2))
                 hero3Box.setId("boxBoughtStyle");
             else
                 hero3Box.setId("boxNotBoughtStyle");
@@ -650,7 +687,7 @@ public class CollectionController {
         if (hero4.isSelected()) {
             hero4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[3])
+            if (heroesBought.get(3))
                 hero4Box.setId("boxBoughtStyle");
             else
                 hero4Box.setId("boxNotBoughtStyle");
@@ -662,7 +699,7 @@ public class CollectionController {
         if (hero5.isSelected()) {
             hero5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[4])
+            if (heroesBought.get(4))
                 hero5Box.setId("boxBoughtStyle");
             else
                 hero5Box.setId("boxNotBoughtStyle");
@@ -674,7 +711,7 @@ public class CollectionController {
         if (hero6.isSelected()) {
             hero6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[5])
+            if (heroesBought.get(5))
                 hero6Box.setId("boxBoughtStyle");
             else
                 hero6Box.setId("boxNotBoughtStyle");
@@ -686,7 +723,7 @@ public class CollectionController {
         if (hero7.isSelected()) {
             hero7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[6])
+            if (heroesBought.get(6))
                 hero7Box.setId("boxBoughtStyle");
             else
                 hero7Box.setId("boxNotBoughtStyle");
@@ -698,7 +735,7 @@ public class CollectionController {
         if (hero8.isSelected()) {
             hero8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[7])
+            if (heroesBought.get(7))
                 hero8Box.setId("boxBoughtStyle");
             else
                 hero8Box.setId("boxNotBoughtStyle");
@@ -710,7 +747,7 @@ public class CollectionController {
         if (hero9.isSelected()) {
             hero9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[8])
+            if (heroesBought.get(8))
                 hero9Box.setId("boxBoughtStyle");
             else
                 hero9Box.setId("boxNotBoughtStyle");
@@ -722,7 +759,7 @@ public class CollectionController {
         if (hero10.isSelected()) {
             hero10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[9])
+            if (heroesBought.get(9))
                 hero10Box.setId("boxBoughtStyle");
             else
                 hero10Box.setId("boxNotBoughtStyle");
@@ -734,7 +771,7 @@ public class CollectionController {
         if (spell1.isSelected()) {
             spell1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[0])
+            if (spellsBought.get(0))
                 spell1Box.setId("boxBoughtStyle");
             else
                 spell1Box.setId("boxNotBoughtStyle");
@@ -746,7 +783,7 @@ public class CollectionController {
         if (spell2.isSelected()) {
             spell2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[1])
+            if (spellsBought.get(1))
                 spell2Box.setId("boxBoughtStyle");
             else
                 spell2Box.setId("boxNotBoughtStyle");
@@ -758,7 +795,7 @@ public class CollectionController {
         if (spell3.isSelected()) {
             spell3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[2])
+            if (spellsBought.get(2))
                 spell3Box.setId("boxBoughtStyle");
             else
                 spell3Box.setId("boxNotBoughtStyle");
@@ -770,7 +807,7 @@ public class CollectionController {
         if (spell4.isSelected()) {
             spell4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[3])
+            if (spellsBought.get(3))
                 spell4Box.setId("boxBoughtStyle");
             else
                 spell4Box.setId("boxNotBoughtStyle");
@@ -782,7 +819,7 @@ public class CollectionController {
         if (spell5.isSelected()) {
             spell5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[4])
+            if (spellsBought.get(4))
                 spell5Box.setId("boxBoughtStyle");
             else
                 spell5Box.setId("boxNotBoughtStyle");
@@ -794,7 +831,7 @@ public class CollectionController {
         if (spell6.isSelected()) {
             spell6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[5])
+            if (spellsBought.get(5))
                 spell6Box.setId("boxBoughtStyle");
             else
                 spell6Box.setId("boxNotBoughtStyle");
@@ -806,7 +843,7 @@ public class CollectionController {
         if (spell7.isSelected()) {
             spell7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[6])
+            if (spellsBought.get(6))
                 spell7Box.setId("boxBoughtStyle");
             else
                 spell7Box.setId("boxNotBoughtStyle");
@@ -818,7 +855,7 @@ public class CollectionController {
         if (spell8.isSelected()) {
             spell8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[7])
+            if (spellsBought.get(7))
                 spell8Box.setId("boxBoughtStyle");
             else
                 spell8Box.setId("boxNotBoughtStyle");
@@ -830,7 +867,7 @@ public class CollectionController {
         if (spell9.isSelected()) {
             spell9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[8])
+            if (spellsBought.get(8))
                 spell9Box.setId("boxBoughtStyle");
             else
                 spell9Box.setId("boxNotBoughtStyle");
@@ -842,7 +879,7 @@ public class CollectionController {
         if (spell10.isSelected()) {
             spell10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[9])
+            if (spellsBought.get(9))
                 spell10Box.setId("boxBoughtStyle");
             else
                 spell10Box.setId("boxNotBoughtStyle");
@@ -854,7 +891,7 @@ public class CollectionController {
         if (spell11.isSelected()) {
             spell11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[10])
+            if (spellsBought.get(10))
                 spell11Box.setId("boxBoughtStyle");
             else
                 spell11Box.setId("boxNotBoughtStyle");
@@ -866,7 +903,7 @@ public class CollectionController {
         if (spell12.isSelected()) {
             spell12Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[11])
+            if (spellsBought.get(11))
                 spell12Box.setId("boxBoughtStyle");
             else
                 spell12Box.setId("boxNotBoughtStyle");
@@ -878,7 +915,7 @@ public class CollectionController {
         if (spell13.isSelected()) {
             spell13Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[12])
+            if (spellsBought.get(12))
                 spell13Box.setId("boxBoughtStyle");
             else
                 spell13Box.setId("boxNotBoughtStyle");
@@ -890,7 +927,7 @@ public class CollectionController {
         if (spell14.isSelected()) {
             spell14Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[13])
+            if (spellsBought.get(13))
                 spell14Box.setId("boxBoughtStyle");
             else
                 spell14Box.setId("boxNotBoughtStyle");
@@ -902,7 +939,7 @@ public class CollectionController {
         if (spell15.isSelected()) {
             spell15Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[14])
+            if (spellsBought.get(14))
                 spell15Box.setId("boxBoughtStyle");
             else
                 spell15Box.setId("boxNotBoughtStyle");
@@ -914,7 +951,7 @@ public class CollectionController {
         if (spell16.isSelected()) {
             spell16Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[15])
+            if (spellsBought.get(15))
                 spell16Box.setId("boxBoughtStyle");
             else
                 spell16Box.setId("boxNotBoughtStyle");
@@ -926,7 +963,7 @@ public class CollectionController {
         if (spell17.isSelected()) {
             spell17Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[16])
+            if (spellsBought.get(16))
                 spell17Box.setId("boxBoughtStyle");
             else
                 spell17Box.setId("boxNotBoughtStyle");
@@ -938,7 +975,7 @@ public class CollectionController {
         if (spell18.isSelected()) {
             spell18Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[17])
+            if (spellsBought.get(17))
                 spell18Box.setId("boxBoughtStyle");
             else
                 spell18Box.setId("boxNotBoughtStyle");
@@ -950,7 +987,7 @@ public class CollectionController {
         if (spell19.isSelected()) {
             spell19Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[18])
+            if (spellsBought.get(18))
                 spell19Box.setId("boxBoughtStyle");
             else
                 spell19Box.setId("boxNotBoughtStyle");
@@ -962,7 +999,7 @@ public class CollectionController {
         if (spell20.isSelected()) {
             spell20Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[19])
+            if (spellsBought.get(19))
                 spell20Box.setId("boxBoughtStyle");
             else
                 spell20Box.setId("boxNotBoughtStyle");
@@ -974,7 +1011,7 @@ public class CollectionController {
         if (minion1.isSelected()) {
             minion1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[0])
+            if (minionsBought.get(0))
                 minion1Box.setId("boxBoughtStyle");
             else
                 minion1Box.setId("boxNotBoughtStyle");
@@ -986,7 +1023,7 @@ public class CollectionController {
         if (minion2.isSelected()) {
             minion2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[1])
+            if (minionsBought.get(1))
                 minion2Box.setId("boxBoughtStyle");
             else
                 minion2Box.setId("boxNotBoughtStyle");
@@ -998,7 +1035,7 @@ public class CollectionController {
         if (minion3.isSelected()) {
             minion3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[2])
+            if (minionsBought.get(2))
                 minion3Box.setId("boxBoughtStyle");
             else
                 minion3Box.setId("boxNotBoughtStyle");
@@ -1010,7 +1047,7 @@ public class CollectionController {
         if (minion4.isSelected()) {
             minion4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[3])
+            if (minionsBought.get(3))
                 minion4Box.setId("boxBoughtStyle");
             else
                 minion4Box.setId("boxNotBoughtStyle");
@@ -1022,7 +1059,7 @@ public class CollectionController {
         if (minion5.isSelected()) {
             minion5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[4])
+            if (minionsBought.get(4))
                 minion5Box.setId("boxBoughtStyle");
             else
                 minion5Box.setId("boxNotBoughtStyle");
@@ -1034,7 +1071,7 @@ public class CollectionController {
         if (minion6.isSelected()) {
             minion6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[5])
+            if (minionsBought.get(5))
                 minion6Box.setId("boxBoughtStyle");
             else
                 minion6Box.setId("boxNotBoughtStyle");
@@ -1046,7 +1083,7 @@ public class CollectionController {
         if (minion7.isSelected()) {
             minion7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[6])
+            if (minionsBought.get(6))
                 minion7Box.setId("boxBoughtStyle");
             else
                 minion7Box.setId("boxNotBoughtStyle");
@@ -1058,7 +1095,7 @@ public class CollectionController {
         if (minion8.isSelected()) {
             minion8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[7])
+            if (minionsBought.get(7))
                 minion8Box.setId("boxBoughtStyle");
             else
                 minion8Box.setId("boxNotBoughtStyle");
@@ -1070,7 +1107,7 @@ public class CollectionController {
         if (minion9.isSelected()) {
             minion9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[8])
+            if (minionsBought.get(8))
                 minion9Box.setId("boxBoughtStyle");
             else
                 minion9Box.setId("boxNotBoughtStyle");
@@ -1082,7 +1119,7 @@ public class CollectionController {
         if (minion10.isSelected()) {
             minion10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[9])
+            if (minionsBought.get(9))
                 minion10Box.setId("boxBoughtStyle");
             else
                 minion10Box.setId("boxNotBoughtStyle");
@@ -1094,7 +1131,7 @@ public class CollectionController {
         if (minion11.isSelected()) {
             minion11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[10])
+            if (minionsBought.get(10))
                 minion11Box.setId("boxBoughtStyle");
             else
                 minion11Box.setId("boxNotBoughtStyle");
@@ -1106,7 +1143,7 @@ public class CollectionController {
         if (minion12.isSelected()) {
             minion12Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[11])
+            if (minionsBought.get(11))
                 minion12Box.setId("boxBoughtStyle");
             else
                 minion12Box.setId("boxNotBoughtStyle");
@@ -1118,7 +1155,7 @@ public class CollectionController {
         if (minion13.isSelected()) {
             minion13Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[12])
+            if (minionsBought.get(12))
                 minion13Box.setId("boxBoughtStyle");
             else
                 minion13Box.setId("boxNotBoughtStyle");
@@ -1130,7 +1167,7 @@ public class CollectionController {
         if (minion14.isSelected()) {
             minion14Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[13])
+            if (minionsBought.get(13))
                 minion14Box.setId("boxBoughtStyle");
             else
                 minion14Box.setId("boxNotBoughtStyle");
@@ -1142,7 +1179,7 @@ public class CollectionController {
         if (minion15.isSelected()) {
             minion15Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[14])
+            if (minionsBought.get(14))
                 minion15Box.setId("boxBoughtStyle");
             else
                 minion15Box.setId("boxNotBoughtStyle");
@@ -1154,7 +1191,7 @@ public class CollectionController {
         if (minion16.isSelected()) {
             minion16Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[15])
+            if (minionsBought.get(15))
                 minion16Box.setId("boxBoughtStyle");
             else
                 minion16Box.setId("boxNotBoughtStyle");
@@ -1166,7 +1203,7 @@ public class CollectionController {
         if (minion17.isSelected()) {
             minion17Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[16])
+            if (minionsBought.get(16))
                 minion17Box.setId("boxBoughtStyle");
             else
                 minion17Box.setId("boxNotBoughtStyle");
@@ -1178,7 +1215,7 @@ public class CollectionController {
         if (minion18.isSelected()) {
             minion18Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[17])
+            if (minionsBought.get(17))
                 minion18Box.setId("boxBoughtStyle");
             else
                 minion18Box.setId("boxNotBoughtStyle");
@@ -1190,7 +1227,7 @@ public class CollectionController {
         if (minion19.isSelected()) {
             minion19Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[18])
+            if (minionsBought.get(18))
                 minion19Box.setId("boxBoughtStyle");
             else
                 minion19Box.setId("boxNotBoughtStyle");
@@ -1202,7 +1239,7 @@ public class CollectionController {
         if (minion20.isSelected()) {
             minion20Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[19])
+            if (minionsBought.get(19))
                 minion20Box.setId("boxBoughtStyle");
             else
                 minion20Box.setId("boxNotBoughtStyle");
@@ -1214,7 +1251,7 @@ public class CollectionController {
         if (minion21.isSelected()) {
             minion21Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[20])
+            if (minionsBought.get(20))
                 minion21Box.setId("boxBoughtStyle");
             else
                 minion21Box.setId("boxNotBoughtStyle");
@@ -1226,7 +1263,7 @@ public class CollectionController {
         if (minion22.isSelected()) {
             minion22Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[21])
+            if (minionsBought.get(21))
                 minion22Box.setId("boxBoughtStyle");
             else
                 minion22Box.setId("boxNotBoughtStyle");
@@ -1238,7 +1275,7 @@ public class CollectionController {
         if (minion23.isSelected()) {
             minion23Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[22])
+            if (minionsBought.get(22))
                 minion23Box.setId("boxBoughtStyle");
             else
                 minion23Box.setId("boxNotBoughtStyle");
@@ -1250,7 +1287,7 @@ public class CollectionController {
         if (minion24.isSelected()) {
             minion24Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[23])
+            if (minionsBought.get(23))
                 minion24Box.setId("boxBoughtStyle");
             else
                 minion24Box.setId("boxNotBoughtStyle");
@@ -1262,7 +1299,7 @@ public class CollectionController {
         if (minion25.isSelected()) {
             minion25Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[24])
+            if (minionsBought.get(24))
                 minion25Box.setId("boxBoughtStyle");
             else
                 minion25Box.setId("boxNotBoughtStyle");
@@ -1274,7 +1311,7 @@ public class CollectionController {
         if (minion26.isSelected()) {
             minion26Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[25])
+            if (minionsBought.get(25))
                 minion26Box.setId("boxBoughtStyle");
             else
                 minion26Box.setId("boxNotBoughtStyle");
@@ -1286,7 +1323,7 @@ public class CollectionController {
         if (minion27.isSelected()) {
             minion27Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[26])
+            if (minionsBought.get(26))
                 minion27Box.setId("boxBoughtStyle");
             else
                 minion27Box.setId("boxNotBoughtStyle");
@@ -1298,7 +1335,7 @@ public class CollectionController {
         if (minion28.isSelected()) {
             minion28Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[27])
+            if (minionsBought.get(27))
                 minion28Box.setId("boxBoughtStyle");
             else
                 minion28Box.setId("boxNotBoughtStyle");
@@ -1310,7 +1347,7 @@ public class CollectionController {
         if (minion29.isSelected()) {
             minion29Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[28])
+            if (minionsBought.get(28))
                 minion29Box.setId("boxBoughtStyle");
             else
                 minion29Box.setId("boxNotBoughtStyle");
@@ -1322,7 +1359,7 @@ public class CollectionController {
         if (minion30.isSelected()) {
             minion30Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[29])
+            if (minionsBought.get(29))
                 minion30Box.setId("boxBoughtStyle");
             else
                 minion30Box.setId("boxNotBoughtStyle");
@@ -1334,7 +1371,7 @@ public class CollectionController {
         if (minion31.isSelected()) {
             minion31Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[30])
+            if (minionsBought.get(30))
                 minion31Box.setId("boxBoughtStyle");
             else
                 minion31Box.setId("boxNotBoughtStyle");
@@ -1346,7 +1383,7 @@ public class CollectionController {
         if (minion32.isSelected()) {
             minion32Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[31])
+            if (minionsBought.get(31))
                 minion32Box.setId("boxBoughtStyle");
             else
                 minion32Box.setId("boxNotBoughtStyle");
@@ -1358,7 +1395,7 @@ public class CollectionController {
         if (minion33.isSelected()) {
             minion33Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[32])
+            if (minionsBought.get(32))
                 minion33Box.setId("boxBoughtStyle");
             else
                 minion33Box.setId("boxNotBoughtStyle");
@@ -1370,7 +1407,7 @@ public class CollectionController {
         if (minion34.isSelected()) {
             minion34Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[33])
+            if (minionsBought.get(33))
                 minion34Box.setId("boxBoughtStyle");
             else
                 minion34Box.setId("boxNotBoughtStyle");
@@ -1382,7 +1419,7 @@ public class CollectionController {
         if (minion35.isSelected()) {
             minion35Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[34])
+            if (minionsBought.get(34))
                 minion35Box.setId("boxBoughtStyle");
             else
                 minion35Box.setId("boxNotBoughtStyle");
@@ -1394,7 +1431,7 @@ public class CollectionController {
         if (minion36.isSelected()) {
             minion36Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[35])
+            if (minionsBought.get(35))
                 minion36Box.setId("boxBoughtStyle");
             else
                 minion36Box.setId("boxNotBoughtStyle");
@@ -1406,7 +1443,7 @@ public class CollectionController {
         if (minion37.isSelected()) {
             minion37Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[36])
+            if (minionsBought.get(36))
                 minion37Box.setId("boxBoughtStyle");
             else
                 minion37Box.setId("boxNotBoughtStyle");
@@ -1418,7 +1455,7 @@ public class CollectionController {
         if (minion38.isSelected()) {
             minion38Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[37])
+            if (minionsBought.get(37))
                 minion38Box.setId("boxBoughtStyle");
             else
                 minion38Box.setId("boxNotBoughtStyle");
@@ -1430,7 +1467,7 @@ public class CollectionController {
         if (minion39.isSelected()) {
             minion39Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[38])
+            if (minionsBought.get(38))
                 minion39Box.setId("boxBoughtStyle");
             else
                 minion39Box.setId("boxNotBoughtStyle");
@@ -1439,10 +1476,10 @@ public class CollectionController {
 
     public void minion40BoxClicked() {
         minion40.setSelected(!minion40.isSelected());
-        if (minion40.isSelected()) {
-            minion40Box.setId("boxPendingBoughtStyle");
+        if (minion30.isSelected()) {
+            minion30Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[39])
+            if (minionsBought.get(39))
                 minion40Box.setId("boxBoughtStyle");
             else
                 minion40Box.setId("boxNotBoughtStyle");
@@ -1454,7 +1491,7 @@ public class CollectionController {
         if (item1.isSelected()) {
             item1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[0])
+            if (itemsBought.get(0))
                 item1Box.setId("boxBoughtStyle");
             else
                 item1Box.setId("boxNotBoughtStyle");
@@ -1466,7 +1503,7 @@ public class CollectionController {
         if (item2.isSelected()) {
             item2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[1])
+            if (itemsBought.get(1))
                 item2Box.setId("boxBoughtStyle");
             else
                 item2Box.setId("boxNotBoughtStyle");
@@ -1478,7 +1515,7 @@ public class CollectionController {
         if (item3.isSelected()) {
             item3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[2])
+            if (itemsBought.get(2))
                 item3Box.setId("boxBoughtStyle");
             else
                 item3Box.setId("boxNotBoughtStyle");
@@ -1490,7 +1527,7 @@ public class CollectionController {
         if (item4.isSelected()) {
             item4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[3])
+            if (itemsBought.get(3))
                 item4Box.setId("boxBoughtStyle");
             else
                 item4Box.setId("boxNotBoughtStyle");
@@ -1502,7 +1539,7 @@ public class CollectionController {
         if (item5.isSelected()) {
             item5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[4])
+            if (itemsBought.get(4))
                 item5Box.setId("boxBoughtStyle");
             else
                 item5Box.setId("boxNotBoughtStyle");
@@ -1514,7 +1551,7 @@ public class CollectionController {
         if (item6.isSelected()) {
             item6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[5])
+            if (itemsBought.get(5))
                 item6Box.setId("boxBoughtStyle");
             else
                 item6Box.setId("boxNotBoughtStyle");
@@ -1526,7 +1563,7 @@ public class CollectionController {
         if (item7.isSelected()) {
             item7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[6])
+            if (itemsBought.get(6))
                 item7Box.setId("boxBoughtStyle");
             else
                 item7Box.setId("boxNotBoughtStyle");
@@ -1538,7 +1575,7 @@ public class CollectionController {
         if (item8.isSelected()) {
             item8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[7])
+            if (itemsBought.get(7))
                 item8Box.setId("boxBoughtStyle");
             else
                 item8Box.setId("boxNotBoughtStyle");
@@ -1550,7 +1587,7 @@ public class CollectionController {
         if (item9.isSelected()) {
             item9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[8])
+            if (itemsBought.get(8))
                 item9Box.setId("boxBoughtStyle");
             else
                 item9Box.setId("boxNotBoughtStyle");
@@ -1562,7 +1599,7 @@ public class CollectionController {
         if (item10.isSelected()) {
             item10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[9])
+            if (itemsBought.get(9))
                 item10Box.setId("boxBoughtStyle");
             else
                 item10Box.setId("boxNotBoughtStyle");
@@ -1574,7 +1611,7 @@ public class CollectionController {
         if (item11.isSelected()) {
             item11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[10])
+            if (itemsBought.get(10))
                 item11Box.setId("boxBoughtStyle");
             else
                 item11Box.setId("boxNotBoughtStyle");
@@ -1586,7 +1623,7 @@ public class CollectionController {
         if (hero1.isSelected()) {
             hero1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[0])
+            if (heroesBought.get(0))
                 hero1Box.setId("boxBoughtStyle");
             else
                 hero1Box.setId("boxNotBoughtStyle");
@@ -1597,7 +1634,7 @@ public class CollectionController {
         if (hero2.isSelected()) {
             hero2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[1])
+            if (heroesBought.get(1))
                 hero2Box.setId("boxBoughtStyle");
             else
                 hero2Box.setId("boxNotBoughtStyle");
@@ -1608,7 +1645,7 @@ public class CollectionController {
         if (hero3.isSelected()) {
             hero3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[2])
+            if (heroesBought.get(2))
                 hero3Box.setId("boxBoughtStyle");
             else
                 hero3Box.setId("boxNotBoughtStyle");
@@ -1619,7 +1656,7 @@ public class CollectionController {
         if (hero4.isSelected()) {
             hero4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[3])
+            if (heroesBought.get(3))
                 hero4Box.setId("boxBoughtStyle");
             else
                 hero4Box.setId("boxNotBoughtStyle");
@@ -1630,7 +1667,7 @@ public class CollectionController {
         if (hero5.isSelected()) {
             hero5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[4])
+            if (heroesBought.get(4))
                 hero5Box.setId("boxBoughtStyle");
             else
                 hero5Box.setId("boxNotBoughtStyle");
@@ -1641,7 +1678,7 @@ public class CollectionController {
         if (hero6.isSelected()) {
             hero6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[5])
+            if (heroesBought.get(5))
                 hero6Box.setId("boxBoughtStyle");
             else
                 hero6Box.setId("boxNotBoughtStyle");
@@ -1652,7 +1689,7 @@ public class CollectionController {
         if (hero7.isSelected()) {
             hero7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[6])
+            if (heroesBought.get(6))
                 hero7Box.setId("boxBoughtStyle");
             else
                 hero7Box.setId("boxNotBoughtStyle");
@@ -1663,7 +1700,7 @@ public class CollectionController {
         if (hero8.isSelected()) {
             hero8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[7])
+            if (heroesBought.get(7))
                 hero8Box.setId("boxBoughtStyle");
             else
                 hero8Box.setId("boxNotBoughtStyle");
@@ -1674,7 +1711,7 @@ public class CollectionController {
         if (hero9.isSelected()) {
             hero9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[8])
+            if (heroesBought.get(8))
                 hero9Box.setId("boxBoughtStyle");
             else
                 hero9Box.setId("boxNotBoughtStyle");
@@ -1685,7 +1722,7 @@ public class CollectionController {
         if (hero10.isSelected()) {
             hero10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (heroesBought[9])
+            if (heroesBought.get(9))
                 hero10Box.setId("boxBoughtStyle");
             else
                 hero10Box.setId("boxNotBoughtStyle");
@@ -1696,7 +1733,7 @@ public class CollectionController {
         if (item1.isSelected()) {
             item1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[0])
+            if (itemsBought.get(0))
                 item1Box.setId("boxBoughtStyle");
             else
                 item1Box.setId("boxNotBoughtStyle");
@@ -1707,7 +1744,7 @@ public class CollectionController {
         if (item2.isSelected()) {
             item2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[1])
+            if (itemsBought.get(1))
                 item2Box.setId("boxBoughtStyle");
             else
                 item2Box.setId("boxNotBoughtStyle");
@@ -1718,7 +1755,7 @@ public class CollectionController {
         if (item3.isSelected()) {
             item3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[2])
+            if (itemsBought.get(2))
                 item3Box.setId("boxBoughtStyle");
             else
                 item3Box.setId("boxNotBoughtStyle");
@@ -1729,7 +1766,7 @@ public class CollectionController {
         if (item4.isSelected()) {
             item4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[3])
+            if (itemsBought.get(3))
                 item4Box.setId("boxBoughtStyle");
             else
                 item4Box.setId("boxNotBoughtStyle");
@@ -1740,7 +1777,7 @@ public class CollectionController {
         if (item5.isSelected()) {
             item5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[4])
+            if (itemsBought.get(4))
                 item5Box.setId("boxBoughtStyle");
             else
                 item5Box.setId("boxNotBoughtStyle");
@@ -1751,7 +1788,7 @@ public class CollectionController {
         if (item6.isSelected()) {
             item6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[5])
+            if (itemsBought.get(5))
                 item6Box.setId("boxBoughtStyle");
             else
                 item6Box.setId("boxNotBoughtStyle");
@@ -1762,7 +1799,7 @@ public class CollectionController {
         if (item7.isSelected()) {
             item7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[6])
+            if (itemsBought.get(6))
                 item7Box.setId("boxBoughtStyle");
             else
                 item7Box.setId("boxNotBoughtStyle");
@@ -1773,7 +1810,7 @@ public class CollectionController {
         if (item8.isSelected()) {
             item8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[7])
+            if (itemsBought.get(7))
                 item8Box.setId("boxBoughtStyle");
             else
                 item8Box.setId("boxNotBoughtStyle");
@@ -1784,7 +1821,7 @@ public class CollectionController {
         if (item9.isSelected()) {
             item9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[8])
+            if (itemsBought.get(8))
                 item9Box.setId("boxBoughtStyle");
             else
                 item9Box.setId("boxNotBoughtStyle");
@@ -1795,7 +1832,7 @@ public class CollectionController {
         if (item10.isSelected()) {
             item10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[9])
+            if (itemsBought.get(9))
                 item10Box.setId("boxBoughtStyle");
             else
                 item10Box.setId("boxNotBoughtStyle");
@@ -1806,7 +1843,7 @@ public class CollectionController {
         if (item11.isSelected()) {
             item11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (itemsBought[10])
+            if (itemsBought.get(10))
                 item11Box.setId("boxBoughtStyle");
             else
                 item11Box.setId("boxNotBoughtStyle");
@@ -1817,7 +1854,7 @@ public class CollectionController {
         if (minion1.isSelected()) {
             minion1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[0])
+            if (minionsBought.get(0))
                 minion1Box.setId("boxBoughtStyle");
             else
                 minion1Box.setId("boxNotBoughtStyle");
@@ -1828,7 +1865,7 @@ public class CollectionController {
         if (minion2.isSelected()) {
             minion2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[1])
+            if (minionsBought.get(1))
                 minion2Box.setId("boxBoughtStyle");
             else
                 minion2Box.setId("boxNotBoughtStyle");
@@ -1839,7 +1876,7 @@ public class CollectionController {
         if (minion3.isSelected()) {
             minion3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[2])
+            if (minionsBought.get(2))
                 minion3Box.setId("boxBoughtStyle");
             else
                 minion3Box.setId("boxNotBoughtStyle");
@@ -1850,7 +1887,7 @@ public class CollectionController {
         if (minion4.isSelected()) {
             minion4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[3])
+            if (minionsBought.get(3))
                 minion4Box.setId("boxBoughtStyle");
             else
                 minion4Box.setId("boxNotBoughtStyle");
@@ -1861,7 +1898,7 @@ public class CollectionController {
         if (minion5.isSelected()) {
             minion5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[4])
+            if (minionsBought.get(4))
                 minion5Box.setId("boxBoughtStyle");
             else
                 minion5Box.setId("boxNotBoughtStyle");
@@ -1872,7 +1909,7 @@ public class CollectionController {
         if (minion6.isSelected()) {
             minion6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[5])
+            if (minionsBought.get(5))
                 minion6Box.setId("boxBoughtStyle");
             else
                 minion6Box.setId("boxNotBoughtStyle");
@@ -1883,7 +1920,7 @@ public class CollectionController {
         if (minion7.isSelected()) {
             minion7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[6])
+            if (minionsBought.get(6))
                 minion7Box.setId("boxBoughtStyle");
             else
                 minion7Box.setId("boxNotBoughtStyle");
@@ -1894,7 +1931,7 @@ public class CollectionController {
         if (minion8.isSelected()) {
             minion8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[7])
+            if (minionsBought.get(7))
                 minion8Box.setId("boxBoughtStyle");
             else
                 minion8Box.setId("boxNotBoughtStyle");
@@ -1905,7 +1942,7 @@ public class CollectionController {
         if (minion9.isSelected()) {
             minion9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[8])
+            if (minionsBought.get(8))
                 minion9Box.setId("boxBoughtStyle");
             else
                 minion9Box.setId("boxNotBoughtStyle");
@@ -1916,7 +1953,7 @@ public class CollectionController {
         if (minion10.isSelected()) {
             minion10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[9])
+            if (minionsBought.get(9))
                 minion10Box.setId("boxBoughtStyle");
             else
                 minion10Box.setId("boxNotBoughtStyle");
@@ -1927,7 +1964,7 @@ public class CollectionController {
         if (minion11.isSelected()) {
             minion11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[10])
+            if (minionsBought.get(10))
                 minion11Box.setId("boxBoughtStyle");
             else
                 minion11Box.setId("boxNotBoughtStyle");
@@ -1938,7 +1975,7 @@ public class CollectionController {
         if (minion12.isSelected()) {
             minion12Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[11])
+            if (minionsBought.get(11))
                 minion12Box.setId("boxBoughtStyle");
             else
                 minion12Box.setId("boxNotBoughtStyle");
@@ -1949,7 +1986,7 @@ public class CollectionController {
         if (minion13.isSelected()) {
             minion13Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[12])
+            if (minionsBought.get(12))
                 minion13Box.setId("boxBoughtStyle");
             else
                 minion13Box.setId("boxNotBoughtStyle");
@@ -1960,7 +1997,7 @@ public class CollectionController {
         if (minion14.isSelected()) {
             minion14Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[13])
+            if (minionsBought.get(13))
                 minion14Box.setId("boxBoughtStyle");
             else
                 minion14Box.setId("boxNotBoughtStyle");
@@ -1971,7 +2008,7 @@ public class CollectionController {
         if (minion15.isSelected()) {
             minion15Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[14])
+            if (minionsBought.get(14))
                 minion15Box.setId("boxBoughtStyle");
             else
                 minion15Box.setId("boxNotBoughtStyle");
@@ -1982,7 +2019,7 @@ public class CollectionController {
         if (minion16.isSelected()) {
             minion16Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[15])
+            if (minionsBought.get(15))
                 minion16Box.setId("boxBoughtStyle");
             else
                 minion16Box.setId("boxNotBoughtStyle");
@@ -1993,7 +2030,7 @@ public class CollectionController {
         if (minion17.isSelected()) {
             minion17Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[16])
+            if (minionsBought.get(16))
                 minion17Box.setId("boxBoughtStyle");
             else
                 minion17Box.setId("boxNotBoughtStyle");
@@ -2004,7 +2041,7 @@ public class CollectionController {
         if (minion18.isSelected()) {
             minion18Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[17])
+            if (minionsBought.get(17))
                 minion18Box.setId("boxBoughtStyle");
             else
                 minion18Box.setId("boxNotBoughtStyle");
@@ -2015,7 +2052,7 @@ public class CollectionController {
         if (minion19.isSelected()) {
             minion19Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[18])
+            if (minionsBought.get(18))
                 minion19Box.setId("boxBoughtStyle");
             else
                 minion19Box.setId("boxNotBoughtStyle");
@@ -2026,7 +2063,7 @@ public class CollectionController {
         if (minion20.isSelected()) {
             minion20Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[19])
+            if (minionsBought.get(19))
                 minion20Box.setId("boxBoughtStyle");
             else
                 minion20Box.setId("boxNotBoughtStyle");
@@ -2037,7 +2074,7 @@ public class CollectionController {
         if (minion21.isSelected()) {
             minion21Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[20])
+            if (minionsBought.get(20))
                 minion21Box.setId("boxBoughtStyle");
             else
                 minion21Box.setId("boxNotBoughtStyle");
@@ -2048,7 +2085,7 @@ public class CollectionController {
         if (minion22.isSelected()) {
             minion22Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[21])
+            if (minionsBought.get(21))
                 minion22Box.setId("boxBoughtStyle");
             else
                 minion22Box.setId("boxNotBoughtStyle");
@@ -2059,7 +2096,7 @@ public class CollectionController {
         if (minion23.isSelected()) {
             minion23Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[22])
+            if (minionsBought.get(22))
                 minion23Box.setId("boxBoughtStyle");
             else
                 minion23Box.setId("boxNotBoughtStyle");
@@ -2070,7 +2107,7 @@ public class CollectionController {
         if (minion24.isSelected()) {
             minion24Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[23])
+            if (minionsBought.get(23))
                 minion24Box.setId("boxBoughtStyle");
             else
                 minion24Box.setId("boxNotBoughtStyle");
@@ -2081,7 +2118,7 @@ public class CollectionController {
         if (minion25.isSelected()) {
             minion25Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[24])
+            if (minionsBought.get(24))
                 minion25Box.setId("boxBoughtStyle");
             else
                 minion25Box.setId("boxNotBoughtStyle");
@@ -2092,7 +2129,7 @@ public class CollectionController {
         if (minion26.isSelected()) {
             minion26Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[25])
+            if (minionsBought.get(25))
                 minion26Box.setId("boxBoughtStyle");
             else
                 minion26Box.setId("boxNotBoughtStyle");
@@ -2103,7 +2140,7 @@ public class CollectionController {
         if (minion27.isSelected()) {
             minion27Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[26])
+            if (minionsBought.get(26))
                 minion27Box.setId("boxBoughtStyle");
             else
                 minion27Box.setId("boxNotBoughtStyle");
@@ -2114,7 +2151,7 @@ public class CollectionController {
         if (minion28.isSelected()) {
             minion28Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[27])
+            if (minionsBought.get(27))
                 minion28Box.setId("boxBoughtStyle");
             else
                 minion28Box.setId("boxNotBoughtStyle");
@@ -2125,7 +2162,7 @@ public class CollectionController {
         if (minion29.isSelected()) {
             minion29Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[28])
+            if (minionsBought.get(28))
                 minion29Box.setId("boxBoughtStyle");
             else
                 minion29Box.setId("boxNotBoughtStyle");
@@ -2136,7 +2173,7 @@ public class CollectionController {
         if (minion30.isSelected()) {
             minion30Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[29])
+            if (minionsBought.get(29))
                 minion30Box.setId("boxBoughtStyle");
             else
                 minion30Box.setId("boxNotBoughtStyle");
@@ -2147,7 +2184,7 @@ public class CollectionController {
         if (minion31.isSelected()) {
             minion31Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[30])
+            if (minionsBought.get(30))
                 minion31Box.setId("boxBoughtStyle");
             else
                 minion31Box.setId("boxNotBoughtStyle");
@@ -2158,7 +2195,7 @@ public class CollectionController {
         if (minion32.isSelected()) {
             minion32Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[31])
+            if (minionsBought.get(31))
                 minion32Box.setId("boxBoughtStyle");
             else
                 minion32Box.setId("boxNotBoughtStyle");
@@ -2169,7 +2206,7 @@ public class CollectionController {
         if (minion33.isSelected()) {
             minion33Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[32])
+            if (minionsBought.get(32))
                 minion33Box.setId("boxBoughtStyle");
             else
                 minion33Box.setId("boxNotBoughtStyle");
@@ -2177,11 +2214,10 @@ public class CollectionController {
     }
 
     public void minion34CheckBox() {
-        minion34.setSelected(!minion34.isSelected());
         if (minion34.isSelected()) {
             minion34Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[33])
+            if (minionsBought.get(33))
                 minion34Box.setId("boxBoughtStyle");
             else
                 minion34Box.setId("boxNotBoughtStyle");
@@ -2192,7 +2228,7 @@ public class CollectionController {
         if (minion35.isSelected()) {
             minion35Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[34])
+            if (minionsBought.get(34))
                 minion35Box.setId("boxBoughtStyle");
             else
                 minion35Box.setId("boxNotBoughtStyle");
@@ -2203,7 +2239,7 @@ public class CollectionController {
         if (minion36.isSelected()) {
             minion36Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[35])
+            if (minionsBought.get(35))
                 minion36Box.setId("boxBoughtStyle");
             else
                 minion36Box.setId("boxNotBoughtStyle");
@@ -2214,7 +2250,7 @@ public class CollectionController {
         if (minion37.isSelected()) {
             minion37Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[36])
+            if (minionsBought.get(36))
                 minion37Box.setId("boxBoughtStyle");
             else
                 minion37Box.setId("boxNotBoughtStyle");
@@ -2225,7 +2261,7 @@ public class CollectionController {
         if (minion38.isSelected()) {
             minion38Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[37])
+            if (minionsBought.get(37))
                 minion38Box.setId("boxBoughtStyle");
             else
                 minion38Box.setId("boxNotBoughtStyle");
@@ -2236,7 +2272,7 @@ public class CollectionController {
         if (minion39.isSelected()) {
             minion39Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[38])
+            if (minionsBought.get(38))
                 minion39Box.setId("boxBoughtStyle");
             else
                 minion39Box.setId("boxNotBoughtStyle");
@@ -2247,7 +2283,7 @@ public class CollectionController {
         if (minion40.isSelected()) {
             minion40Box.setId("boxPendingBoughtStyle");
         } else {
-            if (minionsBought[39])
+            if (minionsBought.get(39))
                 minion40Box.setId("boxBoughtStyle");
             else
                 minion40Box.setId("boxNotBoughtStyle");
@@ -2258,7 +2294,7 @@ public class CollectionController {
         if (spell1.isSelected()) {
             spell1Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[0])
+            if (spellsBought.get(0))
                 spell1Box.setId("boxBoughtStyle");
             else
                 spell1Box.setId("boxNotBoughtStyle");
@@ -2269,7 +2305,7 @@ public class CollectionController {
         if (spell2.isSelected()) {
             spell2Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[1])
+            if (spellsBought.get(1))
                 spell2Box.setId("boxBoughtStyle");
             else
                 spell2Box.setId("boxNotBoughtStyle");
@@ -2280,7 +2316,7 @@ public class CollectionController {
         if (spell3.isSelected()) {
             spell3Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[2])
+            if (spellsBought.get(2))
                 spell3Box.setId("boxBoughtStyle");
             else
                 spell3Box.setId("boxNotBoughtStyle");
@@ -2291,7 +2327,7 @@ public class CollectionController {
         if (spell4.isSelected()) {
             spell4Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[3])
+            if (spellsBought.get(3))
                 spell4Box.setId("boxBoughtStyle");
             else
                 spell4Box.setId("boxNotBoughtStyle");
@@ -2302,7 +2338,7 @@ public class CollectionController {
         if (spell5.isSelected()) {
             spell5Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[4])
+            if (spellsBought.get(4))
                 spell5Box.setId("boxBoughtStyle");
             else
                 spell5Box.setId("boxNotBoughtStyle");
@@ -2313,7 +2349,7 @@ public class CollectionController {
         if (spell6.isSelected()) {
             spell6Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[5])
+            if (spellsBought.get(5))
                 spell6Box.setId("boxBoughtStyle");
             else
                 spell6Box.setId("boxNotBoughtStyle");
@@ -2324,7 +2360,7 @@ public class CollectionController {
         if (spell7.isSelected()) {
             spell7Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[6])
+            if (spellsBought.get(6))
                 spell7Box.setId("boxBoughtStyle");
             else
                 spell7Box.setId("boxNotBoughtStyle");
@@ -2335,7 +2371,7 @@ public class CollectionController {
         if (spell8.isSelected()) {
             spell8Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[7])
+            if (spellsBought.get(7))
                 spell8Box.setId("boxBoughtStyle");
             else
                 spell8Box.setId("boxNotBoughtStyle");
@@ -2346,7 +2382,7 @@ public class CollectionController {
         if (spell9.isSelected()) {
             spell9Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[8])
+            if (spellsBought.get(8))
                 spell9Box.setId("boxBoughtStyle");
             else
                 spell9Box.setId("boxNotBoughtStyle");
@@ -2357,7 +2393,7 @@ public class CollectionController {
         if (spell10.isSelected()) {
             spell10Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[9])
+            if (spellsBought.get(9))
                 spell10Box.setId("boxBoughtStyle");
             else
                 spell10Box.setId("boxNotBoughtStyle");
@@ -2368,7 +2404,7 @@ public class CollectionController {
         if (spell11.isSelected()) {
             spell11Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[10])
+            if (spellsBought.get(10))
                 spell11Box.setId("boxBoughtStyle");
             else
                 spell11Box.setId("boxNotBoughtStyle");
@@ -2379,7 +2415,7 @@ public class CollectionController {
         if (spell12.isSelected()) {
             spell12Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[11])
+            if (spellsBought.get(11))
                 spell12Box.setId("boxBoughtStyle");
             else
                 spell12Box.setId("boxNotBoughtStyle");
@@ -2390,7 +2426,7 @@ public class CollectionController {
         if (spell13.isSelected()) {
             spell13Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[12])
+            if (spellsBought.get(12))
                 spell13Box.setId("boxBoughtStyle");
             else
                 spell13Box.setId("boxNotBoughtStyle");
@@ -2401,7 +2437,7 @@ public class CollectionController {
         if (spell14.isSelected()) {
             spell14Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[13])
+            if (spellsBought.get(13))
                 spell14Box.setId("boxBoughtStyle");
             else
                 spell14Box.setId("boxNotBoughtStyle");
@@ -2412,7 +2448,7 @@ public class CollectionController {
         if (spell15.isSelected()) {
             spell15Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[14])
+            if (spellsBought.get(14))
                 spell15Box.setId("boxBoughtStyle");
             else
                 spell15Box.setId("boxNotBoughtStyle");
@@ -2423,7 +2459,7 @@ public class CollectionController {
         if (spell16.isSelected()) {
             spell16Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[15])
+            if (spellsBought.get(15))
                 spell16Box.setId("boxBoughtStyle");
             else
                 spell16Box.setId("boxNotBoughtStyle");
@@ -2434,7 +2470,7 @@ public class CollectionController {
         if (spell17.isSelected()) {
             spell17Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[16])
+            if (spellsBought.get(16))
                 spell17Box.setId("boxBoughtStyle");
             else
                 spell17Box.setId("boxNotBoughtStyle");
@@ -2445,7 +2481,7 @@ public class CollectionController {
         if (spell18.isSelected()) {
             spell18Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[17])
+            if (spellsBought.get(17))
                 spell18Box.setId("boxBoughtStyle");
             else
                 spell18Box.setId("boxNotBoughtStyle");
@@ -2456,7 +2492,7 @@ public class CollectionController {
         if (spell19.isSelected()) {
             spell19Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[18])
+            if (spellsBought.get(18))
                 spell19Box.setId("boxBoughtStyle");
             else
                 spell19Box.setId("boxNotBoughtStyle");
@@ -2467,7 +2503,7 @@ public class CollectionController {
         if (spell20.isSelected()) {
             spell20Box.setId("boxPendingBoughtStyle");
         } else {
-            if (spellsBought[19])
+            if (spellsBought.get(19))
                 spell20Box.setId("boxBoughtStyle");
             else
                 spell20Box.setId("boxNotBoughtStyle");
