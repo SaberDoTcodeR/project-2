@@ -3,6 +3,7 @@ package Duelyst.Controller;
 import Duelyst.View.View;
 import Duelyst.model.Account;
 import Duelyst.model.Save.SaveAccount;
+import Duelyst.model.Save.SaveDeck;
 import javafx.fxml.FXML;
 import com.google.gson.Gson;
 import javafx.scene.SnapshotParameters;
@@ -21,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 
 public class MainMenuController {
@@ -69,9 +71,37 @@ public class MainMenuController {
 
     public void saveBtnAct(MouseEvent event) {
         Gson gson = new Gson();
-        String json = gson.toJson(Account.getLoginAccount());
+
         try {
-            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\css\\saber.json");
+            ArrayList<SaveAccount> saveAccounts = new ArrayList<>();
+            for (Account account : Account.getAllUser()) {
+                SaveAccount saveAccount = new SaveAccount();
+                account.getCollection().getHeroes().forEach(x -> saveAccount.cards.add(x.getName()));
+                account.getCollection().getMinions().forEach(x -> saveAccount.cards.add(x.getName()));
+                account.getCollection().getSpells().forEach(x -> saveAccount.cards.add(x.getName()));
+                account.getCollection().getUsableItems().forEach(x -> saveAccount.cards.add(x.getName()));
+                saveAccount.user = account.getUserName();
+                saveAccount.pass = account.getPassWord();
+                if (account.getMainDeck() != null)
+                    saveAccount.mainDeck = account.getMainDeck().getName();
+                account.getCollection().getDecks().forEach(x -> {
+                    SaveDeck saveDeck = new SaveDeck();
+                    x.getHero().forEach(y -> saveDeck.cards.add(y.getName()));
+                    x.getMinions().forEach(y -> saveDeck.cards.add(y.getName()));
+                    x.getSpells().forEach(y -> saveDeck.cards.add(y.getName()));
+                    x.getUsableItems().forEach(y -> saveDeck.cards.add(y.getName()));
+                    saveDeck.name = x.getName();
+                    saveAccount.decks.add(saveDeck);
+
+                });
+
+                saveAccount.money = account.getMoney();
+                saveAccount.wins = account.getWins();
+                saveAccount.mana = account.getMana();
+                saveAccounts.add(saveAccount);
+            }
+            String json = gson.toJson(saveAccounts);
+            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\model\\Save\\saveaccount.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {

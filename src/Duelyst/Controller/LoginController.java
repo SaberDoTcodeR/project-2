@@ -7,6 +7,7 @@ import Duelyst.model.Collection;
 import Duelyst.model.Deck;
 import Duelyst.model.Save.SaveAccount;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -40,9 +41,9 @@ public class LoginController {
     public void initialize() {
         Gson gson = new Gson();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("Duelyst/model/Save/accounts.json"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\model\\Save\\saveaccount.json"));
             ArrayList<SaveAccount> saveAccounts;
-            saveAccounts = gson.fromJson(bufferedReader, ArrayList.class);
+            saveAccounts = gson.fromJson(bufferedReader, new TypeToken<ArrayList<SaveAccount>>(){}.getType());
             for (int i = 0; i < saveAccounts.size(); i++) {
                 Account account = new Account(saveAccounts.get(i).user, saveAccounts.get(i).pass);
                 account.setMana(saveAccounts.get(i).mana);
