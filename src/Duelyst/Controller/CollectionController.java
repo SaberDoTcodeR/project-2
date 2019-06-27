@@ -79,6 +79,10 @@ public class CollectionController {
     public Button setMainButton;
     @FXML
     public Button mainMenuButton;
+    @FXML
+    public Button exportDeck;
+    @FXML
+    public Button importDeck;
 
     public VBox hero1Box;
     public VBox hero2Box;
@@ -2751,6 +2755,34 @@ public class CollectionController {
             reChooseComboBox();
         } else {
             showDialog("Chosen Deck Is Invalid \nPlease Choose a valid deck 0_0");
+        }
+    }
+
+    public void importAct() {
+        
+    }
+
+    public void importBtnActFocus() {
+        importDeck.requestFocus();
+    }
+
+    public void handleOnKeyPressedImport(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            importAct();
+        }
+    }
+
+    public void exportAct() {
+
+    }
+
+    public void exportBtnActFocus() {
+        exportDeck.requestFocus();
+    }
+
+    public void handleOnKeyPressedExport(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            exportAct();
         }
     }
 }
