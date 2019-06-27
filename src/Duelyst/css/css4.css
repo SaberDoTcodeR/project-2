@@ -84,7 +84,12 @@
 #button-mainmenu:focused {
     -fx-graphic: url("mainMenuBlack.png");
 }
-
+#button-EX:focused {
+    -fx-graphic: url("exportBlack.png");
+}
+#button-IM:focused {
+    -fx-graphic: url("importBlack.png");
+}
 .combo-box {
     -fx-background-color: rgba(0, 0, 0, 0.4);
     -fx-text-fill: #ffffff;

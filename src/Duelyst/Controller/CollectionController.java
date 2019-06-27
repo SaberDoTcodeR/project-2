@@ -23,6 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CollectionController {
@@ -2759,7 +2762,12 @@ public class CollectionController {
     }
 
     public void importAct() {
-        
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("Duelyst/model/Save/decks.json"));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void importBtnActFocus() {
