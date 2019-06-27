@@ -180,7 +180,6 @@ public class Collection {
         for (UsableItem usableItem : UsableItem.getUsableItems()) {
             if (usableItem.getName().equals(cardName)) {
                 UsableItem usableItem1 = usableItem.duplicate();
-
                 this.usableItems.add(usableItem1);
                 return;
             }
