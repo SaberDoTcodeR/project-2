@@ -2,10 +2,9 @@ package Duelyst.Controller;
 
 import Duelyst.View.View;
 import Duelyst.model.Account;
-import javafx.event.Event;
-import javafx.event.EventType;
+import Duelyst.model.Save.SaveAccount;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import com.google.gson.Gson;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -19,8 +18,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+
 
 public class MainMenuController {
+    public Button save;
     @FXML
     ImageView profile;
     @FXML
@@ -61,6 +65,18 @@ public class MainMenuController {
 
     public void recordedMatchAct() {
 
+    }
+
+    public void saveBtnAct(MouseEvent event) {
+        Gson gson = new Gson();
+        String json = gson.toJson(Account.getLoginAccount());
+        try {
+            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\css\\saber.json");
+            writer.write(json);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void changeProfile(MouseEvent event) {
@@ -147,5 +163,6 @@ public class MainMenuController {
         }
 
     }
+
 
 }

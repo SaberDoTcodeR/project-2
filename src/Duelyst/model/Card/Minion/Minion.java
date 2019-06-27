@@ -12,8 +12,24 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public abstract class Minion extends Card {
-    private static ArrayList<Minion> minions = new ArrayList<>();
+    private transient static ArrayList<Minion> minions = new ArrayList<>();
     private int numberOfFlag = 0;
+
+    public void setCostToUse(int costToUse) {
+        this.costToUse = costToUse;
+    }
+
+    public void setTypeOfRange(int typeOfRange) {
+        this.typeOfRange = typeOfRange;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public void setNumberOfAttacks(int numberOfAttacks) {
+        this.numberOfAttacks = numberOfAttacks;
+    }
 
     public int getNumberOfFlag() {
         return numberOfFlag;
@@ -78,7 +94,7 @@ public abstract class Minion extends Card {
     private int range;
     private int timeOfActivationOfSpecialPower;//0 on attack 1 on spawn 2 combo 3 on death 4 passive 5 on turn 6 on defend
     private int numberOfAttacks = 0;
-    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+    private transient ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;

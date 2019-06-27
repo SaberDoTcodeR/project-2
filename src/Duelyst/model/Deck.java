@@ -15,6 +15,22 @@ public class Deck {
     private ArrayList<Spell> spells = new ArrayList<>();
     private ArrayList<Minion> minions = new ArrayList<>();
 
+    public ArrayList<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public ArrayList<UsableItem> getUsableItems() {
+        return usableItems;
+    }
+
+    public void setHeroes(ArrayList<Hero> heroes) {
+        this.heroes = heroes;
+    }
+
+    public void setUsableItems(ArrayList<UsableItem> usableItems) {
+        this.usableItems = usableItems;
+    }
+
     public String getName() {
         return name;
     }

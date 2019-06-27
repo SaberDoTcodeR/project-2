@@ -10,7 +10,7 @@ import Duelyst.model.Account;
 
 public abstract class UsableItem extends Item {
     private int costOfBuy;
-    private static ArrayList<UsableItem> usableItems = new ArrayList<>();
+    private transient static ArrayList<UsableItem> usableItems = new ArrayList<>();
 
 
     static {

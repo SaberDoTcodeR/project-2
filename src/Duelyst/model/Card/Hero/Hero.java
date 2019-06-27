@@ -10,8 +10,19 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public abstract class Hero extends Card {
-    private static ArrayList<Hero> heroes = new ArrayList<>();
+    private transient static ArrayList<Hero> heroes = new ArrayList<>();
     private int numberOfFlag = 0;
+    private int ap;
+    private int hp;
+    private int mp;
+    private int holyCounter = 0;
+    private boolean isStunning = false;
+    private boolean counterAttack = true;
+    private int typeOfRange;//0 melee 1 ranged 2 hybrid
+    private int range;
+    private int coolDownTime = 0;
+    private int timeNeededToCool = 0;
+    private transient ArrayList<Buff> ownBuffs = new ArrayList<>();
     private boolean flag = false;
 
     public int getNumberOfFlag() {
@@ -20,6 +31,18 @@ public abstract class Hero extends Card {
 
     public void setNumberOfFlag(int numberOfFlag) {
         this.numberOfFlag = numberOfFlag;
+    }
+
+    public static void setHeroes(ArrayList<Hero> heroes) {
+        Hero.heroes = heroes;
+    }
+
+    public void setTypeOfRange(int typeOfRange) {
+        this.typeOfRange = typeOfRange;
+    }
+
+    public void setOwnBuffs(ArrayList<Buff> ownBuffs) {
+        this.ownBuffs = ownBuffs;
     }
 
     static {
@@ -35,17 +58,6 @@ public abstract class Hero extends Card {
         new Zahhak();
     }
 
-    private int ap;
-    private int hp;
-    private int mp;
-    private int holyCounter = 0;
-    private boolean isStunning = false;
-    private boolean counterAttack = true;
-    private int typeOfRange;//0 melee 1 ranged 2 hybrid
-    private int range;
-    private int coolDownTime = 0;
-    private int timeNeededToCool = 0;
-    private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
@@ -210,7 +222,8 @@ public abstract class Hero extends Card {
     public Hero duplicate() {
         return null;
     }
-    public Image getImage(){
+
+    public Image getImage() {
         return this.cardImage;
     }
 }

@@ -19,9 +19,13 @@ public class Collection {
     private ArrayList<Minion> minions = new ArrayList<>();
     private ArrayList<UsableItem> usableItems = new ArrayList<>();
     private ArrayList<Deck> decks = new ArrayList<>();
-    private ArrayList<Deck> storyModeDeck = new ArrayList<>();//should be added
+    private static transient ArrayList<Deck> storyModeDeck = new ArrayList<>();//should be added
 
-    {
+    public static void setStoryModeDeck(ArrayList<Deck> storyModeDeck) {
+        Collection.storyModeDeck = storyModeDeck;
+    }
+
+    static {
         Deck deck1 = new Deck();
         deck1.getMinions().add(new PersianArcher());
         deck1.getMinions().add(new TuranianSpear());
@@ -102,7 +106,7 @@ public class Collection {
         getStoryModeDeck().add(deck3);
     }
 
-    public ArrayList<Deck> getStoryModeDeck() {
+    public static ArrayList<Deck>  getStoryModeDeck() {
         return storyModeDeck;
     }
 

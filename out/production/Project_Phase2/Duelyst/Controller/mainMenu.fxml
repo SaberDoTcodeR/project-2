@@ -82,10 +82,10 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button5" onMouseEntered="#logOutBtnActFocus"
+        <Button fx:id="save" onMouseClicked="#saveBtnAct" id="button5"
                 onKeyPressed="#handleOnKeyPressedLogOut"
                 mnemonicParsing="false" prefHeight="50.0"
-                prefWidth="400.0" text="LOGOUT"
+                prefWidth="400.0" text="SAVE"
                 GridPane.columnIndex="1"
                 GridPane.rowIndex="5">
             <graphic>
@@ -96,6 +96,21 @@
                 </ImageView>
             </graphic>
         </Button>
+        <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button5" onMouseEntered="#logOutBtnActFocus"
+                onKeyPressed="#handleOnKeyPressedLogOut"
+                mnemonicParsing="false" prefHeight="50.0"
+                prefWidth="400.0" text="LOGOUT"
+                GridPane.columnIndex="1"
+                GridPane.rowIndex="6">
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="Duelyst/css/logoutWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+
         <Label fx:id="accountInfo" prefHeight="150.0" prefWidth="500.0" onMouseClicked="#changeProfile">
             <graphic>
                 <ImageView fx:id="profile" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">

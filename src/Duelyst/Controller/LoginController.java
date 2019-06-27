@@ -1,17 +1,18 @@
 package Duelyst.Controller;
 
-import Duelyst.Main;
 import Duelyst.View.View;
 import Duelyst.model.Account;
+import com.google.gson.Gson;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.*;
+import java.util.ArrayList;
 
 
 public class LoginController {
@@ -27,6 +28,7 @@ public class LoginController {
     TextField userField;
     @FXML
     TextField passField;
+
 
     public void handleOnKeyPressedExit(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
@@ -88,12 +90,15 @@ public class LoginController {
     public void loginBtnActFocus() {
         loginBtn.requestFocus();
     }
+
     public void signUpBtnActFocus() {
         signUpBtn.requestFocus();
     }
+
     public void exitBtnActFocus() {
         exitButton.requestFocus();
     }
+
     public void signUpBtnAct() {
 
         passField.getStyleClass().remove("wrongPassword");

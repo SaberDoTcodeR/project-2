@@ -7,15 +7,36 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Account {
-    private Image avatar;
-    private static Account loginAccount;
-    private static ArrayList<Account> allUser = new ArrayList<>();
+    private transient Image avatar;
+    private transient static Account loginAccount;
+    private transient static ArrayList<Account> allUser = new ArrayList<>();
     private String userName, passWord;
     private int money, wins = 0, mana;
     private Deck mainDeck;
-    private ArrayList<RecordedMatch> matches = new ArrayList<>();
+    private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
-    private ArrayList<Buff> ownBuffs = new ArrayList<>();
+
+    public Collection getMyCollection() {
+        return myCollection;
+    }
+
+    public void setMyCollection(Collection myCollection) {
+        this.myCollection = myCollection;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public static void setAllUser(ArrayList<Account> allUser) {
+        Account.allUser = allUser;
+    }
+
+    //private ArrayList<Buff> ownBuffs = new ArrayList<>();
 
     public Account(String userName, String passWord) {
         this.userName = userName;
@@ -175,11 +196,11 @@ public class Account {
         allUser.add(account);
     }
 
-    public ArrayList<Buff> getOwnBuffs() {
+    /*public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
     }
 
     public void setOwnBuffs(ArrayList<Buff> ownBuffs) {
         this.ownBuffs = ownBuffs;
-    }
+    }*/
 }

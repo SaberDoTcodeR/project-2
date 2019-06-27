@@ -10,8 +10,12 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public abstract class Spell extends Card {
-    private static ArrayList<Spell> spells = new ArrayList<>();
+    private transient static ArrayList<Spell> spells = new ArrayList<>();
     private int costToUse;
+
+    public void setCostToUse(int costToUse) {
+        this.costToUse = costToUse;
+    }
 
     static {
         new AllAttack();
