@@ -10,6 +10,9 @@ import Duelyst.model.Item.UsableItem.UsableItem;
 import Duelyst.model.Save.SaveAccount;
 import Duelyst.model.Save.SaveDeck;
 import com.google.gson.Gson;
+import Duelyst.model.Save.SaveAccount;
+import Duelyst.model.Save.SaveDeck;
+import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
@@ -27,9 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 
 public class CollectionController {
@@ -2768,7 +2769,7 @@ public class CollectionController {
     public void importAct() {
         Gson gson = new Gson();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("Duelyst/model/Save/deck.json"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\model\\Save\\deck.json"));
             SaveDeck saveDeck = gson.fromJson(bufferedReader, new TypeToken<SaveDeck>(){}.getType());
             Deck deck = new Deck();
             Account.getLoginAccount().getCollection().addDeck(deck);
@@ -2776,6 +2777,7 @@ public class CollectionController {
             for (int i = 0; i < saveDeck.cards.size(); i++) {
                 Account.getLoginAccount().getCollection().addToDeck(saveDeck.cards.get(i), deck.getName());
             }
+            deckList.getItems().add(deck.getName());
             myDecks = Account.getLoginAccount().getCollection().getDecks();
             reChooseComboBox();
         } catch (FileNotFoundException e) {
@@ -2794,6 +2796,26 @@ public class CollectionController {
     }
 
     public void exportAct() {
+        Gson gson = new Gson();
+
+        try {
+            SaveDeck saveDeck = new SaveDeck();
+
+            if (currentDeck != null) {
+                saveDeck.name = currentDeck.getName();
+                currentDeck.getHero().forEach(y -> saveDeck.cards.add(y.getName()));
+                currentDeck.getMinions().forEach(y -> saveDeck.cards.add(y.getName()));
+                currentDeck.getSpells().forEach(y -> saveDeck.cards.add(y.getName()));
+                currentDeck.getUsableItems().forEach(y -> saveDeck.cards.add(y.getName()));
+            }
+            String json = gson.toJson(saveDeck);
+            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\Duelyst\\model\\Save\\deck.json");
+            writer.write(json);
+            writer.close();
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
