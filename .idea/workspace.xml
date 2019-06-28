@@ -2,8 +2,327 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="server client basic">
-      <change afterPath="$PROJECT_DIR$/project-2(Phase-3).iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Connection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/BattleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/GameModeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/ShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/SingleOrMultiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/gameModeMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/loginMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/mainMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/shopMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/Controller/singleOrMultiMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/View/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/1Black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/1White.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/2Black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/2White.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/31-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/3Black.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/3White.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/Crushed-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/Mainmenu Image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/OzFOdVG.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/addBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/addWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/avatar1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/avatar2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/avatar3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/battlemap6_middleground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/boss_decepticlewings_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_end_turn_mine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_end_turn_mine_glow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_primary_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_primary_left_glow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_primary_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/button_primary_right_glow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/buyBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/buyWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/card_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/collectionBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/collectionWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-aestarispark.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-chapter-13-dawn-of-vetruvians1-1600-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-chapter-16-the-golden-age-of-peace-1-4-1600-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-crystal-caverns-1080-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-ff.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/counterplay-games-obsidianwoods-mainmenu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/createBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/createWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/crossBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/crossWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/css6.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/deleteBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/deleteWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/exitBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/exitWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/exportBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/exportWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/gradient-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/hero.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/heroBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/heroDeck.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/heroWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/importBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/importWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/itemBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/itemDeck.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/itemWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/loginBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/loginWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/logoutBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/logoutWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/mainMenuBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/mainMenuWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/minionBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/minionDeck.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/minionWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/multiBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/multiWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/recordBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/recordWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/saber.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/searchBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/searchWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/sellBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/sellWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/shopBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/shopWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/signupBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/signupWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/singleBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/singleWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/spellBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/spellDeck.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/spellWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/star.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/starYellow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/startGameBlack.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/startGameWhite.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/thumb-1920-727387.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/thumb-1920-727411.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_andromeda_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_antiswarm_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_borealjuggernaut_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_chaosknight_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_christmas_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_cindera_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_crystal_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticle_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticlechassis_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticlehelm_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticleprime_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticlesword_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_decepticlewings_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_emp_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_gol_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_grym_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_harmony_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_invader_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_kane_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_kron_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_legion_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_malyk_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_manaman_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_orias_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_oriasidol_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_paragon_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_protector_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_sandpanther_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_serpenti_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_shinkagezendo_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_skurge_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_skyfalltyrant_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_solfist_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_soulstealer_breath.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_spelleater_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_taskmaster_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_umbra_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_unhallowed_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_valiant_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_vampire_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_wraith_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/boss_wujin_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f1_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f1_bromemk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f1_general_skinroguelegacy_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f1_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f2_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f2_general_skindogehai_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f2_shidaimk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f2_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f3_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f3_ciphyronmk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f3_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f3_zirixfestive_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f4_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f4_maehvmk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f4_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f5_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f5_ragnoramk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f5_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f6_altgeneraltier2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f6_faiefestive_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f6_ilenamk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f6_snowchasermk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/f6_tier2general_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/unit_gifs/neutral_zyxfestive_breathing.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/css/wrong.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/FlagsBattle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/HeroBattle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Battle/OneFlagBattle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/Buff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/ChangeApBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/ChangeHpBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/DisarmBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/FiringEffectedCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/HolyBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/HolyEffectedCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/ManaItemBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/MultiStageBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/PoisonBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/PoisonEffectedCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/PowerBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/StunBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Buff/WeaknessBuff.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Arash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/CustomHero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Dragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Esfandyar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Kaveh.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Legend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rakhsh.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Rostam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Simurgh.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/WhiteBogey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Zahhak.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ArzhangBogey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Ashkbous.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Bahman.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/BlackBogey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CatapultGiant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/ColdGrandma.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/CustomMinion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Eagle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Elf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/FieryDragon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantColossus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantKing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantMagician.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/GiantSnake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Giv.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/HogRiderBogey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Iraj.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/LupinLion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Magician.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/OneEyeGiant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Panther.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianArcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGeneralissimo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianGladiator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianHorseman.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSpear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PersianSwordsman.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Piran.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/PoisonSnake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Siavash.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SpecialPower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/SteelArmor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianArcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianPrince.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSpy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianStoneHook.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TuranianSwampy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/TwoHeadGiant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WhiteWolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/WildHog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Wolf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllAttack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllDisarm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPoison.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AllPower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/AreaDispel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/CustomSpell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Dispel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Empower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/FireBall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/GodStrength.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HealthWithProfit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/HellFire.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/KingsGuard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/LightingBolt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Madness.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PoisonLake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/PowerUp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Sacrifice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Shock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Spell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/SpellWork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/TotalDisarm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Card/Spell/Weakening.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Cell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Collection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Deck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/ErrorType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Hand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/BladesOfAgility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/ChineseSword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/CollectibleItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/CollectibleItemWork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/DeathCurse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/Devastation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/DoubleEntendreArrow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/Elexir.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/ManaElectuary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/PerpetuityElectuary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/CollectibleItem/RandomDamage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/AssassinationDagger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/Baptism.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/CrownOfWisdom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/DamolArchery.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/KingWisdom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/PoisonousDagger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/ShameEmblem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/ShockHammer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/SimorghPlume.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/SoulEater.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/TerrorHood.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/UsableItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Item/UsableItem/UsableItemWork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/RecordedMatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Save/SaveAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Save/SaveDeck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Save/deck.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Save/saveaccount.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Duelyst/model/Shop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-2(Phase-3).iml" beforeDir="false" afterPath="$PROJECT_DIR$/project-2(Phase-3).iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Connection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/Duelyst/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,7 +378,106 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1732#1733#0" expanded="true" />
+                <element signature="e#1760#1761#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/config.properties">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor" />
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Deck.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+              <folding>
+                <element signature="e#896#897#0" expanded="true" />
+                <element signature="e#923#924#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Buff/Buff.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2272">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -82,10 +500,13 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/Server.java" />
         <option value="$PROJECT_DIR$/src/config.properties" />
-        <option value="$PROJECT_DIR$/src/server/Server.java" />
         <option value="$PROJECT_DIR$/src/client/Connection.java" />
         <option value="$PROJECT_DIR$/src/server/Connection.java" />
         <option value="$PROJECT_DIR$/src/client/Client.java" />
+        <option value="$PROJECT_DIR$/src/server/Server.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Connection.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/View/View.java" />
+        <option value="$PROJECT_DIR$/src/Duelyst/Client.java" />
       </list>
     </option>
   </component>
@@ -105,25 +526,55 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="project-55" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-55" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-55" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-55" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Duelyst" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -141,13 +592,24 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561710916815" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561720789440" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/jar_files/gson-2.8.2.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\saber\IdeaProjects\project-2\src\Duelyst" />
+      <recent name="C:\Users\saber\IdeaProjects\project-2\src\client" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\saber\IdeaProjects\project-2\src\server" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -161,7 +623,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Client">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -176,6 +638,20 @@
     </configuration>
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DuelystClient.Client" />
+      <module name="project-2(Phase-3)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="DuelystClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -232,6 +708,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Client" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -245,6 +726,7 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1561638968756" duration="8633000" />
+      <workItem from="1561711174082" duration="4238000" />
     </task>
     <task id="LOCAL-00001" summary="server client basic">
       <created>1561710842652</created>
@@ -257,12 +739,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10070000" />
+    <option name="totallyTimeSpent" value="14308000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21081081" />
+      <window_info id="UI Designer" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.21406959" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -271,7 +755,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32963988" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32825485" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32569557" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -282,7 +766,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32963988" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3289689" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info anchor="bottom" id="Educational.CheckDetails" order="15" />
       <window_info anchor="bottom" id="CheckStyle" order="16" />
@@ -322,20 +806,10 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/server/Controller.java" />
-    <entry file="file://$PROJECT_DIR$/src/config.properties">
+    <entry file="file://$PROJECT_DIR$/src/server/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -349,10 +823,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/server/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="51" column="5" selection-start-line="45" selection-start-column="4" selection-end-line="51" selection-end-column="5" />
+        <state relative-caret-position="-202">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -361,10 +835,134 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="187">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/Controller/BattleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/client/Controller/battle.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/battle.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/View/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/collectionMenu.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Controller/CollectionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="44" column="24" selection-start-line="44" selection-start-column="24" selection-end-line="44" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Buff/Buff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Battle/Battle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Hero/Hero.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2272">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/model/Card/Minion/Minion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="20" column="56" lean-forward="true" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/config.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+            <element signature="e#1760#1761#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -380,7 +978,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -429,7 +1026,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -437,6 +1033,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>gson-2.8.2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

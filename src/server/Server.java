@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -17,7 +18,8 @@ public class Server {
         Properties properties = new Properties();
         FileInputStream inputStream;
         try {
-            inputStream = new FileInputStream(new File("D:\\associated to com\\javapractices\\FirstPractice\\project-2(Phase-3)\\src\\config.properties"));
+            URL url = Server.class.getResource("server/config.properties");
+            inputStream = new FileInputStream(new File(url.getPath()));
             properties.load(inputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,7 +34,7 @@ public class Server {
         } catch (IOException e) {
             serverSocket = new ServerSocket(defaultPort);
         }
-        while (true){
+        while (true) {
             try {
                 Socket socket = serverSocket.accept();
                 Connection connection = new Connection(socket);
@@ -44,9 +46,9 @@ public class Server {
     }
 
     private static int getPort(String port) {
-        try{
+        try {
             return Integer.parseInt(port);
-        } catch (Exception e){
+        } catch (Exception e) {
             return 0;
         }
     }

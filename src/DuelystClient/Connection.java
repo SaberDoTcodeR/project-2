@@ -1,4 +1,4 @@
-package client;
+package DuelystClient;
 
 import java.io.EOFException;
 import java.io.IOException;
