@@ -42,13 +42,20 @@ public class Connection implements Runnable {
                         yaGson.toJson(ErrorType.USER_ALREADY_CREATED);
                     } else if (flag && !accountMessage.isSignUpOrLogIn()){
                         //loginK
+                        boolean f = Account.authorize(accountMessage.getUser(),accountMessage.getPass());
+                        if (f){
+                            Account account = Account.getAccount(accountMessage.getUser());
+                            yaGson.toJson(account);
+                        } else {
+                            yaGson.toJson(ErrorType.WRONG_PASSWORD);
+                        }
                     } else if (!flag && accountMessage.isSignUpOrLogIn()){
                         //sign up
                         Account account = new Account(accountMessage.getUser(),accountMessage.getPass());
                         yaGson.toJson(account);
                     } else {
                         //login error
-
+                        yaGson.toJson(ErrorType.NO_SUCH_USER_EXIST);
                     }
                     sendPacket(yaGson);
                 }

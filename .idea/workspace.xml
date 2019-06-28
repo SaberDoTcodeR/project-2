@@ -1,95 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="server edited">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_gilecode_yagson_yagson_0_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_8_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="server updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-2(Phase-3).iml" beforeDir="false" afterPath="$PROJECT_DIR$/project-2(Phase-3).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/battle.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/battle.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/collectionMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/collectionMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/gameModeMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/gameModeMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/loginMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/loginMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/mainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/mainMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/shopMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/shopMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/singleOrMultiMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/singleOrMultiMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystServer/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Arash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Arash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Dragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Dragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Esfandyar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Esfandyar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Kaveh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Kaveh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Legend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Legend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Rakhsh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Rakhsh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Rostam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Rostam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Simurgh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Simurgh.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/WhiteBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/WhiteBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Zahhak.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Zahhak.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/ArzhangBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/ArzhangBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Ashkbous.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Ashkbous.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Bahman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Bahman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/BlackBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/BlackBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/CatapultGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/CatapultGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/ColdGrandma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/ColdGrandma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Eagle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Eagle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Elf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Elf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/FieryDragon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/FieryDragon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantColossus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantColossus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantKing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantKing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantMagician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantMagician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/GiantSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Giv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Giv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/HogRiderBogey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/HogRiderBogey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Iraj.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Iraj.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/LupinLion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/LupinLion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Magician.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Magician.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/OneEyeGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/OneEyeGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Panther.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Panther.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianGeneralissimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianGeneralissimo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianGladiator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianGladiator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianHorseman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianHorseman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianSwordsman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PersianSwordsman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Piran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Piran.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PoisonSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/PoisonSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Siavash.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Siavash.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/SteelArmor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/SteelArmor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianArcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianArcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianPrince.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianPrince.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSpear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSpear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSpy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSpy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianStoneHook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianStoneHook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSwampy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TuranianSwampy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TwoHeadGiant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/TwoHeadGiant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/WhiteWolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/WhiteWolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/WildHog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/WildHog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Wolf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Wolf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllAttack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllDisarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllDisarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllPoison.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllPoison.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllPower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AllPower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AreaDispel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/AreaDispel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Dispel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Dispel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Empower.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Empower.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/FireBall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/FireBall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/GodStrength.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/GodStrength.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/HealthWithProfit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/HealthWithProfit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/HellFire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/HellFire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/KingsGuard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/KingsGuard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/LightingBolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/LightingBolt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Madness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Madness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/PoisonLake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/PoisonLake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/PowerUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/PowerUp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Sacrifice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Sacrifice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Shock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Shock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/TotalDisarm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/TotalDisarm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Weakening.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Weakening.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Collection.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -149,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuelystServer/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+            <state relative-caret-position="20">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -158,8 +72,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+            <state relative-caret-position="260">
+              <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="59" column="33" lean-forward="true" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -269,11 +192,11 @@
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Shock.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/TotalDisarm.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Weakening.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Account.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Collection.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/ErrorType.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/model/Account.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/Connection.java" />
       </list>
     </option>
@@ -350,7 +273,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561730714110" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1561734295120" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
@@ -502,7 +425,7 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1561638968756" duration="8633000" />
       <workItem from="1561711174082" duration="5564000" />
-      <workItem from="1561722515700" duration="7445000" />
+      <workItem from="1561722515700" duration="9635000" />
     </task>
     <task id="LOCAL-00001" summary="server client basic">
       <created>1561710842652</created>
@@ -525,11 +448,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561722737702</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="server updated">
+      <created>1561731036535</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1561731036535</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23079000" />
+    <option name="totallyTimeSpent" value="25269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
@@ -588,7 +518,8 @@
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="server client basic" />
     <MESSAGE value="server edited" />
-    <option name="LAST_COMMIT_MESSAGE" value="server edited" />
+    <MESSAGE value="server updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="server updated" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -913,13 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1056,17 +980,24 @@
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/config.properties">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="59" column="33" lean-forward="true" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+        <state relative-caret-position="20">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+        <state relative-caret-position="260">
+          <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
         </state>
       </provider>
     </entry>

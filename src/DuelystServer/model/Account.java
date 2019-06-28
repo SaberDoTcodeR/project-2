@@ -165,7 +165,7 @@ public class Account {
         return allUser;
     }
 
-    public Account getAccount(String userName) {
+    public static Account getAccount(String userName) {
         for (Account account : allUser) {
             if (account.getUserName().equals(userName))
                 return account;
