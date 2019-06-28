@@ -3,7 +3,6 @@ package DuelystClient;
 import DuelystClient.View.View;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import server.Connection;
 
 import java.io.*;
 import java.net.Socket;
@@ -34,17 +33,19 @@ public class Client extends Application {
         int port = getPort(properties.getProperty("port"));
         int defaultPort = 8000;
         Socket socket = null;
+        primaryStage = primaryStage1;
+        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
         String host = "127.0.0.1";
         try {
             socket = new Socket(host, port);
+            View.makeLoginScene();
+
+            primaryStage.show();
+            Connection connection = new Connection(socket);
         } catch (IOException e) {
             socket = new Socket(host, defaultPort);
-        } finally {
-            primaryStage = primaryStage1;
-
             View.makeLoginScene();
-            primaryStage.setFullScreen(true);
-            primaryStage.setResizable(false);
             primaryStage.show();
             Connection connection = new Connection(socket);
         }
