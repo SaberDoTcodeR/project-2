@@ -43,9 +43,9 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
-        setProfile(Account.getLoginAccount().getAvatar());
+      /*  setProfile(Account.getLoginAccount().getAvatar());
         accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MONEY :" + Account.getLoginAccount().getMoney());
-        accountInfo.setGraphicTextGap(10);
+        accountInfo.setGraphicTextGap(10);*/
     }
 
     public void logOutBtnAct() {
@@ -69,7 +69,7 @@ public class MainMenuController {
     }
 
     public void saveBtnAct(MouseEvent event) {
-        Gson gson = new Gson();
+       /* Gson gson = new Gson();
 
         try {
             ArrayList<SaveAccount> saveAccounts = new ArrayList<>();
@@ -105,17 +105,17 @@ public class MainMenuController {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void changeProfile(MouseEvent event) {
-        if (event.getX() < profile.getFitWidth()) {
+       /* if (event.getX() < profile.getFitWidth()) {
             if (Account.getLoginAccount().getAvatar().impl_getUrl().contains("DuelystClient/css/avatar1.png"))
                 Account.getLoginAccount().setAvatar(new Image("DuelystClient/css/avatar2.jpg"));
             else
                 Account.getLoginAccount().setAvatar(new Image("DuelystClient/css/avatar1.png"));
             setProfile(Account.getLoginAccount().getAvatar());
-        }
+        }*/
     }
 
     public void setProfile(Image imagePro) {

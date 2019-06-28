@@ -1,5 +1,7 @@
 package DuelystClient;
 
+import DuelystClient.View.View;
+import DuelystServer.Server;
 import com.gilecode.yagson.YaGson;
 import com.gilecode.yagson.YaGsonBuilder;
 import com.google.gson.Gson;
@@ -11,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.Properties;
 
 public class Connection implements Runnable {
     private ObjectOutputStream outputStream;
@@ -111,10 +114,42 @@ public class Connection implements Runnable {
     public Object readPacket() {
         try {
             return inputStream.readObject();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (EOFException | SocketException e) {
+            while (!closedManual) {
+                Properties properties = null;
+                try {
+                    properties = Client.getProperties();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                int port = Client.getPort(properties.getProperty("port"));
+                int defaultPort = 8000;
+                Socket socket = null;
+                String host = "localhost";
+                try {
+                    socket = new Socket(host, port);
+                    View.makeLoginScene();
+                    Client.primaryStage.show();
+                    Client.connectionToServer = new Connection(socket);
+                } catch (IOException e1) {
+                    try {
+                        socket = new Socket(host, defaultPort);
+                    } catch (IOException e2) {
+                        e2.printStackTrace();
+                    }
+                    View.makeLoginScene();
+                    Client.primaryStage.show();
+                    Client.connectionToServer = new Connection(socket);
+                }
+                break;
+            }
+
+        } catch (IOException e) {
             e.printStackTrace();
-            return null;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     public void close() {

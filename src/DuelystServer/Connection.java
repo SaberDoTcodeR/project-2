@@ -43,33 +43,33 @@ public class Connection implements Runnable {
                 }
                 System.out.println("received");
                 outputStream.reset();
-                YaGson yaGson = new YaGsonBuilder().create();
-                AccountMessage packet = yaGson.fromJson(str, AccountMessage.class);
+                Gson gson = new Gson();
+                AccountMessage packet = gson.fromJson(str, AccountMessage.class);
 
                 if (packet.getClass().getSimpleName().equals("AccountMessage")) {
                     AccountMessage accountMessage = packet;
                     boolean flag = Account.existThisUser(accountMessage.getUser());
                     if (flag && accountMessage.isSignUpOrLogIn()) {
                         //signUp error
-                        yaGson.toJson(ErrorType.USER_ALREADY_CREATED);
+                        sendPacket(gson.toJson(ErrorType.USER_ALREADY_CREATED));
                     } else if (flag && !accountMessage.isSignUpOrLogIn()) {
                         //loginK
-                        boolean f = Account.authorize(accountMessage.getUser(),accountMessage.getPass());
-                        if (f){
+                        boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
+                        if (f) {
                             Account account = Account.getAccount(accountMessage.getUser());
-                            yaGson.toJson(account);
+                            sendPacket(gson.toJson(account));
                         } else {
-                            yaGson.toJson(ErrorType.WRONG_PASSWORD);
+                            sendPacket(gson.toJson(ErrorType.WRONG_PASSWORD));
                         }
-                    } else if (!flag && accountMessage.isSignUpOrLogIn()){
+                    } else if (!flag && accountMessage.isSignUpOrLogIn()) {
                         //sign up
                         Account account = new Account(accountMessage.getUser(), accountMessage.getPass());
-                        yaGson.toJson(account);
+                        sendPacket(gson.toJson(account));
                     } else {
                         //login error
-                        yaGson.toJson(ErrorType.NO_SUCH_USER_EXIST);
+                        sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
-                    sendPacket(yaGson);
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();

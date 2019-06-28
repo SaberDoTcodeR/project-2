@@ -484,7 +484,7 @@ public class BattleController {
     }
 
     private void updateProfile() {
-        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
+        //accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
 
     }
 
@@ -552,7 +552,7 @@ public class BattleController {
     }
 
     public void setProfile(Image imagePro) {
-        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
+       // accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
         accountInfo.setGraphicTextGap(10);
         profile.setImage(imagePro);
         Rectangle clip = new Rectangle(
@@ -623,7 +623,7 @@ public class BattleController {
         rectangles[42] = rect43;
         rectangles[43] = rect44;
         rectangles[44] = rect45;
-        switch (GameModeController.MODE) {
+       /* switch (GameModeController.MODE) {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(),
@@ -650,7 +650,7 @@ public class BattleController {
 
         currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
         setProfile(Account.getLoginAccount().getAvatar());
-
+*/
         for (int i = 1; i < 45; i++) {
             rectangles[i].setPrefWidth(KASHI);
             rectangles[i].setPrefHeight(KASHI);

@@ -41,9 +41,9 @@ public class HeroBattle extends Battle {
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
-        Account account = new Account(1);
-        account.setMainDeck(opponentDeck);
-        this.secondPlayer = account;
+        //Account account = new Account(1);
+       /* account.setMainDeck(opponentDeck);
+        this.secondPlayer = account;*/
         this.setReward(reward);
             if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
             this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());

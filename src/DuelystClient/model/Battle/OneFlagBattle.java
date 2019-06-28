@@ -15,8 +15,8 @@ public class OneFlagBattle extends Battle {
     private Account secondPlayer;
     private Hand secondPlayerHand = new Hand();
 
-    public OneFlagBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
-        super(player, myDeck, opponentDeck);
+   /* public OneFlagBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
+       *//* super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
         account.setMainDeck(opponentDeck);
@@ -45,9 +45,9 @@ public class OneFlagBattle extends Battle {
             this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size()-1).cardIdGenerator(this);
 
             this.getMap().get(2).get(0).setCollectibleItem(null);
-        }
+        }*//*
     }
-
+*/
     public OneFlagBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int reward) {
         super(player, myDeck, opponentDeck);
         this.secondPlayer = player2;

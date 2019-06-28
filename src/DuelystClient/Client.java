@@ -13,13 +13,13 @@ public class Client extends Application {
     public static Stage primaryStage;
     public static Connection connectionToServer;
 
-    private static Properties getProperties() throws IOException {
+    public static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         properties.load(new FileInputStream("src/DuelystClient/config.properties"));
         return properties;
     }
 
-    private static int getPort(String port) {
+    public static int getPort(String port) {
         try {
             return Integer.parseInt(port);
         } catch (Exception e) {

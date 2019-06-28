@@ -42,7 +42,7 @@ public class LoginController {
     TextField passField;
 
     public void initialize() {
-        Gson gson = new Gson();
+        /*Gson gson = new Gson();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("DuelystClient/model/Save/saveaccount.json"));
             ArrayList<SaveAccount> saveAccounts;
@@ -77,7 +77,7 @@ public class LoginController {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void handleOnKeyPressedExit(KeyEvent event) {
@@ -127,14 +127,14 @@ public class LoginController {
     }
 
     public void loginBtnAct() {
-        passField.getStyleClass().remove("wrongPassword");
+      /*  passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
         if (Account.authorize(userField.getText(), passField.getText())) {
             View.makeMainMenu();
         } else {
             userField.getStyleClass().add("wrongPassword");
             passField.getStyleClass().add("wrongPassword");
-        }
+        }*/
     }
 
     public void loginBtnActFocus() {
@@ -154,9 +154,9 @@ public class LoginController {
         passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
-            YaGson yaGson = new YaGsonBuilder().create();
+            Gson gson = new Gson();
             AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText());
-            Client.connectionToServer.sendPacket(yaGson.toJson(accountMessage));
+            Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
             new Thread(new Runnable() {
                 @Override
@@ -164,12 +164,11 @@ public class LoginController {
                     Object object = null;
                     while (object == null)
                         object = Client.connectionToServer.readPacket();
-
-                    object = yaGson.fromJson((String) object, Object.class);
-                    if (object.getClass().getSimpleName().equals("ErrorType")) {
+                    if (((String) object).contains("USER_ALREADY_CREATED")) {
                         userField.getStyleClass().add("wrongPassword");
-                    } else if (object.getClass().getSimpleName().equals("Account")) {
-
+                    } else if (((String) object).contains("money")) {
+                        Account.setLoginAccout(gson.fromJson((String) object, Account.class));
+                        View.makeMainMenu();
                     }
                 }
             }).start();

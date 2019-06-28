@@ -321,7 +321,7 @@ public class ShopController {
     private CheckBox minion40;
 
     public void initialize() {
-        heroBoxes.add(hero1Box);
+        /*heroBoxes.add(hero1Box);
         heroBoxes.add(hero2Box);
         heroBoxes.add(hero3Box);
         heroBoxes.add(hero4Box);
@@ -488,7 +488,7 @@ public class ShopController {
             }
         }
         reBorderAll();
-    }
+*/    }
 
     @FXML
     void showHeroes() {
@@ -711,7 +711,7 @@ public class ShopController {
     }
 
     public void createBtnAct() {
-        BoxBlur blur = new BoxBlur(5, 5, 10);
+    /*    BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("Create Card");
         JFXTextField jfxTextField = new JFXTextField();
@@ -848,7 +848,7 @@ public class ShopController {
         jfxDialogLayout.getBody().add(vBox);
         jfxDialogLayout.setActions(jfxButton);
         jfxDialog.show();
-        gridPane.setEffect(blur);
+        gridPane.setEffect(blur);*/
 
     }
 
@@ -857,7 +857,7 @@ public class ShopController {
     }
 
     public void sellBtnAct() {
-        Shop shop = new Shop();
+      /*  Shop shop = new Shop();
         ArrayList<String> notOwnedCard = new ArrayList<>();
         int count = 0;
         for (VBox vBox : heroBoxes) {
@@ -941,7 +941,7 @@ public class ShopController {
 
             showDialog(errorText);
         }
-        reBorderAll();
+        reBorderAll();*/
 
     }
 
@@ -986,7 +986,7 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
-        ArrayList<String> notEnoughMoney = new ArrayList<>();
+        /*ArrayList<String> notEnoughMoney = new ArrayList<>();
         ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
         Shop shop = new Shop();
         int count = 0;
@@ -1074,7 +1074,7 @@ public class ShopController {
             }
             showDialog(string);
         }
-        reBorderAll();
+        reBorderAll();*/
     }
 
     private void showDialog(String string) {

@@ -20,8 +20,8 @@ public class FlagsBattle extends Battle {
         return flags;
     }
 
-    public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, int flags, int reward) {
-        super(player, myDeck, opponentDeck);
+   /* public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, int flags, int reward) {
+       *//* super(player, myDeck, opponentDeck);
         this.playWithAI = true;
         Account account = new Account(1);
         account.setMainDeck(opponentDeck);
@@ -51,8 +51,8 @@ public class FlagsBattle extends Battle {
             this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size()-1).cardIdGenerator(this);
 
             this.getMap().get(2).get(0).setCollectibleItem(null);
-        }
-    }
+        }*//*
+    }*/
 
     public FlagsBattle(Deck opponentDeck, Deck myDeck, Account player, Account player2, int flags, int reward) {
         super(player, myDeck, opponentDeck);
