@@ -1,4 +1,4 @@
-package server;
+package DuelystServer;
 
 import java.io.File;
 import java.io.FileInputStream;
