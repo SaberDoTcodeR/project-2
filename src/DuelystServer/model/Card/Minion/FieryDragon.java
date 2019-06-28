@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 public class FieryDragon extends Minion {
     public FieryDragon() {
         super("FieryDragon", 5, 9, 250, 5, 1, 4);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlechassis_breathing.gif");
     }
 
     public FieryDragon(FieryDragon fieryDragon) {
@@ -16,7 +15,6 @@ public class FieryDragon extends Minion {
 
     public Minion duplicate() {
         FieryDragon fieryDragon = new FieryDragon(this);
-        fieryDragon.cardImage = new Image("Duelyst/css/unit_gifs/boss_decepticlechassis_breathing.gif");
         return fieryDragon;
     }
 

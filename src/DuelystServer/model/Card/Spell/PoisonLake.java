@@ -10,7 +10,6 @@ public class PoisonLake extends Spell {
 
     public PoisonLake() {
         super("PoisonLake", 5, 900);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f6_ilenamk2_breathing.gif");
     }
 
     public PoisonLake(PoisonLake poisonLake) {
@@ -48,7 +47,6 @@ public class PoisonLake extends Spell {
 
     public Spell duplicate() {
         PoisonLake poisonLake = new PoisonLake(this);
-        poisonLake.cardImage = new Image("Duelyst/css/unit_gifs/f6_ilenamk2_breathing.gif");
         return poisonLake;
     }
 

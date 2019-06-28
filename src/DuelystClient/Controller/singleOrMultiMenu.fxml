@@ -37,7 +37,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/singleWhite.png"/>
+                        <Image url="DuelystClient/css/singleWhite.png"/>
                     </image>
 
                 </ImageView>
@@ -53,7 +53,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/multiWhite.png"/>
+                        <Image url="DuelystClient/css/multiWhite.png"/>
                     </image>
                 </ImageView>
             </graphic>
@@ -69,7 +69,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/mainMenuWhite.png"/>
+                        <Image url="DuelystClient/css/mainMenuWhite.png"/>
                     </image>
                 </ImageView>
             </graphic>

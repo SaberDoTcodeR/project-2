@@ -6,8 +6,7 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Account {
-    private transient Image avatar;
-    private transient static Account loginAccount;
+    private int avatar;
     private transient static ArrayList<Account> allUser = new ArrayList<>();
     private String userName, passWord;
     private int money, wins = 0, mana;
@@ -41,7 +40,7 @@ public class Account {
         this.userName = userName;
         this.passWord = passWord;
         this.money = 15000;
-        this.avatar = new Image("Duelyst/css/avatar1.png");
+        this.avatar = 1;
         allUser.add(this);
     }
 
@@ -50,11 +49,11 @@ public class Account {
         this.money = 15000;
     }
 
-    public Image getAvatar() {
+    public int getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Image avatar) {
+    public void setAvatar(int avatar) {
         this.avatar = avatar;
     }
 
@@ -75,7 +74,6 @@ public class Account {
         for (Account account : Account.getAllUser()) {
             if (account.getUserName().equals(userName)) {
                 if (account.getPassWord().equals(passWord)) {
-                    Account.setLoginAccount(account);
                     return true;
                 }
                 return false;
@@ -161,14 +159,6 @@ public class Account {
 
     public void setWins(int wins) {
         this.wins = wins;
-    }
-
-    public static Account getLoginAccount() {
-        return loginAccount;
-    }
-
-    public static void setLoginAccount(Account loginAccount) {
-        Account.loginAccount = loginAccount;
     }
 
     public static ArrayList<Account> getAllUser() {

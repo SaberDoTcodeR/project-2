@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 public class TuranianArcher extends Minion {
     public TuranianArcher() {
         super("TuranianArcher", 4, 3, 500, 1, 1, 5);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_shinkagezendo_breathing.gif");
     }
 
     public TuranianArcher(TuranianArcher turanianArcher) {
@@ -17,7 +16,6 @@ public class TuranianArcher extends Minion {
 
     public Minion duplicate() {
         TuranianArcher turanianArcher = new TuranianArcher(this);
-        turanianArcher.cardImage = new Image("Duelyst/css/unit_gifs/boss_shinkagezendo_breathing.gif");
         return turanianArcher;
     }
 

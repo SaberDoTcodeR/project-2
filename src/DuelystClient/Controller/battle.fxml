@@ -242,7 +242,7 @@
                                    pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
-                                <Image url="Duelyst/css/card_background.png"/>
+                                <Image url="DuelystClient/css/card_background.png"/>
                             </image>
 
                         </ImageView>
@@ -255,7 +255,7 @@
                                    preserveRatio="true"
                                    GridPane.columnIndex="1">
                             <image>
-                                <Image url="Duelyst/css/card_background.png"/>
+                                <Image url="DuelystClient/css/card_background.png"/>
                             </image>
                         </ImageView>
                         <ImageView onMouseEntered="#enterHand2" onDragDetected="#dragHand2" fx:id="gif2" fitHeight="150"
@@ -266,7 +266,7 @@
                                    preserveRatio="true"
                                    GridPane.columnIndex="2">
                             <image>
-                                <Image url="Duelyst/css/card_background.png"/>
+                                <Image url="DuelystClient/css/card_background.png"/>
                             </image>
 
                         </ImageView>
@@ -278,7 +278,7 @@
                                    preserveRatio="true"
                                    GridPane.columnIndex="3">
                             <image>
-                                <Image url="Duelyst/css/card_background.png"/>
+                                <Image url="DuelystClient/css/card_background.png"/>
                             </image>
 
                         </ImageView>
@@ -290,7 +290,7 @@
                                    preserveRatio="true"
                                    GridPane.columnIndex="4">
                             <image>
-                                <Image url="Duelyst/css/card_background.png"/>
+                                <Image url="DuelystClient/css/card_background.png"/>
                             </image>
 
                         </ImageView>
@@ -304,7 +304,7 @@
                            pickOnBounds="true" preserveRatio="true"
                            GridPane.rowIndex="2">
                     <image>
-                        <Image url="Duelyst/css/card_background.png"/>
+                        <Image url="DuelystClient/css/card_background.png"/>
                     </image>
                     <GridPane.margin>
                         <Insets left="50"/>

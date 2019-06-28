@@ -10,7 +10,6 @@ public class Weakening extends Spell {
 
     public Weakening() {
         super("Weakening", 1, 1000);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
     }
 
     public Weakening(Weakening weakening) {
@@ -42,7 +41,6 @@ public class Weakening extends Spell {
 
     public Spell duplicate() {
         Weakening weakening = new Weakening(this);
-        weakening.cardImage = new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
         return weakening;
     }
 

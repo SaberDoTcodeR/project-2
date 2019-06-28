@@ -9,7 +9,6 @@ public class OneEyeGiant extends Minion {
     public OneEyeGiant() {
         super("OneEyeGiant", 11, 12, 500, 7, 2, 3);
         super.setTimeOfActivationOfSpecialPower(3);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_kane_breathing.gif");
     }
 
     public OneEyeGiant(OneEyeGiant oneEyeGiant) {
@@ -18,7 +17,6 @@ public class OneEyeGiant extends Minion {
 
     public Minion duplicate() {
         OneEyeGiant oneEyeGiant = new OneEyeGiant(this);
-        oneEyeGiant.cardImage = new Image("Duelyst/css/unit_gifs/boss_kane_breathing.gif");
         return oneEyeGiant;
     }
 

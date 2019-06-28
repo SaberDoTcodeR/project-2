@@ -10,7 +10,6 @@ public class AreaDispel extends Spell {
 
     public AreaDispel() {
         super("AreaDispel", 2, 1500);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f3_tier2general_breathing.gif");
     }
 
     public AreaDispel(AreaDispel areaDispel) {
@@ -41,8 +40,6 @@ public class AreaDispel extends Spell {
     @Override
     public Spell duplicate() {
         AreaDispel areaDispel = new AreaDispel(this);
-
-        areaDispel.cardImage = new Image("Duelyst/css/unit_gifs/f3_tier2general_breathing.gif");
         return areaDispel;
     }
 

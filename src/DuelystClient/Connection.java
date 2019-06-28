@@ -1,5 +1,9 @@
 package DuelystClient;
 
+import DuelystClient.model.Account;
+import com.gilecode.yagson.YaGson;
+import com.gilecode.yagson.YaGsonBuilder;
+
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;

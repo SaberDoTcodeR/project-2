@@ -10,7 +10,6 @@ public class GodStrength extends Spell {
 
     public GodStrength() {
         super("GodStrength", 2, 450);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f4_tier2general_breathing.gif");
     }
 
     public GodStrength(GodStrength godStrength) {
@@ -39,7 +38,6 @@ public class GodStrength extends Spell {
 
     public Spell duplicate() {
         GodStrength godStrength = new GodStrength(this);
-        godStrength.cardImage = new Image("Duelyst/css/unit_gifs/f4_tier2general_breathing.gif");
         return godStrength;
     }
 

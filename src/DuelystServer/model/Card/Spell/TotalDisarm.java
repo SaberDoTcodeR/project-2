@@ -11,7 +11,6 @@ public class TotalDisarm extends Spell {
 
     public TotalDisarm() {
         super("TotalDisarm", 0, 1000);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/neutral_zyxfestive_breathing.gif");
     }
 
     @Override
@@ -51,7 +50,6 @@ public class TotalDisarm extends Spell {
 
     public Spell duplicate() {
         TotalDisarm totalDisarm = new TotalDisarm(this);
-        totalDisarm.cardImage = new Image("Duelyst/css/unit_gifs/neutral_zyxfestive_breathing.gif");
         return totalDisarm;
     }
 

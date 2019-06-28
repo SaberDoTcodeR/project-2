@@ -8,7 +8,6 @@ public class WhiteWolf extends Minion {
     public WhiteWolf() {
         super("WhiteWolf", 2, 8, 400, 5, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_umbra_breathing.gif");
     }
 
     public WhiteWolf(WhiteWolf whiteWolf) {
@@ -17,7 +16,6 @@ public class WhiteWolf extends Minion {
 
     public Minion duplicate() {
         WhiteWolf whiteWolf = new WhiteWolf(this);
-        whiteWolf.cardImage = new Image("Duelyst/css/unit_gifs/boss_umbra_breathing.gif");
         return whiteWolf;
     }
 

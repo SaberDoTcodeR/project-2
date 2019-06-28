@@ -10,7 +10,6 @@ public class AllPoison extends Spell {
 
     public AllPoison() {
         super("AllPoison", 8, 1500);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f3_altgeneraltier2_breathing.gif");
     }
 
     public AllPoison(String name, int costToUse, int costOfBuy) {
@@ -48,7 +47,6 @@ public class AllPoison extends Spell {
     public Spell duplicate() {
         AllPoison allPoison = new AllPoison(this);
 
-        allPoison.cardImage = new Image("Duelyst/css/unit_gifs/f3_altgeneraltier2_breathing.gif");
         return allPoison;
     }
 

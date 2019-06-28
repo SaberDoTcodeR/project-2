@@ -10,7 +10,6 @@ public class Madness extends Spell {
 
     public Madness() {
         super("Madness", 0, 650);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f6_faiefestive_breathing.gif");
     }
 
     public Madness(Madness madness) {
@@ -60,7 +59,6 @@ public class Madness extends Spell {
 
     public Spell duplicate() {
         Madness madness = new Madness(this);
-        madness.cardImage = new Image("Duelyst/css/unit_gifs/f6_faiefestive_breathing.gif");
         return madness;
     }
 

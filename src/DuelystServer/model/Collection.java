@@ -334,11 +334,6 @@ public class Collection {
             return false;
     }
 
-    public void selectDeck(String deckName) {
-        Deck deck = findDeck(deckName);
-        Account.getLoginAccount().setMainDeck(deck);
-    }
-
     /*public void showAllDecks() {
         //todo check working
         int index = 1;

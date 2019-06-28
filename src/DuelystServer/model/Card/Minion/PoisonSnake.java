@@ -9,7 +9,6 @@ public class PoisonSnake extends Minion {
     public PoisonSnake() {
         super("PoisonSnake", 6, 5, 300, 4, 1, 4);
         super.setTimeOfActivationOfSpecialPower(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_sandpanther_breathing.gif");
     }
 
     public PoisonSnake(PoisonSnake poisonSnake) {
@@ -18,7 +17,6 @@ public class PoisonSnake extends Minion {
 
     public Minion duplicate() {
         PoisonSnake poisonSnake = new PoisonSnake(this);
-        poisonSnake.cardImage = new Image("Duelyst/css/unit_gifs/boss_sandpanther_breathing.gif");
         return poisonSnake;
     }
 

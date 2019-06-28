@@ -8,7 +8,6 @@ public class PersianGladiator extends Minion {
     public PersianGladiator() {
         super("PersianGladiator", 6, 24, 600, 9, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_manaman_breathing.gif");
     }
 
     public PersianGladiator(PersianGladiator persianGladiator) {
@@ -17,7 +16,6 @@ public class PersianGladiator extends Minion {
 
     public Minion duplicate() {
         PersianGladiator persianGladiator = new PersianGladiator(this);
-        persianGladiator.cardImage = new Image("Duelyst/css/unit_gifs/boss_manaman_breathing.gif");
         return persianGladiator;
     }
 

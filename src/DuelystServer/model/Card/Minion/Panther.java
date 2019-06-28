@@ -8,7 +8,6 @@ public class Panther extends Minion {
     public Panther() {
         super("Panther", 2, 6, 400, 4, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_kron_breathing.gif");
     }
 
     public Panther(Panther panther) {
@@ -17,7 +16,6 @@ public class Panther extends Minion {
 
     public Minion duplicate() {
         Panther panther = new Panther(this);
-        panther.cardImage = new Image("Duelyst/css/unit_gifs/boss_kron_breathing.gif");
         return panther;
     }
 

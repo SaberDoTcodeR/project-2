@@ -60,7 +60,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/loginWhite.png"/>
+                        <Image url="DuelystClient/css/loginWhite.png"/>
                     </image>
 
                 </ImageView>
@@ -76,7 +76,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/signupWhite.png"/>
+                        <Image url="DuelystClient/css/signupWhite.png"/>
                     </image>
                 </ImageView>
             </graphic>
@@ -91,7 +91,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="Duelyst/css/exitWhite.png"/>
+                        <Image url="DuelystClient/css/exitWhite.png"/>
                     </image>
                 </ImageView>
             </graphic>

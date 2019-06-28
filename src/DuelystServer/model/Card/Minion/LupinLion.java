@@ -9,7 +9,6 @@ public class LupinLion extends Minion {
     public LupinLion() {
         super("LupinLion", 8, 1, 600, 2, 0, 0);
         super.setTimeOfActivationOfSpecialPower(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_harmony_breathing.gif");
     }
 
     public LupinLion(LupinLion lupinLion) {
@@ -18,7 +17,6 @@ public class LupinLion extends Minion {
 
     public Minion duplicate() {
         LupinLion lupinLion = new LupinLion(this);
-        lupinLion.cardImage = new Image("Duelyst/css/unit_gifs/boss_harmony_breathing.gif");
         return lupinLion;
     }
 

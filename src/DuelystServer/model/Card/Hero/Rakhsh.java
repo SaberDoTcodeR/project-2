@@ -11,7 +11,6 @@ public class Rakhsh extends Hero {
         super("Rakhsh", 4, 50, 8000, 0);
         super.setCoolDownTime(2);
         super.setMp(1);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f1_bromemk2_breathing.gif");
     }
 
     public Rakhsh(Rakhsh rakhsh) {
@@ -20,7 +19,6 @@ public class Rakhsh extends Hero {
 
     public Hero duplicate() {
         Rakhsh rakhsh = new Rakhsh(this);
-        rakhsh.cardImage = new Image("Duelyst/css/unit_gifs/f1_bromemk2_breathing.gif");
         return rakhsh;
     }
 

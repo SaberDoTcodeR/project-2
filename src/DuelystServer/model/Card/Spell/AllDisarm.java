@@ -10,7 +10,6 @@ public class AllDisarm extends Spell {
 
     public AllDisarm() {
         super("AllDisarm", 9, 2000);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f2_tier2general_breathing.gif");
     }
 
     public AllDisarm(AllDisarm allDisarm) {
@@ -49,7 +48,6 @@ public class AllDisarm extends Spell {
     public Spell duplicate() {
         AllDisarm allDisarm = new AllDisarm(this);
 
-        allDisarm.cardImage = new Image("Duelyst/css/unit_gifs/f2_tier2general_breathing.gif");
         return allDisarm;
     }
 

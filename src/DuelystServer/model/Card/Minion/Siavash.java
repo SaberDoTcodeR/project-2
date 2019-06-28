@@ -9,7 +9,6 @@ public class Siavash extends Minion {
     public Siavash() {
         super("Siavash", 5, 8, 350, 4, 0, 0);
         super.setTimeOfActivationOfSpecialPower(3);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_serpenti_breathing.gif");
     }
 
     public Siavash(Siavash siavash) {
@@ -18,7 +17,6 @@ public class Siavash extends Minion {
 
     public Minion duplicate() {
         Siavash siavash = new Siavash(this);
-        siavash.cardImage = new Image("Duelyst/css/unit_gifs/boss_serpenti_breathing.gif");
         return siavash;
     }
 

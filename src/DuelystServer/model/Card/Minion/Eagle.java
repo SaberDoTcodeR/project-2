@@ -8,7 +8,6 @@ public class Eagle extends Minion {
     public Eagle() {
         super("Eagle", 2, 0, 200, 2, 1, 3);
         super.setTimeOfActivationOfSpecialPower(4);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_crystal_breathing.gif");
     }
 
     public Eagle(Eagle eagle) {
@@ -17,7 +16,6 @@ public class Eagle extends Minion {
 
     public Minion duplicate() {
         Eagle eagle = new Eagle(this);
-        eagle.cardImage = new Image("Duelyst/css/unit_gifs/boss_crystal_breathing.gif");
       /*  PowerBuff powerBuff = new PowerBuff(12, false);
         powerBuff.setTurnCounter(-4);
         powerBuff.incrementHp(eagle);

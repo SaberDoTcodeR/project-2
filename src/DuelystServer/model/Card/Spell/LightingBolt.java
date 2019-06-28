@@ -10,7 +10,6 @@ public class LightingBolt extends Spell {
 
     public LightingBolt() {
         super("LightingBolt", 2, 1250);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f6_altgeneraltier2_breathing.gif");
     }
 
     public LightingBolt(LightingBolt lightingBolt) {
@@ -41,7 +40,6 @@ public class LightingBolt extends Spell {
 
     public Spell duplicate() {
         LightingBolt lightingBolt = new LightingBolt(this);
-        lightingBolt.cardImage = new Image("Duelyst/css/unit_gifs/f6_altgeneraltier2_breathing.gif");
         return lightingBolt;
     }
 

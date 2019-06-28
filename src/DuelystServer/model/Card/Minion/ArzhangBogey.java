@@ -10,7 +10,6 @@ public class ArzhangBogey extends Minion {
     public ArzhangBogey() {
         super("ArzhangBogey", 6, 6, 600, 3, 0, 0);
         super.setTimeOfActivationOfSpecialPower(2);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_andromeda_breathing.gif");
     }
 
     public ArzhangBogey(ArzhangBogey arzhangBogey) {
@@ -19,7 +18,6 @@ public class ArzhangBogey extends Minion {
 
     public Minion duplicate() {
         ArzhangBogey arzhangBogey = new ArzhangBogey(this);
-        arzhangBogey.cardImage = new Image("Duelyst/css/unit_gifs/boss_andromeda_breathing.gif");
         return arzhangBogey;
     }
 

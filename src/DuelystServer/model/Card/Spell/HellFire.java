@@ -10,7 +10,6 @@ public class HellFire extends Spell {
 
     public HellFire() {
         super("HellFire", 3, 600);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f5_altgeneraltier2_breathing.gif");
     }
 
     public HellFire(HellFire hellFire) {
@@ -43,7 +42,6 @@ public class HellFire extends Spell {
     @Override
     public Spell duplicate() {
         HellFire hellFire = new HellFire(this);
-        hellFire.cardImage = new Image("Duelyst/css/unit_gifs/f5_altgeneraltier2_breathing.gif");
         return hellFire;
     }
 

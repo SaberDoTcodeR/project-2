@@ -51,7 +51,7 @@
                         <graphic>
                             <ImageView fx:id="addImage" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/addWhite.png"/>
+                                    <Image url="DuelystClient/css/addWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -66,7 +66,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/mainMenuWhite.png"/>
+                                    <Image url="DuelystClient/css/mainMenuWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -80,7 +80,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/importWhite.png"/>
+                                    <Image url="DuelystClient/css/importWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -94,7 +94,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/exportWhite.png"/>
+                                    <Image url="DuelystClient/css/exportWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -120,7 +120,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -147,7 +147,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -174,7 +174,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -201,7 +201,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -228,7 +228,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -255,7 +255,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -282,7 +282,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -309,7 +309,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -336,7 +336,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -362,7 +362,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/hero.jpg"/>
+                                                    <Image url="DuelystClient/css/hero.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -401,7 +401,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/heroWhite.png"/>
+                                    <Image url="DuelystClient/css/heroWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -416,7 +416,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/minionWhite.png"/>
+                                    <Image url="DuelystClient/css/minionWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -431,7 +431,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/spellWhite.png"/>
+                                    <Image url="DuelystClient/css/spellWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -446,7 +446,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/itemWhite.png"/>
+                                    <Image url="DuelystClient/css/itemWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -473,7 +473,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/star.png"/>
+                                    <Image url="DuelystClient/css/star.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -500,7 +500,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/deleteWhite.png"/>
+                                    <Image url="DuelystClient/css/deleteWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -516,7 +516,7 @@
                         <graphic>
                             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/createWhite.png"/>
+                                    <Image url="DuelystClient/css/createWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -532,7 +532,7 @@
                         <graphic>
                             <ImageView fx:id="crossImage"  fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
-                                    <Image url="Duelyst/css/crossWhite.png"/>
+                                    <Image url="DuelystClient/css/crossWhite.png"/>
                                 </image>
                             </ImageView>
                         </graphic>
@@ -590,7 +590,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -619,7 +619,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -648,7 +648,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -676,7 +676,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -704,7 +704,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -732,7 +732,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -760,7 +760,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -788,7 +788,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -816,7 +816,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -842,7 +842,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -868,7 +868,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -896,7 +896,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -924,7 +924,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -951,7 +951,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -977,7 +977,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1003,7 +1003,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1029,7 +1029,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1055,7 +1055,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1081,7 +1081,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1107,7 +1107,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1133,7 +1133,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1161,7 +1161,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1189,7 +1189,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1216,7 +1216,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1242,7 +1242,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1268,7 +1268,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1294,7 +1294,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1320,7 +1320,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1346,7 +1346,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1372,7 +1372,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1398,7 +1398,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1426,7 +1426,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1454,7 +1454,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1481,7 +1481,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1507,7 +1507,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1533,7 +1533,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1559,7 +1559,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1585,7 +1585,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1611,7 +1611,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1637,7 +1637,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1678,7 +1678,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1707,7 +1707,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1736,7 +1736,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1764,7 +1764,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1792,7 +1792,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1820,7 +1820,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1848,7 +1848,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1876,7 +1876,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1904,7 +1904,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1932,7 +1932,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1958,7 +1958,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -1987,7 +1987,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2016,7 +2016,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2044,7 +2044,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2072,7 +2072,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2100,7 +2100,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2128,7 +2128,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2156,7 +2156,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2184,7 +2184,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2212,7 +2212,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2252,7 +2252,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2280,7 +2280,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2308,7 +2308,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2336,7 +2336,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2364,7 +2364,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2392,7 +2392,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2420,7 +2420,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2448,7 +2448,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2476,7 +2476,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2503,7 +2503,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>
@@ -2530,7 +2530,7 @@
                                             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
                                                        preserveRatio="true">
                                                 <image>
-                                                    <Image url="Duelyst/css/avatar3.jpg"/>
+                                                    <Image url="DuelystClient/css/avatar3.jpg"/>
                                                 </image>
                                                 <VBox.margin>
                                                     <Insets left="5.0" right="5.0"/>

@@ -13,7 +13,6 @@ public class Esfandyar extends Hero {
         super("Esfandyar", 3, 35, 12000, 2);
         super.setCoolDownTime(0);
         super.setMp(0);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_wraith_breathing.gif");
         super.setRange(3);
     }
 
@@ -23,7 +22,6 @@ public class Esfandyar extends Hero {
 
     public Hero duplicate() {
         Esfandyar esfandyar = new Esfandyar(this);
-        esfandyar.cardImage = new Image("Duelyst/css/unit_gifs/boss_wraith_breathing.gif");
         /*for (int i = 0; i < 3; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);

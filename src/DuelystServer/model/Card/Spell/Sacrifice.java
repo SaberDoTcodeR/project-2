@@ -9,7 +9,6 @@ public class Sacrifice extends Spell {
 
     public Sacrifice() {
         super("Sacrifice", 2, 1600);
-        super.cardImage=new Image("Duelyst/css/unit_gifs/f6_tier2general_breathing.gif");
     }
 
     public Sacrifice(Sacrifice sacrifice) {
@@ -47,7 +46,6 @@ public class Sacrifice extends Spell {
 
     public Spell duplicate() {
         Sacrifice sacrifice = new Sacrifice(this);
-        sacrifice.cardImage = new Image("Duelyst/css/unit_gifs/f6_tier2general_breathing.gif");
         return sacrifice;
     }
 

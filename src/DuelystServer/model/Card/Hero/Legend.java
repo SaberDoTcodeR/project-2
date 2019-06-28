@@ -12,7 +12,6 @@ public class Legend extends Hero {
         super.setCoolDownTime(2);
         super.setMp(1);
         super.setRange(3);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f1_altgeneraltier2_breathing.gif");
     }
 
     public Legend(Legend legend) {
@@ -21,7 +20,6 @@ public class Legend extends Hero {
 
     public Hero duplicate() {
         Legend legend = new Legend(this);
-        legend.cardImage = new Image("Duelyst/css/unit_gifs/f1_altgeneraltier2_breathing.gif");
         return legend;
     }
 

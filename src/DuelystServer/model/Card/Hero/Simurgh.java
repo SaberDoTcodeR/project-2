@@ -12,7 +12,6 @@ public class Simurgh extends Hero {
         super("Simurgh", 4, 50, 9000, 0);
         super.setCoolDownTime(8);
         super.setMp(3);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f1_tier2general_breathing.gif");
     }
 
     public Simurgh(Simurgh simurgh) {
@@ -21,7 +20,6 @@ public class Simurgh extends Hero {
 
     public Hero duplicate() {
         Simurgh simurgh = new Simurgh(this);
-        simurgh.cardImage = new Image("Duelyst/css/unit_gifs/f1_tier2general_breathing.gif");
         return simurgh;
     }
 

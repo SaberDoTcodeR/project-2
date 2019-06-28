@@ -10,7 +10,6 @@ public class Dispel extends Spell {
 
     public Dispel() {
         super("Dispel", 0, 2100);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f3_zirixfestive_breathing.gif");
     }
 
     public Dispel(Dispel dispel) {
@@ -62,7 +61,6 @@ public class Dispel extends Spell {
 
     public Spell duplicate() {
         Dispel dispel = new Dispel(this);
-        dispel.cardImage = new Image("Duelyst/css/unit_gifs/f3_zirixfestive_breathing.gif");
         return dispel;
     }
 

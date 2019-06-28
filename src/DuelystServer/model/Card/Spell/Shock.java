@@ -10,7 +10,6 @@ public class Shock extends Spell {
 
     public Shock() {
         super("Shock", 1, 1200);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
     }
 
     public Shock(Shock shock) {
@@ -50,7 +49,6 @@ public class Shock extends Spell {
 
     public Spell duplicate() {
         Shock shock = new Shock(this);
-        shock.cardImage = new Image("Duelyst/css/unit_gifs/neutral_saberspinemk2_breathing.gif");
         return shock;
     }
 

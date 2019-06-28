@@ -8,7 +8,6 @@ import javafx.scene.image.Image;
 public class Magician extends Minion {
     public Magician() {
         super("Magician", 4, 5, 550, 4, 1, 3);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_invader_breathing.gif");
         super.setTimeOfActivationOfSpecialPower(4);
     }
 
@@ -18,7 +17,6 @@ public class Magician extends Minion {
 
     public Minion duplicate() {
         Magician magician = new Magician(this);
-        magician.cardImage = new Image("Duelyst/css/unit_gifs/boss_invader_breathing.gif");
         return magician;
     }
 

@@ -10,7 +10,6 @@ public class KingsGuard extends Spell {
 
     public KingsGuard() {
         super("KingsGuard", 9, 1750);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f5_tier2general_breathing.gif");
     }
 
     public KingsGuard(KingsGuard kingsGuard) {
@@ -52,7 +51,6 @@ public class KingsGuard extends Spell {
     @Override
     public Spell duplicate() {
         KingsGuard kingsGuard = new KingsGuard(this);
-        kingsGuard.cardImage = new Image("Duelyst/css/unit_gifs/f5_tier2general_breathing.gif");
         return kingsGuard;
     }
 

@@ -11,7 +11,6 @@ public class Kaveh extends Hero {
         super("Kaveh", 4, 50, 8000, 0);
         super.setCoolDownTime(3);
         super.setMp(1);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_wujin_breathing.gif");
     }
 
     public Kaveh(Kaveh kaveh) {
@@ -20,7 +19,6 @@ public class Kaveh extends Hero {
 
     public Hero duplicate() {
         Kaveh kaveh = new Kaveh(this);
-        kaveh.cardImage = new Image("Duelyst/css/unit_gifs/boss_wujin_breathing.gif");
         return kaveh;
     }
 

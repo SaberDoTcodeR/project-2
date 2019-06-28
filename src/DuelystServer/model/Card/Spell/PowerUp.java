@@ -9,7 +9,6 @@ public class PowerUp extends Spell {
 
     public PowerUp() {
         super("PowerUp", 2, 2500);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f6_snowchasermk2_breathing.gif");
     }
 
     public PowerUp(PowerUp powerUp) {
@@ -49,7 +48,6 @@ public class PowerUp extends Spell {
 
     public Spell duplicate() {
         PowerUp powerUp = new PowerUp(this);
-        powerUp.cardImage = new Image("Duelyst/css/unit_gifs/f6_snowchasermk2_breathing.gif");
         return powerUp;
     }
 

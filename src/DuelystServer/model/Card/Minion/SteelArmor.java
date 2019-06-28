@@ -11,7 +11,6 @@ public class SteelArmor extends Minion {
     public SteelArmor() {
         super("SteelArmor", 1, 1, 650, 3, 0, 0);
         super.setTimeOfActivationOfSpecialPower(1);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif");
     }
 
     public SteelArmor(SteelArmor steelArmor) {
@@ -20,7 +19,6 @@ public class SteelArmor extends Minion {
 
     public Minion duplicate() {
         SteelArmor steelArmor = new SteelArmor(this);
-        steelArmor.cardImage = new Image("Duelyst/css/unit_gifs/boss_shadowlord_breathing.gif");
        /* for (int i = 0; i < 12; i++) {
             HolyBuff holyBuff = new HolyBuff();
             holyBuff.setTurnCounter(-4);

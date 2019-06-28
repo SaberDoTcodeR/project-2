@@ -9,7 +9,6 @@ public class TuranianPrince extends Minion {
     public TuranianPrince() {
         super("TuranianPrince", 10, 6, 800, 6, 0, 0);
         super.setTimeOfActivationOfSpecialPower(2);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_skurge_breathing.gif");
     }
 
     public TuranianPrince(TuranianPrince turanianPrince) {
@@ -18,7 +17,6 @@ public class TuranianPrince extends Minion {
 
     public Minion duplicate() {
         TuranianPrince turanianPrince = new TuranianPrince(this);
-        turanianPrince.cardImage = new Image("Duelyst/css/unit_gifs/boss_skurge_breathing.gif");
         return turanianPrince;
     }
 

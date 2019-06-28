@@ -9,9 +9,7 @@ import javafx.scene.image.Image;
 public class Dragon extends Hero {
     public Dragon() {
         super("Dragon", 4, 50, 8000, 0);
-        this.cardImage = new Image("Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif");
         super.setCoolDownTime(1);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif");
         super.setMp(0);
     }
 
@@ -21,7 +19,6 @@ public class Dragon extends Hero {
 
     public Hero duplicate() {
         Dragon dragon = new Dragon(this);
-        dragon.cardImage = new Image("Duelyst/css/unit_gifs/boss_wolfpunch_breathing.gif");
         return dragon;
     }
 

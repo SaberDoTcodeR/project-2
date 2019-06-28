@@ -10,7 +10,6 @@ public class Empower extends Spell {
 
     public Empower() {
         super("Empower", 1, 250);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f4_altgeneraltier2_breathing.gif");
     }
 
     public Empower(Empower empower) {
@@ -44,7 +43,6 @@ public class Empower extends Spell {
 
     public Spell duplicate() {
         Empower empower = new Empower(this);
-        empower.cardImage = new Image("Duelyst/css/unit_gifs/f4_altgeneraltier2_breathing.gif");
         return empower;
     }
 

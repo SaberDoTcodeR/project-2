@@ -10,7 +10,6 @@ public class HealthWithProfit extends Spell {
 
     public HealthWithProfit() {
         super("HealthWithProfit", 0, 2250);
-        super.cardImage = new Image("Duelyst/css/unit_gifs/f5_ragnoramk2_breathing.gif");
     }
 
     public HealthWithProfit(HealthWithProfit healthWithProfit) {
@@ -67,7 +66,6 @@ public class HealthWithProfit extends Spell {
     public Spell duplicate() {
         HealthWithProfit healthWithProfit = new HealthWithProfit(this);
 
-        healthWithProfit.cardImage = new Image("Duelyst/css/unit_gifs/f5_ragnoramk2_breathing.gif");
         return healthWithProfit;
     }
 
