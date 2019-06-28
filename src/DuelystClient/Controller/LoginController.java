@@ -1,10 +1,15 @@
 package DuelystClient.Controller;
 
+import DuelystClient.Client;
+import DuelystClient.Messages.AccountMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
 import DuelystClient.model.Collection;
 import DuelystClient.model.Deck;
+import DuelystClient.model.ErrorType;
 import DuelystClient.model.Save.SaveAccount;
+import com.gilecode.yagson.YaGson;
+import com.gilecode.yagson.YaGsonBuilder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
@@ -39,7 +44,7 @@ public class LoginController {
     public void initialize() {
         Gson gson = new Gson();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\DuelystClient\\model\\Save\\saveaccount.json"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("DuelystClient/model/Save/saveaccount.json"));
             ArrayList<SaveAccount> saveAccounts;
             saveAccounts = gson.fromJson(bufferedReader, new TypeToken<ArrayList<SaveAccount>>() {
             }.getType());
@@ -148,11 +153,27 @@ public class LoginController {
 
         passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
-        if (!Account.existThisUser(userField.getText()) && !userField.getText().equals("") && !passField.getText().equals("")) {
-            Account.setLoginAccount(new Account(userField.getText(), passField.getText()));
-            View.makeMainMenu();
-        } else if (!userField.getText().equals("") && !passField.getText().equals("")) {
-            userField.getStyleClass().add("wrongPassword");
+        if (!userField.getText().equals("") && !passField.getText().equals("")) {
+            YaGson yaGson = new YaGsonBuilder().create();
+            AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText());
+            Client.connectionToServer.sendPacket(yaGson.toJson(accountMessage));
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Object object = null;
+                    while (object == null)
+                        object = Client.connectionToServer.readPacket();
+
+                    object = yaGson.fromJson((String) object, Object.class);
+                    if (object.getClass().getSimpleName().equals("ErrorType")) {
+                        userField.getStyleClass().add("wrongPassword");
+                    } else if (object.getClass().getSimpleName().equals("Account")) {
+
+                    }
+                }
+            }).start();
+
         } else {
             if (userField.getText().equals("")) {
                 userField.getStyleClass().add("wrongPassword");
@@ -161,5 +182,6 @@ public class LoginController {
                 passField.getStyleClass().add("wrongPassword");
             }
         }
+
     }
 }

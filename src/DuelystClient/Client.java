@@ -11,7 +11,7 @@ import java.util.Properties;
 public class Client extends Application {
 
     public static Stage primaryStage;
-
+    public static Connection connectionToServer;
 
     private static Properties getProperties() throws IOException {
         Properties properties = new Properties();
@@ -36,18 +36,17 @@ public class Client extends Application {
         primaryStage = primaryStage1;
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
-        String host = "127.0.0.1";
+        String host = "localhost";
         try {
             socket = new Socket(host, port);
             View.makeLoginScene();
-
             primaryStage.show();
-            Connection connection = new Connection(socket);
+            connectionToServer = new Connection(socket);
         } catch (IOException e) {
             socket = new Socket(host, defaultPort);
             View.makeLoginScene();
             primaryStage.show();
-            Connection connection = new Connection(socket);
+            connectionToServer = new Connection(socket);
         }
 
     }

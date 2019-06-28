@@ -23,6 +23,7 @@ public class View {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
             Scene loginScene = new Scene(root);
             loginScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
             loginScene.getStylesheets().add(Client.class.getResource("css/css.css").toExternalForm());

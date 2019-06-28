@@ -28,19 +28,17 @@ public class Server {
         int port = getPort(properties.getProperty("port"));
         int defaultPort = 8000;
         ServerSocket serverSocket;
-//        try {
-//            serverSocket = new ServerSocket(6000);
-//        } catch (IOException e) {
-//            serverSocket = new ServerSocket(defaultPort);
-//        }
-        serverSocket = new ServerSocket(6000);
+        try {
+            serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            serverSocket = new ServerSocket(defaultPort);
+        }
+//        serverSocket = new ServerSocket(6000);
         while (true) {
-            System.out.println("ta ghable try");
             try {
                 Socket socket = serverSocket.accept();
                 System.out.println("connection created");
                 Connection connection = new Connection(socket);
-                System.out.println("connection created");
                 connections.add(connection);
             } catch (IOException e) {
                 e.printStackTrace();
