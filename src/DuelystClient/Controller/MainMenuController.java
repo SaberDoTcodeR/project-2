@@ -43,9 +43,9 @@ public class MainMenuController {
 
     @FXML
     public void initialize() {
-      /*  setProfile(Account.getLoginAccount().getAvatar());
-        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MONEY :" + Account.getLoginAccount().getMoney());
-        accountInfo.setGraphicTextGap(10);*/
+        setProfile();
+        accountInfo.setText(Account.getLoginAccout().getUserName() + "\n" + "MONEY :" + Account.getLoginAccout().getMoney());
+        accountInfo.setGraphicTextGap(10);
     }
 
     public void logOutBtnAct() {
@@ -109,17 +109,14 @@ public class MainMenuController {
     }
 
     public void changeProfile(MouseEvent event) {
-       /* if (event.getX() < profile.getFitWidth()) {
-            if (Account.getLoginAccount().getAvatar().impl_getUrl().contains("DuelystClient/css/avatar1.png"))
-                Account.getLoginAccount().setAvatar(new Image("DuelystClient/css/avatar2.jpg"));
-            else
-                Account.getLoginAccount().setAvatar(new Image("DuelystClient/css/avatar1.png"));
-            setProfile(Account.getLoginAccount().getAvatar());
-        }*/
+        if (event.getX() < profile.getFitWidth()) {
+            Account.getLoginAccout().setAvatar((Account.getLoginAccout().getAvatar() + 1) % 3 + 1);
+            setProfile();
+        }
     }
 
-    public void setProfile(Image imagePro) {
-        profile.setImage(imagePro);
+    public void setProfile() {
+        profile.setImage(Account.getLoginAccout().getAvatarImage());
         Rectangle clip = new Rectangle(
                 profile.getFitWidth(), profile.getFitHeight()
         );

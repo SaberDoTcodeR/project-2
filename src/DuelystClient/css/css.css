@@ -23,6 +23,14 @@
 }
 
 .wrongPassword {
+    -fx-text-fill: #c4c4c4;
+    -fx-font-size: 20pt;
+    -fx-font-family: Crushed;
+    -fx-background-color: rgba(0, 0, 0, 0.4);
+    -fx-border-radius: 15 15 15 15;
+    -fx-prompt-text-fill: #c4c4c4;
+    -fx-text-alignment: center;
+    -fx-background-radius: 15 15 15 15;
     -fx-background-image: url('wrong.png');
     -fx-background-repeat: no-repeat;
     -fx-background-position: right center;

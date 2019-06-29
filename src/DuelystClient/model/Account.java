@@ -38,6 +38,10 @@ public class Account {
         this.passWord = passWord;
     }
 
+    public Image getAvatarImage() {
+        String string = "DuelystClient/css/avatar" + getAvatar() + ".jpg";
+        return new Image(string);
+    }
 
     public int getAvatar() {
         return avatar;
