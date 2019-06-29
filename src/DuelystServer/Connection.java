@@ -3,8 +3,6 @@ package DuelystServer;
 import DuelystServer.messages.AccountMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.ErrorType;
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
 import com.google.gson.Gson;
 
 import java.io.EOFException;
@@ -53,12 +51,13 @@ public class Connection implements Runnable {
                         //signUp error
                         sendPacket(gson.toJson(ErrorType.USER_ALREADY_CREATED));
                     } else if (flag && !accountMessage.isSignUpOrLogIn()) {
-                        //loginK
+                        //login
                         boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
                         if (f) {
                             Account account = Account.getAccount(accountMessage.getUser());
                             sendPacket(gson.toJson(account));
                         } else {
+                            //login Error
                             sendPacket(gson.toJson(ErrorType.WRONG_PASSWORD));
                         }
                     } else if (!flag && accountMessage.isSignUpOrLogIn()) {
@@ -69,7 +68,6 @@ public class Connection implements Runnable {
                         //login error
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
-
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -80,7 +78,6 @@ public class Connection implements Runnable {
     public void sendPacket(Object object) {
         try {
             outputStream.reset();
-
             outputStream.writeObject(object);
             outputStream.flush();
         } catch (IOException e) {

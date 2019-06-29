@@ -8,8 +8,6 @@ import DuelystClient.model.Collection;
 import DuelystClient.model.Deck;
 import DuelystClient.model.ErrorType;
 import DuelystClient.model.Save.SaveAccount;
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
@@ -127,14 +125,41 @@ public class LoginController {
     }
 
     public void loginBtnAct() {
-      /*  passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
-        if (Account.authorize(userField.getText(), passField.getText())) {
-            View.makeMainMenu();
+        passField.getStyleClass().remove("wrongPassword");
+        if (!userField.getText().equals("") && !passField.getText().equals("")) {
+            Gson gson = new Gson();
+            AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText());
+            Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Object object = null;
+                    while (object == null)
+                        object = Client.connectionToServer.readPacket();
+                    if (((String) object).contains("WRONG_PASSWORD")) {
+//                        System.out.println((String) object);
+//                        System.out.println("wrong password");
+                        passField.getStyleClass().add("wrongPassword");
+                    } else if (((String) object).contains("No_SUCH_USER_EXIST")){
+//                        System.out.println("wrong username");
+                        userField.getStyleClass().add("wrongPassword");
+                    } else if (((String) object).contains("money")) {
+                        System.out.println("halle");
+                        Account.setLoginAccout(gson.fromJson((String) object, Account.class));
+                        View.makeMainMenu();
+                    }
+                }
+            }).start();
         } else {
-            userField.getStyleClass().add("wrongPassword");
-            passField.getStyleClass().add("wrongPassword");
-        }*/
+            if (userField.getText().equals("")) {
+                userField.getStyleClass().add("wrongPassword");
+            }
+            if (passField.getText().equals("")) {
+                passField.getStyleClass().add("wrongPassword");
+            }
+        }
     }
 
     public void loginBtnActFocus() {
@@ -150,7 +175,6 @@ public class LoginController {
     }
 
     public void signUpBtnAct() {
-
         passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
@@ -172,7 +196,6 @@ public class LoginController {
                     }
                 }
             }).start();
-
         } else {
             if (userField.getText().equals("")) {
                 userField.getStyleClass().add("wrongPassword");
@@ -181,6 +204,5 @@ public class LoginController {
                 passField.getStyleClass().add("wrongPassword");
             }
         }
-
     }
 }

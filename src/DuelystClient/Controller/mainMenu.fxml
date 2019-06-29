@@ -82,7 +82,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="save" onMouseClicked="#saveBtnAct" id="button5"
+        <Button fx:id="save" onMouseClicked="#saveBtnAct" id="button5" onMouseEntered="#saveBtnActFocus"
                 onKeyPressed="#handleOnKeyPressedLogOut"
                 mnemonicParsing="false" prefHeight="50.0"
                 prefWidth="400.0" text="SAVE"

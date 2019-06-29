@@ -135,6 +135,10 @@ public class MainMenuController {
         logOut.requestFocus();
     }
 
+    public void saveBtnActFocus() {
+        save.requestFocus();
+    }
+
     public void collectionBtnActFocus() {
         collection.requestFocus();
     }
@@ -180,6 +184,13 @@ public class MainMenuController {
         }
 
     }
+
+//    public void handleOnKeyPressedSave(KeyEvent event) {
+//        if (event.getCode().equals(KeyCode.ENTER)) {
+//            this.saveAct();
+//        }
+//
+//    }
 
     public void handleOnKeyPressedLogOut(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
