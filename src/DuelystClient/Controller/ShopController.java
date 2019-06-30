@@ -1,5 +1,8 @@
 package DuelystClient.Controller;
 
+import DuelystClient.Client;
+import DuelystClient.Messages.AccountMessage;
+import DuelystClient.Messages.ShopMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
 import DuelystClient.model.Card.Card;
@@ -10,6 +13,7 @@ import DuelystClient.model.Card.Minion.Minion;
 import DuelystClient.model.Card.Spell.Spell;
 import DuelystClient.model.Item.UsableItem.UsableItem;
 import DuelystClient.model.Shop;
+import com.google.gson.Gson;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.fxml.FXML;
@@ -321,7 +325,7 @@ public class ShopController {
     private CheckBox minion40;
 
     public void initialize() {
-        /*heroBoxes.add(hero1Box);
+        heroBoxes.add(hero1Box);
         heroBoxes.add(hero2Box);
         heroBoxes.add(hero3Box);
         heroBoxes.add(hero4Box);
@@ -488,7 +492,7 @@ public class ShopController {
             }
         }
         reBorderAll();
-*/    }
+    }
 
     @FXML
     void showHeroes() {
@@ -986,8 +990,49 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
-        /*ArrayList<String> notEnoughMoney = new ArrayList<>();
-        ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
+        Gson gson = new Gson();
+        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), heroesBought, minionsBought
+                , spellsBought, itemsBought, heroBoxes, minionBoxes, spellBoxes, itemBoxes);
+        Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
+        new Thread(() -> {
+            Object object = null;
+            while (object == null)
+                object = Client.connectionToServer.readPacket();
+            if (shopMessage.getNotEnoughMoney().size() != 0 || shopMessage.getAlreadyHaveThisCard().size() != 0) {
+                String string = "";
+                if (shopMessage.getNotEnoughMoney().size() != 0) {
+                    string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
+                    for (int i = 0; i < shopMessage.getNotEnoughMoney().size(); i++) {
+                        if (i == shopMessage.getNotEnoughMoney().size() - 1)
+                            string += shopMessage.getNotEnoughMoney().get(i);
+                        else string += (shopMessage.getNotEnoughMoney().get(i) + " , ");
+                    }
+                }
+                if (shopMessage.getAlreadyHaveThisCard().size() != 0) {
+                    if (string.equals(""))
+                        string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
+                    else {
+                        string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
+                    }
+                    for (int i = 0; i < shopMessage.getAlreadyHaveThisCard().size(); i++) {
+                        if (i == shopMessage.getAlreadyHaveThisCard().size() - 1)
+                            string += shopMessage.getAlreadyHaveThisCard().get(i);
+                        else
+                            string += shopMessage.getAlreadyHaveThisCard().get(i) + " , ";
+                    }
+                }
+                heroesBought = shopMessage.getHeroesBought();
+                minionsBought = shopMessage.getMinionsBought();
+                spellsBought = shopMessage.getSpellsBought();
+                itemsBought = shopMessage.getItemsBought();
+                heroBoxes = shopMessage.getHeroes();
+                minionBoxes = shopMessage.getMinions();
+                itemBoxes = shopMessage.getItems();
+                spellBoxes = shopMessage.getSpells();
+                showDialog(string);
+            }
+        }).start();
+        /*
         Shop shop = new Shop();
         int count = 0;
         for (VBox vBox : heroBoxes) {
@@ -1049,30 +1094,7 @@ public class ShopController {
             }
             count++;
         }
-        if (notEnoughMoney.size() != 0 || alreadyHaveThisCard.size() != 0) {
-            String string = "";
-            if (notEnoughMoney.size() != 0) {
-                string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
-                for (int i = 0; i < notEnoughMoney.size(); i++) {
-                    if (i == notEnoughMoney.size() - 1)
-                        string += notEnoughMoney.get(i);
-                    else string += (notEnoughMoney.get(i) + " , ");
-                }
-            }
-            if (alreadyHaveThisCard.size() != 0) {
-                if (string.equals(""))
-                    string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                else {
-                    string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                }
-                for (int i = 0; i < alreadyHaveThisCard.size(); i++) {
-                    if (i == alreadyHaveThisCard.size() - 1)
-                        string += alreadyHaveThisCard.get(i);
-                    else
-                        string += alreadyHaveThisCard.get(i) + " , ";
-                }
-            }
-            showDialog(string);
+
         }
         reBorderAll();*/
     }

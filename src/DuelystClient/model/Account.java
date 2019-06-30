@@ -12,14 +12,14 @@ public class Account {
     private Deck mainDeck;
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
-    private transient static Account loginAccout;
+    private transient static Account loginAccount;
 
-    public static Account getLoginAccout() {
-        return loginAccout;
+    public static Account getLoginAccount() {
+        return loginAccount;
     }
 
-    public static void setLoginAccout(Account loginAccout) {
-        Account.loginAccout = loginAccout;
+    public static void setLoginAccount(Account loginAccount) {
+        Account.loginAccount = loginAccount;
     }
 
     public Collection getMyCollection() {

@@ -4,12 +4,7 @@ import DuelystClient.Client;
 import DuelystClient.Messages.AccountMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
-import DuelystClient.model.Collection;
-import DuelystClient.model.Deck;
-import DuelystClient.model.ErrorType;
-import DuelystClient.model.Save.SaveAccount;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -17,12 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 
 
 public class LoginController {
@@ -132,21 +121,21 @@ public class LoginController {
             AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText());
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Object object = null;
-                    while (object == null)
-                        object = Client.connectionToServer.readPacket();
-                    if (((String) object).contains("WRONG_PASSWORD")) {
-                        passField.getStyleClass().add("wrongPassword");
-                    } else if (((String) object).contains("No_SUCH_USER_EXIST")){
-                        userField.getStyleClass().add("wrongPassword");
-                    } else if (((String) object).contains("money")) {
-                        System.out.println("halle");
-                        Account.setLoginAccout(gson.fromJson((String) object, Account.class));
-                        View.makeMainMenu();
-                    }
+            new Thread(() -> {
+                Object object = null;
+                while (object == null)
+                    object = Client.connectionToServer.readPacket();
+                if (((String) object).contains("WRONG_PASSWORD")) {
+//                        System.out.println((String) object);
+//                        System.out.println("wrong password");
+                    passField.getStyleClass().add("wrongPassword");
+                } else if (((String) object).contains("No_SUCH_USER_EXIST")){
+//                        System.out.println("wrong username");
+                    userField.getStyleClass().add("wrongPassword");
+                } else if (((String) object).contains("money")) {
+                    System.out.println("halle");
+                    Account.setLoginAccount(gson.fromJson((String) object, Account.class));
+                    View.makeMainMenu();
                 }
             }).start();
         } else {
@@ -179,18 +168,15 @@ public class LoginController {
             AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText());
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Object object = null;
-                    while (object == null)
-                        object = Client.connectionToServer.readPacket();
-                    if (((String) object).contains("USER_ALREADY_CREATED")) {
-                        userField.getStyleClass().add("wrongPassword");
-                    } else if (((String) object).contains("money")) {
-                        Account.setLoginAccout(gson.fromJson((String) object, Account.class));
-                        View.makeMainMenu();
-                    }
+            new Thread(() -> {
+                Object object = null;
+                while (object == null)
+                    object = Client.connectionToServer.readPacket();
+                if (((String) object).contains("USER_ALREADY_CREATED")) {
+                    userField.getStyleClass().add("wrongPassword");
+                } else if (((String) object).contains("money")) {
+                    Account.setLoginAccount(gson.fromJson((String) object, Account.class));
+                    View.makeMainMenu();
                 }
             }).start();
         } else {

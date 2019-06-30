@@ -3,8 +3,8 @@ package DuelystClient.Controller;
 import DuelystClient.Client;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
-import com.google.gson.Gson;
 import javafx.fxml.FXML;
+import com.google.gson.Gson;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
 
 public class MainMenuController {
     public Button save;
@@ -37,7 +38,7 @@ public class MainMenuController {
     @FXML
     public void initialize() {
         setProfile();
-        accountInfo.setText(Account.getLoginAccout().getUserName() + "\n" + "MONEY :" + Account.getLoginAccout().getMoney());
+        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MONEY :" + Account.getLoginAccount().getMoney());
         accountInfo.setGraphicTextGap(10);
     }
 
@@ -103,13 +104,13 @@ public class MainMenuController {
 
     public void changeProfile(MouseEvent event) {
         if (event.getX() < profile.getFitWidth()) {
-            Account.getLoginAccout().setAvatar((Account.getLoginAccout().getAvatar() + 1) % 3 + 1);
+            Account.getLoginAccount().setAvatar((Account.getLoginAccount().getAvatar() + 1) % 3 + 1);
             setProfile();
         }
     }
 
     public void setProfile() {
-        profile.setImage(Account.getLoginAccout().getAvatarImage());
+        profile.setImage(Account.getLoginAccount().getAvatarImage());
         Rectangle clip = new Rectangle(
                 profile.getFitWidth(), profile.getFitHeight()
         );
