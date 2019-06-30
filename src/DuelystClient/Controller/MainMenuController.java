@@ -1,16 +1,14 @@
 package DuelystClient.Controller;
 
+import DuelystClient.Client;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
-import DuelystClient.model.Save.SaveAccount;
-import DuelystClient.model.Save.SaveDeck;
-import javafx.fxml.FXML;
 import com.google.gson.Gson;
+import javafx.fxml.FXML;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
@@ -18,11 +16,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-
 
 public class MainMenuController {
     public Button save;
@@ -189,7 +182,6 @@ public class MainMenuController {
 //        if (event.getCode().equals(KeyCode.ENTER)) {
 //            this.saveAct();
 //        }
-//
 //    }
 
     public void handleOnKeyPressedLogOut(KeyEvent event) {

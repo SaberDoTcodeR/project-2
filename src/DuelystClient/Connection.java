@@ -2,8 +2,6 @@ package DuelystClient;
 
 import DuelystClient.View.View;
 import DuelystServer.Server;
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
 import com.google.gson.Gson;
 
 import java.io.EOFException;

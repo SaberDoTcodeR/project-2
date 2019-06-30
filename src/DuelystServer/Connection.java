@@ -1,6 +1,7 @@
 package DuelystServer;
 
 import DuelystServer.messages.AccountMessage;
+import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.ErrorType;
 import com.google.gson.Gson;
@@ -43,7 +44,6 @@ public class Connection implements Runnable {
                 outputStream.reset();
                 Gson gson = new Gson();
                 AccountMessage packet = gson.fromJson(str, AccountMessage.class);
-
                 if (packet.getClass().getSimpleName().equals("AccountMessage")) {
                     AccountMessage accountMessage = packet;
                     boolean flag = Account.existThisUser(accountMessage.getUser());
@@ -68,6 +68,11 @@ public class Connection implements Runnable {
                         //login error
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
+                } else if (packet.getClass().getSimpleName().equals("ShopMessage")){
+                    ShopMessage shopMessage = (ShopMessage) packet;
+                    Account account = Account.getAccount(shopMessage.getUser());
+                    ShopMessage.buyAction(shopMessage,account);
+                    sendPacket(gson.toJson(shopMessage));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

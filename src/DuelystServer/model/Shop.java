@@ -20,9 +20,7 @@ public class Shop {
         }
         for (Minion minion : Minion.getMinions()) {
             if (minion.getName().toLowerCase().equals(objectName)) {
-
                 return true;
-
             }
         }
         for (UsableItem usableItem : UsableItem.getUsableItems()) {

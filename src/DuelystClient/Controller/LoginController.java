@@ -139,11 +139,8 @@ public class LoginController {
                     while (object == null)
                         object = Client.connectionToServer.readPacket();
                     if (((String) object).contains("WRONG_PASSWORD")) {
-//                        System.out.println((String) object);
-//                        System.out.println("wrong password");
                         passField.getStyleClass().add("wrongPassword");
                     } else if (((String) object).contains("No_SUCH_USER_EXIST")){
-//                        System.out.println("wrong username");
                         userField.getStyleClass().add("wrongPassword");
                     } else if (((String) object).contains("money")) {
                         System.out.println("halle");
