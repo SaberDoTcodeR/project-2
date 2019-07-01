@@ -12,7 +12,7 @@ public class Account {
     private Deck mainDeck;
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
-    private transient static Account loginAccount;
+    public transient static Account loginAccount;
 
     public static Account getLoginAccount() {
         return loginAccount;
@@ -91,6 +91,7 @@ public class Account {
     public Deck getMainDeck() {
         return mainDeck;
     }
+
 
     public void setMainDeck(Deck mainDeck) {
         this.mainDeck = mainDeck;

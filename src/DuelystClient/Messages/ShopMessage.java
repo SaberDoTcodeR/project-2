@@ -1,22 +1,23 @@
 package DuelystClient.Messages;
 
-import DuelystClient.model.Card.Hero.Hero;
-import DuelystClient.model.Card.Minion.Minion;
-import DuelystClient.model.Card.Spell.Spell;
-import DuelystClient.model.Item.Item;
-import javafx.scene.layout.VBox;
+import DuelystClient.model.Account;
 
 import java.util.ArrayList;
 
-public class ShopMessage extends AccountMessage{
-    private ArrayList<VBox> heroes;
-    private ArrayList<VBox> minions;
-    private ArrayList<VBox> spells;
-    private ArrayList<VBox> items;
+public class ShopMessage extends AccountMessage {
+    private ArrayList<String> heroes = new ArrayList<>();
+    private ArrayList<String> minions = new ArrayList<>();
+    private ArrayList<String> spells = new ArrayList<>();
+    private ArrayList<String> items = new ArrayList<>();
     private ArrayList<Boolean> heroesBought;
     private ArrayList<Boolean> minionsBought;
-    private ArrayList<Boolean> SpellsBought;
+    private ArrayList<Boolean> spellsBought;
     private ArrayList<Boolean> itemsBought;
+    private ArrayList<Boolean> heroCheck = new ArrayList<>();
+    private ArrayList<Boolean> minionCheck = new ArrayList<>();
+    private ArrayList<Boolean> spellCheck = new ArrayList<>();
+    private ArrayList<Boolean> itemCheck = new ArrayList<>();
+    private Account account;
 
     public ArrayList<String> getNotEnoughMoney() {
         return notEnoughMoney;
@@ -37,50 +38,45 @@ public class ShopMessage extends AccountMessage{
     ArrayList<String> notEnoughMoney = new ArrayList<>();
     ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
 
-    public ShopMessage(boolean signUpOrLogIn, String user, String pass, ArrayList<Boolean> heroesBought, ArrayList<Boolean> minionsBought
-    , ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, ArrayList<VBox> heroes, ArrayList<VBox> minions
-    , ArrayList<VBox> spells, ArrayList<VBox> items) {
+    public ShopMessage(boolean signUpOrLogIn, String user, String pass, ArrayList<Boolean> heroesBought,
+                       ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought) {
         super(signUpOrLogIn, user, pass);
-        setHeroes(heroes);
-        setHeroesBought(heroesBought);
-        setItems(items);
-        setItemsBought(itemsBought);
-        setMinions(minions);
-        setMinionsBought(minionsBought);
-        setSpells(spells);
         setSpellsBought(spellsBought);
+        setMinionsBought(minionsBought);
+        setItemsBought(itemsBought);
+        setHeroesBought(heroesBought);
     }
 
-    public void setHeroes(ArrayList<VBox> heroes) {
-        this.heroes = heroes;
+    public void setHeroes(String hero) {
+        this.heroes.add(hero);
     }
 
-    public ArrayList<VBox> getHeroes() {
+    public ArrayList<String> getHeroes() {
         return heroes;
     }
 
-    public ArrayList<VBox> getMinions() {
+    public ArrayList<String> getMinions() {
         return minions;
     }
 
-    public void setMinions(ArrayList<VBox> minions) {
-        this.minions = minions;
+    public void setMinions(String minions) {
+        this.minions.add(minions);
     }
 
-    public ArrayList<VBox> getSpells() {
+    public ArrayList<String> getSpells() {
         return spells;
     }
 
-    public void setSpells(ArrayList<VBox> spells) {
-        this.spells = spells;
+    public void setSpells(String spells) {
+        this.spells.add(spells);
     }
 
-    public ArrayList<VBox> getItems() {
+    public ArrayList<String> getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<VBox> items) {
-        this.items = items;
+    public void setItems(String items) {
+        this.items.add(items);
     }
 
     public ArrayList<Boolean> getHeroesBought() {
@@ -100,11 +96,11 @@ public class ShopMessage extends AccountMessage{
     }
 
     public ArrayList<Boolean> getSpellsBought() {
-        return SpellsBought;
+        return spellsBought;
     }
 
     public void setSpellsBought(ArrayList<Boolean> spellsBought) {
-        SpellsBought = spellsBought;
+        this.spellsBought = spellsBought;
     }
 
     public ArrayList<Boolean> getItemsBought() {
@@ -113,5 +109,45 @@ public class ShopMessage extends AccountMessage{
 
     public void setItemsBought(ArrayList<Boolean> itemsBought) {
         this.itemsBought = itemsBought;
+    }
+
+    public ArrayList<Boolean> getHeroCheck() {
+        return heroCheck;
+    }
+
+    public void setHeroCheck(Boolean heroCheck) {
+        this.heroCheck.add(heroCheck);
+    }
+
+    public ArrayList<Boolean> getMinionCheck() {
+        return minionCheck;
+    }
+
+    public void setMinionCheck(Boolean minionCheck) {
+        this.minionCheck.add(minionCheck);
+    }
+
+    public ArrayList<Boolean> getSpellCheck() {
+        return spellCheck;
+    }
+
+    public void setSpellCheck(Boolean spellCheck) {
+        this.spellCheck.add(spellCheck);
+    }
+
+    public ArrayList<Boolean> getItemCheck() {
+        return itemCheck;
+    }
+
+    public void setItemCheck(Boolean itemCheck) {
+        this.itemCheck.add(itemCheck);
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

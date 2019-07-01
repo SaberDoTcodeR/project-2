@@ -991,45 +991,77 @@ public class ShopController {
 
     public void buyBtnAct() {
         Gson gson = new Gson();
-        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), heroesBought, minionsBought
-                , spellsBought, itemsBought, heroBoxes, minionBoxes, spellBoxes, itemBoxes);
+        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), heroesBought, minionsBought, spellsBought, itemsBought);
+        for (VBox vBox : heroBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setHeroes(string);
+            shopMessage.setHeroCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : minionBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setMinions(string);
+            shopMessage.setMinionCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : itemBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setItems(string);
+            shopMessage.setItemCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : spellBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setSpells(string);
+            shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
         Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
         new Thread(() -> {
             Object object = null;
             while (object == null)
                 object = Client.connectionToServer.readPacket();
-            if (shopMessage.getNotEnoughMoney().size() != 0 || shopMessage.getAlreadyHaveThisCard().size() != 0) {
-                String string = "";
-                if (shopMessage.getNotEnoughMoney().size() != 0) {
-                    string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
-                    for (int i = 0; i < shopMessage.getNotEnoughMoney().size(); i++) {
-                        if (i == shopMessage.getNotEnoughMoney().size() - 1)
-                            string += shopMessage.getNotEnoughMoney().get(i);
-                        else string += (shopMessage.getNotEnoughMoney().get(i) + " , ");
+            if (object != null) {
+                System.out.println(object.toString());
+                ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
+                if (shopMessage1.getNotEnoughMoney().size() != 0 || shopMessage1.getAlreadyHaveThisCard().size() != 0) {
+                    String string = "";
+                    if (shopMessage1.getNotEnoughMoney().size() != 0) {
+                        string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
+                        for (int i = 0; i < shopMessage1.getNotEnoughMoney().size(); i++) {
+                            if (i == shopMessage1.getNotEnoughMoney().size() - 1)
+                                string += shopMessage1.getNotEnoughMoney().get(i);
+                            else string += (shopMessage1.getNotEnoughMoney().get(i) + " , ");
+                        }
                     }
+                    if (shopMessage1.getAlreadyHaveThisCard().size() != 0) {
+                        if (string.equals(""))
+                            string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
+                        else {
+                            string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
+                        }
+                        for (int i = 0; i < shopMessage1.getAlreadyHaveThisCard().size(); i++) {
+                            if (i == shopMessage1.getAlreadyHaveThisCard().size() - 1)
+                                string += shopMessage1.getAlreadyHaveThisCard().get(i);
+                            else
+                                string += shopMessage1.getAlreadyHaveThisCard().get(i) + " , ";
+                        }
+                    }
+                    showDialog(string);
                 }
-                if (shopMessage.getAlreadyHaveThisCard().size() != 0) {
-                    if (string.equals(""))
-                        string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                    else {
-                        string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                    }
-                    for (int i = 0; i < shopMessage.getAlreadyHaveThisCard().size(); i++) {
-                        if (i == shopMessage.getAlreadyHaveThisCard().size() - 1)
-                            string += shopMessage.getAlreadyHaveThisCard().get(i);
-                        else
-                            string += shopMessage.getAlreadyHaveThisCard().get(i) + " , ";
-                    }
+                heroesBought = shopMessage1.getHeroesBought();
+                minionsBought = shopMessage1.getMinionsBought();
+                spellsBought = shopMessage1.getSpellsBought();
+                itemsBought = shopMessage1.getItemsBought();
+                for (VBox vBox : heroBoxes) {
+                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 }
-                heroesBought = shopMessage.getHeroesBought();
-                minionsBought = shopMessage.getMinionsBought();
-                spellsBought = shopMessage.getSpellsBought();
-                itemsBought = shopMessage.getItemsBought();
-                heroBoxes = shopMessage.getHeroes();
-                minionBoxes = shopMessage.getMinions();
-                itemBoxes = shopMessage.getItems();
-                spellBoxes = shopMessage.getSpells();
-                showDialog(string);
+                for (VBox vBox : minionBoxes) {
+                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                }
+                for (VBox vBox : itemBoxes) {
+                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                }
+                for (VBox vBox : spellBoxes) {
+                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+                }
+                reBorderAll();
             }
         }).start();
         /*
