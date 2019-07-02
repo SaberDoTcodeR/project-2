@@ -113,6 +113,7 @@ public class Connection implements Runnable {
         try {
             return inputStream.readObject();
         } catch (EOFException | SocketException e) {
+            System.out.println("riiiiidiiiiim");
             while (!closedManual) {
                 Properties properties = null;
                 try {

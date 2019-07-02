@@ -10,10 +10,17 @@ import DuelystServer.model.Cell;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class Minion extends Card {
+public class Minion extends Card {
     private transient static ArrayList<Minion> minions = new ArrayList<>();
+    private transient static Map<String,Integer> minionsName = new HashMap<>();
     private int numberOfFlag = 0;
+
+    public static Map<String,Integer> getMinionsName() {
+        return minionsName;
+    }
 
     public void setCostToUse(int costToUse) {
         this.costToUse = costToUse;
@@ -100,7 +107,6 @@ public abstract class Minion extends Card {
         return ownBuffs;
     }
 
-
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -137,7 +143,9 @@ public abstract class Minion extends Card {
         return typeOfRange;
     }
 
-    public abstract String getDesc();
+    public String getDesc(){
+        return  null;
+    }
 
     public int getRange() {
         return range;
@@ -152,6 +160,7 @@ public abstract class Minion extends Card {
         this.typeOfRange = typeOfRange;
         this.range = range;
         minions.add(this);
+        minionsName.put(this.getName().toLowerCase(),this.getCostOfBuy());
     }
 
     public String getType() {
@@ -258,7 +267,7 @@ public abstract class Minion extends Card {
         return null;
     }
 
-    public abstract void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime);
+    public void castSpecialPower(Battle battle, Cell cell, Account player, int activeTime){}
 
     public int getNumberOfAttacks() {
         return numberOfAttacks;

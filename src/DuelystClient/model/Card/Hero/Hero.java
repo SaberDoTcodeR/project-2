@@ -8,8 +8,11 @@ import DuelystClient.model.Cell;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class Hero extends Card {
+public class Hero extends Card {
+    private transient static Map<String,Integer> heroesName = new HashMap<>();
     private transient static ArrayList<Hero> heroes = new ArrayList<>();
     private int numberOfFlag = 0;
     private int ap;
@@ -58,7 +61,6 @@ public abstract class Hero extends Card {
         new Zahhak();
     }
 
-
     public ArrayList<Buff> getOwnBuffs() {
         return ownBuffs;
     }
@@ -94,6 +96,7 @@ public abstract class Hero extends Card {
         this.ap = ap;
         this.hp = hp;
         heroes.add(this);
+        heroesName.put(this.getName().toLowerCase(),this.getCostOfBuy());
     }
 
     public Hero(Hero hero) {
@@ -106,13 +109,15 @@ public abstract class Hero extends Card {
         this.hp = hero.hp;
         this.mp = hero.mp;
         for (int i = 0; i < heroes.size(); i++) {
-            if (heroes.get(i).getName().equals(hero.getName())){
+            if (heroes.get(i).getName().equals(hero.getName())) {
                 flag = true;
                 break;
             }
         }
-        if (!flag)
+        if (!flag) {
             heroes.add(hero);
+            heroesName.put(hero.getName().toLowerCase(),hero.getCostOfBuy());
+        }
     }
 
     public void setCoolDownTime(int coolDownTime) {
@@ -145,6 +150,10 @@ public abstract class Hero extends Card {
 
     public static ArrayList<Hero> getHeroes() {
         return heroes;
+    }
+
+    public static Map<String,Integer> getHeroesName() {
+        return heroesName;
     }
 
     public int getHp() {
@@ -215,9 +224,11 @@ public abstract class Hero extends Card {
             this.hp -= unit;
     }
 
-    public abstract void castSpecialPower(Battle battle, Cell cell, Account player);
+    public void castSpecialPower(Battle battle, Cell cell, Account player){}
 
-    public abstract String getDesc();
+    public String getDesc(){
+        return  null;
+    }
 
     public Hero duplicate() {
         return null;

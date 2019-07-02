@@ -4,11 +4,13 @@ public class AccountMessage {
     private boolean signUpOrLogIn;
     private String user;
     private String pass;
+    private String nameOfClass;
 
-    public AccountMessage(boolean signUpOrLogIn, String user, String pass) {
+    public AccountMessage(boolean signUpOrLogIn, String user, String pass , String nameOfClass) {
         this.signUpOrLogIn = signUpOrLogIn;
         this.user = user;
         this.pass = pass;
+        this.nameOfClass = nameOfClass;
     }
 
     public String getUser() {
@@ -33,5 +35,13 @@ public class AccountMessage {
 
     public void setSignUpOrLogIn(boolean signUpOrLogIn) {
         this.signUpOrLogIn = signUpOrLogIn;
+    }
+
+    public String getNameOfClass() {
+        return nameOfClass;
+    }
+
+    public void setNameOfClass(String nameOfClass) {
+        this.nameOfClass = nameOfClass;
     }
 }

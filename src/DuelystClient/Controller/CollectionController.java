@@ -2805,7 +2805,7 @@ public class CollectionController {
                 currentDeck.getUsableItems().forEach(y -> saveDeck.cards.add(y.getName()));
             }
             String json = gson.toJson(saveDeck);
-            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\DuelystClient\\model\\Save\\deck.json");
+            FileWriter writer = new FileWriter("D:\\associated to com\\javapractices\\FirstPractice+Project\\project-25\\src\\DuelystClient\\model\\Save\\deck.json");
             writer.write(json);
             writer.close();
         } catch (

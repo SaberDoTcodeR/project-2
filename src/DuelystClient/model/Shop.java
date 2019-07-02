@@ -7,6 +7,17 @@ import DuelystClient.model.Item.UsableItem.UsableItem;
 
 public class Shop {
 
+    public int costOfCard2(String name) {
+
+        if (Hero.getHeroesName().containsKey(name)){
+            return Hero.getHeroesName().get(name);
+        } else if (Minion.getMinionsName().containsKey(name)){
+            return Minion.getMinionsName().get(name);
+        } else if (Spell.getSpellsName().containsKey(name)){
+            return Spell.getSpellsName().get(name);
+        } else return UsableItem.getUsableItemsName().getOrDefault(name, 0);
+    }
+
     public boolean hasThisCard(String objectName) {
         for (Hero hero : Hero.getHeroes()) {
             if (hero.getName().toLowerCase().equals(objectName)) {

@@ -8,10 +8,17 @@ import DuelystServer.model.ErrorType;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class Spell extends Card {
+public class Spell extends Card {
     private transient static ArrayList<Spell> spells = new ArrayList<>();
+    private transient static Map<String, Integer> spellsName = new HashMap<>();
     private int costToUse;
+
+    public static Map<String, Integer> getSpellsName() {
+        return spellsName;
+    }
 
     public void setCostToUse(int costToUse) {
         this.costToUse = costToUse;
@@ -45,6 +52,7 @@ public abstract class Spell extends Card {
         this.setCostOfBuy(costOfBuy);
         this.costToUse = costToUse;
         spells.add(this);
+        spellsName.put(this.getName().toLowerCase(), this.getCostOfBuy());
     }
 
     public Spell(Spell spell) {
@@ -53,7 +61,9 @@ public abstract class Spell extends Card {
         this.costToUse = spell.costToUse;
     }
 
-    public abstract ErrorType castSpell(Battle battle, Cell cell, Account player);
+    public ErrorType castSpell(Battle battle, Cell cell, Account player) {
+        return null;
+    }
 
     public static ArrayList<Spell> getSpells() {
         return spells;
@@ -63,7 +73,9 @@ public abstract class Spell extends Card {
         return costToUse;
     }
 
-    public abstract String getDesc();
+    public String getDesc() {
+        return null;
+    }
 
     public String getType() {
         return "Spell";

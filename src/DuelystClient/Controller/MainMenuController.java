@@ -94,7 +94,7 @@ public class MainMenuController {
                 saveAccounts.add(saveAccount);
             }
             String json = gson.toJson(saveAccounts);
-            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\DuelystClient\\model\\Save\\saveaccount.json");
+            FileWriter writer = new FileWriter("D:\associated to com\javapractices\FirstPractice+Project\project-25\src\DuelystClient\model\Save\saveaccount.json");
             writer.write(json);
             writer.close();
         } catch (IOException e) {

@@ -409,6 +409,7 @@ public class ShopController {
         minionBoxes.add(minion38Box);
         minionBoxes.add(minion39Box);
         minionBoxes.add(minion40Box);
+
         for (int i = 0; i < heroBoxes.size(); i++) {
             heroesBought.add(false);
         }
@@ -715,7 +716,7 @@ public class ShopController {
     }
 
     public void createBtnAct() {
-    /*    BoxBlur blur = new BoxBlur(5, 5, 10);
+        BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("Create Card");
         JFXTextField jfxTextField = new JFXTextField();
@@ -852,8 +853,7 @@ public class ShopController {
         jfxDialogLayout.getBody().add(vBox);
         jfxDialogLayout.setActions(jfxButton);
         jfxDialog.show();
-        gridPane.setEffect(blur);*/
-
+        gridPane.setEffect(blur);
     }
 
     public void mainMenuAct() {
@@ -861,6 +861,71 @@ public class ShopController {
     }
 
     public void sellBtnAct() {
+        Gson gson = new Gson();
+        ShopMessage shopMessage = new ShopMessage(true, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought);
+        for (VBox vBox : heroBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setHeroes(string);
+            shopMessage.setHeroCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : minionBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setMinions(string);
+            shopMessage.setMinionCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : itemBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setItems(string);
+            shopMessage.setItemCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        for (VBox vBox : spellBoxes) {
+            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
+            shopMessage.setSpells(string);
+            shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
+        }
+        System.out.println("ta inja umad");
+        Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
+        new Thread(() -> {
+            Object object = null;
+            System.out.println("mirim ke dashte bashim objecto");
+            while (object == null)
+                object = Client.connectionToServer.readPacket();
+            System.out.println("objecto khund");
+            ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
+            if (shopMessage1.getNotOwnedCard().size() != 0) {
+                String errorText;
+                if (shopMessage1.getNotOwnedCard().size() != 1) {
+                    errorText = "you don't have these cards : \n";
+                } else {
+                    errorText = "you don't have this card : \n";
+                }
+                for (int i = 0; i < shopMessage1.getNotOwnedCard().size(); i++) {
+                    if (i + 1 != shopMessage1.getNotOwnedCard().size()) {
+                        errorText += shopMessage1.getNotOwnedCard().get(i) + " , ";
+                    } else
+                        errorText += shopMessage1.getNotOwnedCard().get(i);
+                }
+                showDialog(errorText);
+            }
+            heroesBought = shopMessage1.getHeroesBought();
+            minionsBought = shopMessage1.getMinionsBought();
+            spellsBought = shopMessage1.getSpellsBought();
+            itemsBought = shopMessage1.getItemsBought();
+            for (VBox vBox : heroBoxes) {
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+            }
+            for (VBox vBox : minionBoxes) {
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+            }
+            for (VBox vBox : itemBoxes) {
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+            }
+            for (VBox vBox : spellBoxes) {
+                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+            }
+            reBorderAll();
+        }).start();
+    }
       /*  Shop shop = new Shop();
         ArrayList<String> notOwnedCard = new ArrayList<>();
         int count = 0;
@@ -947,7 +1012,7 @@ public class ShopController {
         }
         reBorderAll();*/
 
-    }
+//    }
 
 
     private void reBorderAll() {
@@ -991,7 +1056,7 @@ public class ShopController {
 
     public void buyBtnAct() {
         Gson gson = new Gson();
-        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), heroesBought, minionsBought, spellsBought, itemsBought);
+        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought);
         for (VBox vBox : heroBoxes) {
             String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
             shopMessage.setHeroes(string);
@@ -1043,6 +1108,7 @@ public class ShopController {
                                 string += shopMessage1.getAlreadyHaveThisCard().get(i) + " , ";
                         }
                     }
+                    System.out.println("hello world to saber's Lord");
                     showDialog(string);
                 }
                 heroesBought = shopMessage1.getHeroesBought();
@@ -1132,6 +1198,7 @@ public class ShopController {
     }
 
     private void showDialog(String string) {
+        System.out.println("show Dialog hahaha");
         BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("OK");
@@ -1149,6 +1216,7 @@ public class ShopController {
         label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
         jfxDialogLayout.setBody(label);
         jfxDialogLayout.setActions(jfxButton);
+        System.out.println("ma ke ta inja umadim baghiasham mirim");
         jfxDialog.show();
         gridPane.setEffect(blur);
     }

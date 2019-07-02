@@ -7,29 +7,54 @@ import DuelystServer.model.Item.UsableItem.UsableItem;
 
 public class Shop {
 
-    public boolean hasThisCard(String objectName) {
-        for (Hero hero : Hero.getHeroes()) {
-            if (hero.getName().toLowerCase().equals(objectName)) {
-                return true;
-            }
-        }
-        for (Spell spell : Spell.getSpells()) {
-            if (spell.getName().toLowerCase().equals(objectName)) {
-                return true;
-            }
-        }
-        for (Minion minion : Minion.getMinions()) {
-            if (minion.getName().toLowerCase().equals(objectName)) {
-                return true;
-            }
-        }
-        for (UsableItem usableItem : UsableItem.getUsableItems()) {
-            if (usableItem.getName().toLowerCase().equals(objectName)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public boolean hasThisCard(String objectName) {
+//        for (Hero hero : Hero.getHeroes()) {
+//            if (hero.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (Spell spell : Spell.getSpells()) {
+//            if (spell.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (Minion minion : Minion.getMinions()) {
+//            if (minion.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (UsableItem usableItem : UsableItem.getUsableItems()) {
+//            if (usableItem.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
+//    public boolean hasThisCard2(String objectName) {
+//        for (Hero hero : Hero.getHeroes()) {
+//            if (hero.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (Spell spell : Spell.getSpells()) {
+//            if (spell.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (Minion minion : Minion.getMinions()) {
+//            if (minion.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        for (UsableItem usableItem : UsableItem.getUsableItems()) {
+//            if (usableItem.getName().toLowerCase().equals(objectName)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
 
     public int costOfCard(String name) {
         for (Hero hero : Hero.getHeroes()) {
@@ -50,5 +75,17 @@ public class Shop {
         }
         return 0;
     }
+
+    public int costOfCard2(String name) {
+
+        if (Hero.getHeroesName().containsKey(name)){
+            return Hero.getHeroesName().get(name);
+        } else if (Minion.getMinionsName().containsKey(name)){
+            return Minion.getMinionsName().get(name);
+        } else if (Spell.getSpellsName().containsKey(name)){
+            return Spell.getSpellsName().get(name);
+        } else return UsableItem.getUsableItemsName().getOrDefault(name, 0);
+    }
+
 
 }

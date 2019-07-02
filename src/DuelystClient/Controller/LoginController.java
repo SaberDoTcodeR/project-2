@@ -4,6 +4,10 @@ import DuelystClient.Client;
 import DuelystClient.Messages.AccountMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
+import DuelystClient.model.Card.Hero.Hero;
+import DuelystClient.model.Card.Minion.Minion;
+import DuelystClient.model.Card.Spell.Spell;
+import DuelystClient.model.Item.UsableItem.UsableItem;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -118,7 +122,7 @@ public class LoginController {
         passField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
             Gson gson = new Gson();
-            AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText());
+            AccountMessage accountMessage = new AccountMessage( false, userField.getText(), passField.getText(), "AccountMessage");
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
             new Thread(() -> {
@@ -126,15 +130,24 @@ public class LoginController {
                 while (object == null)
                     object = Client.connectionToServer.readPacket();
                 if (((String) object).contains("WRONG_PASSWORD")) {
-//                        System.out.println((String) object);
-//                        System.out.println("wrong password");
                     passField.getStyleClass().add("wrongPassword");
                 } else if (((String) object).contains("No_SUCH_USER_EXIST")){
-//                        System.out.println("wrong username");
                     userField.getStyleClass().add("wrongPassword");
                 } else if (((String) object).contains("money")) {
-                    System.out.println("halle");
                     Account.setLoginAccount(gson.fromJson((String) object, Account.class));
+                    System.out.println("hello");
+                    for (Hero hero : Account.getLoginAccount().getCollection().getHeroes()) {
+                        System.out.println(hero.getName());
+                    }
+                    for (Minion minion : Account.getLoginAccount().getCollection().getMinions()) {
+                        System.out.println(minion.getName());
+                    }
+                    for (Spell spell : Account.getLoginAccount().getCollection().getSpells()) {
+                        System.out.println(spell.getName());
+                    }
+                    for (UsableItem item : Account.getLoginAccount().getCollection().getUsableItems()) {
+                        System.out.println(item.getName());
+                    }
                     View.makeMainMenu();
                 }
             }).start();
@@ -165,7 +178,7 @@ public class LoginController {
         userField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
             Gson gson = new Gson();
-            AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText());
+            AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText(),"AccountMessage");
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
             new Thread(() -> {

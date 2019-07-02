@@ -8,7 +8,7 @@ import DuelystServer.model.Item.Item;
 
 import java.util.ArrayList;
 
-public abstract class CollectibleItem extends Item {
+public class CollectibleItem extends Item {
     private static ArrayList<CollectibleItem> collectibleItems = new ArrayList<>();
     private String cardId;
 
@@ -24,7 +24,7 @@ public abstract class CollectibleItem extends Item {
         new RandomDamage();
     }
 
-    public abstract void applyEffect(Battle battle, Cell cell, Account player);
+    public void applyEffect(Battle battle, Cell cell, Account player){}
 
     public CollectibleItem(String name) {
         this.setName(name);

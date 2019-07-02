@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
-public abstract class Card {
+public class Card {
 
     private String name;
     private boolean isHitting;
@@ -295,9 +295,13 @@ public abstract class Card {
         return id;
     }
 
-    abstract public String getType();
+    public String getType(){
+        return  null;
+    }
 
-    public abstract String showDetails();
+    public String showDetails(){
+        return null;
+    }
 
     public void cardIdGenerator(Battle battle) {
         ArrayList<Card> cards;
@@ -344,5 +348,7 @@ public abstract class Card {
         isComingToMap = comingToMap;
     }
 
-    public abstract Image getImage();
+    public Image getImage(){
+        return null;
+    }
 }

@@ -1,10 +1,13 @@
 package DuelystClient.Messages;
 
 public class AccountMessage {
+
+    private String nameOfClass;
     private boolean signUpOrLogIn;
     private String user,pass;
 
-    public AccountMessage(boolean signUpOrLogIn, String user, String pass) {
+    public AccountMessage(boolean signUpOrLogIn, String user, String pass,String nameOfClass) {
+        this.nameOfClass = nameOfClass;
         this.signUpOrLogIn = signUpOrLogIn;
         this.user = user;
         this.pass = pass;
@@ -32,5 +35,13 @@ public class AccountMessage {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public String getNameOfClass() {
+        return nameOfClass;
+    }
+
+    public void setNameOfClass(String nameOfClass) {
+        this.nameOfClass = nameOfClass;
     }
 }

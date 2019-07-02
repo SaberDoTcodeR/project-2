@@ -6,12 +6,14 @@ import DuelystServer.model.Cell;
 import DuelystServer.model.Item.Item;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
-public abstract class UsableItem extends Item {
+public class UsableItem extends Item {
     private int costOfBuy;
     private transient static ArrayList<UsableItem> usableItems = new ArrayList<>();
-
+    private transient static Map<String,Integer> usableItemsName = new HashMap<>();
 
     static {
         new AssassinationDagger();
@@ -27,10 +29,15 @@ public abstract class UsableItem extends Item {
         new TerrorHood();
     }
 
+    public static Map<String, Integer> getUsableItemsName() {
+        return usableItemsName;
+    }
+
     public UsableItem(int costOfBuy, String name) {
         this.setCostOfBuy(costOfBuy);
         this.setName(name);
         usableItems.add(this);
+        usableItemsName.put(this.getName().toLowerCase(),this.getCostOfBuy());
     }
 
     public UsableItem(UsableItem usableItem) {
@@ -38,7 +45,7 @@ public abstract class UsableItem extends Item {
         this.setName(usableItem.getName());
     }
 
-    public abstract void applyEffect(Battle battle, Cell cell, Account player, int activeTime);
+    public void applyEffect(Battle battle, Cell cell, Account player, int activeTime){}
 
     /* activeTime:
      * 0 -> on spawn

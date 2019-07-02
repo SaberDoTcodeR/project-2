@@ -1,7 +1,5 @@
 package DuelystClient.Messages;
 
-import DuelystClient.model.Account;
-
 import java.util.ArrayList;
 
 public class ShopMessage extends AccountMessage {
@@ -17,7 +15,17 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> minionCheck = new ArrayList<>();
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
-    private Account account;
+    private ArrayList<String> notOwnedCard = new ArrayList<>();
+
+
+    public ArrayList<String> getNotOwnedCard() {
+        return notOwnedCard;
+    }
+
+    @Override
+    public int hashCode() {
+        return 2357;
+    }
 
     public ArrayList<String> getNotEnoughMoney() {
         return notEnoughMoney;
@@ -38,9 +46,9 @@ public class ShopMessage extends AccountMessage {
     ArrayList<String> notEnoughMoney = new ArrayList<>();
     ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
 
-    public ShopMessage(boolean signUpOrLogIn, String user, String pass, ArrayList<Boolean> heroesBought,
+    public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
                        ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought) {
-        super(signUpOrLogIn, user, pass);
+        super(signUpOrLogIn, user, pass, nameOfClass);
         setSpellsBought(spellsBought);
         setMinionsBought(minionsBought);
         setItemsBought(itemsBought);
@@ -143,11 +151,4 @@ public class ShopMessage extends AccountMessage {
         this.itemCheck.add(itemCheck);
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 }

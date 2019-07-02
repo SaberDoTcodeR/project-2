@@ -4,6 +4,7 @@ import DuelystServer.messages.AccountMessage;
 import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.ErrorType;
+import DuelystServer.model.Shop;
 import com.google.gson.Gson;
 
 import java.io.EOFException;
@@ -20,6 +21,9 @@ public class Connection implements Runnable {
     private boolean running;
 
     public Connection(Socket socket) {
+        for (Account account : Account.getAllUser()) {
+            System.out.println(account.getCollection().getHeroes().get(0).getClass().getSimpleName());
+        }
         this.socket = socket;
         try {
             outputStream = new ObjectOutputStream(this.socket.getOutputStream());
@@ -44,37 +48,40 @@ public class Connection implements Runnable {
                 outputStream.reset();
                 Gson gson = new Gson();
                 AccountMessage packet = gson.fromJson(str, AccountMessage.class);
-                if (packet.getClass().getSimpleName().equals("AccountMessage")) {
-                    if (!str.contains("heroes")) {
-                        System.out.println(str);
-                        AccountMessage accountMessage = packet;
-                        boolean flag = Account.existThisUser(accountMessage.getUser());
-                        if (flag && accountMessage.isSignUpOrLogIn()) {
-                            //signUp error
-                            sendPacket(gson.toJson(ErrorType.USER_ALREADY_CREATED));
-                        } else if (flag && !accountMessage.isSignUpOrLogIn()) {
-                            //login
-                            boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
-                            if (f) {
-                                Account account = Account.getAccount(accountMessage.getUser());
-                                sendPacket(gson.toJson(account));
-                            } else {
-                                //login Error
-                                sendPacket(gson.toJson(ErrorType.WRONG_PASSWORD));
-                            }
-                        } else if (!flag && accountMessage.isSignUpOrLogIn()) {
-                            //sign up
-                            Account account = new Account(accountMessage.getUser(), accountMessage.getPass());
+                if (packet.getNameOfClass().equals("AccountMessage")) {
+                    AccountMessage accountMessage = packet;
+                    boolean flag = Account.existThisUser(accountMessage.getUser());
+                    if (flag && accountMessage.isSignUpOrLogIn()) {
+                        //signUp error
+                        sendPacket(gson.toJson(ErrorType.USER_ALREADY_CREATED));
+                    } else if (flag && !accountMessage.isSignUpOrLogIn()) {
+                        //login
+                        boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
+                        if (f) {
+                            Account account = Account.getAccount(accountMessage.getUser());
                             sendPacket(gson.toJson(account));
                         } else {
-                            //login error
-                            sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
+                            //login Error
+                            sendPacket(gson.toJson(ErrorType.WRONG_PASSWORD));
                         }
-                    } else if (str.contains("heroes")){
-                        System.out.println(5432);
-                        ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
-                        Account account = Account.getAccount(shopMessage.getUser());
-                        shopMessage.buyAction(account);
+                    } else if (!flag && accountMessage.isSignUpOrLogIn()) {
+                        //sign up
+                        Account account = new Account(accountMessage.getUser(), accountMessage.getPass());
+                        sendPacket(gson.toJson(account));
+                    } else {
+                        //login error
+                        sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
+                    }
+                } else if (packet.getNameOfClass().equals("ShopMessage")) {
+                    System.out.println(str);
+                    ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
+                    Account account = Account.getAccount(shopMessage.getUser());
+                    Shop shop = new Shop();
+                    if (!shopMessage.isSignUpOrLogIn()) {
+                        ShopMessage.buyAction(account, shopMessage, shop);
+                        sendPacket(gson.toJson(shopMessage));
+                    } else {
+                        ShopMessage.sellAction(shop, shopMessage, account);
                         sendPacket(gson.toJson(shopMessage));
                     }
                 }

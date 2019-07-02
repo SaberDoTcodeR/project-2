@@ -11,5 +11,6 @@
     <orderEntry type="library" name="com.jfoenix:jfoenix:8.0.8" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
     <orderEntry type="library" name="com.gilecode.yagson:yagson:0.5" level="project" />
+    <orderEntry type="library" name="net.sf.flexjson:flexjson:3.2" level="project" />
   </component>
 </module>

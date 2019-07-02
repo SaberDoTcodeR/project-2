@@ -9,7 +9,7 @@ import DuelystClient.model.Cell;
 import java.util.ArrayList;
 import java.util.Random;
 
-public abstract class Item {
+public class Item {
     private String name;
     private long id;
 
@@ -29,7 +29,9 @@ public abstract class Item {
         this.id = id;
     }
 
-    public abstract String showDetails();
+    public String showDetails(){
+        return null;
+    }
 
 
     public Cell getRandomEnemyForce(Battle battle, Account player) {

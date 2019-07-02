@@ -2,8 +2,6 @@ package DuelystServer.messages;
 
 import DuelystServer.model.Account;
 import DuelystServer.model.Shop;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 
 import java.util.ArrayList;
 
@@ -15,6 +13,7 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<String> items = new ArrayList<>();
     private ArrayList<String> notEnoughMoney = new ArrayList<>();
     private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
+    private ArrayList<String> notOwnedCard = new ArrayList<>();
     private ArrayList<Boolean> heroesBought;
     private ArrayList<Boolean> minionsBought;
     private ArrayList<Boolean> spellsBought;
@@ -23,6 +22,26 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> minionCheck = new ArrayList<>();
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
+
+    public ArrayList<String> getNotOwnedCard() {
+        return notOwnedCard;
+    }
+
+    public ArrayList<Boolean> getHeroCheck() {
+        return heroCheck;
+    }
+
+    public ArrayList<Boolean> getMinionCheck() {
+        return minionCheck;
+    }
+
+    public ArrayList<Boolean> getSpellCheck() {
+        return spellCheck;
+    }
+
+    public ArrayList<Boolean> getItemCheck() {
+        return itemCheck;
+    }
 
     public ArrayList<Boolean> getHeroesBought() {
         return heroesBought;
@@ -56,8 +75,8 @@ public class ShopMessage extends AccountMessage {
         this.itemsBought = itemsBought;
     }
 
-    public ShopMessage(boolean signUpOrLogIn, String user, String pass) {
-        super(signUpOrLogIn, user, pass);
+    public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass) {
+        super(signUpOrLogIn, user, pass, nameOfClass);
     }
 
     public ArrayList<String> getHeroes() {
@@ -92,72 +111,135 @@ public class ShopMessage extends AccountMessage {
         this.items = items;
     }
 
-    public  void buyAction(Account account) {
-        Shop shop = new Shop();
+    public static void buyAction(Account account, ShopMessage shopMessage, Shop shop) {
         int count = 0;
-        for (String vBox : this.getHeroes()) {
-            if (heroCheck.get(count)) {
+        for (String vBox : shopMessage.getHeroes()) {
+            if (shopMessage.getHeroCheck().get(count)) {
                 if (!account.getCollection().hasThisCard(vBox)) {
-                    if (shop.costOfCard(vBox) <= account.getMoney()) {
+                    if (shop.costOfCard2(vBox) <= account.getMoney()) {
                         account.getCollection().addToCollection(vBox);
-                        account.incrementMoney(-shop.costOfCard(vBox));
-                        this.getHeroesBought().set(count, true);
+                        account.incrementMoney(-shop.costOfCard2(vBox));
+                        shopMessage.getHeroesBought().set(count, true);
                     } else
-                        this.getNotEnoughMoney().add(vBox);
+                        shopMessage.getNotEnoughMoney().add(vBox);
                 } else
-                    this.getAlreadyHaveThisCard().add((vBox));
-                heroCheck.set(count, false);
+                    shopMessage.getAlreadyHaveThisCard().add((vBox));
+                shopMessage.getHeroCheck().set(count, false);
             }
             count++;
         }
         count = 0;
-        for (String vBox : this.getMinions()) {
-            if (minionCheck.get(count)) {
+        for (String vBox : shopMessage.getMinions()) {
+            if (shopMessage.getMinionCheck().get(count)) {
                 if (!account.getCollection().hasThisCard(vBox)) {
-                    if (shop.costOfCard(vBox) <= account.getMoney()) {
+                    if (shop.costOfCard2(vBox) <= account.getMoney()) {
                         account.getCollection().addToCollection(vBox);
-                        account.incrementMoney(-shop.costOfCard(vBox));
-                        this.getMinionsBought().set(count, true);
+                        account.incrementMoney(-shop.costOfCard2(vBox));
+                        shopMessage.getMinionsBought().set(count, true);
                     } else
-                        this.getNotEnoughMoney().add(vBox);
+                        shopMessage.getNotEnoughMoney().add(vBox);
                 } else
-                    this.getAlreadyHaveThisCard().add(vBox);
-                minionCheck.set(count, false);
+                    shopMessage.getAlreadyHaveThisCard().add(vBox);
+                shopMessage.getMinionCheck().set(count, false);
             }
             count++;
         }
         count = 0;
-        for (String vBox : this.getSpells()) {
-            if (spellCheck.get(count)) {
+        for (String vBox : shopMessage.getSpells()) {
+            if (shopMessage.getSpellCheck().get(count)) {
                 if (!account.getCollection().hasThisCard(vBox)) {
-                    if (shop.costOfCard(vBox) <= account.getMoney()) {
+                    if (shop.costOfCard2(vBox) <= account.getMoney()) {
                         account.getCollection().addToCollection(vBox);
-                        account.incrementMoney(-shop.costOfCard(vBox));
-                        this.getSpellsBought().set(count, true);
+                        account.incrementMoney(-shop.costOfCard2(vBox));
+                        shopMessage.getSpellsBought().set(count, true);
                     } else
-                        this.getNotEnoughMoney().add(vBox);
+                        shopMessage.getNotEnoughMoney().add(vBox);
                 } else
-                    this.getAlreadyHaveThisCard().add(vBox);
-                spellCheck.set(count, false);
+                    shopMessage.getAlreadyHaveThisCard().add(vBox);
+                shopMessage.getMinionCheck().set(count, false);
             }
             count++;
         }
         count = 0;
-        for (String vBox : this.getItems()) {
-            if (itemCheck.get(count)) {
+        for (String vBox : shopMessage.getItems()) {
+            if (shopMessage.getItemCheck().get(count)) {
                 if (!account.getCollection().hasThisCard(vBox)) {
-                    if (shop.costOfCard(vBox) <= account.getMoney()) {
+                    if (shop.costOfCard2(vBox) <= account.getMoney()) {
                         account.getCollection().addToCollection(vBox);
-                        account.incrementMoney(-shop.costOfCard(vBox));
-                        this.getItemsBought().set(count, true);
+                        account.incrementMoney(-shop.costOfCard2(vBox));
+                        shopMessage.getItemsBought().set(count, true);
                     } else
-                        this.getNotEnoughMoney().add(vBox);
+                        shopMessage.getNotEnoughMoney().add(vBox);
                 } else
-                    this.getAlreadyHaveThisCard().add(vBox);
-                itemCheck.set(count, false);
+                    shopMessage.getAlreadyHaveThisCard().add(vBox);
+                shopMessage.getItemCheck().set(count, false);
             }
             count++;
         }
+    }
+
+    public static void sellAction(Shop shop, ShopMessage shopMessage, Account account) {
+        int count = 0;
+        for (String vBox : shopMessage.getHeroes()) {
+            if (shopMessage.getHeroCheck().get(count)) {
+                if (account.getCollection().hasThisCard(vBox)) {
+                    account.getCollection().removeCardFromCollection(vBox);
+                    account.incrementMoney(shop.costOfCard2(vBox));
+                    shopMessage.getHeroesBought().set(count, false);
+                } else {
+                    shopMessage.getNotOwnedCard().add(vBox);
+                }
+                shopMessage.getHeroCheck().set(count, false);
+            }
+            count++;
+        }
+        count = 0;
+        for (String vBox : shopMessage.getMinions()) {
+            if (shopMessage.getHeroCheck().get(count)) {
+                if (account.getCollection().hasThisCard(vBox)) {
+                    account.getCollection().removeCardFromCollection(vBox);
+                    account.incrementMoney(shop.costOfCard2(vBox));
+                    shopMessage.getMinionsBought().set(count,false);
+                } else {
+                    shopMessage.getNotOwnedCard().add(vBox);
+                }
+                shopMessage.getMinionCheck().set(count,false);
+            }
+            count++;
+        }
+        count = 0;
+        for (String vBox : shopMessage.getSpells()) {
+            if (shopMessage.getSpellCheck().get(count)) {
+                if (account.getCollection().hasThisCard(vBox)) {
+                    account.getCollection().removeCardFromCollection(vBox);
+                    account.incrementMoney(shop.costOfCard2(vBox));
+                    shopMessage.getSpellsBought().set(count, false);
+                } else {
+                    shopMessage.getNotOwnedCard().add(vBox);
+                }
+                shopMessage.getSpellCheck().set(count, false);
+            }
+            count++;
+        }
+        count = 0;
+        for (String vBox : shopMessage.getItems()) {
+            if (shopMessage.getItemCheck().get(count)) {
+                if (account.getCollection().hasThisCard(vBox)) {
+                    account.getCollection().removeCardFromCollection(vBox);
+                    account.incrementMoney(shop.costOfCard2(vBox));
+                    shopMessage.getItemsBought().set(count, false);
+                } else {
+                    shopMessage.getNotOwnedCard().add(vBox);
+                }
+                shopMessage.getItemCheck().set(count, false);
+            }
+            count++;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return 2357;
     }
 
     public ArrayList<String> getNotEnoughMoney() {
@@ -175,5 +257,4 @@ public class ShopMessage extends AccountMessage {
     public void setAlreadyHaveThisCard(ArrayList<String> alreadyHaveThisCard) {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
     }
-
 }
