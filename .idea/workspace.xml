@@ -1,37 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="shop version 1.0.0 created">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/net_sf_flexjson_flexjson_3_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_8_0_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_8_0_8.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project-2(Phase-3).iml" beforeDir="false" afterPath="$PROJECT_DIR$/project-2(Phase-3).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/MainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Card/Minion/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Card/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Item/CollectibleItem/CollectibleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Item/CollectibleItem/CollectibleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Item/UsableItem/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Item/UsableItem/UsableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/css/saber.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/css/saber.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystServer/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Minion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Minion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Item/CollectibleItem/CollectibleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Item/CollectibleItem/CollectibleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Item/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Item/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Item/UsableItem/UsableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Item/UsableItem/UsableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Shop.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,8 +67,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+            <state relative-caret-position="392">
+              <caret line="254" lean-forward="true" selection-start-line="254" selection-end-line="254" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#9458#9459#0" expanded="true" />
+                <element signature="e#9488#9489#0" expanded="true" />
+                <element signature="e#9535#9536#0" expanded="true" />
+                <element signature="e#9573#9574#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,21 +93,58 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="1219" selection-start-line="1219" selection-end-line="1219" />
+            <state relative-caret-position="133">
+              <caret line="27" column="76" lean-forward="true" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+            <state relative-caret-position="153">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="912" column="56" lean-forward="true" selection-start-line="912" selection-start-column="56" selection-end-line="912" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="392">
+              <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4287#4288#0" expanded="true" />
+                <element signature="e#4317#4318#0" expanded="true" />
+                <element signature="e#4364#4365#0" expanded="true" />
+                <element signature="e#4402#4403#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,7 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sample/Server.java" />
         <option value="$PROJECT_DIR$/src/config.properties" />
         <option value="$PROJECT_DIR$/src/client/Connection.java" />
         <option value="$PROJECT_DIR$/src/server/Connection.java" />
@@ -193,12 +221,9 @@
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Shop.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/model/Shop.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Collection.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/Connection.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Hero.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Minion.java" />
@@ -213,8 +238,12 @@
         <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/Item.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/UsableItem/UsableItem.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/CollectibleItem/CollectibleItem.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Connection.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/css/saber.json" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/Connection.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" />
       </list>
     </option>
   </component>
@@ -237,6 +266,44 @@
             <path>
               <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
               <item name="project-25" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
+              <item name="Messages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystServer" type="462c0819:PsiDirectoryNode" />
+              <item name="messages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -262,7 +329,7 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562084912909" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562149999586" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
@@ -420,7 +487,7 @@
       <workItem from="1561898571030" duration="571000" />
       <workItem from="1561915874651" duration="597000" />
       <workItem from="1562004888506" duration="5839000" />
-      <workItem from="1562046307832" duration="29950000" />
+      <workItem from="1562046307832" duration="35663000" />
     </task>
     <task id="LOCAL-00001" summary="server client basic">
       <created>1561710842652</created>
@@ -471,17 +538,23 @@
       <option name="project" value="LOCAL" />
       <updated>1561885229272</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;">
+      <created>1562085241111</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1562085241111</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91225000" />
+    <option name="totallyTimeSpent" value="96938000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19054054" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19054054" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -489,29 +562,29 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Image Layers" order="6" />
       <window_info id="UI Designer" order="7" />
-      <window_info anchor="bottom" id="Duplicate detector" weight="0.32963988" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32825485" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3199446" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32963988" />
-      <window_info anchor="bottom" id="Problems" order="9" />
-      <window_info anchor="bottom" id="Changes" order="10" />
-      <window_info anchor="bottom" id="Profiler" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32825485" />
-      <window_info anchor="bottom" id="Terminal" order="14" />
-      <window_info anchor="bottom" id="Educational.CheckDetails" order="15" />
-      <window_info anchor="bottom" id="CheckStyle" order="16" />
-      <window_info anchor="bottom" id="Statistic" order="17" weight="0.32963988" />
-      <window_info anchor="bottom" id="SonarLint" order="18" />
-      <window_info anchor="bottom" id="Database Changes" order="19" />
-      <window_info anchor="bottom" id="Docker" order="20" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Tail" order="21" />
+      <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32963988" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32825485" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3199446" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39934534" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Application Servers" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32963988" />
+      <window_info anchor="bottom" id="Problems" order="10" />
+      <window_info anchor="bottom" id="Changes" order="11" />
+      <window_info anchor="bottom" id="Profiler" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32825485" />
+      <window_info anchor="bottom" id="Terminal" order="15" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="16" />
+      <window_info anchor="bottom" id="CheckStyle" order="17" />
+      <window_info anchor="bottom" id="Statistic" order="18" weight="0.32963988" />
+      <window_info anchor="bottom" id="SonarLint" order="19" />
+      <window_info anchor="bottom" id="Database Changes" order="20" />
+      <window_info anchor="bottom" id="Docker" order="21" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Tail" order="22" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -539,23 +612,14 @@
     <MESSAGE value="server and client sign up done" />
     <MESSAGE value="login updated" />
     <MESSAGE value="shop version 1.0.0 created" />
-    <option name="LAST_COMMIT_MESSAGE" value="shop version 1.0.0 created" />
+    <MESSAGE value="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;" />
+    <option name="LAST_COMMIT_MESSAGE" value="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/saber.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Save/saveaccount.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Weakening.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -735,26 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="194" column="16" lean-forward="true" selection-start-line="194" selection-start-column="16" selection-end-line="194" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
-          <folding>
-            <element signature="e#1001#1002#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -776,16 +820,6 @@
             <element signature="e#919#920#0" expanded="true" />
             <element signature="e#973#974#0" expanded="true" />
             <element signature="e#1019#1020#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="70" column="28" lean-forward="true" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -970,29 +1004,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/saber.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="1219" selection-start-line="1219" selection-end-line="1219" />
+        <state relative-caret-position="132">
+          <caret line="912" column="56" lean-forward="true" selection-start-line="912" selection-start-column="56" selection-end-line="912" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        <state relative-caret-position="392">
+          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4287#4288#0" expanded="true" />
+            <element signature="e#4317#4318#0" expanded="true" />
+            <element signature="e#4364#4365#0" expanded="true" />
+            <element signature="e#4402#4403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="202" column="24" lean-forward="true" selection-start-line="202" selection-start-column="24" selection-end-line="202" selection-end-column="24" />
+        <state relative-caret-position="260">
+          <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="27" column="76" lean-forward="true" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="254" lean-forward="true" selection-start-line="254" selection-end-line="254" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9458#9459#0" expanded="true" />
+            <element signature="e#9488#9489#0" expanded="true" />
+            <element signature="e#9535#9536#0" expanded="true" />
+            <element signature="e#9573#9574#0" expanded="true" />
           </folding>
         </state>
       </provider>

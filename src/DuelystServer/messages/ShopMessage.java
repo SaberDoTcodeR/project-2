@@ -22,6 +22,7 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> minionCheck = new ArrayList<>();
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
+    private Account account;
 
     public ArrayList<String> getNotOwnedCard() {
         return notOwnedCard;
@@ -176,11 +177,13 @@ public class ShopMessage extends AccountMessage {
             }
             count++;
         }
+        shopMessage.setAccount(account);
     }
 
     public static void sellAction(Shop shop, ShopMessage shopMessage, Account account) {
         int count = 0;
         for (String vBox : shopMessage.getHeroes()) {
+            System.out.println("Hero --> " + vBox);
             if (shopMessage.getHeroCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
@@ -191,11 +194,13 @@ public class ShopMessage extends AccountMessage {
                 }
                 shopMessage.getHeroCheck().set(count, false);
             }
+            System.out.println(count);
             count++;
         }
         count = 0;
         for (String vBox : shopMessage.getMinions()) {
-            if (shopMessage.getHeroCheck().get(count)) {
+            System.out.println("Minion--> " + vBox);
+            if (shopMessage.getMinionCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
                     account.incrementMoney(shop.costOfCard2(vBox));
@@ -205,6 +210,7 @@ public class ShopMessage extends AccountMessage {
                 }
                 shopMessage.getMinionCheck().set(count,false);
             }
+            System.out.println("--> " + count);
             count++;
         }
         count = 0;
@@ -235,6 +241,7 @@ public class ShopMessage extends AccountMessage {
             }
             count++;
         }
+        shopMessage.setAccount(account);
     }
 
     @Override
@@ -256,5 +263,13 @@ public class ShopMessage extends AccountMessage {
 
     public void setAlreadyHaveThisCard(ArrayList<String> alreadyHaveThisCard) {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

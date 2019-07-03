@@ -77,6 +77,7 @@ public class Connection implements Runnable {
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
                     Account account = Account.getAccount(shopMessage.getUser());
                     Shop shop = new Shop();
+                    System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {
                         ShopMessage.buyAction(account, shopMessage, shop);
                         sendPacket(gson.toJson(shopMessage));

@@ -911,6 +911,7 @@ public class ShopController {
             minionsBought = shopMessage1.getMinionsBought();
             spellsBought = shopMessage1.getSpellsBought();
             itemsBought = shopMessage1.getItemsBought();
+            Account.setLoginAccount(shopMessage1.getAccount());
             for (VBox vBox : heroBoxes) {
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
@@ -1115,6 +1116,7 @@ public class ShopController {
                 minionsBought = shopMessage1.getMinionsBought();
                 spellsBought = shopMessage1.getSpellsBought();
                 itemsBought = shopMessage1.getItemsBought();
+                Account.setLoginAccount(shopMessage1.getAccount());
                 for (VBox vBox : heroBoxes) {
                     ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 }

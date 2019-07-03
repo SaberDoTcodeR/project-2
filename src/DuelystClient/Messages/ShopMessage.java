@@ -1,5 +1,7 @@
 package DuelystClient.Messages;
 
+import DuelystClient.model.Account;
+
 import java.util.ArrayList;
 
 public class ShopMessage extends AccountMessage {
@@ -16,6 +18,7 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
     private ArrayList<String> notOwnedCard = new ArrayList<>();
+    private Account account;
 
 
     public ArrayList<String> getNotOwnedCard() {
@@ -43,8 +46,8 @@ public class ShopMessage extends AccountMessage {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
     }
 
-    ArrayList<String> notEnoughMoney = new ArrayList<>();
-    ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
+    private ArrayList<String> notEnoughMoney = new ArrayList<>();
+    private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
                        ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought) {
@@ -151,4 +154,11 @@ public class ShopMessage extends AccountMessage {
         this.itemCheck.add(itemCheck);
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }
