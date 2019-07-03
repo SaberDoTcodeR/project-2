@@ -13,6 +13,15 @@ public class AccountMessage {
         this.pass = pass;
         this.authToken=authToken;
     }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id = 42131;
 
     public long getAuthToken() {
         return authToken;

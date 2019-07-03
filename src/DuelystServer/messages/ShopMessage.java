@@ -78,6 +78,7 @@ public class ShopMessage extends AccountMessage {
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken) {
         super(signUpOrLogIn, user, pass, nameOfClass, authToken);
+        super.setId(43123);
     }
 
     public ArrayList<String> getHeroes() {

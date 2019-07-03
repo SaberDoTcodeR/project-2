@@ -7,6 +7,16 @@ public class AccountMessage {
     private String nameOfClass;
     private long authToken;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id = 42131;
+
     public AccountMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken) {
         this.signUpOrLogIn = signUpOrLogIn;
         this.user = user;

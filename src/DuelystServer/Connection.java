@@ -1,6 +1,7 @@
 package DuelystServer;
 
 import DuelystServer.messages.AccountMessage;
+import DuelystServer.messages.SaveAccountMessage;
 import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.ErrorType;
@@ -48,9 +49,17 @@ public class Connection implements Runnable {
                 System.out.println("received");
                 outputStream.reset();
                 Gson gson = new Gson();
-                AccountMessage packet = gson.fromJson(str, AccountMessage.class);
-                if (packet.getNameOfClass().equals("AccountMessage")) {
-                    AccountMessage accountMessage = packet;
+                if (str.contains("14123")) {
+                    SaveAccountMessage saveAccountMessage = gson.fromJson(str, SaveAccountMessage.class);
+                    System.out.println("sads" + str);
+                    for (Account account : Account.getAllUser()) {
+                        if (account.getUserName().equals(saveAccountMessage.getAccount().getUserName())) {
+                            Account.getAllUser().remove(account);
+                            Account.getAllUser().add(saveAccountMessage.getAccount());
+                        }
+                    }
+                } else if (str.contains("42131")) {
+                    AccountMessage accountMessage = gson.fromJson(str, AccountMessage.class);
                     boolean flag = Account.existThisUser(accountMessage.getUser());
                     if (flag && accountMessage.isSignUpOrLogIn()) {
                         //signUp error
@@ -75,7 +84,7 @@ public class Connection implements Runnable {
                         //login error
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
-                } else if (packet.getNameOfClass().equals("ShopMessage")) {
+                } else if (str.contains("43123")) {
                     System.out.println(str);
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
                     Account account = Account.getAccount(shopMessage.getAuthToken());

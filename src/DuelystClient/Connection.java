@@ -24,10 +24,8 @@ public class Connection implements Runnable {
         this.socket = socket;
         try {
 
-            System.out.println(1234);
             outputStream = new ObjectOutputStream(socket.getOutputStream());
             inputStream = new ObjectInputStream(socket.getInputStream());
-            System.out.println(123);
         } catch (IOException e) {
             e.printStackTrace();
         }

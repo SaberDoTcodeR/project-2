@@ -65,6 +65,7 @@ public class ShopMessage extends AccountMessage {
         setMinionsBought(minionsBought);
         setItemsBought(itemsBought);
         setHeroesBought(heroesBought);
+        super.setId(43123);
     }
 
     public void setHeroes(String hero) {
