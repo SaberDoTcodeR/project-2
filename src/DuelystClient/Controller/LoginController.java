@@ -7,8 +7,12 @@ import DuelystClient.model.Account;
 import DuelystClient.model.Card.Hero.Hero;
 import DuelystClient.model.Card.Minion.Minion;
 import DuelystClient.model.Card.Spell.Spell;
+import DuelystClient.model.Collection;
+import DuelystClient.model.Deck;
 import DuelystClient.model.Item.UsableItem.UsableItem;
+import DuelystClient.model.Save.SaveAccount;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,6 +20,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 
 public class LoginController {
@@ -33,7 +42,7 @@ public class LoginController {
     TextField passField;
 
     public void initialize() {
-        /*Gson gson = new Gson();
+        Gson gson = new Gson();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("DuelystClient/model/Save/saveaccount.json"));
             ArrayList<SaveAccount> saveAccounts;
@@ -67,8 +76,7 @@ public class LoginController {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
+        }
     }
 
     public void handleOnKeyPressedExit(KeyEvent event) {
@@ -122,7 +130,7 @@ public class LoginController {
         passField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
             Gson gson = new Gson();
-            AccountMessage accountMessage = new AccountMessage( false, userField.getText(), passField.getText(), "AccountMessage");
+            AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText(), "AccountMessage",0);
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
             new Thread(() -> {
@@ -131,7 +139,7 @@ public class LoginController {
                     object = Client.connectionToServer.readPacket();
                 if (((String) object).contains("WRONG_PASSWORD")) {
                     passField.getStyleClass().add("wrongPassword");
-                } else if (((String) object).contains("No_SUCH_USER_EXIST")){
+                } else if (((String) object).contains("No_SUCH_USER_EXIST")) {
                     userField.getStyleClass().add("wrongPassword");
                 } else if (((String) object).contains("money")) {
                     Account.setLoginAccount(gson.fromJson((String) object, Account.class));
@@ -178,7 +186,7 @@ public class LoginController {
         userField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
             Gson gson = new Gson();
-            AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText(),"AccountMessage");
+            AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText(), "AccountMessage", 0);
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
 
             new Thread(() -> {

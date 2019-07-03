@@ -351,8 +351,7 @@ public class CollectionController {
             showDeck();
         });
         deckList.setPromptText("CHOOSE A DECK :");
-     /*   myDecks = Account.getLoginAccount().getCollection().getDecks();
-
+        myDecks = Account.getLoginAccount().getCollection().getDecks();
         for (Deck deck : myDecks) {
             if (Account.getLoginAccount().getMainDeck() != null && deck.getName().equals(Account.getLoginAccount().getMainDeck())) {
                 deckList.getItems().add(deck.getName());
@@ -361,7 +360,6 @@ public class CollectionController {
 
             }
         }
-*/
 
         heroBoxes.add(hero1Box);
         heroBoxes.add(hero2Box);
@@ -483,7 +481,7 @@ public class CollectionController {
             }
         }
 
-     /*   for (int i = 0, x = 0; i < heroBoxes.size(); i++, x++) {
+        for (int i = 0, x = 0; i < heroBoxes.size(); i++, x++) {
             if (Account.getLoginAccount().getCollection().hasThisCard
                     (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
                 heroesBought.set(i, true);
@@ -543,7 +541,7 @@ public class CollectionController {
                         ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo);
                 ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
             }
-        }*/
+        }
     }
 
     private void showDeck() {
@@ -599,7 +597,7 @@ public class CollectionController {
     }
 
     private void reChooseComboBox() {
-      /*  myDecks = Account.getLoginAccount().getCollection().getDecks();
+        myDecks = Account.getLoginAccount().getCollection().getDecks();
         for (Object node : deckList.getItems()) {
             String label = (String) node;
             if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck().getName())) {
@@ -618,10 +616,11 @@ public class CollectionController {
 
 
         }
-    */}
+
+    }
 
     private void showDialog(String promptText, String message) {
-        /*BoxBlur blur = new BoxBlur(5, 5, 10);
+        BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("OK");
         JFXTextField jfxTextField = new JFXTextField();
@@ -651,7 +650,7 @@ public class CollectionController {
         jfxDialogLayout.getBody().add(vBox);
         jfxDialogLayout.setActions(jfxButton);
         jfxDialog.show();
-        gridPane.setEffect(blur);*/
+        gridPane.setEffect(blur);
     }
 
     public void hero1BoxClicked() {
@@ -2611,14 +2610,14 @@ public class CollectionController {
     }
 
     public void crossBtnAct() {
-       /* for (Node ignored : deckBox.getChildren()) {
+        for (Node ignored : deckBox.getChildren()) {
             HBox hBox = (HBox) ignored;
             if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
                 String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.currentDeck.getName());
                 deckBox.getChildren().remove(hBox);
             }
-        }*/
+        }
     }
 
     public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
@@ -2632,13 +2631,13 @@ public class CollectionController {
     }
 
     public void createDeck(String deckName) {
-    /*    Deck deck = new Deck();
+        Deck deck = new Deck();
         deck.setName(deckName);
         Account.getLoginAccount().getCollection().addDeck(deck);
         myDecks = Account.getLoginAccount().getCollection().getDecks();
         deckList.getItems().add(deckName);
         currentDeck = deck;
-        reChooseComboBox();*/
+        reChooseComboBox();
     }
 
     public void handleOnKeyPressedSetMain(KeyEvent keyEvent) {
@@ -2648,7 +2647,7 @@ public class CollectionController {
     }
 
     public void addBtnAct() {
-       /* for (VBox vBox : heroBoxes) {
+        for (VBox vBox : heroBoxes) {
             if (((CheckBox) vBox.getChildren().get(0)).isSelected() && currentDeck != null) {
                 String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
                 Account.getLoginAccount().getCollection().addToDeck(string, currentDeck.getName());
@@ -2679,7 +2678,7 @@ public class CollectionController {
                 showCard(string, 3);
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
-        }*/
+        }
     }
 
     private void showCard(String cardName, int type) {//0 hero 1 minion 2 spell 3 item
@@ -2718,7 +2717,7 @@ public class CollectionController {
                 return;
             }
 
-           /* if (deckList.getValue().equals("*" + deck.getName() + "*")) {
+            if (deckList.getValue().equals("*" + deck.getName() + "*")) {
                 deckList.getItems().remove(deck.getName());
                 Account.getLoginAccount().getCollection().deleteDeck(deck.getName());
                 myDecks = Account.getLoginAccount().getCollection().getDecks();
@@ -2726,7 +2725,7 @@ public class CollectionController {
                 reChooseComboBox();
                 deckBox.getChildren().clear();
                 return;
-            }*/
+            }
         }
 
     }
@@ -2754,19 +2753,20 @@ public class CollectionController {
     }
 
     public void setMainBtnAct() {
-    /*    if (currentDeck.isValid()) {
+        if (currentDeck.isValid()) {
             Account.getLoginAccount().setMainDeck(currentDeck);
             reChooseComboBox();
         } else {
             showDialog("Chosen Deck Is Invalid \nPlease Choose a valid deck 0_0");
-        }*/
+        }
     }
 
     public void importAct() {
-       /* Gson gson = new Gson();
+        Gson gson = new Gson();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\saber\\IdeaProjects\\projecctt\\src\\DuelystClient\\model\\Save\\deck.json"));
-            SaveDeck saveDeck = gson.fromJson(bufferedReader, new TypeToken<SaveDeck>(){}.getType());
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("DuelystClient/model/Save/deck.json"));
+            SaveDeck saveDeck = gson.fromJson(bufferedReader, new TypeToken<SaveDeck>() {
+            }.getType());
             Deck deck = new Deck();
             Account.getLoginAccount().getCollection().addDeck(deck);
             deck.setName(saveDeck.name);
@@ -2779,7 +2779,8 @@ public class CollectionController {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-    */}
+
+    }
 
     public void importBtnActFocus() {
         importDeck.requestFocus();
@@ -2805,7 +2806,7 @@ public class CollectionController {
                 currentDeck.getUsableItems().forEach(y -> saveDeck.cards.add(y.getName()));
             }
             String json = gson.toJson(saveDeck);
-            FileWriter writer = new FileWriter("D:\\associated to com\\javapractices\\FirstPractice+Project\\project-25\\src\\DuelystClient\\model\\Save\\deck.json");
+            FileWriter writer = new FileWriter("DuelystClient/model/Save/deck.json");
             writer.write(json);
             writer.close();
         } catch (

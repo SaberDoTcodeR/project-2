@@ -5,12 +5,22 @@ public class AccountMessage {
     private String user;
     private String pass;
     private String nameOfClass;
+    private long authToken;
 
-    public AccountMessage(boolean signUpOrLogIn, String user, String pass , String nameOfClass) {
+    public AccountMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken) {
         this.signUpOrLogIn = signUpOrLogIn;
         this.user = user;
         this.pass = pass;
         this.nameOfClass = nameOfClass;
+        this.authToken = authToken;
+    }
+
+    public long getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(long authToken) {
+        this.authToken = authToken;
     }
 
     public String getUser() {

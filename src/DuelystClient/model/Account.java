@@ -13,6 +13,19 @@ public class Account {
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
     public transient static Account loginAccount;
+    private long authToken;
+    public Account(String user, String pass) {
+        this.userName = user;
+        this.passWord = pass;
+    }
+
+    public long getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(long authToken) {
+        this.authToken = authToken;
+    }
 
     public static Account getLoginAccount() {
         return loginAccount;
@@ -54,7 +67,6 @@ public class Account {
     public void addNewRecordedMatch(RecordedMatch recordedMatch) {
         this.matches.add(recordedMatch);
     }
-
 
     public ArrayList<RecordedMatch> getMatches() {
         return matches;

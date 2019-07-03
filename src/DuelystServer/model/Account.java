@@ -13,9 +13,18 @@ public class Account {
     private Deck mainDeck;
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
+    private long authToken;
 
     public Collection getMyCollection() {
         return myCollection;
+    }
+
+    public long getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(long authToken) {
+        this.authToken = authToken;
     }
 
     public void setMyCollection(Collection myCollection) {
@@ -168,6 +177,13 @@ public class Account {
     public static Account getAccount(String userName) {
         for (Account account : allUser) {
             if (account.getUserName().equals(userName))
+                return account;
+        }
+        return null;
+    }
+    public static Account getAccount(long authToken) {
+        for (Account account : allUser) {
+            if (account.getAuthToken()==authToken)
                 return account;
         }
         return null;

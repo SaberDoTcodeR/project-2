@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.Random;
 
 public class Connection implements Runnable {
     private ObjectOutputStream outputStream;
@@ -59,6 +60,7 @@ public class Connection implements Runnable {
                         boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
                         if (f) {
                             Account account = Account.getAccount(accountMessage.getUser());
+                            account.setAuthToken(new Random().nextLong());
                             sendPacket(gson.toJson(account));
                         } else {
                             //login Error
@@ -67,6 +69,7 @@ public class Connection implements Runnable {
                     } else if (!flag && accountMessage.isSignUpOrLogIn()) {
                         //sign up
                         Account account = new Account(accountMessage.getUser(), accountMessage.getPass());
+                        account.setAuthToken(new Random().nextLong());
                         sendPacket(gson.toJson(account));
                     } else {
                         //login error
@@ -75,7 +78,9 @@ public class Connection implements Runnable {
                 } else if (packet.getNameOfClass().equals("ShopMessage")) {
                     System.out.println(str);
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
-                    Account account = Account.getAccount(shopMessage.getUser());
+                    Account account = Account.getAccount(shopMessage.getAuthToken());
+                    if (account == null)
+                        throw new Exception();
                     Shop shop = new Shop();
                     System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="server sign up and client graphic bug totally fixed">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_8_0_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_8_0_8.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DuelystClient/css/saber.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/css/saber.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystClient/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystClient/model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystServer/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DuelystServer/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DuelystServer/model/Account.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,17 +72,81 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="254" lean-forward="true" selection-start-line="254" selection-end-line="254" />
+            <state relative-caret-position="224">
+              <caret line="198" column="20" selection-start-line="198" selection-start-column="20" selection-end-line="198" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9458#9459#0" expanded="true" />
-                <element signature="e#9488#9489#0" expanded="true" />
-                <element signature="e#9535#9536#0" expanded="true" />
-                <element signature="e#9573#9574#0" expanded="true" />
+                <element signature="e#6475#6476#0" expanded="true" />
+                <element signature="e#6514#6515#0" expanded="true" />
+                <element signature="e#6553#6554#0" expanded="true" />
+                <element signature="e#6593#6594#0" expanded="true" />
+                <element signature="e#6630#6631#0" expanded="true" />
+                <element signature="e#6671#6672#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="1126" column="23" selection-start-line="1126" selection-start-column="23" selection-end-line="1126" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="27" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+              <folding>
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#633#634#0" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Account.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="e#560#561#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
+                <element signature="e#640#641#0" expanded="true" />
+                <element signature="e#682#683#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+              <folding>
+                <element signature="e#564#565#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1819">
+              <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -83,10 +154,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
+            <state relative-caret-position="374">
+              <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="243">
+              <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="5" selection-start-line="16" selection-start-column="2" selection-end-line="22" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#508#509#0" expanded="true" />
+                <element signature="e#540#541#0" expanded="true" />
+                <element signature="e#588#589#0" expanded="true" />
+                <element signature="e#630#631#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,56 +187,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="27" column="76" lean-forward="true" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+            <state relative-caret-position="1963">
+              <caret line="122" column="54" selection-start-line="122" selection-start-column="54" selection-end-line="122" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="912" column="56" lean-forward="true" selection-start-line="912" selection-start-column="56" selection-end-line="912" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="130" selection-start-line="130" selection-end-line="130" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#4287#4288#0" expanded="true" />
-                <element signature="e#4317#4318#0" expanded="true" />
-                <element signature="e#4364#4365#0" expanded="true" />
-                <element signature="e#4402#4403#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,26 +207,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&quot;money&quot;</find>
-      <find>&quot;wrongpassword&quot;</find>
-      <find>export</find>
-      <find>heroBoxes</find>
-      <find>sell</find>
-      <find>saber</find>
-      <find>true</find>
-      <find>put(this.getName(),this.getCostOfBuy());</find>
-      <find>DuelystServer.model.Card.Hero.Hero.</find>
-      <find>money</find>
-      <find>buybtn</find>
-      <find>Account.getLoginAccount()..</find>
-      <find>nameOfClass</find>
+      <find>hall</find>
     </findStrings>
-    <replaceStrings>
-      <replace>shopMessage.getHeroes()</replace>
-      <replace>put(hero.getName().toLowerCase(),hero.getCostOfBuy());</replace>
-      <replace>Hero.</replace>
-      <replace>account</replace>
-    </replaceStrings>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -193,6 +221,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sample/Server.java" />
         <option value="$PROJECT_DIR$/src/config.properties" />
         <option value="$PROJECT_DIR$/src/client/Connection.java" />
         <option value="$PROJECT_DIR$/src/server/Connection.java" />
@@ -210,49 +240,27 @@
         <option value="$PROJECT_DIR$/src/DuelystClient/Controller/BattleController.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Client.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/css/css.css" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Account.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/config.properties" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/config.properties" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Save/deck.json" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/mainMenu.fxml" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Save/deck.json" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Controller/MainMenuController.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Shop.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Shop.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Collection.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java" />
         <option value="$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Hero.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Minion.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Spell.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Item/Item.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Item/CollectibleItem/CollectibleItem.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/model/Item/UsableItem/UsableItem.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Hero.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Card/Minion/Minion.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Spell.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Card/Card.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/Item.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/UsableItem/UsableItem.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/model/Item/CollectibleItem/CollectibleItem.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Connection.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/css/saber.json" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" />
-        <option value="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" />
-        <option value="$PROJECT_DIR$/src/DuelystServer/Connection.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/model/Account.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java" />
         <option value="$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/model/Account.java" />
+        <option value="$PROJECT_DIR$/src/DuelystServer/Connection.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Connection.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1615" />
-    <option name="height" value="880" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,57 +268,75 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
               <item name="Messages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DuelystClient" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DuelystServer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="project-25" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-25" type="462c0819:PsiDirectoryNode" />
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project-2" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DuelystServer" type="462c0819:PsiDirectoryNode" />
               <item name="messages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="Course" />
     </panes>
   </component>
@@ -329,12 +355,11 @@
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562149999586" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1562161431639" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/project-2-1.2/project-2-1.2" />
-    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Compressed/jar_files_2/yagson-0.3.1.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -482,12 +507,9 @@
       <workItem from="1561638968756" duration="8633000" />
       <workItem from="1561711174082" duration="17214000" />
       <workItem from="1561753511002" duration="4905000" />
-      <workItem from="1561813365434" duration="1979000" />
-      <workItem from="1561864113109" duration="9011000" />
-      <workItem from="1561898571030" duration="571000" />
-      <workItem from="1561915874651" duration="597000" />
-      <workItem from="1562004888506" duration="5839000" />
-      <workItem from="1562046307832" duration="35663000" />
+      <workItem from="1561813365434" duration="2138000" />
+      <workItem from="1561970923287" duration="2707000" />
+      <workItem from="1562155073735" duration="4913000" />
     </task>
     <task id="LOCAL-00001" summary="server client basic">
       <created>1561710842652</created>
@@ -524,37 +546,24 @@
       <option name="project" value="LOCAL" />
       <updated>1561758446141</updated>
     </task>
-    <task id="LOCAL-00006" summary="login updated">
-      <created>1561820466625</created>
+    <task id="LOCAL-00006" summary="server sign up and client graphic bug totally fixed">
+      <created>1561815419902</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1561820466625</updated>
+      <updated>1561815419902</updated>
     </task>
-    <task id="LOCAL-00007" summary="shop version 1.0.0 created">
-      <created>1561885229272</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1561885229272</updated>
-    </task>
-    <task id="LOCAL-00008" summary="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;">
-      <created>1562085241111</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1562085241111</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96938000" />
+    <option name="totallyTimeSpent" value="41947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19054054" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22541603" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -562,29 +571,28 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Image Layers" order="6" />
       <window_info id="UI Designer" order="7" />
-      <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32963988" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32825485" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3199446" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Application Servers" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32963988" />
-      <window_info anchor="bottom" id="Problems" order="10" />
-      <window_info anchor="bottom" id="Changes" order="11" />
-      <window_info anchor="bottom" id="Profiler" order="12" />
-      <window_info anchor="bottom" id="Event Log" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32825485" />
-      <window_info anchor="bottom" id="Terminal" order="15" />
-      <window_info anchor="bottom" id="Educational.CheckDetails" order="16" />
-      <window_info anchor="bottom" id="CheckStyle" order="17" />
-      <window_info anchor="bottom" id="Statistic" order="18" weight="0.32963988" />
-      <window_info anchor="bottom" id="SonarLint" order="19" />
-      <window_info anchor="bottom" id="Database Changes" order="20" />
-      <window_info anchor="bottom" id="Docker" order="21" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Tail" order="22" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3207856" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Problems" order="9" />
+      <window_info anchor="bottom" id="Changes" order="10" />
+      <window_info anchor="bottom" id="Profiler" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="14" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="15" />
+      <window_info anchor="bottom" id="CheckStyle" order="16" />
+      <window_info anchor="bottom" id="Statistic" order="17" />
+      <window_info anchor="bottom" id="SonarLint" order="18" />
+      <window_info anchor="bottom" id="Database Changes" order="19" />
+      <window_info anchor="bottom" id="Docker" order="20" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Tail" order="21" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -610,471 +618,361 @@
     <MESSAGE value="server client sync" />
     <MESSAGE value="server and client sign up" />
     <MESSAGE value="server and client sign up done" />
-    <MESSAGE value="login updated" />
-    <MESSAGE value="shop version 1.0.0 created" />
-    <MESSAGE value="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;" />
-    <option name="LAST_COMMIT_MESSAGE" value="sell added but have bug&#10;buy debuged&#10;we have bugs because write code like a savage and really our code is very savage;;;;&#10;Ihope we can try to be better;&#10;done;" />
+    <MESSAGE value="server sign up and client graphic bug totally fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="server sign up and client graphic bug totally fixed" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Weakening.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Save/SaveAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="70" lean-forward="true" selection-start-line="70" selection-end-line="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Save/deck.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Save/saveaccount.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Save/deck.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/RecordedMatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Hand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/gson-2.8.2.jar!/com/google/gson/internal/ConstructorConstructor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="179" selection-start-line="179" selection-end-line="179" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Shop.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-          <folding>
-            <element signature="method#costOfCard#0;class#Shop#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/jfoenix-8.0.8.jar!/com/jfoenix/controls/JFXDialog.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="219" column="16" selection-start-line="219" selection-start-column="16" selection-end-line="219" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.ideaLibSources/jfoenix-8.0.8-sources.jar!/com/jfoenix/controls/JFXDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="286" column="16" selection-start-line="286" selection-start-column="16" selection-end-line="286" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_45/javafx-src.zip!/com/sun/javafx/collections/VetoableListDecorator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="205" selection-start-line="205" selection-end-line="205" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Controller.java" />
+    <entry file="file://$PROJECT_DIR$/src/server/config.properties" />
+    <entry file="file://$PROJECT_DIR$/src/client/Connection.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/Client.java" />
+    <entry file="file://$PROJECT_DIR$/src/client/css/css.css" />
+    <entry file="file://$PROJECT_DIR$/src/client/Controller/BattleController.java" />
+    <entry file="file://$PROJECT_DIR$/src/Duelyst/client/Controller/battle.fxml" />
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/battle.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="180" column="53" lean-forward="true" selection-start-line="180" selection-start-column="53" selection-end-line="180" selection-end-column="53" />
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css6.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css5.css">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/collectionMenu.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css4.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css3.css">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Deck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="208" column="1" lean-forward="true" selection-start-line="208" selection-start-column="1" selection-end-line="208" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="90" column="1" lean-forward="true" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="84" column="1" lean-forward="true" selection-start-line="84" selection-start-column="1" selection-end-line="84" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="158" column="34" lean-forward="true" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="229" column="58" selection-start-line="229" selection-start-column="58" selection-end-line="229" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Account.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="121">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
           <folding>
-            <element signature="e#473#474#0" expanded="true" />
-            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#896#897#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/Server.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Buff/Buff.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="68">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Battle/Battle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="39" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
-          <folding>
-            <element signature="e#845#846#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#933#934#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
-          <folding>
-            <element signature="e#346#347#0" expanded="true" />
-            <element signature="e#382#383#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#549#550#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#719#720#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-2272">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Minion/Minion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="351" column="20" selection-start-line="351" selection-start-column="20" selection-end-line="351" selection-end-column="20" />
+        <state relative-caret-position="306">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Connection.java" />
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java" />
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/SingleOrMultiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
           <folding>
-            <element signature="e#14309#14310#0" expanded="true" />
-            <element signature="e#14337#14338#0" expanded="true" />
-            <element signature="e#14371#14372#0" expanded="true" />
-            <element signature="e#14397#14398#0" expanded="true" />
-            <element signature="e#15563#15564#0" expanded="true" />
-            <element signature="e#15589#15590#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Hero.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="222" column="21" lean-forward="true" selection-start-line="222" selection-start-column="21" selection-end-line="222" selection-end-column="21" />
-          <folding>
-            <element signature="e#5390#5391#0" expanded="true" />
-            <element signature="e#5417#5418#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Minion/Minion.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="269" column="91" selection-start-line="269" selection-start-column="91" selection-end-line="269" selection-end-column="91" />
-          <folding>
-            <element signature="e#3961#3962#0" expanded="true" />
-            <element signature="e#3988#3989#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Spell/Spell.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Card/Hero/Dragon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#1797#1798#0" expanded="true" />
-            <element signature="e#1999#2000#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Item/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding>
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Item/CollectibleItem/CollectibleItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Item/UsableItem/UsableItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="47" column="86" selection-start-line="47" selection-start-column="86" selection-end-line="47" selection-end-column="86" />
-          <folding>
-            <element signature="e#903#904#0" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Kaveh.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
+        <state relative-caret-position="68">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Hero/Hero.java">
+    <entry file="jar://$USER_HOME$/Downloads/Compressed/jar_files_2/yagson-0.3.1.jar!/com/gilecode/yagson/com/google/gson/Gson.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#5372#5373#0" expanded="true" />
-            <element signature="e#5400#5401#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="94" column="17" selection-start-line="94" selection-start-column="17" selection-end-line="94" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Minion/Minion.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/net/SocketInputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="269" column="91" selection-start-line="269" selection-start-column="91" selection-end-line="269" selection-end-column="91" />
-          <folding>
-            <element signature="e#2937#2938#0" expanded="true" />
-            <element signature="e#2971#2972#0" expanded="true" />
-            <element signature="e#3962#3963#0" expanded="true" />
-            <element signature="e#3989#3990#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="114">
+          <caret line="93" column="23" selection-start-line="93" selection-start-column="23" selection-end-line="93" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Shock.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Spell/Spell.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/View/View.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-          <folding>
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#1767#1768#0" expanded="true" />
-            <element signature="e#1794#1795#0" expanded="true" />
-            <element signature="e#1950#1951#0" expanded="true" />
-            <element signature="e#1977#1978#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="350" column="20" selection-start-line="350" selection-start-column="20" selection-end-line="350" selection-end-column="20" />
+        <state relative-caret-position="323">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#14308#14309#0" expanded="true" />
-            <element signature="e#14335#14336#0" expanded="true" />
-            <element signature="e#14369#14370#0" expanded="true" />
-            <element signature="e#14396#14397#0" expanded="true" />
-            <element signature="e#15461#15462#0" expanded="true" />
-            <element signature="e#15504#15505#0" expanded="true" />
-            <element signature="e#15561#15562#0" expanded="true" />
-            <element signature="e#15588#15589#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Item/Item.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Save/SaveAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+        <state relative-caret-position="68">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/ErrorType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Battle/FlagsBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="54" column="7" selection-start-line="22" selection-start-column="3" selection-end-line="54" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Battle/HeroBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-403">
+          <caret line="45" column="38" selection-start-line="44" selection-start-column="7" selection-end-line="45" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Battle/OneFlagBattle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="49" column="2" selection-start-line="17" selection-start-column="3" selection-end-line="49" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/Compressed/jar_files/gson-2.8.2.jar!/com/google/gson/Gson.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="63" column="28" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
           <folding>
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Item/UsableItem/UsableItem.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        <state relative-caret-position="5083">
+          <caret line="338" column="9" selection-start-line="338" selection-start-column="9" selection-end-line="338" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/BattleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10132">
+          <caret line="638" column="25" selection-start-line="638" selection-start-column="25" selection-end-line="638" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/layout/VBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="641" column="29" selection-start-line="641" selection-start-column="29" selection-end-line="641" selection-end-column="29" />
           <folding>
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1172#1173#0" expanded="true" />
+            <element signature="e#24065#24102#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Item/CollectibleItem/CollectibleItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="26" column="70" selection-start-line="26" selection-start-column="70" selection-end-line="26" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/css/saber.json">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/mainMenu.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/CollectionController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="912" column="56" lean-forward="true" selection-start-line="912" selection-start-column="56" selection-end-line="912" selection-end-column="56" />
+        <state relative-caret-position="39304">
+          <caret line="2338" column="16" selection-start-line="2338" selection-start-column="16" selection-end-line="2338" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/MainMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="41" column="42" selection-start-line="41" selection-start-column="42" selection-end-line="41" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/config.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/model/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="5" selection-start-line="21" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Runnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1819">
+          <caret line="178" column="5" selection-start-line="178" selection-start-column="5" selection-end-line="178" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/AccountMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <element signature="e#564#565#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/ShopMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4287#4288#0" expanded="true" />
-            <element signature="e#4317#4318#0" expanded="true" />
-            <element signature="e#4364#4365#0" expanded="true" />
-            <element signature="e#4402#4403#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="243">
+          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystServer/model/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        <state>
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#560#561#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+            <element signature="e#640#641#0" expanded="true" />
+            <element signature="e#682#683#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="83" column="20" lean-forward="true" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="374">
+          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DuelystClient/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="27" column="76" lean-forward="true" selection-start-line="27" selection-start-column="76" selection-end-line="27" selection-end-column="76" />
+        <state relative-caret-position="1963">
+          <caret line="122" column="54" selection-start-line="122" selection-start-column="54" selection-end-line="122" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Client.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Messages/AccountMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="374">
+          <caret line="22" column="5" selection-start-line="16" selection-start-column="2" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#540#541#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DuelystServer/messages/ShopMessage.java">
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/ShopController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="254" lean-forward="true" selection-start-line="254" selection-end-line="254" />
+        <state relative-caret-position="273">
+          <caret line="1126" column="23" selection-start-line="1126" selection-start-column="23" selection-end-line="1126" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DuelystClient/Controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="198" column="20" selection-start-line="198" selection-start-column="20" selection-end-line="198" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9458#9459#0" expanded="true" />
-            <element signature="e#9488#9489#0" expanded="true" />
-            <element signature="e#9535#9536#0" expanded="true" />
-            <element signature="e#9573#9574#0" expanded="true" />
+            <element signature="e#6475#6476#0" expanded="true" />
+            <element signature="e#6514#6515#0" expanded="true" />
+            <element signature="e#6553#6554#0" expanded="true" />
+            <element signature="e#6593#6594#0" expanded="true" />
+            <element signature="e#6630#6631#0" expanded="true" />
+            <element signature="e#6671#6672#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1138,7 +1036,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1146,7 +1043,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>net.sf.flexjson:flexjson:3.2</last-edited>
+          <last-edited>yagson-0.3.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
