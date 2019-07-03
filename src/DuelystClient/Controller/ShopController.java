@@ -862,7 +862,7 @@ public class ShopController {
 
     public void sellBtnAct() {
         Gson gson = new Gson();
-        ShopMessage shopMessage = new ShopMessage(true, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought,Account.getLoginAccount().getAuthToken());
+        ShopMessage shopMessage = new ShopMessage(true, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken());
         for (VBox vBox : heroBoxes) {
             String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
             shopMessage.setHeroes(string);
@@ -911,6 +911,7 @@ public class ShopController {
             minionsBought = shopMessage1.getMinionsBought();
             spellsBought = shopMessage1.getSpellsBought();
             itemsBought = shopMessage1.getItemsBought();
+            Account.setLoginAccount(shopMessage1.getAccount());
             for (VBox vBox : heroBoxes) {
                 ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
             }
@@ -1056,7 +1057,7 @@ public class ShopController {
 
     public void buyBtnAct() {
         Gson gson = new Gson();
-        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought,Account.getLoginAccount().getAuthToken());
+        ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken());
         for (VBox vBox : heroBoxes) {
             String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
             shopMessage.setHeroes(string);
@@ -1115,6 +1116,7 @@ public class ShopController {
                 minionsBought = shopMessage1.getMinionsBought();
                 spellsBought = shopMessage1.getSpellsBought();
                 itemsBought = shopMessage1.getItemsBought();
+                Account.setLoginAccount(shopMessage1.getAccount());
                 for (VBox vBox : heroBoxes) {
                     ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
                 }

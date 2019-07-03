@@ -81,6 +81,7 @@ public class Connection implements Runnable {
                     Account account = Account.getAccount(shopMessage.getAuthToken());
                     if (account == null)
                         throw new Exception();
+
                     Shop shop = new Shop();
                     System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {

@@ -22,6 +22,7 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> minionCheck = new ArrayList<>();
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
+    private Account account;
 
     public ArrayList<String> getNotOwnedCard() {
         return notOwnedCard;
@@ -176,6 +177,7 @@ public class ShopMessage extends AccountMessage {
             }
             count++;
         }
+        shopMessage.setAccount(account);
     }
 
     public static void sellAction(Shop shop, ShopMessage shopMessage, Account account) {
@@ -239,6 +241,7 @@ public class ShopMessage extends AccountMessage {
             }
             count++;
         }
+        shopMessage.setAccount(account);
     }
 
     @Override
@@ -260,5 +263,13 @@ public class ShopMessage extends AccountMessage {
 
     public void setAlreadyHaveThisCard(ArrayList<String> alreadyHaveThisCard) {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

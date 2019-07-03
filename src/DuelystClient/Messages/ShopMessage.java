@@ -19,6 +19,10 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
     private ArrayList<String> notOwnedCard = new ArrayList<>();
 
+    private Account account;
+
+    private ArrayList<String> notEnoughMoney = new ArrayList<>();
+    private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
 
     public ArrayList<String> getNotOwnedCard() {
         return notOwnedCard;
@@ -46,8 +50,13 @@ public class ShopMessage extends AccountMessage {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
     }
 
-    private ArrayList<String> notEnoughMoney = new ArrayList<>();
-    private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
                        ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, long authToken) {
