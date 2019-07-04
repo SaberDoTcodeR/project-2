@@ -141,9 +141,7 @@ public class Connection implements Runnable {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return null;
     }

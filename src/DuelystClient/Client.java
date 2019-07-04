@@ -43,10 +43,15 @@ public class Client extends Application {
             primaryStage.show();
             connectionToServer = new Connection(socket);
         } catch (IOException e) {
-            socket = new Socket(host, defaultPort);
-            View.makeLoginScene();
-            primaryStage.show();
-            connectionToServer = new Connection(socket);
+            try {
+                socket = new Socket(host, defaultPort);
+                View.makeLoginScene();
+                primaryStage.show();
+                connectionToServer = new Connection(socket);
+            }catch (IOException e1){
+                this.start(primaryStage1);
+            }
+
         }
 
     }

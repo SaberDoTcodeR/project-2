@@ -8,11 +8,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TextField?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextArea?>
 <GridPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
           prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
           xmlns:fx="http://javafx.com/fxml/1" fx:controller="DuelystClient.Controller.SingleOrMultiController">
     <columnConstraints>
-        <ColumnConstraints hgrow="SOMETIMES"  minWidth="10.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="229.0"/>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="47.0"/>
     </columnConstraints>
@@ -45,7 +49,8 @@
 
         </Button>
         <Button id="button2" fx:id="multiGameButton" mnemonicParsing="false" onKeyPressed="#handleOnKeyPressedMultiGame"
-                onMouseClicked="#multiGameBtnAct" onMouseEntered="#multiGameBtnActFocus" prefHeight="50.0" prefWidth="400.0"
+                onMouseClicked="#multiGameBtnAct" onMouseEntered="#multiGameBtnActFocus" prefHeight="50.0"
+                prefWidth="400.0"
                 text="MULTI PLAYER GAME" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <font>
                 <Font size="20.0"/>
@@ -75,7 +80,15 @@
             </graphic>
 
         </Button>
-
-
+        <TextField fx:id="textBox" prefWidth="200"  promptText="Enter Message..." onAction="#sendMessageAction" GridPane.rowIndex="5">
+            <GridPane.margin>
+                <Insets left="100.0" right="100.0"/>
+            </GridPane.margin>
+        </TextField>
+        <JFXTextArea editable="false" id="textArea" prefHeight="400" fx:id="textArea"  prefWidth="400" GridPane.rowIndex="4">
+            <GridPane.margin>
+                <Insets left="100.0" right="100.0"/>
+            </GridPane.margin>
+        </JFXTextArea>
     </children>
 </GridPane>

@@ -1093,25 +1093,28 @@ public class ShopController {
     }
 
     private void showDialog(String string) {
-        BoxBlur blur = new BoxBlur(5, 5, 10);
-        JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
-        JFXButton jfxButton = new JFXButton("OK");
-        jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
-        JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
-        jfxButton.getStyleClass().add("dialog-button");
-        jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                    jfxDialog.close();
-                }
-        );
-        jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
-            gridPane.setEffect(null);
-        });
-        Label label = new Label(string);
-        label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
-        jfxDialogLayout.setBody(label);
+        Platform.runLater(() -> {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog.close();
+                    }
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(string);
+            label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
         jfxDialogLayout.setActions(jfxButton);
-        jfxDialog.show();
-        gridPane.setEffect(blur);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
+        });
     }
 
     public void hero1BoxClicked() {

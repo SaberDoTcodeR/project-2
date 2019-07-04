@@ -6,6 +6,7 @@ import DuelystServer.messages.CustomMessage;
 import DuelystServer.messages.SaveAccountMessage;
 import DuelystServer.messages.ShopInitializeMessage;
 import DuelystServer.messages.ShopMessage;
+import DuelystServer.messages.TextMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.Card.Minion.CustomMinion;
 import DuelystServer.model.ErrorType;
@@ -28,9 +29,6 @@ public class Connection implements Runnable {
     private boolean running;
 
     public Connection(Socket socket) {
-        for (Account account : Account.getAllUser()) {
-            System.out.println(account.getCollection().getHeroes().get(0).getClass().getSimpleName());
-        }
         this.socket = socket;
         try {
             outputStream = new ObjectOutputStream(this.socket.getOutputStream());
@@ -89,14 +87,11 @@ public class Connection implements Runnable {
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
                 } else if (str.contains("43123")) {
-                    System.out.println(str);
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
                     Account account = Account.getAccount(shopMessage.getAuthToken());
                     if (account == null)
                         throw new Exception();
                     Shop shop = new Shop();
-                    System.out.println(shop.costOfCard("amin"));
-                    System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {
                         ShopMessage.buyAction(account, shopMessage, shop);
                         sendPacket(gson.toJson(shopMessage));
@@ -104,6 +99,9 @@ public class Connection implements Runnable {
                         ShopMessage.sellAction(shop, shopMessage, account);
                         sendPacket(gson.toJson(shopMessage));
                     }
+                } else if (str.contains("41543")) {
+                    for (Connection connection : Server.getConnections()) {
+                        connection.sendPacket(str);
                 } else if (str.contains("21432")){
                     System.out.println(str);
                     CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
@@ -124,7 +122,9 @@ public class Connection implements Runnable {
                     message.setSpellInShop(ShopMessage.getNumberOfSpellInShop());
                     message.setItemsInShop(ShopMessage.getNumberOfItemsInShop());
                     sendPacket(gson.toJson(message));
+                    }
                 }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
