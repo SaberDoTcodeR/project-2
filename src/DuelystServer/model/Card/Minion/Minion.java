@@ -17,6 +17,7 @@ public class Minion extends Card {
     private transient static ArrayList<Minion> minions = new ArrayList<>();
     private transient static Map<String,Integer> minionsName = new HashMap<>();
     private int numberOfFlag = 0;
+    private boolean flag = false;
 
     public static Map<String,Integer> getMinionsName() {
         return minionsName;
@@ -184,6 +185,16 @@ public class Minion extends Card {
         this.typeOfRange = minion.typeOfRange;
         this.range = minion.range;
         this.timeOfActivationOfSpecialPower = minion.timeOfActivationOfSpecialPower;
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getName().equals(minion.getName())) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            minions.add(minion);
+            minionsName.put(minion.getName().toLowerCase(),minion.getCostOfBuy());
+        }
     }
 
     public int getAp() {

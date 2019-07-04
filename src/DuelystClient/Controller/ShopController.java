@@ -1,6 +1,8 @@
 package DuelystClient.Controller;
 
 import DuelystClient.Client;
+import DuelystClient.Messages.AccountMessage;
+import DuelystClient.Messages.CustomMessage;
 import DuelystClient.Messages.ShopMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
@@ -794,6 +796,11 @@ public class ShopController {
                             CustomHero customHero = new CustomHero(jfxTextField.getText(), Integer.parseInt(ap.getText())
                                     , Integer.parseInt(hp.getText()), Integer.parseInt(costOfCard.getText()), typeOfRange, Integer.parseInt(range.getText()),
                                     new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), Integer.parseInt(coolDown.getText()), 1);
+                            Gson gson = new Gson();
+                            CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
+                                    1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
+                                    "DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif", Integer.parseInt(coolDown.getText()), 0, true);
+                            Client.connectionToServer.sendPacket(gson.toJson(customMessage));
                             VBox vBox1 = new VBox(5);
                             vBox1.setPrefWidth(300);
                             vBox1.setId("boxNotBoughtStyle");
@@ -827,6 +834,11 @@ public class ShopController {
                             CustomMinion customMinion = new CustomMinion(jfxTextField.getText(), Integer.parseInt(ap.getText())
                                     , Integer.parseInt(hp.getText()), Integer.parseInt(costOfCard.getText()), typeOfRange, Integer.parseInt(range.getText()),
                                     new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), 1, Integer.parseInt(activeTime.getText()));
+                            Gson gson = new Gson();
+                            CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
+                                    1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
+                                    "DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif", 0, Integer.parseInt(activeTime.getText()), false);
+                            Client.connectionToServer.sendPacket(gson.toJson(customMessage));
                             VBox vBox1 = new VBox(6);
                             vBox1.setPrefWidth(300);
                             vBox1.setId("boxNotBoughtStyle");
@@ -885,11 +897,13 @@ public class ShopController {
             if (!shopMessage1.getNotOwnedCard().isEmpty()) {
                 String errorText = "";
                 errorText = errorOfNotOwnedCard(shopMessage1, errorText);
-                showDialog(errorText);
+                String finalErrorText = errorText;
+                Platform.runLater(() -> showDialog(finalErrorText));
             }
             updateString(shopMessage1);
         }).start();
     }
+
     private String errorOfNotOwnedCard(ShopMessage shopMessage1, String errorText) {
         if (!shopMessage1.getNotOwnedCard().isEmpty()) {
             if (shopMessage1.getNotOwnedCard().size() != 1) {
@@ -983,21 +997,26 @@ public class ShopController {
             Object object = null;
             while (object == null)
                 object = Client.connectionToServer.readPacket();
-            System.out.println(object.toString());
-            ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
-            System.out.println("money : " + shopMessage1.getNotEnoughMoney().size() +
-                    "already : " + shopMessage1.getAlreadyHaveThisCard().size() +
-                    "available : " + shopMessage1.getNotAvailableCard().size());
-            if (!shopMessage1.getNotEnoughMoney().isEmpty() ||
-                    !shopMessage1.getAlreadyHaveThisCard().isEmpty() ||
-                    !shopMessage1.getNotAvailableCard().isEmpty()) {
-                String errorText = "";
-                errorText = errorOfNotAvailableCard(shopMessage1, errorText);
-                errorText = errorOfNotEnoughMoney(shopMessage1, errorText);
-                errorText = errorOfAlreadyHaveThisCard(shopMessage1, errorText);
-                showDialog(errorText);
+            if (object != null) {
+                System.out.println(object.toString());
+                ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
+                System.out.println("money : " + shopMessage1.getNotEnoughMoney().size() +
+                        "already : " + shopMessage1.getAlreadyHaveThisCard().size() +
+                        "available : " + shopMessage1.getNotAvailableCard().size());
+                if (!shopMessage1.getNotEnoughMoney().isEmpty() ||
+                        !shopMessage1.getAlreadyHaveThisCard().isEmpty() ||
+                        !shopMessage1.getNotAvailableCard().isEmpty()) {
+                    String errorText = "";
+                    errorText = errorOfNotAvailableCard(shopMessage1, errorText);
+                    errorText = errorOfNotEnoughMoney(shopMessage1, errorText);
+                    errorText = errorOfAlreadyHaveThisCard(shopMessage1, errorText);
+                    String finalErrorText = errorText;
+                    Platform.runLater(() -> {
+                        showDialog(finalErrorText);
+                    });
+                }
+                updateString(shopMessage1);
             }
-            updateString(shopMessage1);
         }).start();
     }
 

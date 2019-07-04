@@ -6,10 +6,10 @@ import DuelystServer.model.Cell;
 import javafx.scene.image.Image;
 
 public class CustomHero extends Hero {
-    public CustomHero(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, Image image, int coolDownTime, int mp) {
+    public CustomHero(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, String image, int coolDownTime, int mp) {
         super(name, ap, hp, costOfBuy, typeOfRange);
         this.setRange(range);
-        this.cardImage = image;
+        this.cardImage = new Image(image);
         this.setCoolDownTime(coolDownTime);
         this.setMp(mp);
     }

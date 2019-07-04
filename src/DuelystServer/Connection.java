@@ -1,13 +1,17 @@
 package DuelystServer;
 
+import DuelystServer.model.Card.Hero.CustomHero;
 import DuelystServer.messages.AccountMessage;
+import DuelystServer.messages.CustomMessage;
 import DuelystServer.messages.SaveAccountMessage;
 import DuelystServer.messages.ShopInitializeMessage;
 import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Account;
+import DuelystServer.model.Card.Minion.CustomMinion;
 import DuelystServer.model.ErrorType;
 import DuelystServer.model.Shop;
 import com.google.gson.Gson;
+import javafx.scene.image.Image;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -91,12 +95,26 @@ public class Connection implements Runnable {
                     if (account == null)
                         throw new Exception();
                     Shop shop = new Shop();
+                    System.out.println(shop.costOfCard("amin"));
+                    System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {
                         ShopMessage.buyAction(account, shopMessage, shop);
                         sendPacket(gson.toJson(shopMessage));
                     } else {
                         ShopMessage.sellAction(shop, shopMessage, account);
                         sendPacket(gson.toJson(shopMessage));
+                    }
+                } else if (str.contains("21432")){
+                    System.out.println(str);
+                    CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
+                    if (customMessage.isType()){
+                        new CustomHero(customMessage.getName(), customMessage.getAp()
+                                , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
+                               customMessage.getImageURL(), customMessage.getCoolDownTime(), customMessage.getMana());
+                    } else {
+                        new CustomMinion(customMessage.getName(), customMessage.getAp()
+                                , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
+                                customMessage.getImageURL(), customMessage.getMana(), customMessage.getActiveTime());
                     }
                 } else if (str.contains("34121")){
                     System.out.println(str);

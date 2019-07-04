@@ -16,7 +16,7 @@ import java.util.Map;
 public class Minion extends Card {
     private transient static ArrayList<Minion> minions = new ArrayList<>();
     private transient static Map<String,Integer> minionsName = new HashMap<>();
-
+    private boolean flag = false;
     private int numberOfFlag = 0;
 
     public void setCostToUse(int costToUse) {
@@ -184,6 +184,16 @@ public class Minion extends Card {
         this.typeOfRange = minion.typeOfRange;
         this.range = minion.range;
         this.timeOfActivationOfSpecialPower = minion.timeOfActivationOfSpecialPower;
+        for (int i = 0; i < minions.size(); i++) {
+            if (minions.get(i).getName().equals(minion.getName())) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag) {
+            minions.add(minion);
+            minionsName.put(minion.getName().toLowerCase(),minion.getCostOfBuy());
+        }
     }
 
     public int getAp() {
