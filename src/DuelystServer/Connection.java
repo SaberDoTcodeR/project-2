@@ -102,29 +102,28 @@ public class Connection implements Runnable {
                 } else if (str.contains("41543")) {
                     for (Connection connection : Server.getConnections()) {
                         connection.sendPacket(str);
-                } else if (str.contains("21432")){
+                    }
+                } else if (str.contains("21432")) {
                     System.out.println(str);
                     CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
-                    if (customMessage.isType()){
+                    if (customMessage.isType()) {
                         new CustomHero(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                               customMessage.getImageURL(), customMessage.getCoolDownTime(), customMessage.getMana());
+                                customMessage.getImageURL(), customMessage.getCoolDownTime(), customMessage.getMana());
                     } else {
                         new CustomMinion(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                 customMessage.getImageURL(), customMessage.getMana(), customMessage.getActiveTime());
                     }
-                } else if (str.contains("34121")){
+                } else if (str.contains("34121")) {
                     System.out.println(str);
-                    ShopInitializeMessage message = gson.fromJson(str,ShopInitializeMessage.class);
+                    ShopInitializeMessage message = gson.fromJson(str, ShopInitializeMessage.class);
                     message.setHeroesInShop(ShopMessage.getNumberOfHeroesInShop());
                     message.setMinionsInShop(ShopMessage.getNumberOfMinionsInShop());
                     message.setSpellInShop(ShopMessage.getNumberOfSpellInShop());
                     message.setItemsInShop(ShopMessage.getNumberOfItemsInShop());
                     sendPacket(gson.toJson(message));
-                    }
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
