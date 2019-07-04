@@ -1,8 +1,8 @@
 package DuelystClient.Controller;
 
 import DuelystClient.Client;
-import DuelystClient.Messages.SaveAccountMessage;
 import DuelystClient.View.View;
+import DuelystClient.Messages.SaveAccountMessage;
 import DuelystClient.model.Account;
 import javafx.fxml.FXML;
 import com.google.gson.Gson;

@@ -3,6 +3,7 @@ package DuelystClient.Messages;
 import DuelystClient.model.Account;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ShopMessage extends AccountMessage {
     private ArrayList<String> heroes = new ArrayList<>();
@@ -18,9 +19,12 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
     private ArrayList<String> notOwnedCard = new ArrayList<>();
-
     private Account account;
-
+    private int[] heroesInShop = new int[10];
+    private int[] minionsInShop = new int[40];
+    private int[] spellInShop = new int[20];
+    private int[] itemsInShop = new int[11];
+    private ArrayList<String> notAvailableCard = new ArrayList<>();
     private ArrayList<String> notEnoughMoney = new ArrayList<>();
     private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
 
@@ -32,7 +36,6 @@ public class ShopMessage extends AccountMessage {
     public int hashCode() {
         return 2357;
     }
-
 
     public ArrayList<String> getNotEnoughMoney() {
         return notEnoughMoney;
@@ -50,13 +53,6 @@ public class ShopMessage extends AccountMessage {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
     }
 
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
                        ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, long authToken) {
@@ -164,4 +160,58 @@ public class ShopMessage extends AccountMessage {
         this.itemCheck.add(itemCheck);
     }
 
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public int[] getHeroesInShop() {
+        return heroesInShop;
+    }
+
+    public void setHeroesInShop(int[] heroesInShop) {
+        this.heroesInShop = heroesInShop;
+    }
+
+    public ArrayList<String> getNotAvailableCard() {
+        return notAvailableCard;
+    }
+
+    public void setNotAvailableCard(ArrayList<String> notAvailableCard) {
+        this.notAvailableCard = notAvailableCard;
+    }
+
+    public int[] getMinionsInShop() {
+        return minionsInShop;
+    }
+
+    public void setMinionsInShop(int[] minionsInShop) {
+        this.minionsInShop = minionsInShop;
+    }
+
+    public int[] getSpellInShop() {
+        return spellInShop;
+    }
+
+    public void setSpellInShop(int[] spellInShop) {
+        this.spellInShop = spellInShop;
+    }
+
+    public int[] getItemsInShop() {
+        return itemsInShop;
+    }
+
+    public void setItemsInShop(int[] itemsInShop) {
+        this.itemsInShop = itemsInShop;
+    }
+
+    public void setNumberOfCards() {
+        Arrays.fill(heroesInShop,5);
+        Arrays.fill(minionsInShop,5);
+        Arrays.fill(spellInShop,5);
+        Arrays.fill(itemsInShop,5);
+    }
 }

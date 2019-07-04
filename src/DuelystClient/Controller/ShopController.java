@@ -1,7 +1,6 @@
 package DuelystClient.Controller;
 
 import DuelystClient.Client;
-import DuelystClient.Messages.AccountMessage;
 import DuelystClient.Messages.ShopMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
@@ -12,10 +11,11 @@ import DuelystClient.model.Card.Minion.CustomMinion;
 import DuelystClient.model.Card.Minion.Minion;
 import DuelystClient.model.Card.Spell.Spell;
 import DuelystClient.model.Item.UsableItem.UsableItem;
-import DuelystClient.model.Shop;
+import DuelystClient.Messages.ShopInitializeMessage;
 import com.google.gson.Gson;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -31,6 +31,7 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 
 public class ShopController {
+    public static int NumberOfCard = 5;
     public ArrayList<Boolean> heroesBought = new ArrayList<>();
     public ArrayList<Boolean> itemsBought = new ArrayList<>();
     public ArrayList<Boolean> minionsBought = new ArrayList<>();
@@ -443,55 +444,67 @@ public class ShopController {
                 spellsBought.add(false);
             }
         }
-
-        for (int i = 0; i < heroBoxes.size(); i++) {
-            if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                heroesBought.set(i, true);
+        Gson gson = new Gson();
+        ShopInitializeMessage shopInitializeMessage = new ShopInitializeMessage(
+                false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(),
+                "ShopInitializeMessage", Account.getLoginAccount().getAuthToken());
+        Client.connectionToServer.sendPacket(gson.toJson(shopInitializeMessage));
+        new Thread(() -> {
+            ShopInitializeMessage initializeMessage;
+            Object object = null;
+            while (object == null) {
+                object = Client.connectionToServer.readPacket();
             }
-            if (i < 10) {
-                String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
-                ((Label) (heroBoxes.get(i).getChildren().get(2))).setText(
-                        ((Label) (heroBoxes.get(i).getChildren().get(2))).getText() + "\n" + heroInfo);
-                ((Label) (heroBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            initializeMessage = gson.fromJson((String) object, ShopInitializeMessage.class);
+            for (int i = 0; i < heroBoxes.size(); i++) {
+                if (Account.getLoginAccount().getCollection().hasThisCard
+                        (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                    heroesBought.set(i, true);
+                }
+                if (i < 10) {
+                    String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
+                    ((Label) (heroBoxes.get(i).getChildren().get(2))).setText(
+                            ((Label) (heroBoxes.get(i).getChildren().get(2))).getText() + "\n" + heroInfo + "\navailable from this : " + initializeMessage.getHeroesInShop()[i]);
+                    ((Label) (heroBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                }
             }
-        }
-        for (int i = 0; i < itemBoxes.size(); i++) {
-            if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (itemBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                itemsBought.set(i, true);
+            for (int i = 0; i < itemBoxes.size(); i++) {
+                if (Account.getLoginAccount().getCollection().hasThisCard
+                        (((Label) (itemBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                    itemsBought.set(i, true);
+                }
+                if (i < 11) {
+                    String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
+                    ((Label) (itemBoxes.get(i).getChildren().get(2))).setText(
+                            ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo + "\navailable from this : " + initializeMessage.getItemsInShop()[i]);
+                    ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                }
             }
-            if (i < 11) {
-                String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
-                ((Label) (itemBoxes.get(i).getChildren().get(2))).setText(
-                        ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo);
-                ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
+            for (int i = 0; i < minionBoxes.size(); i++) {
+                if (Account.getLoginAccount().getCollection().hasThisCard
+                        (((Label) (minionBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                    minionsBought.set(i, true);
+                }
+                if (i < 40) {
+                    String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
+                    ((Label) (minionBoxes.get(i).getChildren().get(2))).setText(
+                            ((Label) (minionBoxes.get(i).getChildren().get(2))).getText() + "\n" + minionInfo + "\navailable from this : " + initializeMessage.getMinionsInShop()[i]);
+                    ((Label) (minionBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                }
             }
-        }
-        for (int i = 0; i < minionBoxes.size(); i++) {
-            if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (minionBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                minionsBought.set(i, true);
+            for (int i = 0; i < spellBoxes.size(); i++) {
+                if (Account.getLoginAccount().getCollection().hasThisCard
+                        (((Label) (spellBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                    spellsBought.set(i, true);
+                }
+                if (i < 20) {
+                    String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
+                    ((Label) (spellBoxes.get(i).getChildren().get(2))).setText(
+                            ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo + "\navailable from this : " + initializeMessage.getSpellInShop()[i]);
+                    ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                }
             }
-            if (i < 40) {
-                String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
-                ((Label) (minionBoxes.get(i).getChildren().get(2))).setText(
-                        ((Label) (minionBoxes.get(i).getChildren().get(2))).getText() + "\n" + minionInfo);
-                ((Label) (minionBoxes.get(i).getChildren().get(2))).setWrapText(true);
-            }
-        }
-        for (int i = 0; i < spellBoxes.size(); i++) {
-            if (Account.getLoginAccount().getCollection().hasThisCard
-                    (((Label) (spellBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                spellsBought.set(i, true);
-            }
-            if (i < 20) {
-                String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
-                ((Label) (spellBoxes.get(i).getChildren().get(2))).setText(
-                        ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo);
-                ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
-            }
-        }
+        }).start();
         reBorderAll();
     }
 
@@ -530,11 +543,11 @@ public class ShopController {
     public void searchBtnAct() {
         String card = search.getText();
         for (VBox vBox : heroBoxes) {
-            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                    .replaceAll("\\s", "").toLowerCase()))) {
+            if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "")))) {
                 for (VBox vBox1 : heroBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         vBox.setId("boxFoundStyle");
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
@@ -544,8 +557,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : minionBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -554,8 +567,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : spellBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -564,8 +577,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : itemBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -576,12 +589,12 @@ public class ShopController {
             }
         }
         for (VBox vBox : minionBoxes) {
-            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                    .replaceAll("\\s", "").toLowerCase()))) {
+            if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "")))) {
                 vBox.setId("boxFoundStyle");
                 for (VBox vBox1 : heroBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -590,8 +603,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : minionBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -600,8 +613,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : spellBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -610,8 +623,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : itemBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -622,12 +635,12 @@ public class ShopController {
             }
         }
         for (VBox vBox : spellBoxes) {
-            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                    .replaceAll("\\s", "").toLowerCase()))) {
+            if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "")))) {
                 vBox.setId("boxFoundStyle");
                 for (VBox vBox1 : heroBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -636,8 +649,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : minionBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -646,8 +659,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : spellBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -656,8 +669,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : itemBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -668,12 +681,12 @@ public class ShopController {
             }
         }
         for (VBox vBox : itemBoxes) {
-            if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                    .replaceAll("\\s", "").toLowerCase()))) {
+            if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    .replaceAll("\\s", "")))) {
                 vBox.setId("boxFoundStyle");
                 for (VBox vBox1 : heroBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -682,8 +695,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : minionBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -692,8 +705,8 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : spellBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                            .replaceAll("\\s", "").toLowerCase()))) {
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                            .replaceAll("\\s", "")))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
                             vBox.setId("boxFoundStyle");
@@ -702,7 +715,7 @@ public class ShopController {
                     }
                 }
                 for (VBox vBox1 : itemBoxes) {
-                    if ((card.toLowerCase().equals(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
+                    if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
                             .replaceAll("\\s", "").toLowerCase()))) {
                         if (vBox1.getId().equals("boxFoundStyle")) {
                             vBox1.setId("boxNotBoughtStyle");
@@ -863,190 +876,97 @@ public class ShopController {
     public void sellBtnAct() {
         Gson gson = new Gson();
         ShopMessage shopMessage = new ShopMessage(true, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken());
-        for (VBox vBox : heroBoxes) {
-            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-            shopMessage.setHeroes(string);
-            shopMessage.setHeroCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
-        }
-        for (VBox vBox : minionBoxes) {
-            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-            shopMessage.setMinions(string);
-            shopMessage.setMinionCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
-        }
-        for (VBox vBox : itemBoxes) {
-            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-            shopMessage.setItems(string);
-            shopMessage.setItemCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
-        }
-        for (VBox vBox : spellBoxes) {
-            String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-            shopMessage.setSpells(string);
-            shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
-        }
-        System.out.println("ta inja umad");
-        Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
+        initializeShopMessageSending(gson, shopMessage);
         new Thread(() -> {
             Object object = null;
-            System.out.println("mirim ke dashte bashim objecto");
             while (object == null)
                 object = Client.connectionToServer.readPacket();
-            System.out.println("objecto khund");
             ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
-            if (shopMessage1.getNotOwnedCard().size() != 0) {
-                String errorText;
-                if (shopMessage1.getNotOwnedCard().size() != 1) {
-                    errorText = "you don't have these cards : \n";
-                } else {
-                    errorText = "you don't have this card : \n";
-                }
-                for (int i = 0; i < shopMessage1.getNotOwnedCard().size(); i++) {
-                    if (i + 1 != shopMessage1.getNotOwnedCard().size()) {
-                        errorText += shopMessage1.getNotOwnedCard().get(i) + " , ";
-                    } else
-                        errorText += shopMessage1.getNotOwnedCard().get(i);
-                }
+            if (!shopMessage1.getNotOwnedCard().isEmpty()) {
+                String errorText = "";
+                errorText = errorOfNotOwnedCard(shopMessage1, errorText);
                 showDialog(errorText);
             }
-            heroesBought = shopMessage1.getHeroesBought();
-            minionsBought = shopMessage1.getMinionsBought();
-            spellsBought = shopMessage1.getSpellsBought();
-            itemsBought = shopMessage1.getItemsBought();
-            Account.setLoginAccount(shopMessage1.getAccount());
-            for (VBox vBox : heroBoxes) {
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            for (VBox vBox : minionBoxes) {
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            for (VBox vBox : itemBoxes) {
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            for (VBox vBox : spellBoxes) {
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            reBorderAll();
+            updateString(shopMessage1);
         }).start();
     }
-      /*  Shop shop = new Shop();
-        ArrayList<String> notOwnedCard = new ArrayList<>();
-        int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    heroesBought.set(count, false);
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    minionsBought.set(count, false);
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    spellsBought.set(count, false);
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
-                        .replaceAll("\\s", "").toLowerCase();
-                if (Account.getLoginAccount().getCollection().hasThisCard(cardName)) {
-                    Account.getLoginAccount().getCollection().removeCardFromCollection(cardName);
-                    Account.getLoginAccount().incrementMoney(shop.costOfCard(cardName));
-                    itemsBought.set(count, false);
-                } else {
-                    notOwnedCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                }
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        if (notOwnedCard.size() != 0) {
-            String errorText;
-            if (notOwnedCard.size() != 1) {
-                errorText = "you don't have these cards : \n";
+    private String errorOfNotOwnedCard(ShopMessage shopMessage1, String errorText) {
+        if (!shopMessage1.getNotOwnedCard().isEmpty()) {
+            if (shopMessage1.getNotOwnedCard().size() != 1) {
+                errorText = errorText.concat("you don't have these cards : \n");
             } else {
-                errorText = "you don't have this card : \n";
+                errorText = errorText.concat("you don't have this card : \n");
             }
-            for (int i = 0; i < notOwnedCard.size(); i++) {
-                if (i + 1 != notOwnedCard.size()) {
-                    errorText += notOwnedCard.get(i) + " , ";
+            for (int i = 0; i < shopMessage1.getNotOwnedCard().size(); i++) {
+                if (i + 1 != shopMessage1.getNotOwnedCard().size()) {
+                    errorText = errorText.concat(shopMessage1.getNotOwnedCard().get(i) + " , ");
                 } else
-                    errorText += notOwnedCard.get(i);
+                    errorText = errorText.concat(shopMessage1.getNotOwnedCard().get(i));
             }
-
-            showDialog(errorText);
         }
-        reBorderAll();*/
+        return errorText;
+    }
 
-//    }
+    private void updateString(ShopMessage shopMessage1) {
+        heroesBought = shopMessage1.getHeroesBought();
+        minionsBought = shopMessage1.getMinionsBought();
+        spellsBought = shopMessage1.getSpellsBought();
+        itemsBought = shopMessage1.getItemsBought();
+        Platform.runLater(() -> {
+            int count = 0;
+            for (VBox vBox : heroBoxes) {
+                getCount(count, vBox, shopMessage1.getHeroesInShop());
+                count++;
+            }
+            count = 0;
+            for (VBox vBox : minionBoxes) {
+                getCount(count, vBox, shopMessage1.getMinionsInShop());
+                count++;
+            }
+            count = 0;
+            for (VBox vBox : itemBoxes) {
+                getCount(count, vBox, shopMessage1.getItemsInShop());
+                count++;
+            }
+            count = 0;
+            for (VBox vBox : spellBoxes) {
+                getCount(count, vBox, shopMessage1.getSpellInShop());
+                count++;
+            }
+        });
+        Account.setLoginAccount(shopMessage1.getAccount());
+        setSelectedType(heroBoxes);
+        setSelectedType(minionBoxes);
+        setSelectedType(spellBoxes);
+        setSelectedType(itemBoxes);
+        reBorderAll();
+    }
 
+    private void setSelectedType(ArrayList<VBox> kindOfCardBoxes) {
+        for (VBox vBox : kindOfCardBoxes) {
+            ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+        }
+    }
+
+    private void getCount(int count, VBox vBox, int[] kindOfCardInShop) {
+        String str = ((Label) (vBox.getChildren().get(2))).getText();
+        str = str.substring(0, str.indexOf("\navailable from this : "));
+        str += "\navailable from this : " + kindOfCardInShop[count];
+        ((Label) (vBox.getChildren().get(2))).setText(str);
+        ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
+    }
 
     private void reBorderAll() {
+        reBorderingHelper(heroBoxes, heroesBought);
+        reBorderingHelper(minionBoxes, minionsBought);
+        reBorderingHelper(spellBoxes, spellsBought);
+        reBorderingHelper(itemBoxes, itemsBought);
+    }
+
+    private void reBorderingHelper(ArrayList<VBox> kindOFCardBoxes, ArrayList<Boolean> kindOfCardBought) {
         int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (heroesBought.get(count)) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (minionsBought.get(count)) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (spellsBought.get(count)) {
-                vBox.setId("boxBoughtStyle");
-            } else {
-                vBox.setId("boxNotBoughtStyle");
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (itemsBought.get(count)) {
+        for (VBox vBox : kindOFCardBoxes) {
+            if (kindOfCardBought.get(count)) {
                 vBox.setId("boxBoughtStyle");
             } else {
                 vBox.setId("boxNotBoughtStyle");
@@ -1058,6 +978,78 @@ public class ShopController {
     public void buyBtnAct() {
         Gson gson = new Gson();
         ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken());
+        initializeShopMessageSending(gson, shopMessage);
+        new Thread(() -> {
+            Object object = null;
+            while (object == null)
+                object = Client.connectionToServer.readPacket();
+            System.out.println(object.toString());
+            ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
+            System.out.println("money : " + shopMessage1.getNotEnoughMoney().size() +
+                    "already : " + shopMessage1.getAlreadyHaveThisCard().size() +
+                    "available : " + shopMessage1.getNotAvailableCard().size());
+            if (!shopMessage1.getNotEnoughMoney().isEmpty() ||
+                    !shopMessage1.getAlreadyHaveThisCard().isEmpty() ||
+                    !shopMessage1.getNotAvailableCard().isEmpty()) {
+                String errorText = "";
+                errorText = errorOfNotAvailableCard(shopMessage1, errorText);
+                errorText = errorOfNotEnoughMoney(shopMessage1, errorText);
+                errorText = errorOfAlreadyHaveThisCard(shopMessage1, errorText);
+                showDialog(errorText);
+            }
+            updateString(shopMessage1);
+        }).start();
+    }
+
+    private String errorOfNotEnoughMoney(ShopMessage shopMessage1, String errorText) {
+        if (!shopMessage1.getNotEnoughMoney().isEmpty()) {
+            errorText = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
+            for (int i = 0; i < shopMessage1.getNotEnoughMoney().size(); i++) {
+                if (i == shopMessage1.getNotEnoughMoney().size() - 1)
+                    errorText = errorText.concat(shopMessage1.getNotEnoughMoney().get(i));
+                else
+                    errorText = errorText.concat(shopMessage1.getNotEnoughMoney().get(i) + " , ");
+            }
+        }
+        return errorText;
+    }
+
+    private String errorOfAlreadyHaveThisCard(ShopMessage shopMessage1, String errorText) {
+        if (!shopMessage1.getAlreadyHaveThisCard().isEmpty()) {
+            if (errorText.equals(""))
+                errorText = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
+            else {
+                errorText = errorText.concat("\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n");
+            }
+            for (int i = 0; i < shopMessage1.getAlreadyHaveThisCard().size(); i++) {
+                if (i == shopMessage1.getAlreadyHaveThisCard().size() - 1)
+                    errorText = errorText.concat(shopMessage1.getAlreadyHaveThisCard().get(i));
+                else
+                    errorText = errorText.concat(shopMessage1.getAlreadyHaveThisCard().get(i) + " , ");
+            }
+        }
+        return errorText;
+    }
+
+    private String errorOfNotAvailableCard(ShopMessage shopMessage1, String errorText) {
+        if (!shopMessage1.getNotAvailableCard().isEmpty()) {
+            if (shopMessage1.getNotAvailableCard().size() != 1) {
+                errorText = errorText.concat("These cards are not available: \n");
+            } else {
+                errorText = errorText.concat("This card is not available: \n");
+            }
+            for (int i = 0; i < shopMessage1.getNotAvailableCard().size(); i++) {
+                if (i + 1 != shopMessage1.getNotAvailableCard().size()) {
+                    errorText = errorText.concat(shopMessage1.getNotAvailableCard().get(i) + " , ");
+                } else
+                    errorText = errorText.concat(shopMessage1.getNotAvailableCard().get(i));
+            }
+        }
+        return errorText;
+    }
+
+
+    private void initializeShopMessageSending(Gson gson, ShopMessage shopMessage) {
         for (VBox vBox : heroBoxes) {
             String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
             shopMessage.setHeroes(string);
@@ -1079,128 +1071,9 @@ public class ShopController {
             shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
         }
         Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
-        new Thread(() -> {
-            Object object = null;
-            while (object == null)
-                object = Client.connectionToServer.readPacket();
-            if (object != null) {
-                System.out.println(object.toString());
-                ShopMessage shopMessage1 = gson.fromJson(((String) object), ShopMessage.class);
-                if (shopMessage1.getNotEnoughMoney().size() != 0 || shopMessage1.getAlreadyHaveThisCard().size() != 0) {
-                    String string = "";
-                    if (shopMessage1.getNotEnoughMoney().size() != 0) {
-                        string = "YOU DON'T HAVE ENOUGH MONEY TO BUY :\n";
-                        for (int i = 0; i < shopMessage1.getNotEnoughMoney().size(); i++) {
-                            if (i == shopMessage1.getNotEnoughMoney().size() - 1)
-                                string += shopMessage1.getNotEnoughMoney().get(i);
-                            else string += (shopMessage1.getNotEnoughMoney().get(i) + " , ");
-                        }
-                    }
-                    if (shopMessage1.getAlreadyHaveThisCard().size() != 0) {
-                        if (string.equals(""))
-                            string = "YOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                        else {
-                            string += "\nYOU ALREADY HAVE THESE CARDS IN YOUR COLLECTION :\n";
-                        }
-                        for (int i = 0; i < shopMessage1.getAlreadyHaveThisCard().size(); i++) {
-                            if (i == shopMessage1.getAlreadyHaveThisCard().size() - 1)
-                                string += shopMessage1.getAlreadyHaveThisCard().get(i);
-                            else
-                                string += shopMessage1.getAlreadyHaveThisCard().get(i) + " , ";
-                        }
-                    }
-                    System.out.println("hello world to saber's Lord");
-                    showDialog(string);
-                }
-                heroesBought = shopMessage1.getHeroesBought();
-                minionsBought = shopMessage1.getMinionsBought();
-                spellsBought = shopMessage1.getSpellsBought();
-                itemsBought = shopMessage1.getItemsBought();
-                Account.setLoginAccount(shopMessage1.getAccount());
-                for (VBox vBox : heroBoxes) {
-                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                }
-                for (VBox vBox : minionBoxes) {
-                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                }
-                for (VBox vBox : itemBoxes) {
-                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                }
-                for (VBox vBox : spellBoxes) {
-                    ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-                }
-                reBorderAll();
-            }
-        }).start();
-        /*
-        Shop shop = new Shop();
-        int count = 0;
-        for (VBox vBox : heroBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        heroesBought.set(count, true);
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : minionBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        minionsBought.set(count, true);
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : spellBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        spellsBought.set(count, true);
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-        count = 0;
-        for (VBox vBox : itemBoxes) {
-            if (((CheckBox) vBox.getChildren().get(0)).isSelected()) {
-                String string = ((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase();
-                if (!Account.getLoginAccount().getCollection().hasThisCard(string)) {
-                    if (shop.costOfCard(string) <= Account.getLoginAccount().getMoney()) {
-                        Account.getLoginAccount().getCollection().addToCollection(string);
-                        Account.getLoginAccount().incrementMoney(-shop.costOfCard(string));
-                        itemsBought.set(count, true);
-                    } else notEnoughMoney.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                } else alreadyHaveThisCard.add(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
-            count++;
-        }
-
-        }
-        reBorderAll();*/
     }
 
     private void showDialog(String string) {
-        System.out.println("show Dialog hahaha");
         BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("OK");
@@ -1218,7 +1091,6 @@ public class ShopController {
         label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
         jfxDialogLayout.setBody(label);
         jfxDialogLayout.setActions(jfxButton);
-        System.out.println("ma ke ta inja umadim baghiasham mirim");
         jfxDialog.show();
         gridPane.setEffect(blur);
     }

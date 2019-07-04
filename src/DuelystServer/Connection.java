@@ -2,6 +2,7 @@ package DuelystServer;
 
 import DuelystServer.messages.AccountMessage;
 import DuelystServer.messages.SaveAccountMessage;
+import DuelystServer.messages.ShopInitializeMessage;
 import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.ErrorType;
@@ -51,7 +52,6 @@ public class Connection implements Runnable {
                 Gson gson = new Gson();
                 if (str.contains("14123")) {
                     SaveAccountMessage saveAccountMessage = gson.fromJson(str, SaveAccountMessage.class);
-                    System.out.println("sads" + str);
                     for (Account account : Account.getAllUser()) {
                         if (account.getUserName().equals(saveAccountMessage.getAccount().getUserName())) {
                             Account.getAllUser().remove(account);
@@ -90,9 +90,7 @@ public class Connection implements Runnable {
                     Account account = Account.getAccount(shopMessage.getAuthToken());
                     if (account == null)
                         throw new Exception();
-
                     Shop shop = new Shop();
-                    System.out.println("shopMessage: " + shopMessage.isSignUpOrLogIn());
                     if (!shopMessage.isSignUpOrLogIn()) {
                         ShopMessage.buyAction(account, shopMessage, shop);
                         sendPacket(gson.toJson(shopMessage));
@@ -100,6 +98,14 @@ public class Connection implements Runnable {
                         ShopMessage.sellAction(shop, shopMessage, account);
                         sendPacket(gson.toJson(shopMessage));
                     }
+                } else if (str.contains("34121")){
+                    System.out.println(str);
+                    ShopInitializeMessage message = gson.fromJson(str,ShopInitializeMessage.class);
+                    message.setHeroesInShop(ShopMessage.getNumberOfHeroesInShop());
+                    message.setMinionsInShop(ShopMessage.getNumberOfMinionsInShop());
+                    message.setSpellInShop(ShopMessage.getNumberOfSpellInShop());
+                    message.setItemsInShop(ShopMessage.getNumberOfItemsInShop());
+                    sendPacket(gson.toJson(message));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

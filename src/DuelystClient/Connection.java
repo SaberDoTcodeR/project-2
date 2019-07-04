@@ -149,7 +149,6 @@ public class Connection implements Runnable {
     }
 
     public void close() {
-
         try {
             inputStream.close();
             outputStream.close();

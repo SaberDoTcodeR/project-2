@@ -1,8 +1,6 @@
 package DuelystServer;
 
-import DuelystServer.model.Account;
-import com.gilecode.yagson.YaGson;
-import com.gilecode.yagson.YaGsonBuilder;
+import DuelystServer.messages.ShopMessage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +15,7 @@ public class Server {
     private static ArrayList<Connection> connections = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
+        ShopMessage.setNumberOfCardsInShop();
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/DuelystServer/config.properties"));
@@ -33,7 +32,6 @@ public class Server {
         } catch (IOException e) {
             serverSocket = new ServerSocket(defaultPort);
         }
-//        serverSocket = new ServerSocket(6000);
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
@@ -57,5 +55,4 @@ public class Server {
     public static ArrayList<Connection> getConnections() {
         return connections;
     }
-
 }
