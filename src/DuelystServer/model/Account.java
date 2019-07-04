@@ -1,8 +1,6 @@
 package DuelystServer.model;
 
 
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 
 public class Account {
@@ -14,6 +12,7 @@ public class Account {
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
     private long authToken;
+    private boolean onOff;
 
     public Collection getMyCollection() {
         return myCollection;
@@ -199,6 +198,14 @@ public class Account {
 
     public static void addUser(Account account) {
         allUser.add(account);
+    }
+
+    public boolean isOnOff() {
+        return onOff;
+    }
+
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
     }
 
     /*public ArrayList<Buff> getOwnBuffs() {

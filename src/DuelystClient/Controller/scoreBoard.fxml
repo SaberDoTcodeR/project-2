@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DuelystClient.Controller.ScoreBoardController">
+
+    <children>
+        <Button id="button1" fx:id="loginMenuButton" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedLoginMenu" onMouseClicked="#loginAct"
+                onMouseEntered="#loginBtnActFocus"
+                prefHeight="50.0" prefWidth="300.0" text="LOGIN MENU">
+            <GridPane.margin>
+                <Insets left="10.0" right="10.0" />
+            </GridPane.margin>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="/DuelystClient/css/loginWhite.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <TableView fx:id="tableView" layoutX="500.0" layoutY="150.0" prefHeight="800.0" prefWidth="1000.0">
+            <columns>
+                <TableColumn fx:id="userName" prefWidth="300.0" text="UserName" />
+                <TableColumn fx:id="wins" prefWidth="300.0" text="Wins" />
+                <TableColumn fx:id="onOrOff" prefWidth="400.0" text="online or Offline" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

@@ -9,7 +9,6 @@ public class CustomMessage {
     private int cost;
     private int range;
     private int typeOfRange;
-    private String imageURL;
     private int coolDownTime;
     private int activeTime;
     private boolean type;
@@ -76,14 +75,6 @@ public class CustomMessage {
 
     public void setTypeOfRange(int typeOfRange) {
         this.typeOfRange = typeOfRange;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public int getCoolDownTime() {

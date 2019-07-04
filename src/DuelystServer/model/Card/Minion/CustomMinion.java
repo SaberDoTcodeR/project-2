@@ -6,10 +6,9 @@ import DuelystServer.model.Cell;
 import javafx.scene.image.Image;
 
 public class CustomMinion extends Minion {
-    public CustomMinion(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, String image, int mp, int activeTime) {
+    public CustomMinion(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, int mp, int activeTime) {
         super(name, ap, hp, costOfBuy, mp, typeOfRange, range);
         this.setTimeOfActivationOfSpecialPower(activeTime);
-        this.cardImage = new Image(image);
     }
 
     public CustomMinion(CustomMinion customMinion) {
@@ -18,7 +17,6 @@ public class CustomMinion extends Minion {
 
     public Minion duplicate() {
         CustomMinion customMinion = new CustomMinion(this);
-        customMinion.cardImage = this.getImage();
         return customMinion;
     }
 

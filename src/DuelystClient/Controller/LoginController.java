@@ -7,12 +7,8 @@ import DuelystClient.model.Account;
 import DuelystClient.model.Card.Hero.Hero;
 import DuelystClient.model.Card.Minion.Minion;
 import DuelystClient.model.Card.Spell.Spell;
-import DuelystClient.model.Collection;
-import DuelystClient.model.Deck;
 import DuelystClient.model.Item.UsableItem.UsableItem;
-import DuelystClient.model.Save.SaveAccount;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -20,12 +16,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
-
 
 public class LoginController {
     @FXML
@@ -37,10 +27,11 @@ public class LoginController {
     @FXML
     Button signUpBtn;
     @FXML
+    Button scoreBoardButton;
+    @FXML
     TextField userField;
     @FXML
     TextField passField;
-
 
     public void handleOnKeyPressedExit(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
@@ -82,6 +73,11 @@ public class LoginController {
         }
     }
 
+    public void handleOnKeyPressedScoreBoard(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            this.scoreBoardBtn();
+        }
+    }
 
     public void exitGameBtn() {
         Stage stage = (Stage) exitButton.getScene().getWindow();
@@ -106,7 +102,6 @@ public class LoginController {
                     userField.getStyleClass().add("wrongPassword");
                 } else if (((String) object).contains("money")) {
                     Account.setLoginAccount(gson.fromJson((String) object, Account.class));
-                    System.out.println("hello");
                     for (Hero hero : Account.getLoginAccount().getCollection().getHeroes()) {
                         System.out.println(hero.getName());
                     }
@@ -144,6 +139,10 @@ public class LoginController {
         exitButton.requestFocus();
     }
 
+    public void scoreBoardBtnActFocus() {
+        scoreBoardButton.requestFocus();
+    }
+
     public void signUpBtnAct() {
         passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
@@ -171,5 +170,9 @@ public class LoginController {
                 passField.getStyleClass().add("wrongPassword");
             }
         }
+    }
+
+    public void scoreBoardBtn() {
+        View.makeScoreBoardScene();
     }
 }

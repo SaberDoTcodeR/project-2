@@ -9,18 +9,16 @@ public class CustomMessage {
     private int cost;
     private int range;
     private int typeOfRange;
-    private String imageURL;
     private int coolDownTime;
     private int activeTime;
     private boolean type;
 
-    public CustomMessage(String name, int ap, int hp, int mana, int cost, int range, int typeOfRange, String imageURL, int coolDownTime, int activeTime, boolean type) {
+    public CustomMessage(String name, int ap, int hp, int mana, int cost, int range, int typeOfRange, int coolDownTime, int activeTime, boolean type) {
         setActiveTime(activeTime);
         setAp(ap);
         setCoolDownTime(coolDownTime);
         setCost(cost);
         setHp(hp);
-        setImageURL(imageURL);
         setName(name);
         setMana(mana);
         setRange(range);
@@ -90,14 +88,6 @@ public class CustomMessage {
 
     public void setTypeOfRange(int typeOfRange) {
         this.typeOfRange = typeOfRange;
-    }
-
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public int getCoolDownTime() {

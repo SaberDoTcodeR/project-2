@@ -3,6 +3,7 @@ package DuelystClient.View;
 import DuelystClient.Client;
 import DuelystClient.Controller.LoginController;
 import DuelystClient.Controller.MainMenuController;
+import DuelystClient.Controller.ScoreBoardController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
@@ -149,5 +150,21 @@ public class View {
         primaryStage.setResizable(false);
 
 
+    }
+
+    public static void makeScoreBoardScene() {
+        AnchorPane root = null;
+        try {
+            root = FXMLLoader.load(ScoreBoardController.class.getResource("scoreBoard.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scoreBoardScene = new Scene(root);
+
+        scoreBoardScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+        scoreBoardScene.getStylesheets().add(Client.class.getResource("css/css7.css").toExternalForm());
+        primaryStage.setScene(scoreBoardScene);
+        primaryStage.setFullScreen(true);
+        primaryStage.setResizable(false);
     }
 }

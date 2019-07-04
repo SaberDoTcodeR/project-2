@@ -4,7 +4,6 @@ import DuelystServer.model.Account;
 import DuelystServer.model.Shop;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ShopMessage extends AccountMessage {
 
@@ -25,16 +24,16 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> spellCheck = new ArrayList<>();
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
     private Account account;
-    private static int[] numberOfHeroesInShop = new int[10];
-    private static int[] numberOfMinionsInShop = new int[40];
-    private static int[] numberOfSpellInShop = new int[20];
-    private static int[] numberOfItemsInShop = new int[11];
+    private static ArrayList<Integer> numberOfHeroesInShop = new ArrayList<>();
+    private static ArrayList<Integer> numberOfMinionsInShop = new ArrayList<>();
+    private static ArrayList<Integer> numberOfSpellInShop = new ArrayList<>();
+    private static ArrayList<Integer> numberOfItemsInShop = new ArrayList<>();
     private ArrayList<String> notAvailableCard = new ArrayList<>();
 
-    private int[] heroesInShop = new int[10];
-    private int[] minionsInShop = new int[40];
-    private int[] spellInShop = new int[20];
-    private int[] itemsInShop = new int[11];
+    private ArrayList<Integer> heroesInShop = new ArrayList<>();
+    private ArrayList<Integer> minionsInShop = new ArrayList<>();
+    private ArrayList<Integer> spellInShop = new ArrayList<>();
+    private ArrayList<Integer> itemsInShop = new ArrayList<>();
 
     public ArrayList<String> getNotOwnedCard() {
         return notOwnedCard;
@@ -128,12 +127,12 @@ public class ShopMessage extends AccountMessage {
     public static void buyAction(Account account, ShopMessage shopMessage, Shop shop) {
         int count = 0;
         for (String vBox : shopMessage.getHeroes()) {
-            if (numberOfHeroesInShop[count] > 0) {
+            if (numberOfHeroesInShop.get(count) > 0) {
                 if (shopMessage.getHeroCheck().get(count)) {
                     if (!account.getCollection().hasThisCard(vBox)) {
                         if (shop.costOfCard2(vBox) <= account.getMoney()) {
                             account.getCollection().addToCollection(vBox);
-                            numberOfHeroesInShop[count]--;
+                            numberOfHeroesInShop.set(count,numberOfHeroesInShop.get(count)-1);
                             account.incrementMoney(-shop.costOfCard2(vBox));
                             shopMessage.getHeroesBought().set(count, true);
                         } else
@@ -149,12 +148,12 @@ public class ShopMessage extends AccountMessage {
         }
         count = 0;
         for (String vBox : shopMessage.getMinions()) {
-            if (numberOfMinionsInShop[count] > 0) {
+            if (numberOfMinionsInShop.get(count)> 0) {
                 if (shopMessage.getMinionCheck().get(count)) {
                     if (!account.getCollection().hasThisCard(vBox)) {
                         if (shop.costOfCard2(vBox) <= account.getMoney()) {
                             account.getCollection().addToCollection(vBox);
-                            numberOfMinionsInShop[count]--;
+                            numberOfMinionsInShop.set(count,numberOfMinionsInShop.get(count)-1);
                             account.incrementMoney(-shop.costOfCard2(vBox));
                             shopMessage.getMinionsBought().set(count, true);
                         } else
@@ -170,12 +169,12 @@ public class ShopMessage extends AccountMessage {
         }
         count = 0;
         for (String vBox : shopMessage.getSpells()) {
-            if (numberOfSpellInShop[count] > 0) {
+            if (numberOfSpellInShop.get(count) > 0) {
                 if (shopMessage.getSpellCheck().get(count)) {
                     if (!account.getCollection().hasThisCard(vBox)) {
                         if (shop.costOfCard2(vBox) <= account.getMoney()) {
                             account.getCollection().addToCollection(vBox);
-                            numberOfSpellInShop[count]--;
+                            numberOfSpellInShop.set(count,numberOfSpellInShop.get(count)-1);
                             account.incrementMoney(-shop.costOfCard2(vBox));
                             shopMessage.getSpellsBought().set(count, true);
                         } else
@@ -191,12 +190,12 @@ public class ShopMessage extends AccountMessage {
         }
         count = 0;
         for (String vBox : shopMessage.getItems()) {
-            if (numberOfItemsInShop[count] > 0) {
+            if (numberOfItemsInShop.get(count) > 0) {
                 if (shopMessage.getItemCheck().get(count)) {
                     if (!account.getCollection().hasThisCard(vBox)) {
                         if (shop.costOfCard2(vBox) <= account.getMoney()) {
                             account.getCollection().addToCollection(vBox);
-                            numberOfItemsInShop[count]--;
+                            numberOfItemsInShop.set(count,numberOfItemsInShop.get(count)-1);
                             account.incrementMoney(-shop.costOfCard2(vBox));
                             shopMessage.getItemsBought().set(count, true);
                         } else
@@ -210,6 +209,10 @@ public class ShopMessage extends AccountMessage {
             shopMessage.getItemCheck().set(count, false);
             count++;
         }
+        setFeatures(account, shopMessage);
+    }
+
+    private static void setFeatures(Account account, ShopMessage shopMessage) {
         shopMessage.setAccount(account);
         shopMessage.setHeroesInShop(numberOfHeroesInShop);
         shopMessage.setMinionsInShop(numberOfMinionsInShop);
@@ -223,7 +226,7 @@ public class ShopMessage extends AccountMessage {
             if (shopMessage.getHeroCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
-                    numberOfHeroesInShop[count]++;
+                    numberOfHeroesInShop.set(count,numberOfHeroesInShop.get(count)+1);
                     account.incrementMoney(shop.costOfCard2(vBox));
                     shopMessage.getHeroesBought().set(count, false);
                 } else {
@@ -238,7 +241,7 @@ public class ShopMessage extends AccountMessage {
             if (shopMessage.getMinionCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
-                    numberOfMinionsInShop[count]++;
+                    numberOfMinionsInShop.set(count,numberOfMinionsInShop.get(count)+1);
                     account.incrementMoney(shop.costOfCard2(vBox));
                     shopMessage.getMinionsBought().set(count, false);
                 } else {
@@ -253,7 +256,7 @@ public class ShopMessage extends AccountMessage {
             if (shopMessage.getSpellCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
-                    numberOfSpellInShop[count]++;
+                    numberOfSpellInShop.set(count,numberOfSpellInShop.get(count)+1);
                     account.incrementMoney(shop.costOfCard2(vBox));
                     shopMessage.getSpellsBought().set(count, false);
                 } else {
@@ -268,7 +271,7 @@ public class ShopMessage extends AccountMessage {
             if (shopMessage.getItemCheck().get(count)) {
                 if (account.getCollection().hasThisCard(vBox)) {
                     account.getCollection().removeCardFromCollection(vBox);
-                    numberOfItemsInShop[count]++;
+                    numberOfItemsInShop.set(count,numberOfItemsInShop.get(count)+1);
                     account.incrementMoney(shop.costOfCard2(vBox));
                     shopMessage.getItemsBought().set(count, false);
                 } else {
@@ -278,11 +281,7 @@ public class ShopMessage extends AccountMessage {
             }
             count++;
         }
-        shopMessage.setAccount(account);
-        shopMessage.setHeroesInShop(numberOfHeroesInShop);
-        shopMessage.setMinionsInShop(numberOfMinionsInShop);
-        shopMessage.setSpellInShop(numberOfSpellInShop);
-        shopMessage.setItemsInShop(numberOfItemsInShop);
+        setFeatures(account, shopMessage);
     }
 
     @Override
@@ -315,25 +314,33 @@ public class ShopMessage extends AccountMessage {
     }
 
     public static void setNumberOfCardsInShop() {
-        Arrays.fill(numberOfHeroesInShop, NUMBER_OF_CARDS);
-        Arrays.fill(numberOfMinionsInShop, NUMBER_OF_CARDS);
-        Arrays.fill(numberOfSpellInShop, NUMBER_OF_CARDS);
-        Arrays.fill(numberOfItemsInShop, NUMBER_OF_CARDS);
+        for (int i = 0; i < 10; i++) {
+            numberOfHeroesInShop.add(NUMBER_OF_CARDS);
+        }
+        for (int i = 0; i < 40; i++) {
+            numberOfMinionsInShop.add(NUMBER_OF_CARDS);
+        }
+        for (int i = 0; i < 20; i++) {
+            numberOfSpellInShop.add(NUMBER_OF_CARDS);
+        }
+        for (int i = 0; i < 11; i++) {
+            numberOfItemsInShop.add(NUMBER_OF_CARDS);
+        }
     }
 
-    public static int[] getNumberOfHeroesInShop() {
+    public static ArrayList<Integer> getNumberOfHeroesInShop() {
         return numberOfHeroesInShop;
     }
 
-    public static int[] getNumberOfMinionsInShop() {
+    public static ArrayList<Integer> getNumberOfMinionsInShop() {
         return numberOfMinionsInShop;
     }
 
-    public static int[] getNumberOfSpellInShop() {
+    public static ArrayList<Integer> getNumberOfSpellInShop() {
         return numberOfSpellInShop;
     }
 
-    public static int[] getNumberOfItemsInShop() {
+    public static ArrayList<Integer> getNumberOfItemsInShop() {
         return numberOfItemsInShop;
     }
 
@@ -341,35 +348,35 @@ public class ShopMessage extends AccountMessage {
         return notAvailableCard;
     }
 
-    public int[] getHeroesInShop() {
+    public ArrayList<Integer> getHeroesInShop() {
         return heroesInShop;
     }
 
-    public void setHeroesInShop(int[] heroesInShop) {
+    public void setHeroesInShop(ArrayList<Integer> heroesInShop) {
         this.heroesInShop = heroesInShop;
     }
 
-    public int[] getMinionsInShop() {
+    public ArrayList<Integer> getMinionsInShop() {
         return minionsInShop;
     }
 
-    public void setMinionsInShop(int[] minionsInShop) {
+    public void setMinionsInShop(ArrayList<Integer> minionsInShop) {
         this.minionsInShop = minionsInShop;
     }
 
-    public int[] getSpellInShop() {
+    public ArrayList<Integer> getSpellInShop() {
         return spellInShop;
     }
 
-    public void setSpellInShop(int[] spellInShop) {
+    public void setSpellInShop(ArrayList<Integer> spellInShop) {
         this.spellInShop = spellInShop;
     }
 
-    public int[] getItemsInShop() {
+    public ArrayList<Integer> getItemsInShop() {
         return itemsInShop;
     }
 
-    public void setItemsInShop(int[] itemsInShop) {
+    public void setItemsInShop(ArrayList<Integer> itemsInShop) {
         this.itemsInShop = itemsInShop;
     }
 }

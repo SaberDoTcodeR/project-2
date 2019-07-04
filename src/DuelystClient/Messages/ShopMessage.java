@@ -20,10 +20,10 @@ public class ShopMessage extends AccountMessage {
     private ArrayList<Boolean> itemCheck = new ArrayList<>();
     private ArrayList<String> notOwnedCard = new ArrayList<>();
     private Account account;
-    private int[] heroesInShop = new int[10];
-    private int[] minionsInShop = new int[40];
-    private int[] spellInShop = new int[20];
-    private int[] itemsInShop = new int[11];
+    private ArrayList<Integer> heroesInShop = new ArrayList<>();
+    private ArrayList<Integer> minionsInShop = new ArrayList<>();
+    private ArrayList<Integer> spellInShop = new ArrayList<>();
+    private ArrayList<Integer> itemsInShop = new ArrayList<>();
     private ArrayList<String> notAvailableCard = new ArrayList<>();
     private ArrayList<String> notEnoughMoney = new ArrayList<>();
     private ArrayList<String> alreadyHaveThisCard = new ArrayList<>();
@@ -52,7 +52,6 @@ public class ShopMessage extends AccountMessage {
     public void setAlreadyHaveThisCard(ArrayList<String> alreadyHaveThisCard) {
         this.alreadyHaveThisCard = alreadyHaveThisCard;
     }
-
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
                        ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, long authToken) {
@@ -168,11 +167,11 @@ public class ShopMessage extends AccountMessage {
         this.account = account;
     }
 
-    public int[] getHeroesInShop() {
+    public ArrayList<Integer> getHeroesInShop() {
         return heroesInShop;
     }
 
-    public void setHeroesInShop(int[] heroesInShop) {
+    public void setHeroesInShop(ArrayList<Integer> heroesInShop) {
         this.heroesInShop = heroesInShop;
     }
 
@@ -184,34 +183,31 @@ public class ShopMessage extends AccountMessage {
         this.notAvailableCard = notAvailableCard;
     }
 
-    public int[] getMinionsInShop() {
+    public ArrayList<Integer> getMinionsInShop() {
         return minionsInShop;
     }
 
-    public void setMinionsInShop(int[] minionsInShop) {
+    public void setMinionsInShop(ArrayList<Integer> minionsInShop) {
         this.minionsInShop = minionsInShop;
     }
 
-    public int[] getSpellInShop() {
+    public ArrayList<Integer> getSpellInShop() {
         return spellInShop;
     }
 
-    public void setSpellInShop(int[] spellInShop) {
+    public void setSpellInShop(ArrayList<Integer> spellInShop) {
         this.spellInShop = spellInShop;
     }
 
-    public int[] getItemsInShop() {
+    public ArrayList<Integer> getItemsInShop() {
         return itemsInShop;
     }
 
-    public void setItemsInShop(int[] itemsInShop) {
+    public void setItemsInShop(ArrayList<Integer> itemsInShop) {
         this.itemsInShop = itemsInShop;
     }
 
     public void setNumberOfCards() {
-        Arrays.fill(heroesInShop,5);
-        Arrays.fill(minionsInShop,5);
-        Arrays.fill(spellInShop,5);
-        Arrays.fill(itemsInShop,5);
+
     }
 }

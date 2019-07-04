@@ -1,6 +1,7 @@
 package DuelystClient.Controller;
 
 import DuelystClient.Client;
+import DuelystClient.Messages.LogoutMessage;
 import DuelystClient.View.View;
 import DuelystClient.Messages.SaveAccountMessage;
 import DuelystClient.model.Account;
@@ -47,6 +48,9 @@ public class MainMenuController {
     }
 
     public void logOutBtnAct() {
+        Gson gson = new Gson();
+        LogoutMessage logoutMessage = new LogoutMessage(Account.getLoginAccount(),42568);
+        Client.connectionToServer.sendPacket(gson.toJson(logoutMessage));
         View.makeLoginScene();
     }
 
@@ -163,7 +167,6 @@ public class MainMenuController {
         } else if (event.getCode().equals(KeyCode.DOWN)) {
             startGame.requestFocus();
         }
-
     }
 
 

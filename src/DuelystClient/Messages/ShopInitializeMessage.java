@@ -1,45 +1,47 @@
 package DuelystClient.Messages;
 
+import java.util.ArrayList;
+
 public class ShopInitializeMessage extends AccountMessage {
     public ShopInitializeMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken) {
         super(signUpOrLogIn, user, pass, nameOfClass, authToken);
         super.setId(34121);
     }
 
-    private int[] heroesInShop = new int[10];
-    private int[] minionsInShop = new int[40];
-    private int[] spellInShop = new int[20];
-    private int[] itemsInShop = new int[11];
+    private ArrayList<Integer> heroesInShop = new ArrayList<>();
+    private ArrayList<Integer> minionsInShop = new ArrayList<>();
+    private ArrayList<Integer> spellInShop = new ArrayList<>();
+    private ArrayList<Integer> itemsInShop = new ArrayList<>();
 
-    public int[] getHeroesInShop() {
+    public ArrayList<Integer> getHeroesInShop() {
         return heroesInShop;
     }
 
-    public void setHeroesInShop(int[] heroesInShop) {
+    public void setHeroesInShop(ArrayList<Integer> heroesInShop) {
         this.heroesInShop = heroesInShop;
     }
 
-    public int[] getMinionsInShop() {
+    public ArrayList<Integer> getMinionsInShop() {
         return minionsInShop;
     }
 
-    public void setMinionsInShop(int[] minionsInShop) {
+    public void setMinionsInShop(ArrayList<Integer> minionsInShop) {
         this.minionsInShop = minionsInShop;
     }
 
-    public int[] getSpellInShop() {
+    public ArrayList<Integer> getSpellInShop() {
         return spellInShop;
     }
 
-    public void setSpellInShop(int[] spellInShop) {
+    public void setSpellInShop(ArrayList<Integer> spellInShop) {
         this.spellInShop = spellInShop;
     }
 
-    public int[] getItemsInShop() {
+    public ArrayList<Integer> getItemsInShop() {
         return itemsInShop;
     }
 
-    public void setItemsInShop(int[] itemsInShop) {
+    public void setItemsInShop(ArrayList<Integer> itemsInShop) {
         this.itemsInShop = itemsInShop;
     }
 }

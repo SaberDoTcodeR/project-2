@@ -70,6 +70,9 @@
 #button3:focused {
     -fx-graphic: url("exitBlack.png");
 }
+#button4:focused {
+    /*-fx-graphic: url("exitBlack.png");*/
+}
 
 .button:pressed {
     -fx-background-color: #fea144;

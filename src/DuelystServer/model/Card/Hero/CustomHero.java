@@ -3,13 +3,11 @@ package DuelystServer.model.Card.Hero;
 import DuelystServer.model.Account;
 import DuelystServer.model.Battle.Battle;
 import DuelystServer.model.Cell;
-import javafx.scene.image.Image;
 
 public class CustomHero extends Hero {
-    public CustomHero(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, String image, int coolDownTime, int mp) {
+    public CustomHero(String name, int ap, int hp, int costOfBuy, int typeOfRange, int range, int coolDownTime, int mp) {
         super(name, ap, hp, costOfBuy, typeOfRange);
         this.setRange(range);
-        this.cardImage = new Image(image);
         this.setCoolDownTime(coolDownTime);
         this.setMp(mp);
     }
@@ -18,7 +16,6 @@ public class CustomHero extends Hero {
 
     public Hero duplicate() {
         CustomHero customHero = new CustomHero(this);
-        customHero.cardImage = this.getImage();
         return customHero;
     }
 

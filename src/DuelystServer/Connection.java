@@ -1,18 +1,17 @@
 package DuelystServer;
 
+import DuelystServer.messages.*;
 import DuelystServer.model.Card.Hero.CustomHero;
 import DuelystServer.messages.AccountMessage;
 import DuelystServer.messages.CustomMessage;
 import DuelystServer.messages.SaveAccountMessage;
 import DuelystServer.messages.ShopInitializeMessage;
 import DuelystServer.messages.ShopMessage;
-import DuelystServer.messages.TextMessage;
 import DuelystServer.model.Account;
 import DuelystServer.model.Card.Minion.CustomMinion;
 import DuelystServer.model.ErrorType;
 import DuelystServer.model.Shop;
 import com.google.gson.Gson;
-import javafx.scene.image.Image;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -27,6 +26,7 @@ public class Connection implements Runnable {
     private ObjectInputStream inputStream;
     private Socket socket;
     private boolean running;
+    private String user;
 
     public Connection(Socket socket) {
         this.socket = socket;
@@ -71,6 +71,8 @@ public class Connection implements Runnable {
                         boolean f = Account.authorize(accountMessage.getUser(), accountMessage.getPass());
                         if (f) {
                             Account account = Account.getAccount(accountMessage.getUser());
+                            user = accountMessage.getUser();
+                            account.setOnOff(true);
                             account.setAuthToken(new Random().nextLong());
                             sendPacket(gson.toJson(account));
                         } else {
@@ -80,6 +82,8 @@ public class Connection implements Runnable {
                     } else if (!flag && accountMessage.isSignUpOrLogIn()) {
                         //sign up
                         Account account = new Account(accountMessage.getUser(), accountMessage.getPass());
+                        user = accountMessage.getUser();
+                        account.setOnOff(true);
                         account.setAuthToken(new Random().nextLong());
                         sendPacket(gson.toJson(account));
                     } else {
@@ -87,10 +91,11 @@ public class Connection implements Runnable {
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
                 } else if (str.contains("43123")) {
+                    System.out.println(str);
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
                     Account account = Account.getAccount(shopMessage.getAuthToken());
                     if (account == null)
-                        throw new Exception();
+                        throw new NullPointerException();
                     Shop shop = new Shop();
                     if (!shopMessage.isSignUpOrLogIn()) {
                         ShopMessage.buyAction(account, shopMessage, shop);
@@ -109,11 +114,15 @@ public class Connection implements Runnable {
                     if (customMessage.isType()) {
                         new CustomHero(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                customMessage.getImageURL(), customMessage.getCoolDownTime(), customMessage.getMana());
+                                 customMessage.getCoolDownTime(), customMessage.getMana());
+                        System.out.println("kharmadaretuno");
+                        ShopMessage.getNumberOfHeroesInShop().add(5);
                     } else {
                         new CustomMinion(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                customMessage.getImageURL(), customMessage.getMana(), customMessage.getActiveTime());
+                                 customMessage.getMana(), customMessage.getActiveTime());
+                        System.out.println("kharmadaretuno2");
+                        ShopMessage.getNumberOfMinionsInShop().add(5);
                     }
                 } else if (str.contains("34121")) {
                     System.out.println(str);
@@ -123,7 +132,16 @@ public class Connection implements Runnable {
                     message.setSpellInShop(ShopMessage.getNumberOfSpellInShop());
                     message.setItemsInShop(ShopMessage.getNumberOfItemsInShop());
                     sendPacket(gson.toJson(message));
+                } else if (str.contains("46723")) {
+                    ScoreBoardMessage message = gson.fromJson(str, ScoreBoardMessage.class);
+                    message.setAccounts(Account.getAllUser());
+                    sendPacket(gson.toJson(message));
+                } else if (str.contains("42568")) {
+                    LogoutMessage logoutMessage = gson.fromJson(str, LogoutMessage.class);
+                    Account.getAccount(logoutMessage.getAccount().getUserName()).setOnOff(false);
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -145,6 +163,7 @@ public class Connection implements Runnable {
             return inputStream.readObject();
         } catch (EOFException | SocketException e) {
             running = false;
+            Account.getAccount(user).setOnOff(false);
             Server.getConnections().remove(this);
         } catch (IOException e) {
             e.printStackTrace();

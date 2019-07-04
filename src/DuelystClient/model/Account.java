@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
-public class Account {
+public class Account implements Comparable<Account>{
     private int avatar;
     private String userName, passWord;
     private int money, wins = 0, mana;
@@ -13,6 +13,8 @@ public class Account {
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();
     public transient static Account loginAccount;
+    private  String onOrOff;
+    private boolean onOff;
     private long authToken;
     public Account(String user, String pass) {
         this.userName = user;
@@ -130,4 +132,31 @@ public class Account {
         return userName;
     }
 
+    public String getOnOrOff() {
+        return onOrOff;
+    }
+
+    public void setOnOrOff() {
+        if (this.onOff) {
+            this.onOrOff = "online";
+        } else
+            this.onOrOff = "offline";
+    }
+
+    public boolean isOnOff() {
+        return onOff;
+    }
+
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
+    }
+
+    @Override
+    public int compareTo(Account o) {
+        int result = Integer.compare(this.getWins(),o.getWins());
+        if (result == 0){
+            result = o.getUserName().compareTo(this.getUserName());
+        }
+        return result;
+    }
 }

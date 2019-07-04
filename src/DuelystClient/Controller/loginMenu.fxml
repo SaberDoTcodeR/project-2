@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -50,10 +49,10 @@
             </font>
 
         </PasswordField>
-        <Button fx:id="loginBtn" onMouseEntered="#loginBtnActFocus" mnemonicParsing="false" id="button1"
-                onKeyPressed="#handleOnKeyPressedLogin" onMouseClicked="#loginBtnAct" prefHeight="50.0"
-                prefWidth="400.0" style="-fx-background-insets: 2 2 2 2; -fx-background-radius: 15 15 15 15;"
-                text="LOGIN" GridPane.columnIndex="1" GridPane.rowIndex="3">
+        <Button id="button1" fx:id="loginBtn" mnemonicParsing="false" onKeyPressed="#handleOnKeyPressedLogin"
+                onMouseClicked="#loginBtnAct" onMouseEntered="#loginBtnActFocus" prefHeight="50.0" prefWidth="400.0"
+                style="-fx-background-insets: 2 2 2 2; -fx-background-radius: 15 15 15 15;" text="LOGIN"
+                GridPane.columnIndex="1" GridPane.rowIndex="3">
             <font>
                 <Font size="24.0"/>
             </font>
@@ -67,9 +66,9 @@
             </graphic>
 
         </Button>
-        <Button fx:id="signUpBtn" onMouseEntered="#signUpBtnActFocus" mnemonicParsing="false" id="button2"
-                onKeyPressed="#handleOnKeyPressedSignUp" onMouseClicked="#signUpBtnAct" prefHeight="50.0"
-                prefWidth="400.0" text="SIGN UP" GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button id="button2" fx:id="signUpBtn" mnemonicParsing="false" onKeyPressed="#handleOnKeyPressedSignUp"
+                onMouseClicked="#signUpBtnAct" onMouseEntered="#signUpBtnActFocus" prefHeight="50.0" prefWidth="400.0"
+                text="SIGN UP" GridPane.columnIndex="1" GridPane.rowIndex="4">
             <font>
                 <Font size="24.0"/>
             </font>
@@ -82,9 +81,9 @@
             </graphic>
 
         </Button>
-        <Button fx:id="exitButton" onMouseEntered="#exitBtnActFocus" defaultButton="true" mnemonicParsing="false"
-                onKeyPressed="#handleOnKeyPressedExit" onMouseClicked="#exitGameBtn" prefHeight="50.0" prefWidth="400.0"
-                text="EXIT GAME" GridPane.columnIndex="1" GridPane.rowIndex="5" id="button3">
+        <Button id="button3" fx:id="exitButton" defaultButton="true" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedExit" onMouseClicked="#exitGameBtn" onMouseEntered="#exitBtnActFocus"
+                prefHeight="50.0" prefWidth="400.0" text="EXIT GAME" GridPane.columnIndex="1" GridPane.rowIndex="6">
             <font>
                 <Font size="24.0"/>
             </font>
@@ -93,6 +92,22 @@
                     <image>
                         <Image url="DuelystClient/css/exitWhite.png"/>
                     </image>
+                </ImageView>
+            </graphic>
+
+        </Button>
+        <Button id="button4" fx:id="scoreBoardButton" defaultButton="true" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedScoreBoard" onMouseClicked="#scoreBoardBtn"
+                onMouseEntered="#scoreBoardBtnActFocus" prefHeight="50.0" prefWidth="400.0" text="SCORE BOARD"
+                GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <!--<image>-->
+                    <!--<Image url="DuelystClient/css/.png" />-->
+                    <!--</image>-->
                 </ImageView>
             </graphic>
 
