@@ -14,6 +14,7 @@
     <children>
         <Button id="button1" fx:id="loginMenuButton" mnemonicParsing="false"
                 onKeyPressed="#handleOnKeyPressedLoginMenu" onMouseClicked="#loginAct"
+                layoutX="150.0" layoutY="100.0"
                 onMouseEntered="#loginBtnActFocus"
                 prefHeight="50.0" prefWidth="300.0" text="LOGIN MENU">
             <GridPane.margin>
@@ -22,7 +23,7 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="/DuelystClient/css/loginWhite.png" />
+                        <Image url="DuelystClient/css/backWhite.png" />
                     </image>
                 </ImageView>
             </graphic>

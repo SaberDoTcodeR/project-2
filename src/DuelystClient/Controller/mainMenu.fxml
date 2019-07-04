@@ -91,12 +91,12 @@
             <graphic>
                 <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="DuelystClient/css/logoutWhite.png"/>
+                        <Image url="DuelystClient/css/saveWhite.png"/>
                     </image>
                 </ImageView>
             </graphic>
         </Button>
-        <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button5" onMouseEntered="#logOutBtnActFocus"
+        <Button fx:id="logOut" onMouseClicked="#logOutBtnAct" id="button6" onMouseEntered="#logOutBtnActFocus"
                 onKeyPressed="#handleOnKeyPressedLogOut"
                 mnemonicParsing="false" prefHeight="50.0"
                 prefWidth="400.0" text="LOGOUT"

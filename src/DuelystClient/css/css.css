@@ -71,7 +71,7 @@
     -fx-graphic: url("exitBlack.png");
 }
 #button4:focused {
-    /*-fx-graphic: url("exitBlack.png");*/
+    -fx-graphic: url("scoreboardBlack.png");
 }
 
 .button:pressed {

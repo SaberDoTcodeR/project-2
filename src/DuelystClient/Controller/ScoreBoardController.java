@@ -14,6 +14,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.Collections;
@@ -64,5 +65,9 @@ public class ScoreBoardController implements Initializable {
 
     public void loginBtnActFocus() {
         loginMenuButton.requestFocus();
+    }
+
+    public void loginBtnActNotFocus() {
+        loginMenuButton.setId("");
     }
 }

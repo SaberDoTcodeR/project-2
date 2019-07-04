@@ -81,6 +81,22 @@
             </graphic>
 
         </Button>
+        <Button id="button4" fx:id="scoreBoardButton" defaultButton="true" mnemonicParsing="false"
+                onKeyPressed="#handleOnKeyPressedScoreBoard" onMouseClicked="#scoreBoardBtn"
+                onMouseEntered="#scoreBoardBtnActFocus" prefHeight="50.0" prefWidth="400.0" text="SCORE BOARD"
+                GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <font>
+                <Font size="24.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="DuelystClient/css/scoreboardWhite.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        
         <Button id="button3" fx:id="exitButton" defaultButton="true" mnemonicParsing="false"
                 onKeyPressed="#handleOnKeyPressedExit" onMouseClicked="#exitGameBtn" onMouseEntered="#exitBtnActFocus"
                 prefHeight="50.0" prefWidth="400.0" text="EXIT GAME" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -96,23 +112,5 @@
             </graphic>
 
         </Button>
-        <Button id="button4" fx:id="scoreBoardButton" defaultButton="true" mnemonicParsing="false"
-                onKeyPressed="#handleOnKeyPressedScoreBoard" onMouseClicked="#scoreBoardBtn"
-                onMouseEntered="#scoreBoardBtnActFocus" prefHeight="50.0" prefWidth="400.0" text="SCORE BOARD"
-                GridPane.columnIndex="1" GridPane.rowIndex="5">
-            <font>
-                <Font size="24.0"/>
-            </font>
-            <graphic>
-                <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                    <!--<image>-->
-                    <!--<Image url="DuelystClient/css/.png" />-->
-                    <!--</image>-->
-                </ImageView>
-            </graphic>
-
-        </Button>
-
-
     </children>
 </GridPane>

@@ -30,16 +30,13 @@ public class SingleOrMultiController {
 
     public void initialize() {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    String str = null;
-                    while (str == null)
-                        str = (String) Client.connectionToServer.readPacket();
-                    if (str.contains("41543")) {
-                        addText(new Gson().fromJson(str, TextMessage.class));
-                    }
+        new Thread(() -> {
+            while (true) {
+                String str = null;
+                while (str == null)
+                    str = (String) Client.connectionToServer.readPacket();
+                if (str.contains("41543")) {
+                    addText(new Gson().fromJson(str, TextMessage.class));
                 }
             }
         }).start();
