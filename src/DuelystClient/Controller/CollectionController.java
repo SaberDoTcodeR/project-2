@@ -1,5 +1,9 @@
 package DuelystClient.Controller;
 
+import DuelystClient.Client;
+import DuelystClient.Messages.AuctionMessage;
+import DuelystClient.Messages.AuctionStartMessage;
+import DuelystClient.Messages.BidMessage;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
 import DuelystClient.model.Card.Hero.Hero;
@@ -15,6 +19,7 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDialogEvent;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,6 +30,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.util.Pair;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -35,6 +41,7 @@ public class CollectionController {
     public ArrayList<Boolean> itemsBought = new ArrayList<>();
     public ArrayList<Boolean> minionsBought = new ArrayList<>();
     public ArrayList<Boolean> spellsBought = new ArrayList<>();
+    public Button auction;
 
     public void setCurrentDeck(String name) {
         for (Deck deck : myDecks) {
@@ -344,8 +351,25 @@ public class CollectionController {
     private CheckBox minion39;
     @FXML
     private CheckBox minion40;
+    public Label label = new Label("Max Bet : " + 0);
 
     public void initialize() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String str = null;
+                while (str == null) {
+                    str = (String) Client.connectionToServer.readPacket();
+                }
+                if (str.contains("53645")) {
+                    Gson gson = new Gson();
+                    AuctionStartMessage auctionStartMessage = gson.fromJson(str, AuctionStartMessage.class);
+                    if (Account.getLoginAccount().getAuthToken() != auctionStartMessage.getStarterAuthToken())
+                        showAuctionDialog(auctionStartMessage.getCardData());
+                }
+
+            }
+        }).start();
         deckList.setOnAction(event -> {
             setCurrentDeck((String) (deckList.getValue()));
             showDeck();
@@ -2794,7 +2818,6 @@ public class CollectionController {
 
     public void exportAct() {
         Gson gson = new Gson();
-
         try {
             SaveDeck saveDeck = new SaveDeck();
 
@@ -2824,5 +2847,152 @@ public class CollectionController {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             exportAct();
         }
+    }
+
+    public void auctionClicked() {
+        for (VBox vBox : heroBoxes) {
+            CheckBox checkBox = (CheckBox) (vBox.getChildren().get(0));
+            if (checkBox.isSelected()) {
+                AuctionStartMessage auctionStartMessage = new AuctionStartMessage();
+                auctionStartMessage.setStarterAuthToken(Account.getLoginAccount().getAuthToken());
+                auctionStartMessage.setCardData(((Label) (vBox.getChildren().get(2))).getText());
+                Client.connectionToServer.sendPacket(new Gson().toJson(auctionStartMessage));
+                Thread bid = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            String str = null;
+                            while (str == null)
+                                str = (String) Client.connectionToServer.readPacket();
+
+                            if (str.contains("52341")) {
+                                Gson gson = new Gson();
+                                AuctionMessage accountUpdated = gson.fromJson(str, AuctionMessage.class);
+                                Account.setLoginAccount(accountUpdated.getAccount());
+                                View.makeMainMenu();
+                                break;
+                            }
+                        }
+                    }
+                });
+                bid.start();
+            }
+        }
+
+    }
+
+    public void auctionBtnActFocus(MouseEvent event) {
+        auction.requestFocus();
+    }
+
+    public void handleOnKeyPressedAuction(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            auctionClicked();
+        }
+    }
+
+    public void showAuctionDialog(String cardDetail) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                BoxBlur blur = new BoxBlur(5, 5, 10);
+                JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+                JFXButton jfxButton = new JFXButton("OK");
+                JFXTextField jfxTextField = new JFXTextField();
+                jfxTextField.setPromptText("ENTER YOUR BID");
+
+                jfxTextField.setId("text");
+                jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+                JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+                jfxButton.getStyleClass().add("dialog-button");
+                jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                            if (!jfxTextField.getText().equals("") && jfxTextField.getText().matches("\\d+") && Account.getLoginAccount().getMoney() >= Integer.parseInt(jfxTextField.getText())) {
+                                Gson gson = new Gson();
+                                BidMessage bidMessage = new BidMessage();
+                                bidMessage.setText(new Pair<>(Account.getLoginAccount().getAuthToken(), jfxTextField.getText()));
+                                System.out.println(gson.toJson(bidMessage) + "here");
+                                Client.connectionToServer.sendPacket(gson.toJson(bidMessage));
+
+                            } else {
+                                jfxTextField.setId("wrongPassword");
+                            }
+
+                        }
+                );
+                jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                    gridPane.setEffect(null);
+                });
+                Label cardDetailLabel = new Label(cardDetail);
+
+                Label labelTime = new Label();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            String str = null;
+                            while (str == null)
+                                str = (String) Client.connectionToServer.readPacket();
+
+                            if (str.contains("53412")) {
+                                Gson gson = new Gson();
+                                BidMessage bidMessage = gson.fromJson(str, BidMessage.class);
+                                final String s = bidMessage.getText().getValue();
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        label.setText("Max Bet : " + s);
+                                    }
+                                });
+                            }
+                            if (str.contains("52341")) {
+                                Gson gson = new Gson();
+                                AuctionMessage accountUpdated = gson.fromJson(str, AuctionMessage.class);
+                                System.out.println(accountUpdated.getAccount().getUserName()+accountUpdated.getAccount().getMoney());
+                                Account.setLoginAccount(accountUpdated.getAccount());
+                                System.out.println("buyer send");
+                                View.makeMainMenu();
+                                break;
+                            }
+                        }
+                    }
+                }).start();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int x = 60;
+                        while (x > 0) {
+                            try {
+                                final int a = x;
+                                Platform.runLater(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        labelTime.setText(a + "");
+                                    }
+                                });
+
+                                Thread.sleep(1000);
+                                x--;
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                        jfxDialog.close();
+                    }
+                }).start();
+                label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+                labelTime.setStyle("-fx-font-size: 20px; -fx-text-fill: red");
+                cardDetailLabel.setStyle("-fx-font-size: 16px; -fx-text-fill: black");
+                VBox vBox = new VBox();
+                vBox.getChildren().addAll(label, jfxTextField, labelTime, cardDetailLabel);
+                jfxDialogLayout.getBody().add(vBox);
+                jfxDialogLayout.setActions(jfxButton);
+                jfxDialog.show();
+                gridPane.setEffect(blur);
+            }
+        });
+
     }
 }

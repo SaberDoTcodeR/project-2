@@ -65,6 +65,9 @@
     -fx-graphic: url("itemBlack.png");
 }
 
+#auction:focused {
+    -fx-graphic: url("auction.png");
+}
 #button-add:focused {
     -fx-graphic: url("addBlack.png");
 

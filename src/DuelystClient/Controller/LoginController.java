@@ -102,18 +102,6 @@ public class LoginController {
                     userField.getStyleClass().add("wrongPassword");
                 } else if (((String) object).contains("money")) {
                     Account.setLoginAccount(gson.fromJson((String) object, Account.class));
-                    for (Hero hero : Account.getLoginAccount().getCollection().getHeroes()) {
-                        System.out.println(hero.getName());
-                    }
-                    for (Minion minion : Account.getLoginAccount().getCollection().getMinions()) {
-                        System.out.println(minion.getName());
-                    }
-                    for (Spell spell : Account.getLoginAccount().getCollection().getSpells()) {
-                        System.out.println(spell.getName());
-                    }
-                    for (UsableItem item : Account.getLoginAccount().getCollection().getUsableItems()) {
-                        System.out.println(item.getName());
-                    }
                     View.makeMainMenu();
                 }
             }).start();

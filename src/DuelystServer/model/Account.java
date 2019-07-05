@@ -1,13 +1,17 @@
 package DuelystServer.model;
 
 
+import DuelystServer.Connection;
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Account {
     private int avatar;
-    private transient static ArrayList<Account> allUser = new ArrayList<>();
+    public transient Connection connection;
+    private transient volatile static ArrayList<Account> allUser = new ArrayList<>();
     private String userName, passWord;
-    private int money, wins = 0, mana;
+    private volatile int money, wins = 0, mana;
     private Deck mainDeck;
     private transient ArrayList<RecordedMatch> matches = new ArrayList<>();
     private Collection myCollection = new Collection();

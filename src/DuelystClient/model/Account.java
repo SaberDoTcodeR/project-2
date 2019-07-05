@@ -35,6 +35,7 @@ public class Account implements Comparable<Account>{
 
     public static void setLoginAccount(Account loginAccount) {
         Account.loginAccount = loginAccount;
+        System.out.println(Account.getLoginAccount().money);
     }
 
     public Collection getMyCollection() {

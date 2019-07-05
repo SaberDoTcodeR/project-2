@@ -16,6 +16,7 @@ import java.io.IOException;
 import static DuelystClient.Client.primaryStage;
 
 public class View {
+    static Scene scene = new Scene(new GridPane());
     public static void makeLoginScene() {
         Platform.runLater(() -> {
             GridPane root = null;
@@ -25,10 +26,11 @@ public class View {
                 e.printStackTrace();
             }
 
-            Scene loginScene = new Scene(root);
-            loginScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-            loginScene.getStylesheets().add(Client.class.getResource("css/css.css").toExternalForm());
-            primaryStage.setScene(loginScene);
+            scene.setRoot(root);
+            scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Client.class.getResource("css/css.css").toExternalForm());
+            primaryStage.setScene(scene);
             primaryStage.setFullScreen(true);
             primaryStage.setResizable(false);
 
@@ -44,11 +46,12 @@ public class View {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene mainMenuScene = new Scene(root);
+            scene.setRoot(root);
 
-            mainMenuScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-            mainMenuScene.getStylesheets().add(Client.class.getResource("css/css2.css").toExternalForm());
-            primaryStage.setScene(mainMenuScene);
+            scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Client.class.getResource("css/css2.css").toExternalForm());
+            primaryStage.setScene(scene);
             primaryStage.setFullScreen(true);
             primaryStage.setResizable(false);
 
@@ -64,11 +67,12 @@ public class View {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Scene mainMenuScene = new Scene(root);
+            scene.setRoot(root);
 
-            mainMenuScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-            mainMenuScene.getStylesheets().add(Client.class.getResource("css/css3.css").toExternalForm());
-            primaryStage.setScene(mainMenuScene);
+            scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Client.class.getResource("css/css3.css").toExternalForm());
+            primaryStage.setScene(scene);
             primaryStage.setFullScreen(true);
             primaryStage.setResizable(false);
 
@@ -84,11 +88,12 @@ public class View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene collectionScene = new Scene(root);
+        scene.setRoot(root);
 
-        collectionScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-        collectionScene.getStylesheets().add(Client.class.getResource("css/css4.css").toExternalForm());
-        primaryStage.setScene(collectionScene);
+        scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(Client.class.getResource("css/css4.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
 
@@ -103,11 +108,12 @@ public class View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene singleOrMultiScene = new Scene(root);
+        scene.setRoot(root);
 
-        singleOrMultiScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-        singleOrMultiScene.getStylesheets().add(Client.class.getResource("css/css5.css").toExternalForm());
-        primaryStage.setScene(singleOrMultiScene);
+        scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(Client.class.getResource("css/css5.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
 
@@ -122,11 +128,12 @@ public class View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene modeMenuScene = new Scene(root);
+        scene.setRoot(root);
 
-        modeMenuScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-        modeMenuScene.getStylesheets().add(Client.class.getResource("css/css5.css").toExternalForm());
-        primaryStage.setScene(modeMenuScene);
+        scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(Client.class.getResource("css/css5.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
 
@@ -141,11 +148,12 @@ public class View {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene modeMenuScene = new Scene(root);
+        scene.setRoot(root);
 
-        modeMenuScene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
-        modeMenuScene.getStylesheets().add(Client.class.getResource("css/css6.css").toExternalForm());
-        primaryStage.setScene(modeMenuScene);
+        scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(Client.class.getResource("css/css6.css").toExternalForm());
+        primaryStage.setScene(scene);
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
 

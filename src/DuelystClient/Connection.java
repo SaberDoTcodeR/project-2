@@ -125,7 +125,6 @@ public class Connection implements Runnable {
                 try {
                     socket = new Socket(host, port);
                     View.makeLoginScene();
-                    Client.primaryStage.show();
                     Client.connectionToServer = new Connection(socket);
                 } catch (IOException e1) {
                     try {
@@ -134,7 +133,6 @@ public class Connection implements Runnable {
                         e2.printStackTrace();
                     }
                     View.makeLoginScene();
-                    Client.primaryStage.show();
                     Client.connectionToServer = new Connection(socket);
                 }
                 break;

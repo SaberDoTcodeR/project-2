@@ -70,9 +70,9 @@ public class MainMenuController {
 
     }
 
-    public void saveBtnAct(MouseEvent event) {
+    public void saveBtnAct() {
         Gson gson = new Gson();
-        SaveAccountMessage saveAccountMessage=new SaveAccountMessage();
+        SaveAccountMessage saveAccountMessage = new SaveAccountMessage();
         saveAccountMessage.setAccount(Account.getLoginAccount());
         String json = gson.toJson(saveAccountMessage);
         Client.connectionToServer.sendPacket(json);
@@ -155,11 +155,11 @@ public class MainMenuController {
 
     }
 
-//    public void handleOnKeyPressedSave(KeyEvent event) {
-//        if (event.getCode().equals(KeyCode.ENTER)) {
-//            this.saveAct();
-//        }
-//    }
+    public void handleOnKeyPressedSave(KeyEvent event) {
+        if (event.getCode().equals(KeyCode.ENTER)) {
+            this.saveBtnAct();
+        }
+    }
 
     public void handleOnKeyPressedLogOut(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
