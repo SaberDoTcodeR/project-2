@@ -444,6 +444,86 @@ public class ShopController {
                 spellsBought.add(false);
             }
         }
+        new Thread(() -> {
+            while (true) {
+                String str = null;
+                while (str == null)
+                    str = (String) Client.connectionToServer.readPacket();
+                if (str.contains("21432")) {
+                    Gson gson = new Gson();
+                    CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
+                    if (Card.getCard(customMessage.getName()) == null){
+                        if (customMessage.isType()){
+                            CustomHero customHero = new CustomHero(customMessage.getName(), customMessage.getAp()
+                                    , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
+                                    new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getCoolDownTime(), customMessage.getMana());
+                            VBox vBox1 = new VBox(5);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            heroesBought.add(false);
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            checkBox.setOnMouseClicked(event -> {
+                                if (checkBox.isSelected()) {
+                                    vBox1.setId("boxPendingBoughtStyle");
+                                } else {
+                                    if (Account.getLoginAccount().getCollection().getHeroes().contains(customMessage.getName()))
+                                        vBox1.setId("boxBoughtStyle");
+                                    else
+                                        vBox1.setId("boxNotBoughtStyle");
+                                }
+                            });
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label = new Label();
+                            label.setText(customMessage.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
+                            label.setWrapText(true);
+                            label.setPadding(new Insets(0, 0, 0, 7));
+                            vBox1.getChildren().addAll(checkBox, imageView, label);
+                            heroBoxes.add(vBox1);
+                            createdHeroes.add(vBox1);
+                            ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+                        } else {
+                            CustomMinion customMinion = new CustomMinion(customMessage.getName(), customMessage.getAp()
+                                    , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
+                                    new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getMana(), customMessage.getActiveTime());
+                            VBox vBox1 = new VBox(6);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            minionsBought.add(false);
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            checkBox.setOnMouseClicked(event -> {
+                                if (checkBox.isSelected()) {
+                                    vBox1.setId("boxPendingBoughtStyle");
+                                } else {
+                                    if (Account.getLoginAccount().getCollection().getMinions().contains(customMessage.getName()))
+                                        vBox1.setId("boxBoughtStyle");
+                                    else
+                                        vBox1.setId("boxNotBoughtStyle");
+                                }
+                            });
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label1 = new Label();
+                            label1.setText(customMessage.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
+                            label1.setWrapText(true);
+                            label1.setPadding(new Insets(0, 0, 0, 8));
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            minionBoxes.add(vBox1);
+                            createdMinions.add(vBox1);
+                            ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+                        }
+                    }
+                }
+            }
+        }).start();
         Gson gson = new Gson();
         ShopInitializeMessage shopInitializeMessage = new ShopInitializeMessage(
                 false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(),
@@ -860,7 +940,7 @@ public class ShopController {
                             Gson gson = new Gson();
                             CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
                                     1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
-                                     0, Integer.parseInt(activeTime.getText()), false);
+                                    0, Integer.parseInt(activeTime.getText()), false);
                             Client.connectionToServer.sendPacket(gson.toJson(customMessage));
                         } else if (typeBox.getValue().equals("Spell")) {
                             //nothing at moment
