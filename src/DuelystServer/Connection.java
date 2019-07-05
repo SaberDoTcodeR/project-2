@@ -127,17 +127,26 @@ public class Connection implements Runnable {
                     if (customMessage.isType()) {
                         new CustomHero(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                customMessage.getCoolDownTime(), customMessage.getMana());
-                        System.out.println("kharmadaretuno");
+                                 customMessage.getCoolDownTime(), customMessage.getMana());
                         ShopMessage.getNumberOfHeroesInShop().add(5);
+                        for (Connection connection : Server.getConnections()){
+                            if (!connection.equals(this)){
+                                connection.sendPacket(customMessage);
+                            }
+                        }
                     } else {
                         new CustomMinion(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                customMessage.getMana(), customMessage.getActiveTime());
-                        System.out.println("kharmadaretuno2");
+                                 customMessage.getMana(), customMessage.getActiveTime());
                         ShopMessage.getNumberOfMinionsInShop().add(5);
+                        for (Connection connection : Server.getConnections()){
+                            if (!connection.equals(this)){
+                                connection.sendPacket(customMessage);
+                            }
+                        }
                     }
                 } else if (str.contains("34121")) {
+                    System.out.println(str);
                     ShopInitializeMessage message = gson.fromJson(str, ShopInitializeMessage.class);
                     message.setHeroesInShop(ShopMessage.getNumberOfHeroesInShop());
                     message.setMinionsInShop(ShopMessage.getNumberOfMinionsInShop());

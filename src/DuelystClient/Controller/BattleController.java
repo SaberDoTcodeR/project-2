@@ -552,7 +552,7 @@ public class BattleController {
     }
 
     public void setProfile(Image imagePro) {
-       // accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
+        // accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
         accountInfo.setGraphicTextGap(10);
         profile.setImage(imagePro);
         Rectangle clip = new Rectangle(
@@ -623,14 +623,15 @@ public class BattleController {
         rectangles[42] = rect43;
         rectangles[43] = rect44;
         rectangles[44] = rect45;
-       /* switch (GameModeController.MODE) {
+        switch (GameModeController.MODE) {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(),
                         Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(), Account.getLoginAccount(), 500);
                 break;
             }
-            case 1: {
+        }
+            /*case 1: {
                 currentBattle = new OneFlagBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(),
                         Account.getLoginAccount().getMainDeck().duplicate(), Account.getLoginAccount(), 1000);
                 break;
