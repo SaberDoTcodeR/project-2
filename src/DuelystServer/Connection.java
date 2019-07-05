@@ -62,6 +62,7 @@ public class Connection implements Runnable {
                 System.out.println("received");
                 outputStream.reset();
                 Gson gson = new Gson();
+                System.out.println(str);
                 if (str.contains("14123")) {
                     SaveAccountMessage saveAccountMessage = gson.fromJson(str, SaveAccountMessage.class);
                     for (Account account : Account.getAllUser()) {
@@ -103,7 +104,7 @@ public class Connection implements Runnable {
                         //login error
                         sendPacket(gson.toJson(ErrorType.NO_SUCH_USER_EXIST));
                     }
-                } else if (str.contains("43123")) {
+                } else if (str.contains("43123")||str.contains("64532")) {
                     System.out.println(str);
                     ShopMessage shopMessage = gson.fromJson(str, ShopMessage.class);
                     Account account = Account.getAccount(shopMessage.getAuthToken());
@@ -131,7 +132,7 @@ public class Connection implements Runnable {
                         ShopMessage.getNumberOfHeroesInShop().add(5);
                         for (Connection connection : Server.getConnections()){
                             if (!connection.equals(this)){
-                                connection.sendPacket(customMessage);
+                                connection.sendPacket(str);
                             }
                         }
                     } else {
@@ -141,7 +142,7 @@ public class Connection implements Runnable {
                         ShopMessage.getNumberOfMinionsInShop().add(5);
                         for (Connection connection : Server.getConnections()){
                             if (!connection.equals(this)){
-                                connection.sendPacket(customMessage);
+                                connection.sendPacket(str);
                             }
                         }
                     }

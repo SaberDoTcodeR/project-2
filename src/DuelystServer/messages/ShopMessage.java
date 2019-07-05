@@ -87,9 +87,12 @@ public class ShopMessage extends AccountMessage {
         this.itemsBought = itemsBought;
     }
 
-    public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken) {
+    public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, long authToken,boolean sellOrBuy) {
         super(signUpOrLogIn, user, pass, nameOfClass, authToken);
-        super.setId(43123);
+        if(sellOrBuy)
+            super.setId(43123);
+        else
+            super.setId(64532);
     }
 
     public ArrayList<String> getHeroes() {

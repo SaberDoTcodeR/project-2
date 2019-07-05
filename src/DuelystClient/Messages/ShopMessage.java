@@ -54,13 +54,16 @@ public class ShopMessage extends AccountMessage {
     }
 
     public ShopMessage(boolean signUpOrLogIn, String user, String pass, String nameOfClass, ArrayList<Boolean> heroesBought,
-                       ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, long authToken) {
+                       ArrayList<Boolean> minionsBought, ArrayList<Boolean> spellsBought, ArrayList<Boolean> itemsBought, long authToken,boolean sellOrBuy) {
         super(signUpOrLogIn, user, pass, nameOfClass, authToken);
         setSpellsBought(spellsBought);
         setMinionsBought(minionsBought);
         setItemsBought(itemsBought);
         setHeroesBought(heroesBought);
-        super.setId(43123);
+        if(sellOrBuy)
+            super.setId(43123);
+        else
+            super.setId(64532);
     }
 
     public void setHeroes(String hero) {
