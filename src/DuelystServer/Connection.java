@@ -1,5 +1,6 @@
 package DuelystServer;
 
+import DuelystServer.Controller.ShopController;
 import DuelystServer.messages.*;
 import DuelystServer.model.Card.Hero.CustomHero;
 import DuelystServer.messages.AccountMessage;
@@ -118,6 +119,7 @@ public class Connection implements Runnable {
                         ShopMessage.sellAction(shop, shopMessage, account);
                         sendPacket(gson.toJson(shopMessage));
                     }
+                    ShopController.getInstance().updateShop();
                 } else if (str.contains("41543")) {
                     for (Connection connection : Server.getConnections()) {
                         connection.sendPacket(str);
@@ -126,7 +128,7 @@ public class Connection implements Runnable {
                     System.out.println(str);
                     CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
                     if (customMessage.isType()) {
-                        new CustomHero(customMessage.getName(), customMessage.getAp()
+                        CustomHero customHero = new CustomHero(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                  customMessage.getCoolDownTime(), customMessage.getMana());
                         ShopMessage.getNumberOfHeroesInShop().add(5);
@@ -135,8 +137,9 @@ public class Connection implements Runnable {
                                 connection.sendPacket(str);
                             }
                         }
+                        ShopController.getInstance().createCard(customMessage, customHero);
                     } else {
-                        new CustomMinion(customMessage.getName(), customMessage.getAp()
+                        CustomMinion customMinion = new CustomMinion(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                  customMessage.getMana(), customMessage.getActiveTime());
                         ShopMessage.getNumberOfMinionsInShop().add(5);
@@ -145,6 +148,7 @@ public class Connection implements Runnable {
                                 connection.sendPacket(str);
                             }
                         }
+                        ShopController.getInstance().createCard(customMessage, customMinion);
                     }
                 } else if (str.contains("34121")) {
                     System.out.println(str);
@@ -174,103 +178,100 @@ public class Connection implements Runnable {
                 } else if (str.contains("53645")) {
                     AuctionStartMessage auctionMessage = new Gson().fromJson(str, AuctionStartMessage.class);
                     auctionMessage.time = new Date().getTime();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            while (new Date().getTime() - auctionMessage.time < 1000 * 60) ;
-                            int max = 0;
-                            BidMessage bidMessageMax = new BidMessage();
-                            System.out.println(bids.size());
-                            for (BidMessage bidMessage : bids) {
-                                if (max <= Integer.parseInt(bidMessage.getText().getValue())) {
-                                    max = Integer.parseInt(bidMessage.getText().getValue());
-                                    bidMessageMax.setText(new Pair<>(bidMessage.getText().getKey(), bidMessage.getText().getValue()));
-                                }
+                    new Thread(() -> {
+                        while (new Date().getTime() - auctionMessage.time < 1000 * 60) ;
+                        int max = 0;
+                        BidMessage bidMessageMax = new BidMessage();
+                        System.out.println(bids.size());
+                        for (BidMessage bidMessage : bids) {
+                            if (max <= Integer.parseInt(bidMessage.getText().getValue())) {
+                                max = Integer.parseInt(bidMessage.getText().getValue());
+                                bidMessageMax.setText(new Pair<>(bidMessage.getText().getKey(), bidMessage.getText().getValue()));
                             }
-                            AuctionMessage auctionMessageSeller = new AuctionMessage();
-                            AuctionMessage auctionMessageBuyer = new AuctionMessage();
-                            for (Account account : Account.getAllUser()) {
-                                if (account.getAuthToken() == auctionMessage.getStarterAuthToken()) {
-                                    String cardName = auctionMessage.getCardData().split("\\n")[0];
-                                    for (Deck deck : account.getCollection().getDecks()) {
-                                        deck.getHero().removeIf(hero -> hero.getName().equals(cardName));
-                                        deck.getUsableItem().removeIf(item -> item.getName().equals(cardName));
-                                        deck.getSpells().removeIf(spell -> spell.getName().equals(cardName));
-                                        deck.getMinions().removeIf(minion -> minion.getName().equals(cardName));
-                                        account.getCollection().removeFromDeck(cardName, deck.getName());
-                                    }
-                                    for (Hero hero : Hero.getHeroes()) {
-                                        if (hero.getName().equals(cardName)) {
-                                            Hero hero1 = hero.duplicate();
-                                            account.getCollection().getHeroes().remove(hero1);
-                                            return;
-                                        }
-                                    }
-                                    for (Spell spell : Spell.getSpells()) {
-                                        if (spell.getName().equals(cardName)) {
-                                            Spell spell1 = spell.duplicate();
-                                            account.getCollection().getSpells().remove(spell1);
-                                            return;
-                                        }
-                                    }
-                                    for (Minion minion : Minion.getMinions()) {
-                                        if (minion.getName().equals(cardName)) {
-                                            Minion minion1 = minion.duplicate();
-                                            account.getCollection().getMinions().remove(minion1);
-                                            return;
-                                        }
-                                    }
-                                    for (UsableItem usableItem : UsableItem.getUsableItems()) {
-                                        if (usableItem.getName().equals(cardName)) {
-                                            UsableItem usableItem1 = usableItem.duplicate();
-                                            account.getCollection().getUsableItems().remove(usableItem1);
-                                            return;
-                                        }
-                                    }
-                                    long time = new Date().getTime();
-                                    while (new Date().getTime() - time < 1000) ;
-                                    account.setMoney(account.getMoney() + max);
-                                    auctionMessageSeller.setAccount(account);
-                                    account.connection.sendPacket(new Gson().toJson(auctionMessageSeller));
+                        }
+                        AuctionMessage auctionMessageSeller = new AuctionMessage();
+                        AuctionMessage auctionMessageBuyer = new AuctionMessage();
+                        for (Account account : Account.getAllUser()) {
+                            if (account.getAuthToken() == auctionMessage.getStarterAuthToken()) {
+                                String cardName = auctionMessage.getCardData().split("\\n")[0];
+                                for (Deck deck : account.getCollection().getDecks()) {
+                                    deck.getHero().removeIf(hero -> hero.getName().equals(cardName));
+                                    deck.getUsableItem().removeIf(item -> item.getName().equals(cardName));
+                                    deck.getSpells().removeIf(spell -> spell.getName().equals(cardName));
+                                    deck.getMinions().removeIf(minion -> minion.getName().equals(cardName));
+                                    account.getCollection().removeFromDeck(cardName, deck.getName());
                                 }
-                                if (account.getAuthToken() == bidMessageMax.getText().getKey()) {
-                                    String cardName = auctionMessage.getCardData().split("\\n")[0];
-                                    for (Hero hero : Hero.getHeroes()) {
-                                        if (hero.getName().equals(cardName)) {
-                                            Hero hero1 = hero.duplicate();
-                                            account.getCollection().getHeroes().add(hero1);
-                                            return;
-                                        }
+                                for (Hero hero : Hero.getHeroes()) {
+                                    if (hero.getName().equals(cardName)) {
+                                        Hero hero1 = hero.duplicate();
+                                        account.getCollection().getHeroes().remove(hero1);
+                                        return;
                                     }
-                                    for (Spell spell : Spell.getSpells()) {
-                                        if (spell.getName().equals(cardName)) {
-                                            Spell spell1 = spell.duplicate();
-                                            account.getCollection().getSpells().add(spell1);
-                                            return;
-                                        }
-                                    }
-                                    for (Minion minion : Minion.getMinions()) {
-                                        if (minion.getName().equals(cardName)) {
-                                            Minion minion1 = minion.duplicate();
-                                            account.getCollection().getMinions().add(minion1);
-                                            return;
-                                        }
-                                    }
-                                    for (UsableItem usableItem : UsableItem.getUsableItems()) {
-                                        if (usableItem.getName().equals(cardName)) {
-                                            UsableItem usableItem1 = usableItem.duplicate();
-                                            account.getCollection().getUsableItems().add(usableItem1);
-                                            return;
-                                        }
-                                    }
-                                    long time = new Date().getTime();
-                                    while (new Date().getTime() - time < 1000) ;
-                                    account.setMoney(account.getMoney() - max);
-                                    auctionMessageBuyer.setAccount(account);
-
-                                    account.connection.sendPacket(new Gson().toJson(auctionMessageBuyer));
-
                                 }
+                                for (Spell spell : Spell.getSpells()) {
+                                    if (spell.getName().equals(cardName)) {
+                                        Spell spell1 = spell.duplicate();
+                                        account.getCollection().getSpells().remove(spell1);
+                                        return;
+                                    }
+                                }
+                                for (Minion minion : Minion.getMinions()) {
+                                    if (minion.getName().equals(cardName)) {
+                                        Minion minion1 = minion.duplicate();
+                                        account.getCollection().getMinions().remove(minion1);
+                                        return;
+                                    }
+                                }
+                                for (UsableItem usableItem : UsableItem.getUsableItems()) {
+                                    if (usableItem.getName().equals(cardName)) {
+                                        UsableItem usableItem1 = usableItem.duplicate();
+                                        account.getCollection().getUsableItems().remove(usableItem1);
+                                        return;
+                                    }
+                                }
+                                long time = new Date().getTime();
+                                while (new Date().getTime() - time < 1000) ;
+                                account.setMoney(account.getMoney() + max);
+                                auctionMessageSeller.setAccount(account);
+                                account.connection.sendPacket(new Gson().toJson(auctionMessageSeller));
+                            }
+                            if (account.getAuthToken() == bidMessageMax.getText().getKey()) {
+                                String cardName = auctionMessage.getCardData().split("\\n")[0];
+                                for (Hero hero : Hero.getHeroes()) {
+                                    if (hero.getName().equals(cardName)) {
+                                        Hero hero1 = hero.duplicate();
+                                        account.getCollection().getHeroes().add(hero1);
+                                        return;
+                                    }
+                                }
+                                for (Spell spell : Spell.getSpells()) {
+                                    if (spell.getName().equals(cardName)) {
+                                        Spell spell1 = spell.duplicate();
+                                        account.getCollection().getSpells().add(spell1);
+                                        return;
+                                    }
+                                }
+                                for (Minion minion : Minion.getMinions()) {
+                                    if (minion.getName().equals(cardName)) {
+                                        Minion minion1 = minion.duplicate();
+                                        account.getCollection().getMinions().add(minion1);
+                                        return;
+                                    }
+                                }
+                                for (UsableItem usableItem : UsableItem.getUsableItems()) {
+                                    if (usableItem.getName().equals(cardName)) {
+                                        UsableItem usableItem1 = usableItem.duplicate();
+                                        account.getCollection().getUsableItems().add(usableItem1);
+                                        return;
+                                    }
+                                }
+                                long time = new Date().getTime();
+                                while (new Date().getTime() - time < 1000) ;
+                                account.setMoney(account.getMoney() - max);
+                                auctionMessageBuyer.setAccount(account);
+
+                                account.connection.sendPacket(new Gson().toJson(auctionMessageBuyer));
+
                             }
                         }
                     }).start();

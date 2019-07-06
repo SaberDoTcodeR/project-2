@@ -1,6 +1,9 @@
 package DuelystServer;
 
+import DuelystServer.View.View;
 import DuelystServer.messages.ShopMessage;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,15 +13,37 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class Server {
+public class Server extends Application {
 
     private static ArrayList<Connection> connections = new ArrayList<>();
+    public static Stage primaryStage1;
+    public static void main(String[] args){
+        launch(args);
+    }
 
-    public static void main(String[] args) throws IOException {
+    private static int getPort(String port) {
+        try {
+            return Integer.parseInt(port);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    public static ArrayList<Connection> getConnections() {
+        return connections;
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
         ShopMessage.setNumberOfCardsInShop();
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/DuelystServer/config.properties"));
+            primaryStage1 = primaryStage;
+            primaryStage1.setFullScreen(true);
+            primaryStage1.setResizable(false);
+            View.makeShopMenu();
+            primaryStage1.show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -32,27 +57,18 @@ public class Server {
         } catch (IOException e) {
             serverSocket = new ServerSocket(defaultPort);
         }
-        while (true) {
-            try {
-                Socket socket = serverSocket.accept();
-                System.out.println("connection created");
-                Connection connection = new Connection(socket);
-                connections.add(connection);
-            } catch (IOException e) {
-                e.printStackTrace();
+        ServerSocket finalServerSocket = serverSocket;
+        new Thread(() ->{
+            while (true) {
+                try {
+                    Socket socket = finalServerSocket.accept();
+                    System.out.println("connection created");
+                    Connection connection = new Connection(socket);
+                    connections.add(connection);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        }
-    }
-
-    private static int getPort(String port) {
-        try {
-            return Integer.parseInt(port);
-        } catch (Exception e) {
-            return 0;
-        }
-    }
-
-    public static ArrayList<Connection> getConnections() {
-        return connections;
+        }).start();
     }
 }

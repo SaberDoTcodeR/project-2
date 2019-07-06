@@ -463,77 +463,71 @@ public class ShopController {
                             CustomHero customHero = new CustomHero(customMessage.getName(), customMessage.getAp()
                                     , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                     new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getCoolDownTime(), customMessage.getMana());
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    VBox vBox1 = new VBox(5);
-                                    vBox1.setPrefWidth(300);
-                                    vBox1.setId("boxNotBoughtStyle");
-                                    heroesBought.add(false);
-                                    CheckBox checkBox = new CheckBox();
-                                    checkBox.setAlignment(Pos.CENTER);
-                                    checkBox.setPadding(new Insets(0, 30, 30, 30));
-                                    checkBox.setOnMouseClicked(event -> {
-                                        if (checkBox.isSelected()) {
-                                            vBox1.setId("boxPendingBoughtStyle");
-                                        } else {
-                                            if (Account.getLoginAccount().getCollection().getHeroes().contains(customMessage.getName()))
-                                                vBox1.setId("boxBoughtStyle");
-                                            else
-                                                vBox1.setId("boxNotBoughtStyle");
-                                        }
-                                    });
-                                    ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
-                                    imageView.setFitWidth(200.0);
-                                    imageView.setFitHeight(150.0);
-                                    imageView.setPreserveRatio(true);
-                                    Label label = new Label();
-                                    label.setText(customMessage.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
-                                    label.setWrapText(true);
-                                    label.setPadding(new Insets(0, 0, 0, 7));
-                                    vBox1.getChildren().addAll(checkBox, imageView, label);
-                                    heroBoxes.add(vBox1);
-                                    createdHeroes.add(vBox1);
-                                    ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
-                                }
+                            Platform.runLater(() -> {
+                                VBox vBox1 = new VBox(5);
+                                vBox1.setPrefWidth(300);
+                                vBox1.setId("boxNotBoughtStyle");
+                                heroesBought.add(false);
+                                CheckBox checkBox = new CheckBox();
+                                checkBox.setAlignment(Pos.CENTER);
+                                checkBox.setPadding(new Insets(0, 30, 30, 30));
+                                checkBox.setOnMouseClicked(event -> {
+                                    if (checkBox.isSelected()) {
+                                        vBox1.setId("boxPendingBoughtStyle");
+                                    } else {
+                                        if (Account.getLoginAccount().getCollection().getHeroes().contains(customMessage.getName()))
+                                            vBox1.setId("boxBoughtStyle");
+                                        else
+                                            vBox1.setId("boxNotBoughtStyle");
+                                    }
+                                });
+                                ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+                                imageView.setFitWidth(200.0);
+                                imageView.setFitHeight(150.0);
+                                imageView.setPreserveRatio(true);
+                                Label label = new Label();
+                                label.setText(customMessage.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
+                                label.setWrapText(true);
+                                label.setPadding(new Insets(0, 0, 0, 7));
+                                vBox1.getChildren().addAll(checkBox, imageView, label);
+                                heroBoxes.add(vBox1);
+                                createdHeroes.add(vBox1);
+                                ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
                             });
                         } else {
                             CustomMinion customMinion = new CustomMinion(customMessage.getName(), customMessage.getAp()
                                     , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                     new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getMana(), customMessage.getActiveTime());
-                           Platform.runLater(new Runnable() {
-                               @Override
-                               public void run() {
-                                   VBox vBox1 = new VBox(6);
-                                   vBox1.setPrefWidth(300);
-                                   vBox1.setId("boxNotBoughtStyle");
-                                   minionsBought.add(false);
-                                   CheckBox checkBox = new CheckBox();
-                                   checkBox.setAlignment(Pos.CENTER);
-                                   checkBox.setPadding(new Insets(0, 30, 30, 30));
-                                   checkBox.setOnMouseClicked(event -> {
-                                       if (checkBox.isSelected()) {
-                                           vBox1.setId("boxPendingBoughtStyle");
-                                       } else {
-                                           if (Account.getLoginAccount().getCollection().getMinions().contains(customMessage.getName()))
-                                               vBox1.setId("boxBoughtStyle");
-                                           else
-                                               vBox1.setId("boxNotBoughtStyle");
-                                       }
-                                   });
-                                   ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
-                                   imageView.setFitWidth(200.0);
-                                   imageView.setFitHeight(150.0);
-                                   imageView.setPreserveRatio(true);
-                                   Label label1 = new Label();
-                                   label1.setText(customMessage.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
-                                   label1.setWrapText(true);
-                                   label1.setPadding(new Insets(0, 0, 0, 8));
-                                   vBox1.getChildren().addAll(checkBox, imageView, label1);
-                                   minionBoxes.add(vBox1);
-                                   createdMinions.add(vBox1);
-                                   ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
-                               }
+                           Platform.runLater(() -> {
+                               VBox vBox1 = new VBox(6);
+                               vBox1.setPrefWidth(300);
+                               vBox1.setId("boxNotBoughtStyle");
+                               minionsBought.add(false);
+                               CheckBox checkBox = new CheckBox();
+                               checkBox.setAlignment(Pos.CENTER);
+                               checkBox.setPadding(new Insets(0, 30, 30, 30));
+                               checkBox.setOnMouseClicked(event -> {
+                                   if (checkBox.isSelected()) {
+                                       vBox1.setId("boxPendingBoughtStyle");
+                                   } else {
+                                       if (Account.getLoginAccount().getCollection().getMinions().contains(customMessage.getName()))
+                                           vBox1.setId("boxBoughtStyle");
+                                       else
+                                           vBox1.setId("boxNotBoughtStyle");
+                                   }
+                               });
+                               ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
+                               imageView.setFitWidth(200.0);
+                               imageView.setFitHeight(150.0);
+                               imageView.setPreserveRatio(true);
+                               Label label1 = new Label();
+                               label1.setText(customMessage.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
+                               label1.setWrapText(true);
+                               label1.setPadding(new Insets(0, 0, 0, 8));
+                               vBox1.getChildren().addAll(checkBox, imageView, label1);
+                               minionBoxes.add(vBox1);
+                               createdMinions.add(vBox1);
+                               ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
                            });
                         }
                     }
@@ -615,8 +609,8 @@ public class ShopController {
                                         ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo + "\navailable from this : " + initializeMessage.getSpellInShop().get(i));
                                 ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
                             }
-                        }reBorderAll();
-
+                        }
+                        reBorderAll();
                     } else {
                         ShopInitializeMessage initializeMessage2 = gson.fromJson(str, ShopInitializeMessage.class);
                         int count = 0;
@@ -958,6 +952,7 @@ public class ShopController {
                             vBox1.getChildren().addAll(checkBox, imageView, label1);
                             heroBoxes.add(vBox1);
                             createdHeroes.add(vBox1);
+                            System.out.println(heroes.getContent());
                             ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
                             Gson gson = new Gson();
                             CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
@@ -1075,12 +1070,9 @@ public class ShopController {
         str = str.substring(0, str.indexOf("\navailable from this : "));
         str += "\navailable from this : " + kindOfCardInShop.get(count);
         final String x = str;
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                ((Label) (vBox.getChildren().get(2))).setText(x);
-                ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
-            }
+        Platform.runLater(() -> {
+            ((Label) (vBox.getChildren().get(2))).setText(x);
+            ((CheckBox) vBox.getChildren().get(0)).setSelected(false);
         });
     }
 
