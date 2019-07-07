@@ -1,12 +1,17 @@
 package DuelystServer.Controller;
 
+import DuelystServer.Connection;
+import DuelystServer.Server;
 import DuelystServer.messages.CustomMessage;
 import DuelystServer.messages.ShopMessage;
 import DuelystServer.model.Card.Card;
+import DuelystServer.model.Card.Hero.CustomHero;
 import DuelystServer.model.Card.Hero.Hero;
+import DuelystServer.model.Card.Minion.CustomMinion;
 import DuelystServer.model.Card.Minion.Minion;
 import DuelystServer.model.Card.Spell.Spell;
 import DuelystServer.model.Item.UsableItem.UsableItem;
+import com.google.gson.Gson;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
@@ -27,9 +32,12 @@ import java.util.ArrayList;
 public class ShopController {
     public static AnchorPane anchorPane;
     private static ShopController shopController;
-    public static ShopController getInstance(){
+    public Button button5;
+
+    public static ShopController getInstance() {
         return shopController;
     }
+
     public static ArrayList<VBox> createdHeroes = new ArrayList<>();
     public static ArrayList<VBox> createdMinions = new ArrayList<>();
     public static ArrayList<VBox> createdSpells = new ArrayList<>();
@@ -271,8 +279,9 @@ public class ShopController {
             }
         }
     }
-    public void createCard(CustomMessage customMessage, Card card){
-        if (customMessage.isType()){
+
+    public void createCard(CustomMessage customMessage, Card card) {
+        if (customMessage.isType()) {
             VBox vBox1 = new VBox(5);
             vBox1.setPrefWidth(300);
             vBox1.setId("boxNotBoughtStyle");
@@ -290,7 +299,7 @@ public class ShopController {
             vBox1.getChildren().addAll(checkBox, imageView, label1);
             heroBoxes.add(vBox1);
             createdHeroes.add(vBox1);
-            Platform.runLater(()->{
+            Platform.runLater(() -> {
                 ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
             });
         } else {
@@ -311,12 +320,13 @@ public class ShopController {
             vBox1.getChildren().addAll(checkBox, imageView, label1);
             minionBoxes.add(vBox1);
             createdMinions.add(vBox1);
-            Platform.runLater(()->{
+            Platform.runLater(() -> {
                 ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
             });
         }
     }
-    public void updateShop(){
+
+    public void updateShop() {
         for (int i = 0; i < heroBoxes.size(); i++) {
             String str = ((Label) (heroBoxes.get(i).getChildren().get(2))).getText();
             str = str.substring(0, str.indexOf("\navailable from this : "));
@@ -429,5 +439,149 @@ public class ShopController {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             showItems();
         }
+    }
+
+    public void createBtnActFocus() {
+        button5.requestFocus();
+    }
+
+    public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            createBtnAct();
+        }
+    }
+
+    @FXML
+    private void createBtnAct() {
+        BoxBlur blur = new BoxBlur(5, 5, 10);
+        JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+        JFXButton jfxButton = new JFXButton("Create Card");
+        JFXTextField jfxTextField = new JFXTextField();
+        jfxTextField.setPromptText("Name...");
+        jfxTextField.setId("text");
+        jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.4);");
+        JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+        jfxButton.getStyleClass().add("dialog-button");
+        jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> gridPane.setEffect(null));
+        JFXComboBox<String> typeBox = new JFXComboBox<>();
+        typeBox.getItems().addAll("Hero", "Minion", "Spell");
+        typeBox.setPromptText("Choose Type Of Card");
+        JFXTextField ap = new JFXTextField();
+        ap.setPromptText("AP...");
+        ap.setId("text");
+        JFXTextField hp = new JFXTextField();
+        hp.setPromptText("HP...");
+        hp.setId("text");
+        JFXTextField costOfCard = new JFXTextField();
+        costOfCard.setPromptText("Cost Of Card...");
+        costOfCard.setId("text");
+        JFXTextField coolDown = new JFXTextField();
+        coolDown.setPromptText("CoolDown Time...");
+        coolDown.setId("text");
+        JFXTextField activeTime = new JFXTextField();
+        activeTime.setPromptText("Active Time...");
+        activeTime.setId("text");
+        JFXTextField range = new JFXTextField();
+        range.setPromptText("Range...");
+        range.setId("text");
+        JFXComboBox<String> typeRangeBox = new JFXComboBox<>();
+        typeRangeBox.setPromptText("Choose Type Of Attack");
+        typeRangeBox.getItems().addAll("Melee", "Hybrid", "Ranged");
+        Label label = new Label("Make Your Ideal Card");
+        label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(label, jfxTextField, typeBox, costOfCard);
+        typeBox.setOnAction(event -> {
+            if (typeBox.getValue().equals("Hero")) {
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+                vBox.getChildren().addAll(ap, hp, typeRangeBox, range, coolDown);
+            } else if (typeBox.getValue().equals("Minion")) {
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+                vBox.getChildren().addAll(ap, hp, typeRangeBox, range, activeTime);
+            } else {
+                vBox.getChildren().removeAll(ap, hp, typeRangeBox, range, coolDown, activeTime);
+            }
+        });
+        jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                    int typeOfRange;
+                    if (Card.getCard(jfxTextField.getText()) == null) {
+                        if (typeRangeBox.getValue().equals("Melee")) {
+                            typeOfRange = 0;
+                        } else if (typeRangeBox.getValue().equals("Hybrid")) {
+                            typeOfRange = 2;
+                        } else {
+                            typeOfRange = 1;
+                        }
+                        if (typeBox.getValue().equals("Hero")) {
+                            CustomHero customHero = new CustomHero(jfxTextField.getText(), Integer.parseInt(ap.getText())
+                                    , Integer.parseInt(hp.getText()), Integer.parseInt(costOfCard.getText()), typeOfRange, Integer.parseInt(range.getText()),
+                                    Integer.parseInt(coolDown.getText()), 1);
+                            VBox vBox1 = new VBox(5);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label1 = new Label();
+                            label1.setText(jfxTextField.getText() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
+                            label1.setWrapText(true);
+                            label1.setPadding(new Insets(0, 0, 0, 7));
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            heroBoxes.add(vBox1);
+                            createdHeroes.add(vBox1);
+                            ShopMessage.getNumberOfHeroesInShop().add(5);
+                            ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+                            Gson gson = new Gson();
+                            CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
+                                    1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
+                                    Integer.parseInt(coolDown.getText()), 0, true);
+                            for (Connection connection : Server.getConnections()) {
+                                connection.sendPacket(gson.toJson(customMessage));
+                            }
+                        } else if (typeBox.getValue().equals("Minion")) {
+                            CustomMinion customMinion = new CustomMinion(jfxTextField.getText(), Integer.parseInt(ap.getText())
+                                    , Integer.parseInt(hp.getText()), Integer.parseInt(costOfCard.getText()), typeOfRange, Integer.parseInt(range.getText()),
+                                    1, Integer.parseInt(activeTime.getText()));
+                            VBox vBox1 = new VBox(6);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label1 = new Label();
+                            label1.setText(jfxTextField.getText() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
+                            label1.setWrapText(true);
+                            label1.setPadding(new Insets(0, 0, 0, 8));
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            minionBoxes.add(vBox1);
+                            createdMinions.add(vBox1);
+                            ShopMessage.getNumberOfMinionsInShop().add(5);
+                            ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+                            Gson gson = new Gson();
+                            CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
+                                    1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
+                                    0, Integer.parseInt(activeTime.getText()), false);
+                            for (Connection connection : Server.getConnections()) {
+                                connection.sendPacket(gson.toJson(customMessage));
+                            }
+                        } else if (typeBox.getValue().equals("Spell")) {
+                            //nothing at moment
+                        }
+                        jfxDialog.close();
+                    } else jfxDialog.close();
+                }
+        );
+        jfxDialogLayout.getBody().add(vBox);
+        jfxDialogLayout.setActions(jfxButton);
+        jfxDialog.show();
+        gridPane.setEffect(blur);
     }
 }

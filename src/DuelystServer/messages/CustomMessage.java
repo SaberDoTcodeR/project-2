@@ -13,6 +13,19 @@ public class CustomMessage {
     private int activeTime;
     private boolean type;
 
+    public CustomMessage(String name, int ap, int hp, int mana, int cost, int range, int typeOfRange, int coolDownTime, int activeTime, boolean type) {
+        setActiveTime(activeTime);
+        setAp(ap);
+        setCoolDownTime(coolDownTime);
+        setCost(cost);
+        setHp(hp);
+        setName(name);
+        setMana(mana);
+        setRange(range);
+        setType(type);
+        setTypeOfRange(typeOfRange);
+    }
+
     public int getMessageId() {
         return messageId;
     }

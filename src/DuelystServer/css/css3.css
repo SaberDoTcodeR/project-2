@@ -16,7 +16,6 @@
 
 .scroll-pane {
     -fx-background-color: transparent;
-
 }
 
 .button {
@@ -58,23 +57,7 @@
 }
 
 #button5:focused {
-    -fx-graphic: url("buyBlack.png");
-}
-
-#button6:focused {
-    -fx-graphic: url("sellBlack.png");
-}
-
-#button7:focused {
-    -fx-graphic: url("mainMenuBlack.png");
-}
-
-#button8:focused {
     -fx-graphic: url("createBlack.png");
-}
-
-#buttonSearch:focused {
-    -fx-graphic: url("searchBlack.png");
 }
 
 .button:pressed {
@@ -83,12 +66,10 @@
     -fx-text-fill: black;
 }
 
-
 .label {
     -fx-text-fill: #ffffff;
     -fx-font-size: 12pt;
     -fx-font-family: Crushed;
-
 }
 
 .dialog-button {
@@ -182,7 +163,6 @@
     -fx-border-color: rgba(0, 0, 0, 0.4);
     -fx-background-radius: 5 5 5 5;
     -fx-border-radius: 5 5 5 5;
-
 }
 
 .scroll-bar:horizontal .thumb,
@@ -190,7 +170,6 @@
     -fx-background-color: derive(black, 90.0%);
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 5 5 5 5;
-
 }
 
 .scroll-bar:horizontal .thumb:hover,
@@ -205,5 +184,4 @@
     -fx-background-color: derive(#2a292c, 10.0%);
     -fx-background-insets: 2.0, 0.0, 0.0;
     -fx-background-radius: 5 5 5 5;
-
 }
