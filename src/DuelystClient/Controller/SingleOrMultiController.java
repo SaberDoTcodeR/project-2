@@ -19,6 +19,7 @@ import javafx.util.Pair;
 import org.w3c.dom.Text;
 
 public class SingleOrMultiController {
+    public static boolean singleOrMulti = true;
     @FXML
     public Button singleGameButton;
     @FXML
@@ -56,11 +57,13 @@ public class SingleOrMultiController {
     }
 
     public void singleGameBtnAct() {
+
         View.makeModeMenuMenu();
     }
 
     public void multiGameBtnAct() {
-
+        singleOrMulti = false;
+        View.makeModeMenuMenu();
     }
 
     public void mainMenuAct() {

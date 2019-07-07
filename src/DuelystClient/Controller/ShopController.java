@@ -32,6 +32,12 @@ import javafx.scene.layout.*;
 import java.util.ArrayList;
 
 public class ShopController {
+    private static ShopController shopController;
+
+    public static ShopController getInstance() {
+        return shopController;
+    }
+
     public ArrayList<Boolean> heroesBought = new ArrayList<>();
     public ArrayList<Boolean> itemsBought = new ArrayList<>();
     public ArrayList<Boolean> minionsBought = new ArrayList<>();
@@ -326,6 +332,7 @@ public class ShopController {
     private CheckBox minion40;
 
     public void initialize() {
+        shopController = this;
         heroBoxes.add(hero1Box);
         heroBoxes.add(hero2Box);
         heroBoxes.add(hero3Box);
@@ -450,193 +457,6 @@ public class ShopController {
                 false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(),
                 "ShopInitializeMessage", Account.getLoginAccount().getAuthToken());
         Client.connectionToServer.sendPacket(gson.toJson(shopInitializeMessage));
-        new Thread(() -> {
-            boolean first = true;
-            while (true) {
-                String str = null;
-                while (str == null)
-                    str = (String) Client.connectionToServer.readPacket();
-                if (str.contains("21432")) {
-                    CustomMessage customMessage = gson.fromJson(str, CustomMessage.class);
-                    if (Card.getCard(customMessage.getName()) == null) {
-                        if (customMessage.isType()) {
-                            CustomHero customHero = new CustomHero(customMessage.getName(), customMessage.getAp()
-                                    , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                    new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getCoolDownTime(), customMessage.getMana());
-                            Platform.runLater(() -> {
-                                VBox vBox1 = new VBox(5);
-                                vBox1.setPrefWidth(300);
-                                vBox1.setId("boxNotBoughtStyle");
-                                heroesBought.add(false);
-                                CheckBox checkBox = new CheckBox();
-                                checkBox.setAlignment(Pos.CENTER);
-                                checkBox.setPadding(new Insets(0, 30, 30, 30));
-                                checkBox.setOnMouseClicked(event -> {
-                                    if (checkBox.isSelected()) {
-                                        vBox1.setId("boxPendingBoughtStyle");
-                                    } else {
-                                        if (Account.getLoginAccount().getCollection().getHeroes().contains(customMessage.getName()))
-                                            vBox1.setId("boxBoughtStyle");
-                                        else
-                                            vBox1.setId("boxNotBoughtStyle");
-                                    }
-                                });
-                                ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
-                                imageView.setFitWidth(200.0);
-                                imageView.setFitHeight(150.0);
-                                imageView.setPreserveRatio(true);
-                                Label label = new Label();
-                                label.setText(customMessage.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
-                                label.setWrapText(true);
-                                label.setPadding(new Insets(0, 0, 0, 7));
-                                vBox1.getChildren().addAll(checkBox, imageView, label);
-                                heroBoxes.add(vBox1);
-                                createdHeroes.add(vBox1);
-                                ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
-                            });
-                        } else {
-                            CustomMinion customMinion = new CustomMinion(customMessage.getName(), customMessage.getAp()
-                                    , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
-                                    new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getMana(), customMessage.getActiveTime());
-                            Platform.runLater(() -> {
-                                VBox vBox1 = new VBox(6);
-                                vBox1.setPrefWidth(300);
-                                vBox1.setId("boxNotBoughtStyle");
-                                minionsBought.add(false);
-                                CheckBox checkBox = new CheckBox();
-                                checkBox.setAlignment(Pos.CENTER);
-                                checkBox.setPadding(new Insets(0, 30, 30, 30));
-                                checkBox.setOnMouseClicked(event -> {
-                                    if (checkBox.isSelected()) {
-                                        vBox1.setId("boxPendingBoughtStyle");
-                                    } else {
-                                        if (Account.getLoginAccount().getCollection().getMinions().contains(customMessage.getName()))
-                                            vBox1.setId("boxBoughtStyle");
-                                        else
-                                            vBox1.setId("boxNotBoughtStyle");
-                                    }
-                                });
-                                ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
-                                imageView.setFitWidth(200.0);
-                                imageView.setFitHeight(150.0);
-                                imageView.setPreserveRatio(true);
-                                Label label1 = new Label();
-                                label1.setText(customMessage.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
-                                label1.setWrapText(true);
-                                label1.setPadding(new Insets(0, 0, 0, 8));
-                                vBox1.getChildren().addAll(checkBox, imageView, label1);
-                                minionBoxes.add(vBox1);
-                                createdMinions.add(vBox1);
-                                ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
-                            });
-                        }
-                    }
-                }
-                if (str.contains("43123")) {
-                    ShopMessage shopMessage1 = gson.fromJson(str, ShopMessage.class);
-                    if (!shopMessage1.getNotOwnedCard().isEmpty()) {
-                        String errorText = "";
-                        errorText = errorOfNotOwnedCard(shopMessage1, errorText);
-                        String finalErrorText = errorText;
-                        Platform.runLater(() -> showDialog(finalErrorText));
-                    }
-                    updateString(shopMessage1);
-                }
-                System.out.println(str);
-                if (str.contains("64532")) {
-                    System.out.println("here");
-                    ShopMessage shopMessage1 = gson.fromJson(str, ShopMessage.class);
-                    if (!shopMessage1.getNotEnoughMoney().isEmpty() ||
-                            !shopMessage1.getAlreadyHaveThisCard().isEmpty() ||
-                            !shopMessage1.getNotAvailableCard().isEmpty()) {
-                        String errorText = "";
-                        errorText = errorOfNotAvailableCard(shopMessage1, errorText);
-                        errorText = errorOfNotEnoughMoney(shopMessage1, errorText);
-                        errorText = errorOfAlreadyHaveThisCard(shopMessage1, errorText);
-                        String finalErrorText = errorText;
-                        Platform.runLater(() -> showDialog(finalErrorText));
-                    }
-                    updateString(shopMessage1);
-                }
-                if (str.contains("34121")) {
-                    if (first) {
-                        first = false;
-                        ShopInitializeMessage initializeMessage = gson.fromJson(str, ShopInitializeMessage.class);
-                        for (int i = 0; i < heroBoxes.size(); i++) {
-                            if (Account.getLoginAccount().getCollection().hasThisCard
-                                    (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                                heroesBought.set(i, true);
-                            }
-                            if (i < 10) {
-                                String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
-                                ((Label) (heroBoxes.get(i).getChildren().get(2))).setText(
-                                        ((Label) (heroBoxes.get(i).getChildren().get(2))).getText() + "\n" + heroInfo + "\navailable from this : " + initializeMessage.getHeroesInShop().get(i));
-                                ((Label) (heroBoxes.get(i).getChildren().get(2))).setWrapText(true);
-                            }
-                        }
-                        for (int i = 0; i < itemBoxes.size(); i++) {
-                            if (Account.getLoginAccount().getCollection().hasThisCard
-                                    (((Label) (itemBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                                itemsBought.set(i, true);
-                            }
-                            if (i < 11) {
-                                String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
-                                ((Label) (itemBoxes.get(i).getChildren().get(2))).setText(
-                                        ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo + "\navailable from this : " + initializeMessage.getItemsInShop().get(i));
-                                ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
-                            }
-                        }
-                        for (int i = 0; i < minionBoxes.size(); i++) {
-                            if (Account.getLoginAccount().getCollection().hasThisCard
-                                    (((Label) (minionBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                                minionsBought.set(i, true);
-                            }
-                            if (i < 40) {
-                                String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
-                                ((Label) (minionBoxes.get(i).getChildren().get(2))).setText(
-                                        ((Label) (minionBoxes.get(i).getChildren().get(2))).getText() + "\n" + minionInfo + "\navailable from this : " + initializeMessage.getMinionsInShop().get(i));
-                                ((Label) (minionBoxes.get(i).getChildren().get(2))).setWrapText(true);
-                            }
-                        }
-                        for (int i = 0; i < spellBoxes.size(); i++) {
-                            if (Account.getLoginAccount().getCollection().hasThisCard
-                                    (((Label) (spellBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
-                                spellsBought.set(i, true);
-                            }
-                            if (i < 20) {
-                                String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
-                                ((Label) (spellBoxes.get(i).getChildren().get(2))).setText(
-                                        ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo + "\navailable from this : " + initializeMessage.getSpellInShop().get(i));
-                                ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
-                            }
-                        }
-                        reBorderAll();
-                    } else {
-                        ShopInitializeMessage initializeMessage2 = gson.fromJson(str, ShopInitializeMessage.class);
-                        int count = 0;
-                        for (VBox vBox : heroBoxes) {
-                            changeString(count, vBox, initializeMessage2.getHeroesInShop());
-                            count++;
-                        }
-                        count = 0;
-                        for (VBox vBox : minionBoxes) {
-                            changeString(count, vBox, initializeMessage2.getMinionsInShop());
-                            count++;
-                        }
-                        count = 0;
-                        for (VBox vBox : itemBoxes) {
-                            changeString(count, vBox, initializeMessage2.getItemsInShop());
-                            count++;
-                        }
-                        count = 0;
-                        for (VBox vBox : spellBoxes) {
-                            changeString(count, vBox, initializeMessage2.getSpellInShop());
-                            count++;
-                        }
-                    }
-                }
-            }
-        }).start();
 
     }
 
@@ -1099,6 +919,7 @@ public class ShopController {
         Gson gson = new Gson();
         ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken(), false);
         initializeShopMessageSending(gson, shopMessage);
+        System.out.println("buy act finished");
 
     }
 
@@ -1171,6 +992,7 @@ public class ShopController {
             shopMessage.setSpells(string);
             shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
         }
+        System.out.println(gson.toJson(shopMessage)+"hahahah");
         Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
     }
 
@@ -3153,4 +2975,176 @@ public class ShopController {
         }
     }
 
+    public void addCustomHero(CustomMessage customMessage, CustomHero customHero) {
+        Platform.runLater(() -> {
+            VBox vBox1 = new VBox(5);
+            vBox1.setPrefWidth(300);
+            vBox1.setId("boxNotBoughtStyle");
+            heroesBought.add(false);
+            CheckBox checkBox = new CheckBox();
+            checkBox.setAlignment(Pos.CENTER);
+            checkBox.setPadding(new Insets(0, 30, 30, 30));
+            checkBox.setOnMouseClicked(event -> {
+                if (checkBox.isSelected()) {
+                    vBox1.setId("boxPendingBoughtStyle");
+                } else {
+                    if (Account.getLoginAccount().getCollection().getHeroes().contains(customMessage.getName()))
+                        vBox1.setId("boxBoughtStyle");
+                    else
+                        vBox1.setId("boxNotBoughtStyle");
+                }
+            });
+            ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+            imageView.setFitWidth(200.0);
+            imageView.setFitHeight(150.0);
+            imageView.setPreserveRatio(true);
+            Label label = new Label();
+            label.setText(customMessage.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
+            label.setWrapText(true);
+            label.setPadding(new Insets(0, 0, 0, 7));
+            vBox1.getChildren().addAll(checkBox, imageView, label);
+            heroBoxes.add(vBox1);
+            createdHeroes.add(vBox1);
+            ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+        });
+    }
+
+    public void addCustomMinion(CustomMessage customMessage, CustomMinion customMinion) {
+        Platform.runLater(() -> {
+            VBox vBox1 = new VBox(6);
+            vBox1.setPrefWidth(300);
+            vBox1.setId("boxNotBoughtStyle");
+            minionsBought.add(false);
+            CheckBox checkBox = new CheckBox();
+            checkBox.setAlignment(Pos.CENTER);
+            checkBox.setPadding(new Insets(0, 30, 30, 30));
+            checkBox.setOnMouseClicked(event -> {
+                if (checkBox.isSelected()) {
+                    vBox1.setId("boxPendingBoughtStyle");
+                } else {
+                    if (Account.getLoginAccount().getCollection().getMinions().contains(customMessage.getName()))
+                        vBox1.setId("boxBoughtStyle");
+                    else
+                        vBox1.setId("boxNotBoughtStyle");
+                }
+            });
+            ImageView imageView = new ImageView(new Image("DuelystClient/css/avatar3.jpg"));
+            imageView.setFitWidth(200.0);
+            imageView.setFitHeight(150.0);
+            imageView.setPreserveRatio(true);
+            Label label1 = new Label();
+            label1.setText(customMessage.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
+            label1.setWrapText(true);
+            label1.setPadding(new Insets(0, 0, 0, 8));
+            vBox1.getChildren().addAll(checkBox, imageView, label1);
+            minionBoxes.add(vBox1);
+            createdMinions.add(vBox1);
+            ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
+        });
+    }
+
+    public void errorOfNotOwned(ShopMessage shopMessage1) {
+        if (!shopMessage1.getNotOwnedCard().isEmpty()) {
+            String errorText = "";
+            errorText = errorOfNotOwnedCard(shopMessage1, errorText);
+            String finalErrorText = errorText;
+            Platform.runLater(() -> showDialog(finalErrorText));
+        }
+        updateString(shopMessage1);
+    }
+
+    public void errorOfBuy(ShopMessage shopMessage1) {
+        if (!shopMessage1.getNotEnoughMoney().isEmpty() ||
+                !shopMessage1.getAlreadyHaveThisCard().isEmpty() ||
+                !shopMessage1.getNotAvailableCard().isEmpty()) {
+            String errorText = "";
+            errorText = errorOfNotAvailableCard(shopMessage1, errorText);
+            errorText = errorOfNotEnoughMoney(shopMessage1, errorText);
+            errorText = errorOfAlreadyHaveThisCard(shopMessage1, errorText);
+            String finalErrorText = errorText;
+            Platform.runLater(() -> showDialog(finalErrorText));
+        }
+        updateString(shopMessage1);
+    }
+
+    public void shopFirstInitialize(ShopInitializeMessage initializeMessage) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < heroBoxes.size(); i++) {
+                    if (Account.getLoginAccount().getCollection().hasThisCard
+                            (((Label) (heroBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                        heroesBought.set(i, true);
+                    }
+                    if (i < 10) {
+                        String heroInfo = Hero.getHeroes().get(i).showDetails() + "\nBuy Cost : " + Hero.getHeroes().get(i).getCostOfBuy();
+                        ((Label) (heroBoxes.get(i).getChildren().get(2))).setText(
+                                ((Label) (heroBoxes.get(i).getChildren().get(2))).getText() + "\n" + heroInfo + "\navailable from this : " + initializeMessage.getHeroesInShop().get(i));
+                        ((Label) (heroBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                    }
+                }
+                for (int i = 0; i < itemBoxes.size(); i++) {
+                    if (Account.getLoginAccount().getCollection().hasThisCard
+                            (((Label) (itemBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                        itemsBought.set(i, true);
+                    }
+                    if (i < 11) {
+                        String itemInfo = UsableItem.getUsableItems().get(i).showDetails() + "\nBuy Cost : " + UsableItem.getUsableItems().get(i).getCostOfBuy();
+                        ((Label) (itemBoxes.get(i).getChildren().get(2))).setText(
+                                ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo + "\navailable from this : " + initializeMessage.getItemsInShop().get(i));
+                        ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                    }
+                }
+                for (int i = 0; i < minionBoxes.size(); i++) {
+                    if (Account.getLoginAccount().getCollection().hasThisCard
+                            (((Label) (minionBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                        minionsBought.set(i, true);
+                    }
+                    if (i < 40) {
+                        String minionInfo = Minion.getMinions().get(i).showDetails() + "\nBuy Cost : " + Minion.getMinions().get(i).getCostOfBuy();
+                        ((Label) (minionBoxes.get(i).getChildren().get(2))).setText(
+                                ((Label) (minionBoxes.get(i).getChildren().get(2))).getText() + "\n" + minionInfo + "\navailable from this : " + initializeMessage.getMinionsInShop().get(i));
+                        ((Label) (minionBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                    }
+                }
+                for (int i = 0; i < spellBoxes.size(); i++) {
+                    if (Account.getLoginAccount().getCollection().hasThisCard
+                            (((Label) (spellBoxes.get(i).getChildren().get(2))).getText().split("\\n")[0].replaceAll("\\s", "").toLowerCase())) {
+                        spellsBought.set(i, true);
+                    }
+                    if (i < 20) {
+                        String spellInfo = Spell.getSpells().get(i).showDetails() + "\nBuy Cost : " + Spell.getSpells().get(i).getCostOfBuy();
+                        ((Label) (spellBoxes.get(i).getChildren().get(2))).setText(
+                                ((Label) (spellBoxes.get(i).getChildren().get(2))).getText() + "\n" + spellInfo + "\navailable from this : " + initializeMessage.getSpellInShop().get(i));
+                        ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
+                    }
+                }
+            }
+        });
+
+        reBorderAll();
+    }
+
+    public void shopNotFirstInitialize(ShopInitializeMessage initializeMessage2) {
+        int count = 0;
+        for (VBox vBox : heroBoxes) {
+            changeString(count, vBox, initializeMessage2.getHeroesInShop());
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : minionBoxes) {
+            changeString(count, vBox, initializeMessage2.getMinionsInShop());
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : itemBoxes) {
+            changeString(count, vBox, initializeMessage2.getItemsInShop());
+            count++;
+        }
+        count = 0;
+        for (VBox vBox : spellBoxes) {
+            changeString(count, vBox, initializeMessage2.getSpellInShop());
+            count++;
+        }
+    }
 }

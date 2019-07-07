@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public  class Hero extends Card {
-    private transient static Map<String,Integer> heroesName = new HashMap<>();
+public class Hero extends Card {
+    private transient static Map<String, Integer> heroesName = new HashMap<>();
     private transient static ArrayList<Hero> heroes = new ArrayList<>();
     private int numberOfFlag = 0;
     private int ap;
@@ -96,7 +96,7 @@ public  class Hero extends Card {
         this.ap = ap;
         this.hp = hp;
         heroes.add(this);
-        heroesName.put(this.getName().toLowerCase(),this.getCostOfBuy());
+        heroesName.put(this.getName().toLowerCase(), this.getCostOfBuy());
     }
 
     public Hero(Hero hero) {
@@ -116,7 +116,7 @@ public  class Hero extends Card {
         }
         if (!flag) {
             heroes.add(hero);
-            heroesName.put(hero.getName().toLowerCase(),hero.getCostOfBuy());
+            heroesName.put(hero.getName().toLowerCase(), hero.getCostOfBuy());
         }
     }
 
@@ -152,7 +152,7 @@ public  class Hero extends Card {
         return heroes;
     }
 
-    public static Map<String,Integer> getHeroesName() {
+    public static Map<String, Integer> getHeroesName() {
         return heroesName;
     }
 
@@ -198,6 +198,7 @@ public  class Hero extends Card {
     public void incrementHolyCounter() {
         this.holyCounter++;
     }
+
     public void decrementHolyCounter() {
         this.holyCounter--;
     }
@@ -224,9 +225,10 @@ public  class Hero extends Card {
             this.hp -= unit;
     }
 
-    public void castSpecialPower(Battle battle, Cell cell, Account player){}
+    public void castSpecialPower(Battle battle, Cell cell, Account player) {
+    }
 
-    public String getDesc(){
+    public String getDesc() {
         return null;
     }
 
@@ -236,5 +238,10 @@ public  class Hero extends Card {
 
     public Image getImage() {
         return this.cardImage;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getName().toLowerCase().equals(((Hero) obj).getName().toLowerCase());
     }
 }

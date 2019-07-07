@@ -54,7 +54,7 @@ public class View {
             primaryStage.setScene(scene);
             primaryStage.setFullScreen(true);
             primaryStage.setResizable(false);
-
+            Client.connectionToServer.first=true;
         });
 
     }
@@ -122,7 +122,7 @@ public class View {
 
     public static void makeModeMenuMenu() {
 
-        GridPane root = null;
+        StackPane root = null;
         try {
             root = FXMLLoader.load(MainMenuController.class.getResource("gameModeMenu.fxml"));
         } catch (IOException e) {

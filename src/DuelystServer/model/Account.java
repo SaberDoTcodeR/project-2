@@ -184,9 +184,10 @@ public class Account {
         }
         return null;
     }
+
     public static Account getAccount(long authToken) {
         for (Account account : allUser) {
-            if (account.getAuthToken()==authToken)
+            if (account.getAuthToken() == authToken)
                 return account;
         }
         return null;

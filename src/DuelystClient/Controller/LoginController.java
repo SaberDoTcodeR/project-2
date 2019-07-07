@@ -2,12 +2,8 @@ package DuelystClient.Controller;
 
 import DuelystClient.Client;
 import DuelystClient.Messages.AccountMessage;
+import DuelystClient.Messages.helloMessage;
 import DuelystClient.View.View;
-import DuelystClient.model.Account;
-import DuelystClient.model.Card.Hero.Hero;
-import DuelystClient.model.Card.Minion.Minion;
-import DuelystClient.model.Card.Spell.Spell;
-import DuelystClient.model.Item.UsableItem.UsableItem;
 import com.google.gson.Gson;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,6 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LoginController {
+    private static LoginController loginController;
+
+    public static LoginController getInstance() {
+        return loginController;
+    }
+
     @FXML
     GridPane gridPane;
     @FXML
@@ -32,6 +34,13 @@ public class LoginController {
     TextField userField;
     @FXML
     TextField passField;
+
+    public void initialize() {
+        loginController = this;
+        Gson gson = new Gson();
+        Client.connectionToServer.sendPacket(gson.toJson(new helloMessage()));
+
+    }
 
     public void handleOnKeyPressedExit(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ENTER)) {
@@ -89,30 +98,25 @@ public class LoginController {
         passField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
             Gson gson = new Gson();
-            AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText(), "AccountMessage",0);
+            AccountMessage accountMessage = new AccountMessage(false, userField.getText(), passField.getText(), "AccountMessage", 0);
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
-
-            new Thread(() -> {
-                Object object = null;
-                while (object == null)
-                    object = Client.connectionToServer.readPacket();
-                if (((String) object).contains("WRONG_PASSWORD")) {
-                    passField.getStyleClass().add("wrongPassword");
-                } else if (((String) object).contains("No_SUCH_USER_EXIST")) {
-                    userField.getStyleClass().add("wrongPassword");
-                } else if (((String) object).contains("money")) {
-                    Account.setLoginAccount(gson.fromJson((String) object, Account.class));
-                    View.makeMainMenu();
-                }
-            }).start();
         } else {
             if (userField.getText().equals("")) {
-                userField.getStyleClass().add("wrongPassword");
+                wrongUserStyle();
             }
             if (passField.getText().equals("")) {
-                passField.getStyleClass().add("wrongPassword");
+                wrongPassStyle();
             }
         }
+    }
+
+    public void wrongPassStyle() {
+        passField.getStyleClass().add("wrongPassword");
+    }
+
+    public void wrongUserStyle() {
+        System.out.println("sadsadas");
+        userField.getStyleClass().add("wrongPassword");
     }
 
     public void loginBtnActFocus() {
@@ -138,24 +142,12 @@ public class LoginController {
             Gson gson = new Gson();
             AccountMessage accountMessage = new AccountMessage(true, userField.getText(), passField.getText(), "AccountMessage", 0);
             Client.connectionToServer.sendPacket(gson.toJson(accountMessage));
-
-            new Thread(() -> {
-                Object object = null;
-                while (object == null)
-                    object = Client.connectionToServer.readPacket();
-                if (((String) object).contains("USER_ALREADY_CREATED")) {
-                    userField.getStyleClass().add("wrongPassword");
-                } else if (((String) object).contains("money")) {
-                    Account.setLoginAccount(gson.fromJson((String) object, Account.class));
-                    View.makeMainMenu();
-                }
-            }).start();
         } else {
             if (userField.getText().equals("")) {
-                userField.getStyleClass().add("wrongPassword");
+                wrongUserStyle();
             }
             if (passField.getText().equals("")) {
-                passField.getStyleClass().add("wrongPassword");
+                wrongPassStyle();
             }
         }
     }

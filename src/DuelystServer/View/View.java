@@ -31,7 +31,7 @@ public class View {
             scene.getStylesheets().add(Server.class.getResource("css/css3.css").toExternalForm());
             primaryStage1.setScene(scene);
             primaryStage1.setFullScreen(true);
-            primaryStage1.setResizable(false);
+            primaryStage1.setResizable(true);
 
         });
 

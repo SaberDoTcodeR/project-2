@@ -36,6 +36,12 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class CollectionController {
+    private static CollectionController collectionController;
+
+    public static CollectionController getInstance() {
+        return collectionController;
+    }
+
     public ArrayList<Deck> myDecks = new ArrayList<>();
     public ArrayList<Boolean> heroesBought = new ArrayList<>();
     public ArrayList<Boolean> itemsBought = new ArrayList<>();
@@ -354,22 +360,7 @@ public class CollectionController {
     public Label label = new Label("Max Bet : " + 0);
 
     public void initialize() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String str = null;
-                while (str == null) {
-                    str = (String) Client.connectionToServer.readPacket();
-                }
-                if (str.contains("53645")) {
-                    Gson gson = new Gson();
-                    AuctionStartMessage auctionStartMessage = gson.fromJson(str, AuctionStartMessage.class);
-                    if (Account.getLoginAccount().getAuthToken() != auctionStartMessage.getStarterAuthToken())
-                        showAuctionDialog(auctionStartMessage.getCardData());
-                }
-
-            }
-        }).start();
+        collectionController = this;
         deckList.setOnAction(event -> {
             setCurrentDeck((String) (deckList.getValue()));
             showDeck();
@@ -2857,25 +2848,7 @@ public class CollectionController {
                 auctionStartMessage.setStarterAuthToken(Account.getLoginAccount().getAuthToken());
                 auctionStartMessage.setCardData(((Label) (vBox.getChildren().get(2))).getText());
                 Client.connectionToServer.sendPacket(new Gson().toJson(auctionStartMessage));
-                Thread bid = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while (true) {
-                            String str = null;
-                            while (str == null)
-                                str = (String) Client.connectionToServer.readPacket();
-
-                            if (str.contains("52341")) {
-                                Gson gson = new Gson();
-                                AuctionMessage accountUpdated = gson.fromJson(str, AuctionMessage.class);
-                                Account.setLoginAccount(accountUpdated.getAccount());
-                                View.makeMainMenu();
-                                break;
-                            }
-                        }
-                    }
-                });
-                bid.start();
+                System.out.println(new Gson().toJson(auctionStartMessage)+"send to server");
             }
         }
 
@@ -2925,37 +2898,7 @@ public class CollectionController {
                 Label cardDetailLabel = new Label(cardDetail);
 
                 Label labelTime = new Label();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while (true) {
-                            String str = null;
-                            while (str == null)
-                                str = (String) Client.connectionToServer.readPacket();
 
-                            if (str.contains("53412")) {
-                                Gson gson = new Gson();
-                                BidMessage bidMessage = gson.fromJson(str, BidMessage.class);
-                                final String s = bidMessage.getText().getValue();
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        label.setText("Max Bet : " + s);
-                                    }
-                                });
-                            }
-                            if (str.contains("52341")) {
-                                Gson gson = new Gson();
-                                AuctionMessage accountUpdated = gson.fromJson(str, AuctionMessage.class);
-                                System.out.println(accountUpdated.getAccount().getUserName()+accountUpdated.getAccount().getMoney());
-                                Account.setLoginAccount(accountUpdated.getAccount());
-                                System.out.println("buyer send");
-                                View.makeMainMenu();
-                                break;
-                            }
-                        }
-                    }
-                }).start();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -2994,5 +2937,15 @@ public class CollectionController {
             }
         });
 
+    }
+
+    public void setMaxBet(BidMessage bidMessage) {
+        final String s = bidMessage.getText().getValue();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                label.setText("Max Bet : " + s);
+            }
+        });
     }
 }

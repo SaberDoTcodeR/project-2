@@ -128,6 +128,7 @@ public class ShopMessage extends AccountMessage {
     }
 
     public static void buyAction(Account account, ShopMessage shopMessage, Shop shop) {
+
         int count = 0;
         for (String vBox : shopMessage.getHeroes()) {
             if (numberOfHeroesInShop.get(count) > 0) {

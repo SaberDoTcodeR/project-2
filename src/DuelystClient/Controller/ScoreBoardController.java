@@ -21,6 +21,11 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class ScoreBoardController implements Initializable {
+    private static ScoreBoardController scoreBoardController;
+
+    public static ScoreBoardController getInstance() {
+        return scoreBoardController;
+    }
 
     @FXML
     Button loginMenuButton;
@@ -35,22 +40,15 @@ public class ScoreBoardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        scoreBoardController = this;
         userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
         wins.setCellValueFactory(new PropertyValueFactory<>("wins"));
         onOrOff.setCellValueFactory(new PropertyValueFactory<>("onOrOff"));
         Gson gson = new Gson();
         ScoreBoardMessage sbm = new ScoreBoardMessage(46723);
         Client.connectionToServer.sendPacket(gson.toJson(sbm));
-        Object object = null;
-        while (object == null) {
-            object = Client.connectionToServer.readPacket();
-        }
-        ScoreBoardMessage message = gson.fromJson((String) object, ScoreBoardMessage.class);
-        for (int i = 0; i < message.getAccounts().size(); i++) {
-            message.getAccounts().get(i).setOnOrOff();
-        }
-        Collections.sort(message.getAccounts(),Collections.reverseOrder());
-        tableView.getItems().setAll(FXCollections.observableArrayList(message.getAccounts()));
+
+
     }
 
     public void handleOnKeyPressedLoginMenu(KeyEvent event) {
@@ -69,5 +67,13 @@ public class ScoreBoardController implements Initializable {
 
     public void loginBtnActNotFocus() {
         loginMenuButton.setId("");
+    }
+
+    public void initTable(ScoreBoardMessage message) {
+        for (int i = 0; i < message.getAccounts().size(); i++) {
+            message.getAccounts().get(i).setOnOrOff();
+        }
+        Collections.sort(message.getAccounts(), Collections.reverseOrder());
+        tableView.getItems().setAll(FXCollections.observableArrayList(message.getAccounts()));
     }
 }
