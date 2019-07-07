@@ -992,7 +992,7 @@ public class ShopController {
             shopMessage.setSpells(string);
             shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
         }
-        System.out.println(gson.toJson(shopMessage)+"hahahah");
+        System.out.println(gson.toJson(shopMessage) + "hahahah");
         Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
     }
 
@@ -3119,10 +3119,10 @@ public class ShopController {
                         ((Label) (spellBoxes.get(i).getChildren().get(2))).setWrapText(true);
                     }
                 }
+                reBorderAll();
             }
         });
 
-        reBorderAll();
     }
 
     public void shopNotFirstInitialize(ShopInitializeMessage initializeMessage2) {

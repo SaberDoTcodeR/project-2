@@ -2625,14 +2625,19 @@ public class CollectionController {
     }
 
     public void crossBtnAct() {
-        for (Node ignored : deckBox.getChildren()) {
-            HBox hBox = (HBox) ignored;
-            if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
-                String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
-                Account.getLoginAccount().getCollection().removeFromDeck(cardName, this.currentDeck.getName());
-                deckBox.getChildren().remove(hBox);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Node ignored : deckBox.getChildren()) {
+                    HBox hBox = (HBox) ignored;
+                    if (((CheckBox) hBox.getChildren().get(0)).isSelected()) {
+                        String cardName = ((Label) (hBox.getChildren().get(2))).getText().replaceAll("\\s", "").toLowerCase();
+                        Account.getLoginAccount().getCollection().removeFromDeck(cardName, CollectionController.getInstance().currentDeck.getName());
+                        deckBox.getChildren().remove(hBox);
+                    }
+                }
             }
-        }
+        });
     }
 
     public void handleOnKeyPressedCreate(KeyEvent keyEvent) {
@@ -2848,7 +2853,7 @@ public class CollectionController {
                 auctionStartMessage.setStarterAuthToken(Account.getLoginAccount().getAuthToken());
                 auctionStartMessage.setCardData(((Label) (vBox.getChildren().get(2))).getText());
                 Client.connectionToServer.sendPacket(new Gson().toJson(auctionStartMessage));
-                System.out.println(new Gson().toJson(auctionStartMessage)+"send to server");
+                System.out.println(new Gson().toJson(auctionStartMessage) + "send to server");
             }
         }
 

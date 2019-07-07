@@ -1,12 +1,17 @@
 package DuelystClient.Controller;
 
+import DuelystClient.Client;
+import DuelystClient.Messages.GameRequest;
 import DuelystClient.View.View;
+import DuelystClient.model.Account;
+import com.google.gson.Gson;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.AccessibleAction;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
@@ -16,8 +21,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
+import java.util.Date;
+
 public class GameModeController {
-    public static int MODE=0;// 0 for HeroMode 1 for OneFlag 2 for SeveralFlag
+    private static GameModeController gameModeController;
+
+    public static GameModeController getInstance() {
+        return gameModeController;
+    }
+
+    public static int MODE = 0;// 0 for HeroMode 1 for OneFlag 2 for SeveralFlag
     @FXML
     public Button mode1Button;
     @FXML
@@ -28,6 +41,11 @@ public class GameModeController {
     public Button mainMenuGameButton;
     public StackPane stackPane;
     public GridPane gridPane;
+
+    public void initialize() {
+        if (gameModeController == null)
+            gameModeController = this;
+    }
 
     public void mode1BtnActFocus() {
         mode1Button.requestFocus();
@@ -46,10 +64,17 @@ public class GameModeController {
     }
 
     public void mode1BtnAct() {
-        if(SingleOrMultiController.singleOrMulti)
+        if (SingleOrMultiController.singleOrMulti)
             View.makeBattle();
         else {
-            
+            GameRequest gameRequest = new GameRequest();
+            gameRequest.setAuthToken(Account.getLoginAccount().getAuthToken());
+            gameRequest.setCancel(false);
+            showDialog("WAIT TO FIND SOMEONE TO PLAY :)");
+            long time = new Date().getTime();
+            while (new Date().getTime() - time < 2000) ;
+            Client.connectionToServer.sendPacket(new Gson().toJson(gameRequest));
+
         }
     }
 
@@ -84,25 +109,34 @@ public class GameModeController {
             mode2BtnAct();
         }
     }
+
     public void handleOnKeyPressedMode3(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             MODE = 2;
             mode3BtnAct();
         }
     }
-    private void showDialog(String string) {
+
+    public JFXDialog jfxDialog;
+
+    public void showDialog(String string) {
         Platform.runLater(() -> {
             BoxBlur blur = new BoxBlur(5, 5, 10);
             JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
-            JFXButton jfxButton = new JFXButton("OK");
+            JFXButton jfxButton = new JFXButton("CANCEL");
             jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
-            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
             jfxButton.getStyleClass().add("dialog-button");
             jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+
                         jfxDialog.close();
                     }
             );
             jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                GameRequest gameRequest = new GameRequest();
+                gameRequest.setAuthToken(Account.getLoginAccount().getAuthToken());
+                gameRequest.setCancel(true);
+                Client.connectionToServer.sendPacket(new Gson().toJson(gameRequest));
                 gridPane.setEffect(null);
             });
             Label label = new Label(string);
@@ -111,6 +145,32 @@ public class GameModeController {
             jfxDialogLayout.setActions(jfxButton);
             jfxDialogLayout.setActions(jfxButton);
             jfxDialog.show();
+            gridPane.setEffect(blur);
+        });
+    }
+
+    public void showError(String string) {
+        Platform.runLater(() -> {
+            jfxDialog.close();
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("CANCEL");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog1 = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        jfxDialog1.close();
+                    }
+            );
+            jfxDialog1.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(string);
+            label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+            jfxDialogLayout.setBody(label);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog1.show();
             gridPane.setEffect(blur);
         });
     }

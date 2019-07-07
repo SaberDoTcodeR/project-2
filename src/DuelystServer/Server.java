@@ -3,6 +3,7 @@ package DuelystServer;
 import DuelystServer.Controller.ShopController;
 import DuelystServer.View.View;
 import DuelystServer.messages.ShopMessage;
+import DuelystServer.model.Account;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -11,14 +12,17 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.Queue;
 
 public class Server extends Application {
-
+    public static volatile Queue<Account> gameQueue = new ArrayDeque<>();
     private static ArrayList<Connection> connections = new ArrayList<>();
     public static Stage primaryStage1;
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -59,7 +63,7 @@ public class Server extends Application {
             serverSocket = new ServerSocket(defaultPort);
         }
         ServerSocket finalServerSocket = serverSocket;
-        new Thread(() ->{
+        new Thread(() -> {
             while (true) {
                 try {
                     Socket socket = finalServerSocket.accept();

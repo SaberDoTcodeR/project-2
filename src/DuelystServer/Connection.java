@@ -285,6 +285,40 @@ public class Connection implements Runnable {
                 LogoutMessage logoutMessage = gson.fromJson(str, LogoutMessage.class);
                 Account.getAccount(logoutMessage.getAccount().getUserName()).setOnOff(false);
 
+            } else if (str.contains("72386")) {
+                GameRequest gameRequest = gson.fromJson(str, GameRequest.class);
+                if (gameRequest.isCancel()) {
+                    Server.gameQueue.removeIf(x -> x.getAuthToken() == gameRequest.getAuthToken());
+                } else {
+                    for (Account a : Account.getAllUser()) {
+                        if (a.getAuthToken() == gameRequest.getAuthToken()) {
+                            if (a.getMainDeck()==null||!a.getMainDeck().isValid()) {
+                                GameRequestAns gameRequestAns = new GameRequestAns(true, null);
+                                sendPacket(gson.toJson(gameRequestAns));
+                                continue;
+                            }
+                        }
+                    }
+                    if (Server.gameQueue.isEmpty()) {
+                        for (Account a : Account.getAllUser()) {
+                            if (a.getAuthToken() == gameRequest.getAuthToken()) {
+                                Server.gameQueue.add(a);
+                                System.out.println("ohhh");
+                            }
+                        }
+                    } else {
+                        Account account = Server.gameQueue.poll();
+                        for (Account a : Account.getAllUser()) {
+                            if (a.getAuthToken() == gameRequest.getAuthToken()) {
+                                GameRequestAns gameRequestAns = new GameRequestAns(false, account);
+                                a.connection.sendPacket(gson.toJson(gameRequestAns));
+                                account.connection.sendPacket(gson.toJson(new GameRequestAns(false, a)));
+                                System.out.println("ohhh2");
+                            }
+                        }
+                    }
+                }
+
             }
 
 

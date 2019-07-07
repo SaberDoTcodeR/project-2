@@ -19,6 +19,12 @@ import javafx.util.Pair;
 import org.w3c.dom.Text;
 
 public class SingleOrMultiController {
+    private static SingleOrMultiController singleOrMultiController;
+
+    public static SingleOrMultiController getInstance() {
+        return singleOrMultiController;
+    }
+
     public static boolean singleOrMulti = true;
     @FXML
     public Button singleGameButton;
@@ -30,17 +36,8 @@ public class SingleOrMultiController {
     public JFXTextArea textArea;
 
     public void initialize() {
+        singleOrMultiController = this;
 
-        new Thread(() -> {
-            while (true) {
-                String str = null;
-                while (str == null)
-                    str = (String) Client.connectionToServer.readPacket();
-                if (str.contains("41543")) {
-                    addText(new Gson().fromJson(str, TextMessage.class));
-                }
-            }
-        }).start();
 
     }
 
@@ -103,7 +100,7 @@ public class SingleOrMultiController {
         }
     }
 
-    private void addText(TextMessage textMessage) {
+    public void addText(TextMessage textMessage) {
         textArea.appendText(textMessage.getText().getKey() + ":" + textMessage.getText().getValue() + "\n");
     }
 }

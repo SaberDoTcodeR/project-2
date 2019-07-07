@@ -1,9 +1,6 @@
 package DuelystClient;
 
-import DuelystClient.Controller.CollectionController;
-import DuelystClient.Controller.LoginController;
-import DuelystClient.Controller.ScoreBoardController;
-import DuelystClient.Controller.ShopController;
+import DuelystClient.Controller.*;
 import DuelystClient.Messages.*;
 import DuelystClient.View.View;
 import DuelystClient.model.Account;
@@ -17,8 +14,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.EOFException;
@@ -218,7 +213,27 @@ public class Connection implements Runnable {
                 ScoreBoardController.getInstance().initTable(message);
                 first = true;
 
+            } else if (string.contains("94573")) {
+                GameRequestAns gameRequestAns = gson.fromJson(string, GameRequestAns.class);
+                gameRequestAns.getOpponent();
+                if (gameRequestAns.isFail()) {
+                    GameModeController.getInstance().showError("NO VALID DECK SET AS MAIN DECK:(");
+                } else {
+                    /*
+                    make a battle with player
+                    Account.getLoginAccount()
+                    gameRequestAns.getOpponent();
+
+                     */
+
+
+                }
+
             }
+            if (string.contains("41543")) {
+                SingleOrMultiController.getInstance().addText(new Gson().fromJson(string, TextMessage.class));
+            }
+
         }
 
     }
