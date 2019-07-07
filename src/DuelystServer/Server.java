@@ -1,5 +1,6 @@
 package DuelystServer;
 
+import DuelystServer.Controller.ShopController;
 import DuelystServer.View.View;
 import DuelystServer.messages.ShopMessage;
 import javafx.application.Application;
@@ -64,6 +65,7 @@ public class Server extends Application {
                     Socket socket = finalServerSocket.accept();
                     System.out.println("connection created");
                     Connection connection = new Connection(socket);
+                    ShopController.getInstance().sendMessage(connection);
                     connections.add(connection);
                 } catch (IOException e) {
                     e.printStackTrace();

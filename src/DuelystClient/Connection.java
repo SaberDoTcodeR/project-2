@@ -11,6 +11,10 @@ import DuelystClient.model.Card.Card;
 import DuelystClient.model.Card.Hero.CustomHero;
 import DuelystClient.model.Card.Minion.CustomMinion;
 import com.google.gson.Gson;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -46,7 +50,9 @@ public class Connection implements Runnable {
         }
         new Thread(this).start();
     }
-    public  volatile boolean  first = true;
+
+    public volatile boolean first = true;
+
     @Override
     public void run() {
         running = true;
@@ -99,7 +105,7 @@ public class Connection implements Runnable {
             } else if (string.contains("USER_ALREADY_CREATED")) {
                 LoginController.getInstance().wrongUserStyle();
             } else if (string.contains("53645")) {
-                first=true;
+                first = true;
                 System.out.println("auction started");
                 AuctionStartMessage auctionStartMessage = gson.fromJson(string, AuctionStartMessage.class);
                 if (Account.getLoginAccount().getAuthToken() != auctionStartMessage.getStarterAuthToken())
@@ -112,12 +118,70 @@ public class Connection implements Runnable {
                         CustomHero customHero = new CustomHero(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                 new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getCoolDownTime(), customMessage.getMana());
-                        ShopController.getInstance().addCustomHero(customMessage, customHero);
+                        if (ShopController.getInstance() != null)
+                            ShopController.getInstance().addCustomHero(customMessage, customHero);
+                        else {
+                            VBox vBox1 = new VBox(5);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            checkBox.setOnMouseClicked(event -> {
+                                if (checkBox.isSelected()) {
+                                    vBox1.setId("boxPendingBoughtStyle");
+                                } else {
+                                    if (Account.getLoginAccount().getCollection().getHeroes().contains(customHero.getName()))
+                                        vBox1.setId("boxBoughtStyle");
+                                    else
+                                        vBox1.setId("boxNotBoughtStyle");
+                                }
+                            });
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label1 = new Label();
+                            label1.setText(customHero.getName() + "\n" + customHero.showDetails() + "\nCost Of Buy :" + customHero.getCostOfBuy() + "\navailable from this : " + 5);
+                            label1.setWrapText(true);
+                            label1.setPadding(new Insets(0, 0, 0, 7));
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            ShopController.createdHeroes.add(vBox1);
+                        }
                     } else {
                         CustomMinion customMinion = new CustomMinion(customMessage.getName(), customMessage.getAp()
                                 , customMessage.getHp(), customMessage.getCost(), customMessage.getTypeOfRange(), customMessage.getRange(),
                                 new Image("DuelystClient/css/unit_gifs/boss_andromeda_breathing.gif"), customMessage.getMana(), customMessage.getActiveTime());
-                        ShopController.getInstance().addCustomMinion(customMessage, customMinion);
+                        if (ShopController.getInstance() != null)
+                            ShopController.getInstance().addCustomMinion(customMessage, customMinion);
+                        else {
+                            VBox vBox1 = new VBox(5);
+                            vBox1.setPrefWidth(300);
+                            vBox1.setId("boxNotBoughtStyle");
+                            CheckBox checkBox = new CheckBox();
+                            checkBox.setAlignment(Pos.CENTER);
+                            checkBox.setPadding(new Insets(0, 30, 30, 30));
+                            checkBox.setOnMouseClicked(event -> {
+                                if (checkBox.isSelected()) {
+                                    vBox1.setId("boxPendingBoughtStyle");
+                                } else {
+                                    if (Account.getLoginAccount().getCollection().getHeroes().contains(customMinion.getName()))
+                                        vBox1.setId("boxBoughtStyle");
+                                    else
+                                        vBox1.setId("boxNotBoughtStyle");
+                                }
+                            });
+                            ImageView imageView = new ImageView(new Image("DuelystClient/css/hero.jpg"));
+                            imageView.setFitWidth(200.0);
+                            imageView.setFitHeight(150.0);
+                            imageView.setPreserveRatio(true);
+                            Label label1 = new Label();
+                            label1.setText(customMinion.getName() + "\n" + customMinion.showDetails() + "\nCost Of Buy :" + customMinion.getCostOfBuy() + "\navailable from this : " + 5);
+                            label1.setWrapText(true);
+                            label1.setPadding(new Insets(0, 0, 0, 7));
+                            vBox1.getChildren().addAll(checkBox, imageView, label1);
+                            ShopController.createdMinions.add(vBox1);
+                        }
                     }
                 }
             } else if (string.contains("43123")) {
@@ -142,17 +206,17 @@ public class Connection implements Runnable {
                 AuctionMessage accountUpdated = gson.fromJson(string, AuctionMessage.class);
                 Account.setLoginAccount(accountUpdated.getAccount());
                 System.out.println(Account.getLoginAccount().getCollection().getHeroes().size());
-                first=true;
+                first = true;
                 View.makeMainMenu();
 
             } else if (string.contains("53412")) {
                 BidMessage bidMessage = gson.fromJson(string, BidMessage.class);
                 CollectionController.getInstance().setMaxBet(bidMessage);
-                first=true;
+                first = true;
             } else if (string.contains("46723")) {
                 ScoreBoardMessage message = gson.fromJson(string, ScoreBoardMessage.class);
                 ScoreBoardController.getInstance().initTable(message);
-                first=true;
+                first = true;
 
             }
         }

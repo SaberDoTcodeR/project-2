@@ -38,9 +38,7 @@ public class ShopController {
         return shopController;
     }
 
-    public static ArrayList<VBox> createdHeroes = new ArrayList<>();
-    public static ArrayList<VBox> createdMinions = new ArrayList<>();
-    public static ArrayList<VBox> createdSpells = new ArrayList<>();
+    public static ArrayList<CustomMessage> createdCards = new ArrayList<>();
     @FXML
     public ScrollPane heroes;
     public ScrollPane minions;
@@ -260,24 +258,6 @@ public class ShopController {
                     ((Label) (itemBoxes.get(i).getChildren().get(2))).getText() + "\n" + itemInfo + "\navailable from this : " + ShopMessage.getNumberOfItemsInShop().get(i));
             ((Label) (itemBoxes.get(i).getChildren().get(2))).setWrapText(true);
         }
-        if (heroBoxes.size() == 10 && createdHeroes.size() != 0) {
-            for (int i = 0; i < createdHeroes.size(); i++) {
-                ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(createdHeroes.get(i));
-                heroBoxes.add(createdHeroes.get(i));
-            }
-        }
-        if (minionBoxes.size() == 40 && createdMinions.size() != 0) {
-            for (int i = 0; i < createdMinions.size(); i++) {
-                ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(createdMinions.get(i));
-                minionBoxes.add(createdMinions.get(i));
-            }
-        }
-        if (spellBoxes.size() == 20 && createdSpells.size() != 0) {
-            for (int i = 0; i < createdSpells.size(); i++) {
-                ((HBox) ((AnchorPane) spells.getContent()).getChildren().get(0)).getChildren().add(createdSpells.get(i));
-                spellBoxes.add(createdSpells.get(i));
-            }
-        }
     }
 
     public void createCard(CustomMessage customMessage, Card card) {
@@ -298,7 +278,7 @@ public class ShopController {
             imageView.setPreserveRatio(true);
             vBox1.getChildren().addAll(checkBox, imageView, label1);
             heroBoxes.add(vBox1);
-            createdHeroes.add(vBox1);
+            createdCards.add(customMessage);
             Platform.runLater(() -> {
                 ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
             });
@@ -319,7 +299,7 @@ public class ShopController {
             imageView.setPreserveRatio(true);
             vBox1.getChildren().addAll(checkBox, imageView, label1);
             minionBoxes.add(vBox1);
-            createdMinions.add(vBox1);
+            createdCards.add(customMessage);
             Platform.runLater(() -> {
                 ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
             });
@@ -532,13 +512,13 @@ public class ShopController {
                             label1.setPadding(new Insets(0, 0, 0, 7));
                             vBox1.getChildren().addAll(checkBox, imageView, label1);
                             heroBoxes.add(vBox1);
-                            createdHeroes.add(vBox1);
                             ShopMessage.getNumberOfHeroesInShop().add(5);
                             ((HBox) ((AnchorPane) heroes.getContent()).getChildren().get(0)).getChildren().add(vBox1);
                             Gson gson = new Gson();
                             CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
                                     1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
                                     Integer.parseInt(coolDown.getText()), 0, true);
+                            createdCards.add(customMessage);
                             for (Connection connection : Server.getConnections()) {
                                 connection.sendPacket(gson.toJson(customMessage));
                             }
@@ -562,13 +542,13 @@ public class ShopController {
                             label1.setPadding(new Insets(0, 0, 0, 8));
                             vBox1.getChildren().addAll(checkBox, imageView, label1);
                             minionBoxes.add(vBox1);
-                            createdMinions.add(vBox1);
                             ShopMessage.getNumberOfMinionsInShop().add(5);
                             ((HBox) ((AnchorPane) minions.getContent()).getChildren().get(0)).getChildren().add(vBox1);
                             Gson gson = new Gson();
                             CustomMessage customMessage = new CustomMessage(jfxTextField.getText(), Integer.parseInt(ap.getText()), Integer.parseInt(hp.getText()),
                                     1, Integer.parseInt(costOfCard.getText()), Integer.parseInt(range.getText()), typeOfRange,
                                     0, Integer.parseInt(activeTime.getText()), false);
+                            createdCards.add(customMessage);
                             for (Connection connection : Server.getConnections()) {
                                 connection.sendPacket(gson.toJson(customMessage));
                             }
@@ -583,5 +563,12 @@ public class ShopController {
         jfxDialogLayout.setActions(jfxButton);
         jfxDialog.show();
         gridPane.setEffect(blur);
+    }
+
+    public void sendMessage(Connection connection) {
+        Gson gson = new Gson();
+        for (CustomMessage customMessage : createdCards) {
+            connection.sendPacket(gson.toJson(customMessage));
+        }
     }
 }
