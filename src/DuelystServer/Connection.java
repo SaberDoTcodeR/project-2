@@ -295,7 +295,6 @@ public class Connection implements Runnable {
                             if (a.getMainDeck() == null || !a.getMainDeck().isValid()) {
                                 GameRequestAns gameRequestAns = new GameRequestAns(true, null);
                                 sendPacket(gson.toJson(gameRequestAns));
-                                System.out.println("cancellllll" + a.getUserName());
                                 continue;
                             }
                         }
@@ -352,7 +351,8 @@ public class Connection implements Runnable {
             return inputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             running = false;
-            //Account.getAccount(user).setOnOff(false);
+            if (user != null)
+                Account.getAccount(user).setOnOff(false);
             Server.getConnections().remove(this);
         }
 

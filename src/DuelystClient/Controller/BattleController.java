@@ -29,6 +29,8 @@ import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -42,6 +44,7 @@ import DuelystClient.model.Battle.HeroBattle;
 import DuelystClient.model.Battle.OneFlagBattle;
 import DuelystClient.model.Card.Card;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -394,6 +397,12 @@ public class BattleController {
             label.getStyleClass().add("label3");
             jfxDialogLayout.setBody(label);
             jfxDialogLayout.setActions(jfxButton);
+            String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/error.mp3";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer;
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setVolume(0.3);
+            mediaPlayer.play();
             jfxDialog.show();
             gridPane.setEffect(blur);
         }
@@ -494,7 +503,6 @@ public class BattleController {
 
     public void handleTurn() {
         currentBattle.increamentTurn();
-
         if (currentBattle.getTurn() % 2 == 1) {
             currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
             currentBattle.getSecondPlayer().setMana(currentBattle.getTurn() / 2 + 3);
@@ -577,7 +585,6 @@ public class BattleController {
     }
 
     public void initialize() {
-
         handGifs = new ImageView[5];
         handGifs[0] = gif1;
         handGifs[1] = gif2;

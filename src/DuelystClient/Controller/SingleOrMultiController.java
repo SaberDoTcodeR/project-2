@@ -15,8 +15,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Pair;
 import org.w3c.dom.Text;
+
+import java.io.File;
 
 public class SingleOrMultiController {
     private static SingleOrMultiController singleOrMultiController;
@@ -55,15 +59,33 @@ public class SingleOrMultiController {
 
     public void singleGameBtnAct() {
         singleOrMulti = true;
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         View.makeModeMenuMenu();
     }
 
     public void multiGameBtnAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         singleOrMulti = false;
         View.makeModeMenuMenu();
     }
 
     public void mainMenuAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         View.makeMainMenu();
     }
 

@@ -16,9 +16,12 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -48,6 +51,7 @@ public class MainMenuController {
     }
 
     public void logOutBtnAct() {
+        playSound();
         Gson gson = new Gson();
         LogoutMessage logoutMessage = new LogoutMessage(Account.getLoginAccount(),42568);
         Client.connectionToServer.sendPacket(gson.toJson(logoutMessage));
@@ -55,22 +59,40 @@ public class MainMenuController {
     }
 
     public void startGameAct() {
+        playSound();
         View.makeSingleOrMultiMenu();
     }
 
     public void shopAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         View.makeShopMenu();
     }
 
     public void collectionAct() {
+        playSound();
         View.makeCollectionMenu();
     }
 
     public void recordedMatchAct() {
+        playSound();
+    }
 
+    static void playSound() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
     }
 
     public void saveBtnAct() {
+        playSound();
         Gson gson = new Gson();
         SaveAccountMessage saveAccountMessage = new SaveAccountMessage();
         saveAccountMessage.setAccount(Account.getLoginAccount());
@@ -169,6 +191,4 @@ public class MainMenuController {
             startGame.requestFocus();
         }
     }
-
-
 }

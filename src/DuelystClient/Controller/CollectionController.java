@@ -30,6 +30,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Pair;
 
 import java.io.*;
@@ -2774,6 +2776,12 @@ public class CollectionController {
         label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
         jfxDialogLayout.setBody(label);
         jfxDialogLayout.setActions(jfxButton);
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/error.mp3";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         jfxDialog.show();
         gridPane.setEffect(blur);
     }

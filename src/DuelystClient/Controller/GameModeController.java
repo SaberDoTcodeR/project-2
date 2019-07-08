@@ -11,7 +11,6 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.AccessibleAction;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
@@ -20,7 +19,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.Date;
 
 public class GameModeController {
@@ -65,9 +67,15 @@ public class GameModeController {
     }
 
     public void mode1BtnAct() {
-        if (SingleOrMultiController.singleOrMulti)
+        if (SingleOrMultiController.singleOrMulti) {
+            String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer;
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setVolume(0.3);
+            mediaPlayer.play();
             View.makeBattle();
-        else {
+        } else {
             GameRequest gameRequest = new GameRequest();
             gameRequest.setAuthToken(Account.getLoginAccount().getAuthToken());
             gameRequest.setCancel(false);
@@ -80,11 +88,22 @@ public class GameModeController {
     }
 
     public void mode2BtnAct() {
-
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
     }
 
     public void mode3BtnAct() {
 
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
     }
 
     public void mainMenuAct() {
@@ -145,6 +164,12 @@ public class GameModeController {
             jfxDialogLayout.setBody(label);
             jfxDialogLayout.setActions(jfxButton);
             jfxDialogLayout.setActions(jfxButton);
+            String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/error.mp3";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer;
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setVolume(0.3);
+            mediaPlayer.play();
             jfxDialog.show();
             gridPane.setEffect(blur);
         });

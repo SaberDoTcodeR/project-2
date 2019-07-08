@@ -15,7 +15,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.net.URL;
 import java.util.Collections;
 import java.util.ResourceBundle;
@@ -58,6 +61,12 @@ public class ScoreBoardController implements Initializable {
     }
 
     public void loginAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         View.makeLoginScene();
     }
 

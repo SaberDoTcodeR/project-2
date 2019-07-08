@@ -28,7 +28,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ShopController {
@@ -493,6 +496,12 @@ public class ShopController {
     }
 
     public void searchBtnAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         String card = search.getText();
         for (VBox vBox : heroBoxes) {
             if ((card.equalsIgnoreCase(((Label) (vBox.getChildren().get(2))).getText().split("\\n")[0]
@@ -681,6 +690,12 @@ public class ShopController {
     }
 
     public void createBtnAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         BoxBlur blur = new BoxBlur(5, 5, 10);
         JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
         JFXButton jfxButton = new JFXButton("Create Card");
@@ -831,10 +846,22 @@ public class ShopController {
     }
 
     public void mainMenuAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         View.makeMainMenu();
     }
 
     public void sellBtnAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         Gson gson = new Gson();
         ShopMessage shopMessage = new ShopMessage(true, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken(), true);
         initializeShopMessageSending(gson, shopMessage);
@@ -916,6 +943,12 @@ public class ShopController {
     }
 
     public void buyBtnAct() {
+        String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/button_clicked.wav";
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer;
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.3);
+        mediaPlayer.play();
         Gson gson = new Gson();
         ShopMessage shopMessage = new ShopMessage(false, Account.getLoginAccount().getUserName(), Account.getLoginAccount().getPassWord(), "ShopMessage", heroesBought, minionsBought, spellsBought, itemsBought, Account.getLoginAccount().getAuthToken(), false);
         initializeShopMessageSending(gson, shopMessage);
@@ -992,7 +1025,6 @@ public class ShopController {
             shopMessage.setSpells(string);
             shopMessage.setSpellCheck(((CheckBox) vBox.getChildren().get(0)).isSelected());
         }
-        System.out.println(gson.toJson(shopMessage) + "hahahah");
         Client.connectionToServer.sendPacket(gson.toJson(shopMessage));
     }
 
@@ -1016,6 +1048,12 @@ public class ShopController {
             jfxDialogLayout.setBody(label);
             jfxDialogLayout.setActions(jfxButton);
             jfxDialogLayout.setActions(jfxButton);
+            String musicFile = "out/production/project-2(Phase-3)/DuelystClient/View/erro.mp3";
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer;
+            mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.setVolume(0.3);
+            mediaPlayer.play();
             jfxDialog.show();
             gridPane.setEffect(blur);
         });

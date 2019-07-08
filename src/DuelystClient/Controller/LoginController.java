@@ -11,7 +11,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 public class LoginController {
     private static LoginController loginController;
@@ -89,11 +93,13 @@ public class LoginController {
     }
 
     public void exitGameBtn() {
+        playSound();
         Stage stage = (Stage) exitButton.getScene().getWindow();
         stage.close();
     }
 
     public void loginBtnAct() {
+        playSound();
         userField.getStyleClass().remove("wrongPassword");
         passField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
@@ -135,6 +141,7 @@ public class LoginController {
     }
 
     public void signUpBtnAct() {
+        playSound();
         passField.getStyleClass().remove("wrongPassword");
         userField.getStyleClass().remove("wrongPassword");
         if (!userField.getText().equals("") && !passField.getText().equals("")) {
@@ -152,6 +159,11 @@ public class LoginController {
     }
 
     public void scoreBoardBtn() {
+        playSound();
         View.makeScoreBoardScene();
+    }
+
+    private void playSound() {
+        MainMenuController.playSound();
     }
 }
