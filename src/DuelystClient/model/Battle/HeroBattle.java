@@ -41,11 +41,11 @@ public class HeroBattle extends Battle {
     public HeroBattle(Deck opponentDeck, Deck myDeck, Account player, int reward) {
         super(player, myDeck, opponentDeck);
         this.playWithAI = true;
-        //Account account = new Account(1);
-       /* account.setMainDeck(opponentDeck);
-        this.secondPlayer = account;*/
+        Account account = new Account(1);
+        account.setMainDeck(opponentDeck);
+        this.secondPlayer = account;
         this.setReward(reward);
-            if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
+        if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
             this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
             this.increamentTurn();
             this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size() - 1).cardIdGenerator(this);
@@ -65,12 +65,8 @@ public class HeroBattle extends Battle {
         this.secondPlayer = player2;
         this.playWithAI = false;
         this.setReward(reward);
-        this.getMap().get(2).get(0).getHero().setCardId(player.getUserName() + "_" + this.getMap().get(2).get(0).getHero().getName() + "_" + (1));
-        this.getMap().get(2).get(8).getHero().setCardId(player2.getUserName() + "_" + this.getMap().get(2).get(8).getHero().getName() + "_" + (1));
 
-        this.getSecondPlayerInGameCards().add(this.getMap().get(2).get(8).getHero());
-        this.getFirstPlayerInGameCards().add(this.getMap().get(2).get(0).getHero());
-        if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
+        /*if (this.getMap().get(2).get(8).getCollectibleItem() != null) {
             this.getSecondPlayerCollectibleItem().add(this.getMap().get(2).get(8).getCollectibleItem());
             this.increamentTurn();
             this.getSecondPlayerCollectibleItem().get(this.getSecondPlayerCollectibleItem().size() - 1).cardIdGenerator(this);
@@ -79,10 +75,8 @@ public class HeroBattle extends Battle {
         } else if (this.getMap().get(2).get(0).getCollectibleItem() != null) {
             this.getFirstPlayerCollectibleItem().add(this.getMap().get(2).get(0).getCollectibleItem());
             this.getFirstPlayerCollectibleItem().get(this.getFirstPlayerCollectibleItem().size() - 1).cardIdGenerator(this);
-
-
             this.getMap().get(2).get(0).setCollectibleItem(null);
-        }
+        }*/
     }
 
     public void showDetailedInfo() {

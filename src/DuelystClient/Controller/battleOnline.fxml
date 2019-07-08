@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 <StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="DuelystClient.Controller.BattleController">
+           fx:controller="DuelystClient.Controller.BattleControllerOnline">
     <children>
         <GridPane fx:id="gridPane">
             <columnConstraints>
@@ -32,7 +32,7 @@
             <children>
                 <Label GridPane.columnIndex="2" id="label-account" fx:id="accountInfoOpponent" prefHeight="150.0" prefWidth="500.0">
                     <graphic>
-                        <ImageView style="-fx-alignment: right" fx:id="profileOpponent" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
+                        <ImageView  fx:id="profileOpponent" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true"
                                    preserveRatio="true">
 
                         </ImageView>

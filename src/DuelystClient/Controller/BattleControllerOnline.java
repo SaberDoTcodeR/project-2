@@ -13,6 +13,7 @@ import com.jfoenix.controls.events.JFXDialogEvent;
 import javafx.animation.Animation;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
@@ -45,7 +46,7 @@ import DuelystClient.model.Card.Card;
 import java.util.ArrayList;
 
 
-public class BattleController {
+public class BattleControllerOnline {
     @FXML
     public ImageView image1;
     public ImageView image2;
@@ -488,7 +489,9 @@ public class BattleController {
     }
 
     private void updateProfile() {
+        System.out.println(Account.getLoginAccount().getUserName());
         accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
+        System.out.println(currentBattle.getSecondPlayer().getUserName());
         accountInfoOpponent.setText(currentBattle.getSecondPlayer().getUserName() + "\n" + "MANA :" + currentBattle.getSecondPlayer().getMana());
     }
 
@@ -502,9 +505,8 @@ public class BattleController {
             handleHand();
         }
         if (currentBattle.isPlayWithAI() && currentBattle.getTurn() % 2 == 0) {
-            doCleverThings();
-            updateProfile();
-            endTurn();
+
+
         }
         /*if (currentBattle.getTurn() == 1 && currentBattle.getFirstPlayerDeck().getUsableItem() != null)
             currentBattle.getFirstPlayerDeck().getUsableItem().get(0).applyEffect(currentBattle, null, currentBattle.getFirstPlayer(), -1);
@@ -513,67 +515,27 @@ public class BattleController {
 
     }
 
-    public void doCleverThings() {
-        outer:
-        for (Card card : currentBattle.getSecondPlayerHand().getCards()) {
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
-                    //String str = "insert " + card.getName() + " in (" + (i + 1) + "," + (j + 1) + ")";
-                    if (insertCard(card.getName(), 9 * i + j + 1, true).getMessage().equals("OK")) {
-                        break outer;
-                    }
-                }
-            }
-        }
-        outer:
-        for (Card card : currentBattle.getSecondPlayerInGameCards()) {
-            currentBattle.setSelectedCard(card);
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 9; j++) {
-                    //String str = "move to (" + (i + 1) + "," + (j + 1) + ")";
-                    if (moveSelectedCard(9 * i + j + 1).getMessage().equals("OK")) {
-                        continue outer;
-                    }
-                }
-            }
-        }
-        currentBattle.setSelectedCard(null);
-        /*label3:
-        for (Card card : currentBattle.getSecondPlayerInGameCards()) {
-            currentBattle.setSelectedCard(card);
-            for (Card card1 : currentBattle.getFirstPlayerInGameCards()) {
-                String str = "attack " + card1.getCardId();
-                request.setCommand(str);
-                Command command = request.getMatchedCommand(2 - 1);
-                command.apply(request);
-                if (request.getError() == null) {
-                    hasAttack = true;
-                    System.out.println("Attack performed on " + card1.getCardId());
-                    break label3;
-                }
-            }
-        }
-        if (!hasAttack) {
-            System.out.println("fuuuuuuuuu*k ::::((( I can't attack to any card ...");
-        }*/
-    }
 
-    public void setProfile(Image imagePro,ImageView profile,Label accountInfo) {
-        accountInfo.setText(Account.getLoginAccount().getUserName() + "\n" + "MANA :" + currentBattle.getFirstPlayer().getMana());
-        accountInfo.setGraphicTextGap(10);
-        profile.setImage(imagePro);
-        Rectangle clip = new Rectangle(
-                profile.getFitWidth(), profile.getFitHeight()
-        );
-        clip.setArcWidth(20);
-        clip.setArcHeight(20);
-        profile.setClip(clip);
-        SnapshotParameters parameters = new SnapshotParameters();
-        parameters.setFill(Color.TRANSPARENT);
-        WritableImage image = profile.snapshot(parameters, null);
-        profile.setClip(null);
-        profile.setEffect(new DropShadow(20, Color.BLACK));
-        profile.setImage(image);
+    public void setProfile(Image imagePro, ImageView profile1, Label accountInfo1) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                accountInfo1.setGraphicTextGap(10);
+                profile1.setImage(imagePro);
+                Rectangle clip = new Rectangle(
+                        profile1.getFitWidth(), profile1.getFitHeight()
+                );
+                clip.setArcWidth(20);
+                clip.setArcHeight(20);
+                profile1.setClip(clip);
+                SnapshotParameters parameters = new SnapshotParameters();
+                parameters.setFill(Color.TRANSPARENT);
+                WritableImage image = profile1.snapshot(parameters, null);
+                profile1.setClip(null);
+                profile1.setEffect(new DropShadow(20, Color.BLACK));
+                profile1.setImage(image);
+            }
+        });
     }
 
     public void initialize() {
@@ -635,7 +597,7 @@ public class BattleController {
             case 0: {
                 Account.getLoginAccount().setMainDeck(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1));
                 currentBattle = new HeroBattle(Account.getLoginAccount().getCollection().getStoryModeDeck().get(1).duplicate(),
-                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount(), 500);
+                        Account.getLoginAccount().getMainDeck(), Account.getLoginAccount(), GameModeController.getInstance().opponentAccount, 500);
                 break;
             }
         }
@@ -658,8 +620,8 @@ public class BattleController {
         card5 = currentBattle.getFirstPlayerHand().getCards().get(4);
 
         currentBattle.getFirstPlayer().setMana(currentBattle.getTurn() / 2 + 2);
-        setProfile(Account.getLoginAccount().getAvatarImage(),profile,accountInfo);
-        setProfile(Account.getLoginAccount().getAvatarImage(),profileOpponent,accountInfoOpponent);
+        setProfile(Account.getLoginAccount().getAvatarImage(), profile, accountInfo);
+        setProfile(currentBattle.getSecondPlayer().getAvatarImage(), profileOpponent, accountInfoOpponent);
         updateProfile();
         for (int i = 1; i < 45; i++) {
             rectangles[i].setPrefWidth(KASHI);

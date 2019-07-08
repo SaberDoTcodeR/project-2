@@ -612,60 +612,66 @@ public class CollectionController {
     }
 
     private void reChooseComboBox() {
-        myDecks = Account.getLoginAccount().getCollection().getDecks();
-        for (Object node : deckList.getItems()) {
-            String label = (String) node;
-            if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck().getName())) {
-                if (currentDeck != null && currentDeck.getName().equals(label)) {
+        Platform.runLater(() -> {
+            myDecks = Account.getLoginAccount().getCollection().getDecks();
+            for (Object node : deckList.getItems()) {
+                String label = (String) node;
+                if (Account.getLoginAccount().getMainDeck() != null && label.equals(Account.getLoginAccount().getMainDeck().getName())) {
+                    if (currentDeck != null && currentDeck.getName().equals(label)) {
 
-                    deckList.setValue("*" + label + "*");
+                        deckList.setValue("*" + label + "*");
 
-                    return;
+                        return;
+                    }
+                } else {
+                    if (currentDeck != null && currentDeck.getName().equals(label)) {
+                        deckList.setValue(label);
+                        return;
+                    }
                 }
-            } else {
-                if (currentDeck != null && currentDeck.getName().equals(label)) {
-                    deckList.setValue(label);
-                    return;
-                }
+
+
             }
-
-
-        }
+        });
 
     }
 
     private void showDialog(String promptText, String message) {
-        BoxBlur blur = new BoxBlur(5, 5, 10);
-        JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
-        JFXButton jfxButton = new JFXButton("OK");
-        JFXTextField jfxTextField = new JFXTextField();
-        jfxTextField.setPromptText(promptText);
+        Platform.runLater(() -> {
+            BoxBlur blur = new BoxBlur(5, 5, 10);
+            JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
+            JFXButton jfxButton = new JFXButton("OK");
+            JFXTextField jfxTextField = new JFXTextField();
+            jfxTextField.setPromptText(promptText);
 
-        jfxTextField.setId("text");
-        jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
-        JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
-        jfxButton.getStyleClass().add("dialog-button");
-        jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-                    if (!jfxTextField.getText().equals("") && Account.getLoginAccount().getCollection().findDeck(jfxTextField.getText()) == null) {
-                        createDeck(jfxTextField.getText());
-                        jfxDialog.close();
-                    } else {
-                        jfxTextField.setId("wrongPassword");
+            jfxTextField.setId("text");
+            jfxDialogLayout.setStyle(" -fx-background-color: rgba(0, 0, 0, 0.3);");
+            JFXDialog jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
+            jfxButton.getStyleClass().add("dialog-button");
+            jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
+                        if (!jfxTextField.getText().equals("") && Account.getLoginAccount().getCollection().findDeck(jfxTextField.getText()) == null) {
+                            createDeck(jfxTextField.getText());
+                            jfxDialog.close();
+                        } else {
+                            jfxTextField.setId("wrongPassword");
+                        }
+
                     }
-
-                }
-        );
-        jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
-            gridPane.setEffect(null);
+            );
+            jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
+                gridPane.setEffect(null);
+            });
+            Label label = new Label(message);
+            label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
+            VBox vBox = new VBox();
+            vBox.getChildren().addAll(label, jfxTextField);
+            jfxDialogLayout.getBody().add(vBox);
+            jfxDialogLayout.setActions(jfxButton);
+            jfxDialog.show();
+            gridPane.setEffect(blur);
         });
-        Label label = new Label(message);
-        label.setStyle("-fx-font-size: 20px; -fx-text-fill: black");
-        VBox vBox = new VBox();
-        vBox.getChildren().addAll(label, jfxTextField);
-        jfxDialogLayout.getBody().add(vBox);
-        jfxDialogLayout.setActions(jfxButton);
-        jfxDialog.show();
-        gridPane.setEffect(blur);
+
+
     }
 
     public void hero1BoxClicked() {
@@ -2784,7 +2790,7 @@ public class CollectionController {
     public void importAct() {
         Gson gson = new Gson();
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("DuelystClient/model/Save/deck.json"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\saber\\IdeaProjects\\project-2\\src\\DuelystClient\\model\\Save\\deck.json"));
             SaveDeck saveDeck = gson.fromJson(bufferedReader, new TypeToken<SaveDeck>() {
             }.getType());
             Deck deck = new Deck();
@@ -2825,7 +2831,7 @@ public class CollectionController {
                 currentDeck.getUsableItems().forEach(y -> saveDeck.cards.add(y.getName()));
             }
             String json = gson.toJson(saveDeck);
-            FileWriter writer = new FileWriter("DuelystClient/model/Save/deck.json");
+            FileWriter writer = new FileWriter("C:\\Users\\saber\\IdeaProjects\\project-2\\src\\DuelystClient\\model\\Save\\deck.json");
             writer.write(json);
             writer.close();
         } catch (

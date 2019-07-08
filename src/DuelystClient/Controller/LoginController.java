@@ -115,7 +115,6 @@ public class LoginController {
     }
 
     public void wrongUserStyle() {
-        System.out.println("sadsadas");
         userField.getStyleClass().add("wrongPassword");
     }
 

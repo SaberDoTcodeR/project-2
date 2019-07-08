@@ -17,6 +17,7 @@ import static DuelystClient.Client.primaryStage;
 
 public class View {
     static Scene scene = new Scene(new GridPane());
+
     public static void makeLoginScene() {
         Platform.runLater(() -> {
             GridPane root = null;
@@ -54,7 +55,7 @@ public class View {
             primaryStage.setScene(scene);
             primaryStage.setFullScreen(true);
             primaryStage.setResizable(false);
-            Client.connectionToServer.first=true;
+            Client.connectionToServer.first = true;
         });
 
     }
@@ -174,5 +175,25 @@ public class View {
         primaryStage.setScene(scoreBoardScene);
         primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
+    }
+
+    public static void makeBattleOnline() {
+        Platform.runLater(() -> {
+            StackPane root = null;
+            try {
+                root = FXMLLoader.load(MainMenuController.class.getResource("battleOnline.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            scene.setRoot(root);
+
+            scene.setCursor(new ImageCursor(new Image("DuelystClient/css/OzFOdVG.png")));
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Client.class.getResource("css/css6.css").toExternalForm());
+            primaryStage.setScene(scene);
+            primaryStage.setFullScreen(true);
+            primaryStage.setResizable(true);
+        });
+
     }
 }

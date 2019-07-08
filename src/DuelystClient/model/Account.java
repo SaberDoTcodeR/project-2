@@ -17,6 +17,14 @@ public class Account implements Comparable<Account> {
     private boolean onOff;
     private long authToken;
 
+    public Account(int x) {
+        this.userName = "AI_Player";
+        this.passWord = "123";
+        this.money = 1500000;
+        this.avatar = 1;
+
+    }
+
     public Account(String user, String pass) {
         this.userName = user;
         this.passWord = pass;

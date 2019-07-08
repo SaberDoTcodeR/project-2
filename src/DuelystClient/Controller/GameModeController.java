@@ -25,6 +25,7 @@ import java.util.Date;
 
 public class GameModeController {
     private static GameModeController gameModeController;
+    public Account opponentAccount;
 
     public static GameModeController getInstance() {
         return gameModeController;
@@ -128,15 +129,15 @@ public class GameModeController {
             jfxDialog = new JFXDialog(stackPane, jfxDialogLayout, JFXDialog.DialogTransition.TOP);
             jfxButton.getStyleClass().add("dialog-button");
             jfxButton.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseEvent) -> {
-
+                        GameRequest gameRequest = new GameRequest();
+                        gameRequest.setAuthToken(Account.getLoginAccount().getAuthToken());
+                        gameRequest.setCancel(true);
+                        Client.connectionToServer.sendPacket(new Gson().toJson(gameRequest));
                         jfxDialog.close();
                     }
             );
             jfxDialog.setOnDialogClosed((JFXDialogEvent jfxEvent) -> {
-                GameRequest gameRequest = new GameRequest();
-                gameRequest.setAuthToken(Account.getLoginAccount().getAuthToken());
-                gameRequest.setCancel(true);
-                Client.connectionToServer.sendPacket(new Gson().toJson(gameRequest));
+
                 gridPane.setEffect(null);
             });
             Label label = new Label(string);
@@ -151,7 +152,8 @@ public class GameModeController {
 
     public void showError(String string) {
         Platform.runLater(() -> {
-            jfxDialog.close();
+            if (jfxDialog != null)
+                jfxDialog.close();
             BoxBlur blur = new BoxBlur(5, 5, 10);
             JFXDialogLayout jfxDialogLayout = new JFXDialogLayout();
             JFXButton jfxButton = new JFXButton("CANCEL");

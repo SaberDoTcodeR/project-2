@@ -76,11 +76,12 @@ public class MainMenuController {
         saveAccountMessage.setAccount(Account.getLoginAccount());
         String json = gson.toJson(saveAccountMessage);
         Client.connectionToServer.sendPacket(json);
+        System.out.println(json);
     }
 
     public void changeProfile(MouseEvent event) {
         if (event.getX() < profile.getFitWidth()) {
-            Account.getLoginAccount().setAvatar((Account.getLoginAccount().getAvatar() + 1) % 3 + 1);
+            Account.getLoginAccount().setAvatar((Account.getLoginAccount().getAvatar() % 3) + 1);
             setProfile();
         }
     }

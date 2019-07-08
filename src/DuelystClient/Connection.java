@@ -77,11 +77,12 @@ public class Connection implements Runnable {
                     } catch (IOException e1) {
                         try {
                             socket = new Socket(host, defaultPort);
+                            View.makeLoginScene();
+                            Client.connectionToServer = new Connection(socket);
                         } catch (IOException e2) {
                             continue;
                         }
-                        View.makeLoginScene();
-                        Client.connectionToServer = new Connection(socket);
+
                     }
                     break;
                 }
@@ -200,7 +201,6 @@ public class Connection implements Runnable {
             } else if (string.contains("52341")) {
                 AuctionMessage accountUpdated = gson.fromJson(string, AuctionMessage.class);
                 Account.setLoginAccount(accountUpdated.getAccount());
-                System.out.println(Account.getLoginAccount().getCollection().getHeroes().size());
                 first = true;
                 View.makeMainMenu();
 
@@ -215,10 +215,11 @@ public class Connection implements Runnable {
 
             } else if (string.contains("94573")) {
                 GameRequestAns gameRequestAns = gson.fromJson(string, GameRequestAns.class);
-                gameRequestAns.getOpponent();
                 if (gameRequestAns.isFail()) {
                     GameModeController.getInstance().showError("NO VALID DECK SET AS MAIN DECK:(");
                 } else {
+                    GameModeController.getInstance().opponentAccount = gameRequestAns.getOpponent();
+                    View.makeBattleOnline();
                     /*
                     make a battle with player
                     Account.getLoginAccount()

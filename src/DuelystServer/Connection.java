@@ -292,9 +292,10 @@ public class Connection implements Runnable {
                 } else {
                     for (Account a : Account.getAllUser()) {
                         if (a.getAuthToken() == gameRequest.getAuthToken()) {
-                            if (a.getMainDeck()==null||!a.getMainDeck().isValid()) {
+                            if (a.getMainDeck() == null || !a.getMainDeck().isValid()) {
                                 GameRequestAns gameRequestAns = new GameRequestAns(true, null);
                                 sendPacket(gson.toJson(gameRequestAns));
+                                System.out.println("cancellllll" + a.getUserName());
                                 continue;
                             }
                         }
@@ -308,6 +309,12 @@ public class Connection implements Runnable {
                         }
                     } else {
                         Account account = Server.gameQueue.poll();
+                        if (account.getAuthToken() == gameRequest.getAuthToken()) {
+                            Server.gameQueue.add(account);
+                            continue;
+                        }
+                        System.out.println(account.getUserName());
+                        System.out.println("here");
                         for (Account a : Account.getAllUser()) {
                             if (a.getAuthToken() == gameRequest.getAuthToken()) {
                                 GameRequestAns gameRequestAns = new GameRequestAns(false, account);
@@ -345,7 +352,7 @@ public class Connection implements Runnable {
             return inputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             running = false;
-            Account.getAccount(user).setOnOff(false);
+            //Account.getAccount(user).setOnOff(false);
             Server.getConnections().remove(this);
         }
 

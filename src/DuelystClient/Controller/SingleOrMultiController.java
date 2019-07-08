@@ -54,7 +54,7 @@ public class SingleOrMultiController {
     }
 
     public void singleGameBtnAct() {
-
+        singleOrMulti = true;
         View.makeModeMenuMenu();
     }
 
